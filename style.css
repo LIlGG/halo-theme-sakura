@@ -171,11 +171,13 @@ template {
 a {
     background-color: transparent;
     text-decoration: none;
+    cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/ayuda.cur), auto
 }
 
 a:active,
 a:hover {
     outline: none;
+    cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/work.cur), alias
 }
 
 abbr[title] {
@@ -671,7 +673,6 @@ a:active {
     display: block;
     margin: 0 auto;
     padding: 0 20px;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
 }
 
 @keyframes fade-in {
@@ -845,12 +846,27 @@ a:active {
 
 .site-header {
     width: 100%;
+    height: 75px;
     background: none;
     -webkit-transition: all .4s ease;
     transition: all .4s ease;
     position: fixed;
     z-index: 9999;
     top: 0
+}
+
+.site-header:hover {
+    background-color: #fff;
+}
+
+.site-header.is-homepage .lower-cantiner {
+    display: none;
+}
+
+.site-header.is-homepage.yya .lower-cantiner,
+.site-header.is-homepage.yya .site-header,
+.site-header.is-homepage:hover.is-homepage .lower-cantiner {
+    display: block;
 }
 
 .yya {
@@ -862,7 +878,8 @@ a:active {
 }
 
 .gizle {
-    top: -100px;
+    top: 0px;
+    z-index: 9999;
 }
 
 .sabit {
@@ -871,6 +888,7 @@ a:active {
 }
 
 .site-branding {
+    animation: sitetop 1s;
     float: left;
     position: relative;
     height: 75px;
@@ -888,7 +906,7 @@ a:active {
 }
 
 .site-title a:hover {
-    color: #68D4C0
+    color: orange
 }
 
 .site-title img {
@@ -924,12 +942,20 @@ a:active {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+.site-top .lower-cantiner {
+    position: absolute;
+    left: 50%;
+    min-width: 758.4px;
+    pointer-events: none;
+}
+
 .site-top .lower {
-    position: relative;
     display: inline-block;
-    float: right;
-    margin: 16.5px 0 0 0;
-    font-size: 15px;
+    margin: 15px 0 0 10px;
+    font-size: 16px;
+    position: relative;
+    left: -50%;
+    pointer-events: auto;
 }
 
 .site-top .lower nav {
@@ -956,7 +982,7 @@ a:active {
 
 .site-top ul li {
     float: left;
-    margin-left: 28px;
+    margin: 0 13px;
     position: relative;
     -webkit-transition: all 1s ease;
 }
@@ -968,7 +994,55 @@ a:active {
 }
 
 .site-top ul li a:hover {
-    color: #A0DAD0
+    color: orange;
+}
+
+.site-top ul li a:hover:after {
+    max-width: 100%;
+}
+
+.site-top ul li a::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -16px;
+    height: 6px;
+    background-color: #fe9600;
+    width: 100%;
+    max-width: 0;
+    transition: max-width .25s ease-in-out
+}
+
+.site-top ul li ul li a:after {
+    content: "";
+    display: none;
+    position: absolute;
+    bottom: -21px;
+    height: 6px;
+    background-color: #fe9600;
+    width: 100%;
+    max-width: 0;
+    transition: max-width .25s ease-in-out
+}
+
+@media (max-width: 1200px) {
+    .site-top .lower {
+      left: 15px;
+    }
+
+    .site-top .lower .lower-cantiner {
+        left: 0;
+    }
+
+    .site-top .lower nav.hide {
+        display: none !important;
+    }
+}
+
+@media (max-width: 860px) {
+    .site-top .lower nav ul li .animated-hover i {
+        display: inline;
+    }
 }
 
 #show-nav {
@@ -1020,16 +1094,27 @@ a:active {
     display: none;
     opacity: 1;
     position: absolute;
-    background: none;
+    background: #fff;
     padding: 10px;
-    top: 31px;
-    right: -10px;
-    width: 150px;
-    text-align: right;
+    top: 46px;
+    right: -13px;
+    width: 80px;
+    text-align: center;
     z-index: 9999;
     border-radius: 5px;
-    -webkit-animation: fadeInUp .3s .1s ease both;
-    -moz-animation: fadeInUp .3s .1s ease both
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    animation: fadeInUp .3s .1s ease both;
+}
+
+.lower li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff;
 }
 
 @-webkit-keyframes fadeInUp {
@@ -3395,7 +3480,7 @@ li.feature-2 {
     margin: 0;
     padding: 0;
     background-image: url(images/hd.jpg);
-    background-position: top center;
+    background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
