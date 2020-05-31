@@ -457,7 +457,7 @@ $(function () {
         $(this).postLike();
     });
 
-    console.log("%c Github %c", "background:#24272A; color:#ffffff", "", "https://github.com/louie-senpai");
+    console.log("%c Github %c", "background:#24272A; color:#ffffff", "", "https://github.com/LIlGG/halo-theme-Sakura");
 
 });
 
