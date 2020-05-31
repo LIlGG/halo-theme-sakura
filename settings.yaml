@@ -1,0 +1,404 @@
+general:
+  label: 基本设置
+  items:
+    theme_skin:
+      name: theme_skin
+      label: 主题风格
+      type: color
+      default: '#FE9600'
+    shownav:
+      name: shownav
+      label: 展开导航菜单
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    patternimg:
+      name: patternimg
+      label: 头部装饰图
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    archives_patternimg:
+      name: archives_patternimg
+      label: 归档页装饰图
+      type: attachment
+      description: '归档页面头部装饰图'
+    links_patternimg:
+      name: links_patternimg
+      label: 友链页装饰图
+      type: attachment
+      description: '友情链接页面头部装饰图'
+    searh_patternimg:
+      name: searh_patternimg
+      label: 搜索页装饰图
+      type: attachment
+      description: '搜索页面头部装饰图'
+    tag_patternimg:
+      name: tag_patternimg
+      label: 标签页默认装饰图
+      type: attachment
+      description: '标签下文章页面默认头部装饰图'
+    category_patternimg:
+      name: category_patternimg
+      label: 分类页默认装饰图
+      type: attachment
+      description: '分类下文章页面默认头部装饰图'
+    top_search:
+      name: top_search
+      label: 搜索按钮
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    post_list_style:
+      name: post_list_style
+      label: 首页文章风格
+      type: radio
+      data-type: string
+      default: standard
+      options:
+        - value: standard
+          label: 标准
+        - value: imageflow
+          label: 图文
+    list_type:
+      name: list_type
+      label: 首页文章特色图（仅对标准风格生效）
+      type: radio
+      data-type: string
+      default: round
+      options:
+        - value: round
+          label: 圆形
+        - value: square
+          label: 方形
+    pagenav_style:
+      name: pagenav_style
+      label: 分页模式
+      type: radio
+      data-type: string
+      default: ajax
+      options:
+        - value: ajax
+          label: ajax加载
+        - value: np
+          label: 上一页和下一页
+    site_custom_style:
+      name: site_custom_style
+      label: 自定义CSS样式
+      type: textarea
+
+mainScreen:
+  label: 第一屏
+  items:
+    head_focus:
+      name: head_focus
+      label: 总开关
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    focus_infos:
+      name: focus_infos
+      label: 社交信息
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    focus_height:
+      name: focus_height
+      label: 全屏显示
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    focus_img_1:
+      name: focus_img_1
+      label: 背景图
+      type: attachment
+      default: '/louie_senpai_siren/images/hd.jpg'
+#    focus_img_2:
+#      name: focus_img_2
+#      label: 背景图 - 2
+#      type: attachment
+#    focus_img_3:
+#      name: focus_img_3
+#      label: 背景图 - 3
+#      type: attachment
+#    focus_img_4:
+#      name: focus_img_4
+#      label: 背景图 - 4
+#      type: attachment
+#    focus_img_5:
+#      name: focus_img_5
+#      label: 背景图 - 5
+#      type: attachment
+    focus_img_filter:
+      name: focus_img_filter
+      label: 背景图滤镜
+      type: select
+      default: filter-nothing
+      options:
+        - value: filter-nothing
+          label: 无
+        - value: filter-undertint
+          label: 浅色
+        - value: filter-dim
+          label: 暗淡
+        - value: filter-grid
+          label: 网格
+post:
+  label: 文章页
+  items:
+#    post_like:
+#      name: post_like
+#      label: 文章点赞
+#      type: radio
+#      data-type: bool
+#      default: true
+#      options:
+#        - value: true
+#          label: 开启
+#        - value: false
+#          label: 关闭
+    post_share:
+      name: post_share
+      label: 文章分享
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    post_nepre:
+      name: post_nepre
+      label: 上一篇下一篇
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    author_profile:
+      name: author_profile
+      label: 博主信息
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    alipay_code:
+      name: alipay_code
+      label: 支付宝打赏
+      type: attachment
+    wechat_code:
+      name: wechat_code
+      label: 微信打赏
+      type: attachment
+    code_pretty:
+      name: code_pretty
+      label: 文章代码高亮主题
+      type: select
+      default: Default
+      options:
+        - value: Default
+          label: Default
+        - value: Coy
+          label: Coy
+        - value: Dark
+          label: Dark
+        - value: Okaidia
+          label: Okaidia
+        - value: Solarized Light
+          label: Solarized Light
+        - value: Tomorrow Night
+          label: Tomorrow Night
+        - value: Twilight
+          label: Twilight
+sns:
+  label: 社交网络
+  items:
+    wechat:
+      name: wechat
+      label: 微信二维码
+      type: attachment
+    sina:
+      name: sina
+      label: 新浪微博
+      type: text
+    qq:
+      name: qq
+      label: 腾讯QQ
+      type: text
+    qzone:
+      name: qzone
+      label: QQ空间
+      type: text
+    github:
+      name: github
+      label: Github
+      type: text
+    lofter:
+      name: lofter
+      label: Lofter
+      type: text
+    bili:
+      name: bili
+      label: BiliBili
+      type: text
+    wangyiyun:
+      name: wangyiyun
+      label: 网易云音乐
+      type: text
+    twitter:
+      name: twitter
+      label: Twitter
+      type: text
+    facebook:
+      name: facebook
+      label: Facebook
+      type: text
+    googleplus:
+      name: googleplus
+      label: Google+
+      type: text
+    jianshu:
+      name: jianshu
+      label: 简书
+      type: text
+    csdn:
+      name: csdn
+      label: CSDN
+      type: text
+    zhihu:
+      name: zhihu
+      label: 知乎
+      type: text
+focus:
+  label: 聚焦图
+  items:
+    top_feature:
+      name: top_feature
+      label: 是否开启聚焦
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    feature_title:
+      name: feature_title
+      label: 聚焦标题
+      type: text
+      default: '聚焦'
+      placeholder: '默认为聚焦，你也可以修改为其他，当然不能当广告用！不允许！！'
+    feature1_img:
+      name: feature1_img
+      label: 聚焦图一
+      type: attachment
+      placeholder: '尺寸257px*160px'
+    feature1_title:
+      name: feature1_title
+      label: 聚焦图一标题
+      type: text
+      default: 'feature1'
+    feature1_link:
+      name: feature1_link
+      label: 聚焦图一链接
+      type: text
+      default: '#'
+    feature2_img:
+      name: feature2_img
+      label: 聚焦图二
+      type: attachment
+      placeholder: '尺寸257px*160px'
+    feature2_title:
+      name: feature2_title
+      label: 聚焦图二标题
+      type: text
+      default: 'feature2'
+    feature2_link:
+      name: feature2_link
+      label: 聚焦图二链接
+      type: text
+      default: '#'
+    feature3_img:
+      name: feature3_img
+      label: 聚焦图三
+      type: attachment
+      placeholder: '尺寸257px*160px'
+    feature3_title:
+      name: feature3_title
+      label: 聚焦图三标题
+      type: text
+      default: 'feature3'
+    feature3_link:
+      name: feature3_link
+      label: 聚焦图三链接
+      type: text
+      default: '#'
+others:
+  label: 其他
+  items:
+    poi_pjax:
+      name: poi_pjax
+      label: 开启PJAX局部刷新
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    head_notice:
+      name: head_notice
+      label: 开启公告
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    notice_title:
+      name: notice_title
+      label: 公告内容
+      type: textarea
+      placeholder: '公告内容，文字超出142个字节将会被滚动显示（移动端无效），一个汉字 = 3字节，一个字母 = 1字节，自己计算吧'
