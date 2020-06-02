@@ -1,7 +1,7 @@
 <#--
     @package Akina
 -->
-<article id="post-${post.id?c}" <?php post_class(); ?>
+<article id="post-${post.id?c}">
     <#if !(settings.patternimg!true) || !(post.thumbnail?? || post.thumbnail!='')>
         <header class="entry-header">
             <h1 class="entry-title">${post.title!}</h1>
