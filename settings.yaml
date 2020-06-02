@@ -116,6 +116,24 @@ mainScreen:
           label: 开启
         - value: false
           label: 关闭
+    focus_tou:
+      name: focus_tou
+      label: 头部样式
+      type: select
+      default: avatar
+      options:
+        - value: no-tou
+          label: 无
+        - value: avatar
+          label: 头像
+        - value: glitch-text
+          label: 故障文字
+    glitch_text:
+      name: glitch_text
+      label: 聚焦故障文本
+      type: text
+      default: 'HI'
+      description: '该文本只有头部样式开启故障文字才能显示'
     focus_infos:
       name: focus_infos
       label: 社交信息

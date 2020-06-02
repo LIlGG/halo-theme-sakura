@@ -5,12 +5,16 @@
 ">
 	<#if settings.focus_infos!true>
 	<div class="focusinfo">
-		<#if user.avatar??>
-	     <div class="header-tou"><a href="${blog_url!}" ><img src="${user.avatar!}"></a></div>
-		<#else>
-         <div class="header-tou" ><a href="${blog_url!}"><img src="${theme_base!}/images/avatar.jpg"></a></div>
+		<#if settings.focus_tou == "avatar">
+			<#if user.avatar??>
+			<div class="header-tou"><a href="${blog_url!}" ><img src="${user.avatar!}"></a></div>
+			<#else>
+			<div class="header-tou" ><a href="${blog_url!}"><img src="${theme_base!}/images/avatar.jpg"></a></div>
+			</#if>
+		<#elseif settings.focus_tou == "glitch-text">
+			<h1 class="center-text glitch" data-text="${settings.glitch_text}">${settings.glitch_text}</h1>
 		</#if>
-		<div class="header-info"><p>${user.description!'Carpe Diem and Do what I like'}</p></div>
+		<div class="header-info"><p>${user.description!''}</p></div>
 		<div class="top-social">
 		<#if settings.wechat??>
 			<li class="wechat"><a href="#"><img src="${theme_base!}/images/sns/wechat.png"/></a>
