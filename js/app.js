@@ -405,13 +405,6 @@ $(function () {
     Siren.MN(); // 移动端菜单
     Siren.IA(); // 输入框特效
 
-    NProgress.configure({ 
-        minimum: 0.0,
-        easing: 'ease',
-        speed: 1000,
-        showSpinner: false
-    });
-
     if (Poi.pjax) {
         $(document).pjax('a[target!=_top]', '#page', {
             fragment: '#page',

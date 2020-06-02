@@ -941,13 +941,13 @@ $.support.pjax ? enable() : disable()
   NProgress.version = '0.2.0';
 
   var Settings = NProgress.settings = {
-    minimum: 0.08,
-    easing: 'linear',
+    minimum: 0.0,
+    easing: 'ease',
+    speed: 1000,
+    showSpinner: false,
     positionUsing: '',
-    speed: 350,
     trickle: true,
     trickleSpeed: 250,
-    showSpinner: true,
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
     parent: 'body',
