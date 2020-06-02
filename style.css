@@ -4478,10 +4478,12 @@ object {
 */
 #nprogress {
     pointer-events: none;
+    z-index: 99999;
+    position: absolute;
 }
 
 #nprogress .bar {
-    background: #99ce00;
+    background: orange;
     position: fixed;
     z-index: 1031;
     top: 0;
@@ -4496,7 +4498,7 @@ object {
     right: 0px;
     width: 100px;
     height: 100%;
-    box-shadow: 0 0 10px #99ce00, 0 0 5px #99ce00;
+    box-shadow: 0 0 10px orange, 0 0 5px orange;
     opacity: 1.0;
     -webkit-transform: rotate(3deg) translate(0px, -4px);
     -ms-transform: rotate(3deg) translate(0px, -4px);
@@ -4520,8 +4522,8 @@ object {
     height: 20px;
     box-sizing: border-box;
     border: solid 3px transparent;
-    border-top-color: #99ce00;
-    border-left-color: #99ce00;
+    border-top-color: orange;
+    border-left-color: orange;
     border-radius: 50%;
     -webkit-animation: nprogress-spinner 400ms linear infinite;
     animation: nprogress-spinner 400ms linear infinite;

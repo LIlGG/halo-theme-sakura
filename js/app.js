@@ -311,6 +311,13 @@ var home = location.href,
                 ss = $(document).scrollTop();
             $(window).scroll(function () {
                 var s = $(document).scrollTop();
+                // 屏幕剩余的高度
+                var surplus =
+                    document.documentElement.scrollHeight -
+                    document.documentElement.clientHeight;
+                 // 当前位置小数
+                var coorY = s / surplus;
+                NProgress.set(coorY);
                 if (s == h1) {
                     $('.site-header').removeClass('yya');
                 }
@@ -397,6 +404,13 @@ $(function () {
     Siren.CE(); // 点击事件
     Siren.MN(); // 移动端菜单
     Siren.IA(); // 输入框特效
+
+    NProgress.configure({ 
+        minimum: 0.0,
+        easing: 'ease',
+        speed: 1000,
+        showSpinner: false
+    });
 
     if (Poi.pjax) {
         $(document).pjax('a[target!=_top]', '#page', {
