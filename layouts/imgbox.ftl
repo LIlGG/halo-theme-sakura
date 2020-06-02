@@ -14,55 +14,63 @@
 		<#elseif settings.focus_tou == "glitch-text">
 			<h1 class="center-text glitch" data-text="${settings.glitch_text}">${settings.glitch_text}</h1>
 		</#if>
-		<div class="header-info"><p>${user.description!''}</p></div>
-		<div class="top-social">
-		<#if settings.wechat??>
-			<li class="wechat"><a href="#"><img src="${theme_base!}/images/sns/wechat.png"/></a>
-				<div class="wechatInner">
-					<img src="${settings.wechat!}" alt="微信公众号">
-				</div>
-			</li>
-		</#if>
-		<#if settings.sina??>
-			<li><a href="${settings.sina!}" target="_blank" class="social-sina" title="sina"><img src="${theme_base!}/images/sns/sina.png"/></a></li>
-		</#if>
-		<#if settings.qq??>
-			<li class="qq"><a href="//wpa.qq.com/msgrd?v=3&uin=${settings.qq!}&site=qq&menu=yes" target="_blank" title="Initiate chat ?"><img src="${theme_base!}/images/sns/qq.png"/></a></li>
-		</#if>
-		<#if settings.qzone??>
-		<li><a href="${settings.qzone!}" target="_blank" class="social-qzone" title="qzone"><img src="${theme_base!}/images/sns/qzone.png"/></a></li>
-		</#if>
-		<#if settings.github??>
-		<li><a href="${settings.github!}" target="_blank" class="social-github" title="github"><img src="${theme_base!}/images/sns/github.png"/></a></li>
-		</#if>
-		<#if settings.lofter??>
-		<li><a href="${settings.lofter!}" target="_blank" class="social-lofter" title="lofter"><img src="${theme_base!}/images/sns/lofter.png"/></a></li>
-		</#if>
-		<#if settings.bili??>
-		<li><a href="${settings.bili!}" target="_blank" class="social-bili" title="bilibili"><img src="${theme_base!}/images/sns/bilibili.png"/></a></li>
-		</#if>
-		<#if settings.wangyiyun??>
-		<li><a href="${settings.wangyiyun!}" target="_blank" class="social-wangyiyun" title="CloudMusic"><img src="${theme_base!}/images/sns/wangyiyun.png"/></a></li>
-		</#if>
-		<#if settings.twitter??>
-		<li><a href="${settings.twitter!}" target="_blank" class="social-wangyiyun" title="Twitter"><img src="${theme_base!}/images/sns/twitter.png"/></a></li>
-		</#if>
-		<#if settings.facebook??>
-		<li><a href="${settings.facebook!}" target="_blank" class="social-wangyiyun" title="Facebook"><img src="${theme_base!}/images/sns/facebook.png"/></a></li>
-		</#if>
-		<#if settings.googleplus??>
-		<li><a href="${settings.googleplus!}" target="_blank" class="social-wangyiyun" title="Google+"><img src="${theme_base!}/images/sns/googleplus.png"/></a></li>
-		</#if>
-		<#if settings.jianshu??>
-		<li><a href="${settings.jianshu!}" target="_blank" class="social-wangyiyun" title="简书"><img src="${theme_base!}/images/sns/jianshu.png"/></a></li>
-		</#if>
-		<#if settings.zhihu??>
-		<li><a href="${settings.zhihu!}" target="_blank" class="social-wangyiyun" title="知乎"><img src="${theme_base!}/images/sns/zhihu.png"/></a></li>
-		</#if>
-		<#if settings.csdn??>
-		<li><a href="${settings.csdn!}" target="_blank" class="social-wangyiyun" title="CSDN"><img src="${theme_base!}/images/sns/csdn.png"/></a></li>
-		</#if>
-	  	</div>		 
+		<div class="header-info">
+			<p><i class="fa fa-quote-left"></i>${(user.description)!''}<i class="fa fa-quote-right"></i></p>
+			<div class="top-social_v2">
+			    <li id="bg-pre">
+            		<img class="flipx" src="${theme_base!}/images/nextImg.svg">
+          		</li>
+			<#if settings.wechat??>
+				<li class="wechat"><a href="#"><img src="${theme_base!}/images/sns/wechat.png"/></a>
+					<div class="wechatInner">
+						<img src="${settings.wechat!}" alt="微信公众号">
+					</div>
+				</li>
+			</#if>
+			<#if settings.sina??>
+				<li><a href="${settings.sina!}" target="_blank" class="social-sina" title="sina"><img src="${theme_base!}/images/sns/sina.png"/></a></li>
+			</#if>
+			<#if settings.qq??>
+				<li class="qq"><a href="//wpa.qq.com/msgrd?v=3&uin=${settings.qq!}&site=qq&menu=yes" target="_blank" title="Initiate chat ?"><img src="${theme_base!}/images/sns/qq.png"/></a></li>
+			</#if>
+			<#if settings.qzone??>
+				<li><a href="${settings.qzone!}" target="_blank" class="social-qzone" title="qzone"><img src="${theme_base!}/images/sns/qzone.png"/></a></li>
+			</#if>
+			<#if settings.github??>
+				<li><a href="${settings.github!}" target="_blank" class="social-github" title="github"><img src="${theme_base!}/images/sns/github.png"/></a></li>
+			</#if>
+			<#if settings.lofter??>
+				<li><a href="${settings.lofter!}" target="_blank" class="social-lofter" title="lofter"><img src="${theme_base!}/images/sns/lofter.png"/></a></li>
+			</#if>
+			<#if settings.bili??>
+				<li><a href="${settings.bili!}" target="_blank" class="social-bili" title="bilibili"><img src="${theme_base!}/images/sns/bilibili.png"/></a></li>
+			</#if>
+			<#if settings.wangyiyun??>
+				<li><a href="${settings.wangyiyun!}" target="_blank" class="social-wangyiyun" title="CloudMusic"><img src="${theme_base!}/images/sns/wangyiyun.png"/></a></li>
+			</#if>
+			<#if settings.twitter??>
+				<li><a href="${settings.twitter!}" target="_blank" class="social-wangyiyun" title="Twitter"><img src="${theme_base!}/images/sns/twitter.png"/></a></li>
+			</#if>
+			<#if settings.facebook??>
+				<li><a href="${settings.facebook!}" target="_blank" class="social-wangyiyun" title="Facebook"><img src="${theme_base!}/images/sns/facebook.png"/></a></li>
+			</#if>
+			<#if settings.googleplus??>
+				<li><a href="${settings.googleplus!}" target="_blank" class="social-wangyiyun" title="Google+"><img src="${theme_base!}/images/sns/googleplus.png"/></a></li>
+			</#if>
+			<#if settings.jianshu??>
+				<li><a href="${settings.jianshu!}" target="_blank" class="social-wangyiyun" title="简书"><img src="${theme_base!}/images/sns/jianshu.png"/></a></li>
+			</#if>
+			<#if settings.zhihu??>
+				<li><a href="${settings.zhihu!}" target="_blank" class="social-wangyiyun" title="知乎"><img src="${theme_base!}/images/sns/zhihu.png"/></a></li>
+			</#if>
+			<#if settings.csdn??>
+				<li><a href="${settings.csdn!}" target="_blank" class="social-wangyiyun" title="CSDN"><img src="${theme_base!}/images/sns/csdn.png"/></a></li>
+			</#if>
+				<li id="bg-next">
+            		<img src="${theme_base!}/images/nextImg.svg">
+          		</li>
+			</div>
+		</div>
 	</div>
 	</#if>
 </figure>

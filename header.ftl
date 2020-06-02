@@ -16,6 +16,7 @@
 	<script src="https://use.fontawesome.com/d9e1f64834.js"></script>
 	<link rel='stylesheet' id='siren-css'  href='${theme_base!}/style.css?ver=2.0.6.170420' type='text/css' media='all' />
 	<link rel='stylesheet' id='siren-css'  href='https://cdn.lixingyong.com/css/lib.css' type='text/css' media='all' />
+	<link rel='stylesheet' id='siren-css'  href='https://cdn.lixingyong.com/css/iconfont/fonts-noto.css' type='text/css' media='all' />
 	<#include "inc/decorate.ftl">
 	<script type="text/javascript">
 		if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?

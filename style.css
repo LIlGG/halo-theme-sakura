@@ -3695,21 +3695,35 @@ li.feature-2 {
 }
 
 .header-info {
-    width: 60%;
-    margin: auto;
-    font-size: 14px;
-    color: #EAEADF;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 15px 25px;
-    margin-top: 22px;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
-    letter-spacing: 0;
-    line-height: 30px;
-    border-radius: 50px;
+	width: 63%;
+	margin: auto;
+	font-size: 16px;
+	color: #eaeadf;
+	background: rgba(0,0,0,.5);
+	padding: 15px;
+	margin-top: 22px;
+	letter-spacing: 0;
+	line-height: 30px;
+	border-radius: 10px;
+	box-sizing: initial;
+    white-space: nowrap;
+}
+
+.header-info::before {
+    content: "";
+    position: absolute;
+    top: 112px;
+    left: 30%;
+    margin-left: -15px;
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent transparent rgba(0,0,0,.5) transparent;
 }
 
 .header-info p {
-    margin: 0
+    margin: 0;
+    font-family: 'Ubuntu',sans-serif;
+    font-weight: 700
 }
 
 .top-social {
@@ -3731,6 +3745,34 @@ li.feature-2 {
 .top-social li {
     float: left;
     margin-right: 10px
+}
+
+.top-social_v2 {
+    height: 32px;
+	margin-bottom: -15px;
+	margin-left: 10px;
+	list-style: none;
+    display: inline-block;
+}
+
+.top-social_v2 img {
+    height: 35px;
+    width: 35px; 
+    padding: 6px;
+    background: 0 0;
+}
+
+.top-social_v2 li {
+    float: left;
+    margin-right: 13px
+}
+
+.flipx {
+	-moz-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	transform: scaleX(-1);
+	filter: FlipH
 }
 
 .wechat {
