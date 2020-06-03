@@ -339,6 +339,21 @@ focus:
           label: 开启
         - value: false
           label: 关闭
+    top_feature:
+      name: feature_type
+      label: 聚焦图类型
+      type: select
+      default: v2
+      options:
+        - value: original
+          label: 原版
+        - value: v2
+          label: 第二版
+    feature_icon:
+      name: feature_title
+      label: 聚焦图标
+      type: text
+      placeholder: '聚焦前的小图标，不填写就不显示！'
     feature_title:
       name: feature_title
       label: 聚焦标题
@@ -353,6 +368,11 @@ focus:
     feature1_title:
       name: feature1_title
       label: 聚焦图一标题
+      type: text
+      default: 'feature1'
+    feature1_desc:
+      name: feature1_desc
+      label: 聚焦图一描述
       type: text
       default: 'feature1'
     feature1_link:
@@ -370,6 +390,11 @@ focus:
       label: 聚焦图二标题
       type: text
       default: 'feature2'
+    feature2_desc:
+      name: feature2_desc
+      label: 聚焦图二描述
+      type: text
+      default: 'feature2'
     feature2_link:
       name: feature2_link
       label: 聚焦图二链接
@@ -383,6 +408,11 @@ focus:
     feature3_title:
       name: feature3_title
       label: 聚焦图三标题
+      type: text
+      default: 'feature3'
+    feature3_desc:
+      name: feature3_desc
+      label: 聚焦图三描述
       type: text
       default: 'feature3'
     feature3_link:
