@@ -20,7 +20,10 @@
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
-		<h1 class="main-title">Posts</h1>
+		<h1 class="main-title">
+		<i class="fa fa-envira" aria-hidden="true"></i>
+		 Discovery
+		</h1>
 		<#if posts?? && posts.getTotalElements() gt 0>
 			<#--Start the Loop-->
 			<#if (settings.post_list_style!'standard') == 'standard'>

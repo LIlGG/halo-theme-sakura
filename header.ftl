@@ -32,7 +32,7 @@
 		</div>
 	</#if>
 	<div id="page" class="site wrapper">
-		<header <#if is_index??>class="site-header is-homepage"<#else>class="site-header"</#if>  role="banner">
+		<header class="site-header  <#if (is_index)!false == true>is-homepage</#if>" role="banner">
 			<div class="site-top">
 				<div class="site-branding">
 					<#if blog_logo?? && blog_logo!=''>

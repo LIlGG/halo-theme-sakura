@@ -110,6 +110,7 @@
 	<script type="text/javascript" src="${theme_base!}/plugins/prism/js/prism.js"></script>
 	<link href="${theme_base!}/plugins/prism/css/prism-${settings.code_pretty!'Default'}.css" type="text/css" rel="stylesheet" />
 </#if>
+<script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
 <script type='text/javascript' src='${theme_base!}/js/app.js?ver=2.0.6.170420'></script>
 <div class="site-statistics">
 	<@global.statistics />
