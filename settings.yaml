@@ -339,7 +339,7 @@ focus:
           label: 开启
         - value: false
           label: 关闭
-    top_feature:
+    feature_type:
       name: feature_type
       label: 聚焦图类型
       type: select

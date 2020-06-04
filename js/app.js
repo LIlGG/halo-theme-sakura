@@ -376,7 +376,17 @@ var home = location.href,
                 scroll_top_duration = 700,
                 $back_to_top = $('.cd-top');
             $(window).scroll(function () {
-                ($(this).scrollTop() > offset) ? $back_to_top.addClass('cd-is-visible') : $back_to_top.removeClass('cd-is-visible cd-fade-out');
+                if($(this).scrollTop() > offset) {
+                    $back_to_top.addClass('cd-is-visible');
+                    if ($(window).height() > 950) {
+                        $(".cd-top.cd-is-visible").css("top", "0");
+                    } else {
+                        $(".cd-top.cd-is-visible").css("top", ($(window).height() - 950) + "px");
+                    }
+                } else {
+                    $(".cd-top.cd-is-visible").css("top", "-900px");
+                    $back_to_top.removeClass('cd-is-visible cd-fade-out');
+                }
                 if ($(this).scrollTop() > offset_opacity) {
                     $back_to_top.addClass('cd-fade-out');
                 }

@@ -1877,38 +1877,77 @@ h1.page-title.mb- {
 --------------------------------------------------------------*/
 
 .cd-top {
-    position: fixed;
-    right: 1%;
-    bottom: -999px;
-    z-index: 99999;
-    width: 50px;
-    height: 60px;
-    background: url(images/gotop.png) no-repeat center;
-    background-size: contain;
-    -webkit-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-    cursor: pointer;
-    opacity: 0;
+	position: fixed;
+	right: 25px;
+	top: -900px;
+	z-index: 99;
+	width: 70px;
+	height: 900px;
+	background: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/scroll.png) no-repeat center;
+	background-size: contain;
+	-webkit-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+	cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/No_Disponible.cur),auto;
+	opacity: 1
 }
 
 .cd-top.cd-is-visible {
-    opacity: .7;
-    bottom: 8%;
+	opacity: 1;
+	top: -326px
 }
 
 .cd-top.cd-fade-out {
-    opacity: .85;
+	opacity: 1
 }
 
 .cd-top:hover {
-    opacity: 1;
+	opacity: 1
+}
+
+.cd-top span {
+	display: none;
+	color: #000;
+	position: absolute;
+	bottom: 0;
+	height: 20px;
+	width: 50px;
+	text-align: center
 }
 
 @media screen and (max-width: 860px) {
     .cd-top {
-        height: 40px;
-        width: 50px;
+		display: none;
+		height: 60px;
+		width: 50px
     }
+
+    .cd-top span {
+		height: 10px;
+		width: 50px
+	}
+}
+
+#moblieGoTop {
+	display: none;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	z-index: 99;
+	border: 0;
+	outline: 0;
+	background-color: #fff;
+	color: #404040;
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 10px;
+	border-radius: 12px;
+	box-shadow: 0px 0px 2px 0px rgba(0,0,0,.12),0px 2px 2px 0px rgba(0,0,0,.24);
+	transition: box-shadow .2s ease
+}
+
+#moblieGoTop:hover {
+	background-color: #fff;
+	opacity: .8
 }
 
 .post-footer {
