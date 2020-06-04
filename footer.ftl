@@ -92,6 +92,11 @@
 	<div class="search_close"></div>
 </form>
 <!-- search end -->
+<!-- aplayer start -->
+<#if settings.aplayer_float!false>
+<div id="aplayer-float" style="z-index: 100;" class="aplayer" data-id="${settings.aplayer_id!'2345868969'}" data-server="${settings.aplayer_server!'netease'}" data-type="${settings.aplayer_type!'playlist'}" data-fixed="true" data-preload="${settings.aplayer_preload!'auto'}" data-order="${settings.order!'list'}" data-theme="${settings.theme!'orange'}"></div>
+</#if>
+<!-- aplayer end -->
 <script type='text/javascript' src='${theme_base!}/js/jquery.min.js?ver=2.0.6.170420'></script>
 <script type='text/javascript' src='${theme_base!}/js/jquery.pjax.js?ver=2.0.6.170420'></script>
 <script type='text/javascript' src='${theme_base!}/js/input.min.js?ver=2.0.6.170420'></script>
@@ -110,6 +115,12 @@
 	<script type="text/javascript" src="${theme_base!}/plugins/prism/js/prism.js"></script>
 	<link href="${theme_base!}/plugins/prism/css/prism-${settings.code_pretty!'Default'}.css" type="text/css" rel="stylesheet" />
 </#if>
+<#if settings.is_aplayer!false>
+	<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+	<script src="${theme_base!}/plugins/aplayer/js/index.js"></script>
+</#if>
+<script src="https://use.fontawesome.com/d9e1f64834.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
 <script type='text/javascript' src='${theme_base!}/js/app.js?ver=2.0.6.170420'></script>
 <div class="site-statistics">

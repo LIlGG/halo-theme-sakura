@@ -450,3 +450,78 @@ others:
       label: 公告内容
       type: textarea
       placeholder: '公告内容，文字超出142个字节将会被滚动显示（移动端无效），一个汉字 = 3字节，一个字母 = 1字节，自己计算吧'
+additional:
+  label: 补充功能
+  items:
+    aplayer_float:
+      name: aplayer_float
+      label: 开启左下方音乐浮动（需要同时开启Aplayer插件）
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    aplayer_server:
+      name: aplayer_server
+      label: 音乐类别
+      type: select
+      default: netease
+      options:
+        - value: netease
+          label: 网易云音乐
+    aplayer_id:
+      name: aplayer_id
+      label: 音乐id/歌单id
+      type: text
+    aplayer_type:
+      name: aplayer_type
+      label: 类别
+      type: select
+      default: playlist
+      options:
+        - value: playlist
+          label: 歌单
+    aplayer_preload:
+      name: aplayer_preload
+      label: 预加载
+      type: select
+      default: auto
+      options:
+        - value: none
+          label: none
+        - value: metadata
+          label: metadata
+        - value: auto
+          label: auto
+    aplayer_order:
+      name: aplayer_order
+      label: 循环顺序
+      type: select
+      default: list
+      options:
+        - value: list
+          label: list
+        - value: random
+          label: random
+    aplayer_theme:
+      name: aplayer_theme
+      label: 主题色
+      type: color
+      default: 'orange'
+plugin:
+  label: 插件功能
+  items:
+    is_aplayer:
+      name: is_aplayer
+      label: 开启Aplayer插件
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
