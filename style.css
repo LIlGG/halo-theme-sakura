@@ -3703,8 +3703,13 @@ li.feature-2 {
 
 @media (max-width:860px) {
     #centerbg {
+        height: 300px;
         background-attachment: scroll;
     }
+
+    .focusinfo,.video-container {
+		display: none
+	}
 }
 
 .blank {
@@ -4101,6 +4106,9 @@ i.iconfont.js-toggle-search.iconsearch {
     visibility: visible;
     opacity: .99;
     animation: elastic .5s;
+    background-image: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.2.1/img/other/iloli.gif);
+    background-repeat: no-repeat;
+    background-position: bottom right;
 }
 
 .search-form div {
@@ -6196,4 +6204,93 @@ i.iconfont.down {
 .live2d-tool,
 .aplayer-icon {
     border-radius: 0 6px 6px 0 !important
+}
+
+/**
+* bgvideo
+*/
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden
+}
+
+.video-container embed,
+.video-container iframe,
+.video-container object {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%
+}
+
+.bgvideo {
+    position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	min-width: 99.999%;
+	min-height: 550px;
+	z-index: 0
+}
+
+.video-btn,
+.video-add {
+    position: absolute;
+	bottom: 3px;
+	right: 5px;
+	width: 32px;
+	height: 32px;
+	z-index: 7;
+	background-position: center;
+	background-size: cover;
+	cursor: pointer;
+	opacity: .8;
+	-moz-animation: poi-face 10s linear infinite alternate;
+	-webkit-animation: poi-face 10s linear infinite alternate;
+	-o-animation: poi-face 10s linear infinite alternate;
+	animation: poi-face 10s linear infinite alternate
+}
+
+.video-btn:hover,
+.video-add:hover {
+    opacity: 1
+}
+
+.video-play,
+.loadvideo {
+	background-image: url('https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/play@32x32.png')
+}
+
+.video-pause {
+	background-image: url('https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/pause@32x32.png')
+}
+
+.video-add {
+	background-image: url('https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/add@32x32.png');
+	bottom: 45px;
+	display: none
+}
+
+.video-stu {
+	position: absolute;
+	bottom: -100px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	padding: 6px 15px;
+	text-align: center;
+	color: #fff;
+	width: 100%;
+	background-color: rgba(0,0,0,.8);
+	border-radius: 0;
+	font-size: 18px;
+	-webkit-transition: .4s ease all;
+	-moz-transition: .4s ease all;
+	-o-transition: .4s ease all;
+	transition: .4s ease all
 }

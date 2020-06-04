@@ -28,6 +28,11 @@
     <#if settings.head_focus!true>
 		<div class="headertop ${settings.focus_img_filter!'filter-nothing'}">
 			<#include "layouts/imgbox.ftl">
+			<#if settings.bgvideo!false>
+			<#if settings.bgvideo_url?? && settings.bgvideo_url!= '' || settings.bgvideo_id?? && settings.bgvideo_id!= ''>
+			<#include "layouts/videobox.ftl">
+			</#if>
+			</#if>
 		</div>
 	</#if>
 	<div id="page" class="site wrapper">

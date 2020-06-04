@@ -94,7 +94,7 @@
 <!-- search end -->
 <!-- aplayer start -->
 <#if settings.aplayer_float!false>
-<div id="aplayer-float" style="z-index: 100;" class="aplayer" data-id="${settings.aplayer_id!'2345868969'}" data-server="${settings.aplayer_server!'netease'}" data-type="${settings.aplayer_type!'playlist'}" data-fixed="true" data-preload="${settings.aplayer_preload!'auto'}" data-order="${settings.order!'list'}" data-theme="${settings.theme!'orange'}"></div>
+<div id="aplayer-float" style="z-index: 100;" class="aplayer" data-id="${settings.aplayer_id!'2345868969'}" data-server="${settings.aplayer_server!'netease'}" data-type="${settings.aplayer_type!'playlist'}" data-fixed="true" data-preload="${settings.aplayer_preload!'auto'}" data-order="${settings.aplayer_order!'list'}" data-theme="${settings.aplayer_theme!'orange'}"></div>
 </#if>
 <!-- aplayer end -->
 <script type='text/javascript' src='${theme_base!}/js/jquery.min.js?ver=2.0.6.170420'></script>

@@ -191,6 +191,34 @@ mainScreen:
           label: 暗淡
         - value: filter-grid
           label: 网格
+    bgvideo:
+      name: bgvideo
+      label: 开启背景视频
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭  
+    bgvideo_url:
+      name: bgvideo_url
+      label: 视频链接（优先选择）
+      type: attachment
+    bgvideo_server:
+      name: bgvideo_server
+      label: 视频服务者
+      type: select
+      default: bilibili
+      options:
+        - value: bilibili
+          label: 哔哩哔哩
+    bgvideo_id:
+      name: bgvideo_id
+      label: 视频id
+      type: text
+      description: 'B站视频可选择AV/BV号，目前只支持B站视频'
 post:
   label: 文章页
   items:
@@ -476,6 +504,7 @@ additional:
       name: aplayer_id
       label: 音乐id/歌单id
       type: text
+      default: 2345868969
     aplayer_type:
       name: aplayer_type
       label: 类别
@@ -510,7 +539,7 @@ additional:
       name: aplayer_theme
       label: 主题色
       type: color
-      default: 'orange'
+      default: '#FFA500'
 plugin:
   label: 插件功能
   items:
