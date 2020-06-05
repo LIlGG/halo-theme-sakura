@@ -1,6 +1,6 @@
 function aplayerF() {
     var aplayers = [],
-    loadMeting = function() {
+    loadAudio = function() {
         function a(a, b) {
             var c = {
                 container: a,
@@ -60,9 +60,9 @@ function aplayerF() {
                 }
             });
         }
-        var b = 'https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r';
+        var b = 'https://api.lixingyong.com/api/:server?type=:type&id=:id&r=:r';
 
-        'undefined' != typeof meting_api && (b = meting_api);
+        'undefined' != typeof audio_api && (b = audio_api);
         for (var f = 0; f < aplayers.length; f++) {
             try {
                 aplayers[f].destroy()
@@ -106,7 +106,7 @@ function aplayerF() {
         e = 0; e < c.length; e++) d()
     };
     if (document.body.clientWidth > 860) {
-        loadMeting();
+        loadAudio();
     }
 }
 
