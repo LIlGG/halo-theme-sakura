@@ -89,7 +89,7 @@ function aplayerF() {
                         a(d, b)
                     }
                 },
-                h.open('get', g, !0),
+                h.open('get', g, true),
                 h.send(null)
             } else if (d.dataset.url) {
                 var i = [{

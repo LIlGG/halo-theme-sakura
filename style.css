@@ -6227,7 +6227,7 @@ i.iconfont.down {
 	height: 100%
 }
 
-.bgvideo {
+#bgvideo {
     position: absolute;
 	top: 0;
 	left: 0;

@@ -228,6 +228,7 @@ var home = location.href,
                 if ($('h1.main-title').length > 0) {
                     var _height = $(window).height();
                     $('#centerbg').css({'height': _height});
+                    $('#bgvideo').css({'min-height': _height});
                     $(window).resize(function () {
                         Siren.AH();
                     });
@@ -399,6 +400,122 @@ var home = location.href,
                     }, scroll_top_duration
                 );
             });
+        },
+
+        // 背景视频
+        BGV: function() {
+            var $bg_video_btn = $('.video-btn'),
+                $bg_video = $('#bgvideo'),
+                $bg_video_stu = $('.video-stu'),
+                $bg_video_add = $('.video-add'),
+                dom = $bg_video[0];
+
+            var bindBgVideoEvent = function() {
+                $bg_video_btn.on("click", function(event) {
+                    if ($(this).hasClass('loadvideo')) {
+                        $(this).removeClass('loadvideo').hide();
+                        loadSource();
+                    } else {
+                        if ($(this).hasClass('video-pause')) {
+                            bgPause();
+                            $bg_video_btn.removeClass('videolive');
+                            $bg_video_stu.css({
+                                "bottom": "0px"
+                            }).html('已暂停 ...');
+                        } else {
+                            bgPlay();
+                            $bg_video_btn.addClass('videolive');
+                        }
+                    }
+                })
+                
+                dom.oncanplay = function() {
+                    bgPlay();
+                    $bg_video_add.show();
+                    $bg_video_btn.addClass('videolive');
+                    $bg_video_btn.addClass('haslive');
+                }
+
+                dom.onended = function() {
+                    $bg_video.attr('src', '');
+                    $bg_video_add.hide();
+                    $bg_video_btn.addClass('loadvideo').removeClass('video-pause');
+                    $bg_video_btn.removeClass('videolive');
+                    $bg_video_btn.removeClass('haslive');
+                    $('.focusinfo').css({
+                        "top": "49.3%"
+                    });
+                }
+
+                $bg_video_add.on('click', function() {
+                    loadSource();
+                });
+            }
+            
+            var bgPlay = function() {
+                $bg_video_btn.addClass('video-pause').removeClass('video-play').show();
+                $bg_video_stu.css({
+                    "bottom": "-100px"
+                });
+                $('.focusinfo').css({
+                    "top": "-999px"
+                });
+                $('#banner_wave_1').addClass('banner_wave_hide');
+                $('#banner_wave_2').addClass('banner_wave_hide');
+                dom.play();
+            }
+
+            var bgPause = function() {
+                $bg_video_btn.addClass('video-play').removeClass('video-pause');
+                $('.focusinfo').css({
+                    "top": "49.3%"
+                });
+                $('#banner_wave_1').removeClass('banner_wave_hide');
+                $('#banner_wave_2').removeClass('banner_wave_hide');
+                dom.pause();
+            }
+
+            var loadSource = function() {
+                function playVideo(result) {
+                    $bg_video_stu.html('正在载入视频 ...').css({
+                        "bottom": "0px"
+                    });
+
+                    $bg_video.attr('src', result.url);
+                    $bg_video.attr('video-name', result.title);
+                }
+
+                var b = 'https://api.lixingyong.com/api/:server?id=:id&r=:r';
+                'undefined' != typeof bg_video_api && (b = bg_video_api);
+                var dom = $bg_video[0];
+                var url = dom.dataset.url;
+                var id = dom.dataset.id;
+                if(url) {
+                    var source = {
+                        title: dom.dataset.name || dom.dataset.title || 'Video name',
+                        url: dom.dataset.url
+                    }
+                    playVideo(source);
+                } else if(id) {
+                    var api = dom.dataset.api || b;
+                    api = api.replace(':server', dom.dataset.server),
+                    api = api.replace(':id', id)
+                    api = api.replace(':r', Math.random());
+                    var http = new XMLHttpRequest;
+                    http.onreadystatechange = function() {
+                        if (4 === http.readyState && (200 <= http.status && 300 > http.status || 304 === http.status)) {
+                            var source = JSON.parse(http.responseText);
+                            playVideo(source)
+                        }
+                    },
+                    http.open('get', api, true),
+                    http.send(null)
+                }
+            }
+
+            if (document.body.clientWidth > 860) {
+                bindBgVideoEvent();
+            }
         }
 
     };
@@ -414,6 +531,7 @@ $(function () {
     Siren.CE(); // 点击事件
     Siren.MN(); // 移动端菜单
     Siren.IA(); // 输入框特效
+    Siren.BGV(); // 背景视频
 
     if (Poi.pjax) {
         $(document).pjax('a[target!=_top]', '#page', {
