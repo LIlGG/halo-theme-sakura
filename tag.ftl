@@ -11,7 +11,9 @@
 <@header title="标签：${tag.name!} - ${blog_title!}">
     <#if (settings.patternimg!true) && ((tag.thumbnail?? && tag.thumbnail!='') || (settings.tag_patternimg?? && settings.tag_patternimg!=''))>
         <div class="pattern-center">
-            <div class="pattern-attachment-img" style="background-image: url(${tag.thumbnail!'${settings.tag_patternimg!}'})"> </div>
+            <div class="pattern-attachment-img">
+                <img data-src="${tag.thumbnail!'${settings.tag_patternimg!}'}" class="lazyload">
+            </div>
             <header class="pattern-header">
                 <h1 class="cat-title">标签：${tag.name!}</h1>
             </header>

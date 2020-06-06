@@ -5,7 +5,9 @@
 <@header title="分类：${category.name!} - ${blog_title!}">
     <#if (settings.patternimg!true) && (settings.category_patternimg?? && settings.category_patternimg!='')>
         <div class="pattern-center">
-            <div class="pattern-attachment-img" style="background-image: url('${settings.category_patternimg!}')"> </div>
+            <div class="pattern-attachment-img">
+                <img data-src="${settings.category_patternimg!}" class="lazyload">
+            </div>
             <header class="pattern-header">
                 <h1 class="cat-title">分类：${category.name!}</h1>
                 <span class="cat-des">${category.description!}</span>

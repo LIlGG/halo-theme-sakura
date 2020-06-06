@@ -5,7 +5,9 @@
 <@header title="文章归档 - ${blog_title!}">
     <#if (settings.patternimg!true) && (settings.archives_patternimg?? && settings.archives_patternimg!='')>
         <div class="pattern-center">
-            <div class="pattern-attachment-img" style="background-image: url('${settings.archives_patternimg!}')"> </div>
+            <div class="pattern-attachment-img">
+                <img data-src="${settings.archives_patternimg!}" class="lazyload">
+            </div>
             <header class="pattern-header">
                 <h1 class="entry-title">文章归档</h1>
             </header>

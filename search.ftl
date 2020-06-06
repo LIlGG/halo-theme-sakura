@@ -5,7 +5,9 @@
 <@header title="${keyword!} - 搜索结果 - ${blog_title!}">
 	<#if (settings.patternimg!true) && (settings.searh_patternimg?? && settings.searh_patternimg!='')>
 		<div class="pattern-center">
-			<div class="pattern-attachment-img" style="background-image: url('${settings.searh_patternimg!}')"> </div>
+			<div class="pattern-attachment-img">
+				<img data-src="${settings.searh_patternimg!}" class="lazyload">
+			</div>
 			<header class="pattern-header">
 				<h1 class="entry-title search-title"> 关于“ ${keyword!} ”的搜索结果</h1>
 			</header>

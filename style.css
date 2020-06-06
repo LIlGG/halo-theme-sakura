@@ -753,6 +753,13 @@ a:active {
     height: 400px;
 }
 
+.pattern-attachment-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
 .pattern-center header.pattern-header {
     position: absolute;
     top: 45%;
@@ -839,6 +846,10 @@ a:active {
     }
 }
 
+.pattern-center-blank {
+    padding-top: 75px;
+    background-color: #fff;
+}
 /*--------------------------------------------------------------
 ## header
 --------------------------------------------------------------*/
@@ -871,9 +882,8 @@ a:active {
 .yya {
     position: fixed;
     left: 0;
-    top: 0;
-    background: rgba(255, 255, 255, .98);
-    box-shadow: 0 0 1px rgba(0,0,0,.15)
+    background: rgba(255,255,255,.95);
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
 }
 
 .gizle {
@@ -1467,20 +1477,6 @@ i.iconfont.hotpost {
         height: auto;
     }
 }
-
-/**
-* 图片异步加载
-*/
-.lazyload {
-    filter: blur(0px);
-    transition: 0.3s filter linear;
-}
-
-.lazyload[src*="#lazyload-blur"],
-.lazyload[style*="#lazyload-blur"] {
-  filter: blur(10px);
-}
-  
 
 .float-content {
     position: relative;

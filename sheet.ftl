@@ -5,7 +5,9 @@
 <@header title="${sheet.title!} - ${blog_title!}">
 	<#if (settings.patternimg!true) && (sheet.thumbnail?? && sheet.thumbnail!='')>
 		<div class="pattern-center">
-			<div class="pattern-attachment-img" style="background-image: url('${sheet.thumbnail!}')"> </div>
+			<div class="pattern-attachment-img">
+				<img data-src="${sheet.thumbnail!}" class="lazyload">
+			</div>
 			<header class="pattern-header">
 				<h1 class="entry-title">${sheet.title!}</h1>
 			</header>
