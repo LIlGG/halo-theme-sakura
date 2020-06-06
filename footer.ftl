@@ -111,16 +111,13 @@
 	};
 	/* ]]> */
 </script>
-<#if is_post?? || is_sheet??>
-	<script type="text/javascript" src="${theme_base!}/plugins/prism/js/prism.js"></script>
-	<link href="${theme_base!}/plugins/prism/css/prism-${settings.code_pretty!'Default'}.css" type="text/css" rel="stylesheet" />
-</#if>
+
+<script type="text/javascript" src="${theme_base!}/plugins/prism/js/prism.js"></script>
 <#if settings.is_aplayer!false>
 	<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
 	<script src="${theme_base!}/plugins/aplayer/js/index.js"></script>
 </#if>
-<script src="https://use.fontawesome.com/d9e1f64834.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
 <script type='text/javascript' src='${theme_base!}/js/app.js?ver=2.0.6.170420'></script>
 <div class="site-statistics">
