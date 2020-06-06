@@ -3,7 +3,7 @@
 ## 说明
 该主题的基础版为[halo-theme-siren](https://github.com/halo-dev/halo-theme-siren),非常感谢将基础版主题移植过来，方便我后续补充内容。
 
-本主题参照WordPress主题[Sakura](https://github.com/mashirozx/Sakura)制作，在原有的Siren主题上添加了Sakura的内容。由于本人前端水平不足，可能达不到100%相似度。
+本主题参照WordPress主题[Sakura](https://github.com/mashirozx/Sakura)制作，在原有的Siren主题上添加了Sakura的内容。由于本人前端水平不足，可能达不到100%相似度。原意是作为Halo的分支，能否达到要求就不得而知了
 
 如果各位有什么更好的做法，希望可以提交 `PR`；
 
@@ -18,8 +18,14 @@
 - [x] 集成音乐播放器插件，也可在文章中使用
 - [x] 全站 pjax
 - [x] 背景视频，支持bilibili
+- [ ] Lazyload
+- [ ] 集成Live2D
 - [ ] 代码高亮
-- [ ] 待添加
+- [ ] 自定义留言
+- [ ] 文章目录
+- [ ] 主题切换
+- [ ] 相册
+- [ ] 移动客户端适配
 
 > Tip:
 >> 上述功能均可配置，默认为关闭状态。具体操作在 后台 -> 外观 -> 主题 -> 设置 中进行配置   
