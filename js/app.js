@@ -247,6 +247,7 @@ var home = location.href,
                 } else {
                     $('.blank').css({"padding-top": "80px"});
                     $('.headertop').css({"height": "0px"}).hide();
+                    this.BGV().bgPause();
                 }
             }
         },
@@ -348,9 +349,11 @@ var home = location.href,
                     success: function (data) {
                         result = $(data).find("#main .post");
                         nextHref = $(data).find("#pagination a").attr("href");
-                        // In the new content
+                        // 添加新的内容
                         $("#main").append(result.fadeIn(500));
                         $("#pagination a").removeClass("loading").text("下一页");
+                        // 延迟加载图片
+                        lazyload();
                         if (nextHref != undefined) {
                             $("#pagination a").attr("href", nextHref);
                         } else {
@@ -419,9 +422,6 @@ var home = location.href,
                         if ($(this).hasClass('video-pause')) {
                             bgPause();
                             $bg_video_btn.removeClass('videolive');
-                            $bg_video_stu.css({
-                                "bottom": "0px"
-                            }).html('已暂停 ...');
                         } else {
                             bgPlay();
                             $bg_video_btn.addClass('videolive');
@@ -466,13 +466,19 @@ var home = location.href,
             }
 
             var bgPause = function() {
-                $bg_video_btn.addClass('video-play').removeClass('video-pause');
-                $('.focusinfo').css({
-                    "top": "49.3%"
-                });
-                $('#banner_wave_1').removeClass('banner_wave_hide');
-                $('#banner_wave_2').removeClass('banner_wave_hide');
-                dom.pause();
+                if (dom.oncanplay != undefined && $('.haslive').length > 0) {
+                    $bg_video_btn.addClass('video-play').removeClass('video-pause');
+                    $bg_video_stu.css({
+                        "bottom": "0px"
+                    }).html('已暂停 ...');
+                    $('.focusinfo').css({
+                        "top": "49.3%"
+                     });
+                    $('#banner_wave_1').removeClass('banner_wave_hide');
+                    $('#banner_wave_2').removeClass('banner_wave_hide');
+
+                    dom.pause();
+                }
             }
 
             var loadSource = function() {
@@ -513,16 +519,19 @@ var home = location.href,
                 }
             }
 
-            if (document.body.clientWidth > 860) {
+            if (dom.oncanplay == undefined && document.body.clientWidth > 860) {
                 bindBgVideoEvent();
             }
+
+            return {
+                "bgPause": bgPause
+            };
         }
 
     };
 
 // Executive function
 $(function () {
-
     Siren.AH(); // 自适应窗口高度
     Siren.PE(); // 进程
     Siren.NH(); // 显示&隐藏导航栏
@@ -593,7 +602,6 @@ $(function () {
     });
 
     console.log("%c Github %c", "background:#24272A; color:#ffffff", "", "https://github.com/LIlGG/halo-theme-Sakura");
-
 });
 
 /*
