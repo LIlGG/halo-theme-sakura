@@ -369,9 +369,7 @@ var home = location.href,
                         // 添加新的内容
                         $("#main").append(result.fadeIn(500));
                         $("#pagination a").removeClass("loading").text("Previous");
-                        // 延迟加载图片
-                        lazyload();
-                        LIlGGAttachContext.PLSA(50);
+                        LIlGGAttachContext.PLSA();
                         if (nextHref != undefined) {
                             $("#pagination a").attr("href", nextHref);
                         } else {
@@ -560,6 +558,8 @@ $(function () {
     Siren.IA(); // 输入框特效
     Siren.BGV(); // 背景视频
 
+    // 延迟加载图片
+    lazyload();
     if (Poi.pjax) {
         $(document).pjax('a[target!=_top]', '#page', {
             fragment: '#page',
@@ -615,6 +615,7 @@ $(function () {
             return false;
         }
     };
+    
     $(document).on("click", ".specsZan", function () {
         $(this).postLike();
     });

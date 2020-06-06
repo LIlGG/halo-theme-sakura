@@ -745,7 +745,6 @@ a:active {
 }
 
 .pattern-attachment-img {
-    /*background-attachment: fixed;*/
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
