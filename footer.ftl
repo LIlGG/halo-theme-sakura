@@ -109,6 +109,10 @@
 		"ajaxurl":"${blog_url!}",
 		"formpostion":"bottom"
 	};
+
+	var Attach = {
+		"landAtHome": true
+	}
 	/* ]]> */
 </script>
 

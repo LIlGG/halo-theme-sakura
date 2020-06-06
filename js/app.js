@@ -5,6 +5,23 @@
  * @date 2016.11.19
  */
 
+// 附加补充功能
+var LIlGGAttachContext = {
+    // 文章列表动画
+    PLSA: function() {
+        $(window).scroll(function() {
+            var window_height = $(window).height();
+            var hide_post_thumb_first = $("article.post-list-thumb:not(.post-list-show):first");
+
+            if(hide_post_thumb_first.length > 0) {
+                var pTop = hide_post_thumb_first[0].getBoundingClientRect().top;
+                if(pTop <= window_height)
+                    hide_post_thumb_first.addClass('post-list-show');
+            }
+        })
+    }()
+}
+
 // baguetteBox Libs
 var baguetteBox = function () {
     function t(t, n) {
@@ -351,9 +368,10 @@ var home = location.href,
                         nextHref = $(data).find("#pagination a").attr("href");
                         // 添加新的内容
                         $("#main").append(result.fadeIn(500));
-                        $("#pagination a").removeClass("loading").text("下一页");
+                        $("#pagination a").removeClass("loading").text("Previous");
                         // 延迟加载图片
                         lazyload();
+                        LIlGGAttachContext.PLSA(50);
                         if (nextHref != undefined) {
                             $("#pagination a").attr("href", nextHref);
                         } else {
@@ -524,7 +542,7 @@ var home = location.href,
             }
 
             return {
-                "bgPause": bgPause
+                bgPause: bgPause
             };
         }
 
