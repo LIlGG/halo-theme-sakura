@@ -10,6 +10,9 @@
             <hr>
         </header><!-- .entry-header -->
     </#if>
+    <div class="toc-container">
+        <div class="toc"></div>
+    </div>
     <div class="entry-content">
         ${post.formatContent!}
     </div><!-- .entry-content -->

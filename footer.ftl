@@ -109,10 +109,6 @@
 		"ajaxurl":"${blog_url!}",
 		"formpostion":"bottom"
 	};
-
-	var Attach = {
-		"landAtHome": true
-	}
 	/* ]]> */
 </script>
 
@@ -122,6 +118,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
 	<script src="${theme_base!}/plugins/aplayer/js/index.js"></script>
 </#if>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
 <script type='text/javascript' src='${theme_base!}/js/app.js?ver=2.0.6.170420'></script>
 <div class="site-statistics">

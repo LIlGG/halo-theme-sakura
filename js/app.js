@@ -7,14 +7,140 @@
 
 // 附加补充功能
 var LIlGGAttachContext = {
+    PJAX: function() {
+        LIlGGAttachContext.TOC();
+    },
+
+    // 背景视频
+    BGV: function () {
+        var $bg_video_btn = $('.video-btn'),
+            $bg_video = $('#bgvideo'),
+            $bg_video_stu = $('.video-stu'),
+            $bg_video_add = $('.video-add'),
+            dom = $bg_video[0];
+
+        var bindBgVideoEvent = function () {
+            $bg_video_btn.on("click", function (event) {
+                if ($(this).hasClass('loadvideo')) {
+                    $(this).removeClass('loadvideo').hide();
+                    loadSource();
+                } else {
+                    if ($(this).hasClass('video-pause')) {
+                        bgPause();
+                        $bg_video_btn.removeClass('videolive');
+                    } else {
+                        bgPlay();
+                        $bg_video_btn.addClass('videolive');
+                    }
+                }
+            })
+
+            dom.oncanplay = function () {
+                bgPlay();
+                $bg_video_add.show();
+                $bg_video_btn.addClass('videolive');
+                $bg_video_btn.addClass('haslive');
+            }
+
+            dom.onended = function () {
+                $bg_video.attr('src', '');
+                $bg_video_add.hide();
+                $bg_video_btn.addClass('loadvideo').removeClass('video-pause');
+                $bg_video_btn.removeClass('videolive');
+                $bg_video_btn.removeClass('haslive');
+                $('.focusinfo').css({
+                    "top": "49.3%"
+                });
+            }
+
+            $bg_video_add.on('click', function () {
+                loadSource();
+            });
+        }
+
+        var bgPlay = function () {
+            $bg_video_btn.addClass('video-pause').removeClass('video-play').show();
+            $bg_video_stu.css({
+                "bottom": "-100px"
+            });
+            $('.focusinfo').css({
+                "top": "-999px"
+            });
+            $('#banner_wave_1').addClass('banner_wave_hide');
+            $('#banner_wave_2').addClass('banner_wave_hide');
+            dom.play();
+        }
+
+        var bgPause = function () {
+            if (dom.oncanplay != undefined && $('.haslive').length > 0) {
+                $bg_video_btn.addClass('video-play').removeClass('video-pause');
+                $bg_video_stu.css({
+                    "bottom": "0px"
+                }).html('已暂停 ...');
+                $('.focusinfo').css({
+                    "top": "49.3%"
+                });
+                $('#banner_wave_1').removeClass('banner_wave_hide');
+                $('#banner_wave_2').removeClass('banner_wave_hide');
+
+                dom.pause();
+            }
+        }
+
+        var loadSource = function () {
+            function playVideo(result) {
+                $bg_video_stu.html('正在载入视频 ...').css({
+                    "bottom": "0px"
+                });
+
+                $bg_video.attr('src', result.url);
+                $bg_video.attr('video-name', result.title);
+            }
+
+            var b = 'https://api.lixingyong.com/api/:server?id=:id&r=:r';
+            'undefined' != typeof bg_video_api && (b = bg_video_api);
+            var dom = $bg_video[0];
+            var url = dom.dataset.url;
+            var id = dom.dataset.id;
+            if (url) {
+                var source = {
+                    title: dom.dataset.name || dom.dataset.title || 'Video name',
+                    url: dom.dataset.url
+                }
+                playVideo(source);
+            } else if (id) {
+                var api = dom.dataset.api || b;
+                api = api.replace(':server', dom.dataset.server),
+                    api = api.replace(':id', id)
+                api = api.replace(':r', Math.random());
+                var http = new XMLHttpRequest;
+                http.onreadystatechange = function () {
+                    if (4 === http.readyState && (200 <= http.status && 300 > http.status || 304 === http.status)) {
+                        var source = JSON.parse(http.responseText);
+                        playVideo(source)
+                    }
+                },
+                    http.open('get', api, true),
+                    http.send(null)
+            }
+        }
+
+        if (dom.oncanplay == undefined && document.body.clientWidth > 860) {
+            bindBgVideoEvent();
+        }
+
+        return {
+            bgPause: bgPause
+        };
+    },
     // 文章列表动画
     PLSA: function() {
         // 首次加载时判断图片是否足够显示完整
-        $("article.post-list-thumb:not(.post-list-show)").each(function(index, item) {
+        $("article.post-list-thumb:not(.post-list-show)").each(function (index, item) {
             var pTop = item.getBoundingClientRect().top;
             var window_height = $(window).height();
-            
-            if(pTop <= window_height) {
+
+            if (pTop <= window_height) {
                 $(item).addClass('post-list-show');
             } else {
                 return false
@@ -22,16 +148,84 @@ var LIlGGAttachContext = {
         })
 
 
-        $(window).scroll(function() {
+        $(window).scroll(function () {
             var window_height = $(window).height();
             var hide_post_thumb_first = $("article.post-list-thumb:not(.post-list-show):first");
-            if(hide_post_thumb_first.length > 0) {
+            if (hide_post_thumb_first.length > 0) {
                 var pTop = hide_post_thumb_first[0].getBoundingClientRect().top;
-                if(pTop <= window_height)
+                if (pTop <= window_height)
                     hide_post_thumb_first.addClass('post-list-show');
             }
         })
-    }()
+    }(),
+    // 文章目录
+    TOC: function() {
+        if( document.body.clientWidth <= 1200 ) {
+            return;
+        }
+        
+        if ($("div").hasClass("toc")) {
+            setTimeout(function() {
+                $(".toc-container").css("height", $(".site-content").outerHeight());
+            },
+            6000);
+        }
+
+        $(".entry-content , .links").children("h1,h2,h3,h4,h5").each(function(index) {
+            var hyphenated = "toc-head-" + index;
+            $(this).attr('id', hyphenated);
+        });
+
+        tocbot.init({
+            tocSelector: '.toc',
+            contentSelector: ['.entry-content', '.links'],
+            headingSelector: 'h1, h2, h3, h4, h5',
+            scrollEndCallback: function(e) {},
+        }); 
+    }
+}
+
+/**
+ * pjax功能
+ */
+var pjaxFun = function() {
+    $(document).pjax('a[target!=_top]', '#page', {
+        fragment: '#page',
+        timeout: 8000,
+    }).on('pjax:send', function () {
+        NProgress.start();
+        Siren.MNH();
+    }).on('pjax:complete', function () {
+        Siren.AH();
+        Siren.PE();
+        Siren.CE();
+        NProgress.done();
+        // 暂停背景视频
+        LIlGGAttachContext.BGV().bgPause();
+        // 延迟加载图片
+        lazyload();
+        // 额外加载的pjax
+        LIlGGAttachContext.PJAX();
+        $("#loading").fadeOut(500);
+        if (Poi.codelamp == 'open') {
+            self.Prism.highlightAll(event)
+        }
+    }).on('submit', '.search-form,.s-search', function (event) {
+        event.preventDefault();
+        $.pjax.submit(event, '#page', {
+            fragment: '#page',
+            timeout: 8000,
+        });
+        if ($('.js-search.is-visible').length > 0) {
+            $('.js-toggle-search').toggleClass('is-active');
+            $('.js-search').toggleClass('is-visible');
+        }
+    });
+    window.addEventListener('popstate', function (e) {
+        Siren.AH();
+        Siren.PE();
+        Siren.CE();
+    }, false);
 }
 
 // baguetteBox Libs
@@ -256,8 +450,8 @@ var home = location.href,
             if (Poi.windowheight == 'auto') {
                 if ($('h1.main-title').length > 0) {
                     var _height = $(window).height();
-                    $('#centerbg').css({'height': _height});
-                    $('#bgvideo').css({'min-height': _height});
+                    $('#centerbg').css({ 'height': _height });
+                    $('#bgvideo').css({ 'min-height': _height });
                     $(window).resize(function () {
                         Siren.AH();
                     });
@@ -271,12 +465,11 @@ var home = location.href,
         PE: function () {
             if ($('.headertop').length > 0) {
                 if ($('h1.main-title').length > 0) {
-                    $('.blank').css({"padding-top": "0px"});
-                    $('.headertop').css({"height": "auto"}).show();
+                    $('.blank').css({ "padding-top": "0px" });
+                    $('.headertop').css({ "height": "auto" }).show();
                 } else {
-                    $('.blank').css({"padding-top": "80px"});
-                    $('.headertop').css({"height": "0px"}).hide();
-                    this.BGV().bgPause();
+                    $('.blank').css({ "padding-top": "80px" });
+                    $('.headertop').css({ "height": "0px" }).hide();
                 }
             }
         },
@@ -346,7 +539,7 @@ var home = location.href,
                 var surplus =
                     document.documentElement.scrollHeight -
                     document.documentElement.clientHeight;
-                 // 当前位置小数
+                // 当前位置小数
                 var coorY = s / surplus;
                 NProgress.set(coorY);
                 if (s == h1) {
@@ -381,6 +574,7 @@ var home = location.href,
                         // 添加新的内容
                         $("#main").append(result.fadeIn(500));
                         $("#pagination a").removeClass("loading").text("Previous");
+                        lazyload();
                         LIlGGAttachContext.PLSA();
                         if (nextHref != undefined) {
                             $("#pagination a").attr("href", nextHref);
@@ -408,7 +602,7 @@ var home = location.href,
                 scroll_top_duration = 700,
                 $back_to_top = $('.cd-top');
             $(window).scroll(function () {
-                if($(this).scrollTop() > offset) {
+                if ($(this).scrollTop() > offset) {
                     $back_to_top.addClass('cd-is-visible');
                     if ($(window).height() > 950) {
                         $(".cd-top.cd-is-visible").css("top", "0");
@@ -427,140 +621,18 @@ var home = location.href,
             $back_to_top.on('click', function (event) {
                 event.preventDefault();
                 $('body,html').animate({
-                        scrollTop: 0,
-                    }, scroll_top_duration
+                    scrollTop: 0,
+                }, scroll_top_duration
                 );
             });
-        },
-
-        // 背景视频
-        BGV: function() {
-            var $bg_video_btn = $('.video-btn'),
-                $bg_video = $('#bgvideo'),
-                $bg_video_stu = $('.video-stu'),
-                $bg_video_add = $('.video-add'),
-                dom = $bg_video[0];
-
-            var bindBgVideoEvent = function() {
-                $bg_video_btn.on("click", function(event) {
-                    if ($(this).hasClass('loadvideo')) {
-                        $(this).removeClass('loadvideo').hide();
-                        loadSource();
-                    } else {
-                        if ($(this).hasClass('video-pause')) {
-                            bgPause();
-                            $bg_video_btn.removeClass('videolive');
-                        } else {
-                            bgPlay();
-                            $bg_video_btn.addClass('videolive');
-                        }
-                    }
-                })
-                
-                dom.oncanplay = function() {
-                    bgPlay();
-                    $bg_video_add.show();
-                    $bg_video_btn.addClass('videolive');
-                    $bg_video_btn.addClass('haslive');
-                }
-
-                dom.onended = function() {
-                    $bg_video.attr('src', '');
-                    $bg_video_add.hide();
-                    $bg_video_btn.addClass('loadvideo').removeClass('video-pause');
-                    $bg_video_btn.removeClass('videolive');
-                    $bg_video_btn.removeClass('haslive');
-                    $('.focusinfo').css({
-                        "top": "49.3%"
-                    });
-                }
-
-                $bg_video_add.on('click', function() {
-                    loadSource();
-                });
-            }
-            
-            var bgPlay = function() {
-                $bg_video_btn.addClass('video-pause').removeClass('video-play').show();
-                $bg_video_stu.css({
-                    "bottom": "-100px"
-                });
-                $('.focusinfo').css({
-                    "top": "-999px"
-                });
-                $('#banner_wave_1').addClass('banner_wave_hide');
-                $('#banner_wave_2').addClass('banner_wave_hide');
-                dom.play();
-            }
-
-            var bgPause = function() {
-                if (dom.oncanplay != undefined && $('.haslive').length > 0) {
-                    $bg_video_btn.addClass('video-play').removeClass('video-pause');
-                    $bg_video_stu.css({
-                        "bottom": "0px"
-                    }).html('已暂停 ...');
-                    $('.focusinfo').css({
-                        "top": "49.3%"
-                     });
-                    $('#banner_wave_1').removeClass('banner_wave_hide');
-                    $('#banner_wave_2').removeClass('banner_wave_hide');
-
-                    dom.pause();
-                }
-            }
-
-            var loadSource = function() {
-                function playVideo(result) {
-                    $bg_video_stu.html('正在载入视频 ...').css({
-                        "bottom": "0px"
-                    });
-
-                    $bg_video.attr('src', result.url);
-                    $bg_video.attr('video-name', result.title);
-                }
-
-                var b = 'https://api.lixingyong.com/api/:server?id=:id&r=:r';
-                'undefined' != typeof bg_video_api && (b = bg_video_api);
-                var dom = $bg_video[0];
-                var url = dom.dataset.url;
-                var id = dom.dataset.id;
-                if(url) {
-                    var source = {
-                        title: dom.dataset.name || dom.dataset.title || 'Video name',
-                        url: dom.dataset.url
-                    }
-                    playVideo(source);
-                } else if(id) {
-                    var api = dom.dataset.api || b;
-                    api = api.replace(':server', dom.dataset.server),
-                    api = api.replace(':id', id)
-                    api = api.replace(':r', Math.random());
-                    var http = new XMLHttpRequest;
-                    http.onreadystatechange = function() {
-                        if (4 === http.readyState && (200 <= http.status && 300 > http.status || 304 === http.status)) {
-                            var source = JSON.parse(http.responseText);
-                            playVideo(source)
-                        }
-                    },
-                    http.open('get', api, true),
-                    http.send(null)
-                }
-            }
-
-            if (dom.oncanplay == undefined && document.body.clientWidth > 860) {
-                bindBgVideoEvent();
-            }
-
-            return {
-                bgPause: bgPause
-            };
         }
-
     };
 
-// Executive function
+/**
+ * 独立功能，可拔插
+ */
 $(function () {
-    
+
     Siren.AH(); // 自适应窗口高度
     Siren.PE(); // 进程
     Siren.NH(); // 显示&隐藏导航栏
@@ -569,45 +641,16 @@ $(function () {
     Siren.CE(); // 点击事件
     Siren.MN(); // 移动端菜单
     Siren.IA(); // 输入框特效
-    Siren.BGV(); // 背景视频
 
+    // 新增功能
+    LIlGGAttachContext.BGV(); // 背景视频
+    LIlGGAttachContext.TOC(); // 文章目录
+    
     // 延迟加载图片
     lazyload();
 
     if (Poi.pjax) {
-        $(document).pjax('a[target!=_top]', '#page', {
-            fragment: '#page',
-            timeout: 8000,
-        }).on('pjax:send', function () {
-            NProgress.start();
-            Siren.MNH();
-        }).on('pjax:complete', function () {
-            Siren.AH();
-            Siren.PE();
-            Siren.CE();
-            NProgress.done();
-            // 延迟加载图片
-            lazyload();
-            $("#loading").fadeOut(500);
-            if (Poi.codelamp == 'open') {
-                self.Prism.highlightAll(event)
-            }
-        }).on('submit', '.search-form,.s-search', function (event) {
-            event.preventDefault();
-            $.pjax.submit(event, '#page', {
-                fragment: '#page',
-                timeout: 8000,
-            });
-            if ($('.js-search.is-visible').length > 0) {
-                $('.js-toggle-search').toggleClass('is-active');
-                $('.js-search').toggleClass('is-visible');
-            }
-        });
-        window.addEventListener('popstate', function (e) {
-            Siren.AH();
-            Siren.PE();
-            Siren.CE();
-        }, false);
+        pjaxFun();
     }
 
     // 点赞
@@ -631,7 +674,7 @@ $(function () {
             return false;
         }
     };
-    
+
     $(document).on("click", ".specsZan", function () {
         $(this).postLike();
     });
