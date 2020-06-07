@@ -1730,26 +1730,43 @@ i.iconfont.hotpost {
 /*--------------------------------------------------------------
 # single
 --------------------------------------------------------------*/
+.entry-content .begin,
+.single-begin {
+	float: left;
+	font-size: 3.6em;
+	line-height: 1em;
+	margin-right: 3px;
+	margin-top: 2px;
+	font-weight: 700
+}
+
+@media screen and (max-width:860px) {
+    .entry-content .begin,
+    .single-begin {
+		margin-top: 6px
+	}
+}
 
 .entry-content ul {
-    list-style: disc;
-    background: #F9F9F9;
-    border: 1px dashed #E4E4E4;
-    padding: 15px 10px 15px 50px;
-    color: #616161;
-    margin-left: 0;
+	list-style: disc;
+	border: 1px dashed #e4e4e4;
+	padding: 15px 10px 15px 50px;
+	color: #616161;
+	margin-left: 0;
+	border-radius: 10px
 }
 
 .entry-content ol {
-    list-style: decimal;
-    background: #F9F9F9;
-    border: 1px dashed #E4E4E4;
-    padding: 15px 10px 15px 50px;
-    color: #616161;
-    margin-left: 0;
+	list-style: decimal;
+	border: 1px dashed #e4e4e4;
+	padding: 15px 10px 15px 50px;
+	color: #616161;
+	margin-left: 0;
+	border-radius: 10px
 }
 
-.entry-content ol li , .entry-content ul li {
+.entry-content ol li,
+.entry-content ul li {
     padding: 8px 0;
 }
 
@@ -1763,42 +1780,115 @@ i.iconfont.hotpost {
     color: #737373;
 }
 
-.entry-content h3:before {
-    content: "[";
-    margin-right: 5px;
-    color: #FF6D6D;
-    font-size: 25px;
+.entry-content h3,
+.entry-content h4,
+.entry-content h5 {
+	padding-left: 16px
+}
+
+.entry-content h2:after {
+	content: "\00B6";
+	position: absolute;
+	color: #ff6d6d;
+	font-family: 'Merriweather Sans',Helvetica,Tahoma,Arial,'PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei',sans-serif;
+	padding-left: 6px;
+	font-size: 1.03em
+}
+
+.serif .entry-content h2:after {
+	content: "\00B6";
+	position: absolute;
+	color: #ff6d6d;
+	font-family: 'Merriweather Sans',Helvetica,Tahoma,Arial,'PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei',sans-serif;
+	padding-left: 6px;
+	font-size: 1.13em
 }
 
 .entry-content h3:after {
-    content: "]";
-    margin-left: 5px;
-    color: #FF6D6D;
-    font-size: 25px;
+	content: "#";
+	left: 0;
+	position: absolute;
+	color: #ff6d6d
+}
+
+.entry-content h4:after {
+	content: "▌";
+	left: 0;
+	position: absolute;
+	color: #ff6d6d
+}
+
+.entry-content h5:after {
+	content: "♯";
+	left: 0;
+	position: absolute;
+	color: #ff6d6d
 }
 
 .entry-content code {
-    background: #eee;
-    color: #E67474;
-    word-break: break-word;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
-    padding: 2px;
-/*border: 1px dashed #ddd;*/
-    text-shadow: none;
+	background: rgba(254,250,199,1);
+	color: #e67474;
+	word-break: break-word;
+	font-family: 'Source Code Pro',monospace,Helvetica,Tahoma,Arial,STXihei,"STHeiti Light","Microsoft YaHei",sans-serif;
+	padding: 2px;
+	text-shadow: none;
+	border-radius: 5px
 }
 
 .entry-content a {
-    color: #E67474;
-    text-decoration: underline;
+	color: #e67474;
+	position: relative
 }
 
 .entry-content a:hover {
-    color: #72C5A6;
+	color: orange;
+	text-decoration: none
+}
+
+.entry-content a:after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: orange;
+	transform-origin: bottom right;
+	transition: transform .25s ease-out
+}
+
+.entry-content a:hover:after {
+	transform: scaleX(1);
+	transform-origin: bottom left
 }
 
 h1.entry-title {
     font-size: 24px;
     font-weight: 300;
+}
+
+.entry-header h1.entry-title {
+	margin: auto;
+	text-align: center;
+	font-weight: 700;
+	text-transform: uppercase
+}
+
+.entry-header h1.entry-title:before {
+	content: "{";
+	color: #f8ba0b;
+	font-size: 1.5em;
+	margin-right: 6px;
+	vertical-align: sub
+}
+
+.entry-header h1.entry-title:after {
+	content: "}";
+	color: #f8ba0b;
+	font-size: 1.5em;
+	margin-left: 6px;
+	vertical-align: sub
 }
 
 .entry-content p {
@@ -1868,7 +1958,6 @@ h1.page-title {
     padding: 10px 15px;
     color: #828282;
     margin-bottom: 30px;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
 }
 
 h1.page-title.mb- {
