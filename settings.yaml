@@ -244,6 +244,17 @@ post:
           label: 开启
         - value: false
           label: 关闭
+    post_toc:
+      name: post_toc
+      label: 文章目录
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
     post_nepre:
       name: post_nepre
       label: 上一篇下一篇

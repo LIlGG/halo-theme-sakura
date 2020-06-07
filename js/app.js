@@ -8,7 +8,9 @@
 // 附加补充功能
 var LIlGGAttachContext = {
     PJAX: function() {
-        LIlGGAttachContext.TOC();
+        if(Poi.toc) {
+            LIlGGAttachContext.TOC();
+        }
     },
 
     // 背景视频
@@ -644,8 +646,9 @@ $(function () {
 
     // 新增功能
     LIlGGAttachContext.BGV(); // 背景视频
-    LIlGGAttachContext.TOC(); // 文章目录
-    
+    if(Poi.toc) {
+        LIlGGAttachContext.TOC(); // 文章目录
+    }
     // 延迟加载图片
     lazyload();
 
