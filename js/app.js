@@ -9,10 +9,22 @@
 var LIlGGAttachContext = {
     // 文章列表动画
     PLSA: function() {
+        // 首次加载时判断图片是否足够显示完整
+        $("article.post-list-thumb:not(.post-list-show)").each(function(index, item) {
+            var pTop = item.getBoundingClientRect().top;
+            var window_height = $(window).height();
+            
+            if(pTop <= window_height) {
+                $(item).addClass('post-list-show');
+            } else {
+                return false
+            }
+        })
+
+
         $(window).scroll(function() {
             var window_height = $(window).height();
             var hide_post_thumb_first = $("article.post-list-thumb:not(.post-list-show):first");
-
             if(hide_post_thumb_first.length > 0) {
                 var pTop = hide_post_thumb_first[0].getBoundingClientRect().top;
                 if(pTop <= window_height)
@@ -548,6 +560,7 @@ var home = location.href,
 
 // Executive function
 $(function () {
+    
     Siren.AH(); // 自适应窗口高度
     Siren.PE(); // 进程
     Siren.NH(); // 显示&隐藏导航栏
@@ -560,6 +573,7 @@ $(function () {
 
     // 延迟加载图片
     lazyload();
+
     if (Poi.pjax) {
         $(document).pjax('a[target!=_top]', '#page', {
             fragment: '#page',
@@ -572,6 +586,8 @@ $(function () {
             Siren.PE();
             Siren.CE();
             NProgress.done();
+            // 延迟加载图片
+            lazyload();
             $("#loading").fadeOut(500);
             if (Poi.codelamp == 'open') {
                 self.Prism.highlightAll(event)

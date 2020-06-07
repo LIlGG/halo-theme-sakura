@@ -1,9 +1,11 @@
 <h1 align="center">Sakura</h1>
 
 ## 说明
-该主题的基础版为[halo-theme-siren](https://github.com/halo-dev/halo-theme-siren),非常感谢将基础版主题移植过来，方便我后续补充内容。
+该主题的基础版为[halo-theme-siren](https://github.com/halo-dev/halo-theme-siren),非常感谢将基础版主题移植过来，给了我后续补充内容的条件。
 
-本主题参照WordPress主题[Sakura](https://github.com/mashirozx/Sakura)制作，在原有的Siren主题上添加了Sakura的内容。由于本人前端水平不足，可能达不到100%相似度。原意是作为Halo的分支，能否达到要求就不得而知了
+本主题参照WordPress主题[Sakura](https://github.com/mashirozx/Sakura)制作，在原有的Siren主题上添加了Sakura的内容，并优化了部分内容。
+
+由于本人前端水平不足，可能达不到100%相似度。
 
 如果各位有什么更好的做法，希望可以提交 `PR`；
 

@@ -1381,19 +1381,6 @@ i.iconfont.hotpost {
 	transition: box-shadow .3s ease
 }
 
-.post-list-thumb::before {
-    content: '';
-    width: 1px;
-    height: 100px;
-    background-color: rgba(0,0,0,0.05);
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    bottom: -101px;
-    z-index: 0;
-}
-
 .post-list-thumb:hover img {
     transform: scale(1.1);
 }
@@ -1531,7 +1518,7 @@ i.iconfont.hotpost {
 
     .post-bottom {
         display: none;
-        text-align: right
+        text-align: right;
     }
     
     .post-list-thumb {
@@ -1579,8 +1566,6 @@ i.iconfont.hotpost {
 		bottom: -101px;
 		z-index: 0
     }
-    
-
 }
 
 @media (max-width: 600px) {
