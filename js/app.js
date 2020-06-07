@@ -7,12 +7,13 @@
 
 // 附加补充功能
 var LIlGGAttachContext = {
+    // 补充功能的PJAX
     PJAX: function() {
         if(Poi.toc) {
-            LIlGGAttachContext.TOC();
+            LIlGGAttachContext.TOC(); // 文章目录
         }
+        LIlGGAttachContext.CHS(); // 代码样式
     },
-
     // 背景视频
     BGV: function () {
         var $bg_video_btn = $('.video-btn'),
@@ -184,6 +185,46 @@ var LIlGGAttachContext = {
             headingSelector: 'h1, h2, h3, h4, h5',
             scrollEndCallback: function(e) {},
         }); 
+    },
+    // 文章代码样式
+    CHS: function() {
+        for(var preIndex = 0, genTopBar = function(i) {
+            var attributes = {
+                'autocomplete': 'off',
+                'autocorrect': 'off',
+                'autocapitalize': 'off',
+                'spellcheck': 'false',
+                'contenteditable': 'false',
+                'design': 'by LIlGG'
+            }
+
+            var classNameStr = $('pre:eq(' + i + ')')[0].children[0].className;
+            var classNameArr = classNameStr.split(" ");
+            var lang = '';
+            for(className of classNameArr) {
+                if(className.indexOf('language-') > -1) {
+                    lang = className.substring(className.indexOf("-") + 1, className.length);
+                    break;
+                }
+            }
+            if (lang.toLowerCase() == "hljs") var lang = "text";
+            if (lang.toLowerCase() == "js") var lang = "javascript";
+            if (lang.toLowerCase() == "md") var lang = "markdown";
+            if (lang.toLowerCase() == "py") var lang = "python";
+
+            $('pre:eq(' + i + ')').addClass('highlight-wrap');
+
+            for (var t in attributes) {
+                $('pre:eq(' + i + ')').attr(t, attributes[t]);
+            }
+            $('pre:eq(' + i + ') code').attr('data-rel', lang.toUpperCase());
+        }; preIndex < $('pre').length; preIndex++) genTopBar(preIndex)
+
+        $('pre').on('click', function(e) {
+            if (e.target !== this) return;
+            $(this).toggleClass('code-block-fullscreen');
+            $('html').toggleClass('code-block-fullscreen-html-scroll');
+        });
     }
 }
 
@@ -634,7 +675,6 @@ var home = location.href,
  * 独立功能，可拔插
  */
 $(function () {
-
     Siren.AH(); // 自适应窗口高度
     Siren.PE(); // 进程
     Siren.NH(); // 显示&隐藏导航栏
@@ -649,6 +689,8 @@ $(function () {
     if(Poi.toc) {
         LIlGGAttachContext.TOC(); // 文章目录
     }
+
+    LIlGGAttachContext.CHS(); // 代码样式
     // 延迟加载图片
     lazyload();
 
