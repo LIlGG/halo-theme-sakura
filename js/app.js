@@ -199,6 +199,12 @@ var LIlGGAttachContext = {
             tocSelector: '.toc',
             contentSelector: ['.entry-content', '.links'],
             headingSelector: 'h1, h2, h3, h4, h5',
+            linkClass: 'toc-link',
+            activeLinkClass: 'is-active-link',
+            positionFixedClass: 'is-position-fixed',
+            isCollapsedClass: 'is-collapsed',
+            collapsibleClass: 'is-collapsible',
+            hasInnerContainers: true,
             scrollEndCallback: function(e) {},
         }); 
     },
@@ -697,6 +703,7 @@ var home = location.href,
  * 独立功能，可拔插
  */
 $(function () {
+
     Siren.AH(); // 自适应窗口高度
     Siren.PE(); // 进程
     Siren.NH(); // 显示&隐藏导航栏

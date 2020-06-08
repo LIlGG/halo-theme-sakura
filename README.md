@@ -1,4 +1,7 @@
 <h1 align="center">Sakura</h1>
+<p align="center">
+  <a href="https://lixingyong.com">预览</a> | <a href="#安装主题">安装</a> | <a href="https://lixingyong.com/s/changelog.html">更新日志</a>
+  <br />
 
 ## 说明
 该主题的基础版为[halo-theme-siren](https://github.com/halo-dev/halo-theme-siren),非常感谢将基础版主题移植过来，给了我后续补充内容的条件。
@@ -27,10 +30,12 @@
 - [x] 文章目录
 - [ ] 主题切换
 - [ ] 相册
+- [ ] 友链
+- [ ] 集成视频播放插件
 - [ ] 移动客户端适配
 
 > Tip:
->> 上述功能大部分均可配置，默认为关闭状态。具体操作在 后台 -> 外观 -> 主题 -> 设置 中进行配置   
+>> 上述功能大部分均可配置。具体操作在 后台 -> 外观 -> 主题 -> 设置 中进行配置   
 
 ## 安装主题
 

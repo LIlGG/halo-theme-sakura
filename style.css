@@ -6436,6 +6436,40 @@ a.toc-link {
 	height: 100%
 }
 
+.is-collapsed {
+	max-height: 0
+}
+
+.is-collapsible {
+	max-height: 1000px;
+	overflow: hidden;
+	transition: all .3s ease-in-out
+}
+
+.is-position-fixed {
+	position: fixed !important;
+	top: 0
+}
+
+.is-active-link {
+	font-weight: 700
+}
+
+.is-active-link:before {
+	background-color: orange !important
+}
+
+.toc-link:before {
+	background-color: #eee;
+	content: ' ';
+	display: inline-block;
+	height: inherit;
+	left: 0;
+	margin-top: -1px;
+	position: absolute;
+	width: 2px
+}
+
 /**
 * 代码块mac风格
 */
