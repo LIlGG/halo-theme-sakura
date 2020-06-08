@@ -4,6 +4,12 @@
  * @url http://i94.me
  * @date 2016.11.19
  */
+/**
+ * Sakura halo分支主题, 基于Siren制作
+ * @author LIlGG
+ * @url https://lixingyong.com
+ * @date 2020.06.01
+ */
 
 // 附加补充功能
 var LIlGGAttachContext = {
@@ -13,6 +19,15 @@ var LIlGGAttachContext = {
         LIlGGAttachContext.BGV().bgPause();
         // 延迟加载图片
         lazyload();
+        try {
+            $("#to-load-aplayer").click(function() {
+                reloadAplayer();
+                $("div").remove(".load-aplayer");
+            });
+            if ($("div").hasClass("aplayer")) {
+                reloadAplayer();
+            }    
+        } catch(e) {}
 
         if(Poi.toc)
             LIlGGAttachContext.TOC(); // 文章目录
@@ -172,10 +187,7 @@ var LIlGGAttachContext = {
         }
         
         if ($("div").hasClass("toc")) {
-            setTimeout(function() {
-                $(".toc-container").css("height", $(".site-content").outerHeight());
-            },
-            6000);
+            $(".toc-container").css("height", $(".site-content").outerHeight());
         }
 
         $(".entry-content , .links").children("h1,h2,h3,h4,h5").each(function(index) {
