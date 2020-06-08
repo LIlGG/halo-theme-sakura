@@ -9,6 +9,9 @@
 				<img data-src="${sheet.thumbnail!}" class="lazyload">
 			</div>
 			<header class="pattern-header">
+			    <div class="toc-container">
+        			<div class="toc"></div>
+    			</div>
 				<h1 class="entry-title">${sheet.title!}</h1>
 			</header>
 		</div>
