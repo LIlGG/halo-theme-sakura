@@ -105,23 +105,25 @@
 	var Poi = {
 		"pjax":"${(settings.poi_pjax!true)?string('true','')}",
 		"windowheight":"${(!(settings.focus_height!true))?string('fixed','auto')}",
-		"codelamp":"open",
 		"ajaxurl":"${blog_url!}",
 		"formpostion":"bottom",
-		"toc": "${(settings.post_toc!true)?string('true','')}"
+		"toc": "${(settings.post_toc!true)?string('true','')}",
+		"codeLine": "${(settings.code_line!true)?string('true','')}"
 	};
 	/* ]]> */
 </script>
 
-<script type="text/javascript" src="${theme_base!}/plugins/prism/js/prism.js"></script>
+<script type="text/javascript" src="${theme_base!}/plugins/highlight/js/highlight.pack.js"></script>
+<#if settings.code_line!true>
+	<script type="text/javascript" src="${theme_base!}/plugins/highlight/js/highlightjs-line-numbers.min.js"></script>
+</#if>
 <#if settings.is_aplayer!false>
 	<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
 	<script src="${theme_base!}/plugins/aplayer/js/index.js"></script>
 </#if>
 <#if settings.post_toc!true>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+	<script src="https://cdn.lixingyong.com/js/plugin/tocbot/4.11.1/js/tocbot.min.js"></script>
 </#if>
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
 <script type='text/javascript' src='${theme_base!}/js/app.js?ver=2.0.6.170420'></script>

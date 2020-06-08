@@ -1826,7 +1826,6 @@ i.iconfont.hotpost {
 }
 
 .entry-content code {
-	background: rgba(254,250,199,1);
 	color: #e67474;
 	word-break: break-word;
 	font-family: 'Source Code Pro',monospace,Helvetica,Tahoma,Arial,STXihei,"STHeiti Light","Microsoft YaHei",sans-serif;
@@ -6490,18 +6489,6 @@ a.toc-link {
 	display: none
 }
 
-.hljs-ln-line span::-moz-selection,
-.hljs-ln-line::-moz-selection {
-	background: #fff;
-	color: #21252b
-}
-
-.hljs-ln-line span::selection,
-.hljs-ln-line::selection {
-	background: #fff;
-	color: #21252b
-}
-
 .highlight-wrap code::-webkit-scrollbar {
 	height: 10x !important;
 	width: 10x !important;
@@ -6550,6 +6537,79 @@ a.toc-link {
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 	pointer-events: none
+}
+
+/**
+* 代码窗体放大
+*/
+.code-block-fullscreen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	min-width: 100%;
+	z-index: 9999999;
+	margin: 0;
+	animation: elastic 1s
+}
+
+.code-block-fullscreen code {
+	--widthA: 100%;
+	--widthB: calc(var(--widthA) - 30px);
+	height: var(--widthB);
+	min-height: 99%;
+	overflow-y: hidden;
+	overflow-x: auto;
+	height: auto
+}
+
+.code-block-fullscreen-html-scroll {
+	overflow: hidden
+}
+/**
+* 行号
+*/
+
+.hljs-ln {
+	margin: 6px 0 0 !important
+}
+
+td.hljs-ln-numbers {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	text-align: center;
+	color: #888f96;
+	background: #1d1f21;
+	font-family: 'Source Code Pro',monospace,Helvetica,Tahoma,Arial,STXihei,"STHeiti Light","Microsoft YaHei",sans-serif;
+	vertical-align: top;
+	position: absolute;
+	left: 0;
+	width: 30px
+}
+
+.hljs-ln-code .hljs-ln-line {
+	padding-left: 5px
+}
+
+.hljs-ln-code .hljs-ln-line:hover {
+	background-color: rgba(255,255,255,.1)
+}
+
+.hljs-ln-line span::-moz-selection,
+.hljs-ln-line::-moz-selection {
+	background: #fff;
+	color: #21252b
+}
+
+.hljs-ln-line span::selection,
+.hljs-ln-line::selection {
+	background: #fff;
+	color: #21252b
 }
 
 

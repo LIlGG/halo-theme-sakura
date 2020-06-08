@@ -13,7 +13,7 @@
 	<meta name="keywords" content="${meta_keywords!}"/>
 
 	<@global.head />
-	<link href="${theme_base!}/plugins/prism/css/prism-${settings.code_pretty!'Default'}.css" type="text/css" rel="stylesheet" />
+	<link href="${theme_base!}/plugins/highlight/css/highlight-${settings.code_pretty!'Default'}.css" type="text/css" rel="stylesheet" />
 	<link rel='stylesheet' id='siren-css'  href='${theme_base!}/style.css?ver=2.0.6.170420' type='text/css' media='all' />
 	<link rel='stylesheet' href='https://cdn.lixingyong.com/css/lib.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='https://cdn.lixingyong.com/css/iconfont/fonts-noto.css' type='text/css' media='all' />

@@ -285,6 +285,16 @@ post:
       name: wechat_code
       label: 微信打赏
       type: attachment
+    code_line:
+      name: code_line
+      label: 开启代码行号
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
     code_pretty:
       name: code_pretty
       label: 文章代码高亮主题
@@ -293,18 +303,20 @@ post:
       options:
         - value: Default
           label: Default
-        - value: Coy
-          label: Coy
+        - value: AndroidStudio
+          label: AndroidStudio
         - value: Dark
           label: Dark
-        - value: Okaidia
-          label: Okaidia
-        - value: Solarized Light
-          label: Solarized Light
+        - value: Docco
+          label: Docco
+        - value: Dracula
+          label: Dracula
+        - value: Far
+          label: Far
+        - value: Github
+          label: Github
         - value: Tomorrow Night
           label: Tomorrow Night
-        - value: Twilight
-          label: Twilight
 sns:
   label: 社交网络
   items:

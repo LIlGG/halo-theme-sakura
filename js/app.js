@@ -9,9 +9,13 @@
 var LIlGGAttachContext = {
     // 补充功能的PJAX
     PJAX: function() {
-        if(Poi.toc) {
+        // 暂停背景视频
+        LIlGGAttachContext.BGV().bgPause();
+        // 延迟加载图片
+        lazyload();
+
+        if(Poi.toc)
             LIlGGAttachContext.TOC(); // 文章目录
-        }
         LIlGGAttachContext.CHS(); // 代码样式
     },
     // 背景视频
@@ -188,18 +192,20 @@ var LIlGGAttachContext = {
     },
     // 文章代码样式
     CHS: function() {
-        for(var preIndex = 0, genTopBar = function(i) {
-            var attributes = {
-                'autocomplete': 'off',
-                'autocorrect': 'off',
-                'autocapitalize': 'off',
-                'spellcheck': 'false',
-                'contenteditable': 'false',
-                'design': 'by LIlGG'
-            }
+        var attributes = {
+            'autocomplete': 'off',
+            'autocorrect': 'off',
+            'autocapitalize': 'off',
+            'spellcheck': 'false',
+            'contenteditable': 'false',
+            'design': 'by LIlGG'
+        }
 
-            var classNameStr = $('pre:eq(' + i + ')')[0].children[0].className;
+        $('pre').each(function(i, item) {
+            var $code = $(this).children("code");
+            var classNameStr = $code[0].className;
             var classNameArr = classNameStr.split(" ");
+
             var lang = '';
             for(className of classNameArr) {
                 if(className.indexOf('language-') > -1) {
@@ -212,19 +218,30 @@ var LIlGGAttachContext = {
             if (lang.toLowerCase() == "md") var lang = "markdown";
             if (lang.toLowerCase() == "py") var lang = "python";
 
-            $('pre:eq(' + i + ')').addClass('highlight-wrap');
-
-            for (var t in attributes) {
-                $('pre:eq(' + i + ')').attr(t, attributes[t]);
-            }
-            $('pre:eq(' + i + ') code').attr('data-rel', lang.toUpperCase());
-        }; preIndex < $('pre').length; preIndex++) genTopBar(preIndex)
+            $(this).addClass('highlight-wrap');
+            $(this).attr(attributes);
+            $code.attr('data-rel', lang.toUpperCase()).addClass(lang.toLowerCase());
+            // 启用代码高亮
+            hljs.highlightBlock($code[0]);
+            // 启用代码行号
+            if(Poi.codeLine)
+                hljs.lineNumbersBlock($code[0]);
+        })
 
         $('pre').on('click', function(e) {
             if (e.target !== this) return;
             $(this).toggleClass('code-block-fullscreen');
             $('html').toggleClass('code-block-fullscreen-html-scroll');
         });
+
+        // $('pre code').each(function(i, block) {
+        //     $(block).attr({
+        //         id: 'hljs-' + i
+        //     });
+
+        //     $(this).after('<a class="copy-code" href="javascript:" data-clipboard-target="#hljs-' + i + '" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a>');
+        //     new ClipboardJS('.copy-code');
+        // })  
     }
 }
 
@@ -243,16 +260,9 @@ var pjaxFun = function() {
         Siren.PE();
         Siren.CE();
         NProgress.done();
-        // 暂停背景视频
-        LIlGGAttachContext.BGV().bgPause();
-        // 延迟加载图片
-        lazyload();
         // 额外加载的pjax
         LIlGGAttachContext.PJAX();
         $("#loading").fadeOut(500);
-        if (Poi.codelamp == 'open') {
-            self.Prism.highlightAll(event)
-        }
     }).on('submit', '.search-form,.s-search', function (event) {
         event.preventDefault();
         $.pjax.submit(event, '#page', {
@@ -686,11 +696,9 @@ $(function () {
 
     // 新增功能
     LIlGGAttachContext.BGV(); // 背景视频
-    if(Poi.toc) {
+    if(Poi.toc)
         LIlGGAttachContext.TOC(); // 文章目录
-    }
-
-    LIlGGAttachContext.CHS(); // 代码样式
+    LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
     // 延迟加载图片
     lazyload();
 
