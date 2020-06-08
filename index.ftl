@@ -20,7 +20,7 @@
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
-		<h1 class="main-title">
+		<h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
 		<i class="fa fa-envira" aria-hidden="true"></i>
 		 Discovery
 		</h1>

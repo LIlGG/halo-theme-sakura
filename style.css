@@ -365,7 +365,7 @@ h6 {
 
 p {
     margin-bottom: 1.5em;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+    cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/texto.cur),auto
 }
 
 dfn,
@@ -468,6 +468,8 @@ html {
 body {
     background: #fff;
  /* Fallback for when there is no custom background color defined. */
+    background-attachment: fixed;
+    cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/normal.cur),auto
 }
 
 blockquote:before,
