@@ -288,6 +288,7 @@ post:
     code_line:
       name: code_line
       label: 开启代码行号
+      type: radio
       data-type: bool
       default: true
       options:
