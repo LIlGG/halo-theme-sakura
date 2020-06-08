@@ -7,6 +7,9 @@
             <h1 class="entry-title">${sheet.title!}</h1>
         </header><!-- .entry-header -->
     </#if>
+    <div class="toc-container">
+        <div class="toc"></div>
+    </div>
     <div class="entry-content">
         ${sheet.formatContent!}
     </div><!-- .entry-content -->
