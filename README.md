@@ -41,13 +41,13 @@
 ## 安装主题
 
 ### 本地安装
-1. 点击下载
+1. 点击[下载](https://github.com/LIlGG/halo-theme-sakura/archive/master.zip)
 2. 进入后台 -> 外观 -> 主题
 3. 点击右下方按钮选择安装主题，随后选择 `本地上传`。
 4. 选择下载好的主题包（zip）即可。
 
 ### 远程安装
-1. 复制 `https://github.com/LIlGG/halo-theme-Sakura`。
+1. 复制 `https://github.com/LIlGG/halo-theme-sakura`。
 2. 进入后台 -> 外观 -> 主题。
 3. 点击右下方按钮选择安装主题，随后选择 `远程拉取`。
 4. 粘贴复制的链接到远程地址，点击下载即可。
