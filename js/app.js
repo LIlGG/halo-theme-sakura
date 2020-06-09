@@ -35,10 +35,10 @@ var LIlGGAttachContext = {
     },
     // 背景视频
     BGV: function () {
-        var $bg_video_btn = $('.video-btn'),
+        var $bg_video_btn = $('#video-btn'),
             $bg_video = $('#bgvideo'),
             $bg_video_stu = $('.video-stu'),
-            $bg_video_add = $('.video-add'),
+            $bg_video_add = $('#video-add'),
             dom = $bg_video[0];
 
         var bindBgVideoEvent = function () {
@@ -204,7 +204,7 @@ var LIlGGAttachContext = {
             positionFixedClass: 'is-position-fixed',
             isCollapsedClass: 'is-collapsed',
             collapsibleClass: 'is-collapsible',
-            hasInnerContainers: true,
+            hasInnerContainers: false,
             scrollEndCallback: function(e) {},
         }); 
     },
