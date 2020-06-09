@@ -1,6 +1,6 @@
 <h1 align="center">Sakura</h1>
 <p align="center">
-  <a href="https://lixingyong.com">预览</a> | <a href="#安装主题">安装</a> | <a href="https://lixingyong.com/s/changelog.html">更新日志</a>
+  <a href="https://lixingyong.com">预览</a> | <a href="#安装主题">安装</a> | <a href="https://lixingyong.com/s/halo-theme-sakure">更新日志</a>
   <br />
 
 ## 说明
