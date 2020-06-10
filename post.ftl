@@ -7,7 +7,7 @@
         <div class="pattern-center-blank"></div>
         <div class="pattern-center single-center">
             <div class="pattern-attachment-img">
-                <img data-src="${post.thumbnail!}" class="lazyload">
+                <img data-src="${post.thumbnail!}" src="https://cdn.lixingyong.com/img/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload">
             </div>
             <header class="pattern-header single-header">
                 <h1 class="entry-title">${post.title!}</h1>
