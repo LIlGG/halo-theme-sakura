@@ -12,7 +12,7 @@
     <#if (settings.patternimg!true) && ((tag.thumbnail?? && tag.thumbnail!='') || (settings.tag_patternimg?? && settings.tag_patternimg!=''))>
         <div class="pattern-center">
             <div class="pattern-attachment-img">
-                <img data-src="${tag.thumbnail!'${settings.tag_patternimg!}'}" class="lazyload">
+                <img data-src="${tag.thumbnail!'${settings.tag_patternimg!}'}" src="https://cdn.lixingyong.com/img/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload">
             </div>
             <header class="pattern-header">
                 <h1 class="cat-title">标签：${tag.name!}</h1>

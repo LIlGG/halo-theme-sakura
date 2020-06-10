@@ -6,7 +6,7 @@
 	<#if (settings.patternimg!true) && (sheet.thumbnail?? && sheet.thumbnail!='')>
 		<div class="pattern-center">
 			<div class="pattern-attachment-img">
-				<img data-src="${sheet.thumbnail!}" class="lazyload">
+				<img data-src="${sheet.thumbnail!}" src="https://cdn.lixingyong.com/img/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload">
 			</div>
 			<header class="pattern-header">
 				<h1 class="entry-title">${sheet.title!}</h1>

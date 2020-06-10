@@ -6,7 +6,7 @@
 	<#if (settings.patternimg!true) && (settings.searh_patternimg?? && settings.searh_patternimg!='')>
 		<div class="pattern-center">
 			<div class="pattern-attachment-img">
-				<img data-src="${settings.searh_patternimg!}" class="lazyload">
+				<img data-src="${settings.searh_patternimg!}" src="https://cdn.lixingyong.com/img/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload">
 			</div>
 			<header class="pattern-header">
 				<h1 class="entry-title search-title"> 关于“ ${keyword!} ”的搜索结果</h1>
