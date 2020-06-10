@@ -16,10 +16,10 @@
         <div class="blank"></div>
     </#if>
 </@header>
-	<#if !(settings.patternimg!true) || !(settings.links_patternimg?? && settings.links_patternimg!='')>
-	    <span class="linkss-title">友情链接</span>
-	</#if>
-    <article <?php post_class("post-item"); ?>
+    <div class="toc-container">
+        <div class="toc"></div>
+    </div>
+    <article class="post-item">
         <div class="links">
             <ul class="link-items fontSmooth">
                 <@linkTag method="list">

@@ -37,10 +37,12 @@ function loadAudio() {
         var lrcTag = 1;
         $(".aplayer.aplayer-fixed").click(function() {
             if (lrcTag == 1) {
-                for (var f = 0; f < ap.length; f++) try {
-                    ap[f].lrc.show();
-                } catch(a) {
-                    console.log(a)
+                for (var f = 0; f < ap.length; f++) {
+                    try {
+                        ap[f].lrc.show();
+                    } catch(a) {
+                        console.log(a)
+                    }
                 }
             }
             lrcTag = 2;
@@ -57,6 +59,11 @@ function loadAudio() {
                 apSwitchTag = 0;
             }
         });
+
+        // 将全局的ap放入全局播放器列表
+        if(a.dataset.global == "true") {
+            globalAp.push(ap.pop());
+        }
     }
     var b = 'https://api.lixingyong.com/api/:server?type=:type&id=:id&r=:r';
 
@@ -64,7 +71,17 @@ function loadAudio() {
 
     for (var c = document.querySelectorAll('.aplayer'), d = function() {
         var d = c[e],
-        f = d.dataset.id;
+        f = d.dataset.id
+        isGlobal = d.dataset.global;
+
+        if(isGlobal == "true") {
+            for(var i = 0; i < globalAp.length; i++) {
+                if(globalAp[i].container == d) {
+                    return;
+                }
+            }
+        }
+
         if (f) {
             var g = d.dataset.api || b;
             g = g.replace(':server', d.dataset.server),
@@ -97,13 +114,17 @@ function loadAudio() {
 }
 
 function reloadAplayer() {
-    for (var a = 0; a < ap.length; a++)
-    try {
-        ap[a].destroy()
-    } catch (b) {}
+    for (var a = 0; a < ap.length; a++) {
+        try {
+            ap[a].destroy()
+            ap.splice(a, 1);
+        } catch (b) {}
+    }
     loadAudio();
 }
 var ap = [];
+// 全局播放器，只会创建一次，不会被销毁
+var globalAp = [];
 
 document.addEventListener('DOMContentLoaded', function() {
     reloadAplayer();
