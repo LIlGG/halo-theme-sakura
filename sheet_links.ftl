@@ -2,21 +2,22 @@
     Template Name: links
 -->
 <#include "header.ftl">
-<@header title="${options.links_title?default('友情链接')} - ${blog_title!}">
-    <#if (settings.patternimg!true) && (settings.links_patternimg?? && settings.links_patternimg!='')>
-        <div class="pattern-center">
-            <div class="pattern-attachment-img">
-                <img data-src="${settings.links_patternimg!}" class="lazyload">
-            </div>
-            <header class="pattern-header">
-                <h1 class="entry-title">${options.links_title?default('友情链接')}</h1>
-            </header>
-        </div>
-    <#else>
-        <div class="blank"></div>
-    </#if>
+<@header title="${sheet.title!} - ${blog_title!}">
+	<#if (settings.patternimg!true) && (sheet.thumbnail?? && sheet.thumbnail!='')>
+		<div class="pattern-center">
+			<div class="pattern-attachment-img">
+				<img data-src="${sheet.thumbnail!}" src="https://cdn.lixingyong.com/img/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload">
+			</div>
+			<header class="pattern-header">
+				<h1 class="entry-title">${sheet.title!}</h1>
+			</header>
+		</div>
+	<#else>
+		<div class="blank"></div>
+	</#if>
 </@header>
     <article id="post-${sheet.id!}" class="post-item post-${sheet.id} page type-page status-publish hentry">
+        ${sheet.formatContent!} 
         <div class="links">
             <@linkTag method="listTeams">
                 <#list teams as item>
