@@ -71,7 +71,7 @@
 				<div class="lower-cantiner">
 					<div class="lower">
 						<#if !settings.shownav!false>
-							<div id="show-nav" class="showNav">
+							<div id="show-nav" class="showNav mobile-fit">
 								<div class="line line1"></div>
 								<div class="line line2"></div>
 								<div class="line line3"></div>

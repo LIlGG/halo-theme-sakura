@@ -1069,7 +1069,7 @@ a:hover,a:active {
 	}
 
 	.site-top .lower-cantiner {
-		left: 0
+		left: 200px;
 	}
 
 	.site-top .lower nav.hide {
