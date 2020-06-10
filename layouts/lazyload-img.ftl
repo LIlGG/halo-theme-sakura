@@ -4,15 +4,15 @@
     <#elseif options.attachment_type == 'SMMS'>
         <img class="lazyload" src="${post.thumbnail}" data-src="${post.thumbnail}">
     <#elseif options.attachment_type == 'UPOSS'>
-        <img class="lazyload" src="${post.thumbnail}${oss_upyun_thumbnail_style_rule!}" data-src="${post.thumbnail}">
+        <img class="lazyload" src="${post.thumbnail}${options.oss_upyun_thumbnail_style_rule!}" data-src="${post.thumbnail}">
     <#elseif options.attachment_type == 'QINIUOSS'>
-        <img class="lazyload" src="${post.thumbnail}${oss_qiniu_thumbnail_style_rule!}" data-src="${post.thumbnail}">
+        <img class="lazyload" src="${post.thumbnail}${options.oss_qiniu_thumbnail_style_rule!}" data-src="${post.thumbnail}">
     <#elseif options.attachment_type == 'ALIOSS'>
-        <img class="lazyload" src="${post.thumbnail}${oss_ali_thumbnail_style_rule!}" data-src="${post.thumbnail}">
+        <img class="lazyload" src="${post.thumbnail}${options.oss_ali_thumbnail_style_rule!}" data-src="${post.thumbnail}">
     <#elseif options.attachment_type == 'BAIDUBOS'>
-        <img class="lazyload" src="${post.thumbnail}${oss_baidu_thumbnail_style_rule!}" data-src="${post.thumbnail}">
+        <img class="lazyload" src="${post.thumbnail}${options.oss_baidu_thumbnail_style_rule!}" data-src="${post.thumbnail}">
     <#elseif options.attachment_type == 'TENCENTCOS'>
-        <img class="lazyload" src="${post.thumbnail}${oss_tencent_thumbnail_style_rule!}" data-src="${post.thumbnail}">
+        <img class="lazyload" src="${post.thumbnail}${options.oss_tencent_thumbnail_style_rule!}" data-src="${post.thumbnail}">
     <#elseif options.attachment_type == 'HUAWEIOBS'>
-        <img class="lazyload" src="${post.thumbnail}${oss_huawei_thumbnail_style_rule!}" data-src="${post.thumbnail}">
+        <img class="lazyload" src="${post.thumbnail}${options.oss_huawei_thumbnail_style_rule!}" data-src="${post.thumbnail}">
 </#if>
