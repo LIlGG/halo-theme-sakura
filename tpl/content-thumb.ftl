@@ -6,11 +6,12 @@
 	<div class="post-thumb">
 		<#if post.thumbnail?? && post.thumbnail!=''>
 			<a href="${post.fullPath!}">
+				<#--  <#include "../layouts/lazyload-img.ftl">  -->
 				<img class="lazyload" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="${post.thumbnail!}">
 			</a>
 		<#else>
 			<a href="${post.fullPath!}">
-				<img class="lazyload" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="${theme_base!}/images/temp.jpg">
+				<img class="lazyload" src="${theme_base!}/images/temp.jpg">
 			</a>
 		</#if>
 	</div><!-- thumbnail-->
