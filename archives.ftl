@@ -6,7 +6,7 @@
     <#if (settings.patternimg!true) && (settings.archives_patternimg?? && settings.archives_patternimg!='')>
         <div class="pattern-center">
             <div class="pattern-attachment-img">
-                <img data-src="${settings.archives_patternimg!}" class="lazyload">
+                <img data-src="${settings.archives_patternimg!}" src="https://cdn.lixingyong.com/img/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload">
             </div>
             <header class="pattern-header">
                 <h1 class="entry-title">文章归档</h1>
