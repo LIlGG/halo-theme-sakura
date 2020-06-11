@@ -472,7 +472,7 @@ focus:
       label: 聚焦图三链接
       type: text
       default: '#'
-focus:
+theme:
   label: 主题切换
   items:
     theme_change:
