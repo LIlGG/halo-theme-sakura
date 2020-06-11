@@ -1,3 +1,8 @@
+/**
+ * apalyer 有一个已知的错误
+ * 当播放器处于渲染阶段
+ * 而此时浏览器已经切换页面，会出现一些意料之外的BUG
+ */
 function loadAudio() {
     function a(a, b) {
         var c = {

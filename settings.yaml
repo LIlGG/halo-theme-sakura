@@ -472,6 +472,525 @@ focus:
       label: 聚焦图三链接
       type: text
       default: '#'
+focus:
+  label: 主题切换
+  items:
+    theme_change:
+      name: theme_change
+      label: 是否开启主题切换
+      type: radio
+      data-type: bool
+      default: true
+      description: '每个主题的样式可以自定义，但一般情况下使用默认的足够了【务必保证第一项存在】'
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_name_0:
+      name: bg_name_0
+      label: 主题一 名称
+      type: text
+      default: 'white'
+      description: '主题的背景名，目前可为空'
+    bg_desc_0:
+      name: bg_desc_0
+      label: 主题一 描述
+      type: text
+      default: '默认是纯洁的白色~'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_0:
+      name: bg_url_0
+      label: 主题一 图片链接
+      type: attachment
+      default: ''
+    bg_icon_0:
+      name: bg_icon_0
+      label: 主题一 图标
+      type: text
+      default: 'fa fa-television'
+      description: '图标可能无法立即生效'
+    bg_skin_secter_0:
+      name: bg_skin_secter_0
+      label: 背景缩进
+      type: radio
+      data-type: bool
+      default: false
+      description: '将文章等背景图缩进，用于展示背景图'
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_0:
+      name: bg_night_0
+      label: 夜晚模式
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_mode_0:
+      name: bg_night_mode_0
+      label: 夜晚模式遮罩
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_opacity_0:
+      name: bg_opacity_0
+      label: 遮罩透明度
+      type: text
+      default: "0"
+      description: '填写0-1之间的数，小于0按0算 大于1按1算'
+    bg_name_1:
+      name: bg_name_1
+      label: 主题二 名称
+      type: text
+      default: 'sakura'
+      description: '主题的背景名，目前可为空'
+    bg_desc_1:
+      name: bg_desc_1
+      label: 主题二 描述
+      type: text
+      default: '樱花飞舞~'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_1:
+      name: bg_url_1
+      label: 主题二 图片链接
+      type: attachment
+      default: 'https://view.moezx.cc/images/2018/01/03/sakura.png'
+    bg_icon_1:
+      name: bg_icon_1
+      label: 主题二 图标
+      type: text
+      default: 'iconfont icon-sakura'
+      description: '图标可能无法立即生效'
+    bg_skin_secter_1:
+      name: bg_skin_secter_1
+      label: 背景缩进
+      type: radio
+      data-type: bool
+      default: true
+      description: '将文章等背景图缩进，用于展示背景图'
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_1:
+      name: bg_night_1
+      label: 夜晚模式
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_mode_1:
+      name: bg_night_mode_1
+      label: 夜晚模式遮罩
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_opacity_1:
+      name: bg_opacity_1
+      label: 遮罩透明度
+      type: text
+      default: "1"
+      description: '填写0-1之间的数，小于0按0算 大于1按1算'
+    bg_name_2:
+      name: bg_name_2
+      label: 主题三 名称
+      type: text
+      default: 'gribs'
+      description: '主题的背景名，目前可为空'
+    bg_desc_2:
+      name: bg_desc_2
+      label: 主题三 描述
+      type: text
+      default: '格子控！'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_2:
+      name: bg_url_2
+      label: 主题三 图片链接
+      type: attachment
+      default: 'https://view.moezx.cc/images/2018/01/03/plaid2dbf8.jpg'
+    bg_icon_2:
+      name: bg_icon_2
+      label: 主题三 图标
+      type: text
+      default: 'fa fa-slack'
+      description: '图标可能无法立即生效'
+    bg_skin_secter_2:
+      name: bg_skin_secter_2
+      label: 背景缩进
+      type: radio
+      data-type: bool
+      default: true
+      description: '将文章等背景图缩进，用于展示背景图'
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_2:
+      name: bg_night_2
+      label: 夜晚模式
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_mode_2:
+      name: bg_night_mode_2
+      label: 夜晚模式遮罩
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_opacity_2:
+      name: bg_opacity_2
+      label: 遮罩透明度
+      type: text
+      default: "1"
+      description: '填写0-1之间的数，小于0按0算 大于1按1算'
+    bg_name_3:
+      name: bg_name_3
+      label: 主题四 名称
+      type: text
+      default: 'KAdots'
+      description: '主题的背景名，目前可为空'
+    bg_desc_3:
+      name: bg_desc_3
+      label: 主题四 描述
+      type: text
+      default: '小点点~'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_3:
+      name: bg_url_3
+      label: 主题四 图片链接
+      type: attachment
+      default: 'https://view.moezx.cc/images/2018/01/24/kyotoanimation.png'
+    bg_icon_3:
+      name: bg_icon_3
+      label: 主题四 图标
+      type: text
+      default: 'iconfont icon-dots'
+      description: '图标可能无法立即生效'
+    bg_skin_secter_3:
+      name: bg_skin_secter_3
+      label: 背景缩进
+      type: radio
+      data-type: bool
+      default: true
+      description: '将文章等背景图缩进，用于展示背景图'
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_3:
+      name: bg_night_3
+      label: 夜晚模式
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_mode_3:
+      name: bg_night_mode_3
+      label: 夜晚模式遮罩
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_opacity_3:
+      name: bg_opacity_3
+      label: 遮罩透明度
+      type: text
+      default: "1"
+      description: '填写0-1之间的数，小于0按0算 大于1按1算'
+    bg_name_4:
+      name: bg_name_4
+      label: 主题五 名称
+      type: text
+      default: 'totem'
+      description: '主题的背景名，目前可为空'
+    bg_desc_4:
+      name: bg_desc_4
+      label: 主题五 描述
+      type: text
+      default: '充满力量的橙色'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_4:
+      name: bg_url_4
+      label: 主题五 图片链接
+      type: attachment
+      default: 'https://view.moezx.cc/images/2018/09/17/little-monster.png'
+    bg_icon_4:
+      name: bg_icon_4
+      label: 主题五 图标
+      type: text
+      default: 'fa fa-optin-monster'
+      description: '图标可能无法立即生效'
+    bg_skin_secter_4:
+      name: bg_skin_secter_4
+      label: 背景缩进
+      type: radio
+      data-type: bool
+      default: true
+      description: '将文章等背景图缩进，用于展示背景图'
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_4:
+      name: bg_night_4
+      label: 夜晚模式
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_mode_4:
+      name: bg_night_mode_4
+      label: 夜晚模式遮罩
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_opacity_4:
+      name: bg_opacity_4
+      label: 遮罩透明度
+      type: text
+      default: "1"
+      description: '填写0-1之间的数，小于0按0算 大于1按1算'
+    bg_name_5:
+      name: bg_name_5
+      label: 主题六 名称
+      type: text
+      default: 'pixiv'
+      description: '主题的背景名，目前可为空'
+    bg_desc_5:
+      name: bg_desc_5
+      label: 主题六 描述
+      type: text
+      default: 'pixiv主题~'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_5:
+      name: bg_url_5
+      label: 主题六 图片链接
+      type: attachment
+      default: 'https://view.moezx.cc/images/2018/01/10/star02.png'
+    bg_icon_5:
+      name: bg_icon_5
+      label: 主题六 图标
+      type: text
+      default: 'iconfont icon-pixiv'
+      description: '图标可能无法立即生效'
+    bg_skin_secter_5:
+      name: bg_skin_secter_5
+      label: 背景缩进
+      type: radio
+      data-type: bool
+      default: true
+      description: '将文章等背景图缩进，用于展示背景图'
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_5:
+      name: bg_night_5
+      label: 夜晚模式
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_mode_5:
+      name: bg_night_mode_5
+      label: 夜晚模式遮罩
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_opacity_5:
+      name: bg_opacity_5
+      label: 遮罩透明度
+      type: text
+      default: "1"
+      description: '填写0-1之间的数，小于0按0算 大于1按1算'
+    bg_name_6:
+      name: bg_name_6
+      label: 主题七 名称
+      type: text
+      default: 'bing'
+      description: '主题的背景名，目前可为空'
+    bg_desc_6:
+      name: bg_desc_6
+      label: 主题七 描述
+      type: text
+      default: '必应图片'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_6:
+      name: bg_url_6
+      label: 主题七 图片链接
+      type: attachment
+      default: 'https://api.shino.cc/bing/'
+    bg_icon_6:
+      name: bg_icon_6
+      label: 主题七 图标
+      type: text
+      default: 'iconfont icon-bing'
+      description: '图标可能无法立即生效'
+    bg_skin_secter_6:
+      name: bg_skin_secter_6
+      label: 背景缩进
+      type: radio
+      data-type: bool
+      default: true
+      description: '将文章等背景图缩进，用于展示背景图'
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_6:
+      name: bg_night_6
+      label: 夜晚模式
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_mode_6:
+      name: bg_night_mode_6
+      label: 夜晚模式遮罩
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_opacity_6:
+      name: bg_opacity_6
+      label: 遮罩透明度
+      type: text
+      default: "1"
+      description: '填写0-1之间的数，小于0按0算 大于1按1算'
+    bg_name_7:
+      name: bg_name_7
+      label: 主题八 名称
+      type: text
+      default: 'dark'
+      description: '主题的背景名，目前可为空'
+    bg_desc_7:
+      name: bg_desc_7
+      label: 主题八 描述
+      type: text
+      default: '关灯！'
+      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+    bg_url_7:
+      name: bg_url_7
+      label: 主题八 图片链接
+      type: attachment
+      default: 'https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.2/other-sites/api-index/images/me.png'
+    bg_icon_7:
+      name: bg_icon_7
+      label: 主题八 图标
+      type: text
+      default: 'fa fa-moon-o'
+      description: '图标可能无法立即生效'
+    bg_skin_secter_7:
+      name: bg_skin_secter_7
+      label: 背景缩进
+      type: radio
+      data-type: bool
+      default: true
+      description: '将文章等背景图缩进，用于展示背景图'
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_7:
+      name: bg_night_7
+      label: 夜晚模式
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_night_mode_7:
+      name: bg_night_mode_7
+      label: 夜晚模式遮罩
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    bg_opacity_7:
+      name: bg_opacity_7
+      label: 遮罩透明度
+      type: text
+      default: "0.8"
+      description: '填写0-1之间的数，小于0按0算 大于1按1算'
 others:
   label: 其他
   items:

@@ -8,11 +8,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title itemprop="name">${title!}</title>
-
 	<meta name="description" content="${meta_description!}"/>
 	<meta name="keywords" content="${meta_keywords!}"/>
 
 	<@global.head />
+	<link rel="stylesheet" href="https://at.alicdn.com/t/font_679578_dishi1yoavm.css" media="all">
 	<link href="${theme_base!}/plugins/highlight/css/highlight-${settings.code_pretty!'Default'}.css" type="text/css" rel="stylesheet" />
 	<link rel='stylesheet' id='siren-css'  href='${theme_base!}/style.css?ver=2.0.6.170420' type='text/css' media='all' />
 	<link rel='stylesheet' href='https://cdn.lixingyong.com/css/lib.css' type='text/css' media='all' />

@@ -10,17 +10,18 @@
  * @url https://lixingyong.com
  * @date 2020.06.01
  */
-
 // 附加补充功能
 var LIlGGAttachContext = {
     // 补充功能的PJAX
     PJAX: function() {
         // 暂停背景视频
         LIlGGAttachContext.BGV().bgPause();
+        // 渲染主题
+        LIlGGAttachContext.CBG().changeSkinSecter();
         // 延迟加载图片
         lazyload();
         try {
-            $("#to-load-aplayer").click(function() {
+            $("#to-load-aplayer").on("click", function() {
                 reloadAplayer();
                 $("div").remove(".load-aplayer");
             });
@@ -188,6 +189,9 @@ var LIlGGAttachContext = {
         
         if ($("div").hasClass("toc")) {
             $(".toc-container").css("height", $(".site-content").outerHeight());
+        } else {
+            // 纠正TOC为空时，警告问题
+            return;
         }
 
         $(".entry-content , .links").children("h1,h2,h3,h4,h5").each(function(index) {
@@ -260,6 +264,109 @@ var LIlGGAttachContext = {
         //     $(this).after('<a class="copy-code" href="javascript:" data-clipboard-target="#hljs-' + i + '" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a>');
         //     new ClipboardJS('.copy-code');
         // })  
+    },
+    // 主题切换
+    CBG: function() {
+        var themeConfig = {}
+        /**
+         * 检查并回显主题
+         */
+        var checkBgImgEcho = function() {
+            var configTag = utils.getCookie("bgTagClass");
+            if(!configTag)  return;
+            var bgConfigTags = Object.keys(bgConfig);
+            // 默认为bg_0
+            bgConfigTags.includes(configTag) ? configTag : (configTag = "bg_0");
+            // 切换主题
+            changeBg(configTag);
+        }
+
+        /**
+         * 切换主题开关
+         */
+        var changeSkinGear = function() {
+            // 这里使用off来解决匿名空间的问题
+            $(".changeSkin-gear").off("click").on("click", function() {
+                $(".skin-menu").toggleClass('show');
+                if (themeConfig.isNight) {
+                    $(".changeSkin").css("background", "rgba(255,255,255,0.8)");
+                } else {
+                    $(".changeSkin").css("background", "none");
+                }
+            })
+
+            //绑定主题子项点击事件
+            Object.keys(bgConfig).forEach(function(currBg) {
+                $(".skin-menu " + "#" + currBg).on("click", function() {
+                    changeBg(currBg, function(isNightMode) {
+                        // 非夜间模式才保存
+                        if(!isNightMode) {
+                            // 保存tagClass, 方便下次查询
+                            utils.setCookie("bgTagClass", currBg, 30);
+                        }
+
+                        // 绑定完之后隐藏主题开关
+                        $(".skin-menu").removeClass('show');
+                        setTimeout(function() {
+                            $(".changeSkin-gear").css("visibility", "visible");
+                        },300);
+                    });
+                })
+            });
+            // 显示切换主题功能
+            $(".changeSkin-gear").css("visibility", "visible");
+        }
+
+        /**
+         * 根据tagClass切换主题
+         * @param {*} tagClass 
+         */
+        var changeBg = function(tagClass, callback) {
+            var bgAttr = bgConfig[tagClass];
+            if(!bgAttr) return;
+            themeConfig.bgAttr = bgAttr;
+
+            $("#night-mode-cover").css("visibility", bgAttr["isNightMode"] ? "visible" : "hidden");
+            $("body").css("background-image", bgAttr["url"] == "" ? "none" : "url(" + bgAttr["url"] + ")");
+
+            changeSkinSecter();
+            // 夜间模式不保存
+            (!callback || typeof callback == 'undefined' || callback == undefined) ? false : callback(bgAttr["isNightMode"])
+        }
+
+        /**
+         * 主题部分渲染
+         */
+        var changeSkinSecter = function() {
+            var bgAttr = themeConfig.bgAttr;
+
+            $(".blank").css("background-color", "rgba(255,255,255,"+ bgAttr["opacity"] < 0 ? 0 : bgAttr["opacity"] > 1 ? 1 : bgAttr["opacity"] +")");
+            
+            if(bgAttr["isSkinSecter"]) {
+                $(".pattern-center").removeClass('pattern-center').addClass('pattern-center-sakura'); 
+                $(".headertop-bar").removeClass('headertop-bar').addClass('headertop-bar-sakura');
+            } else {
+                $(".pattern-center-sakura").removeClass('pattern-center-sakura').addClass('pattern-center');
+                $(".headertop-bar-sakura").removeClass('headertop-bar-sakura').addClass('headertop-bar');
+            }
+
+            if (bgAttr["isNight"]) {
+                $(".changeSkin-gear, .toc").css("background", "rgba(255,255,255,0.8)");
+            } else {
+                $(".changeSkin-gear, .toc").css("background", "none");
+            }
+        }
+
+        // 检查cookie并回显
+        if (document.body.clientWidth > 860) {
+            checkBgImgEcho();
+            // 切换主题开关
+            changeSkinGear();
+        }
+        
+        return {
+            changeSkinSecter: changeSkinSecter
+        }
     }
 }
 
@@ -675,18 +782,21 @@ var home = location.href,
             $(window).scroll(function () {
                 if ($(this).scrollTop() > offset) {
                     $back_to_top.addClass('cd-is-visible');
+                    $(".changeSkin-gear").css("bottom", "0"); // 显示主题
                     if ($(window).height() > 950) {
                         $(".cd-top.cd-is-visible").css("top", "0");
                     } else {
                         $(".cd-top.cd-is-visible").css("top", ($(window).height() - 950) + "px");
                     }
                 } else {
+                    $(".changeSkin-gear").css("bottom", "-999px"); // 隐藏主题
                     $(".cd-top.cd-is-visible").css("top", "-900px");
                     $back_to_top.removeClass('cd-is-visible cd-fade-out');
                 }
                 if ($(this).scrollTop() > offset_opacity) {
                     $back_to_top.addClass('cd-fade-out');
                 }
+                $(".skin-menu").removeClass('show'); // 有滚动就隐藏主题选择
             });
             //smooth scroll to top
             $back_to_top.on('click', function (event) {
@@ -703,7 +813,7 @@ var home = location.href,
  * 独立功能，可拔插
  */
 $(function () {
-
+    
     Siren.AH(); // 自适应窗口高度
     Siren.PE(); // 进程
     Siren.NH(); // 显示&隐藏导航栏
@@ -714,6 +824,7 @@ $(function () {
     Siren.IA(); // 输入框特效
 
     // 新增功能
+    LIlGGAttachContext.CBG(); // 主题切换
     LIlGGAttachContext.BGV(); // 背景视频
     if(Poi.toc)
         LIlGGAttachContext.TOC(); // 文章目录
@@ -782,4 +893,34 @@ if ((isWebkit || isOpera || isIe) && document.getElementById && window.addEventL
             element.focus();
         }
     }, false);
+}
+
+// 自定义工具包
+var utils = {
+    setCookie: function(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "v1.0.0" + "=" + (value || "") + expires + "; path=/";
+    },
+
+    getCookie: function(name) {
+        var nameEQ = name + "v1.0.0" + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    },
+
+    removeCookie: function(name) {
+        document.cookie = name + mashiro_option.cookie_version + '=; Max-Age=-99999999;';
+    },
+
+
 }

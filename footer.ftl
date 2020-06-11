@@ -97,6 +97,30 @@
 <div id="aplayer-float" style="z-index: 100;" class="aplayer" data-global="true" data-id="${settings.aplayer_id!'2345868969'}" data-server="${settings.aplayer_server!'netease'}" data-type="${settings.aplayer_type!'playlist'}" data-fixed="true" data-preload="${settings.aplayer_preload!'auto'}" data-order="${settings.aplayer_order!'list'}" data-theme="${settings.aplayer_theme!'orange'}"></div>
 </#if>
 <!-- aplayer end -->
+<!-- theme-change start -->
+<#if settings.theme_change!true>
+<div class="changeSkin-gear no-select">
+	<div class="keys">
+        <span id="open-skinMenu">切换主题 | SCHEME TOOL &nbsp;
+          <i class="iconfont icon-gear inline-block rotating"></i>
+        </span>
+    </div>
+</div>
+<div class="skin-menu no-select">
+	<div class="theme-controls row-container">
+		<ul class="menu-list">
+			<#list 0..7 as i>
+			<#assign iconStr="settings.bg_icon_${i}" icon = (iconStr?eval)?default("fa fa-television") />
+			<li id="bg_${i}">
+            	<i class="${icon}" aria-hidden="true"></i>
+          	</li>
+			</#list>
+		</ul>
+	</div>
+</div>
+<canvas id="night-mode-cover"></canvas>
+</#if>
+<!-- theme-change end -->
 <script type='text/javascript' src='${theme_base!}/js/jquery.min.js?ver=2.0.6.170420'></script>
 <script type='text/javascript' src='${theme_base!}/js/jquery.pjax.js?ver=2.0.6.170420'></script>
 <script type='text/javascript' src='${theme_base!}/js/input.min.js?ver=2.0.6.170420'></script>
@@ -108,7 +132,30 @@
 		"ajaxurl":"${blog_url!}",
 		"formpostion":"bottom",
 		"toc": "${(settings.post_toc!true)?string('true','')}",
-		"codeLine": "${(settings.code_line!true)?string('true','')}"
+		"codeLine": "${(settings.code_line!true)?string('true','')}",
+		"themeChange": "${(settings.code_line!true)?string('true','')}",
+	};
+
+	var bgConfig = {
+	<#list 0..7 as i>
+		<#assign name = (("settings.bg_name_" + i)?eval)?default(""), 
+				desc = (("settings.bg_desc_" + i)?eval)?default(""),
+				url = (("settings.bg_url_" + i)?eval)?default(""),
+				isSkinSecter = (("settings.bg_skin_secter_" + i)?eval)?default(""),
+				isNight = (("settings.bg_night_" + i)?eval)?default(""),
+				isNightMode = (("settings.bg_night_mode_" + i)?eval)?default(""),
+				opacity = (("settings.bg_opacity_" + i)?eval)?default("1") />
+		
+		"bg_${i}": {
+			"name": "${name}",
+			"desc": "${desc}",
+			"url": "${url}",
+			"isSkinSecter": "${(isSkinSecter!false)?string('true', '')}",
+			"isNight": "${(isNight!true)?string('true', '')}",
+			"isNightMode": "${(isNightMode!true)?string('true', '')}",
+			"opacity": "${opacity}"
+		},
+	</#list>
 	};
 	/* ]]> */
 </script>

@@ -31,7 +31,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 代码高亮，且实现仿Mac
 - [ ] 自定义留言
 - [x] 文章目录
-- [ ] 主题切换
+- [x] 主题切换
 - [ ] 相册
 - [x] 友链页面
 - [ ] 归档
