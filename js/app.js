@@ -824,7 +824,8 @@ $(function () {
     Siren.IA(); // 输入框特效
 
     // 新增功能
-    LIlGGAttachContext.CBG(); // 主题切换
+    if(Poi.themeChange)
+        LIlGGAttachContext.CBG(); // 主题切换
     LIlGGAttachContext.BGV(); // 背景视频
     if(Poi.toc)
         LIlGGAttachContext.TOC(); // 文章目录
