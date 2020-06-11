@@ -33,10 +33,12 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 文章目录
 - [ ] 主题切换
 - [ ] 相册
-- [x] 友链
+- [x] 友链页面
 - [ ] 归档
 - [ ] 集成视频播放插件
-- [ ] 移动客户端适配
+- [x] 移动客户端适配
+- [ ] 复制提示功能
+- [ ] 404 页面
 
 > Tip:
 >> 上述功能大部分均可配置。具体操作在 后台 -> 外观 -> 主题 -> 设置 中进行配置   
@@ -57,4 +59,4 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 
 ## 更新日志
 
-待更新
+[挖坑日志](https://lixingyong.com/s/halo-theme-sakure)
