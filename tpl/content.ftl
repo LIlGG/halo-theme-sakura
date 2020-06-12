@@ -21,7 +21,7 @@
 			<#if post.topPriority?? && post.topPriority!=0>
 				<i class="iconfont hotpost">&#xe758;</i>
 			</#if>
-			<i class="iconfont">&#xe65f;</i>${post.createTime?string("yyyy-MM-dd")}
+			<i class="iconfont">&#xe65f;</i>发布于 ${post.createTime?string("yyyy-MM-dd")}
 		</div>
 		<p>${post.summary!}</p>
 		<footer class="entry-footer">

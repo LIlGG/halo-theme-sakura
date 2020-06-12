@@ -15,6 +15,7 @@
     </div>
     <div class="entry-content">
         ${post.formatContent!}
+        <p>Q.E.D. <i class="fa fa-meetup" aria-hidden="true" style="color:#d34836"></i></p>
     </div><!-- .entry-content -->
     <#if settings.alipay_code?? || settings.wechat_code??>
     <div class="single-reward">
@@ -34,7 +35,10 @@
     </#if>
     <footer class="post-footer">
         <div class="post-lincenses">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow">
+                <i class="fa fa-creative-commons" aria-hidden="true"></i>
+                知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议
+            </a>
         </div>
         <div class="post-tags">
             <#if tags?? && tags?size gt 0>
