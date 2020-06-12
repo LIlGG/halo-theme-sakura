@@ -1005,6 +1005,17 @@ others:
           label: 开启
         - value: false
           label: 关闭
+    footer_logo:
+      name: footer_logo
+      label: 页脚logo
+      type: text
+      default: "https://cdn.lixingyong.com/img/Sakura/images/sakura.svg"
+    footer_case_number:
+      name: footer_case_number
+      label: 备案信息
+      type: text
+      default: ""
+      description: "为空则不展示备案号（建议添加）"
     head_notice:
       name: head_notice
       label: 开启公告

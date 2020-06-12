@@ -21,13 +21,18 @@
 	<div class="site-info">
 		<div class="footertext">
 			<p class="foo-logo"
-			   style="background-image: url('${theme_base!}/images/f-logo.png');"></p>
-			<p>
+			   style="background-image: url('${settings.footer_logo?default('https://cdn.lixingyong.com/img/Sakura/images/sakura.svg')}');"></p>
+			<p style="font-family: 'Ubuntu', sans-serif;">
 				<@global.footer />
+			</p>
+			<p>
+				© ${.now?string("yyyy")} ${user.nickname!}
+				<#if settings.footer_case_number??  && settings.footer_case_number != "">
+				<a href="http://www.beian.miit.gov.cn" target="_blank">${settings.footer_case_number}</a>
+				</#if>
 			</p>
 		</div>
 		<div class="footer-device">
-			&nbsp; <a href="http://www.akina.pw/themeakina" rel="designer" target="_blank">Theme</a> &nbsp; <a href="https://halo.run/" target="_blank" rel="nofollow">Halo</a> &nbsp;
 		</div>
 	</div><!-- .site-info -->
 </footer><!-- #colophon -->
