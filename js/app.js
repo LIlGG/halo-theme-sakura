@@ -180,7 +180,7 @@ var LIlGGAttachContext = {
                     hide_post_thumb_first.addClass('post-list-show');
             }
         })
-    }(),
+    },
     // 文章目录
     TOC: function() {
         if( document.body.clientWidth <= 1200 ) {
@@ -826,6 +826,7 @@ $(function () {
     // 新增功能
     if(Poi.themeChange)
         LIlGGAttachContext.CBG(); // 主题切换
+    LIlGGAttachContext.PLSA(); // 文章列表动画
     LIlGGAttachContext.BGV(); // 背景视频
     if(Poi.toc)
         LIlGGAttachContext.TOC(); // 文章目录

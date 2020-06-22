@@ -42,7 +42,7 @@
         <#if (settings.pagenav_style!'ajax') == 'ajax'>
             <div id="pagination">
                 <#if pagination.hasNext>
-                    <a href="${pagination.nextPageFullPath!}" class="">下一页</a>
+                    <a href="${pagination.nextPageFullPath!}" class="">Previous</a>
                 <#else>
                     <span>没有更多文章了</span>
                 </#if>
