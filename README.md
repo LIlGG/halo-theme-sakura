@@ -17,7 +17,7 @@
 DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 
 截图：
-![screenshot.png](https://cdn.lixingyong.com/halo-sakura/image/1591804854.jpg)
+![screenshot.png](https://cdn.lixingyong.com/halo-sakura/image/1591804854.jpg?x-oss-process=image/auto-orient,1/resize,m_fixed,w_840,h_530)
 
 ## 功能
 
@@ -29,7 +29,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] Lazyload
 - [ ] 集成Live2D
 - [x] 代码高亮，且实现仿Mac
-- [ ] 自定义留言
+- [x] 自定义留言（目前实现了一部分）
 - [x] 文章目录
 - [x] 主题切换
 - [ ] 相册
@@ -40,7 +40,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [ ] 复制提示功能
 - [x] 404 页面
 - [x] 个人信息（页脚）
-- [ ] 分享功能
+- [x] 分享功能（实现部分）
 
 > Tip:
 >> 上述功能大部分均可配置。具体操作在 后台 -> 外观 -> 主题 -> 设置 中进行配置   
