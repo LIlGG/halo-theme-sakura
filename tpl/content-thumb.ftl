@@ -7,7 +7,7 @@
 		<#if post.thumbnail?? && post.thumbnail!=''>
 			<a href="${post.fullPath!}">
 				<#--  <#include "../layouts/lazyload-img.ftl">  -->
-				<img class="lazyload" src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-src="${post.thumbnail!}">
+				<img class="lazyload" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/svg/loader/orange.progress-bar-stripe-loader.svg" data-src="${post.thumbnail!}">
 			</a>
 		<#else>
 			<a href="${post.fullPath!}">
