@@ -6,7 +6,7 @@
     <#if (settings.patternimg!true) && (settings.links_patternimg?? && settings.links_patternimg!='')>
         <div class="pattern-center">
             <div class="pattern-attachment-img">
-                <img data-src="${settings.links_patternimg!}" src="https://cdn.lixingyong.com/img/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload">
+                <img data-src="${settings.links_patternimg!}" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload">
             </div>
             <header class="pattern-header">
                 <h1 class="entry-title">${options.links_title?default('友情链接')}</h1>
@@ -27,7 +27,7 @@
                     <#list item.links as link>
                         <li class="link-item">
                             <a class="link-item-inner effect-apollo" href="${link.url!}" title="${link.name!}" target="_blank">
-                                <img class="lazyload" data-src="${link.logo!}" src="https://cdn.lixingyong.com/img/svg/loader/trans.ajax-spinner-preloader.svg">
+                                <img class="lazyload" data-src="${link.logo!}" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/svg/loader/trans.ajax-spinner-preloader.svg">
                                 <span class="sitename">${link.name!}</span>
                                 <div class="linkdes">${link.description!}</div>
                             </a>

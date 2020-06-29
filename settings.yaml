@@ -1009,7 +1009,7 @@ others:
       name: footer_logo
       label: 页脚logo
       type: text
-      default: "https://cdn.lixingyong.com/img/Sakura/images/sakura.svg"
+      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/images/sakura.svg"
     footer_case_number:
       name: footer_case_number
       label: 备案信息

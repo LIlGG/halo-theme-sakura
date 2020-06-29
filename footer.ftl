@@ -21,7 +21,7 @@
 	<div class="site-info">
 		<div class="footertext">
 			<p class="foo-logo"
-			   style="background-image: url('${settings.footer_logo?default('https://cdn.lixingyong.com/img/Sakura/images/sakura.svg')}');"></p>
+			   style="background-image: url('${settings.footer_logo?default('https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/images/sakura.svg')}');"></p>
 			<p style="font-family: 'Ubuntu', sans-serif;">
 				<@global.footer />
 			</p>

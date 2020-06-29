@@ -176,7 +176,7 @@ template {
 a {
 	background-color: transparent;
 	text-decoration: none;
-	cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/ayuda.cur), auto
+	cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/cursor/ayuda.cur), auto
 }
 
 a:active,
@@ -185,7 +185,7 @@ a:hover {
 }
 
 a:active {
-	cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/work.cur),alias
+	cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/cursor/work.cur),alias
 }
 
 abbr[title] {
@@ -342,7 +342,7 @@ h1,h2,h3,h4,h5,h6 {
 
 p {
 	margin-bottom: 1.5em;
-	cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/texto.cur),auto
+	cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/cursor/texto.cur),auto
 }
 
 dfn,cite,em,i {
@@ -446,7 +446,7 @@ html {
 body {
 	background: #fff;
 	background-attachment: fixed;
-	cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/normal.cur),auto
+	cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/cursor/normal.cur),auto
 }
 
 blockquote:before,blockquote:after,q:before,q:after {
@@ -651,15 +651,15 @@ a:hover,a:active {
 }
 
 .video-play,.loadvideo {
-	background-image: url('https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/play@32x32.png')
+	background-image: url('https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/images/play@32x32.png')
 }
 
 .video-pause {
-	background-image: url('https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/pause@32x32.png')
+	background-image: url('https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/images/pause@32x32.png')
 }
 
 #video-add {
-	background-image: url('https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/add@32x32.png');
+	background-image: url('https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/images/add@32x32.png');
 	bottom: 45px;
 	display: none
 }
@@ -2036,11 +2036,11 @@ h1.page-title.mb- {
 	z-index: 99;
 	width: 70px;
 	height: 900px;
-	background: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/scroll.png) no-repeat center;
+	background: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/images/scroll.png) no-repeat center;
 	background-size: contain;
 	-webkit-transition: all .5s ease-in-out;
 	transition: all .5s ease-in-out;
-	cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/No_Disponible.cur),auto;
+	cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/cursor/No_Disponible.cur),auto;
 	opacity: 1
 }
 
@@ -2737,7 +2737,7 @@ h1.page-title.mb- {
 	height: 40px;
 	text-align: center;
 	line-height: 45px;
-	background-image: url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/disqus-preloader.svg");
+	background-image: url("https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/images/disqus-preloader.svg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: auto 100%
@@ -4034,16 +4034,16 @@ li.feature-2 {
 }
 
 .headertop.filter-grid:before {
-	background-image: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/grid.png)
+	background-image: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/images/grid.png)
 }
 
 .headertop.filter-dot:before {
-	background-image: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/dot.gif)
+	background-image: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/images/dot.gif)
 }
 
 @media (max-width:860px) {
 	.headertop.filter-dot:before {
-		background-image: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/grid.png)
+		background-image: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/images/grid.png)
 	}
 }
 
@@ -4886,7 +4886,7 @@ i.iconfont.down {
 }
 
 #pagination .loading {
-	background: url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/wordpress-rotating-ball-o.svg");
+	background: url("https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/images/wordpress-rotating-ball-o.svg");
 	background-position: center;
 	background-repeat: no-repeat;
 	color: #555;
@@ -5833,7 +5833,7 @@ i.iconfont.down {
 .oshimai {
 	height: 2em;
 	width: 6.11em;
-	background: url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/oshimai.svg");
+	background: url("https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/images/oshimai.svg");
 	background-size: cover;
 	margin: 0 auto
 }
@@ -6004,7 +6004,7 @@ i.iconfont.down {
 	border: 0;
 	color: #fff;
 	line-height: 1;
-	cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/No_Disponible.cur),auto;
+	cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/cursor/No_Disponible.cur),auto;
 	font-size: 14px;
 	font-weight: 500;
 	padding: 7px 15px;
@@ -6159,7 +6159,7 @@ button.botui-actions-buttons-button::-moz-focus-inner,input.botui-actions-text-i
 }
 
 button.botui-actions-buttons-button {
-	cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/No_Disponible.cur),auto;
+	cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/cursor/No_Disponible.cur),auto;
 	-webkit-appearance: button
 }
 
@@ -7709,7 +7709,7 @@ a.toc-link {
 }
 
 #emotion-toggle,.emotion-box,.on-hover,.emotion-item,.emoji-item,.tieba-container span {
-	cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/No_Disponible.cur),auto
+	cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/cursor/No_Disponible.cur),auto
 }
 
 .alignright {
@@ -8200,7 +8200,7 @@ a.toc-link {
 	padding: 2px;
 	text-shadow: none;
 	border-radius: 0 0 5px 5px;
-	cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/texto.cur),auto
+	cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/cursor/texto.cur),auto
 }
 
 .highlight-wrap code[data-rel]:before {
