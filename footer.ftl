@@ -175,10 +175,10 @@
 	<script src="${theme_base!}/plugins/aplayer/js/index.js"></script>
 </#if>
 <#if settings.post_toc!true>
-	<script src="https://cdn.lixingyong.com/js/plugin/tocbot/4.11.1/js/tocbot.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/js/tocbot/4.11.1/js/tocbot.min.js"></script>
 </#if>
 <script src="//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
-		<script src="${options.comment_internal_plugin_js!'//cdn.jsdelivr.net/npm/halo-comment-normal@1.1.1/dist/halo-comment.min.js'}"></script>
+		<script src="${options.comment_internal_plugin_js!'//cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura@v1.1.0/dist/halo-comment.min.js'}"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
 <script type='text/javascript' src='${theme_base!}/js/app.js?ver=2.0.6.170420'></script>
 <div class="site-statistics">
