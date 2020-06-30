@@ -12,6 +12,8 @@
 
 如果各位有什么更好的做法，希望可以提交 `PR`；
 
+本主题所使用的评论组件为自定义组件，详见：[halo-comment-sakura](https://github.com/LIlGG/halo-comment-sakura)
+
 ## 预览
 
 DEMO：[https://lixingyong.com/](https://lixingyong.com/)
