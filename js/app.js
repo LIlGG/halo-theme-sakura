@@ -659,12 +659,12 @@ var home = location.href,
         // 点击事件
         CE: function () {
             // 显示&隐藏评论
-            $('.comments-hidden').show();
-            $('.comments-main').hide();
-            $('.comments-hidden').click(function () {
-                $('.comments-main').slideDown(500);
-                $('.comments-hidden').hide();
-            });
+            // $('.comments-hidden').show();
+            // $('.comments-main').hide();
+            // $('.comments-hidden').click(function () {
+            //     $('.comments-main').slideDown(500);
+            //     $('.comments-hidden').hide();
+            // });
 
             // 归档页
             $('.archives').hide();
