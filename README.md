@@ -17,7 +17,7 @@
 DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 
 截图：
-![screenshot.png](https://cdn.lixingyong.com/halo-sakura/image/1591804854.jpg?x-oss-process=image/auto-orient,1/resize,m_fixed,w_840,h_530)
+![screenshot.png](https://cdn.lixingyong.com/halo-sakura/image/1591804854.jpg)
 
 ## 功能
 
