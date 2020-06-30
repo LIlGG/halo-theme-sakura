@@ -338,6 +338,10 @@ var LIlGGAttachContext = {
          * 主题部分渲染
          */
         var changeSkinSecter = function() {
+            // 渲染主题，如果配置不存在则直接返回
+            if(Object.getOwnPropertyNames(themeConfig).length == 0) {
+                return;
+            }
             var bgAttr = themeConfig.bgAttr;
 
             $(".blank").css("background-color", "rgba(255,255,255,"+ bgAttr["opacity"] < 0 ? 0 : bgAttr["opacity"] > 1 ? 1 : bgAttr["opacity"] +")");
