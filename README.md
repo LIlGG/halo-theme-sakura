@@ -29,7 +29,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 全站 pjax
 - [x] 背景视频，支持bilibili
 - [x] Lazyload
-- [ ] 集成Live2D
+- [x] 集成Live2D
 - [x] 代码高亮，且实现仿Mac
 - [x] 自定义留言（目前实现了一部分）
 - [x] 文章目录

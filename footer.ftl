@@ -116,8 +116,9 @@
 		<ul class="menu-list">
 			<#list 0..7 as i>
 			<#assign iconStr="settings.bg_icon_${i}" icon = (iconStr?eval)?default("fa fa-television") />
-			<li id="bg_${i}">
-            	<i class="${icon}" aria-hidden="true"></i>
+			<#assign descStr="settings.bg_desc_${i}" desc = (descStr?eval)?default("") />
+			<li id="bg_${i}" data-text="${desc}">
+            	<i class="${icon}" aria-hidden="true" ></i>
           	</li>
 			</#list>
 		</ul>
@@ -164,7 +165,6 @@
 	};
 	/* ]]> */
 </script>
-
 <script type="text/javascript" src="${theme_base!}/plugins/highlight/js/highlight.pack.js"></script>
 <#if settings.code_line!true>
 	<script type="text/javascript" src="${theme_base!}/plugins/highlight/js/highlightjs-line-numbers.min.js"></script>
@@ -181,6 +181,10 @@
 		<script src="${options.comment_internal_plugin_js!'//cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura@v1.2.0/dist/halo-comment.min.js'}"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
 <script type='text/javascript' src='${theme_base!}/js/app.js?ver=2.0.6.170420'></script>
+<#if settings.live2d_switch!true>
+<#include "plugins/live2d/ftl/live2d.ftl">
+<@live2d/>
+</#if>
 <div class="site-statistics">
 	<@global.statistics />
 </div>
