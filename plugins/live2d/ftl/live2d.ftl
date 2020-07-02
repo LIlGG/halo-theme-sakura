@@ -16,7 +16,7 @@
         <span class="fui-cross"></span>
     </div>
 </div>
-<script src="${theme_base!}/plugins/live2d/js/takagi-tips.js"></script>
+<script src="${theme_base!}/plugins/live2d/js/takagi-tips.min.js"></script>
 <script src="${theme_base!}/plugins/live2d/js/live2d.min.js"></script> 
 <script>
     var options = {
