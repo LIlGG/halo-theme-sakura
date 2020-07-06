@@ -53,10 +53,10 @@
 					</#if>
 				</div><!-- .site-branding -->
 				<div class="header-user-avatar">
-					<img src="${user.avatar!}" width="30" height="30">
+					<img src="${(user.avatar)!}" width="30" height="30">
 					<div class="header-user-menu">
 						<div class="herder-user-name">
-							<div class="herder-user-name-u">${user.nickname!}</div>
+							<div class="herder-user-name-u">${(user.nickname)!}</div>
 						</div>
 <#--						<div class="user-menu-option">-->
 <#--							<a href="${context!}/admin/index.html#/dashboard" target="_blank">管理中心</a>-->

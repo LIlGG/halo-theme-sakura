@@ -26,7 +26,7 @@
 				<@global.footer />
 			</p>
 			<p>
-				© ${.now?string("yyyy")} ${user.nickname!}
+				© ${.now?string("yyyy")} ${(user.nickname)!}
 				<#if settings.footer_case_number??  && settings.footer_case_number != "">
 				<a href="http://www.beian.miit.gov.cn" target="_blank">${settings.footer_case_number}</a>
 				</#if>
@@ -56,8 +56,8 @@
 <!-- m-nav-center -->
 <div id="mo-nav">
 	<div class="m-avatar">
-		<#if user.avatar??>
-			<img src="${user.avatar!}">
+		<#if (user.avatar)??>
+			<img src="${(user.avatar)!}">
 		<#else>
 			<img src="${theme_base!}/images/avatar.jpg">
 		</#if>
