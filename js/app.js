@@ -16,7 +16,7 @@ var LIlGGAttachContext = {
     // 补充功能的PJAX
     PJAX: function () {
         // 暂停背景视频
-        if (Poi.headFocus)
+        if (Poi.headFocus && Poi.bgvideo)
             LIlGGAttachContext.BGV().bgPause();
         // 渲染主题
         LIlGGAttachContext.CBG().changeSkinSecter();
@@ -850,7 +850,7 @@ $(function () {
     if (Poi.themeChange)
         LIlGGAttachContext.CBG(); // 主题切换
     LIlGGAttachContext.PLSA(); // 文章列表动画
-    if (Poi.headFocus)
+    if (Poi.headFocus && Poi.bgvideo)
         LIlGGAttachContext.BGV(); // 背景视频
     if (Poi.toc)
         LIlGGAttachContext.TOC(); // 文章目录

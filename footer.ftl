@@ -140,7 +140,8 @@
 		"toc": "${(settings.post_toc!true)?string('true','')}",
 		"codeLine": "${(settings.code_line!true)?string('true','')}",
 		"themeChange": "${(settings.code_line!true)?string('true','')}",
-		"headFocus": "${(settings.head_focus!true)?string('true','')}"
+		"headFocus": "${(settings.head_focus!true)?string('true','')}",
+		"bgvideo": "${(settings.bgvideo!true)?string('true','')}"
 	};
 
 	var bgConfig = {
