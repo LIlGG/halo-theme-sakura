@@ -16,7 +16,8 @@ var LIlGGAttachContext = {
     // 补充功能的PJAX
     PJAX: function () {
         // 暂停背景视频
-        LIlGGAttachContext.BGV().bgPause();
+        if (Poi.headFocus)
+            LIlGGAttachContext.BGV().bgPause();
         // 渲染主题
         LIlGGAttachContext.CBG().changeSkinSecter();
         // 延迟加载图片
@@ -836,7 +837,6 @@ var home = location.href,
  * 独立功能，可拔插
  */
 $(function () {
-
     Siren.AH(); // 自适应窗口高度
     Siren.PE(); // 进程
     Siren.NH(); // 显示&隐藏导航栏
@@ -850,7 +850,8 @@ $(function () {
     if (Poi.themeChange)
         LIlGGAttachContext.CBG(); // 主题切换
     LIlGGAttachContext.PLSA(); // 文章列表动画
-    LIlGGAttachContext.BGV(); // 背景视频
+    if (Poi.headFocus)
+        LIlGGAttachContext.BGV(); // 背景视频
     if (Poi.toc)
         LIlGGAttachContext.TOC(); // 文章目录
     LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
