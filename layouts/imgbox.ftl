@@ -1,4 +1,4 @@
-<figure id="centerbg" class="centerbg" style="background-image: url('${settings.focus_img_1!}');
+<figure id="centerbg" class="centerbg" style="background-image: url('${settings.focus_img_1!'${theme_base!}/images/hd.jpg'}');
 	<#if !(settings.focus_height!true)>
 		background-position: center center;background-attachment: inherit;
 	</#if>

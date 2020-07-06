@@ -11,7 +11,7 @@ general:
       label: 展开导航菜单
       type: radio
       data-type: bool
-      default: false
+      default: true
       options:
         - value: true
           label: 开启
@@ -69,7 +69,7 @@ general:
       label: 首页文章风格
       type: radio
       data-type: string
-      default: standard
+      default: imageflow
       options:
         - value: standard
           label: 标准
@@ -120,7 +120,7 @@ mainScreen:
       name: focus_tou
       label: 头部样式
       type: select
-      default: avatar
+      default: glitch-text
       options:
         - value: no-tou
           label: 无
@@ -132,7 +132,7 @@ mainScreen:
       name: glitch_text
       label: 聚焦故障文本
       type: text
-      default: 'HI'
+      default: 'Hello World'
       description: '该文本只有头部样式开启故障文字才能显示'
     focus_infos:
       name: focus_infos
@@ -160,7 +160,6 @@ mainScreen:
       name: focus_img_1
       label: 背景图
       type: attachment
-      default: '/louie_senpai_siren/images/hd.jpg'
 #    focus_img_2:
 #      name: focus_img_2
 #      label: 背景图 - 2
@@ -181,7 +180,7 @@ mainScreen:
       name: focus_img_filter
       label: 背景图滤镜
       type: select
-      default: filter-nothing
+      default: filter-grid
       options:
         - value: filter-nothing
           label: 无
@@ -300,7 +299,7 @@ post:
       name: code_pretty
       label: 文章代码高亮主题
       type: select
-      default: Default
+      default: Tomorrow Night
       options:
         - value: Default
           label: Default
@@ -405,12 +404,13 @@ focus:
       name: feature_title
       label: 聚焦图标
       type: text
+      default: 'fa fa-anchor'
       placeholder: '聚焦前的小图标，不填写就不显示！'
     feature_title:
       name: feature_title
       label: 聚焦标题
       type: text
-      default: '聚焦'
+      default: ' START:DASH!!'
       placeholder: '默认为聚焦，你也可以修改为其他，当然不能当广告用！不允许！！'
     feature1_img:
       name: feature1_img
@@ -1325,7 +1325,7 @@ others:
       label: 开启PJAX局部刷新
       type: radio
       data-type: bool
-      default: false
+      default: true
       options:
         - value: true
           label: 开启
@@ -1397,7 +1397,7 @@ additional:
       name: aplayer_preload
       label: 预加载
       type: select
-      default: auto
+      default: none
       options:
         - value: none
           label: none
@@ -1409,7 +1409,7 @@ additional:
       name: aplayer_order
       label: 循环顺序
       type: select
-      default: list
+      default: random
       options:
         - value: list
           label: list
