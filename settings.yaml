@@ -132,7 +132,7 @@ mainScreen:
       name: glitch_text
       label: 聚焦故障文本
       type: text
-      default: 'Hello World'
+      default: 'Hi,Friend'
       description: '该文本只有头部样式开启故障文字才能显示'
     focus_infos:
       name: focus_infos
@@ -390,16 +390,6 @@ focus:
           label: 开启
         - value: false
           label: 关闭
-    feature_type:
-      name: feature_type
-      label: 聚焦图类型
-      type: select
-      default: v2
-      options:
-        - value: original
-          label: 原版
-        - value: v2
-          label: 第二版
     feature_icon:
       name: feature_title
       label: 聚焦图标
