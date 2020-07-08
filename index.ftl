@@ -8,7 +8,11 @@
 
 
 <#if settings.head_notice!false && settings.notice_title!=''>
-	<div class="notice">
+	<div class="notice" style="
+	<#if (settings.focus_height!true)>
+		margin-top: 20px;
+	</#if>
+		">
 		<i class="iconfont">&#xe66b;</i>
 		<div class="notice-content">${settings.notice_title!}</div>
 	</div>
