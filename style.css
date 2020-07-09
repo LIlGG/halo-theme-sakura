@@ -446,7 +446,8 @@ html {
 body {
 	background: #fff;
 	background-attachment: fixed;
-	cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/cursor/normal.cur),auto
+	cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/cursor/normal.cur),auto;
+	background-repeat: no-repeat;
 }
 
 blockquote:before,blockquote:after,q:before,q:after {
