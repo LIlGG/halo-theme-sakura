@@ -1126,7 +1126,7 @@ live2d:
       label: 记录 ID (刷新后恢复)
       type: radio
       data-type: bool
-      default: true
+      default: false
       options:
         - value: true
           label: 显示
@@ -1220,52 +1220,58 @@ live2d:
           label: 开启
         - value: false
           label: 关闭
-    live2d_waifuSize:
-      name: live2d_waifuSize
+    live2d_takagiSize:
+      name: live2d_takagiSize
       label: 看板娘大小
       type: text
       data-type: string
       default: "280x250"
-    live2d_waifuTipsSize:
-      name: live2d_waifuTipsSize
+    live2d_takagiTipsSize:
+      name: live2d_takagiTipsSize
       label: 提示框大小
       type: text
       data-type: string
+      default: "250x70"
+    live2d_takagiFontSize:
+      name: live2d_takagiFontSize
+      label: 字体大小
+      type: text
+      data-type: string
       default: "12px"
-    live2d_waifuToolFont:
-      name: live2d_waifuToolFont
+    live2d_takagiToolFont:
+      name: live2d_takagiToolFont
       label: 工具栏字体
       type: text
       data-type: string
       default: "14px"
-    live2d_waifuToolLine:
-      name: live2d_waifuToolLine
+    live2d_takagiToolLine:
+      name: live2d_takagiToolLine
       label: 工具栏行高
       type: text
       data-type: string
       default: "20px"
-    live2d_waifuToolTop:
-      name: live2d_waifuToolTop
+    live2d_takagiToolTop:
+      name: live2d_takagiToolTop
       label: 工具栏顶部边距
       type: text
       data-type: string
       default: "0px"
-    live2d_waifuMinWidth:
-      name: live2d_waifuMinWidth
+    live2d_takagiMinWidth:
+      name: live2d_takagiMinWidth
       label: 显示看板娘的最大宽度
       type: text
       data-type: string
       default: "768px"
       description: '当页面小于指定宽度的时候，隐藏看板娘，输入disable则停用此功能'
-    live2d_waifuEdgeSide:
-      name: live2d_waifuEdgeSide
+    live2d_takagiEdgeSide:
+      name: live2d_takagiEdgeSide
       label: 看板娘贴边方向
       type: text
       data-type: string
       default: "left:0"
       description: '使用绝对定位 left:0 就代表靠左'
-    live2d_waifuDraggable:
-      name: live2d_waifuDraggable
+    live2d_takagiDraggable:
+      name: live2d_takagiDraggable
       label: 看板娘拖拽方案
       type: select
       data-type: string
@@ -1277,8 +1283,8 @@ live2d:
           label: 水平拖拽
         - value: 'unlimited'
           label: 自由拖拽
-    live2d_waifuDraggableRevert:
-      name: live2d_waifuDraggableRevert
+    live2d_takagiDraggableRevert:
+      name: live2d_takagiDraggableRevert
       label: 松开鼠标还原拖拽位置
       type: radio
       data-type: bool
