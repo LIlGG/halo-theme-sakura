@@ -26,6 +26,36 @@
         color: ${settings.theme_skin!}
     }
 
+    #nprogress .bar {
+        background: ${settings.theme_skin!}
+    }
+
+    #nprogress .peg {
+        box-shadow: 0 0 10px ${settings.theme_skin!}, 0 0 5px ${settings.theme_skin!};
+    }
+
+    #pagination a:hover {
+        border: 1px solid ${settings.theme_skin!};
+    }
+
+    #pagination a:hover {
+        -webkit-box-shadow: 0 0 4px ${settings.theme_skin!};
+        -moz-box-shadow: 0 0 4px ${settings.theme_skin!};
+        -o-box-shadow: 0 0 4px ${settings.theme_skin!};
+        box-shadow: 0 0 4px ${settings.theme_skin!}
+    }
+
+    .entry-content a:after {
+        background-color: ${settings.theme_skin!}
+    }
+
+    .site-top ul li a:after {
+        background-color: ${settings.theme_skin!}
+    }
+
+    .post-tags a:hover {
+        color: ${settings.theme_skin!}
+    }
     </#if>
     <#if settings.site_custom_style??>
         ${settings.site_custom_style!}
