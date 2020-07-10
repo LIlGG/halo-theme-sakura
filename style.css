@@ -246,11 +246,7 @@ hr {
 	height: 0
 }
 
-pre {
-	overflow: auto
-}
-
-code,kbd,pre,samp {
+code,kbd,samp {
 	font-family: monospace,monospace;
 	font-size: 1em
 }
@@ -381,18 +377,6 @@ blockquote p {
 
 address {
 	margin: 0 0 1.5em
-}
-
-pre {
-	background: rgba(254,250,199,.5);
-	border-radius: 10px;
-	font: 15px/22px "Microsoft YaHei","Arial",Sans-Serif;
-	line-height: 1.6;
-	margin-bottom: 1.6em;
-	max-width: 100%;
-	overflow: auto;
-	text-shadow: none;
-	color: #000
 }
 
 kbd {
@@ -1889,16 +1873,6 @@ i.iconfont.hotpost {
 	left: 0;
 	position: absolute;
 	color: #ff6d6d
-}
-
-.entry-content code {
-	background: rgba(254,250,199,1);
-	color: #e67474;
-	word-break: break-word;
-	font-family: 'Source Code Pro',monospace,Helvetica,Tahoma,Arial,STXihei,"STHeiti Light","Microsoft YaHei",sans-serif;
-	padding: 2px;
-	text-shadow: none;
-	border-radius: 5px
 }
 
 .entry-content a {
@@ -4508,7 +4482,7 @@ i.iconfont.js-toggle-search.iconsearch {
 
 .s-search input {
 	font-size: 1rem;
-	background: #none;
+	background: none;
 	padding: 12px 24px 12px 64px;
 	width: 100%;
 	outline: none;
@@ -6112,7 +6086,7 @@ i.iconfont.down {
 }
 
 @keyframes loading {
-	0 {
+	0% {
 		transform: translate(0,0);
 		background-color: #ababab
 	}
@@ -6766,11 +6740,8 @@ button.botui-actions-buttons-button {
 	}
 }
 
-position:relative;z-index:99;cursor:pointer;
-}
-
 .changeSkin-gear span:before {
-content: "切换主题 | Change Skin "
+	content: "切换主题 | Change Skin "
 }
 
 @media (max-width:800px) {
@@ -8014,11 +7985,8 @@ a.toc-link {
 }
 
 .highlight-wrap code {
-	background: #1d1f21;
-	color: #fff;
 	word-break: break-word;
 	font-family: 'Source Code Pro',monospace,Helvetica,Tahoma,Arial,STXihei,"STHeiti Light","Microsoft YaHei",sans-serif;
-	padding: 2px;
 	text-shadow: none;
 	border-radius: 0 0 5px 5px;
 	cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/cursor/texto.cur),auto
@@ -8048,15 +8016,6 @@ a.toc-link {
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 	pointer-events: none
-}
-
-.hljs {
-	display: block;
-	overflow-x: auto;
-	padding: .5em;
-	color: #abb2bf;
-	background: rgba(254,250,199,.5);
-	border-radius: 10px
 }
 
 .hljs-comment,.hljs-quote {
@@ -8117,7 +8076,6 @@ td.hljs-ln-numbers {
 	user-select: none;
 	text-align: center;
 	color: #888f96;
-	background: #1d1f21;
 	font-family: 'Source Code Pro',monospace,Helvetica,Tahoma,Arial,STXihei,"STHeiti Light","Microsoft YaHei",sans-serif;
 	vertical-align: top;
 	position: absolute;
@@ -8210,7 +8168,6 @@ td.hljs-ln-numbers {
 	z-index: 99;
 	font-family: 'Ubuntu',sans-serif;
 	transform: scaleX(0);
-	transiton-property: transform,background;
 	transition-duration: .3s,.3s
 }
 

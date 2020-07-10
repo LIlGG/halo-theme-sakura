@@ -299,10 +299,8 @@ post:
       name: code_pretty
       label: 文章代码高亮主题
       type: select
-      default: Tomorrow Night
+      default: Dracula
       options:
-        - value: Default
-          label: Default
         - value: AndroidStudio
           label: AndroidStudio
         - value: Dark
