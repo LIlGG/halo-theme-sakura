@@ -22,7 +22,7 @@
             <@linkTag method="listTeams">
                 <#list teams as item>
                     <h3 class="link-title">
-                        <span class="fake-title">${item.team}</span>
+                        <span class="fake-title">${((item.team!'')?length>0)?string((item.team!''), '小伙伴们')}</span>
                     </h3>
                     <ul class="link-items fontSmooth">
                     <#list item.links as link>

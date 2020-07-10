@@ -6,7 +6,7 @@
     <#if (settings.patternimg!true) && (settings.links_patternimg?? && settings.links_patternimg!='')>
         <div class="pattern-center">
             <div class="pattern-attachment-img">
-                <img data-src="${settings.links_patternimg!}" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload">
+                <img data-src="${settings.links_patternimg!}" class="lazyload">
             </div>
             <header class="pattern-header">
                 <h1 class="entry-title">${options.links_title?default('友情链接')}</h1>
@@ -16,12 +16,12 @@
         <div class="blank"></div>
     </#if>
 </@header>
-    <article id="post-${sheet.id!}" class="post-item post-${sheet.id} page type-page status-publish hentry">
+    <article>
         <div class="links">
             <@linkTag method="listTeams">
                 <#list teams as item>
                     <h3 class="link-title">
-                        <span class="fake-title">${item.team}</span>
+                        <span class="fake-title">${((item.team!'')?length>0)?string((item.team!''), '小伙伴们')}</span>
                     </h3>
                     <ul class="link-items fontSmooth">
                     <#list item.links as link>
