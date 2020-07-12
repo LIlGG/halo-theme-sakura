@@ -1325,6 +1325,12 @@ others:
           label: 开启
         - value: false
           label: 关闭
+    comment_mode:
+      name: comment_mode
+      label: 评论模块js
+      type: text
+      default: "https://cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura/dist/halo-comment.min.js"
+      description: "评论js模块，如果当前为空，则获取评论设置中的模块js"
     footer_logo:
       name: footer_logo
       label: 页脚logo
