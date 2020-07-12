@@ -56,12 +56,9 @@
 <!-- m-nav-center -->
 <div id="mo-nav">
 	<div class="m-avatar">
-		<#if (user.avatar)??>
-			<img src="${(user.avatar)!}">
-		<#else>
-			<img src="${theme_base!}/images/avatar.jpg">
-		</#if>
+		<img src="${(user.avatar)!'${theme_base!}/images/avatar.jpg'}">
 	</div>
+
 	<div class="m-search">
 		<form class="m-search-form" method="get" action="/search" role="search">
 			<input class="m-search-input" type="search" name="keyword" placeholder="搜索..." required>
@@ -71,11 +68,20 @@
 		<@menuTag method="tree">
 			<#list menus?sort_by('priority') as menu>
 				<li>
-					<a href="${menu.url!}">${menu.name!}</a>
+					<a href="${menu.url!}">
+						<span class="faa-parent animated-hover">
+						<#if menu.icon?? && menu.icon?trim?length gt 0>
+							<i class="${menu.icon}" aria-hidden="true"></i>
+						</#if>${menu.name!}</span>
+					</a>
 					<#if menu.children?? && menu.children?size gt 0>
 						<ul class="sub-menu">
 							<#list menu.children as child>
-								<li><a href="${child.url!}">${child.name}</a></li>
+								<li>
+								<a href="${child.url!}">
+								<#if child.icon?? && child.icon?trim?length gt 1>
+									<i class="${child.icon}" aria-hidden="true"></i>
+								</#if>${child.name}</a></li>
 							</#list>
 						</ul>
 					</#if>
@@ -83,6 +89,7 @@
 			</#list>
 		</@menuTag>
 	</ul>
+	<p class="m-footer">© ${.now?string("yyyy")} ${(user.nickname)!}</p>
 </div><!-- m-nav-center end -->
 <a href="#" class="cd-top"></a>
 <!-- search start -->
