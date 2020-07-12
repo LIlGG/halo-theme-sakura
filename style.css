@@ -4063,7 +4063,8 @@ li.feature-2 {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	z-index: -1
+	z-index: -1;
+	background-position: center center;
 }
 
 @media (max-width:860px) {

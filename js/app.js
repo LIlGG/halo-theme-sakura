@@ -650,6 +650,12 @@ var home = location.href,
         // 自适应窗口高度
         AH: function () {
             if (Poi.windowheight == 'auto') {
+                if(window.outerWidth <= 860) {
+                    $('#centerbg').css({ 'height': 300 });
+                    $('.headertop').addClass("headertop-bar");
+                    return;
+                }
+                $('.headertop').removeClass("headertop-bar");
                 if ($('h1.main-title').length > 0) {
                     var _height = $(window).height();
                     $('#centerbg').css({ 'height': _height });
