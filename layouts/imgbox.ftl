@@ -17,7 +17,9 @@
 			</#if>
 		</#if>
 		<div class="header-info">
-			<p user.description??><i class="fa fa-quote-left"></i>${(user.description)?default('这条说明是默认信息哦！在后台-个人资料-个人说明中进行修改')}<i class="fa fa-quote-right"></i></p>
+			<#if user.description?default("")?trim?length gt 1>
+			<p><i class="fa fa-quote-left"></i>${(user.description)?default('这条说明是默认信息哦！在后台-个人资料-个人说明中进行修改')}<i class="fa fa-quote-right"></i></p>
+			</#if>
 			<div class="top-social_v2">
 			    <li id="bg-pre">
             		<img class="flipx" src="${theme_base!}/images/nextImg.svg">
