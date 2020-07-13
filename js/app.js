@@ -349,8 +349,8 @@ var LIlGGAttachContext = {
             $("body").css("background-image", bgAttr["url"] == "" ? "none" : "url(" + bgAttr["url"] + ")");
 
             changeSkinSecter();
-            // 夜间模式不保存
-            (!callback || typeof callback == 'undefined' || callback == undefined) ? false : callback(bgAttr["isNightMode"])
+            // 夜间模式不保存（暂时去掉）
+            // (!callback || typeof callback == 'undefined' || callback == undefined) ? false : callback(bgAttr["isNightMode"])
         }
 
         /**
