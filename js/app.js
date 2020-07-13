@@ -182,7 +182,6 @@ var LIlGGAttachContext = {
         $("article.post-list-thumb:not(.post-list-show)").each(function (index, item) {
             var pTop = item.getBoundingClientRect().top;
             var window_height = $(window).height();
-
             if (pTop <= window_height) {
                 $(item).addClass('post-list-show');
             } else {
@@ -391,6 +390,26 @@ var LIlGGAttachContext = {
         return {
             changeSkinSecter: changeSkinSecter
         }
+    },
+    // 移动端回到顶部
+    MGT: function() {
+        var offset = 20,
+        scroll_top_duration = 700,
+        $m_back_to_top = $('.m-cd-top')
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > offset) {
+                $m_back_to_top.addClass('cd-is-visible');
+            } else {
+                $m_back_to_top.removeClass('cd-is-visible');
+            }
+        });
+        $m_back_to_top.on('click', function (event) {
+            event.preventDefault();
+            $('body,html').animate({
+                scrollTop: 0,
+            }, scroll_top_duration
+            );
+        });
     }
 }
 
@@ -808,7 +827,7 @@ var home = location.href,
             var offset = 100,
                 offset_opacity = 1200,
                 scroll_top_duration = 700,
-                $back_to_top = $('.cd-top');
+                $back_to_top = $('.cd-top')
             $(window).scroll(function () {
                 if ($(this).scrollTop() > offset) {
                     $back_to_top.addClass('cd-is-visible');
@@ -861,6 +880,7 @@ $(function () {
     if (Poi.toc)
         LIlGGAttachContext.TOC(); // 文章目录
     LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
+    LIlGGAttachContext.MGT(); // 移动端回到顶部
     // 延迟加载图片
     lazyload();
 

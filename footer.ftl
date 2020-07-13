@@ -92,6 +92,11 @@
 	<p class="m-footer">© ${.now?string("yyyy")} ${(user.nickname)!}</p>
 </div><!-- m-nav-center end -->
 <a href="#" class="cd-top"></a>
+<!-- m-cd-top start -->
+<button class="m-cd-top" title="Go to top">
+	<i class="fa fa-chevron-up" aria-hidden="true"></i>
+</button>
+<!-- m-cd-top end -->
 <!-- search start -->
 <form class="js-search search-form search-form--modal" method="get" action="/search" role="search">
 	<div class="search-form__inner">

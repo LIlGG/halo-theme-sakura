@@ -1449,7 +1449,7 @@ i.iconfont.hotpost {
 	border-radius: 10px;
 	background-color: rgba(255,255,255,0);
 	box-shadow: 0 1px 20px -6px rgba(0,0,0,.5);
-	opacity: 0;
+	opacity: 1;
 	transition: box-shadow .3s ease
 }
 
@@ -2003,6 +2003,29 @@ h1.page-title.mb- {
 	margin-top: 100px
 }
 
+.m-cd-top {
+	display: none;
+	opacity: 0;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 99;
+    border: 0;
+    outline: 0;
+    background-color: #fff;
+    color: #404040;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,.12), 0px 2px 2px 0px rgba(0,0,0,.24);
+    transition: box-shadow .2s ease;
+}
+
+.m-cd-top.cd-is-visible {
+	opacity: 1;
+}
+
 .cd-top {
 	position: fixed;
 	right: 25px;
@@ -2051,6 +2074,10 @@ h1.page-title.mb- {
 	.cd-top span {
 		height: 10px;
 		width: 50px
+	}
+
+	.m-cd-top {
+		display: block;
 	}
 }
 

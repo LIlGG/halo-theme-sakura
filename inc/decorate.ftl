@@ -56,6 +56,13 @@
     .post-tags a:hover {
         color: ${settings.theme_skin!}
     }
+
+    @media (max-width: 860px) {
+        #mo-nav ul li a:hover {
+            color: ${settings.theme_skin!};
+        }
+    }
+    
     </#if>
     <#if settings.site_custom_style??>
         ${settings.site_custom_style!}
