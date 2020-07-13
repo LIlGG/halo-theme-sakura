@@ -275,14 +275,14 @@ var LIlGGAttachContext = {
             $('html').toggleClass('code-block-fullscreen-html-scroll');
         });
 
-        // $('pre code').each(function(i, block) {
-        //     $(block).attr({
-        //         id: 'hljs-' + i
-        //     });
+        $('pre code').each(function(i, block) {
+            $(block).attr({
+                id: 'hljs-' + i
+            });
 
-        //     $(this).after('<a class="copy-code" href="javascript:" data-clipboard-target="#hljs-' + i + '" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a>');
-        //     new ClipboardJS('.copy-code');
-        // })  
+            $(this).after('<a class="copy-code" href="javascript:" data-clipboard-target="#hljs-' + i + '" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a>');
+            new ClipboardJS('.copy-code');
+        })  
     },
     // 主题切换
     CBG: function () {

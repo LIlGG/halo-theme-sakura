@@ -193,6 +193,7 @@
 </#if>
 <script src="//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
 <script src="${settings.comment_mode!'//cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura@v1.3.1/dist/halo-comment.min.js'}"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
 <script type='text/javascript' src='${theme_base!}/js/app.js?ver=2.0.6.170420'></script>
 <#if settings.live2d_switch!true>
