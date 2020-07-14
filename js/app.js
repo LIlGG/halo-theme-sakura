@@ -318,12 +318,13 @@ var LIlGGAttachContext = {
             Object.keys(bgConfig).forEach(function (currBg) {
                 $(".skin-menu " + "#" + currBg).on("click", function () {
                     changeBg(currBg, function (isNightMode) {
-                        // 非夜间模式才保存
-                        if (!isNightMode) {
-                            // 保存tagClass, 方便下次查询
-                            utils.setCookie("bgTagClass", currBg, 30);
-                        }
-
+                        // 非夜间模式才保存（暂时去除）
+                        // if (!isNightMode) {
+                        //     // 保存tagClass, 方便下次查询
+                        //     utils.setCookie("bgTagClass", currBg, 30);
+                        // }
+                        // 保存tagClass, 方便下次查询
+                        utils.setCookie("bgTagClass", currBg, 30);
                         // 绑定完之后隐藏主题开关
                         $(".skin-menu").removeClass('show');
                         setTimeout(function () {
@@ -346,11 +347,11 @@ var LIlGGAttachContext = {
             themeConfig.bgAttr = bgAttr;
 
             $("#night-mode-cover").css("visibility", bgAttr["isNightMode"] ? "visible" : "hidden");
+            $("body").removeAttr("style");
             $("body").css("background-image", bgAttr["url"] == "" ? "none" : "url(" + bgAttr["url"] + ")");
-
             changeSkinSecter();
-            // 夜间模式不保存（暂时去掉）
-            // (!callback || typeof callback == 'undefined' || callback == undefined) ? false : callback(bgAttr["isNightMode"])
+            // 回调切换主题方法
+            (!callback || typeof callback == 'undefined' || callback == undefined) ? false : callback(bgAttr["isNightMode"])
         }
 
         /**
@@ -377,6 +378,20 @@ var LIlGGAttachContext = {
                 $(".changeSkin-gear, .toc").css("background", "rgba(255,255,255,0.8)");
             } else {
                 $(".changeSkin-gear, .toc").css("background", "none");
+            }
+
+            switch(bgAttr["strategy"]) {
+                case "no-repeat":
+                    $("body").css("background-repeat", "no-repeat");
+                    break;
+                case "repeat":
+                    $("body").css("background-repeat", "repeat");
+                    break;
+                case "cover":
+                    $("body").css("background-size", "cover");
+                    break;
+                default:
+                    break;
             }
         }
 

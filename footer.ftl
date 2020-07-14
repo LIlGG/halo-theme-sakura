@@ -161,6 +161,7 @@
 		<#assign name = (("settings.bg_name_" + i)?eval)?default(""), 
 				desc = (("settings.bg_desc_" + i)?eval)?default(""),
 				url = (("settings.bg_url_" + i)?eval)?default(""),
+				strategy = (("settings.bg_img_strategy_" + i)?eval)?default(""),
 				isSkinSecter = (("settings.bg_skin_secter_" + i)?eval)?default(""),
 				isNight = (("settings.bg_night_" + i)?eval)?default(""),
 				isNightMode = (("settings.bg_night_mode_" + i)?eval)?default(""),
@@ -170,10 +171,12 @@
 			"name": "${name}",
 			"desc": "${desc}",
 			"url": "${url}",
+			"strategy": "${strategy}",
 			"isSkinSecter": "${(isSkinSecter!false)?string('true', '')}",
 			"isNight": "${(isNight!true)?string('true', '')}",
 			"isNightMode": "${(isNightMode!true)?string('true', '')}",
 			"opacity": "${opacity}"
+
 		},
 	</#list>
 	};

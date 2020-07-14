@@ -492,6 +492,20 @@ theme:
       label: 主题一 图片链接
       type: attachment
       default: ''
+    bg_img_strategy_0:
+      nmae: bg_img_strategy_0
+      label: 主题一 图片处理策略
+      type: select
+      default: none
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
     bg_icon_0:
       name: bg_icon_0
       label: 主题一 图标
@@ -555,6 +569,20 @@ theme:
       label: 主题二 图片链接
       type: attachment
       default: 'https://view.moezx.cc/images/2018/01/03/sakura.png'
+    bg_img_strategy_1:
+      nmae: bg_img_strategy_1
+      label: 主题二 图片处理策略
+      type: select
+      default: none
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
     bg_icon_1:
       name: bg_icon_1
       label: 主题二 图标
@@ -618,6 +646,20 @@ theme:
       label: 主题三 图片链接
       type: attachment
       default: 'https://view.moezx.cc/images/2018/01/03/plaid2dbf8.jpg'
+    bg_img_strategy_2:
+      nmae: bg_img_strategy_2
+      label: 主题三 图片处理策略
+      type: select
+      default: none
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
     bg_icon_2:
       name: bg_icon_2
       label: 主题三 图标
@@ -681,6 +723,20 @@ theme:
       label: 主题四 图片链接
       type: attachment
       default: 'https://view.moezx.cc/images/2018/01/24/kyotoanimation.png'
+    bg_img_strategy_3:
+      nmae: bg_img_strategy_3
+      label: 主题四 图片处理策略
+      type: select
+      default: none
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
     bg_icon_3:
       name: bg_icon_3
       label: 主题四 图标
@@ -744,6 +800,20 @@ theme:
       label: 主题五 图片链接
       type: attachment
       default: 'https://view.moezx.cc/images/2018/09/17/little-monster.png'
+    bg_img_strategy_4:
+      nmae: bg_img_strategy_4
+      label: 主题五 图片处理策略
+      type: select
+      default: none
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
     bg_icon_4:
       name: bg_icon_4
       label: 主题五 图标
@@ -807,6 +877,20 @@ theme:
       label: 主题六 图片链接
       type: attachment
       default: 'https://view.moezx.cc/images/2018/01/10/star02.png'
+    bg_img_strategy_5:
+      nmae: bg_img_strategy_5
+      label: 主题六 图片处理策略
+      type: select
+      default: none
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
     bg_icon_5:
       name: bg_icon_5
       label: 主题六 图标
@@ -870,6 +954,20 @@ theme:
       label: 主题七 图片链接
       type: attachment
       default: 'https://api.shino.cc/bing/'
+    bg_img_strategy_6:
+      nmae: bg_img_strategy_6
+      label: 主题七 图片处理策略
+      type: select
+      default: cover
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
     bg_icon_6:
       name: bg_icon_6
       label: 主题七 图标
@@ -933,6 +1031,20 @@ theme:
       label: 主题八 图片链接
       type: attachment
       default: 'https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.2/other-sites/api-index/images/me.png'
+    bg_img_strategy_7:
+      nmae: bg_img_strategy_7
+      label: 主题八 图片处理策略
+      type: select
+      default: cover
+      options:
+        - value: none
+          label: 无
+        - value: no-repeat
+          label: 不重复
+        - value: repeat
+          label: 重复
+        - value: cover
+          label: 完全覆盖背景
     bg_icon_7:
       name: bg_icon_7
       label: 主题八 图标
