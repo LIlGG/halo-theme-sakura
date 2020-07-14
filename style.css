@@ -7843,13 +7843,14 @@ a.toc-link {
 
 .the-feature img {
 	height: 160px;
-	width: 257px
+	width: 256px
 }
 
 .the-feature.from_left_and_right {
 	position: relative;
 	height: 160px;
-	width: 257px;
+	/** 解决mac本上第三个聚焦图换行的BUG issues #7 */
+	width: 256px;
 	box-shadow: 1px 1px 3px rgba(0,0,0,.3);
 	overflow: hidden;
 	border-radius: 10px
