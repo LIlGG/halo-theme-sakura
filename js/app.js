@@ -365,7 +365,7 @@ var LIlGGAttachContext = {
             var bgAttr = themeConfig.bgAttr;
 
             $(".blank").css("background-color", "rgba(255,255,255," + bgAttr["opacity"] < 0 ? 0 : bgAttr["opacity"] > 1 ? 1 : bgAttr["opacity"] + ")");
-
+            debugger
             if (bgAttr["isSkinSecter"]) {
                 $(".pattern-center").removeClass('pattern-center').addClass('pattern-center-sakura');
                 $(".headertop-bar").removeClass('headertop-bar').addClass('headertop-bar-sakura');
