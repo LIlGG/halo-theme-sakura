@@ -1,9 +1,9 @@
-<h1 align="center">Sakura</h1>
+<h1 align="center">Sakura<img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"></h1>
 <p align="center">
   <a href="https://lixingyong.com">预览</a> | <a href="#安装主题">安装</a> | <a href="https://lixingyong.com/s/halo-theme-sakure">更新日志</a>
-  <br />
+  </p>
 
-## 说明
+## 🧐 说明
 该主题的基础版为[halo-theme-siren](https://github.com/halo-dev/halo-theme-siren),非常感谢将基础版主题移植过来，给了我后续补充内容的条件。
 
 > 本主题参照WordPress主题[Sakura](https://github.com/mashirozx/Sakura)制作，在原有的[Siren](https://github.com/halo-dev/halo-theme-siren)主题上添加了Sakura的内容，并优化了部分内容。
@@ -14,14 +14,14 @@
 
 本主题所使用的评论组件为自定义组件，详见：[halo-comment-sakura](https://github.com/LIlGG/halo-comment-sakura)
 
-## 预览
+## 😃 预览
 
 DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 
 截图：
 ![screenshot.png](https://cdn.lixingyong.com/halo-sakura/image/1591804854.jpg)
 
-## 功能
+## ⚡ 功能
 
 - [x] 完善导航栏，支持图标
 - [x] 美化首页，支持故障文本和头像
@@ -34,21 +34,22 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 自定义留言（目前实现了一部分）
 - [x] 文章目录
 - [x] 主题切换
-- [ ] 相册
 - [x] 友链页面
-- [ ] 归档
-- [ ] 集成视频播放插件
 - [x] 移动客户端适配
-- [ ] 复制提示功能
 - [x] 404 页面
 - [x] 个人信息（页脚）
 - [x] 分享功能（实现部分）
 - [x] 自定义邮件模板
+## <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">  待完成功能
+- [ ] 相册
+- [ ] 归档
+- [ ] 集成视频播放插件
+- [ ] 复制提示功能
 
 > Tip:
 >> 上述功能大部分均可配置。具体操作在 后台 -> 外观 -> 主题 -> 设置 中进行配置   
 
-## 安装主题
+## ⭐️ 安装主题
 
 ### 本地安装
 1. 点击[下载](https://github.com/LIlGG/halo-theme-sakura/archive/master.zip)
@@ -62,6 +63,6 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 3. 点击右下方按钮选择安装主题，随后选择 `远程拉取`。
 4. 粘贴复制的链接到远程地址，点击下载即可。
 
-## 更新日志
+## 📄 更新日志
 
 [挖坑日志](https://lixingyong.com/s/halo-theme-sakure)
