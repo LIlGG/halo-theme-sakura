@@ -745,6 +745,26 @@ var home = location.href,
                     $('.headertop').css({ "height": "0px" }).hide();
                 }
             }
+            // 标签云
+            if($("#tag-wordcloud").length > 0) {
+                $("#tag-wordcloud").jQCloud(wordcloud, {autoResize: true});
+            }
+            // 标签
+            if($(".chip").length > 0) {
+                $(".chip").each(function() {
+                    $(this).css("background-color", getRandomColor(Poi.tagRandomColorMin, Poi.tagRandomColorMax))
+                })
+            }
+            // 微信二维码
+            if($("#qrcode").length > 0) {
+                new QRCode(document.getElementById("qrcode"), {
+                    text: "${post.fullPath!}",
+                    width: 128,
+                    height: 128,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                });
+            }
         },
 
         // 点击事件

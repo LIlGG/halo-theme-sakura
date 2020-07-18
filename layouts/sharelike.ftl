@@ -16,7 +16,7 @@
 	display: none;
 	border: 1px solid #eee;
 	position: absolute;
-	z-index: 9;
+	z-index: 999;
 	top: -205px;
 	left: -84px;
 	width: 200px;
@@ -133,14 +133,4 @@
 	</ul>
 	<i class="iconfont show-share">&#xe6eb;</i>
 </div>
-<script type='text/javascript' src='${theme_base!}/js/qrcode.min.js'></script>
-<script>
-	new QRCode(document.getElementById("qrcode"), {
-    text: "${post.fullPath!}",
-    width: 128,
-    height: 128,
-    colorDark : "#000000",
-    colorLight : "#ffffff",
-});
-</script>
 </#if>

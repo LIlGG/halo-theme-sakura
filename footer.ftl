@@ -154,7 +154,10 @@
 		"codeLine": "${(settings.code_line!true)?string('true','')}",
 		"themeChange": "${(settings.code_line!true)?string('true','')}",
 		"headFocus": "${(settings.head_focus!true)?string('true','')}",
-		"bgvideo": "${(settings.bgvideo!true)?string('true','')}"
+		"bgvideo": "${(settings.bgvideo!true)?string('true','')}",
+		"tagRandomColorMin": "${settings.tag_randomColorMin!0.965}",
+		"tagRandomColorMax": "${settings.tag_randomColorMax!0.969}",
+		"fullPath": "${post.fullPath!}"
 	};
 
 	var bgConfig = {
@@ -199,6 +202,19 @@
 <script src="${settings.comment_mode!'//cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura@v1.3.1/dist/halo-comment.min.js'}"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
+<#if settings.tag_cloud!true>
+<script src="https://cdn.bootcdn.net/ajax/libs/jqcloud/1.0.4/jqcloud-1.0.4.min.js"></script>
+<script type='text/javascript'>
+	var wordcloud = [
+		<@tagTag method="list">
+		<#list tags as tag>
+		{'text': '${tag.name!}', 'weight': '${tag.postCount!}', 'link': '${tag.fullPath!}'},
+		</#list>
+		</@tagTag>
+	]
+</script>
+</#if>
+<script type='text/javascript' src='${theme_base!}/js/qrcode.min.js'></script>
 <script type='text/javascript' src='${theme_base!}/js/app.js?ver=2.0.6.170420'></script>
 <#nested />
 <#if settings.live2d_switch!true>

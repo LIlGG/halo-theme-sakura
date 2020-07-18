@@ -56,23 +56,4 @@
 </div>
 <#include "footer.ftl">
 <@footer>
-<#if settings.tag_cloud!true>
-<script src="https://cdn.bootcdn.net/ajax/libs/jqcloud/1.0.4/jqcloud-1.0.4.min.js"></script>
-<@tagTag method="list">
-<script type="text/javascript">
-    $("#tag-wordcloud").jQCloud([
-    <#list tags as tag>
-        {'text': '${tag.name!}', 'weight': '${tag.postCount!}', 'link': '${tag.fullPath!}'},
-    </#list>
-    ], {
-        autoResize: true
-    });
-</script>
-</@tagTag>
-</#if>
-<script type="text/javascript">
-    $(".chip").each(function() {
-        $(this).css("background-color", getRandomColor("${settings.tag_randomColorMin!0.965}", "${settings.tag_randomColorMax!0.969}"))
-    })
-</script>
 </@footer>
