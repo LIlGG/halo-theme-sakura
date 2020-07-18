@@ -21,7 +21,6 @@
     </#if>
 </@header>
 <#if settings.tag_cloud!true>
-<!-- 载入标签云 -->
 <style type="text/css">
     #tag-wordcloud {
         width: 100%;
