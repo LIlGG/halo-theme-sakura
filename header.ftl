@@ -18,7 +18,9 @@
 	<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/css/lib.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='https://cdn.lixingyong.com/css/iconfont/fonts-noto.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/js/font-awesome/4.7.0/css/font-awesome.min.css' type='text/css' media='all' />
+	<#if settings.tag_cloud!true>
 	<link href="https://cdn.bootcdn.net/ajax/libs/jqcloud/1.0.4/jqcloud.min.css" rel="stylesheet">
+	</#if>
 	<#include "inc/decorate.ftl">
 	<script type="text/javascript">
 		if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
