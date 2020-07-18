@@ -45,3 +45,4 @@
     </div>
 </article>
 <#include "footer.ftl">
+<@footer />

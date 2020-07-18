@@ -9,6 +9,7 @@
  * @package Akina
  */
 -->
+<#macro footer>
 </div><!-- #content -->
 <#include "comments.ftl">
 <#if is_post??>
@@ -199,6 +200,7 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
 <script type='text/javascript' src='${theme_base!}/js/app.js?ver=2.0.6.170420'></script>
+<#nested />
 <#if settings.live2d_switch!true>
 <script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <#include "plugins/live2d/ftl/live2d.ftl">
@@ -209,3 +211,4 @@
 </div>
 </body>
 </html>
+</#macro>

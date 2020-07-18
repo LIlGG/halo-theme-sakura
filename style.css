@@ -2134,6 +2134,100 @@ h1.page-title.mb- {
 	margin-right: 5px
 }
 
+/**
+* tags样式
+*/
+.tag-contents {
+	position: relative;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    text-align: center;
+    border: 0;
+    border-radius: 10px;
+    color: rgba(0, 0, 0, .87);
+    background: #fff 50%;
+    background-size: cover;
+    box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07);
+    margin: 0 auto;
+}
+
+.chip-container .tag-title {
+    margin-bottom: 10px;
+    color: #3C4858;
+    font-size: 1.75rem;
+    font-weight: 400;
+}
+
+.chip-container .tag-chips {
+    margin: 1rem auto .5rem;
+    max-width: 850px;
+    text-align: center;
+}
+
+.chip-container .tags-posts {
+    margin-top: 20px;
+}
+
+.chip-container .chip-default {
+    color: #34495e;
+}
+
+.chip-container .chip-active {
+    color: #FFF !important;
+    background: linear-gradient(to bottom right, #FF5E3A 0%, #FF2A68 100%) !important;
+    box-shadow: 2px 5px 10px #aaa !important;
+}
+
+.chip-container .chip {
+    margin: 10px 10px;
+    padding: 19px 14px;
+    display: inline-flex;
+    line-height: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 3px 5px rgba(0,0,0,.12);
+    z-index: 0;
+}
+
+.chip-container .chip:hover {
+    color: #fff;
+    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%) !important;
+}
+
+.chip .tag-length {
+    margin-left: 5px;
+    margin-right: -2px;
+    font-size: .9rem;
+}
+
+.chip-default .tag-length {
+    color: #9b8b2a;
+    margin-top: 1px;
+}
+
+.chip-active .tag-length {
+    color: #fff;
+}
+
+.archive-calendar {
+    margin-top: -60px;
+    max-width: 820px;
+}
+
+#post-calendar {
+    width: 100%;
+    height: 225px;
+}
+
+.settings-content {
+    margin-top: -10px;
+}
+
+
 .post-like {
 	float: right
 }

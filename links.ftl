@@ -6,7 +6,7 @@
     <#if (settings.patternimg!true) && (settings.links_patternimg?? && settings.links_patternimg!='')>
         <div class="pattern-center">
             <div class="pattern-attachment-img">
-                <img data-src="${settings.links_patternimg!}" class="lazyload">
+                <img data-src="${settings.links_patternimg!}" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)>
             </div>
             <header class="pattern-header">
                 <h1 class="entry-title">${options.links_title?default('友情链接')}</h1>
@@ -43,3 +43,4 @@
     </div>
     <div class="have-toc"></div>
 <#include "footer.ftl">
+<@footer />

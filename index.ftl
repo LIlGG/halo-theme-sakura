@@ -65,3 +65,4 @@
 </div><!-- #primary -->
 
 <#include "footer.ftl">
+<@footer />

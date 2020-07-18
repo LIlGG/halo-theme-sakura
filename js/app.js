@@ -444,6 +444,22 @@ var imgError = function(ele, type) {
 }
 
 /**
+ * 获取随机颜色值
+ * 当获取的值越小，色调越偏冷
+ * @param {*} min 色调值，0 - 1 之间的值
+ * @param {*} max 色调值，需要大于min且为0 - 1之间的值
+ */
+var getRandomColor = function(min = 0, max = 1) {
+    min = isNaN(min) ? 0 : Number(min);
+    max = isNaN(max) ? 1 : Number(max);
+    min = min < 0 ? 0 : min > 1 ? 1 : min;
+    max = max < min ? 1 : max > 1 ? 1 : max;
+    return "#" + (function(h) {
+        return new Array(7 - h.length).join("0") + h;
+    })(((Math.random() * (max-min) + min) * 0x1000000 << 0).toString(16))
+}
+
+/**
  * pjax功能
  */
 var pjaxFun = function () {

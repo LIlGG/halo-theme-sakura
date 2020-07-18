@@ -48,6 +48,31 @@ general:
       label: 标签页默认装饰图
       type: attachment
       description: '标签下文章页面默认头部装饰图'
+    tag_cloud:
+      name: tag_cloud
+      label: 开启标签云
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    tag_randomColorMin:
+      name: tag_randomColorMin
+      label: 标签页颜色最小值
+      type: text
+      data-type: double
+      default: 0.999
+      description: '标签随机颜色最低值,值越低越偏冷色调，取值范围在0-1之间，需要小于最大值'
+    tag_randomColorMax:
+      name: tag_randomColorMax
+      label: 标签页颜色最大值
+      type: text
+      data-type: double
+      default: 0.9999
+      description: '标签随机颜色最大值,值越高越偏暖色调，取值范围在0-1之间，需要大于最小值'
     category_patternimg:
       name: category_patternimg
       label: 分类页默认装饰图

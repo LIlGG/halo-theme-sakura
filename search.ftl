@@ -52,3 +52,4 @@
 	</main><!-- #main -->
 </section><!-- #primary -->
 <#include "footer.ftl">
+<@footer />

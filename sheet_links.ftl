@@ -44,3 +44,4 @@
     </div>
     <div class="have-toc"></div>
 <#include "footer.ftl">
+<@footer />
