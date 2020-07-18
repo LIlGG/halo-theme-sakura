@@ -40,6 +40,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 个人信息（页脚）
 - [x] 分享功能（实现部分）
 - [x] 自定义邮件模板
+- [x] 标签目录页面（需要手动在菜单中配置/tags链接）
 ## <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">  待完成功能
 - [ ] 相册
 - [ ] 归档
