@@ -106,7 +106,7 @@
 			<a href="javascript:" class="s-wechat">
 				<div class="wechat-qrcode">
 					<h4>微信扫一扫：分享</h4>
-					<div id="qrcode" class="qrcode" title="${post.fullPath!}"></div>
+					<div id="qrcode" class="qrcode" title="${post.fullPath!}" data-url="${post.fullPath!}"></div>
 					<div class="help">
 						<p>微信里点“发现”，扫一下</p>
 						<p>二维码便可将本文分享至朋友圈。</p>

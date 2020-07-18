@@ -758,7 +758,7 @@ var home = location.href,
             // 微信二维码
             if($("#qrcode").length > 0) {
                 new QRCode(document.getElementById("qrcode"), {
-                    text: "${post.fullPath!}",
+                    text: $("#qrcode").data("url"),
                     width: 128,
                     height: 128,
                     colorDark : "#000000",

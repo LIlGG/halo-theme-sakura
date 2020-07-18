@@ -157,7 +157,6 @@
 		"bgvideo": "${(settings.bgvideo!true)?string('true','')}",
 		"tagRandomColorMin": "${settings.tag_randomColorMin!0.965}",
 		"tagRandomColorMax": "${settings.tag_randomColorMax!0.969}",
-		"fullPath": "${post.fullPath!}"
 	};
 
 	var bgConfig = {
