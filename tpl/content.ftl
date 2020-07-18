@@ -7,7 +7,7 @@
 			<#if post.thumbnail?? && post.thumbnail!=''>
 			<a href="${post.fullPath!}">
 				<div class="overlay"><i class="iconfont">&#xe791;</i></div>
-				<img width="150" height="150" src="${post.thumbnail!}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" />
+				<img width="150" height="150" src="${post.thumbnail!}" class="attachment-post-thumbnail size-post-thumbnail" alt="" />
 			</a>
 			<#else>
 			<a href="${post.fullPath!}">

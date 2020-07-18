@@ -7,11 +7,11 @@
 		<#if post.thumbnail?? && post.thumbnail!=''>
 			<a href="${post.fullPath!}">
 				<#--  <#include "../layouts/lazyload-img.ftl">  -->
-				<img class="lazyload" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/svg/loader/orange.progress-bar-stripe-loader.svg" data-src="${post.thumbnail!}">
+				<img class="lazyload" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/svg/loader/orange.progress-bar-stripe-loader.svg" data-src="${post.thumbnail!}" onerror="imgError(this, IMG_Type.DEFAULT)">
 			</a>
 		<#else>
 			<a href="${post.fullPath!}">
-				<img class="lazyload" src="${theme_base!}/images/temp.jpg">
+				<img class="lazyload" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/svg/loader/orange.progress-bar-stripe-loader.svg" data-src="${theme_base!}/images/temp.jpg" onerror="imgError(this, IMG_Type.DEFAULT)">
 			</a>
 		</#if>
 	</div><!-- thumbnail-->

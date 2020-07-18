@@ -835,15 +835,6 @@ a:hover,a:active {
 	background-color: rgba(0,0,0,.3)
 }
 
-.pattern-attachment-img {
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
-	background-origin: border-box;
-	width: 100%;
-	height: 400px
-}
-
 .pattern-center-sakura header.pattern-header {
 	position: absolute;
 	top: 45%;
@@ -916,10 +907,6 @@ a:hover,a:active {
 @media (max-width:860px) {
 	.pattern-center-sakura header.single-header {
 		padding: 0 4%
-	}
-
-	.pattern-attachment-img {
-		height: 280px
 	}
 
 	.pattern-center-sakura h1.cat-title,.pattern-center-sakura h1.entry-title,.single-center .single-header h1.entry-title {
@@ -1305,7 +1292,8 @@ a:hover,a:active {
 	border-radius: 50%;
 	padding: 2px;
 	border: 1px solid #dadada;
-	position: relative
+	position: relative;
+	object-fit: cover;
 }
 
 .feature :hover .overlay i {

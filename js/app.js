@@ -427,6 +427,22 @@ var LIlGGAttachContext = {
     }
 }
 
+// 图片错误类型
+var IMG_Type = {
+    DEFAULT: {
+        id: 0,
+        url: 'https://cdn.lixingyong.com/2020/07/18/98fca04416944b282a558b98b2131879.png'
+    }
+}
+/**
+ * 图片加载失败/错误后的替补方案
+ * @param {Document} ele 失败的图片dom
+ * @param {Number} type 加载的图片类型
+ */
+var imgError = function(ele, type) {
+    ele.src = type.url;
+}
+
 /**
  * pjax功能
  */
