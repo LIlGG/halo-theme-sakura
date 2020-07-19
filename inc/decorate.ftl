@@ -62,7 +62,13 @@
             color: ${settings.theme_skin!};
         }
     }
-    
+    <#if settings.tag_cloud!true>
+        @media (min-width: 860px) {
+        .chip-container {
+            margin-top: -60px;;
+        }
+    }
+    </#if>
     </#if>
     <#if settings.site_custom_style??>
         ${settings.site_custom_style!}

@@ -34,7 +34,7 @@
 </div>
 </#if>
 <div class="tag-contents">
-    <div id="tags" class="container chip-container" style="<#if settings.tag_cloud!true>margin-top: -60px;</#if>">
+    <div id="tags" class="container chip-container">
         <div class="card">
             <div class="card-content">
                 <div class="tag-chips">
