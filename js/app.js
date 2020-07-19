@@ -746,7 +746,7 @@ var home = location.href,
                 }
             }
             // 标签云
-            if($("#tag-wordcloud").length > 0) {
+            if($("#tag-wordcloud").length > 0 && $("#tag-wordcloud").children().length == 0) {
                 $("#tag-wordcloud").jQCloud(wordcloud, {autoResize: true});
             }
             // 标签
@@ -756,7 +756,7 @@ var home = location.href,
                 })
             }
             // 微信二维码
-            if($("#qrcode").length > 0) {
+            if($("#qrcode").length > 0 && $("#qrcode").children().length == 0) {
                 new QRCode(document.getElementById("qrcode"), {
                     text: $("#qrcode").data("url"),
                     width: 128,
