@@ -10,9 +10,11 @@
             <hr>
         </header><!-- .entry-header -->
     </#if>
+    <#if (metas.toc?boolean)!true>
     <div class="toc-container">
         <div class="toc"></div>
     </div>
+    </#if>
     <div class="entry-content">
         ${post.formatContent!}
         <p>Q.E.D. <i class="fa fa-meetup" aria-hidden="true" style="color:#d34836"></i></p>

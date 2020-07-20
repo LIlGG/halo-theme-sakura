@@ -7,9 +7,11 @@
             <h1 class="entry-title">${sheet.title!}</h1>
         </header><!-- .entry-header -->
     </#if>
+    <#if (metas.toc?boolean)!true>
     <div class="toc-container">
         <div class="toc"></div>
     </div>
+    </#if>
     <div class="entry-content">
         ${sheet.formatContent!}
     </div><!-- .entry-content -->

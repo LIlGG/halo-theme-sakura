@@ -38,9 +38,10 @@
             </@linkTag>
         </div>       
     </article>
+    <#if (metas.toc?boolean)!true>
     <div class="toc-container">
         <div class="toc"></div>
     </div>
-    <div class="have-toc"></div>
+    </#if>
 <#include "footer.ftl">
 <@footer />
