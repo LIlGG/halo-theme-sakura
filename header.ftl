@@ -14,10 +14,12 @@
 	<@global.head />
 	<link rel="stylesheet" href="https://at.alicdn.com/t/font_679578_dishi1yoavm.css" media="all">
 	<link rel='stylesheet' id='siren-css'  href='${theme_base!}/style.css?ver=2.0.6.170420' type='text/css' media='all' />
+	<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" rel="stylesheet">
 	<link href="${theme_base!}/plugins/highlight/css/highlight-${settings.code_pretty!'Default'}.css" type="text/css" rel="stylesheet" />
-	<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/css/lib.css' type='text/css' media='all' />
-	<link rel='stylesheet' href='https://cdn.lixingyong.com/css/iconfont/fonts-noto.css' type='text/css' media='all' />
+	<#if settings.is_aplayer!false>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+	</#if>
 	<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/js/font-awesome/4.7.0/css/font-awesome.min.css' type='text/css' media='all' />
 	<#if settings.tag_cloud!true>
 	<link href="https://cdn.bootcdn.net/ajax/libs/jqcloud/1.0.4/jqcloud.min.css" rel="stylesheet">
