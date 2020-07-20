@@ -254,14 +254,18 @@ var LIlGGAttachContext = {
                     break;
                 }
             }
-            if (lang.toLowerCase() == "hljs") var lang = "text";
-            if (lang.toLowerCase() == "js") var lang = "javascript";
-            if (lang.toLowerCase() == "md") var lang = "markdown";
-            if (lang.toLowerCase() == "py") var lang = "python";
+            // 检测语言是否存在，不存在则使用text
+            var language = hljs.getLanguage(lang.toLowerCase());
+            if(language == undefined) {
+                $code.addClass("language-text").removeClass("language-" + lang);
+            } else {
+                lang = language.name;
+            }
 
             $(this).addClass('highlight-wrap');
             $(this).attr(attributes);
             $code.attr('data-rel', lang.toUpperCase()).addClass(lang.toLowerCase());
+     
             // 启用代码高亮
             hljs.highlightBlock($code[0]);
             // 启用代码行号
