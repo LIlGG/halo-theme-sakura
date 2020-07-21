@@ -22,9 +22,16 @@
 </@header>
 <#if settings.tag_cloud!true>
 <style type="text/css">
+    .site-content {
+        max-width: none
+    }
     #tag-wordcloud {
         width: 100%;
         height: 300px;
+    }
+
+    .tag-contents {
+        max-width: 800px;
     }
 </style>
 <div class="container" data-aos="fade-up">
