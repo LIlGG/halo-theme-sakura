@@ -34,6 +34,11 @@
         max-width: 800px;
     }
 </style>
+<#if !(settings.patternimg!true) || !(settings.tag_patternimg?? && settings.tag_patternimg!='')>
+<header class="entry-header">
+    <h1 class="entry-title">${options.tags_title?default('文章标签')}</h1>
+</header><!-- .entry-header -->
+</#if>
 <div class="container" data-aos="fade-up">
     <div class="card">
         <div id="tag-wordcloud" class="card-content jqcloud"></div>

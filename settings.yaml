@@ -28,6 +28,7 @@ general:
           label: 开启
         - value: false
           label: 关闭
+      description: '文章或部分页面的head图片'
     archives_patternimg:
       name: archives_patternimg
       label: 归档页装饰图
