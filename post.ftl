@@ -3,7 +3,7 @@
 -->
 <#include "header.ftl">
 <@header title="${post.title!} - ${blog_title!}">
-    <#if settings.patternimg!true && post.thumbnail?? && post.thumbnail!=''>
+    <#if (settings.patternimg!true) && (post.thumbnail?? && post.thumbnail!='')>
         <div class="pattern-center-blank"></div>
         <div class="pattern-center single-center">
             <div class="pattern-attachment-img">
