@@ -436,7 +436,7 @@ var LIlGGAttachContext = {
                 setClipboardText(e);
             }
             if(toast) {
-                toast.create("复制成功！<br>Copied to clipboard successfully!", 100000);
+                toast.create("复制成功！<br>Copied to clipboard successfully!", 2000);
             }
         })
 
