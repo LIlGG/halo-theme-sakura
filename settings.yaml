@@ -72,7 +72,7 @@ general:
       label: 标签页颜色最大值
       type: text
       data-type: double
-      default: 0.9999
+      default: 1
       description: '标签随机颜色最大值,值越高越偏暖色调，取值范围在0-1之间，需要大于最小值'
     category_patternimg:
       name: category_patternimg
@@ -1449,6 +1449,76 @@ live2d:
       data-type: string
       default: ""
       description: '额外CSS，请注意，最好最外层使用.takagi 以免污染其他css'
+toast:
+  label: 提示及监听
+  items:
+    open_toast:
+      name: open_toast
+      label: 开启全局提示功能
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    toast_width:
+      name: toast_width
+      label: 提示组件宽度
+      type: text
+      data-type: long
+      default: 260
+    toast_height:
+      name: toast_height
+      label: 提示组件高度
+      type: text
+      data-type: long
+      default: 60
+    toast_top:
+      name: toast_top
+      label: 评论组件垂直位置
+      type: select
+      default: top
+      options:
+        - value: top
+          label: 顶部
+        - value: centent
+          label: 居中
+    toast_color:
+      name: toast_color
+      label: 提示组件文本颜色
+      type: color
+      default: '#fff'
+      description: '默认为白色，可能看不清，但实际上点击是存在的>_<'
+    toast_font_size:
+      name: toast_font_size
+      label: 提示组件文本大小
+      type: text
+      data-type: long
+      default: 14
+    copy_monitor:
+      name: copy_monitor
+      label: 监听复制事件
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    copyright_notice:
+      name: copyright_notice
+      label: 复制内容增加版权声明
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
 others:
   label: 其他
   items:
@@ -1497,7 +1567,7 @@ others:
       type: textarea
       placeholder: '公告内容，文字超出142个字节将会被滚动显示（移动端无效），一个汉字 = 3字节，一个字母 = 1字节，自己计算吧'
 additional:
-  label: 补充功能
+  label: 背景音乐
   items:
     aplayer_float:
       name: aplayer_float

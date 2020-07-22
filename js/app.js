@@ -428,6 +428,29 @@ var LIlGGAttachContext = {
             }, scroll_top_duration
             );
         });
+    },
+    // 复制提示
+    CPY: function() {
+        document.body.addEventListener("copy", function(e) {
+            if(Poi.copyrightNotice && window.getSelection().toString().length > 30) {
+                setClipboardText(e);
+            }
+            if(toast) {
+                toast.create("复制成功！<br>Copied to clipboard successfully!", 100000);
+            }
+        })
+
+        var setClipboardText = function(event) {
+            event.preventDefault();
+            var htmlData = "# 商业转载请联系作者获得授权，非商业转载请注明出处。<br>" + "# For commercial use, please contact the author for authorization. For non-commercial use, please indicate the source.<br>" + "# 协议(License)：署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)<br>" + "# 作者(Author)：" + Poi.nickname + "<br>" + "# 链接(URL)：" + window.location.href + "<br>" + "# 来源(Source)：" + Poi.sitename + "<br><br>" + window.getSelection().toString().replace(/\r\n/g, "<br>");;
+            var textData = "# 商业转载请联系作者获得授权，非商业转载请注明出处。\n" + "# For commercial use, please contact the author for authorization. For non-commercial use, please indicate the source.\n" + "# 协议(License)：署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)\n" + "# 作者(Author)：" + Poi.nickname + "\n" + "# 链接(URL)：" + window.location.href + "\n" + "# 来源(Source)：" + Poi.sitename + "\n\n" + window.getSelection().toString().replace(/\r\n/g, "\n");
+            if (event.clipboardData) {
+                event.clipboardData.setData("text/html", htmlData);
+                event.clipboardData.setData("text/plain", textData);
+            } else if (window.clipboardData) {
+                return window.clipboardData.setData("text", textData);
+            }
+        }
     }
 }
 
@@ -928,6 +951,8 @@ var home = location.href,
         }
     };
 
+var toast = null;
+
 /**
  * 独立功能，可拔插
  */
@@ -951,13 +976,27 @@ $(function () {
         LIlGGAttachContext.TOC(); // 文章目录
     LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
     LIlGGAttachContext.MGT(); // 移动端回到顶部
+    // 复制提示
+    if (Poi.copyMonitor)
+        LIlGGAttachContext.CPY();
     // 延迟加载图片
     lazyload();
 
     if (Poi.pjax) {
         pjaxFun();
     }
-
+    // 全局提示组件
+    if(Poi.openToast && window.outerWidth > 860) {
+        toast = new Toast();
+        toast.init({
+            width: Poi.toastWidth,
+            height: Poi.toastHeight,
+            top: Poi.toastTop,
+            background: Poi.toastBackground,
+            color: Poi.toastColor,
+            'font-size': Poi.toastFontSize
+        })
+    }
     // 点赞
     $.fn.postLike = function () {
         if ($(this).hasClass('done')) {
@@ -1043,4 +1082,100 @@ var utils = {
     removeCookie: function (name) {
         document.cookie = name + mashiro_option.cookie_version + '=; Max-Age=-99999999;';
     },
+}
+
+
+/**
+* 封装的toast组件（使用纯js，可以单独拿出去使用）
+* @author LIlGG
+*/
+class Toast {
+    constructor() {
+        this._t = null;
+        this._timeOut = null;
+        this._settings = {
+            duration: 2000,
+            width: 260,
+            height: 60,
+            top: 'top',
+            background: '#fe9600',
+            color: '#fff',
+            'font-size': 14
+        };
+
+        Toast.prototype.init = function (opt) {
+            _extend(this._settings, opt);
+        };
+
+        /**
+         * 创建Toast
+         * @param {*} text 显示的文本
+         * @param {*} duration 持续时间
+         */
+        Toast.prototype.create = function (text, duration) {
+            // 清除原有的Toast
+            if (this._timeOut) {
+                clearTimeout(this._timeOut);
+                document.body.removeChild(this._t);
+                this._t = null;
+            }
+
+            if (!text) {
+                console.error("提示文本不能为空");
+                return;
+            }
+
+            this._t = document.createElement('div');
+            this._t.className = 't-toast';
+            this._t.innerHTML = '<p class="message"><span>' + text + '</span></p>';
+            document.body.appendChild(this._t);
+            this.setStyle();
+            var _that = this;
+            this._timeOut = setTimeout(function () {
+                // 移除
+                document.body.removeChild(_that._t);
+                _that._timeOut = null;
+                _that._t = null;
+            }, duration || this._settings.duration);
+        };
+
+        Toast.prototype.setStyle = function() {
+            this._t.style.width = this._settings.width + 'px';
+            this._t.style.height = this._settings.height + 'px';
+            this._t.style.position = 'fixed';
+            this._t.style['text-align'] = 'center';
+            this._t.style['z-index'] = '20200531';
+            if (isNaN(Number(this._settings.top))) {
+                if (this._settings.top == 'centent') {
+                    this._t.style.top = _viewHeight() / 2 + 'px';
+                }
+                else if (this._settings.top == 'top') {
+                    this._t.style.top = '0px';
+                }
+            }
+            else {
+                this._t.style.top = this._settings.top + 'px';
+            }
+            this._t.style.left = '50%';
+            this._t.style['margin-left'] = '-' + this._settings.width / 2 + "px";
+            this._t.style.background = this._settings.background;
+            this._t.style.color = this._settings.color;
+            this._t.style['border-bottom-left-radius'] = '4px';
+            this._t.style['border-bottom-right-radius'] = '4px';
+            this._t.style['font-size'] = this._settings['font-size'] + 'px';
+            this._t.style.display = 'flex';
+            this._t.style['justify-content'] = 'center';
+            this._t.style['align-items'] = 'center';
+        }
+
+        function _viewHeight() {
+            return document.documentElement.clientHeight;
+        }
+
+        function _extend(o1, o2) {
+            for (var attr in o2) {
+                o1[attr] = o2[attr];
+            }
+        }
+    }
 }

@@ -157,6 +157,17 @@
 		"bgvideo": "${(settings.bgvideo!true)?string('true','')}",
 		"tagRandomColorMin": "${settings.tag_randomColorMin!0.965}",
 		"tagRandomColorMax": "${settings.tag_randomColorMax!0.969}",
+		"nickname": "${user.nickname!}",
+		"sitename": "${blog_title!}",
+		"openToast": "${(settings.open_toast!true)?string('true','')}",
+		"toastWidth": ${settings.toast_width!},
+		"toastHeight": ${settings.toast_height!},
+		"toastTop": "${settings.toast_top!}",
+		"toastBackground": "${settings.theme_skin!}",
+		"toastColor": "${settings.toast_color!}",
+		"toastFontSize": ${settings.toast_font_size!},
+		"copyMonitor": "${(settings.copy_monitor!true)?string('true','')}",
+		"copyrightNotice": "${(settings.copyright_notice!true)?string('true','')}"
 	};
 
 	var bgConfig = {
