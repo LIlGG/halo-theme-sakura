@@ -41,11 +41,11 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 分享功能（实现部分）
 - [x] 自定义邮件模板
 - [x] 标签目录页面（需要手动在菜单中配置/tags链接）
+- [x] 全局提示&复制提醒功能
 ## <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">  待完成功能
 - [ ] 相册
 - [ ] 归档
 - [ ] 集成视频播放插件
-- [ ] 复制提示功能
 
 > Tip:
 >> 上述功能大部分均可配置。具体操作在 后台 -> 外观 -> 主题 -> 设置 中进行配置   
