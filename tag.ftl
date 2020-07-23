@@ -10,6 +10,7 @@
 <#include "header.ftl">
 <@header title="标签：${tag.name!} - ${blog_title!}">
     <#if (settings.patternimg!true) && ((tag.thumbnail?? && tag.thumbnail!='') || (settings.tag_patternimg?? && settings.tag_patternimg!=''))>
+        <div class="pattern-center-blank"></div>
         <div class="pattern-center">
             <div class="pattern-attachment-img">
                 <img data-src='${((tag.thumbnail)?length>0)?string((tag.thumbnail),"${settings.tag_patternimg!}")}' src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">

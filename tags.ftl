@@ -8,6 +8,7 @@
 <#include "header.ftl">
 <@header title="${options.tags_title?default('文章标签')} - ${blog_title!}">
     <#if (settings.patternimg!true) && (settings.tag_patternimg?? && settings.tag_patternimg!='')>
+        <div class="pattern-center-blank"></div>
         <div class="pattern-center">
             <div class="pattern-attachment-img">
                 <img data-src="${settings.tag_patternimg!}" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
