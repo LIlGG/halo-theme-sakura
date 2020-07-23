@@ -594,7 +594,7 @@ theme:
       name: bg_url_1
       label: 主题二 图片链接
       type: attachment
-      default: 'https://view.moezx.cc/images/2018/01/03/sakura.png'
+      default: 'https://view.lixingyong.com/images/2020/07/23/695cc3a80b21ee7f18bd731824ab9638.png'
     bg_img_strategy_1:
       nmae: bg_img_strategy_1
       label: 主题二 图片处理策略
@@ -671,7 +671,7 @@ theme:
       name: bg_url_2
       label: 主题三 图片链接
       type: attachment
-      default: 'https://view.moezx.cc/images/2018/01/03/plaid2dbf8.jpg'
+      default: 'https://view.lixingyong.com/images/2020/07/23/defc1b6783cd16774900517d3b38ded7.jpg'
     bg_img_strategy_2:
       nmae: bg_img_strategy_2
       label: 主题三 图片处理策略
@@ -748,7 +748,7 @@ theme:
       name: bg_url_3
       label: 主题四 图片链接
       type: attachment
-      default: 'https://view.moezx.cc/images/2018/01/24/kyotoanimation.png'
+      default: 'https://view.lixingyong.com/images/2020/07/23/kyotoanimation.png'
     bg_img_strategy_3:
       nmae: bg_img_strategy_3
       label: 主题四 图片处理策略
@@ -825,7 +825,7 @@ theme:
       name: bg_url_4
       label: 主题五 图片链接
       type: attachment
-      default: 'https://view.moezx.cc/images/2018/09/17/little-monster.png'
+      default: 'https://view.lixingyong.com/images/2020/07/23/little-monster.png'
     bg_img_strategy_4:
       nmae: bg_img_strategy_4
       label: 主题五 图片处理策略
@@ -902,7 +902,7 @@ theme:
       name: bg_url_5
       label: 主题六 图片链接
       type: attachment
-      default: 'https://view.moezx.cc/images/2018/01/10/star02.png'
+      default: 'https://view.lixingyong.com/images/2020/07/23/star02.png'
     bg_img_strategy_5:
       nmae: bg_img_strategy_5
       label: 主题六 图片处理策略
@@ -1056,7 +1056,7 @@ theme:
       name: bg_url_7
       label: 主题八 图片链接
       type: attachment
-      default: 'https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.2/other-sites/api-index/images/me.png'
+      default: 'https://view.lixingyong.com/images/2020/07/23/me.png'
     bg_img_strategy_7:
       nmae: bg_img_strategy_7
       label: 主题八 图片处理策略
