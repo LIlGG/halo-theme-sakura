@@ -142,6 +142,9 @@
 <!-- theme-change end -->
 <script type='text/javascript' src='${theme_base!}/js/jquery.min.js?ver=2.0.6.170420'></script>
 <script type='text/javascript' src='${theme_base!}/js/jquery.pjax.min.js?ver=2.0.6.170420'></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
+<script type='text/javascript' src='${theme_base!}/js/packery-mode.pkgd.min.js?ver=2.0.6.170420'></script>
 <script type='text/javascript' src='${theme_base!}/js/input.min.js?ver=2.0.6.170420'></script>
 <script type='text/javascript'>
 	/* <![CDATA[ */
@@ -224,6 +227,7 @@
 </script>
 </#if>
 <script type='text/javascript' src='${theme_base!}/js/qrcode.min.js'></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 <script type='text/javascript' src='${theme_base!}/js/app.js?ver=2.0.6.170420'></script>
 <#nested />
 <#if settings.live2d_switch!true>

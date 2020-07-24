@@ -17,7 +17,6 @@
 		<div class="blank"></div>
 	</#if>
 </@header>
-
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 			<#include "tpl/content-page.ftl">
