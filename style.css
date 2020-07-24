@@ -8693,6 +8693,7 @@ img[src*="#in-center"] {
 	float: right;
 	margin-top: -2.6em;
 	z-index: 12;
+	margin-right: 1em;
 }
 
 @media screen and (max-width: 860px) {
