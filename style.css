@@ -8482,8 +8482,8 @@ img[src*="#in-center"] {
 }
 
 @media screen and (max-width: 860px) {
-	.gallery-caption {
-		bottom: -3.5em;
+	.wrapper section .gallery-caption p {
+		margin-bottom: 0;
 	}
 }
 
