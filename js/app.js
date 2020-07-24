@@ -35,6 +35,7 @@ var LIlGGAttachContext = {
         if (Poi.toc)
             LIlGGAttachContext.TOC(); // 文章目录
         LIlGGAttachContext.CHS(); // 代码样式
+        LIlGGAttachContext.PHO(); // 图库功能
     },
     // 背景视频
     BGV: function () {
@@ -451,6 +452,61 @@ var LIlGGAttachContext = {
                 return window.clipboardData.setData("text", textData);
             }
         }
+    },
+    // 图库功能
+    PHO: function() {
+        var $photoPage = $('.photo-page');
+        // 判断当前是否为图库界面
+        if($photoPage.length == 0) {
+            return;
+        }
+        // 渲染图库信息
+        var $masonrys = $(".masonry-gallery.gallery");
+        if($masonrys.length > 0) {
+            $masonrys.each(function() {
+                var $imgs = $(this).find("img.lazyload")
+                $imgs.lazyload({
+                    'failure_limit': Math.max($imgs.length - 1, 0)
+                });
+
+                var $items = $(this).find(".gallery-item");
+                var $grid = $(this).isotope({
+                    packery: {
+                        columnWidth: $(this).find(".gallery-item")[0]
+                    },
+                    itemSelector: ".gallery-item"
+                });
+
+                $grid.imagesLoaded().progress(function() {
+                    $grid.isotope('layout');
+                })
+                
+
+                // 过滤
+                $("#gallery-filter li a").on("click", function() {
+                    $("#gallery-filter li a").removeClass("active");
+                    $(this).addClass("active");
+                    var dataFilter = $(this).data("filter");
+                    $masonrys.isotope({
+                        filter: dataFilter
+                    });
+                    return false
+                });
+
+                // 切换风格
+                $("#grid-changer li a").on("click", function() {
+                    $("#grid-changer li a").removeClass("active");
+                    $(this).toggleClass("active");
+                    $items.removeClass("col-3");
+                    $items.removeClass("col-4");
+                    $items.removeClass("col-5");
+                    $items.toggleClass($(this).closest("li").attr("class"));
+                    $masonrys.isotope("layout")
+                })
+
+                $(this).isotope("layout");
+            });
+        }
     }
 }
 
@@ -500,9 +556,9 @@ var pjaxFun = function () {
         Siren.AH();
         Siren.PE();
         Siren.CE();
-        NProgress.done();
         // 额外加载的pjax
         LIlGGAttachContext.PJAX();
+        NProgress.done();
         $("#loading").fadeOut(500);
     }).on('submit', '.search-form,.s-search', function (event) {
         event.preventDefault();
@@ -976,6 +1032,7 @@ $(function () {
         LIlGGAttachContext.TOC(); // 文章目录
     LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
     LIlGGAttachContext.MGT(); // 移动端回到顶部
+    LIlGGAttachContext.PHO(); // 图库功能
     // 复制提示
     if (Poi.copyMonitor)
         LIlGGAttachContext.CPY();
