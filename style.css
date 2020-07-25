@@ -4904,6 +4904,8 @@ i.iconfont.down {
 		margin-bottom: 40px
 	}
 
+
+
 	.openNav {
 		transition-duration: .5s;
 		width: 100%;
@@ -8482,8 +8484,8 @@ img[src*="#in-center"] {
 }
 
 @media screen and (max-width: 860px) {
-	.gallery-caption {
-		bottom: -3.5em;
+	.wrapper section .gallery-caption p {
+		margin-bottom: 0;
 	}
 }
 
@@ -8691,6 +8693,7 @@ img[src*="#in-center"] {
 	float: right;
 	margin-top: -2.6em;
 	z-index: 12;
+	margin-right: 1em;
 }
 
 @media screen and (max-width: 860px) {

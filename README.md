@@ -42,9 +42,10 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 自定义邮件模板
 - [x] 标签目录页面（需要手动在菜单中配置/tags链接）
 - [x] 全局提示&复制提醒功能
+- [x] 相册
 ## <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">  待完成功能
-- [ ] 相册
 - [ ] 归档
+- [ ] 说说
 - [ ] 集成视频播放插件
 
 > Tip:

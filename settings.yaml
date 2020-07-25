@@ -79,6 +79,11 @@ general:
       label: 分类页默认装饰图
       type: attachment
       description: '分类下文章页面默认头部装饰图'
+    photos_patternimg:
+      name: photos_patternimg
+      label: 图库页默认装饰图
+      type: attachment
+      description: '图库页头部装饰图'
     top_search:
       name: top_search
       label: 搜索按钮
