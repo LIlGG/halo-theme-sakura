@@ -462,26 +462,46 @@ var LIlGGAttachContext = {
         }
         // 渲染图库信息
         var $masonrys = $(".masonry-gallery.gallery");
-        if($masonrys.length > 0) {
-            $masonrys.each(function() {
-                var $imgs = $(this).find("img.lazyload")
-                $imgs.lazyload({
-                    'failure_limit': Math.max($imgs.length - 1, 0)
-                });
 
-                var $items = $(this).find(".gallery-item");
-                var $grid = $(this).isotope({
-                    packery: {
-                        columnWidth: $(this).find(".gallery-item")[0]
-                    },
-                    itemSelector: ".gallery-item"
+        var justify = function() {
+            $masonrys.justifiedGallery({
+                margins: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter),
+                rowHeight: 200
+            });
+
+            // 过滤
+            $("#gallery-filter li a").on("click", function() {
+                $("#gallery-filter li a").removeClass("active");
+                $(this).addClass("active");
+                var dataFilter = $(this).data("filter");
+                $masonrys.justifiedGallery({
+                    filter: dataFilter
                 });
+                return false
+            });
+        }
+
+        var masonry = function() {
+            var option = Poi.photosStyle == "masonry" ? {
+                masonry: {
+                    gutter: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter)
+                },
+                itemSelector: ".gallery-item"
+            } : {
+                layoutMode: 'packery',
+                packery: {
+                    columnWidth: 100,
+                    gutter: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter)
+                },
+                itemSelector: ".gallery-item"
+            }
+            $masonrys.each(function() {
+                var $items = $(this).find(".gallery-item");
+                var $grid = $(this).isotope(option);
 
                 $grid.imagesLoaded().progress(function() {
                     $grid.isotope('layout');
                 })
-                
-
                 // 过滤
                 $("#gallery-filter li a").on("click", function() {
                     $("#gallery-filter li a").removeClass("active");
@@ -492,20 +512,28 @@ var LIlGGAttachContext = {
                     });
                     return false
                 });
-
-                // 切换风格
-                $("#grid-changer li a").on("click", function() {
-                    $("#grid-changer li a").removeClass("active");
-                    $(this).toggleClass("active");
-                    $items.removeClass("col-3");
-                    $items.removeClass("col-4");
-                    $items.removeClass("col-5");
-                    $items.toggleClass($(this).closest("li").attr("class"));
-                    $masonrys.isotope("layout")
-                })
-
-                $(this).isotope("layout");
+                
+                if(Poi.photosStyle == "masonry") {
+                    // 切换风格
+                    $("#grid-changer li a").on("click", function() {
+                        $("#grid-changer li a").removeClass("active");
+                        $(this).toggleClass("active");
+                        for(let i = 2; i < 9; i++) {
+                            $items.removeClass("col-" + i);
+                        }
+                        $items.toggleClass($(this).closest("li").attr("class"));
+                        $masonrys.isotope("layout")
+                    })
+                }
             });
+        }
+
+        if($masonrys.length > 0) {
+            if(Poi.photosStyle == "masonry" || Poi.photosStyle == "packery") {
+                masonry();
+            } else {
+                justify();
+            }
         }
     }
 }
@@ -1032,6 +1060,9 @@ $(function () {
         LIlGGAttachContext.TOC(); // 文章目录
     LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
     LIlGGAttachContext.MGT(); // 移动端回到顶部
+    if(Poi.photosStyle == "packery") {
+        supplement();
+    }
     LIlGGAttachContext.PHO(); // 图库功能
     // 复制提示
     if (Poi.copyMonitor)
@@ -1082,6 +1113,42 @@ $(function () {
 
     console.log("%c Github %c", "background:#24272A; color:#ffffff", "", "https://github.com/LIlGG/halo-theme-Sakura");
 });
+
+var supplement = function() {
+    var PackeryMode = Isotope.LayoutMode.modes.packery;
+    var __resetLayout = PackeryMode.prototype._resetLayout;
+    PackeryMode.prototype._resetLayout = function() {
+        __resetLayout.call( this );
+        // 重置packer
+        var parentSize = getSize( this.element.parentNode );
+        var colW = this.columnWidth + this.gutter;
+        this.fitWidth = Math.floor( ( parentSize.innerWidth + this.gutter ) / colW ) * colW;
+        this.packer.width = this.fitWidth;
+        this.packer.height = Number.POSITIVE_INFINITY;
+        this.packer.reset();
+    };
+
+    PackeryMode.prototype._getContainerSize = function() {
+        // 删除空白
+        var emptyWidth = 0;
+        for ( var i=0, len = this.packer.spaces.length; i < len; i++ ) {
+            var space = this.packer.spaces[i];
+            if ( space.y === 0 && space.height === Number.POSITIVE_INFINITY ) {
+                emptyWidth += space.width;
+            }
+        }
+
+        return {
+            width: this.fitWidth - this.gutter,
+            height: this.maxY - this.gutter
+        };
+    };
+
+    // 始终调整大小
+    PackeryMode.prototype.needsResizeLayout = function() {
+        return true;
+    };
+}
 
 /*
  * File skip-link-focus-fix.js.

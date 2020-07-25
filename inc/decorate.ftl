@@ -83,5 +83,19 @@
         border-radius: 0;!important;
     }
     </#if>
+    <#if (settings.photos_style!'justify') == 'justify' || (settings.photos_style!'justify') == 'packery'>
+    #gallery-filter {
+        text-align: center;
+    }
+    </#if>
+    <#if (settings.photos_style!'justify') == 'packery'>
+    .masonry-gallery.gallery {
+        margin: 0 auto;
+    }
+    </#if>
+    
+    .masonry-gallery .gallery-item {
+	    margin-bottom: ${(settings.photos_gutter)!10}px
+    }
 </style>
 </@compress>
