@@ -142,10 +142,17 @@
 <!-- theme-change end -->
 <script type='text/javascript' src='${theme_base!}/js/jquery.min.js?ver=2.0.6.170420'></script>
 <script type='text/javascript' src='${theme_base!}/js/jquery.pjax.min.js?ver=2.0.6.170420'></script>
+<script type='text/javascript' src='${theme_base!}/js/input.min.js?ver=2.0.6.170420'></script>
+<!-- 相册 -->
+<#if settings.photos_style == "justify">
+<script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+<#elseif settings.photos_style == "masonry" || settings.photos_style == "packery">
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
+<#if settings.photos_style == "packery">
 <script type='text/javascript' src='${theme_base!}/js/packery-mode.pkgd.min.js?ver=2.0.6.170420'></script>
-<script type='text/javascript' src='${theme_base!}/js/input.min.js?ver=2.0.6.170420'></script>
+</#if>
+</#if>
 <script type='text/javascript'>
 	/* <![CDATA[ */
 	var Poi = {
@@ -170,7 +177,9 @@
 		"toastColor": "${settings.toast_color!}",
 		"toastFontSize": ${settings.toast_font_size!},
 		"copyMonitor": "${(settings.copy_monitor!true)?string('true','')}",
-		"copyrightNotice": "${(settings.copyright_notice!true)?string('true','')}"
+		"copyrightNotice": "${(settings.copyright_notice!true)?string('true','')}",
+		"photosStyle": "${(settings.photos_style)!'justify'}",
+		"photosGutter": ${(settings.photos_gutter)!10}
 	};
 
 	var bgConfig = {
@@ -199,6 +208,7 @@
 	};
 	/* ]]> */
 </script>
+
 <script type="text/javascript" src="${theme_base!}/plugins/highlight/js/highlight.pack.js"></script>
 <#if settings.code_line!true>
 	<script type="text/javascript" src="${theme_base!}/plugins/highlight/js/highlightjs-line-numbers.min.js"></script>
@@ -227,7 +237,7 @@
 </script>
 </#if>
 <script type='text/javascript' src='${theme_base!}/js/qrcode.min.js'></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js"></script>
 <script type='text/javascript' src='${theme_base!}/js/app.js?ver=2.0.6.170420'></script>
 <#nested />
 <#if settings.live2d_switch!true>

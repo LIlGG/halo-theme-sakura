@@ -346,6 +346,98 @@ post:
           label: Github
         - value: Tomorrow Night
           label: Tomorrow Night
+photos:
+  label: 相册页
+  items:
+    photos_style:
+      name: photos_style
+      label: 相册布局风格
+      type: select
+      default: justify
+      options:
+        - value: justify
+          label: 合理布局
+        - value: masonry
+          label: 瀑布流布局
+        - value: packery
+          label: 填充式瀑布流布局（实验性）
+    is_thumbnail:
+      name: is_thumbnail
+      label: 列表使用缩略图
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    photos_gutter:
+      name: photos_gutter
+      label: 图像之间的间距
+      type: text
+      data-type: long
+      default: 10
+    masonry_column:
+      name: masonry_column
+      label: 瀑布流列数(移动端始终为1)
+      type: select
+      default: 3
+      options:
+        - value: 2
+          label: 2
+        - value: 3
+          label: 3
+        - value: 4
+          label: 4
+        - value: 5
+          label: 5
+        - value: 6
+          label: 6
+        - value: 7
+          label: 7
+        - value: 8
+          label: 8
+    masonry_changer_min:
+      name: masonry_changer_min
+      label: 瀑布流切换功能最小列数
+      type: select
+      default: 3
+      options:
+        - value: 2
+          label: 2
+        - value: 3
+          label: 3
+        - value: 4
+          label: 4
+        - value: 5
+          label: 5
+        - value: 6
+          label: 6
+        - value: 7
+          label: 7
+        - value: 8
+          label: 8
+    masonry_changer_max:
+      name: masonry_changer_max
+      label: 瀑布流切换功能最大列数
+      type: select
+      default: 5
+      options:
+        - value: 2
+          label: 2
+        - value: 3
+          label: 3
+        - value: 4
+          label: 4
+        - value: 5
+          label: 5
+        - value: 6
+          label: 6
+        - value: 7
+          label: 7
+        - value: 8
+          label: 8
 sns:
   label: 社交网络
   items:

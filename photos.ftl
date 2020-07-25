@@ -30,7 +30,11 @@
 
 </style>
 <div class="photo-page">
-    <#include "tpl/content-photos.ftl">
+<#if settings.photos_style == "masonry" || settings.photos_style == "packery">
+    <#include "tpl/content-masonry-photos.ftl">
+<#else>
+    <#include "tpl/content-justify-photos.ftl">
+</#if>
 </div>
 <#include "footer.ftl">
 <@footer />
