@@ -31,7 +31,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] Lazyload
 - [x] 集成Live2D
 - [x] 代码高亮，且实现仿Mac
-- [x] 自定义留言（目前实现了一部分）
+- [x] 自定义评论
 - [x] 文章目录
 - [x] 主题切换
 - [x] 友链页面
