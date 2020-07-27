@@ -2918,7 +2918,9 @@ header.page-header {
 	overflow: hidden;
 	-webkit-transition: all .3s;
 	transition: all .3s;
-	border-radius: 10px
+	border-radius: 10px;
+	/** fix #35 友链多了以后显示BUG */
+	height: 100px;
 }
 
 .links ul li img {
