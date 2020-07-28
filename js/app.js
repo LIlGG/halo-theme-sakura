@@ -858,7 +858,7 @@ var home = location.href,
             }
             // 标签云
             if($("#tag-wordcloud").length > 0 && $("#tag-wordcloud").children().length == 0) {
-                $("#tag-wordcloud").jQCloud(wordcloud, {autoResize: true});
+                $("#tag-wordcloud").jQCloud(wordcloud, {autoResize: true, delayedMode: true});
             }
             // 标签
             if($(".chip").length > 0) {
