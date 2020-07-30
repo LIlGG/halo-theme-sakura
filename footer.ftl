@@ -179,7 +179,8 @@
 		"copyMonitor": "${(settings.copy_monitor!true)?string('true','')}",
 		"copyrightNotice": "${(settings.copyright_notice!true)?string('true','')}",
 		"photosStyle": "${(settings.photos_style)!'justify'}",
-		"photosGutter": ${(settings.photos_gutter)!10}
+		"photosGutter": ${(settings.photos_gutter)!10},
+		"tocDepth": ${(settings.toc_depth)!0}
 	};
 
 	var bgConfig = {

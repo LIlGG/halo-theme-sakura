@@ -285,6 +285,25 @@ post:
           label: 开启
         - value: false
           label: 关闭
+    toc_depth:
+      name: toc_depth
+      label: 目录标题展开级别
+      type: select
+      data-type: long
+      default: 0
+      options:
+        - value: 0
+          label: 不展开
+        - value: 1
+          label: 展开一级标题
+        - value: 2
+          label: 展开二级标题
+        - value: 3
+          label: 展开三级标题
+        - value: 4
+          label: 展开四级标题
+        - value: 5
+          label: 全部展开
     post_nepre:
       name: post_nepre
       label: 上一篇下一篇

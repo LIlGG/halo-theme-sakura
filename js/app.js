@@ -223,11 +223,7 @@ var LIlGGAttachContext = {
             tocSelector: '.toc',
             contentSelector: ['.entry-content', '.links'],
             headingSelector: 'h1, h2, h3, h4, h5',
-            linkClass: 'toc-link',
-            activeLinkClass: 'is-active-link',
-            positionFixedClass: 'is-position-fixed',
-            isCollapsedClass: 'is-collapsed',
-            collapsibleClass: 'is-collapsible',
+            collapseDepth: Poi.tocDepth,
             hasInnerContainers: false,
             scrollEndCallback: function (e) { },
         });

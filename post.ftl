@@ -27,6 +27,11 @@
         </div>
     <#else>
         <div class="blank"></div>
+        <style>
+            .toc-container {
+                top: 210px;
+            }
+		</style>
     </#if>
 </@header>
 <div id="primary" class="content-area">
