@@ -269,8 +269,10 @@ var LIlGGAttachContext = {
             if (Poi.codeLine)
                 hljs.lineNumbersBlock($code[0]);
         })
-
-        $('pre').on('click', function (e) {
+        /**
+         * [#23](https://github.com/LIlGG/halo-theme-sakura/issues/23) 减少失误，将双击改为单击
+         */
+        $('pre').on('dblclick', function (e) {
             if (e.target !== this) return;
             $(this).toggleClass('code-block-fullscreen');
             $('html').toggleClass('code-block-fullscreen-html-scroll');
