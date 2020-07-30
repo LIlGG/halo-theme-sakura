@@ -8,7 +8,7 @@
       -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.12);
       box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.18);">
     <header style="overflow: hidden;">
-        <img style="width:100%;z-index: 666;" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.3/img/other/head_2.jpg">
+        <img style="width:100%;z-index: 666;" src="${settings.reply_mail_img!'https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.3/img/other/head_2.jpg'}">
     </header>
     <div style="padding: 5px 20px;">
         <p style="position: relative;

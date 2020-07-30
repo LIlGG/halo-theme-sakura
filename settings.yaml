@@ -1636,6 +1636,11 @@ others:
       type: text
       default: "https://cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura/dist/halo-comment.min.js"
       description: "评论js模块，如果当前为空，则获取评论设置中的模块js"
+    reply_mail_img:
+      name: reply_mail_img
+      label: 邮件回复模块图片
+      type: text
+      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.3/img/other/head_2.jpg"
     footer_logo:
       name: footer_logo
       label: 页脚logo
