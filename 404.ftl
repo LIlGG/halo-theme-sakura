@@ -10,7 +10,7 @@
     <@global.head />
 
     <#include "inc/decorate.ftl">
-    <link rel='stylesheet' id='siren-css'  href='${theme_base!}/style.css?ver=2.0.6.170420' type='text/css'/>
+    <link rel='stylesheet' id='siren-css'  href='${theme_base!}/style.min.css?ver=2.0.6.170420' type='text/css'/>
 </head>
 <body class="error404 hfeed">
 <section class="error-404 not-found">

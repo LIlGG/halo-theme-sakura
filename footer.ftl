@@ -22,7 +22,7 @@
 	<div class="site-info">
 		<div class="footertext">
 			<p class="foo-logo"
-			   style="background-image: url('${settings.footer_logo?default('https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.1/img/Sakura/images/sakura.svg')}');"></p>
+			   style="background-image: url('${settings.footer_logo?default('https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/images/sakura.svg')}');"></p>
 			<p style="font-family: 'Ubuntu', sans-serif;">
 				<@global.footer />
 			</p>
@@ -140,15 +140,15 @@
 <canvas id="night-mode-cover"></canvas>
 </#if>
 <!-- theme-change end -->
-<script type='text/javascript' src='${theme_base!}/js/jquery.min.js?ver=2.0.6.170420'></script>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/jquery@1.11.0/dist/jquery.min.js'></script>
 <script type='text/javascript' src='${theme_base!}/js/jquery.pjax.min.js?ver=2.0.6.170420'></script>
 <script type='text/javascript' src='${theme_base!}/js/input.min.js?ver=2.0.6.170420'></script>
 <!-- 相册 -->
 <#if settings.photos_style == "justify">
-<script src="https://cdn.bootcdn.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <#elseif settings.photos_style == "masonry" || settings.photos_style == "packery">
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/metafizzy/isotope@3.0.6/dist/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js"></script>
 <#if settings.photos_style == "packery">
 <script type='text/javascript' src='${theme_base!}/js/packery-mode.pkgd.min.js?ver=2.0.6.170420'></script>
 </#if>
@@ -223,7 +223,7 @@
 </#if>
 <script src="//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
 <script src="${settings.comment_mode!'//cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura@v1.3.1/dist/halo-comment.min.js'}"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
 <#if settings.tag_cloud!true>
 <script src="https://cdn.bootcdn.net/ajax/libs/jqcloud/1.0.4/jqcloud-1.0.4.min.js"></script>
@@ -238,7 +238,7 @@
 </script>
 </#if>
 <script type='text/javascript' src='${theme_base!}/js/qrcode.min.js'></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <script type='text/javascript' src='${theme_base!}/js/app.js?ver=2.0.6.170420'></script>
 <#nested />
 <#if settings.live2d_switch!true>
