@@ -3908,6 +3908,7 @@ li.feature-2 {
 	background-size: cover;
 	z-index: -1;
 	background-position: center center;
+	padding-top: 1px;
 }
 
 @media (max-width:860px) {
@@ -4075,7 +4076,9 @@ li.feature-2 {
 .header-info p {
 	margin: 0;
 	font-family: 'Ubuntu',sans-serif;
-	font-weight: 700
+	font-weight: 700;
+	overflow: hidden;
+    white-space: nowrap;
 }
 
 .top-social {
@@ -6673,7 +6676,9 @@ button.botui-actions-buttons-button {
 .glitch {
 	position: relative;
 	color: #fff;
-	mix-blend-mode: lighten
+	mix-blend-mode: lighten;
+	overflow: hidden;
+    white-space: nowrap;
 }
 
 .glitch:before,.glitch:after {
