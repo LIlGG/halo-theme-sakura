@@ -874,6 +874,10 @@ var home = location.href,
                     colorLight : "#ffffff",
                 });
             }
+            // table
+            if($(".entry-content").children("table").length > 0) {
+                $(".entry-content").children("table").wrap("<div class='table-wrapper'></div>")
+            }
         },
 
         // 点击事件
