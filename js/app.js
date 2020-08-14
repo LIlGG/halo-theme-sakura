@@ -232,6 +232,9 @@ var LIlGGAttachContext = {
             hasInnerContainers: false,
             headingsOffset: $("#page").find(".pattern-center").length > 0 ? -500 : -230,
             scrollEndCallback: function (e) {
+                if($(".is-active-link").length == 0) {
+                    return;
+                }
                 if($(window).scrollTop() == 0) {
                     $('.toc').animate({
                         scrollTop: 0
