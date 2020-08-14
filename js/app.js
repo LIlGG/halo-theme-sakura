@@ -206,7 +206,10 @@ var LIlGGAttachContext = {
         if (document.body.clientWidth <= 1200) {
             return;
         }
-
+        var baseTopPadding = 240,
+            maxToppadding = 134;
+            offset = 100,
+            bottomOffset = 30;
         if ($("div").hasClass("toc")) {
             $(".toc-container").css("height", $(".site-content").outerHeight());
         } else {
@@ -225,8 +228,36 @@ var LIlGGAttachContext = {
             headingSelector: 'h1, h2, h3, h4, h5',
             collapseDepth: Poi.tocDepth,
             hasInnerContainers: false,
-            scrollEndCallback: function (e) { },
+            headingsOffset: $("#page").find(".pattern-center").length > 0 ? -500 : -230,
+            scrollEndCallback: function (e) {
+                var activeLikeOffset = $(".is-active-link").offset().top-$(window).scrollTop();
+                // 当前可视高度小于100，则滚动时toc向上偏移一个li的高度
+                if(activeLikeOffset < offset) {
+                    $('.toc').animate({
+                        scrollTop: $('.toc').scrollTop() - (offset - activeLikeOffset + $(".is-active-link").height()),
+                    });
+                } else if(activeLikeOffset > $(window).height() - bottomOffset) {
+                    $('.toc').animate({
+                        scrollTop: $('.toc').scrollTop() + (activeLikeOffset - offset),
+                    });
+                }
+            }
         });
+
+        (function() {
+            $(".toc").css("max-height", ($(document).scrollTop() + ($(window).height() - baseTopPadding)) + "px");
+    
+            $(window).scroll(function(){
+                var s = $(document).scrollTop();
+                if(s == 0) {
+                    $(".toc").css("max-height", ($(document).scrollTop() + ($(window).height() - baseTopPadding)) + "px");
+                } else if(s > offset) {
+                    $(".toc").css("max-height", ($(window).height() - maxToppadding) + "px");
+                } else {
+                    $(".toc").css("max-height", ($(document).scrollTop() + ($(window).height() - baseTopPadding)) + "px");
+                }
+            });
+        })();
     },
     // 文章代码样式
     CHS: function () {
@@ -1031,8 +1062,7 @@ var home = location.href,
                 event.preventDefault();
                 $('body,html').animate({
                     scrollTop: 0,
-                }, scroll_top_duration
-                );
+                }, scroll_top_duration);
             });
         }
     };
