@@ -5572,7 +5572,8 @@ i.iconfont.down {
 
 .header-user-avatar img {
 	border-radius: 100%;
-	cursor: pointer
+	cursor: pointer;
+	height: 30px;
 }
 
 .header-user-avatar:hover .header-user-menu {
