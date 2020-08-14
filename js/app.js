@@ -21,7 +21,9 @@ var LIlGGAttachContext = {
         // 渲染主题
         LIlGGAttachContext.CBG().changeSkinSecter();
         // 延迟加载图片
-        lazyload();
+        lazyload(undefined,{
+            rootMargin: "150px"
+        });
         try {
             $("#to-load-aplayer").on("click", function () {
                 reloadAplayer();
@@ -1017,7 +1019,9 @@ var home = location.href,
                         // 添加新的内容
                         $("#main").append(result.fadeIn(500));
                         $("#pagination a").removeClass("loading").text("Previous");
-                        lazyload();
+                        lazyload(undefined,{
+                            rootMargin: "150px",
+                        });
                         LIlGGAttachContext.PLSA();
                         if (nextHref != undefined) {
                             $("#pagination a").attr("href", nextHref);
@@ -1106,7 +1110,9 @@ $(function () {
     if (Poi.copyMonitor)
         LIlGGAttachContext.CPY();
     // 延迟加载图片
-    lazyload();
+    lazyload(undefined,{
+        rootMargin: "150px"
+    });
 
     if (Poi.pjax) {
         pjaxFun();
