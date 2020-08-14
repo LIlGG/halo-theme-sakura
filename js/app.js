@@ -230,6 +230,12 @@ var LIlGGAttachContext = {
             hasInnerContainers: false,
             headingsOffset: $("#page").find(".pattern-center").length > 0 ? -500 : -230,
             scrollEndCallback: function (e) {
+                if($(window).scrollTop() == 0) {
+                    $('.toc').animate({
+                        scrollTop: 0
+                    });
+                    return;
+                }
                 var activeLikeOffset = $(".is-active-link").offset().top-$(window).scrollTop();
                 // 当前可视高度小于100，则滚动时toc向上偏移一个li的高度
                 if(activeLikeOffset < offset) {
