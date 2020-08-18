@@ -17,38 +17,6 @@ general:
           label: 开启
         - value: false
           label: 关闭
-    patternimg:
-      name: patternimg
-      label: 头部装饰图
-      type: radio
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-      description: '文章或部分页面的head图片'
-    archives_patternimg:
-      name: archives_patternimg
-      label: 归档页装饰图
-      type: attachment
-      description: '归档页面头部装饰图'
-    links_patternimg:
-      name: links_patternimg
-      label: 友链页装饰图
-      type: attachment
-      description: '友情链接页面头部装饰图'
-    searh_patternimg:
-      name: searh_patternimg
-      label: 搜索页装饰图
-      type: attachment
-      description: '搜索页面头部装饰图'
-    tag_patternimg:
-      name: tag_patternimg
-      label: 标签页默认装饰图
-      type: attachment
-      description: '标签下文章页面默认头部装饰图'
     tag_cloud:
       name: tag_cloud
       label: 开启标签云
@@ -74,16 +42,6 @@ general:
       data-type: double
       default: 1
       description: '标签随机颜色最大值,值越高越偏暖色调，取值范围在0-1之间，需要大于最小值'
-    category_patternimg:
-      name: category_patternimg
-      label: 分类页默认装饰图
-      type: attachment
-      description: '分类下文章页面默认头部装饰图'
-    photos_patternimg:
-      name: photos_patternimg
-      label: 图库页默认装饰图
-      type: attachment
-      description: '图库页头部装饰图'
     top_search:
       name: top_search
       label: 搜索按钮
@@ -132,7 +90,49 @@ general:
       name: site_custom_style
       label: 自定义CSS样式
       type: textarea
-
+patternimg:
+  label: 头部装饰图
+  items:
+    patternimg:
+      name: patternimg
+      label: 头部装饰图
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+      description: '文章或部分页面的head图片'
+    archives_patternimg:
+      name: archives_patternimg
+      label: 归档页装饰图
+      type: attachment
+    photos_patternimg:
+      name: photos_patternimg
+      label: 图库页装饰图
+      type: attachment
+    journals_patternimg:
+      name: journals_patternimg
+      label: 日志页装饰图
+      type: attachment
+    links_patternimg:
+      name: links_patternimg
+      label: 友链页装饰图
+      type: attachment
+    searh_patternimg:
+      name: searh_patternimg
+      label: 搜索页装饰图
+      type: attachment
+    tag_patternimg:
+      name: tag_patternimg
+      label: 标签页默认装饰图
+      type: attachment
+    category_patternimg:
+      name: category_patternimg
+      label: 分类页默认装饰图
+      type: attachment
 mainScreen:
   label: 第一屏
   items:
@@ -191,22 +191,6 @@ mainScreen:
       name: focus_img_1
       label: 背景图
       type: attachment
-#    focus_img_2:
-#      name: focus_img_2
-#      label: 背景图 - 2
-#      type: attachment
-#    focus_img_3:
-#      name: focus_img_3
-#      label: 背景图 - 3
-#      type: attachment
-#    focus_img_4:
-#      name: focus_img_4
-#      label: 背景图 - 4
-#      type: attachment
-#    focus_img_5:
-#      name: focus_img_5
-#      label: 背景图 - 5
-#      type: attachment
     focus_img_filter:
       name: focus_img_filter
       label: 背景图滤镜
@@ -249,214 +233,6 @@ mainScreen:
       label: 视频id
       type: text
       description: 'B站视频可选择AV/BV号，目前只支持B站视频'
-post:
-  label: 文章页
-  items:
-#    post_like:
-#      name: post_like
-#      label: 文章点赞
-#      type: radio
-#      data-type: bool
-#      default: true
-#      options:
-#        - value: true
-#          label: 开启
-#        - value: false
-#          label: 关闭
-    post_share:
-      name: post_share
-      label: 文章分享
-      type: radio
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    post_toc:
-      name: post_toc
-      label: 文章目录
-      type: radio
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    toc_depth:
-      name: toc_depth
-      label: 目录标题展开级别
-      type: select
-      data-type: long
-      default: 0
-      options:
-        - value: 0
-          label: 不展开
-        - value: 1
-          label: 展开一级标题
-        - value: 2
-          label: 展开二级标题
-        - value: 3
-          label: 展开三级标题
-        - value: 4
-          label: 展开四级标题
-        - value: 5
-          label: 全部展开
-    post_nepre:
-      name: post_nepre
-      label: 上一篇下一篇
-      type: radio
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    author_profile:
-      name: author_profile
-      label: 博主信息
-      type: radio
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    alipay_code:
-      name: alipay_code
-      label: 支付宝打赏
-      type: attachment
-    wechat_code:
-      name: wechat_code
-      label: 微信打赏
-      type: attachment
-    code_line:
-      name: code_line
-      label: 开启代码行号
-      type: radio
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    code_pretty:
-      name: code_pretty
-      label: 文章代码高亮主题
-      type: select
-      default: Dracula
-      options:
-        - value: AndroidStudio
-          label: AndroidStudio
-        - value: Dark
-          label: Dark
-        - value: Docco
-          label: Docco
-        - value: Dracula
-          label: Dracula
-        - value: Far
-          label: Far
-        - value: Github
-          label: Github
-        - value: Tomorrow Night
-          label: Tomorrow Night
-photos:
-  label: 相册页
-  items:
-    photos_style:
-      name: photos_style
-      label: 相册布局风格
-      type: select
-      default: justify
-      options:
-        - value: justify
-          label: 合理布局
-        - value: masonry
-          label: 瀑布流布局
-        - value: packery
-          label: 填充式瀑布流布局（实验性）
-    is_thumbnail:
-      name: is_thumbnail
-      label: 列表使用缩略图
-      type: radio
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    photos_gutter:
-      name: photos_gutter
-      label: 图像之间的间距
-      type: text
-      data-type: long
-      default: 10
-    masonry_column:
-      name: masonry_column
-      label: 瀑布流列数(移动端始终为1)
-      type: select
-      default: 3
-      options:
-        - value: 2
-          label: 2
-        - value: 3
-          label: 3
-        - value: 4
-          label: 4
-        - value: 5
-          label: 5
-        - value: 6
-          label: 6
-        - value: 7
-          label: 7
-        - value: 8
-          label: 8
-    masonry_changer_min:
-      name: masonry_changer_min
-      label: 瀑布流切换功能最小列数
-      type: select
-      default: 3
-      options:
-        - value: 2
-          label: 2
-        - value: 3
-          label: 3
-        - value: 4
-          label: 4
-        - value: 5
-          label: 5
-        - value: 6
-          label: 6
-        - value: 7
-          label: 7
-        - value: 8
-          label: 8
-    masonry_changer_max:
-      name: masonry_changer_max
-      label: 瀑布流切换功能最大列数
-      type: select
-      default: 5
-      options:
-        - value: 2
-          label: 2
-        - value: 3
-          label: 3
-        - value: 4
-          label: 4
-        - value: 5
-          label: 5
-        - value: 6
-          label: 6
-        - value: 7
-          label: 7
-        - value: 8
-          label: 8
 sns:
   label: 社交网络
   items:
@@ -602,6 +378,271 @@ focus:
       label: 聚焦图三链接
       type: text
       default: '#'
+post:
+  label: 文章页
+  items:
+    post_share:
+      name: post_share
+      label: 文章分享
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    post_toc:
+      name: post_toc
+      label: 文章目录
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    toc_depth:
+      name: toc_depth
+      label: 目录标题展开级别
+      type: select
+      data-type: long
+      default: 0
+      options:
+        - value: 0
+          label: 不展开
+        - value: 1
+          label: 展开一级标题
+        - value: 2
+          label: 展开二级标题
+        - value: 3
+          label: 展开三级标题
+        - value: 4
+          label: 展开四级标题
+        - value: 5
+          label: 全部展开
+    post_nepre:
+      name: post_nepre
+      label: 上一篇下一篇
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    author_profile:
+      name: author_profile
+      label: 博主信息
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    alipay_code:
+      name: alipay_code
+      label: 支付宝打赏
+      type: attachment
+    wechat_code:
+      name: wechat_code
+      label: 微信打赏
+      type: attachment
+    code_line:
+      name: code_line
+      label: 开启代码行号
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    code_pretty:
+      name: code_pretty
+      label: 文章代码高亮主题
+      type: select
+      default: Dracula
+      options:
+        - value: AndroidStudio
+          label: AndroidStudio
+        - value: Dark
+          label: Dark
+        - value: Docco
+          label: Docco
+        - value: Dracula
+          label: Dracula
+        - value: Far
+          label: Far
+        - value: Github
+          label: Github
+        - value: Tomorrow Night
+          label: Tomorrow Night
+journal:
+  label: 日志页
+  items:
+    journal_color_bg_1:
+      name: journal_color_bg_1
+      label: 日志背景颜色1&按钮颜色1
+      type: color
+      default: '#E6E6FA'
+      description: '日志单数卡片的背景色以及按钮的默认颜色'
+    journal_color_font_1:
+      name: journal_color_font_1
+      label: 日志字体颜色1
+      type: color
+      default: '#000000'
+      description: '日志单数卡片的字体颜色'
+    journal_color_bg_2:
+      name: journal_color_bg_2
+      label: 日志背景颜色2&按钮颜色2
+      type: color
+      default: '#F0FFFF'
+      description: '日志双数卡片的背景色以及按钮的默认颜色'
+    journal_color_font_2:
+      name: journal_color_font_2
+      label: 日志字体颜色2
+      type: color
+      default: '#000000'
+      description: '日志双数卡片的字体颜色'
+    journal_bg:
+      name: journal_bg
+      label: 日志背景图片
+      type: text
+      description: '使用图片作为日志背景，如果设置了此项，则背景颜色1&背景颜色2均会被覆盖'
+    journal_bg_blur:
+      name: journal_bg_blur
+      label: 日志背景图片虚化
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+      description: '只针对于使用图片作为日志背景的情况下'
+    # journal_likes:
+    #   name: journal_likes
+    #   label: 日志点赞
+    #   type: radio
+    #   data-type: bool
+    #   default: false
+    #   options:
+    #     - value: true
+    #       label: 开启
+    #     - value: false
+    #       label: 关闭
+    #   description: '由于接口问题，目前该功能还不能使用'
+    # journal_comment:
+    #   name: journal_comment
+    #   label: 日志评论
+    #   type: radio
+    #   data-type: bool
+    #   default: false
+    #   options:
+    #     - value: true
+    #       label: 开启
+    #     - value: false
+    #       label: 关闭
+    #   description: '需要评论模块支持，之后增加' 
+photos:
+  label: 相册页
+  items:
+    photos_style:
+      name: photos_style
+      label: 相册布局风格
+      type: select
+      default: justify
+      options:
+        - value: justify
+          label: 合理布局
+        - value: masonry
+          label: 瀑布流布局
+        - value: packery
+          label: 填充式瀑布流布局（实验性）
+    is_thumbnail:
+      name: is_thumbnail
+      label: 列表使用缩略图
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    photos_gutter:
+      name: photos_gutter
+      label: 图像之间的间距
+      type: text
+      data-type: long
+      default: 10
+    masonry_column:
+      name: masonry_column
+      label: 瀑布流列数(移动端始终为1)
+      type: select
+      default: 3
+      options:
+        - value: 2
+          label: 2
+        - value: 3
+          label: 3
+        - value: 4
+          label: 4
+        - value: 5
+          label: 5
+        - value: 6
+          label: 6
+        - value: 7
+          label: 7
+        - value: 8
+          label: 8
+    masonry_changer_min:
+      name: masonry_changer_min
+      label: 瀑布流切换功能最小列数
+      type: select
+      default: 3
+      options:
+        - value: 2
+          label: 2
+        - value: 3
+          label: 3
+        - value: 4
+          label: 4
+        - value: 5
+          label: 5
+        - value: 6
+          label: 6
+        - value: 7
+          label: 7
+        - value: 8
+          label: 8
+    masonry_changer_max:
+      name: masonry_changer_max
+      label: 瀑布流切换功能最大列数
+      type: select
+      default: 5
+      options:
+        - value: 2
+          label: 2
+        - value: 3
+          label: 3
+        - value: 4
+          label: 4
+        - value: 5
+          label: 5
+        - value: 6
+          label: 6
+        - value: 7
+          label: 7
+        - value: 8
+          label: 8
 theme:
   label: 主题切换
   items:
@@ -1565,6 +1606,80 @@ live2d:
       data-type: string
       default: ""
       description: '额外CSS，请注意，最好最外层使用.takagi 以免污染其他css'
+additional:
+  label: 背景音乐
+  items:
+    aplayer_float:
+      name: aplayer_float
+      label: 开启左下方音乐浮动（需要同时开启Aplayer插件）
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    aplayer_server:
+      name: aplayer_server
+      label: 音乐类别
+      type: select
+      default: netease
+      options:
+        - value: netease
+          label: 网易云音乐
+    aplayer_id:
+      name: aplayer_id
+      label: 音乐id/歌单id
+      type: text
+      default: 2345868969
+    aplayer_type:
+      name: aplayer_type
+      label: 类别
+      type: select
+      default: playlist
+      options:
+        - value: playlist
+          label: 歌单
+    aplayer_preload:
+      name: aplayer_preload
+      label: 预加载
+      type: select
+      default: none
+      options:
+        - value: none
+          label: none
+        - value: metadata
+          label: metadata
+        - value: auto
+          label: auto
+    aplayer_autoplay:
+      name: aplayer_autoplay
+      label: 自动播放
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+      description: 由于浏览器限制，此功能可能无法生效！（也建议不要开启，会产生噪音，影响用户体验）
+    aplayer_order:
+      name: aplayer_order
+      label: 循环顺序
+      type: select
+      default: random
+      options:
+        - value: list
+          label: list
+        - value: random
+          label: random
+    aplayer_theme:
+      name: aplayer_theme
+      label: 主题色
+      type: color
+      default: '#FFA500'
 toast:
   label: 提示及监听
   items:
@@ -1687,80 +1802,6 @@ others:
       label: 公告内容
       type: textarea
       placeholder: '公告内容，文字超出142个字节将会被滚动显示（移动端无效），一个汉字 = 3字节，一个字母 = 1字节，自己计算吧'
-additional:
-  label: 背景音乐
-  items:
-    aplayer_float:
-      name: aplayer_float
-      label: 开启左下方音乐浮动（需要同时开启Aplayer插件）
-      type: radio
-      data-type: bool
-      default: false
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    aplayer_server:
-      name: aplayer_server
-      label: 音乐类别
-      type: select
-      default: netease
-      options:
-        - value: netease
-          label: 网易云音乐
-    aplayer_id:
-      name: aplayer_id
-      label: 音乐id/歌单id
-      type: text
-      default: 2345868969
-    aplayer_type:
-      name: aplayer_type
-      label: 类别
-      type: select
-      default: playlist
-      options:
-        - value: playlist
-          label: 歌单
-    aplayer_preload:
-      name: aplayer_preload
-      label: 预加载
-      type: select
-      default: none
-      options:
-        - value: none
-          label: none
-        - value: metadata
-          label: metadata
-        - value: auto
-          label: auto
-    aplayer_autoplay:
-      name: aplayer_autoplay
-      label: 自动播放
-      type: radio
-      data-type: bool
-      default: false
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-      description: 由于浏览器限制，此功能可能无法生效！（也建议不要开启，会产生噪音，影响用户体验）
-    aplayer_order:
-      name: aplayer_order
-      label: 循环顺序
-      type: select
-      default: random
-      options:
-        - value: list
-          label: list
-        - value: random
-          label: random
-    aplayer_theme:
-      name: aplayer_theme
-      label: 主题色
-      type: color
-      default: '#FFA500'
 plugin:
   label: 插件功能
   items:

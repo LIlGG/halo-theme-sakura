@@ -14,6 +14,7 @@
 	<@global.head />
 	<link rel="stylesheet" href="https://at.alicdn.com/t/font_679578_dishi1yoavm.css" media="all">
 	<link rel='stylesheet' id='siren-css'  href='${theme_base!}/style.min.css?ver=2.0.6.170420' type='text/css' media='all' />
+	<link rel="stylesheet" href="https://at.alicdn.com/t/font_2010950_hzxxpauv5wv.css" media="all">
 	<link href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation@0.3.0/dist/font-awesome-animation.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/baguettebox.js@1.11.1/dist/baguetteBox.min.css" rel="stylesheet">

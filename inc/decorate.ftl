@@ -97,5 +97,48 @@
     .masonry-gallery .gallery-item {
 	    margin-bottom: ${(settings.photos_gutter)!10}px
     }
+    /** 日志 */
+    .journals-line>li:nth-child(odd) .journal-label:after {
+        border-right-color: ${(settings.journal_color_bg_1)!'#E6E6FA'};
+    }
+
+    .at_button {
+        background-color: ${(settings.journal_color_bg_1)!'#E6E6FA'};
+        color: ${(settings.journal_color_font_1)!'block'};
+    }
+
+    .at_button:hover {
+        background: ${(settings.journal_color_bg_2)!'#F0FFFF'};
+        color: ${(settings.journal_color_font_2)!'block'};
+    }
+
+    <#if settings.journal_bg??>
+        .journals-line>li:nth-child(odd) .journal-label {
+            <#if settings.journal_bg_blur!true>
+            background: linear-gradient(60deg,rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35) 95%) 0% 0% / cover, url(${settings.journal_bg}) 0% 0% / cover;
+            <#else>
+            background: url(${settings.journal_bg}) 0% 0% / cover;
+            </#if>
+            color: ${(settings.journal_color_font_1)!'block'};
+        }
+        .journals-line>li .journal-label {
+            <#if settings.journal_bg_blur!true>
+            background: linear-gradient(60deg,rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35) 95%) 0% 0% / cover, url(${settings.journal_bg}) 0% 0% / cover;
+            <#else>
+            background: url(${settings.journal_bg}) 0% 0% / cover;
+            </#if>
+            color: ${(settings.journal_color_font_2)!'block'};
+        }
+    <#else>
+    .journals-line>li:nth-child(odd) .journal-label {
+        background: ${(settings.journal_color_bg_1)!'#E6E6FA'};
+        color: ${(settings.journal_color_font_1)!'block'};
+    }
+
+    .journals-line>li .journal-label {
+        background: ${(settings.journal_color_bg_2)!'#F0FFFF'};
+        color: ${(settings.journal_color_font_2)!'block'};
+    }
+    </#if>
 </style>
 </@compress>

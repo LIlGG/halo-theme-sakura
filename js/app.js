@@ -1,10 +1,4 @@
-﻿/*
- * Siren application js
- * @author Louie
- * @url http://i94.me
- * @date 2016.11.19
- */
-/**
+﻿/**
  * Sakura halo分支主题, 基于Siren制作
  * @author LIlGG
  * @url https://lixingyong.com
@@ -575,6 +569,51 @@ var LIlGGAttachContext = {
                 justify();
             }
         }
+    },
+    // 日志
+    SS: function() {
+        /**
+         * 根据日期时间，获取对应的图标
+         * @param {*} time 
+         */
+        var getTimeIcon = function(time) {
+            var ICON_DAY = "kaiqitaiyangguangshezhi",
+                ICON_MORN = "gengzaotubiao_tianqi-qingchen",
+                ICON_NIGHT = "yueliang";
+            var date = new Date(time);
+            var hours = date.getHours();
+            if(isNaN(hours)) {
+                return ICON_DAY;
+            }
+
+            if(5 <= hours && hours < 12) {
+                return ICON_MORN;
+            } else if(12 <= hours && hours < 18) {
+                return ICON_DAY;
+            } else {
+                return ICON_NIGHT;
+            }
+        }
+        
+        return () => {
+            // 日志
+            if($(".journal").length > 0) {
+                $(".journal").each(function() {
+                    // 为日志设置时间图标
+                    var $firstSpan = $(this).find(".journal-time>span").first();
+                    if($firstSpan.find("i").length == 0) {
+                        $firstSpan.prepend('<i class="iconfont icon-'+ getTimeIcon($firstSpan.text()) +'"></i> ');
+                    }
+                    // 为所有图片增加box
+                    var $imgs = $(this).find(".journal-label img");
+                    $imgs.each(function() {
+                        if(!$(this).hasClass("journal-img")) {
+                            $(this).addClass("journal-img").wrap('<a data-fancybox="gallery" href="'+ $(this).attr("src") + '">');
+                        }
+                    })
+                })
+            }
+        }
     }
 }
 
@@ -846,7 +885,6 @@ var baguetteBox = function () {
 
 var home = location.href,
     Siren = {
-
         // 移动端菜单
         MN: function () {
             $('.iconflat').on('click', function () {
@@ -920,6 +958,8 @@ var home = location.href,
             if($(".entry-content").children("table").length > 0) {
                 $(".entry-content").children("table").wrap("<div class='table-wrapper'></div>")
             }
+            // 日志所需渲染方法
+            LIlGGAttachContext.SS()();
         },
 
         // 点击事件
@@ -1008,7 +1048,7 @@ var home = location.href,
             });
         },
 
-        // Ajax加载文章
+        // Ajax加载文章/说说
         XLS: function () {
             $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
             $('body').on('click', '#pagination a', function () {
@@ -1031,6 +1071,33 @@ var home = location.href,
                         } else {
                             // If there is no link, that is the last page, then remove the navigation
                             $("#pagination").html("<span>没有更多文章了</span>");
+                        }
+                    }
+                });
+                return false;
+            });
+            /**
+             * 说说
+             */
+            $('body').on('click', '#journals-pagination a', function () {
+                $(this).addClass("loading").text("");
+                $.ajax({
+                    type: "GET",
+                    url: $(this).attr("href") + "#main",
+                    success: function (data) {
+                        result = $(data).find("#main .journal");
+                        nextHref = $(data).find("#journals-pagination a").attr("href");
+                        // 添加新的内容
+                        $("#main").append(result.fadeIn(500));
+                        $("#journals-pagination a").removeClass("loading").text("加载更多...");
+                        lazyload(undefined, {
+                            rootMargin: "150px",
+                        });
+                        LIlGGAttachContext.SS()();
+                        if (nextHref != undefined) {
+                            $("#journals-pagination a").attr("href", nextHref);
+                        } else {
+                            $("#journals-pagination a").remove();
                         }
                     }
                 });
