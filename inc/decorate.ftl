@@ -5,6 +5,40 @@
           display: block !important;
       }
     </#if>
+    <#if (settings.cursor_skin!'sakura') == 'sakura'>
+    /** 鼠标样式 */
+    a {
+        cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/ayuda.cur), auto
+    }
+
+    a:active {
+	    cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/work.cur),alias
+    }
+
+    p {
+        cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/texto.cur),auto
+    }
+
+    body {
+        cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/normal.cur),auto;
+    }
+
+    .cd-top {
+        cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/No_Disponible.cur),auto;
+    }
+
+    .botui-actions-buttons-button {
+        cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/No_Disponible.cur),auto;
+    }
+
+    .button.botui-actions-buttons-button {
+        cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/No_Disponible.cur),auto;
+    }
+
+    .highlight-wrap code {
+        cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/texto.cur),auto
+    }
+    </#if>
     <#if settings.theme_skin??>
     .author-profile i, .post-like a, .post-share .show-share, .sub-text, .we-info a, span.sitename, .post-more i:hover, #pagination a:hover, .post-content a:hover, .float-content i:hover {
         color: ${settings.theme_skin!}

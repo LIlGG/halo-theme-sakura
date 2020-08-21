@@ -6,6 +6,17 @@ general:
       label: 主题风格
       type: color
       default: '#FE9600'
+    cursor_skin:
+      name: cursor_skin
+      label: 鼠标风格
+      type: radio
+      data-type: string
+      default: sakura
+      options:
+        - value: sakura
+          label: 默认
+        - value: no_cursor
+          label: 无样式
     shownav:
       name: shownav
       label: 展开导航菜单
