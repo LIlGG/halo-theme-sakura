@@ -1,10 +1,6 @@
 <#--
 /**
- * The template for displaying archive pages.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package Akina
+ * 标签页
  */
 -->
 <#include "header.ftl">

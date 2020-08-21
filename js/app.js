@@ -203,7 +203,7 @@ var LIlGGAttachContext = {
             return;
         }
         var baseTopPadding = 240,
-            maxToppadding = 134;
+            maxToppadding = 134,
             offset = 100,
             bottomOffset = 30;
         if ($("div").hasClass("toc")) {
@@ -944,6 +944,74 @@ var home = location.href,
                     $(this).css("background-color", getRandomColor(Poi.tagRandomColorMin, Poi.tagRandomColorMax))
                 })
             }
+            // 分类雷达
+            if($("#category-echarts").length > 0 && $("#category-echarts").children().length == 0) {
+                var values = Object.values(categoryRadar),
+                    keys = Object.keys(categoryRadar);
+                    // 这里向上取5的倍数，例如100则取100 101则取105]
+                if(keys.length < 3) {
+                    $("#category-echarts").remove();
+                    return;
+                }
+                var maxNum = Math.ceil(Math.max(...values)/5) * 5,
+                    categoryChart = echarts.init(document.getElementById('category-echarts')),
+                    option = {
+                        title: {
+                            text: '文章分类雷达图',
+                            left: 'center',
+                            top: '25px',
+                            textStyle: {
+                                fontSize: 22,
+                                fontWeight: 'normal'
+                            }
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            textStyle:{
+                                align:'left'
+                            }
+                        },
+                        radar: [
+                            {
+                                indicator: (function(){
+                                    var indicators = [];
+                                    for(var i = 0; i < keys.length; i++) {
+                                        indicators.push({text: keys[i], max: maxNum});
+                                    }
+                                    return indicators;
+                                })(),
+                                name: {
+                                    textStyle: {
+                                        color: 'black'
+                                    }
+                                },
+                                center: ['50%', '63%'],
+                                radius: '65%'
+                            }
+                        ],
+                        series: [
+                            {
+                                type: 'radar',
+                                itemStyle: {
+                                    color: 'rgb(123,234,185)'
+                                },
+                                lineStyle: {
+                                    color: 'rgb(123,234,185)'
+                                },
+                                areaStyle: {
+                                    color: 'rgb(123,234,185)'
+                                },
+                                data: [
+                                    {
+                                        value: values,
+                                        name: '文章分类数量'
+                                    }
+                                ]
+                            }
+                        ]
+                    };
+                categoryChart.setOption(option);
+            }
             // 微信二维码
             if($("#qrcode").length > 0 && $("#qrcode").children().length == 0) {
                 new QRCode(document.getElementById("qrcode"), {
@@ -1050,7 +1118,6 @@ var home = location.href,
 
         // Ajax加载文章/说说
         XLS: function () {
-            $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
             $('body').on('click', '#pagination a', function () {
                 $(this).addClass("loading").text("");
                 $.ajax({

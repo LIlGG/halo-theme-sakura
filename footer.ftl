@@ -237,9 +237,21 @@
 	]
 </script>
 </#if>
+<#if settings.category_radar!true>
+<script src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.5/js/echarts/echarts.min.js"></script>
+<script type='text/javascript'>
+	var categoryRadar = {
+		<@categoryTag method="list">
+		<#list categories as category>
+		'${category.name!}': '${category.postCount!}',
+		</#list>
+		</@categoryTag>
+	}
+</script>
+</#if>
 <script type='text/javascript' src='${theme_base!}/js/qrcode.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<script type='text/javascript' src='${theme_base!}/js/app.js?ver=2.0.6.170420'></script>
+<script type='text/javascript' src='${theme_base!}/js/app.min.js?ver=2.0.6.170420'></script>
 <#nested />
 <#if settings.live2d_switch!true>
 <script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>

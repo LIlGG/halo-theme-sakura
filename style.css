@@ -2240,6 +2240,11 @@ h1.page-title.mb- {
     margin: 0 auto;
 }
 
+.card .card-content {
+	padding: 24px;
+    border-radius: 0 0 2px 2px;
+}
+
 .chip-container .tag-title {
     margin-bottom: 10px;
     color: #3C4858;
@@ -2293,11 +2298,17 @@ h1.page-title.mb- {
 
 .chip-default .tag-length {
     color: #9b8b2a;
-    margin-top: 1px;
+    margin-top: 0px;
 }
 
 .chip-active .tag-length {
     color: #fff;
+}
+
+.category-show {
+	animation: post-list-show 2s;
+	-webkit-animation: post-list-show 2s;
+	opacity: 1
 }
 
 .archive-calendar {

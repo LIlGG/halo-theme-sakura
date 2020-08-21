@@ -19,6 +19,9 @@
         </div>
     <#else>
         <div class="blank"></div>
+        <header class="entry-header">
+            <h1 class="entry-title">${options.tags_title?default('文章标签')}</h1>
+        </header>
     </#if>
 </@header>
 <#if settings.tag_cloud!true>
@@ -35,12 +38,7 @@
         max-width: 800px;
     }
 </style>
-<#if !(settings.patternimg!true) || !(settings.tag_patternimg?? && settings.tag_patternimg!='')>
-<header class="entry-header">
-    <h1 class="entry-title">${options.tags_title?default('文章标签')}</h1>
-</header><!-- .entry-header -->
-</#if>
-<div class="container" data-aos="fade-up">
+<div class="container">
     <div class="card">
         <div id="tag-wordcloud" class="card-content jqcloud"></div>
     </div>
@@ -50,6 +48,9 @@
     <div id="tags" class="container chip-container">
         <div class="card">
             <div class="card-content">
+                <div class="tag-title center-align">
+                    <i class="fa fa-tags"></i>&nbsp;&nbsp;文章标签
+                </div>
                 <div class="tag-chips">
                 <@tagTag method="list">
                 <#list tags as tag>
