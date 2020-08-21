@@ -1794,6 +1794,16 @@ i.iconfont.hotpost {
 	font-weight: 700
 }
 
+.entry-content code:not(.hljs) {
+    background: #fefac7;
+    color: #e67474;
+    word-break: break-word;
+    font-family: Source Code Pro,monospace;
+    padding: 2px;
+    text-shadow: none;
+    border-radius: 5px;
+}
+
 @media screen and (max-width:860px) {
 	.entry-content .begin,.single-begin {
 		margin-top: 6px

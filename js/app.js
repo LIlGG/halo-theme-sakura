@@ -281,7 +281,7 @@ var LIlGGAttachContext = {
             var classNameArr = classNameStr.split(" ");
 
             var lang = '';
-            for (className of classNameArr) {
+            for (var className of classNameArr) {
                 if (className.indexOf('language-') > -1) {
                     lang = className.substring(className.indexOf("-") + 1, className.length);
                     break;
