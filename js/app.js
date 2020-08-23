@@ -287,10 +287,14 @@ var LIlGGAttachContext = {
                     break;
                 }
             }
-            // 检测语言是否存在，不存在则使用text
+            // 检测语言是否存在，不存在则自动检测
             var language = hljs.getLanguage(lang.toLowerCase());
             if(language == undefined) {
-                $code.addClass("language-text").removeClass("language-" + lang);
+                // 启用自动检测
+                var autolanguage = hljs.highlightAuto($code.text());
+                $code.removeClass("language-" + lang);
+                lang = autolanguage.language;
+                $code.addClass("language-" + lang);
             } else {
                 lang = language.name;
             }
@@ -298,9 +302,8 @@ var LIlGGAttachContext = {
             $(this).addClass('highlight-wrap');
             $(this).attr(attributes);
             $code.attr('data-rel', lang.toUpperCase()).addClass(lang.toLowerCase());
-     
             // 启用代码高亮
-            hljs.highlightBlock($code[0]);
+            hljs.highlightBlock($code[0]);      
             // 启用代码行号
             if (Poi.codeLine)
                 hljs.lineNumbersBlock($code[0]);

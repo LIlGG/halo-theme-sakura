@@ -3663,7 +3663,7 @@ li.feature-2 {
 	margin-left: -15px;
 	border-width: 15px;
 	border-style: solid;
-	border-color: transparent transparent rgba(0,0,0,.5) transparent
+	border-color: transparent transparent rgba(0,0,0,.5) transparent;
 }
 
 .header-tou + .header-info:before {
@@ -7134,7 +7134,6 @@ a.toc-link {
 	line-height: 1.6;
 	margin-bottom: 1.6em;
 	max-width: 100%;
-	overflow: auto;
 	text-shadow: none;
 	color: #000;
 	padding-top: 30px;

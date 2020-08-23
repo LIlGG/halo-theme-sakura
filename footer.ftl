@@ -65,31 +65,7 @@
 			<input class="m-search-input" type="search" name="keyword" placeholder="搜索..." required>
 		</form>
 	</div>
-	<ul id="menu-menu-1" class="menu">
-		<@menuTag method="tree">
-			<#list menus?sort_by('priority') as menu>
-				<li>
-					<a href="${menu.url!}">
-						<span class="faa-parent animated-hover">
-						<#if menu.icon?? && menu.icon?trim?length gt 0>
-							<i class="${menu.icon}" aria-hidden="true"></i>
-						</#if>${menu.name!}</span>
-					</a>
-					<#if menu.children?? && menu.children?size gt 0>
-						<ul class="sub-menu">
-							<#list menu.children as child>
-								<li>
-								<a href="${child.url!}">
-								<#if child.icon?? && child.icon?trim?length gt 1>
-									<i class="${child.icon}" aria-hidden="true"></i>
-								</#if>${child.name}</a></li>
-							</#list>
-						</ul>
-					</#if>
-				</li>
-			</#list>
-		</@menuTag>
-	</ul>
+	<#include "layouts/nav.ftl">
 	<p class="m-footer">© ${.now?string("yyyy")} ${(user.nickname)!}</p>
 </div><!-- m-nav-center end -->
 <a href="#" class="cd-top"></a>
