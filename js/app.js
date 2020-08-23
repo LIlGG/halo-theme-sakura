@@ -929,8 +929,8 @@ var home = location.href,
                     type: "GET",
                     url: $(this).attr("href") + "#main",
                     success: function (data) {
-                        result = $(data).find("#main .post");
-                        nextHref = $(data).find("#pagination a").attr("href");
+                        var result = $(data).find("#main .post");
+                        var nextHref = $(data).find("#pagination a").attr("href");
                         // 添加新的内容
                         $("#main").append(result.fadeIn(500));
                         $("#pagination a").removeClass("loading").text("Previous");
