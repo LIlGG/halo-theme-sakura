@@ -804,8 +804,8 @@ var home = location.href,
                                         color: 'black'
                                     }
                                 },
-                                center: ['50%', '63%'],
-                                radius: '65%'
+                                center: ['50%', '60%'],
+                                radius: '60%'
                             }
                         ],
                         series: [
