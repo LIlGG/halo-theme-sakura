@@ -28,16 +28,7 @@
 			<#list posts.content as post>
 				<#include "tpl/content.ftl">
 			</#list>
-			<nav class="navigator">
-                <@paginationTag method="search" page="${posts.number}" total="${posts.totalPages}" display="3" keyword="${keyword!}">
-                    <#if pagination.hasPrev>
-                        <a href="${pagination.prevPageFullPath!}"><i class="iconfont">&#xe679;</i></a>
-                    </#if>
-                    <#if pagination.hasNext>
-                        <a href="${pagination.nextPageFullPath!}"><i class="iconfont">&#xe6a3;</i></a>
-                    </#if>
-                </@paginationTag>
-			</nav>
+
         <#else>
 			<div class="search-box">
 				<!-- search start -->
@@ -50,6 +41,26 @@
 			<#include "tpl/content-none.ftl">
         </#if>
 	</main><!-- #main -->
+		<@paginationTag method="search" page="${posts.number}" total="${posts.totalPages}" display="3" keyword="${keyword!}">
+			<#if (settings.pagenav_style!'ajax') == 'ajax'>
+				<div id="pagination">
+					<#if pagination.hasNext>
+						<a href="${pagination.nextPageFullPath!}" class="">Previous</a>
+					<#else>
+						<span>没有更多文章了</span>
+					</#if>
+				</div>
+			<#else>
+				<nav class="navigator">
+					<#if pagination.hasPrev>
+						<a href="${pagination.prevPageFullPath!}"><i class="iconfont">&#xe679;</i></a>
+					</#if>
+					<#if pagination.hasNext>
+						<a href="${pagination.nextPageFullPath!}"><i class="iconfont">&#xe6a3;</i></a>
+					</#if>
+				</nav>
+			</#if>
+		</@paginationTag>
 </section><!-- #primary -->
 <#include "footer.ftl">
 <@footer />
