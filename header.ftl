@@ -24,7 +24,7 @@
 	</#if>
 	<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/js/font-awesome/4.7.0/css/font-awesome.min.css' type='text/css' media='all' />
 	<#if settings.tag_cloud!true>
-	<link href="https://cdn.bootcdn.net/ajax/libs/jqcloud/1.0.4/jqcloud.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jqcloud2@2.0.3/dist/jqcloud.min.css">
 	</#if>
 	<link href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" rel="stylesheet">
 	<#if settings.photos_style == "justify">
