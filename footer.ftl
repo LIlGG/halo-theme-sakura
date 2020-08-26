@@ -23,9 +23,21 @@
 		<div class="footertext">
 			<p class="foo-logo"
 			   style="background-image: url('${settings.footer_logo?default('https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/images/sakura.svg')}');"></p>
+			<!-- 请尊重作者，请务必保留版权 -->
 			<p style="font-family: 'Ubuntu', sans-serif;">
-				<@global.footer />
+				<span style="color: #666666;">Powered by
+ 					<i class="fa fa-vimeo animated" style="color: #e74c3c;"></i> 
+					by 
+					<a rel="me" target="_blank"  href="http://halo.run" title="一个优秀的开源博客发布应用" style="color: #000000;text-decoration:none;">Halo</a>
+				</span>
+				 •
+				<span style="color: #666666;">Crafted with
+ 					<i class="fa fa-heart animated" style="color: #e74c3c;"></i> 
+					by 
+					<a rel="me" target="_blank" href="https://github.com/LIlGG/halo-theme-sakura" style="color: #000000;text-decoration:none;">LIlGG</a>
+				</span>
 			</p>
+			<@global.footer />
 			<p>
 				© ${.now?string("yyyy")} ${(user.nickname)!}
 				<#if settings.footer_case_number??  && settings.footer_case_number != "">

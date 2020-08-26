@@ -14,7 +14,7 @@
                     <span class="fake-title">${((item.team!'')?length>0)?string((item.team!''), '小伙伴们')}</span>
                 </h3>
                 <ul class="link-items fontSmooth">
-                <#list item.links as link>
+                <#list item.links?sort_by('priority')?reverse as link>
                     <li class="link-item">
                         <a class="link-item-inner effect-apollo" href="${link.url!}" title="${link.name!}" target="_blank">
                             <img class="lazyload" data-src="${link.logo!}" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/svg/loader/trans.ajax-spinner-preloader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
