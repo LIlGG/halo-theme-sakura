@@ -41,7 +41,7 @@
 			<p>
 				© ${.now?string("yyyy")} ${(user.nickname)!}
 				<#if settings.footer_case_number??  && settings.footer_case_number != "">
-				<a href="http://www.beian.miit.gov.cn" target="_blank">${settings.footer_case_number}</a>
+				<a href="https://beian.miit.gov.cn/ " target="_blank">${settings.footer_case_number}</a>
 				</#if>
 			</p>
 		</div>
