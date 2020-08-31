@@ -39,6 +39,12 @@
         cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/texto.cur),auto
     }
     </#if>
+
+    /***/
+    .cd-top {
+        background: url(${(settings.top_back_img)!'https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/images/scroll.png'}) no-repeat center;
+    }
+
     <#if settings.theme_skin??>
     .author-profile i, .post-like a, .post-share .show-share, .sub-text, .we-info a, span.sitename, .post-more i:hover, #pagination a:hover, .post-content a:hover, .float-content i:hover {
         color: ${settings.theme_skin!}

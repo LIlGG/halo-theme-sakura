@@ -2105,7 +2105,6 @@ h1.page-title.mb- {
 	z-index: 99;
 	width: 70px;
 	height: 900px;
-	background: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/images/scroll.png) no-repeat center;
 	background-size: contain;
 	-webkit-transition: all .5s ease-in-out;
 	transition: all .5s ease-in-out;
