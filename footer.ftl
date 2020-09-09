@@ -25,7 +25,7 @@
 			   style="background-image: url('${settings.footer_logo?default('https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/images/sakura.svg')}');"></p>
 			<!-- 请尊重作者，请务必保留版权 -->
 			<p style="font-family: 'Ubuntu', sans-serif;">
-				<span style="color: #666666;">Powered by
+				<span style="color: #666666;">Powered 
  					<i class="fa fa-vimeo animated" style="color: #e74c3c;"></i> 
 					by 
 					<a rel="me" target="_blank"  href="http://halo.run" title="一个优秀的开源博客发布应用" style="color: #000000;text-decoration:none;">Halo</a>
