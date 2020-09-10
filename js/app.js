@@ -165,7 +165,7 @@ var LIlGGAttachContext = {
             }
         }
 
-        if (dom.oncanplay == undefined && document.body.clientWidth > 860) {
+        if (dom != undefined && dom.oncanplay == undefined && document.body.clientWidth > 860) {
             bindBgVideoEvent();
         }
 
