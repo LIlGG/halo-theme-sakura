@@ -7303,7 +7303,8 @@ td.hljs-ln-numbers {
 	min-width: 100%;
 	z-index: 9999999;
 	margin: 0;
-	animation: elastic 1s
+	animation: elastic 1s;
+	overflow: auto;
 }
 
 .code-block-fullscreen code {
