@@ -7304,7 +7304,6 @@ td.hljs-ln-numbers {
 	z-index: 9999999;
 	margin: 0;
 	animation: elastic 1s;
-	overflow: auto;
 }
 
 .code-block-fullscreen code {
@@ -7312,9 +7311,7 @@ td.hljs-ln-numbers {
 	--widthB: calc(var(--widthA) - 30px);
 	height: var(--widthB);
 	min-height: 99%;
-	overflow-y: hidden;
-	overflow-x: auto;
-	height: auto
+	overflow: auto;
 }
 
 .code-block-fullscreen-html-scroll {
