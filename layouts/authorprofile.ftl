@@ -13,6 +13,6 @@
 			</div>
 		</div>
 		<hr>
-		<p><i class="iconfont">&#xe761;</i>${user.description!'我喜欢做的事就是不写个性签名'}</p>
+		<p><i class="iconfont icon-pencil"></i>${user.description!'我喜欢做的事就是不写个性签名'}</p>
 	</section>
 </#if>

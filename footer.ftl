@@ -91,7 +91,7 @@
 	<div class="search-form__inner">
 		<div>
 			<p class="micro mb-">输入后按回车搜索 ...</p>
-			<i class="iconfont">&#xe65c;</i>
+			<i class="iconfont icon-search"></i>
 			<input class="text-input" type="search" name="keyword" placeholder="Search" required>
 		</div>
 	</div>
@@ -107,9 +107,7 @@
 <#if settings.theme_change!true>
 <div class="changeSkin-gear no-select">
 	<div class="keys">
-        <span id="open-skinMenu">切换主题 | SCHEME TOOL &nbsp;
-          <i class="iconfont icon-gear inline-block rotating"></i>
-        </span>
+        <span id="open-skinMenu">切换主题 | SCHEME TOOL &nbsp;<i class="iconfont icon-gear inline-block rotating"></i></span>
     </div>
 </div>
 <div class="skin-menu no-select">

@@ -3,14 +3,6 @@
 	实际上我感觉原版的分享风格更好看，因此保留原版的
 	简单起见，这里暂时不封装
 -->
-<#--<#if settings.post_like!true>-->
-<#--<div class="post-like">-->
-<#--<a href="javascript:;" data-action="ding" data-id="${post.id?c}" class="specsZan">-->
-<#--	<i class="iconfont">&#xe669;</i> <span class="count">-->
-<#--		${post.likes?c}-->
-<#--	</a>-->
-<#--</div>-->
-<#--</#if>-->
 <style>
 .s-wechat .wechat-qrcode {
 	display: none;
@@ -131,6 +123,6 @@
 			</a>
 		</li>
 	</ul>
-	<i class="iconfont show-share">&#xe6eb;</i>
+	<i class="iconfont show-share icon-forward"></i>
 </div>
 </#if>

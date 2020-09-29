@@ -57,10 +57,10 @@
         <#else>
             <nav class="navigator">
                 <#if pagination.hasPrev>
-                    <a href="${pagination.prevPageFullPath!}"><i class="iconfont">&#xe679;</i></a>
+                    <a href="${pagination.prevPageFullPath!}"><i class="iconfont icon-previous"></i></a>
                 </#if>
                 <#if pagination.hasNext>
-                    <a href="${pagination.nextPageFullPath!}"><i class="iconfont">&#xe6a3;</i></a>
+                    <a href="${pagination.nextPageFullPath!}"><i class="iconfont icon-next"></i></a>
                 </#if>
             </nav>
         </#if>
