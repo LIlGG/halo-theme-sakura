@@ -980,13 +980,6 @@ var home = location.href,
             });
         },
 
-        // 输入框特效
-        IA: function () {
-            POWERMODE.colorful = true; // make power mode colorful
-            POWERMODE.shake = false; // turn off shake
-            document.body.addEventListener('input', POWERMODE)
-        },
-
         // 返回顶部
         GT: function () {
             var offset = 100,
@@ -1035,7 +1028,6 @@ $(function () {
     Siren.XLS(); // Ajax文章列表
     Siren.CE(); // 点击事件
     Siren.MN(); // 移动端菜单
-    Siren.IA(); // 输入框特效
 
     // 新增功能
     if (Poi.themeChange)

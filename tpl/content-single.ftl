@@ -44,7 +44,7 @@
         </div>
         <div class="post-tags">
             <#if tags?? && tags?size gt 0>
-                <i class="iconfont">&#xe68c;</i>
+                <i class="iconfont icon-tags"></i>
                 <#list tags as tag>
                     <a href="${tag.fullPath!}" rel="tag">${tag.name!}</a>
                 </#list>

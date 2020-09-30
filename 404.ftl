@@ -30,7 +30,7 @@
     <div style="display:block; width:284px;margin: auto;">
         <p style="margin-bottom: 1em;margin-top: 1.5em;text-align: center;font-size: 15px;"></p>
         <form class="s-search" method="get" action="/search" role="search">
-            <i class="iconfont js-toggle-search iconsearch" style="bottom: 8px;left: 12px;">&#xe65c;</i>
+            <i class="iconfont js-toggle-search iconsearch icon-search" style="bottom: 8px;left: 12px;"></i>
             <input class="text-input" style="padding: 8px 20px 8px 46px;" type="search" name="keyword" placeholder="Search..." required>	
         </form>
     </div>

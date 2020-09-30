@@ -91,7 +91,7 @@
 	<div class="search-form__inner">
 		<div>
 			<p class="micro mb-">输入后按回车搜索 ...</p>
-			<i class="iconfont">&#xe65c;</i>
+			<i class="iconfont icon-search"></i>
 			<input class="text-input" type="search" name="keyword" placeholder="Search" required>
 		</div>
 	</div>
@@ -107,9 +107,7 @@
 <#if settings.theme_change!true>
 <div class="changeSkin-gear no-select">
 	<div class="keys">
-        <span id="open-skinMenu">切换主题 | SCHEME TOOL &nbsp;
-          <i class="iconfont icon-gear inline-block rotating"></i>
-        </span>
+        <span id="open-skinMenu">切换主题 | SCHEME TOOL &nbsp;<i class="iconfont icon-gear inline-block rotating"></i></span>
     </div>
 </div>
 <div class="skin-menu no-select">
@@ -128,19 +126,7 @@
 <canvas id="night-mode-cover"></canvas>
 </#if>
 <!-- theme-change end -->
-<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/jquery@1.11.0/dist/jquery.min.js'></script>
-<script type='text/javascript' src='${theme_base!}/js/jquery.pjax.min.js?ver=2.0.6.170420'></script>
-<script type='text/javascript' src='${theme_base!}/js/input.min.js?ver=2.0.6.170420'></script>
-<!-- 相册 -->
-<#if settings.photos_style == "justify">
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
-<#elseif settings.photos_style == "masonry" || settings.photos_style == "packery">
-<script src="https://cdn.jsdelivr.net/gh/metafizzy/isotope@3.0.6/dist/isotope.pkgd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js"></script>
-<#if settings.photos_style == "packery">
-<script type='text/javascript' src='${theme_base!}/js/packery-mode.pkgd.min.js?ver=2.0.6.170420'></script>
-</#if>
-</#if>
+<!-- 定义全局属性 -->
 <script type='text/javascript'>
 	/* <![CDATA[ */
 	var Poi = {
@@ -170,7 +156,6 @@
 		"photosGutter": ${(settings.photos_gutter)!10},
 		"tocDepth": ${(settings.toc_depth)!0}
 	};
-
 	var bgConfig = {
 	<#list 0..7 as i>
 		<#assign name = (("settings.bg_name_" + i)?eval)?default(""), 
@@ -197,24 +182,31 @@
 	};
 	/* ]]> */
 </script>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/js/lib.js"></script>
+<!-- 相册 -->
+<#if settings.photos_style == "justify">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<#elseif settings.photos_style == "masonry" || settings.photos_style == "packery">
+<script src="https://cdn.jsdelivr.net/gh/metafizzy/isotope@3.0.6/dist/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js"></script>
+<#if settings.photos_style == "packery">
+<script type='text/javascript' src='https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/js/packery/packery-mode.pkgd.min.js'></script>
+</#if>
+</#if>
 <script type="text/javascript" src="${theme_base!}/plugins/highlight/js/highlight.pack.js"></script>
 <#if settings.code_line!true>
 	<script type="text/javascript" src="${theme_base!}/plugins/highlight/js/highlightjs-line-numbers.min.js"></script>
 </#if>
 <#if settings.is_aplayer!false>
-	<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
-	<script src="${theme_base!}/plugins/aplayer/js/index.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js" defer></script>
+	<script src="${theme_base!}/plugins/aplayer/js/index.js" defer></script>
 </#if>
 <#if settings.post_toc!true>
-	<script src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/js/tocbot/4.11.1/js/tocbot.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/js/tocbot/4.11.1/js/tocbot.min.js" defer></script>
 </#if>
-<script src="//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
-<script src="${settings.comment_mode!'//cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura@v1.3.1/dist/halo-comment.min.js'}"></script>
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
+<script src="${settings.comment_mode!'//cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura@v1.3.1/dist/halo-comment.min.js'}" defer></script>
 <#if settings.tag_cloud!true>
-<script src="https://cdn.jsdelivr.net/npm/jqcloud2@2.0.3/dist/jqcloud.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jqcloud2@2.0.3/dist/jqcloud.min.js" defer></script>
 <script type='text/javascript'>
 	var wordcloud = [
 		<@tagTag method="list">
@@ -226,7 +218,7 @@
 </script>
 </#if>
 <#if settings.category_radar!true>
-<script src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.5/js/echarts/echarts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.5/js/echarts/echarts.min.js" defer></script>
 <script type='text/javascript'>
 	var categoryRadar = {
 		<@categoryTag method="list">
@@ -237,12 +229,11 @@
 	}
 </script>
 </#if>
-<script type='text/javascript' src='${theme_base!}/js/qrcode.min.js'></script>
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<script type='text/javascript' src='${theme_base!}/js/app.min.js?ver=2.0.6.170420'></script>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/js/src/qrcode.min.js' defer></script>
+<script type='text/javascript' src='${theme_base!}/js/app.min.js?ver=1.2.0'></script>
 <#nested />
 <#if settings.live2d_switch!true>
-<script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" async defer></script>
 <#include "plugins/live2d/ftl/live2d.ftl">
 <@live2d/>
 </#if>

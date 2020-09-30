@@ -42,10 +42,10 @@
 				<#else>
 					<nav class="navigator">
 						<#if pagination.hasPrev>
-							<a href="${pagination.prevPageFullPath!}"><i class="iconfont">&#xe679;</i></a>
+							<a href="${pagination.prevPageFullPath!}"><i class="iconfont icon-previous"></i></a>
 						</#if>
 						<#if pagination.hasNext>
-							<a href="${pagination.nextPageFullPath!}"><i class="iconfont">&#xe6a3;</i></a>
+							<a href="${pagination.nextPageFullPath!}"><i class="iconfont icon-next"></i></a>
 						</#if>
 					</nav>
 				</#if>
@@ -55,7 +55,7 @@
 		<div class="search-box">
 			<!-- search start -->
 			<form class="s-search" method="get" action="/search" role="search">
-				<i class="iconfont">&#xe65c;</i>
+				<i class="iconfont icon-search"></i>
 				<input class="text-input" type="search" name="keyword" placeholder="Search..." required>
 			</form>
 			<!-- search end -->
