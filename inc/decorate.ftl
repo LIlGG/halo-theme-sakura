@@ -1,4 +1,5 @@
 <@compress single_line=true>
+<#assign cdn_base_url="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8"/>
 <style type="text/css">
     <#if settings.shownav!false>
       .site-top .lower nav {
@@ -8,41 +9,41 @@
     <#if (settings.cursor_skin!'sakura') == 'sakura'>
     /** 鼠标样式 */
     a {
-        cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/ayuda.cur), auto
+        cursor: url(${cdn_base_url!}/img/Sakura/cursor/ayuda.cur), auto
     }
 
     a:active {
-	    cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/work.cur),alias
+	    cursor: url(${cdn_base_url!}/img/Sakura/cursor/work.cur),alias
     }
 
     p {
-        cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/texto.cur),auto
+        cursor: url(${cdn_base_url!}/img/Sakura/cursor/texto.cur),auto
     }
 
     body {
-        cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/normal.cur),auto;
+        cursor: url(${cdn_base_url!}/img/Sakura/cursor/normal.cur),auto;
     }
 
     .cd-top {
-        cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/No_Disponible.cur),auto;
+        cursor: url(${cdn_base_url!}/img/Sakura/cursor/No_Disponible.cur),auto;
     }
 
     .botui-actions-buttons-button {
-        cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/No_Disponible.cur),auto;
+        cursor: url(${cdn_base_url!}/img/Sakura/cursor/No_Disponible.cur),auto;
     }
 
     .button.botui-actions-buttons-button {
-        cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/No_Disponible.cur),auto;
+        cursor: url(${cdn_base_url!}/img/Sakura/cursor/No_Disponible.cur),auto;
     }
 
     .highlight-wrap code {
-        cursor: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/cursor/texto.cur),auto
+        cursor: url(${cdn_base_url!}/img/Sakura/cursor/texto.cur),auto
     }
     </#if>
 
     /***/
     .cd-top {
-        background: url(${(settings.top_back_img)!'https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/images/scroll.png'}) no-repeat center;
+        background: url(${(settings.top_back_img)!'${cdn_base_url!}/img/Sakura/images/scroll.png'}) no-repeat center;
     }
 
     <#if settings.theme_skin??>

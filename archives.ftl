@@ -7,7 +7,7 @@
         <div class="pattern-center-blank"></div>
         <div class="pattern-center">
             <div class="pattern-attachment-img">
-                <img data-src="${settings.archives_patternimg!}" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
+                <img data-src="${settings.archives_patternimg!}" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
             </div>
             <header class="pattern-header">
                 <h1 class="entry-title">文章归档</h1>

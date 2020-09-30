@@ -1,0 +1,32 @@
+{
+  "name": "halo-theme-sakura",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\">Sakura<img src=\"https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif\" width=\"50\"></h1>\r <p align=\"center\">\r   <a href=\"https://lixingyong.com\">预览</a> | <a href=\"#安装主题\">安装</a> | <a href=\"https://lixingyong.com/s/halo-theme-sakure\">更新日志</a>\r   </p>",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build-clean && npm run build-autoprefix && npm run build-cleancss  && npm run build-js",
+    "build-autoprefix": "postcss --use autoprefixer --map false --output styles/style.css styles/style.css",
+    "build-cleancss": "cleancss -o styles/style.min.css styles/style.css",
+    "build-clean": "rimraf css",
+    "build-app-js": "uglifyjs js/app.js -o js/app.min.js",
+    "build-js": "npm run build-app-js",
+    "deploy": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LIlGG/halo-theme-sakura.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LIlGG/halo-theme-sakura/issues"
+  },
+  "homepage": "https://github.com/LIlGG/halo-theme-sakura#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.7.4",
+    "clean-css-cli": "^4.3.0",
+    "postcss-cli": "^7.1.0",
+    "rimraf": "^3.0.2",
+    "uglify-js": "^3.8.0"
+  }
+}
