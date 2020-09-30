@@ -17,7 +17,7 @@
                 <#list item.links?sort_by('priority')?reverse as link>
                     <li class="link-item">
                         <a class="link-item-inner effect-apollo" href="${link.url!}" title="${link.name!}" target="_blank">
-                            <img class="lazyload" data-src="${link.logo!}" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/svg/loader/trans.ajax-spinner-preloader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
+                            <img class="lazyload" data-src="${link.logo!}" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/svg/loader/trans.ajax-spinner-preloader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
                             <span class="sitename">${link.name!}</span>
                             <div class="linkdes">${link.description!}</div>
                         </a>

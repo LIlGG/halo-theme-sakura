@@ -17,12 +17,13 @@
 <#elseif is_sheet??>
 	<@comment sheet,"sheet" />
 </#if>
+<#assign cdn_base_url="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8"/>
 </div><!-- #page Pjax container-->
 <footer id="colophon" class="site-footer" role="contentinfo">
 	<div class="site-info">
 		<div class="footertext">
 			<p class="foo-logo"
-			   style="background-image: url('${settings.footer_logo?default('https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/images/sakura.svg')}');"></p>
+			   style="background-image: url('${settings.footer_logo?default('${cdn_base_url!}/img/Sakura/images/sakura.svg')}');"></p>
 			<!-- 请尊重作者，请务必保留版权 -->
 			<p style="font-family: 'Ubuntu', sans-serif;">
 				<span style="color: #666666;">Powered 
@@ -182,7 +183,7 @@
 	};
 	/* ]]> */
 </script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/js/lib.js"></script>
+<script type="text/javascript" src="${cdn_base_url!}/js/lib.js"></script>
 <!-- 相册 -->
 <#if settings.photos_style == "justify">
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
@@ -190,7 +191,7 @@
 <script src="https://cdn.jsdelivr.net/gh/metafizzy/isotope@3.0.6/dist/isotope.pkgd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js"></script>
 <#if settings.photos_style == "packery">
-<script type='text/javascript' src='https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/js/packery/packery-mode.pkgd.min.js'></script>
+<script type='text/javascript' src='${cdn_base_url!}/js/packery/packery-mode.pkgd.min.js'></script>
 </#if>
 </#if>
 <script type="text/javascript" src="${theme_base!}/plugins/highlight/js/highlight.pack.js"></script>
@@ -202,7 +203,7 @@
 	<script src="${theme_base!}/plugins/aplayer/js/index.js" defer></script>
 </#if>
 <#if settings.post_toc!true>
-	<script src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/js/tocbot/4.11.1/js/tocbot.min.js" defer></script>
+	<script src="${cdn_base_url!}/js/tocbot/4.11.1/js/tocbot.min.js" defer></script>
 </#if>
 <script src="${settings.comment_mode!'//cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura@v1.3.1/dist/halo-comment.min.js'}" defer></script>
 <#if settings.tag_cloud!true>
@@ -218,7 +219,7 @@
 </script>
 </#if>
 <#if settings.category_radar!true>
-<script src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.5/js/echarts/echarts.min.js" defer></script>
+<script src="${cdn_base_url!}/js/echarts/echarts.min.js" defer></script>
 <script type='text/javascript'>
 	var categoryRadar = {
 		<@categoryTag method="list">
@@ -229,7 +230,7 @@
 	}
 </script>
 </#if>
-<script type='text/javascript' src='https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/js/src/qrcode.min.js' defer></script>
+<script type='text/javascript' src='${cdn_base_url!}/js/src/qrcode.min.js' defer></script>
 <script type='text/javascript' src='${theme_base!}/js/app.min.js?ver=1.2.0'></script>
 <#nested />
 <#if settings.live2d_switch!true>

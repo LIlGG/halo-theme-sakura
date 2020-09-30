@@ -1798,18 +1798,18 @@ others:
     reply_mail_img:
       name: reply_mail_img
       label: 邮件回复模块图片
-      type: text
-      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.3/img/other/head_2.jpg"
+      type: attachment
+      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/other/head_2.jpg"
     top_back_img:
       name: 回到顶部图片
       label: 回到顶部图片
-      type: text
-      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/images/scroll.png"
+      type: attachment
+      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/scroll.png"
     footer_logo:
       name: footer_logo
       label: 页脚logo
-      type: text
-      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.2/img/Sakura/images/sakura.svg"
+      type: attachment
+      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/sakura.svg"
     footer_case_number:
       name: footer_case_number
       label: 备案信息
