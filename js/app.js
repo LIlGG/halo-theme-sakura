@@ -25,7 +25,7 @@ var LIlGGAttachContext = {
       if ($("div").hasClass("aplayer")) {
         reloadAplayer();
       }
-    } catch (e) {}
+    } catch (e) { }
 
     if (Poi.toc) LIlGGAttachContext.TOC(); // 文章目录
     LIlGGAttachContext.CHS(); // 代码样式
@@ -278,8 +278,8 @@ var LIlGGAttachContext = {
           $(".toc").css(
             "max-height",
             $(document).scrollTop() +
-              ($(window).height() - baseTopPadding) +
-              "px"
+            ($(window).height() - baseTopPadding) +
+            "px"
           );
         } else if (s > offset) {
           $(".toc").css(
@@ -290,8 +290,8 @@ var LIlGGAttachContext = {
           $(".toc").css(
             "max-height",
             $(document).scrollTop() +
-              ($(window).height() - baseTopPadding) +
-              "px"
+            ($(window).height() - baseTopPadding) +
+            "px"
           );
         }
       });
@@ -360,8 +360,8 @@ var LIlGGAttachContext = {
 
       $(this).after(
         '<a class="copy-code" href="javascript:" data-clipboard-target="#hljs-' +
-          i +
-          '" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a>'
+        i +
+        '" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a>'
       );
       new ClipboardJS(".copy-code");
     });
@@ -461,8 +461,8 @@ var LIlGGAttachContext = {
         "rgba(255,255,255," + bgAttr["opacity"] < 0
           ? 0
           : bgAttr["opacity"] > 1
-          ? 1
-          : bgAttr["opacity"] + ")"
+            ? 1
+            : bgAttr["opacity"] + ")"
       );
       if (bgAttr["isSkinSecter"]) {
         $(".pattern-center")
@@ -615,26 +615,25 @@ var LIlGGAttachContext = {
       var option =
         Poi.photosStyle == "masonry"
           ? {
-              masonry: {
-                gutter: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter),
-              },
-              itemSelector: ".gallery-item",
-            }
+            masonry: {
+              gutter: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter),
+            },
+            itemSelector: ".gallery-item",
+          }
           : {
-              layoutMode: "packery",
-              packery: {
-                columnWidth: 100,
-                gutter: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter),
-              },
-              itemSelector: ".gallery-item",
-            };
-      $masonrys.each(function () {
-        var $items = $(this).find(".gallery-item");
-        var $grid = $(this).isotope(option);
+            layoutMode: "packery",
+            packery: {
+              columnWidth: 100,
+              gutter: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter),
+            },
+            itemSelector: ".gallery-item",
+          };
+      
+        $masonrys.find("img.lazyload").on('load', function() {
+          $(this).parents(".gallery-item").css("background", "#222")
+          $masonrys.isotope(option);
+        })
 
-        $grid.imagesLoaded().progress(function () {
-          $grid.isotope("layout");
-        });
         // 过滤
         $("#gallery-filter li a").on("click", function () {
           $("#gallery-filter li a").removeClass("active");
@@ -648,17 +647,16 @@ var LIlGGAttachContext = {
 
         if (Poi.photosStyle == "masonry") {
           // 切换风格
-          $("#grid-changer li a").on("click", function () {
-            $("#grid-changer li a").removeClass("active");
+          $("#grid-changer a").on("click", function () {
+            $("#grid-changer a").removeClass("active");
             $(this).toggleClass("active");
             for (var i = 2; i < 9; i++) {
-              $items.removeClass("col-" + i);
+              $masonrys.find(".gallery-item").removeClass("col-" + i);
             }
-            $items.toggleClass($(this).closest("li").attr("class"));
-            $masonrys.isotope("layout");
+            $masonrys.find(".gallery-item").toggleClass($(this).closest("li").attr("class"));
+            $masonrys.isotope(option);
           });
         }
-      });
     };
 
     if ($masonrys.length > 0) {
@@ -702,8 +700,8 @@ var LIlGGAttachContext = {
           if ($firstSpan.find("i").length == 0) {
             $firstSpan.prepend(
               '<i class="iconfont icon-' +
-                getTimeIcon($firstSpan.text()) +
-                '"></i> '
+              getTimeIcon($firstSpan.text()) +
+              '"></i> '
             );
           }
           // 为所有图片增加box
@@ -714,8 +712,8 @@ var LIlGGAttachContext = {
                 .addClass("journal-img")
                 .wrap(
                   '<a data-fancybox="gallery" href="' +
-                    $(this).attr("src") +
-                    '">'
+                  $(this).attr("src") +
+                  '">'
                 );
             }
           });
@@ -883,8 +881,8 @@ var home = location.href,
                 .addClass("gallery-img")
                 .wrap(
                   '<a data-fancybox="gallery" href="' +
-                    $(this).attr("src") +
-                    '"></a>'
+                  $(this).attr("src") +
+                  '"></a>'
                 );
             }
           });

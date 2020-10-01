@@ -8160,6 +8160,10 @@ img[src*="#in-center"] {
 	}
 }
 
+.gallery-item:hover .justify-caption  {
+	transition: opacity .2s ease;
+	opacity: 0.6;
+}
 
 .gallery-item:hover .gallery-caption .entry-summary {
 	opacity: 1;
@@ -8174,10 +8178,6 @@ img[src*="#in-center"] {
 .justify-caption {
 	background: #222;
 	opacity: 0;
-}
-
-.gallery-item:hover .justify-caption  {
-	opacity: 0.6;
 }
 
 .gallery-item:hover .gallery-caption h3, .gallery-item:hover .gallery-caption p {
@@ -8211,7 +8211,6 @@ img[src*="#in-center"] {
 
 .masonry-gallery .gallery-item {
 	margin: 0;
-	background: #222;
 }
 
 @media screen and (max-width: 860px) and (orientation: portrait) {
