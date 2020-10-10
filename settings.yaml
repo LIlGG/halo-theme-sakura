@@ -150,7 +150,7 @@ mainScreen:
       label: 聚焦故障文本
       type: text
       default: 'Hi,Friend'
-      description: '该文本只有头部样式开启故障文字才能显示'
+      description: '移动端：将显示在导航栏中，桌面端：该文本只有头部样式开启故障文字才能显示'
     focus_infos:
       name: focus_infos
       label: 社交信息

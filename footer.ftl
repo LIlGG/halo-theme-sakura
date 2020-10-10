@@ -73,6 +73,36 @@
 		<img src="${(user.avatar)!'${theme_base!}/images/avatar.jpg'}">
 	</div>
 
+	<#if settings.glitch_text??>
+		<p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">${settings.glitch_text}</p>
+	</#if>
+
+	<#if settings.focus_infos!true>
+		<p style="text-align: center; word-spacing: 20px;">
+			<#if settings.twitter??>
+				<a href="${settings.twitter!}" class="fa fa-twitter" target="_blank" style="color: #00aced"></a>
+			</#if>
+			<#if settings.sina??>
+				<a href="${settings.sina!}" class="fa fa-weibo" target="_blank" style="color: #dd4b39"></a>
+			</#if>
+			<#if settings.github??>
+				<a href="${settings.github!}" class="fa fa-github" target="_blank" style="color: #333"></a>
+			</#if>
+			<#if settings.wechat??>
+				<a href="${settings.wechat!}" class="fa fa-wechat" target="_blank" style="color: #333"></a>
+			</#if>
+			<#if settings.qq??>
+				<a href="//wpa.qq.com/msgrd?v=3&uin=${settings.qq!}&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #333"></a>
+			</#if>
+			<#if settings.bili??>
+				<a href="${settings.bili!}" class="fa fa-tv" target="_blank" style="color: #333"></a>
+			</#if>
+			<#if settings.wangyiyun??>
+				<a href="${settings.wangyiyun!}" class="fa fa-music" target="_blank" style="color: #333"></a>
+			</#if>
+		</p>
+	</#if>
+
 	<div class="m-search">
 		<form class="m-search-form" method="get" action="/search" role="search">
 			<input class="m-search-input" type="search" name="keyword" placeholder="搜索..." required>
