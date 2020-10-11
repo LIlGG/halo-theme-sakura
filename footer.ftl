@@ -80,25 +80,25 @@
 	<#if settings.focus_infos!true>
 		<p style="text-align: center; word-spacing: 20px;">
 			<#if settings.twitter??>
-				<a href="${settings.twitter!}" class="fa fa-twitter" target="_blank" style="color: #00aced"></a>
+				<a href="${settings.twitter!}" class="social-twitter" target="_blank" style="color: #00aced"><img src="${cdn_base_url!}/img/Sakura/images/sns/twitter.png" width="18"/></a>
 			</#if>
 			<#if settings.sina??>
-				<a href="${settings.sina!}" class="fa fa-weibo" target="_blank" style="color: #dd4b39"></a>
+				<a href="${settings.sina!}" class="social-sina" target="_blank" style="color: #dd4b39"><img src="${cdn_base_url!}/img/Sakura/images/sns/sina.png" width="18"/></a>
 			</#if>
 			<#if settings.github??>
-				<a href="${settings.github!}" class="fa fa-github" target="_blank" style="color: #333"></a>
+				<a href="${settings.github!}" class="social-github" target="_blank" style="color: #333"><img src="${cdn_base_url!}/img/Sakura/images/sns/github.png" width="18"/></a>
 			</#if>
 			<#if settings.wechat??>
-				<a href="${settings.wechat!}" class="fa fa-wechat" target="_blank" style="color: #333"></a>
+				<a href="${settings.wechat!}" class="social-wechat" target="_blank" style="color: #333"><img src="${cdn_base_url!}/img/Sakura/images/sns/wechat.png" width="18"/></a>
 			</#if>
 			<#if settings.qq??>
-				<a href="//wpa.qq.com/msgrd?v=3&uin=${settings.qq!}&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #333"></a>
+				<a href="//wpa.qq.com/msgrd?v=3&uin=${settings.qq!}&site=qq&menu=yes" class="social-wangyiyun" target="_blank" style="color: #333"><img src="${cdn_base_url!}/img/Sakura/images/sns/qq.png" width="18"/></a>
 			</#if>
 			<#if settings.bili??>
-				<a href="${settings.bili!}" class="fa fa-tv" target="_blank" style="color: #333"></a>
+				<a href="${settings.bili!}" class="social-bili" target="_blank" style="color: #333"><img src="${cdn_base_url!}/img/Sakura/images/sns/bilibili.png" width="18"/></a>
 			</#if>
 			<#if settings.wangyiyun??>
-				<a href="${settings.wangyiyun!}" class="fa fa-music" target="_blank" style="color: #333"></a>
+				<a href="${settings.wangyiyun!}" class="social-wangyiyun" target="_blank" style="color: #333"><img src="${cdn_base_url!}/img/Sakura/images/sns/wangyiyun.png" width="18"/></a>
 			</#if>
 		</p>
 	</#if>
