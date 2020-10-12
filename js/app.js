@@ -1080,11 +1080,11 @@ var home = location.href,
             lazyload(undefined, {
               rootMargin: "150px",
             });
+            // 加载完成不改变位置
+            $(window).scrollTop(tempScrollTop);
             LIlGGAttachContext.PLSA();
             if (nextHref != undefined) {
               $("#pagination a").attr("href", nextHref);
-              // 加载完成不改变位置
-              $(window).scrollTop(tempScrollTop);
             } else {
               $("#pagination").html("<span>没有更多文章了</span>");
             }
@@ -1113,10 +1113,10 @@ var home = location.href,
               rootMargin: "150px",
             });
             LIlGGAttachContext.SS()();
+            // 加载完成不改变位置
+            $(window).scrollTop(tempScrollTop);
             if (nextHref != undefined) {
               $("#journals-pagination a").attr("href", nextHref);
-              // 加载完成不改变位置
-              $(window).scrollTop(tempScrollTop);
             } else {
               $("#journals-pagination a").remove();
             }
