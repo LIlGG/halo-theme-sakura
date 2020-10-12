@@ -103,13 +103,13 @@
             color: ${settings.theme_skin!};
         }
     }
-    <#if settings.tag_cloud!true>
-        @media (min-width: 860px) {
-        .chip-container {
-            margin-top: -60px;;
+        <#if settings.tag_cloud!true>
+            @media (min-width: 860px) {
+            .chip-container {
+                margin-top: -60px;;
+            }
         }
-    }
-    </#if>
+        </#if>
     </#if>
     <#if settings.site_custom_style??>
         ${settings.site_custom_style!}
@@ -180,6 +180,132 @@
         background: ${(settings.journal_color_bg_2)!'#F0FFFF'};
         color: ${(settings.journal_color_font_2)!'block'};
     }
+    </#if>
+
+
+    /*黑夜模式控件透明度*/
+    body.dark .header-info,
+    body.dark .top-social img {
+        color:#fff;
+        background:rgba(0,0,0,${(settings.dark_widget_tmd)!0.7});
+    }
+
+    body.dark .notification,
+    body.dark .the-feature.from_left_and_right .info {
+        background-color: rgba(0,0,0,${(settings.dark_widget_tmd)!0.7});
+    }
+
+    body.dark .skin-menu {
+        background-color:rgba(0,0,0,${(settings.dark_widget_tmd)!0.7}) !important;
+    }
+
+    /*黑夜模式图像亮度*/
+    body.dark img,
+    body.dark .highlight-wrap,
+    body.dark iframe,
+    body.dark .entry-content .aplayer {
+        filter:brightness(${(settings.dark_imgbri)!0.7});
+    }
+
+    /*黑夜模式主题色*/
+    body.dark .ar-time i,
+    body.dark span.ar-circle,
+    body.dark .scrollbar,
+    body.dark .butterBar-message,
+    body.dark .aplayer .aplayer-list ol li:hover {
+        background: ${settings.theme_dark!} !important;
+    }
+
+    body.dark .aplayer .aplayer-list ol li.aplayer-list-light .aplayer-list-cur,
+    body.dark .user-menu-option a:hover ,
+    body.dark .menu-list li:hover ,
+    body.dark .font-family-controls button:hover ,
+    body.dark .openNav .icon, 
+    body.dark .openNav .icon:before ,
+    body.dark .openNav .icon:after ,
+    body.dark .openNav .icon:after ,
+    body.dark .site-top ul li a:after  {
+        background-color: ${settings.theme_dark!};
+    }
+    body.dark #archives-temp h3,
+    body.dark #moblieGoTop,
+    body.dark #changskin,
+    body.dark .the-feature.from_left_and_right a:hover .info p,
+    body.dark .the-feature.from_left_and_right .info,
+    body.dark .ins-section .ins-search-item:hover,
+    body.dark .ins-section .ins-search-item:hover .ins-slug,
+    body.dark .ins-section .ins-search-item:hover .ins-search-preview,
+    body.dark .ins-section .ins-search-item:hover .iconfont ,
+    body.dark .float-content i:hover,
+    body.dark .menhera-container .emoji-item:hover ,
+    body.dark .comment-respond .logged-in-as a:hover ,
+    body.dark .site-top ul li a:hover ,
+    body.dark i.iconfont.js-toggle-search.iconsearch:hover {
+        color: ${settings.theme_dark!};
+    }
+
+    body.dark .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path  {
+        fill: ${settings.theme_dark!}
+    }
+
+    body.dark #moblieGoTop:hover , 
+    body.dark #changskin:hover {
+        color: ${settings.theme_dark!};
+        opacity:.8;
+    }
+
+    body.dark .focusinfo .header-tou img  {
+        box-shadow: inset 0 0 10px ${settings.theme_dark!};
+    }
+</style>
+
+<style id="comment-style" type="text/css" media="noexist">
+    .halo-comment.dark button,
+    .halo-comment.dark input,
+    .halo-comment.dark select,
+    .halo-comment.dark textarea,
+    .halo-comment.dark i.iconfont.js-toggle-search.iconsearch,
+    .halo-comment.dark .comment-textarea .input-label,
+    .halo-comment.dark #emotion-toggle span,
+    .halo-comment.dark .emotion-box,
+    .halo-comment.dark .emotion-box .motion-container .emoji-item {
+        color: #eee !important;
+    }
+
+    .halo-comment.dark .body p {
+        color: #bebebe !important;
+    }
+
+    .halo-comment.dark input[type=color]:focus,
+    .halo-comment.dark input[type=date]:focus,
+    .halo-comment.dark input[type=datetime-local]:focus,
+    .halo-comment.dark input[type=datetime]:focus,
+    .halo-comment.dark input[type=email]:focus,
+    .halo-comment.dark input[type=month]:focus,
+    .halo-comment.dark input[type=number]:focus,
+    .halo-comment.dark input[type=password]:focus,
+    .halo-comment.dark input[type=range]:focus,
+    .halo-comment.dark input[type=search]:focus,
+    .halo-comment.dark input[type=tel]:focus,
+    .halo-comment.dark input[type=text]:focus,
+    .halo-comment.dark input[type=time]:focus,
+    .halo-comment.dark input[type=url]:focus,
+    .halo-comment.dark input[type=week]:focus,
+    .halo-comment.dark textarea:focus {
+        color: #eee !important;
+        background-color: #31363b !important;
+    }
+
+    .halo-comment.dark .comment .info, 
+    .halo-comment.dark .comment .comment-time,
+    .halo-comment.dark .comment-respond .logged-in-as, 
+    .halo-comment.dark .notification, 
+    .halo-comment.dark .comment-respond .logged-in-as a {
+        color: #9499a8;
+    }
+
+    <#if settings.comment_custom_style??>
+        ${settings.comment_custom_style!}
     </#if>
 </style>
 </@compress>

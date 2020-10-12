@@ -24,29 +24,29 @@
 		<div class="footertext">
 			<p class="foo-logo"
 			   style="background-image: url('${settings.footer_logo?default('${cdn_base_url!}/img/Sakura/images/sakura.svg')}');"></p>
+			<@global.footer />
+		</div>
+		<div class="footer-device">
 			<!-- 请尊重作者，请务必保留版权 -->
 			<p style="font-family: 'Ubuntu', sans-serif;">
-				<span style="color: #666666;">Powered 
+				<span>Powered 
  					<i class="fa fa-vimeo animated" style="color: #e74c3c;"></i> 
 					by 
-					<a rel="me" target="_blank"  href="http://halo.run" title="一个优秀的开源博客发布应用" style="color: #000000;text-decoration:none;">Halo</a>
+					<a rel="me" target="_blank"  href="http://halo.run" title="一个优秀的开源博客发布应用" style="text-decoration:none;">Halo</a>
 				</span>
 				 •
-				<span style="color: #666666;">Crafted with
+				<span>Crafted with
  					<i class="fa fa-heart animated" style="color: #e74c3c;"></i> 
 					by 
-					<a rel="me" target="_blank" href="https://github.com/LIlGG/halo-theme-sakura" style="color: #000000;text-decoration:none;">LIlGG</a>
+					<a rel="me" target="_blank" href="https://github.com/LIlGG/halo-theme-sakura" style="text-decoration:none;">LIlGG</a>
 				</span>
 			</p>
-			<@global.footer />
 			<p>
 				© ${.now?string("yyyy")} ${(user.nickname)!}
 				<#if settings.footer_case_number??  && settings.footer_case_number != "">
 				<a href="https://beian.miit.gov.cn/ " target="_blank">${settings.footer_case_number}</a>
 				</#if>
 			</p>
-		</div>
-		<div class="footer-device">
 		</div>
 	</div><!-- .site-info -->
 </footer><!-- #colophon -->
@@ -154,7 +154,6 @@
 		</ul>
 	</div>
 </div>
-<canvas id="night-mode-cover"></canvas>
 </#if>
 <!-- theme-change end -->
 <!-- 定义全局属性 -->
@@ -193,21 +192,14 @@
 				desc = (("settings.bg_desc_" + i)?eval)?default(""),
 				url = (("settings.bg_url_" + i)?eval)?default(""),
 				strategy = (("settings.bg_img_strategy_" + i)?eval)?default(""),
-				isSkinSecter = (("settings.bg_skin_secter_" + i)?eval)?default(""),
-				isNight = (("settings.bg_night_" + i)?eval)?default(""),
-				isNightMode = (("settings.bg_night_mode_" + i)?eval)?default(""),
-				opacity = (("settings.bg_opacity_" + i)?eval)?default("1") />
+				isNight = (("settings.bg_night_" + i)?eval)?default("") />
 		
 		"bg_${i}": {
 			"name": "${name}",
 			"desc": "${desc}",
 			"url": "${url}",
 			"strategy": "${strategy}",
-			"isSkinSecter": "${(isSkinSecter!false)?string('true', '')}",
-			"isNight": "${(isNight!true)?string('true', '')}",
-			"isNightMode": "${(isNightMode!true)?string('true', '')}",
-			"opacity": "${opacity}"
-
+			"isNight": "${(isNight!true)?string('true', '')}"
 		},
 	</#list>
 	};

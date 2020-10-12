@@ -173,6 +173,17 @@ mainScreen:
           label: 开启
         - value: false
           label: 关闭
+    focus_godown:
+      name: focus_godown
+      label: 下拉箭头
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
     focus_img_1:
       name: focus_img_1
       label: 背景图
@@ -469,6 +480,20 @@ post:
           label: Github
         - value: Tomorrow Night
           label: Tomorrow Night
+comment:
+  label: 评论组件
+  items:
+    comment_mode:
+      name: comment_mode
+      label: 评论模块js
+      type: text
+      default: "https://cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura/dist/halo-comment.min.js"
+      description: "评论js模块，如果当前为空，则获取评论设置中的模块js"
+    comment_custom_style:
+      name: comment_custom_style
+      label: 自定义评论组件CSS样式
+      type: textarea
+      description: '确保样式以.halo-comment开头，防止污染其他css。如果属性不生效，则加上!important提升优先度'
 tagAndCategory:
   label: 标签及分类页
   items:
@@ -677,12 +702,27 @@ theme:
       type: radio
       data-type: bool
       default: true
-      description: '每个主题的样式可以自定义，但一般情况下使用默认的足够了【务必保证第一项存在】'
+      description: '所有主题的样式可以自定义，但一般情况下使用默认的足够了【务必保证第一项存在】'
       options:
         - value: true
           label: 开启
         - value: false
           label: 关闭
+    theme_dark:
+      name: theme_dark
+      label: 黑夜模式主题色
+      type: color
+      default: '#FE9600'
+    dark_imgbri:
+      name: dark_imgbri
+      label: 黑夜模式图像亮度
+      type: number
+      default: 0.7  
+    dark_widget_tmd:
+      name: dark_widget_tmd
+      label: 黑夜模式控件透明度
+      type: number
+      default: 0.7
     bg_name_0:
       name: bg_name_0
       label: 主题一 名称
@@ -720,21 +760,9 @@ theme:
       type: text
       default: 'fa fa-television'
       description: '图标可能无法立即生效'
-    bg_skin_secter_0:
-      name: bg_skin_secter_0
-      label: 背景缩进
-      type: radio
-      data-type: bool
-      default: false
-      description: '将文章等背景图缩进，用于展示背景图'
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
     bg_night_0:
       name: bg_night_0
-      label: 夜晚模式
+      label: 黑夜模式
       type: radio
       data-type: bool
       default: false
@@ -743,23 +771,6 @@ theme:
           label: 开启
         - value: false
           label: 关闭
-    bg_night_mode_0:
-      name: bg_night_mode_0
-      label: 夜晚模式遮罩
-      type: radio
-      data-type: bool
-      default: false
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    bg_opacity_0:
-      name: bg_opacity_0
-      label: 遮罩透明度
-      type: text
-      default: "0"
-      description: '填写0-1之间的数，小于0按0算 大于1按1算'
     bg_name_1:
       name: bg_name_1
       label: 主题二 名称
@@ -797,21 +808,9 @@ theme:
       type: text
       default: 'iconfont icon-sakura'
       description: '图标可能无法立即生效'
-    bg_skin_secter_1:
-      name: bg_skin_secter_1
-      label: 背景缩进
-      type: radio
-      data-type: bool
-      default: true
-      description: '将文章等背景图缩进，用于展示背景图'
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
     bg_night_1:
       name: bg_night_1
-      label: 夜晚模式
+      label: 黑夜模式
       type: radio
       data-type: bool
       default: false
@@ -820,23 +819,6 @@ theme:
           label: 开启
         - value: false
           label: 关闭
-    bg_night_mode_1:
-      name: bg_night_mode_1
-      label: 夜晚模式遮罩
-      type: radio
-      data-type: bool
-      default: false
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    bg_opacity_1:
-      name: bg_opacity_1
-      label: 遮罩透明度
-      type: text
-      default: "1"
-      description: '填写0-1之间的数，小于0按0算 大于1按1算'
     bg_name_2:
       name: bg_name_2
       label: 主题三 名称
@@ -874,21 +856,9 @@ theme:
       type: text
       default: 'fa fa-slack'
       description: '图标可能无法立即生效'
-    bg_skin_secter_2:
-      name: bg_skin_secter_2
-      label: 背景缩进
-      type: radio
-      data-type: bool
-      default: true
-      description: '将文章等背景图缩进，用于展示背景图'
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
     bg_night_2:
       name: bg_night_2
-      label: 夜晚模式
+      label: 黑夜模式
       type: radio
       data-type: bool
       default: false
@@ -897,23 +867,6 @@ theme:
           label: 开启
         - value: false
           label: 关闭
-    bg_night_mode_2:
-      name: bg_night_mode_2
-      label: 夜晚模式遮罩
-      type: radio
-      data-type: bool
-      default: false
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    bg_opacity_2:
-      name: bg_opacity_2
-      label: 遮罩透明度
-      type: text
-      default: "1"
-      description: '填写0-1之间的数，小于0按0算 大于1按1算'
     bg_name_3:
       name: bg_name_3
       label: 主题四 名称
@@ -951,21 +904,9 @@ theme:
       type: text
       default: 'iconfont icon-dots'
       description: '图标可能无法立即生效'
-    bg_skin_secter_3:
-      name: bg_skin_secter_3
-      label: 背景缩进
-      type: radio
-      data-type: bool
-      default: true
-      description: '将文章等背景图缩进，用于展示背景图'
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
     bg_night_3:
       name: bg_night_3
-      label: 夜晚模式
+      label: 黑夜模式
       type: radio
       data-type: bool
       default: false
@@ -974,23 +915,6 @@ theme:
           label: 开启
         - value: false
           label: 关闭
-    bg_night_mode_3:
-      name: bg_night_mode_3
-      label: 夜晚模式遮罩
-      type: radio
-      data-type: bool
-      default: false
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    bg_opacity_3:
-      name: bg_opacity_3
-      label: 遮罩透明度
-      type: text
-      default: "1"
-      description: '填写0-1之间的数，小于0按0算 大于1按1算'
     bg_name_4:
       name: bg_name_4
       label: 主题五 名称
@@ -1028,21 +952,9 @@ theme:
       type: text
       default: 'fa fa-optin-monster'
       description: '图标可能无法立即生效'
-    bg_skin_secter_4:
-      name: bg_skin_secter_4
-      label: 背景缩进
-      type: radio
-      data-type: bool
-      default: true
-      description: '将文章等背景图缩进，用于展示背景图'
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
     bg_night_4:
       name: bg_night_4
-      label: 夜晚模式
+      label: 黑夜模式
       type: radio
       data-type: bool
       default: false
@@ -1051,23 +963,6 @@ theme:
           label: 开启
         - value: false
           label: 关闭
-    bg_night_mode_4:
-      name: bg_night_mode_4
-      label: 夜晚模式遮罩
-      type: radio
-      data-type: bool
-      default: false
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    bg_opacity_4:
-      name: bg_opacity_4
-      label: 遮罩透明度
-      type: text
-      default: "1"
-      description: '填写0-1之间的数，小于0按0算 大于1按1算'
     bg_name_5:
       name: bg_name_5
       label: 主题六 名称
@@ -1105,21 +1000,9 @@ theme:
       type: text
       default: 'iconfont icon-pixiv'
       description: '图标可能无法立即生效'
-    bg_skin_secter_5:
-      name: bg_skin_secter_5
-      label: 背景缩进
-      type: radio
-      data-type: bool
-      default: true
-      description: '将文章等背景图缩进，用于展示背景图'
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
     bg_night_5:
       name: bg_night_5
-      label: 夜晚模式
+      label: 黑夜模式
       type: radio
       data-type: bool
       default: false
@@ -1128,23 +1011,6 @@ theme:
           label: 开启
         - value: false
           label: 关闭
-    bg_night_mode_5:
-      name: bg_night_mode_5
-      label: 夜晚模式遮罩
-      type: radio
-      data-type: bool
-      default: false
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    bg_opacity_5:
-      name: bg_opacity_5
-      label: 遮罩透明度
-      type: text
-      default: "1"
-      description: '填写0-1之间的数，小于0按0算 大于1按1算'
     bg_name_6:
       name: bg_name_6
       label: 主题七 名称
@@ -1182,21 +1048,9 @@ theme:
       type: text
       default: 'iconfont icon-bing'
       description: '图标可能无法立即生效'
-    bg_skin_secter_6:
-      name: bg_skin_secter_6
-      label: 背景缩进
-      type: radio
-      data-type: bool
-      default: true
-      description: '将文章等背景图缩进，用于展示背景图'
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
     bg_night_6:
       name: bg_night_6
-      label: 夜晚模式
+      label: 黑夜模式
       type: radio
       data-type: bool
       default: true
@@ -1205,23 +1059,6 @@ theme:
           label: 开启
         - value: false
           label: 关闭
-    bg_night_mode_6:
-      name: bg_night_mode_6
-      label: 夜晚模式遮罩
-      type: radio
-      data-type: bool
-      default: false
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    bg_opacity_6:
-      name: bg_opacity_6
-      label: 遮罩透明度
-      type: text
-      default: "1"
-      description: '填写0-1之间的数，小于0按0算 大于1按1算'
     bg_name_7:
       name: bg_name_7
       label: 主题八 名称
@@ -1238,7 +1075,7 @@ theme:
       name: bg_url_7
       label: 主题八 图片链接
       type: attachment
-      default: 'https://view.lixingyong.com/images/2020/07/23/me.png'
+      default: ''
     bg_img_strategy_7:
       nmae: bg_img_strategy_7
       label: 主题八 图片处理策略
@@ -1259,21 +1096,9 @@ theme:
       type: text
       default: 'fa fa-moon-o'
       description: '图标可能无法立即生效'
-    bg_skin_secter_7:
-      name: bg_skin_secter_7
-      label: 背景缩进
-      type: radio
-      data-type: bool
-      default: true
-      description: '将文章等背景图缩进，用于展示背景图'
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
     bg_night_7:
       name: bg_night_7
-      label: 夜晚模式
+      label: 黑夜模式
       type: radio
       data-type: bool
       default: true
@@ -1282,23 +1107,6 @@ theme:
           label: 开启
         - value: false
           label: 关闭
-    bg_night_mode_7:
-      name: bg_night_mode_7
-      label: 夜晚模式遮罩
-      type: radio
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 开启
-        - value: false
-          label: 关闭
-    bg_opacity_7:
-      name: bg_opacity_7
-      label: 遮罩透明度
-      type: text
-      default: "0.8"
-      description: '填写0-1之间的数，小于0按0算 大于1按1算'
 live2d:
   label: 看板娘
   items:
@@ -1789,12 +1597,6 @@ others:
           label: 开启
         - value: false
           label: 关闭
-    comment_mode:
-      name: comment_mode
-      label: 评论模块js
-      type: text
-      default: "https://cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura/dist/halo-comment.min.js"
-      description: "评论js模块，如果当前为空，则获取评论设置中的模块js"
     reply_mail_img:
       name: reply_mail_img
       label: 邮件回复模块图片
