@@ -39,12 +39,19 @@
 <section id="main-container">
     <#if settings.head_focus!true>
 		<div class="headertop ${settings.focus_img_filter!'filter-nothing'}">
-			<#include "layouts/imgbox.ftl">
-			<#if settings.bgvideo!false>
+		<#include "layouts/imgbox.ftl">
+		<!-- 背景视频 -->
+		<#if settings.bgvideo!false>
 			<#if settings.bgvideo_url?? && settings.bgvideo_url!= '' || settings.bgvideo_id?? && settings.bgvideo_id!= ''>
 			<#include "layouts/videobox.ftl">
 			</#if>
-			</#if>
+		</#if>
+		<!-- 首页下拉箭头 -->
+		<#if settings.godown!true>
+			<div class="headertop-down faa-float animated" onclick="headertop_down()">
+				<span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+			</div>
+		</#if>
 		</div>
 	</#if>
 	<div id="page" class="site wrapper">

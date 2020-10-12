@@ -30,6 +30,7 @@ var LIlGGAttachContext = {
     if (Poi.toc) LIlGGAttachContext.TOC(); // 文章目录
     LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.PHO(); // 图库功能
+    LIlGGAttachContext.CMN(); // 评论组件
   },
   // 背景视频
   BGV: function () {
@@ -391,22 +392,12 @@ var LIlGGAttachContext = {
         .off("click")
         .on("click", function () {
           $(".skin-menu").toggleClass("show");
-          if (themeConfig.isNight) {
-            $(".changeSkin").css("background", "rgba(255,255,255,0.8)");
-          } else {
-            $(".changeSkin").css("background", "none");
-          }
         });
 
       //绑定主题子项点击事件
       Object.keys(bgConfig).forEach(function (currBg) {
         $(".skin-menu " + "#" + currBg).on("click", function () {
-          changeBg(currBg, function (isNightMode) {
-            // 非夜间模式才保存（暂时去除）
-            // if (!isNightMode) {
-            //     // 保存tagClass, 方便下次查询
-            //     utils.setCookie("bgTagClass", currBg, 30);
-            // }
+          changeBg(currBg, function () {
             // 保存tagClass, 方便下次查询
             utils.setCookie("bgTagClass", currBg, 30);
             // 绑定完之后隐藏主题开关
@@ -430,10 +421,6 @@ var LIlGGAttachContext = {
       if (!bgAttr) return;
       themeConfig.bgAttr = bgAttr;
 
-      $("#night-mode-cover").css(
-        "visibility",
-        bgAttr["isNightMode"] ? "visible" : "hidden"
-      );
       $("body").removeAttr("style");
       $("body").css(
         "background-image",
@@ -443,7 +430,7 @@ var LIlGGAttachContext = {
       // 回调切换主题方法
       !callback || typeof callback == "undefined" || callback == undefined
         ? false
-        : callback(bgAttr["isNightMode"]);
+        : callback(bgAttr["isNight"]);
     };
 
     /**
@@ -455,35 +442,25 @@ var LIlGGAttachContext = {
         return;
       }
       var bgAttr = themeConfig.bgAttr;
-
-      $(".blank").css(
-        "background-color",
-        "rgba(255,255,255," + bgAttr["opacity"] < 0
-          ? 0
-          : bgAttr["opacity"] > 1
-            ? 1
-            : bgAttr["opacity"] + ")"
-      );
-      if (bgAttr["isSkinSecter"]) {
-        $(".pattern-center")
-          .removeClass("pattern-center")
-          .addClass("pattern-center-sakura");
-        $(".headertop-bar")
-          .removeClass("headertop-bar")
-          .addClass("headertop-bar-sakura");
-      } else {
-        $(".pattern-center-sakura")
-          .removeClass("pattern-center-sakura")
-          .addClass("pattern-center");
-        $(".headertop-bar-sakura")
-          .removeClass("headertop-bar-sakura")
-          .addClass("headertop-bar");
-      }
-
+      // 如果为黑夜模式，也会影响到评论组件
+      var comments = document.getElementsByTagName("halo-comment");
+      // 黑夜模式下
       if (bgAttr["isNight"]) {
-        $(".changeSkin-gear, .toc").css("background", "rgba(255,255,255,0.8)");
+        $("html").css("background", "#31363b");
+        $(".site-content").css("background-color", "#fff");
+        $("body").addClass("dark");
+        for(var i = 0; i < comments.length; i++) {
+          var shadowDom = comments[i].shadowRoot.getElementById("halo-comment");
+          $(shadowDom).addClass("dark")
+        }
       } else {
-        $(".changeSkin-gear, .toc").css("background", "none");
+        $("html").css("background", "unset");
+        $("body").removeClass("dark");
+        $(".site-content").css("background-color", "rgba(255, 255, 255, .8)");
+        for(var i = 0; i < comments.length; i++) {
+          var shadowDom = comments[i].shadowRoot.getElementById("halo-comment");
+          $(shadowDom).removeClass("dark")
+        }
       }
 
       switch (bgAttr["strategy"]) {
@@ -721,6 +698,17 @@ var LIlGGAttachContext = {
       }
     };
   },
+  // 评论组件
+  CMN: function() {
+    // 复制一个css副本
+    var commentStyle = $("#comment-style").clone();
+    commentStyle.attr("media", "all");
+    var comments = $("halo-comment");
+    for(var i = 0; i < comments.length; i++) {
+      // 注入外部css
+      comments[i].shadowRoot.appendChild(commentStyle[0]);
+    }
+  }
 };
 
 // 图片错误类型
@@ -1076,7 +1064,9 @@ var home = location.href,
 
     // Ajax加载文章/说说
     XLS: function () {
-      $("body").on("click", "#pagination a", function () {
+      var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+      $body.on("click", "#pagination a", function () {
+        var tempScrollTop = $(window).scrollTop();
         $(this).addClass("loading").text("");
         $.ajax({
           type: "GET",
@@ -1093,8 +1083,9 @@ var home = location.href,
             LIlGGAttachContext.PLSA();
             if (nextHref != undefined) {
               $("#pagination a").attr("href", nextHref);
+              // 加载完成不改变位置
+              $(window).scrollTop(tempScrollTop);
             } else {
-              // If there is no link, that is the last page, then remove the navigation
               $("#pagination").html("<span>没有更多文章了</span>");
             }
           },
@@ -1104,8 +1095,9 @@ var home = location.href,
       /**
        * 说说
        */
-      $("body").on("click", "#journals-pagination a", function () {
+      $body.on("click", "#journals-pagination a", function () {
         $(this).addClass("loading").text("");
+        var tempScrollTop = $(window).scrollTop();
         $.ajax({
           type: "GET",
           url: $(this).attr("href") + "#main",
@@ -1123,6 +1115,8 @@ var home = location.href,
             LIlGGAttachContext.SS()();
             if (nextHref != undefined) {
               $("#journals-pagination a").attr("href", nextHref);
+              // 加载完成不改变位置
+              $(window).scrollTop(tempScrollTop);
             } else {
               $("#journals-pagination a").remove();
             }
@@ -1194,9 +1188,7 @@ $(function () {
   if (Poi.toc) LIlGGAttachContext.TOC(); // 文章目录
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部
-  if (Poi.photosStyle == "packery") {
-    supplement();
-  }
+  if (Poi.photosStyle == "packery") supplement();
   LIlGGAttachContext.PHO(); // 图库功能
   // 复制提示
   if (Poi.copyMonitor) LIlGGAttachContext.CPY();
@@ -1204,10 +1196,10 @@ $(function () {
   lazyload(undefined, {
     rootMargin: "150px",
   });
-
-  if (Poi.pjax) {
-    pjaxFun();
-  }
+  // 评论组件
+  LIlGGAttachContext.CMN();
+  // PJAX
+  if (Poi.pjax) pjaxFun();
   // 全局提示组件
   if (Poi.openToast && window.outerWidth > 860) {
     toast = new Toast();
@@ -1252,6 +1244,15 @@ $(function () {
     "https://github.com/LIlGG/halo-theme-Sakura"
   );
 });
+
+/* 首页下拉箭头 */
+function headertop_down() {
+  var coverOffset = $('#content').offset().top;
+  $('html,body').animate({
+      scrollTop: coverOffset
+  },
+  600);
+}
 
 var supplement = function () {
   var PackeryMode = Isotope.LayoutMode.modes.packery;
