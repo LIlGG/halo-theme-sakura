@@ -939,7 +939,7 @@ var home = location.href,
               })(),
               name: {
                 textStyle: {
-                  color: "black",
+                  color: $(".dark").length > 0 ? "#bebebe" : "black"
                 },
               },
               center: ["50%", "60%"],
