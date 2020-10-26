@@ -253,6 +253,7 @@
 </script>
 </#if>
 <script type='text/javascript' src='${cdn_base_url!}/js/src/qrcode.min.js' defer></script>
+<script type='text/javascript' src='${theme_base!}/source/js/flv.min.js' defer></script>
 <script type='text/javascript' src='${theme_base!}/js/app.min.js?ver=1.2.0'></script>
 <#nested />
 <#if settings.live2d_switch!true>

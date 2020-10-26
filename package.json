@@ -8,9 +8,22 @@
     "build-autoprefix": "postcss --use autoprefixer --map false --output styles/style.css styles/style.css",
     "build-cleancss": "cleancss -o styles/style.min.css styles/style.css",
     "build-clean": "rimraf css",
-    "build-app-js": "uglifyjs js/app.js -o js/app.min.js",
+    "build-app-js": "babel js/app.js -o js/app.min.js && uglifyjs js/app.min.js -o js/app.min.js",
     "build-js": "npm run build-app-js",
     "deploy": "npm run build"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ],
+          "sourceMap": true
+        }
+      ]
+    ]
   },
   "repository": {
     "type": "git",
@@ -23,10 +36,15 @@
   },
   "homepage": "https://github.com/LIlGG/halo-theme-sakura#readme",
   "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
     "autoprefixer": "^9.7.4",
     "clean-css-cli": "^4.3.0",
     "postcss-cli": "^7.1.0",
     "rimraf": "^3.0.2",
     "uglify-js": "^3.8.0"
-  }
+  },
+  "dependencies": {}
 }

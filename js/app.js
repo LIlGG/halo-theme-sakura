@@ -39,6 +39,9 @@ var LIlGGAttachContext = {
       $bg_video_stu = $(".video-stu"),
       $bg_video_add = $("#video-add"),
       dom = $bg_video[0],
+      diskTime = 20 * 1000,
+      keyframesIndex,
+      flvPlayer,
       mediaBlob;
 
     var bindBgVideoEvent = function () {
@@ -65,20 +68,28 @@ var LIlGGAttachContext = {
       };
 
       dom.onended = function () {
-        $bg_video.attr("src", "");
-        $bg_video_add.hide();
-        $bg_video_btn.addClass("loadvideo").removeClass("video-pause");
-        $bg_video_btn.removeClass("videolive");
-        $bg_video_btn.removeClass("haslive");
-        $(".focusinfo").css({
-          top: "49.3%",
-        });
+        defaultStyle();
+        flvPlayer.pause()
+        flvPlayer.unload()
+        flvPlayer.detachMediaElement()
+        flvPlayer.destroy()
+        flvPlayer = null
       };
 
       $bg_video_add.on("click", function () {
         loadSource();
       });
     };
+
+    var defaultStyle = function () {
+      $bg_video_add.hide();
+      $bg_video_btn.addClass("loadvideo").removeClass("video-pause");
+      $bg_video_btn.removeClass("videolive");
+      $bg_video_btn.removeClass("haslive");
+      $(".focusinfo").css({
+        top: "49.3%",
+      });
+    }
 
     var bgPlay = function () {
       $bg_video_btn.addClass("video-pause").removeClass("video-play").show();
@@ -90,7 +101,7 @@ var LIlGGAttachContext = {
       });
       $("#banner_wave_1").addClass("banner_wave_hide");
       $("#banner_wave_2").addClass("banner_wave_hide");
-      dom.play();
+      flvPlayer.play();
     };
 
     var bgPause = function () {
@@ -111,63 +122,116 @@ var LIlGGAttachContext = {
       }
     };
 
-    var loadSource = function () {
-      function playVideo(result) {
-        $bg_video_stu.html("正在载入视频 ...").css({
-          bottom: "0px",
-        });
-        var req = new XMLHttpRequest();
-        req.open("GET", result.url, true);
-        req.responseType = "blob";
-        req.onload = function () {
-          if (this.status === 200) {
-            var videoBlob = this.response;
-            mediaBlob = URL.createObjectURL(videoBlob);
-            $bg_video.attr("src", mediaBlob);
-            $bg_video.attr("video-name", result.title);
-          }
-        };
-        req.onerror = function () {
-          console.log("视频加载失败！");
-        };
-        req.send();
-      }
+    try {
+      var loadSource = function () {
+        function handleResult(result) {
+          var config;
+          $bg_video_stu.html("正在载入视频 ...").css({
+            bottom: "0px",
+          });
+          // 这里开始自定义的选项，根据不同的服务接口，处理不同的逻辑（具有较强的独特性）
+          switch (result.server) {
+            case "bilibili":
+              switch (result.type) {
+                case "mp4":
+                  result["url"] = result["playUrl"][0]["url"];
+                  break;
+                case "m4s":
+                  throw new RuntimeException("目前暂不支持m4s格式");
+                default:
+                  if (result.type.indexOf("flv") != -1) {
+                    result.type = "flv";
+                  }
+                  result["segments"] = result["playUrl"];
+                  for (var i = 0; i < result["segments"].length; i++) {
+                    result["segments"][i]["duration"] = result["segments"][i]["length"];
+                  }
 
-      if (mediaBlob) {
-        $bg_video.attr("src", mediaBlob);
-        return;
-      }
-
-      var b = "https://api.lixingyong.com/api/:server?id=:id&r=:r";
-      "undefined" != typeof bg_video_api && (b = bg_video_api);
-      var dom = $bg_video[0];
-      var url = dom.dataset.url;
-      var id = dom.dataset.id;
-      if (url) {
-        var source = {
-          title: dom.dataset.name || dom.dataset.title || "Video name",
-          url: dom.dataset.url,
-        };
-        playVideo(source);
-      } else if (id) {
-        var api = dom.dataset.api || b;
-        (api = api.replace(":server", dom.dataset.server)),
-          (api = api.replace(":id", id));
-        api = api.replace(":r", Math.random());
-        var http = new XMLHttpRequest();
-        (http.onreadystatechange = function () {
-          if (
-            4 === http.readyState &&
-            ((200 <= http.status && 300 > http.status) || 304 === http.status)
-          ) {
-            var source = JSON.parse(http.responseText);
-            playVideo(source);
+                  config = {
+                    rangeLoadZeroStart: true,
+                    lazyLoadMaxDuration: 10,
+                    lazyLoadRecoverDuration: 10,
+                    enableStashBuffer: false
+                  }
+                  break;
+              }
+              break;
+            case "local":
+              // 获取后缀
+              var urladdr = result.url.split('?')[0].split('/');
+              var type = urladdr[urladdr.length - 1].split('.')[1];
+              if (type != "mp4" && type != "flv") {
+                throw new RuntimeException("无法解析的播放格式");
+              }
+              result["type"] = type;
+              break;
           }
-        }),
-          http.open("get", api, true),
-          http.send();
-      }
-    };
+          playVideo(result, config);
+        }
+
+        function playVideo(result, config = {}) {
+          var mediaDataSource = {
+            type: result.type,
+            url: result.url || ''
+          };
+          if (result.segments) {
+            // 对视频进行物理分片
+            for (var i = 0; i < result.segments.length; i++) {
+              var bitRate = parseInt(Math.round((result.segments[i].size / result.segments[i].length) * 1000) / 1000);
+              result.segments[i].url = result.segments[i].url + "&bitRate=" + bitRate * diskTime + "&size=" + result.segments[i].size
+            }
+            mediaDataSource.segments = result.segments;
+          }
+          flvPlayer = flvjs.createPlayer(mediaDataSource, config);
+          flvPlayer.attachMediaElement(dom);
+          flvPlayer.load();
+        }
+
+        if (mediaBlob) {
+          $bg_video.attr("src", mediaBlob);
+          return;
+        }
+        var b = "https://api.lixingyong.com/api/:server?type=urllist&id=:id&cid=:cid&qn=:qn&vtype=:vtype&r=:r";
+        "undefined" != typeof bg_video_api && (b = bg_video_api);
+        var dom = $bg_video[0];
+        var url = dom.dataset.url;
+        var id = dom.dataset.id;
+        if (url) {
+          var source = {
+            title: dom.dataset.name || dom.dataset.title || "Video name",
+            url: dom.dataset.url,
+            server: "local"
+          };
+          handleResult(source);
+        } else if (id) {
+          var api = dom.dataset.api || b;
+          api = api
+            .replace(":server", dom.dataset.server || 'bilibili')
+            .replace(":id", id)
+            .replace(":cid", dom.dataset.cid || '')
+            .replace(":qn", dom.dataset.qn || '')
+            .replace(":vtype", dom.dataset.vtype || '')
+            .replace(":r", Math.random());
+
+          var http = new XMLHttpRequest();
+          (http.onreadystatechange = function () {
+            if (
+              4 === http.readyState &&
+              ((200 <= http.status && 300 > http.status) || 304 === http.status)
+            ) {
+              var source = JSON.parse(http.responseText);
+              source["server"] = dom.dataset.server || 'bilibili';
+              handleResult(source);
+            }
+          }),
+            http.open("get", api, true),
+            http.send();
+        }
+      };
+    } catch (e) {
+      Log.e("video", e.msg)
+      defaultStyle();
+    }
 
     if (
       dom != undefined &&
@@ -449,7 +513,7 @@ var LIlGGAttachContext = {
         $("html").css("background", "#31363b");
         $(".site-content").css("background-color", "#fff");
         $("body").addClass("dark");
-        for(var i = 0; i < comments.length; i++) {
+        for (var i = 0; i < comments.length; i++) {
           var shadowDom = comments[i].shadowRoot.getElementById("halo-comment");
           $(shadowDom).addClass("dark")
         }
@@ -457,7 +521,7 @@ var LIlGGAttachContext = {
         $("html").css("background", "unset");
         $("body").removeClass("dark");
         $(".site-content").css("background-color", "rgba(255, 255, 255, .8)");
-        for(var i = 0; i < comments.length; i++) {
+        for (var i = 0; i < comments.length; i++) {
           var shadowDom = comments[i].shadowRoot.getElementById("halo-comment");
           $(shadowDom).removeClass("dark")
         }
@@ -605,35 +669,35 @@ var LIlGGAttachContext = {
             },
             itemSelector: ".gallery-item",
           };
-      
-        $masonrys.find("img.lazyload").on('load', function() {
-          $(this).parents(".gallery-item").css("background", "#222")
-          $masonrys.isotope(option);
-        })
 
-        // 过滤
-        $("#gallery-filter li a").on("click", function () {
-          $("#gallery-filter li a").removeClass("active");
-          $(this).addClass("active");
-          var dataFilter = $(this).data("filter");
-          $masonrys.isotope({
-            filter: dataFilter,
-          });
-          return false;
+      $masonrys.find("img.lazyload").on('load', function () {
+        $(this).parents(".gallery-item").css("background", "#222")
+        $masonrys.isotope(option);
+      })
+
+      // 过滤
+      $("#gallery-filter li a").on("click", function () {
+        $("#gallery-filter li a").removeClass("active");
+        $(this).addClass("active");
+        var dataFilter = $(this).data("filter");
+        $masonrys.isotope({
+          filter: dataFilter,
         });
+        return false;
+      });
 
-        if (Poi.photosStyle == "masonry") {
-          // 切换风格
-          $("#grid-changer a").on("click", function () {
-            $("#grid-changer a").removeClass("active");
-            $(this).toggleClass("active");
-            for (var i = 2; i < 9; i++) {
-              $masonrys.find(".gallery-item").removeClass("col-" + i);
-            }
-            $masonrys.find(".gallery-item").toggleClass($(this).closest("li").attr("class"));
-            $masonrys.isotope(option);
-          });
-        }
+      if (Poi.photosStyle == "masonry") {
+        // 切换风格
+        $("#grid-changer a").on("click", function () {
+          $("#grid-changer a").removeClass("active");
+          $(this).toggleClass("active");
+          for (var i = 2; i < 9; i++) {
+            $masonrys.find(".gallery-item").removeClass("col-" + i);
+          }
+          $masonrys.find(".gallery-item").toggleClass($(this).closest("li").attr("class"));
+          $masonrys.isotope(option);
+        });
+      }
     };
 
     if ($masonrys.length > 0) {
@@ -699,12 +763,12 @@ var LIlGGAttachContext = {
     };
   },
   // 评论组件
-  CMN: function() {
+  CMN: function () {
     // 复制一个css副本
     var commentStyle = $("#comment-style").clone();
     commentStyle.attr("media", "all");
     var comments = $("halo-comment");
-    for(var i = 0; i < comments.length; i++) {
+    for (var i = 0; i < comments.length; i++) {
       // 注入外部css
       comments[i].shadowRoot.appendChild(commentStyle[0]);
     }
@@ -1249,9 +1313,9 @@ $(function () {
 function headertop_down() {
   var coverOffset = $('#content').offset().top;
   $('html,body').animate({
-      scrollTop: coverOffset
+    scrollTop: coverOffset
   },
-  600);
+    600);
 }
 
 var supplement = function () {
@@ -1357,13 +1421,58 @@ var utils = {
     document.cookie =
       name + mashiro_option.cookie_version + "=; Max-Age=-99999999;";
   },
+  /**
+   * 视频流关键帧搜索
+   * @param {*} keyframesIndex 关键帧索引
+   * @param {*} milliseconds 秒
+   */
+  getNearestKeyframe: function (keyframesIndex, milliseconds) {
+    var keyframeIdx = this._search(keyframesIndex.times, milliseconds);
+
+    return {
+      index: keyframeIdx,
+      milliseconds: table.times[keyframeIdx],
+      fileposition: table.filepositions[keyframeIdx]
+    };
+  },
+  /**
+   * 搜索方式
+   * @param {*} list 
+   * @param {*} value 
+   */
+  _search: function (list, value) {
+    var idx = 0;
+
+    var last = list.length - 1;
+    var mid = 0;
+    var lbound = 0;
+    var ubound = last;
+
+    if (value < list[0]) {
+      idx = 0;
+      lbound = ubound + 1;
+    }
+
+    while (lbound <= ubound) {
+      mid = lbound + Math.floor((ubound - lbound) / 2);
+      if (mid === last || (value >= list[mid] && value < list[mid + 1])) {
+        idx = mid;
+        break;
+      } else if (list[mid] < value) {
+        lbound = mid + 1;
+      } else {
+        ubound = mid - 1;
+      }
+    }
+
+    return idx;
+  }
 };
 
 /**
  * 封装的toast组件（使用纯js，可以单独拿出去使用）
  * @author LIlGG
  */
-
 var Toast = function Toast() {
   _classCallCheck(this, Toast);
 
@@ -1455,7 +1564,155 @@ var Toast = function Toast() {
       o1[attr] = o2[attr];
     }
   }
+
 };
+
+/**
+ * 自定义日志
+ */
+var Log = function () {
+  return {
+    e: function (tag, msg) {
+      if (!tag || Log.FORCE_GLOBAL_TAG)
+        tag = Log.GLOBAL_TAG;
+
+      let str = `[${tag}] > ${msg}`;
+
+      if (!Log.ENABLE_ERROR) {
+        return;
+      }
+
+      if (console.error) {
+        console.error(str);
+      } else if (console.warn) {
+        console.warn(str);
+      } else {
+        console.log(str);
+      }
+    },
+
+    i: function (tag, msg) {
+      if (!tag || Log.FORCE_GLOBAL_TAG)
+        tag = Log.GLOBAL_TAG;
+
+      let str = `[${tag}] > ${msg}`;
+
+      if (!Log.ENABLE_INFO) {
+        return;
+      }
+
+      if (console.info) {
+        console.info(str);
+      } else {
+        console.log(str);
+      }
+    },
+
+    w: function (tag, msg) {
+      if (!tag || Log.FORCE_GLOBAL_TAG)
+        tag = Log.GLOBAL_TAG;
+
+      let str = `[${tag}] > ${msg}`;
+
+      if (!Log.ENABLE_WARN) {
+        return;
+      }
+
+      if (console.warn) {
+        console.warn(str);
+      } else {
+        console.log(str);
+      }
+    },
+
+    d: function (tag, msg) {
+      if (!tag || Log.FORCE_GLOBAL_TAG)
+        tag = Log.GLOBAL_TAG;
+
+      let str = `[${tag}] > ${msg}`;
+
+      if (!Log.ENABLE_DEBUG) {
+        return;
+      }
+
+      if (console.debug) {
+        console.debug(str);
+      } else {
+        console.log(str);
+      }
+    },
+
+    v: function (tag, msg) {
+      if (!tag || Log.FORCE_GLOBAL_TAG)
+        tag = Log.GLOBAL_TAG;
+
+      let str = `[${tag}] > ${msg}`;
+
+      if (!Log.ENABLE_VERBOSE) {
+        return;
+      }
+
+      console.log(str);
+    }
+  }
+}();
+
+Log.GLOBAL_TAG = 'Sakura';
+Log.FORCE_GLOBAL_TAG = false;
+Log.ENABLE_ERROR = true;
+Log.ENABLE_INFO = true;
+Log.ENABLE_WARN = true;
+Log.ENABLE_DEBUG = true;
+Log.ENABLE_VERBOSE = true;
+
+/**
+ * 自定义异常
+ * @param {*} message 
+ */
+var RuntimeException = function (message) {
+  this._message = message;
+
+  RuntimeException.prototype = {
+    get name() {
+      return 'RuntimeException';
+    },
+
+    get message() {
+      return this._message;
+    },
+
+    toString() {
+      return this.name + ': ' + this.message;
+    }
+  }
+}
+
+var IllegalStateException = function (message) {
+  IllegalStateException.prototype = new RuntimeException();
+  IllegalStateException.prototype = {
+    get name() {
+      return 'IllegalStateException';
+    }
+  }
+}
+
+var InvalidArgumentException = function (message) {
+  InvalidArgumentException.prototype = new RuntimeException();
+  InvalidArgumentException.prototype = {
+    get name() {
+      return 'InvalidArgumentException';
+    }
+  }
+}
+
+var NotImplementedException = function (message) {
+  NotImplementedException.prototype = new RuntimeException();
+  NotImplementedException.prototype = {
+    get name() {
+      return 'NotImplementedException';
+    }
+  }
+}
 
 function _toConsumableArray(arr) {
   return (
