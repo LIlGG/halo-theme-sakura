@@ -86,12 +86,12 @@
 	<ul class="social-share sharehidden">
 		<li>
 			<a href="http://service.weibo.com/share/share.php?url=${post.fullPath!}&appkey=&title=${post.title!}|${user.nickname!}&pic=${post.thumbnail!}" onclick="window.open(this.href, 'weibo-share', 'width=490,height=700');return false;" class="s-weibo">
-				<img src="${theme_base!}/images/sns/weibo.png"/>
+				<img src="${res_base_url!}/source/images/sns/weibo.png"/>
 			</a>
 		</li>
 		<li>
 			<a href="http://connect.qq.com/widget/shareqq/index.html?url=${post.fullPath!}&title=${post.title!}|${user.nickname!}&source=${post.title!}|${user.nickname!}&desc=${post.summary!}&pics=${post.thumbnail!}&summary=${post.summary!}" onclick="window.open(this.href, 'qq-share', 'width=730,height=500');return false;" class="s-qq">
-				<img src="${theme_base!}/images/sns/qq.png"/>
+				<img src="${res_base_url!}/source/images/sns/qq.png"/>
 			</a>
 		</li>
 		<li>
@@ -104,22 +104,22 @@
 						<p>二维码便可将本文分享至朋友圈。</p>
 					</div>
 				</div>
-				<img src="${theme_base!}/images/sns/wechat.png"/>
+				<img src="${res_base_url!}/source/images/sns/wechat.png"/>
 			</a>
 		</li>
 		<li>
 			<a href="http://shuo.douban.com/!service/share?href=${post.fullPath!}&name=${post.title!}|${user.nickname!}&text=${post.summary!}&image=${post.thumbnail!}&starid=0&aid=0&style=11" onclick="window.open(this.href, 'douban-share', 'width=490,height=600');return false;" class="s-douban">
-				<img src="${theme_base!}/images/sns/douban.png"/>
+				<img src="${res_base_url!}/source/images/sns/douban.png"/>
 			</a>
 		</li>
 		<li>
 			<a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=${post.fullPath!}&title=${post.title!}|${user.nickname!}&desc=${post.summary!}&summary=${post.summary!}&site=${post.summary!}" onclick="window.open(this.href, 'qzone-share', 'width=490,height=600');return false;" class="s-qzone">
-				<img src="${theme_base!}/images/sns/qzone.png"/>
+				<img src="${res_base_url!}/source/images/sns/qzone.png"/>
 			</a>
 		</li>
 		<li>
 			<a href="http://www.linkedin.com/shareArticle?mini=true&ro=true&title=${post.title!}|${user.nickname!}&url=${post.fullPath!}&summary=${post.summary!}&source=${post.thumbnail!}&armin=armin" onclick="window.open(this.href, 'linkedin-share', 'width=490,height=600');return false;" class="s-linkedin">
-				<img src="${theme_base!}/images/sns/linkedin.png"/>
+				<img src="${res_base_url!}/source/images/sns/linkedin.png"/>
 			</a>
 		</li>
 	</ul>

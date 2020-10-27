@@ -54,9 +54,9 @@
                 <header class="gallery-icon">
                     <a data-fancybox="gallery" href="${photo.url!}">
                         <#if settings.is_thumbnail!true>
-                        <img class="lazyload" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.9/img/load/load_0.gif" data-src="${photo.thumbnail!}" alt="${photo.name!}"/>
+                        <img class="lazyload" src="${res_base_url!}/source/images/load/load.gif" data-src="${photo.thumbnail!}" alt="${photo.name!}"/>
                         <#else>
-                        <img class="lazyload" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.9/img/load/load_0.gif" data-src="${photo.url!}" alt="${photo.name!}"/>
+                        <img class="lazyload" src="${res_base_url!}/source/images/load/load.gif" data-src="${photo.url!}" alt="${photo.name!}"/>
                         </#if>
                     </a>
                 </header>

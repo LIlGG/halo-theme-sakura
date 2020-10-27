@@ -33,7 +33,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 代码高亮，且实现仿Mac
 - [x] 自定义评论
 - [x] 文章目录
-- [x] 主题切换
+- [x] 主题切换（支持页面模式）
 - [x] 友链页面
 - [x] 移动客户端适配
 - [x] 404 页面

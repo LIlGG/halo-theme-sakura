@@ -12,7 +12,7 @@
 			<#else>
 			<a href="${post.fullPath!}">
 				<div class="overlay"><i class="iconfont icon-text"></i></div>
-				<img src="${theme_base!}/images/random/d-${randomMethod(1,10)}.jpg"/>
+				<img src="${res_base_url!}/source/images/random/d-${randomMethod(1,10)}.jpg"/>
 			</a>
 			</#if>
 		</div>

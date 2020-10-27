@@ -1,11 +1,12 @@
 <#--
 	@package Akina
 -->
+<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.2.1", theme_base)/>
+
 <#include "header.ftl">
 <@header title="${blog_title!}">
 	<div class="blank"></div>
 </@header>
-
 
 <#if settings.head_notice!false && settings.notice_title!=''>
 	<div class="notice" style="

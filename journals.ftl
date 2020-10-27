@@ -7,7 +7,7 @@
         <div class="pattern-center-blank"></div>
         <div class="pattern-center">
             <div class="pattern-attachment-img">
-                <img data-src="${settings.journals_patternimg!}" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
+                <img data-src="${settings.journals_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
             </div>
             <header class="pattern-header">
                 <h1 class="entry-title">${options.journals_title?default('日志')}</h1>
@@ -31,7 +31,7 @@
       <#list journals.content as journal>
         <li id="journal-${journal.id?c}" class="journal">
           <span class="journal-author-img">
-            <img class="lazyload avatar" data-src="${user.avatar!}" alt="${user.nickname!}"  width="48" height="48" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/svg/loader/trans.ajax-spinner-preloader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
+            <img class="lazyload avatar" data-src="${user.avatar!}" alt="${user.nickname!}"  width="48" height="48" src="${res_base_url!}/source/images/svg/loader/trans.ajax-spinner-preloader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
           <span class="journal-label">${journal.content!}
             <p class="journal-time">
               <span> ${journal.createTime?string('yyyy-MM-dd HH:mm:ss')}</span>

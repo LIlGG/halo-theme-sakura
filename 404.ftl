@@ -44,7 +44,7 @@
         the_dom = the_dom.substring(0, the_port_index)
     }
 </script>
-<script src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.1.0/sakura/js/404.js" type="text/javascript"></script>
+<script src="${res_base_url!}/source/js/404.js" type="text/javascript"></script>
 </body>
 
 

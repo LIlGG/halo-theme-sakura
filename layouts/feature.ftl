@@ -8,7 +8,7 @@
 		<div class="the-feature square from_left_and_right">
 			<a href="${settings.feature1_link!'#'}" target="_blank">
 				<div class="img">
-					<img src="${settings.feature1_img!'${theme_base!}/images/temp.jpg'}">
+					<img src="${settings.feature1_img!'${res_base_url!}/source/images/temp.jpg'}">
 				</div>
 				<div class="info">
 					<h3>${settings.feature1_title!'feature1'}</h3>
@@ -21,7 +21,7 @@
 			<div class="the-feature square from_left_and_right">
 			<a href="${settings.feature2_link!'#'}" target="_blank">
 				<div class="img">
-					<img src="${settings.feature2_img!'${theme_base!}/images/temp.jpg'}">
+					<img src="${settings.feature2_img!'${res_base_url!}/source/images/temp.jpg'}">
 				</div>
 				<div class="info">
 					<h3>${settings.feature2_title!'feature2'}</h3>
@@ -34,7 +34,7 @@
 		<div class="the-feature square from_left_and_right">
 			<a href="${settings.feature3_link!'#'}" target="_blank">
 				<div class="img">
-					<img src="${settings.feature3_img!'${theme_base!}/images/temp.jpg'}">
+					<img src="${settings.feature3_img!'${res_base_url!}/source/images/temp.jpg'}">
 				</div>
 				<div class="info">
 					<h3>${settings.feature3_title!'feature3'}</h3>

@@ -9,6 +9,7 @@
  * @package Akina
  */
 -->
+<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.2.1", theme_base)/>
 <#macro footer>
 </div><!-- #content -->
 <#include "comments.ftl">
@@ -17,13 +18,12 @@
 <#elseif is_sheet??>
 	<@comment sheet,"sheet" />
 </#if>
-<#assign cdn_base_url="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8"/>
 </div><!-- #page Pjax container-->
 <footer id="colophon" class="site-footer" role="contentinfo">
 	<div class="site-info">
 		<div class="footertext">
 			<p class="foo-logo"
-			   style="background-image: url('${settings.footer_logo?default('${cdn_base_url!}/img/Sakura/images/sakura.svg')}');"></p>
+			   style="background-image: url('${settings.footer_logo?default('${res_base_url!}/source/images/sakura.svg')}');"></p>
 			<@global.footer />
 		</div>
 		<div class="footer-device">
@@ -70,7 +70,7 @@
 <!-- m-nav-center -->
 <div id="mo-nav">
 	<div class="m-avatar">
-		<img src="${(user.avatar)!'${theme_base!}/images/avatar.jpg'}">
+		<img src="${(user.avatar)!'${res_base_url!}/source/images/avatar.jpg'}">
 	</div>
 
 	<#if settings.glitch_text??>
@@ -80,25 +80,25 @@
 	<#if settings.focus_infos!true>
 		<p style="text-align: center; word-spacing: 20px;">
 			<#if settings.twitter??>
-				<a href="${settings.twitter!}" class="social-twitter" target="_blank" style="color: #00aced"><img src="${cdn_base_url!}/img/Sakura/images/sns/twitter.png" width="18"/></a>
+				<a href="${settings.twitter!}" class="social-twitter" target="_blank" style="color: #00aced"><img src="${res_base_url!}/source/images/sns/twitter.png" width="18"/></a>
 			</#if>
 			<#if settings.sina??>
-				<a href="${settings.sina!}" class="social-sina" target="_blank" style="color: #dd4b39"><img src="${cdn_base_url!}/img/Sakura/images/sns/sina.png" width="18"/></a>
+				<a href="${settings.sina!}" class="social-sina" target="_blank" style="color: #dd4b39"><img src="${res_base_url!}/source/images/sns/sina.png" width="18"/></a>
 			</#if>
 			<#if settings.github??>
-				<a href="${settings.github!}" class="social-github" target="_blank" style="color: #333"><img src="${cdn_base_url!}/img/Sakura/images/sns/github.png" width="18"/></a>
+				<a href="${settings.github!}" class="social-github" target="_blank" style="color: #333"><img src="${res_base_url!}/source/images/sns/github.png" width="18"/></a>
 			</#if>
 			<#if settings.wechat??>
-				<a href="${settings.wechat!}" class="social-wechat" target="_blank" style="color: #333"><img src="${cdn_base_url!}/img/Sakura/images/sns/wechat.png" width="18"/></a>
+				<a href="${settings.wechat!}" class="social-wechat" target="_blank" style="color: #333"><img src="${res_base_url!}/source/images/sns/wechat.png" width="18"/></a>
 			</#if>
 			<#if settings.qq??>
-				<a href="//wpa.qq.com/msgrd?v=3&uin=${settings.qq!}&site=qq&menu=yes" class="social-wangyiyun" target="_blank" style="color: #333"><img src="${cdn_base_url!}/img/Sakura/images/sns/qq.png" width="18"/></a>
+				<a href="//wpa.qq.com/msgrd?v=3&uin=${settings.qq!}&site=qq&menu=yes" class="social-wangyiyun" target="_blank" style="color: #333"><img src="${res_base_url!}/source/images/sns/qq.png" width="18"/></a>
 			</#if>
 			<#if settings.bili??>
-				<a href="${settings.bili!}" class="social-bili" target="_blank" style="color: #333"><img src="${cdn_base_url!}/img/Sakura/images/sns/bilibili.png" width="18"/></a>
+				<a href="${settings.bili!}" class="social-bili" target="_blank" style="color: #333"><img src="${res_base_url!}/source/images/sns/bilibili.png" width="18"/></a>
 			</#if>
 			<#if settings.wangyiyun??>
-				<a href="${settings.wangyiyun!}" class="social-wangyiyun" target="_blank" style="color: #333"><img src="${cdn_base_url!}/img/Sakura/images/sns/wangyiyun.png" width="18"/></a>
+				<a href="${settings.wangyiyun!}" class="social-wangyiyun" target="_blank" style="color: #333"><img src="${res_base_url!}/source/images/sns/wangyiyun.png" width="18"/></a>
 			</#if>
 		</p>
 	</#if>
@@ -205,31 +205,31 @@
 	};
 	/* ]]> */
 </script>
-<script type="text/javascript" src="${cdn_base_url!}/js/lib.js"></script>
+<script type="text/javascript" src="${res_base_url!}/source/js/lib.js"></script>
 <!-- 相册 -->
 <#if settings.photos_style == "justify">
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="${res_base_url!}/source/lib/justifiedGallery/jquery.justifiedGallery.min.js"></script>
 <#elseif settings.photos_style == "masonry" || settings.photos_style == "packery">
-<script src="https://cdn.jsdelivr.net/gh/metafizzy/isotope@3.0.6/dist/isotope.pkgd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js"></script>
+<script src="${res_base_url!}/source/lib/isotope.pkgd.min/index.js"></script>
+<script src="${res_base_url!}/source/lib/imagesloaded/imagesloaded.pkgd.min.js"></script>
 <#if settings.photos_style == "packery">
-<script type='text/javascript' src='${cdn_base_url!}/js/packery/packery-mode.pkgd.min.js'></script>
+<script type='text/javascript' src='${res_base_url!}/source/lib/packery-mode.pkgd.min/index.js'></script>
 </#if>
 </#if>
-<script type="text/javascript" src="${theme_base!}/plugins/highlight/js/highlight.pack.js"></script>
+<script type="text/javascript" src="${res_base_url!}/source/js/highlight/highlight.pack.js"></script>
 <#if settings.code_line!true>
-	<script type="text/javascript" src="${theme_base!}/plugins/highlight/js/highlightjs-line-numbers.min.js"></script>
+	<script type="text/javascript" src="${res_base_url!}/source/js/highlight/highlightjs-line-numbers.min.js"></script>
 </#if>
 <#if settings.is_aplayer!false>
-	<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js" defer></script>
+	<script src="${res_base_url!}/source/lib/APlayer/APlayer.min.js" defer></script>
 	<script src="${theme_base!}/plugins/aplayer/js/index.js" defer></script>
 </#if>
 <#if settings.post_toc!true>
-	<script src="${cdn_base_url!}/js/tocbot/4.11.1/js/tocbot.min.js" defer></script>
+	<script src="${res_base_url!}/source/lib/tocbot/dist/tocbot.min.js" defer></script>
 </#if>
 <script src="${settings.comment_mode!'//cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura@v1.3.1/dist/halo-comment.min.js'}" defer></script>
 <#if settings.tag_cloud!true>
-<script src="https://cdn.jsdelivr.net/npm/jqcloud2@2.0.3/dist/jqcloud.min.js" defer></script>
+<script src="${res_base_url!}/source/lib/jqcloud2/jqcloud.min.js" defer></script>
 <script type='text/javascript'>
 	var wordcloud = [
 		<@tagTag method="list">
@@ -241,7 +241,7 @@
 </script>
 </#if>
 <#if settings.category_radar!true>
-<script src="${cdn_base_url!}/js/echarts/echarts.min.js" defer></script>
+<script src="${res_base_url!}/source/js/echarts/echarts.min.js" defer></script>
 <script type='text/javascript'>
 	var categoryRadar = {
 		<@categoryTag method="list">
@@ -252,12 +252,12 @@
 	}
 </script>
 </#if>
-<script type='text/javascript' src='${cdn_base_url!}/js/src/qrcode.min.js' defer></script>
-<script type='text/javascript' src='${theme_base!}/source/js/flv.min.js' defer></script>
-<script type='text/javascript' src='${theme_base!}/js/app.min.js?ver=1.2.0'></script>
+<script type='text/javascript' src='${res_base_url!}/source/js/qrcode.min.js' defer></script>
+<script type='text/javascript' src='${res_base_url!}/source/lib/flv.min/index.js' defer></script>
+<script type='text/javascript' src='${theme_base!}/script/app.min.js?ver=1.2.1'></script>
 <#nested />
 <#if settings.live2d_switch!true>
-<script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" async defer></script>
+<script src="${res_base_url!}/source/lib/jquery-ui/jquery-ui.min.js" async defer></script>
 <#include "plugins/live2d/ftl/live2d.ftl">
 <@live2d/>
 </#if>

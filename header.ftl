@@ -1,6 +1,7 @@
 <#--
 	@package Akina
 -->
+<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.2.1", theme_base)/>
 <#macro header title>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -16,17 +17,16 @@
 	<link rel='stylesheet' href='${theme_base!}/styles/style.min.css?ver=1.2.0' type='text/css' media='all'>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="noexist" onload="this.media='all'">
 	<link rel="stylesheet" href="//at.alicdn.com/t/font_2010950_uq2c7ykeiyk.css" media="noexist" onload="this.media='all'">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.7/css/lib.css" media="noexist" onload="this.media='all'">
-	<link rel='stylesheet' href="${theme_base!}/plugins/highlight/css/highlight-${settings.code_pretty!'Default'}.css" type="text/css" media="noexist" onload="this.media='all'">
+	<link rel="stylesheet" href="${res_base_url!}/source/css/lib.css" media="noexist" onload="this.media='all'">
+	<link rel='stylesheet' href="${res_base_url!}/source/css/highlight/highlight-${settings.code_pretty!'Default'}.css" type="text/css" media="noexist" onload="this.media='all'">
 	<#if settings.is_aplayer!false>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media='all'>
+	<link rel="stylesheet" href="${res_base_url!}/source/lib/APlayer/APlayer.min.css" media='all'>
 	</#if>
 	<#if settings.tag_cloud!true>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jqcloud2@2.0.3/dist/jqcloud.min.css" media="noexist" onload="this.media='all'">
+	<link rel="stylesheet" href="${res_base_url!}/source/lib/jqcloud2/jqcloud.min.css" media="noexist" onload="this.media='all'">
 	</#if>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" media="noexist" onload="this.media='all'">
 	<#if settings.photos_style == "justify">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css" media="noexist" onload="this.media='all'">
+	<link rel="stylesheet" href="${res_base_url!}/source/lib/justifiedGallery/justifiedGallery.min.css" media="noexist" onload="this.media='all'">
 	</#if>
 	<#include "inc/decorate.ftl">
 	<script type="text/javascript">

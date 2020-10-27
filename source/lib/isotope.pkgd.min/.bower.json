@@ -1,0 +1,15 @@
+{
+  "name": "isotope.pkgd.min",
+  "_cacheHeaders": {
+    "ETag": "W/\"8a75-xOWZTyTujI0s8tZgLwtWuQlqLpg\"",
+    "Last-Modified": "Sat, 26 Oct 1985 08:15:00 GMT",
+    "Content-Length": "11868",
+    "Content-Type": "application/javascript; charset=utf-8"
+  },
+  "_release": "e-tag:W/\"8a75-xO",
+  "main": "index.js",
+  "_source": "https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js",
+  "_target": "*",
+  "_originalSource": "https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js",
+  "_direct": true
+}

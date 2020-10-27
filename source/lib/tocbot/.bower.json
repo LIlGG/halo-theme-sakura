@@ -1,0 +1,42 @@
+{
+  "name": "tocbot",
+  "description": "Generate a table of contents based on the heading structure of a html document.",
+  "main": [
+    "dist/tocbot.js",
+    "dist/tocbot.css"
+  ],
+  "authors": [
+    "Tim Scanlin"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "tocbot",
+    "javascript",
+    "table",
+    "of",
+    "contents",
+    "generate",
+    "html",
+    "structure",
+    "vanilla"
+  ],
+  "homepage": "https://github.com/tscanlin/tocbot",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "4.12.0",
+  "_release": "4.12.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v4.12.0",
+    "commit": "f659181c27b9d119965feedcdca429b449d8b86f"
+  },
+  "_source": "https://github.com/tscanlin/tocbot.git",
+  "_target": "^4.12.0",
+  "_originalSource": "tocbot",
+  "_direct": true
+}

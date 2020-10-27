@@ -7,7 +7,7 @@
         <div class="pattern-center-blank"></div>
         <div class="pattern-center">
             <div class="pattern-attachment-img">
-                <img data-src='${((category.thumbnail)?length>0)?string((category.thumbnail),"${settings.category_patternimg!}")}' src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
+                <img data-src='${((category.thumbnail)?length>0)?string((category.thumbnail),"${settings.category_patternimg!}")}' src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
             </div>
             <header class="pattern-header">
                 <h1 class="cat-title">分类：${category.name!}</h1>

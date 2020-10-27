@@ -1638,6 +1638,18 @@ others:
           label: 开启
         - value: false
           label: 关闭
+    cdn:
+      name: cdn
+      label: 资源使用CDN
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+      description: '开启后静态资源将使用免费的 jsdelivr CDN加载，关闭后使用服务器网络加载'
     reply_mail_img:
       name: reply_mail_img
       label: 邮件回复模块图片

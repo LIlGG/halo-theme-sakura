@@ -1,49 +1,96 @@
 <@compress single_line=true>
-<#assign cdn_base_url="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8"/>
 <style type="text/css">
     <#if settings.shownav!false>
       .site-top .lower nav {
           display: block !important;
       }
     </#if>
+    /**
+    * 图片资源
+    */
+    .video-play,
+    .loadvideo {
+        background-image: url(${res_base_url!}/source/images/play@32x32.png)
+    }
+
+    .video-pause {
+	    background-image: url(${res_base_url!}/source/images/pause@32x32.png)
+    }
+
+    #video-add {
+        background-image: url(${res_base_url!}/source/images/add@32x32.png);
+    }
+
+    #loading-comments {
+        background-image: url(${res_base_url!}/source/images/disqus-preloader.svg);
+    }
+
+    .headertop.filter-grid:before {
+        background-image: url(${res_base_url!}/source/images/grid.png)
+    }
+
+    .headertop.filter-dot:before {
+        background-image: url(${res_base_url!}/source/images/dot.gif)
+    }
+
+    @media (max-width:860px) {
+        .headertop.filter-dot:before {
+            background-image: url(${res_base_url!}/source/images/grid.png)
+        }
+    }
+
+    .search-form.is-visible {
+        background-image: url(${res_base_url!}/source/images/other/iloli.gif);
+    }
+
+    #pagination .loading {
+        background: url(${res_base_url!}/source/images/rotating-ball-o.svg);
+    }
+
+    #banner_wave_1 {
+        background: url(${res_base_url!}/source/images/wave1.png) repeat-x;
+    }
+
+    #banner_wave_2 {
+        background: url(${res_base_url!}/source/images/wave2.png) repeat-x;
+    }
     <#if (settings.cursor_skin!'sakura') == 'sakura'>
     /** 鼠标样式 */
     a {
-        cursor: url(${cdn_base_url!}/img/Sakura/cursor/ayuda.cur), auto
+        cursor: url(${res_base_url!}/source/cursor/ayuda.cur), auto
     }
 
     a:active {
-	    cursor: url(${cdn_base_url!}/img/Sakura/cursor/work.cur),alias
+	    cursor: url(${res_base_url!}/source/cursor/work.cur),alias
     }
 
     p {
-        cursor: url(${cdn_base_url!}/img/Sakura/cursor/texto.cur),auto
+        cursor: url(${res_base_url!}/source/cursor/texto.cur),auto
     }
 
     body {
-        cursor: url(${cdn_base_url!}/img/Sakura/cursor/normal.cur),auto;
+        cursor: url(${res_base_url!}/source/cursor/normal.cur),auto;
     }
 
     .cd-top {
-        cursor: url(${cdn_base_url!}/img/Sakura/cursor/No_Disponible.cur),auto;
+        cursor: url(${res_base_url!}/source/cursor/No_Disponible.cur),auto;
     }
 
     .botui-actions-buttons-button {
-        cursor: url(${cdn_base_url!}/img/Sakura/cursor/No_Disponible.cur),auto;
+        cursor: url(${res_base_url!}/source/cursor/No_Disponible.cur),auto;
     }
 
     .button.botui-actions-buttons-button {
-        cursor: url(${cdn_base_url!}/img/Sakura/cursor/No_Disponible.cur),auto;
+        cursor: url(${res_base_url!}/source/cursor/No_Disponible.cur),auto;
     }
 
     .highlight-wrap code {
-        cursor: url(${cdn_base_url!}/img/Sakura/cursor/texto.cur),auto
+        cursor: url(${res_base_url!}/source/cursor/texto.cur),auto
     }
     </#if>
 
-    /***/
     .cd-top {
-        background: url(${(settings.top_back_img)!'${cdn_base_url!}/img/Sakura/images/scroll.png'}) no-repeat center;
+        background: url(${(settings.top_back_img)!'${res_base_url!}/source/images/scroll.png'}) no-repeat center;
     }
 
     <#if settings.theme_skin??>
