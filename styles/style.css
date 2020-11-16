@@ -1167,10 +1167,12 @@ a:active {
 }
 
 .site-top .lower-cantiner {
-	position: absolute;
-	left: 50%;
-	min-width: 758.4px;
-	pointer-events: none
+    position: absolute;
+    text-align: center;
+    left: -2%;
+    min-width: 758.4px;
+    pointer-events: none;
+    width: 100%;
 }
 
 .site-top .lower {
@@ -1178,7 +1180,6 @@ a:active {
 	margin: 15px 0 0 10px;
 	font-size: 16px;
 	position: relative;
-	left: -50%;
 	pointer-events: auto !important
 }
 
@@ -1192,10 +1193,6 @@ a:active {
 @media (max-width:1200px) {
 	.site-top .lower {
 		left: 15px
-	}
-
-	.site-top .lower-cantiner {
-		left: 200px;
 	}
 
 	.site-top .lower nav.hide {
