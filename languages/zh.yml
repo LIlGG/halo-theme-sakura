@@ -1,6 +1,6 @@
 home:
   feature:
-    title:  聚焦
+    title: 聚焦
     one: 
       title: 聚焦图1
       desc: 这是聚焦图1
@@ -10,6 +10,7 @@ home:
     three:
       title: 聚焦图3
       desc: 这是聚焦图3
+  discovery: 发现
 
 postlist:
   time: 发布于 %s

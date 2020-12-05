@@ -185,7 +185,8 @@
 		"copyrightNotice": "${(settings.copyright_notice!true)?string('true','')}",
 		"photosStyle": "${(settings.photos_style)!'justify'}",
 		"photosGutter": ${(settings.photos_gutter)!10},
-		"tocDepth": ${(settings.toc_depth)!0}
+		"tocDepth": ${(settings.toc_depth)!0},
+		"i18n": "${settings.i18n!'auto'}"
 	};
 	var bgConfig = {
 	<#list 0..7 as i>

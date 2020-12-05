@@ -47,6 +47,7 @@
 <script>
 var Poi = {
     "themeBase": "${theme_base!}",
+    "i18n": "${settings.i18n!'auto'}"
 }
 window.onload = function() {
     I18N();

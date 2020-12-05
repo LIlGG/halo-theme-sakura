@@ -27,7 +27,7 @@
 	<main id="main" class="site-main" role="main">
 		<h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
 		<i class="fa fa-envira" aria-hidden="true"></i>
-		 Discovery
+		<span class="i18n" data-iname="home.discovery"> </span>
 		</h1>
 		<#if posts?? && posts.getTotalElements() gt 0>
 			<#--Start the Loop-->
