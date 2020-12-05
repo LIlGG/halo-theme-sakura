@@ -10,7 +10,7 @@
                 <img data-src='${((category.thumbnail)?length>0)?string((category.thumbnail),"${settings.category_patternimg!}")}' src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
             </div>
             <header class="pattern-header">
-                <h1 class="cat-title">分类：${category.name!}</h1>
+                <h1 class="cat-title i18n" data-iname="page.categories.item_title" data-ivalue="${category.name!}"></h1>
                 <span class="cat-des">${category.description!}</span>
             </header>
         </div>
@@ -39,24 +39,7 @@
         </#if>
     </main>
     <@paginationTag method="categoryPosts" page="${posts.number}" total="${posts.totalPages}" display="3" slug="${category.slug!}">
-        <#if (settings.pagenav_style!'ajax') == 'ajax'>
-            <div id="pagination">
-                <#if pagination.hasNext>
-                    <a href="${pagination.nextPageFullPath!}" class="">Previous</a>
-                <#else>
-                    <span>没有更多文章了</span>
-                </#if>
-            </div>
-        <#else>
-            <nav class="navigator">
-                <#if pagination.hasPrev>
-                    <a href="${pagination.prevPageFullPath!}"><i class="iconfont icon-previous"></i></a>
-                </#if>
-                <#if pagination.hasNext>
-                    <a href="${pagination.nextPageFullPath!}"><i class="iconfont icon-next"></i></a>
-                </#if>
-            </nav>
-        </#if>
+        <#include "layouts/list-nextprev.ftl">
     </@paginationTag>
 </div>
 <#include "footer.ftl">

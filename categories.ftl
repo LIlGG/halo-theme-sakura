@@ -14,13 +14,21 @@
                 <img data-src="${settings.category_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
             </div>
             <header class="pattern-header">
-                <h1 class="entry-title">${options.categories_title?default('文章分类')}</h1>
+                <#if options.categories_title?default("")?trim?length gt 1>
+                <h1 class="entry-title">${options.categories_title}</h1>
+                <#else>
+                <h1 class="entry-title i18n" data-iname="page.categories.title"></h1>
+                </#if>
             </header>
         </div>
     <#else>
         <div class="blank"></div>
         <header class="entry-header">
-            <h1 class="entry-title">${options.categories_title?default('文章分类')}</h1>
+            <#if options.categories_title?default("")?trim?length gt 1>
+            <h1 class="entry-title">${options.categories_title}</h1>
+            <#else>
+            <h1 class="entry-title i18n" data-iname="page.categories.title"></h1>
+            </#if>
         </header><!-- .entry-header -->
     </#if>
 </@header>
@@ -29,7 +37,7 @@
         <div class="card">
             <div class="card-content">
                 <div class="tag-title center-align">
-                    <i class="fa fa-bookmark"></i>&nbsp;&nbsp;文章分类
+                    <i class="fa fa-bookmark"></i>&nbsp;&nbsp;<span class="i18n" data-iname="page.categories.title"></span>
                 </div>
                 <div class="tag-chips">
                 <@categoryTag method="list">

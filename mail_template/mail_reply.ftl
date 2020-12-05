@@ -1,3 +1,5 @@
+
+<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.2.1", theme_base)/>
 <div style="background: white;
       width: 95%;
       max-width: 800px;
@@ -20,7 +22,7 @@
         margin: -25px auto 0 ;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.30)">Dear ${baseAuthor!}</p>
         <br>
-        <h3>您有一条来自<a style="text-decoration: none;color: orange " target="_blank" href="${blog_url!}" rel="noopener">${blog_title!}</a>的回复</h3>
+        <h3 class="i18n" data-iname="mail.title">您有一条来自<a style="text-decoration: none;color: orange " target="_blank" href="${blog_url!}" rel="noopener">${blog_title!}</a>的回复</h3>
         <br>
         <p style="font-size: 14px;">您在文章《${pageTitle!}》上发表的评论：</p>
         <p style="border-bottom:#ddd 1px solid;border-left:#ddd 1px solid;padding-bottom:20px;background-color:#eee;margin:15px 0px;padding-left:20px;padding-right:20px;border-top:#ddd 1px solid;border-right:#ddd 1px solid;padding-top:20px">${baseContent!}</p>
@@ -43,5 +45,5 @@
        <p style="font-size: 12px;text-align: center;color: #999;">本邮件为系统自动发出，请勿直接回复<br>
         © ${.now?string("yyyy")} ${(user.nickname)!}
        </p>
-    </div>       
+    </div>
 </div>

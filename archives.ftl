@@ -2,7 +2,7 @@
     @package Akina
 -->
 <#include "header.ftl">
-<@header title="文章归档 - ${blog_title!}">
+<@header title="${options.archives_title?default('文章归档')} - ${blog_title!}">
     <#if (settings.patternimg!true) && (settings.archives_patternimg?? && settings.archives_patternimg!='')>
         <div class="pattern-center-blank"></div>
         <div class="pattern-center">
@@ -10,7 +10,11 @@
                 <img data-src="${settings.archives_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
             </div>
             <header class="pattern-header">
-                <h1 class="entry-title">文章归档</h1>
+                <#if options.archives_title?default("")?trim?length gt 1>
+                <h1 class="entry-title">${options.archives_title}</h1>
+                <#else>
+                <h1 class="entry-title i18n" data-iname="page.archives.title"></h1>
+                </#if>
             </header>
         </div>
     <#else>
@@ -20,7 +24,11 @@
 <article class="post-item page type-page status-publish hentry">
     <div id="archives-temp">
         <#if !(settings.patternimg!true) || !(settings.archives_patternimg?? && settings.archives_patternimg!='')>
-            <h2>文章归档</h2>
+                <#if options.archives_title?default("")?trim?length gt 1>
+                <h2>${options.archives_title}</h2>
+                <#else>
+                <h2 class="i18n" data-iname="page.archives.title"></h2>
+                </#if>
         </#if>
         <div id="archives-content">
             <@postTag method="archiveMonth">

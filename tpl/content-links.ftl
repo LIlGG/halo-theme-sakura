@@ -1,7 +1,13 @@
 <article>
     <#if !(settings.patternimg!true) || (!(settings.links_patternimg?? && settings.links_patternimg!='') && !(is_sheet?? && sheet.thumbnail?? && sheet.thumbnail!=''))>
     <header class="entry-header">
-        <h1 class="entry-title">${options.links_title?default('友情链接')}</h1>
+        <h1 class="entry-title">
+            <#if options.links_title?default("")?trim?length gt 1>
+			<span>${options.links_title}</span>
+			<#else>
+			<span class="i18n" data-iname="page.links.title"></span>
+            </#if>
+        </h1>
     </header><!-- .entry-header -->
     </#if>
     <#if is_sheet??>

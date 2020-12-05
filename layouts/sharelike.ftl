@@ -85,40 +85,40 @@
 <div class="post-share">
 	<ul class="social-share sharehidden">
 		<li>
-			<a href="http://service.weibo.com/share/share.php?url=${post.fullPath!}&appkey=&title=${post.title!}|${user.nickname!}&pic=${post.thumbnail!}" onclick="window.open(this.href, 'weibo-share', 'width=490,height=700');return false;" class="s-weibo">
-				<img src="${res_base_url!}/source/images/sns/weibo.png"/>
+			<a href="http://service.weibo.com/share/share.php?url=${post.fullPath!}&appkey=&title=${post.title!}|${user.nickname!}&pic=${post.thumbnail!}" onclick="window.open(this.href, 'weibo-share', 'width=490,height=700');return false;" class="s-weibo i18n" data-iname="share.weibo" data-iattr="title">
+				<img src="${res_base_url!}/source/images/sns/weibo.png"/> 
 			</a>
 		</li>
 		<li>
-			<a href="http://connect.qq.com/widget/shareqq/index.html?url=${post.fullPath!}&title=${post.title!}|${user.nickname!}&source=${post.title!}|${user.nickname!}&desc=${post.summary!}&pics=${post.thumbnail!}&summary=${post.summary!}" onclick="window.open(this.href, 'qq-share', 'width=730,height=500');return false;" class="s-qq">
+			<a href="http://connect.qq.com/widget/shareqq/index.html?url=${post.fullPath!}&title=${post.title!}|${user.nickname!}&source=${post.title!}|${user.nickname!}&desc=${post.summary!}&pics=${post.thumbnail!}&summary=${post.summary!}" onclick="window.open(this.href, 'qq-share', 'width=730,height=500');return false;" class="s-qq i18n" data-iname="share.qq" data-iattr="title">
 				<img src="${res_base_url!}/source/images/sns/qq.png"/>
 			</a>
 		</li>
 		<li>
 			<a href="javascript:" class="s-wechat">
 				<div class="wechat-qrcode">
-					<h4>微信扫一扫：分享</h4>
+					<h4 class="i18n" data-iname="share.wechat.qcode_title"></h4>
 					<div id="qrcode" class="qrcode" title="${post.fullPath!}" data-url="${post.fullPath!}"></div>
 					<div class="help">
-						<p>微信里点“发现”，扫一下</p>
-						<p>二维码便可将本文分享至朋友圈。</p>
+						<p class="i18n" data-iname="share.wechat.help_1"></p>
+						<p class="i18n" data-iname="share.wechat.help_2"></p>
 					</div>
 				</div>
 				<img src="${res_base_url!}/source/images/sns/wechat.png"/>
 			</a>
 		</li>
 		<li>
-			<a href="http://shuo.douban.com/!service/share?href=${post.fullPath!}&name=${post.title!}|${user.nickname!}&text=${post.summary!}&image=${post.thumbnail!}&starid=0&aid=0&style=11" onclick="window.open(this.href, 'douban-share', 'width=490,height=600');return false;" class="s-douban">
+			<a href="http://shuo.douban.com/!service/share?href=${post.fullPath!}&name=${post.title!}|${user.nickname!}&text=${post.summary!}&image=${post.thumbnail!}&starid=0&aid=0&style=11" onclick="window.open(this.href, 'douban-share', 'width=490,height=600');return false;" class="s-douban i18n" data-iname="share.douban" data-iattr="title">
 				<img src="${res_base_url!}/source/images/sns/douban.png"/>
 			</a>
 		</li>
 		<li>
-			<a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=${post.fullPath!}&title=${post.title!}|${user.nickname!}&desc=${post.summary!}&summary=${post.summary!}&site=${post.summary!}" onclick="window.open(this.href, 'qzone-share', 'width=490,height=600');return false;" class="s-qzone">
+			<a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=${post.fullPath!}&title=${post.title!}|${user.nickname!}&desc=${post.summary!}&summary=${post.summary!}&site=${post.summary!}" onclick="window.open(this.href, 'qzone-share', 'width=490,height=600');return false;" class="s-qzone i18n" data-iname="share.qzone" data-iattr="title">
 				<img src="${res_base_url!}/source/images/sns/qzone.png"/>
 			</a>
 		</li>
 		<li>
-			<a href="http://www.linkedin.com/shareArticle?mini=true&ro=true&title=${post.title!}|${user.nickname!}&url=${post.fullPath!}&summary=${post.summary!}&source=${post.thumbnail!}&armin=armin" onclick="window.open(this.href, 'linkedin-share', 'width=490,height=600');return false;" class="s-linkedin">
+			<a href="http://www.linkedin.com/shareArticle?mini=true&ro=true&title=${post.title!}|${user.nickname!}&url=${post.fullPath!}&summary=${post.summary!}&source=${post.thumbnail!}&armin=armin" onclick="window.open(this.href, 'linkedin-share', 'width=490,height=600');return false;" class="s-linkedin i18n" data-iname="share.linkedin" data-iattr="title">
 				<img src="${res_base_url!}/source/images/sns/linkedin.png"/>
 			</a>
 		</li>

@@ -44,15 +44,15 @@
     }
 
     #pagination .loading {
-        background: url(${res_base_url!}/source/images/rotating-ball-o.svg);
+        background-image: url(${res_base_url!}/source/images/rotating-ball-o.svg);
     }
 
     #banner_wave_1 {
-        background: url(${res_base_url!}/source/images/wave1.png) repeat-x;
+        background-image: url(${res_base_url!}/source/images/wave1.png) repeat-x;
     }
 
     #banner_wave_2 {
-        background: url(${res_base_url!}/source/images/wave2.png) repeat-x;
+        background-image: url(${res_base_url!}/source/images/wave2.png) repeat-x;
     }
     <#if (settings.cursor_skin!'sakura') == 'sakura'>
     /** 鼠标样式 */

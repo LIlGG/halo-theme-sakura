@@ -9,7 +9,8 @@
     "build-cleancss": "cleancss -o styles/style.min.css styles/style.css",
     "build-clean": "rimraf css",
     "build-app-js": "babel script/app.js -o script/app.min.js && uglifyjs script/app.min.js -o script/app.min.js",
-    "build-js": "npm run build-app-js",
+    "build-i18n-js": "babel script/i18n.js -o script/i18n.min.js && uglifyjs script/i18n.min.js -o script/i18n.min.js",
+    "build-js": "npm run build-app-js && npm run build-i18n-js",
     "deploy": "npm run build"
   },
   "browserify": {

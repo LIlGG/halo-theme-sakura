@@ -10,7 +10,10 @@
                 <img data-src="${settings.links_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
             </div>
             <header class="pattern-header">
-                <h1 class="entry-title">${options.links_title?default('友情链接')}</h1>
+                <#if options.links_title?default("")?trim?length gt 1>
+                <h1 class="entry-title">${options.links_title}</h1>
+                <#else>
+                <h1  class="entry-title i18n" data-iname="page.links.title"></h1>
             </header>
         </div>
     <#else>

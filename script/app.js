@@ -31,6 +31,8 @@ var LIlGGAttachContext = {
     LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.PHO(); // 图库功能
     LIlGGAttachContext.CMN(); // 评论组件
+    // i18n
+    I18N();
   },
   // 背景视频
   BGV: function () {
@@ -40,12 +42,11 @@ var LIlGGAttachContext = {
       $bg_video_add = $("#video-add"),
       dom = $bg_video[0],
       diskTime = 20 * 1000,
-      keyframesIndex,
       flvPlayer,
       mediaBlob;
 
     var bindBgVideoEvent = function () {
-      $bg_video_btn.on("click", function (event) {
+      $bg_video_btn.on("click", function () {
         if ($(this).hasClass("loadvideo")) {
           $(this).removeClass("loadvideo").hide();
           loadSource();
@@ -1246,16 +1247,16 @@ $(function () {
   Siren.MN(); // 移动端菜单
 
   // 新增功能
-  if (Poi.themeChange) LIlGGAttachContext.CBG(); // 主题切换
+  Poi.themeChange && LIlGGAttachContext.CBG(); // 主题切换
   LIlGGAttachContext.PLSA(); // 文章列表动画
-  if (Poi.headFocus && Poi.bgvideo) LIlGGAttachContext.BGV(); // 背景视频
-  if (Poi.toc) LIlGGAttachContext.TOC(); // 文章目录
+  (Poi.headFocus && Poi.bgvideo) && LIlGGAttachContext.BGV(); // 背景视频
+  Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部
-  if (Poi.photosStyle == "packery") supplement();
+  (Poi.photosStyle == "packery") && supplement();
   LIlGGAttachContext.PHO(); // 图库功能
   // 复制提示
-  if (Poi.copyMonitor) LIlGGAttachContext.CPY();
+  Poi.copyMonitor && LIlGGAttachContext.CPY();
   // 延迟加载图片
   lazyload(undefined, {
     rootMargin: "150px",
@@ -1263,7 +1264,8 @@ $(function () {
   // 评论组件
   LIlGGAttachContext.CMN();
   // PJAX
-  if (Poi.pjax) pjaxFun();
+  Poi.pjax && pjaxFun();
+  I18N();
   // 全局提示组件
   if (Poi.openToast && window.outerWidth > 860) {
     toast = new Toast();
@@ -1466,7 +1468,7 @@ var utils = {
     }
 
     return idx;
-  }
+  },
 };
 
 /**

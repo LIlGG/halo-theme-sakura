@@ -50,6 +50,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 全局提示&复制提醒功能
 - [x] 相册
 - [x] 说说
+- [x] 国际化
 
 > Tip:
 >> 上述功能大部分均可配置。具体操作在 后台 -> 外观 -> 主题 -> 设置 中进行配置   

@@ -766,7 +766,10 @@ a:active {
 	min-width: 99.999%;
 	min-height: 550px;
 	z-index: 0;
-	height: 100vh
+	/** 使视频全屏。并保证填满屏幕 */
+	height: 100vh;
+	-o-object-fit: fill;
+	   object-fit: fill;
 }
 
 #video-btn,
@@ -2831,7 +2834,7 @@ h1.page-title.mb- {
 	background-size: auto 100%
 }
 
-h3#comments-list-title {
+h3#comments-list-title .name {
 	max-width: 860px;
 	width: 100%;
 	margin: 0 auto;
@@ -2840,7 +2843,7 @@ h3#comments-list-title {
 	font-weight: 400
 }
 
-#comments-list-title span {
+#comments-list-title .noticom {
 	font-size: 13px;
 	font-weight: 400;
 	color: #909090

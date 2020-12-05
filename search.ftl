@@ -9,7 +9,7 @@
 				<img data-src="${settings.searh_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
 			</div>
 			<header class="pattern-header">
-				<h1 class="entry-title search-title"> 关于“ ${keyword!} ”的搜索结果</h1>
+				<h1 class="entry-title search-title i18n" data-iname="page.search.title"></h1>
 			</header>
 		</div>
 	<#else>
@@ -22,7 +22,7 @@
 		<main id="main" class="site-main" role="main">
 			<#if !(settings.patternimg!true) || !(settings.searh_patternimg?? && settings.searh_patternimg!='')>
 			<header class="page-header">
-				<h1 class="page-title">搜索结果: <span>${keyword!}</span></h1>
+				<h1 class="page-title"><span class="i18n" data-iname="page.search.sresult"></span><span>${keyword!}</span></h1>
 			</header><!-- .page-header -->
 			</#if>
 			<#list posts.content as post>
@@ -31,24 +31,7 @@
 		</main><!-- #main -->
 		<#if posts.totalPages gt 1>
 			<@paginationTag method="search" page="${posts.number}" total="${posts.totalPages}" display="3" keyword="${keyword!}">
-				<#if (settings.pagenav_style!'ajax') == 'ajax'>
-					<div id="pagination">
-						<#if pagination.hasNext>
-								<a href="${pagination.nextPageFullPath!}" class="">Previous</a>
-						<#else>
-							<span>没有更多文章了</span>
-						</#if>
-					</div>
-				<#else>
-					<nav class="navigator">
-						<#if pagination.hasPrev>
-							<a href="${pagination.prevPageFullPath!}"><i class="iconfont icon-previous"></i></a>
-						</#if>
-						<#if pagination.hasNext>
-							<a href="${pagination.nextPageFullPath!}"><i class="iconfont icon-next"></i></a>
-						</#if>
-					</nav>
-				</#if>
+				<#include "layouts/list-nextprev.ftl">
 			</@paginationTag>
 		</#if>
     <#else>

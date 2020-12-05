@@ -10,7 +10,11 @@
                 <img data-src="${settings.photos_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
             </div>
             <header class="pattern-header">
-                <h1 class="entry-title">${options.photos_title?default('图库')}</h1>
+                <#if options.photos_title?default("")?trim?length gt 1>
+                <h1 class="entry-title">${options.photos_title}</h1>
+                <#else>
+                <span class="entry-title i18n" data-iname="page.photos.title"></span>
+                </#if>
             </header>
         </div>
     <#else>

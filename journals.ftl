@@ -10,13 +10,21 @@
                 <img data-src="${settings.journals_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
             </div>
             <header class="pattern-header">
-                <h1 class="entry-title">${options.journals_title?default('日志')}</h1>
+                <#if options.journals_title?default("")?trim?length gt 1>
+                <h1 class="entry-title">${options.journals_title}</h1>
+                <#else>
+                <h1 class="entry-title i18n" data-iname="page.journal.title"></h1>
+                </#if>
             </header>
         </div>
     <#else>
         <div class="blank"></div>
         <header class="entry-header">
-            <h1 class="entry-title">${options.journals_title?default('日志')}</h1>
+              <#if options.journals_title?default("")?trim?length gt 1>
+              <h1 class="entry-title">${options.journals_title}</h1>
+              <#else>
+              <h1 class="entry-title i18n" data-iname="page.journal.title"></h1>
+              </#if>
         </header>
         <style>
             .toc-container {
@@ -49,12 +57,13 @@
       <@paginationTag method="journals" page="${journals.number}" total="${journals.totalPages}" display="3">
         <center id="journals-pagination">
           <#if pagination.hasNext>
-            <a href="${pagination.nextPageFullPath!}" class="at_button" style="margin-bottom: 15px;">加载更多...</a></#if>
+          <a href="${pagination.nextPageFullPath!}" class="at_button i18n" data-iname="page.journal.loadmore" style="margin-bottom: 15px;">加载更多...</a>
+          </#if>
         </center>
       </@paginationTag>
     </#if>
     <#else>
-        博主太懒了，这里还什么都没有呢！！！
+        <span class="i18n" data-iname="page.journal.empty"></span>
     </#if>
 </div>
 <#include "footer.ftl">

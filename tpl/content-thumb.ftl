@@ -18,13 +18,13 @@
 	<div class="post-content-wrap">
 		<div class="post-content">
 			<div class="post-date">
-				<i class="iconfont icon-time"></i>发布于 ${post.createTime?string("yyyy-MM-dd")}
+				<i class="iconfont icon-time"></i><span class="i18n" data-iname="postlist.time" data-ivalue="${post.createTime?string('yyyy-MM-dd')}"></span>
 				<#if post.topPriority?? && post.topPriority!=0>&nbsp;<i class="iconfont icon-hot hotpost"></i></#if>
 			</div>
 			<a href="${post.fullPath!}" class="post-title"><h3>${post.title!}</h3></a>
 			<div class="post-meta">
-				<span><i class="iconfont icon-attention"></i>${post.visits?c} 热度</span>
-				<span class="comments-number"><i class="iconfont icon-mark"></i>${post.commentCount!0} 条评论</span>
+				<span><i class="iconfont icon-attention"></i><span class="i18n" data-iname="postlist.heat" data-ivalue="${post.visits?c}"></span></span>
+				<span class="comments-number"><i class="iconfont icon-mark"></i><span class="i18n" data-iname="postlist.comments" data-ivalue="${post.commentCount!0}"></span></span>
 				<#if post.categories?? && post.categories?size gt 0>
 				<span><i class="iconfont icon-file"></i><a href="${post.categories[0].fullPath!}">${post.categories[0].name!}</a></span>
 				</#if>

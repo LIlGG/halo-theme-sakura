@@ -173,6 +173,7 @@
 		"tagRandomColorMax": "${settings.tag_randomColorMax!0.969}",
 		"nickname": "${user.nickname!}",
 		"sitename": "${blog_title!}",
+		"themeBase": "${theme_base!}",
 		"openToast": "${(settings.open_toast!true)?string('true','')}",
 		"toastWidth": ${settings.toast_width!},
 		"toastHeight": ${settings.toast_height!},
@@ -254,7 +255,8 @@
 </#if>
 <script type='text/javascript' src='${res_base_url!}/source/js/qrcode.min.js' defer></script>
 <script type='text/javascript' src='${res_base_url!}/source/lib/flv.min/index.js' defer></script>
-<script type='text/javascript' src='${theme_base!}/script/app.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='${theme_base!}/script/i18n.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='${theme_base!}/script/app.js?ver=1.2.1'></script>
 <#nested />
 <#if settings.live2d_switch!true>
 <script src="${res_base_url!}/source/lib/jquery-ui/jquery-ui.min.js" async defer></script>

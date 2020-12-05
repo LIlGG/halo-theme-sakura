@@ -21,7 +21,7 @@
                         <a href="${blog_url!}">${user.nickname!}</a>
                     </span>
                     <span class="bull">·</span>${post.createTime?string('yyyy-MM-dd')}
-                    <span class="bull">·</span>${post.visits!0} 次阅读
+                    <span class="bull">·</span><span class="i18n" data-iname="post.visits" data-ivalue="${post.visits!0}"></span>
                 </p>
             </header>
         </div>
