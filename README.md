@@ -2,7 +2,7 @@
 <p align="center">
   <a href="https://github.com/halo-dev/halo"><img alt="Halo version" src="https://img.shields.io/badge/halo-1.3.2%2B-brightgreen?style=for-the-badge" /></a>
   <a href="https://github.com/LIlGG/halo-theme-sakura"><img alt="Build Status" src="https://img.shields.io/badge/build-positive-brightgreen?style=for-the-badge"></a>
-  <a href="https://github.com/prettier/prettier"><img alt="Code Style: Prettier" src="https://img.shields.io/badge/release-1.2.0-blue?style=for-the-badge"></a>
+  <a href="https://github.com/prettier/prettier"><img alt="Code Style: Prettier" src="https://img.shields.io/badge/release-1.3.0-blue?style=for-the-badge"></a>
   <a href="./LICENSE"><img alt="LICENSE MIT" src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge"></a>
 </p>
 <p align="center">
@@ -10,11 +10,11 @@
 </p>
 
 ## 🧐 说明
-该主题的基础版为[halo-theme-siren](https://github.com/halo-dev/halo-theme-siren),非常感谢将基础版主题移植过来，给了我后续补充内容的条件。
+该主题的基础版为 [halo-theme-siren](https://github.com/halo-dev/halo-theme-siren),非常感谢将基础版主题移植过来，给了我后续补充内容的条件。
 
-> 本主题参照WordPress主题[Sakura](https://github.com/mashirozx/Sakura)制作，在原有的[Siren](https://github.com/halo-dev/halo-theme-siren)主题上添加了Sakura的内容，并优化了部分内容。
+> 本主题参照 WordPress 主题 [Sakura](https://github.com/mashirozx/Sakura) 制作，在原有的 [Siren](https://github.com/halo-dev/halo-theme-siren) 主题上添加了 Sakura 的内容，并优化了部分内容。
 
-由于本人前端水平不足，也是第一次接触freemarker，因此可能达不到与原版100%相似度，见谅。
+由于本人前端水平不足，也是第一次接触 Freemarker ，因此可能达不到与原版 100% 相似度，见谅。
 
 如果各位有什么更好的做法，希望可以提交 `PR`；
 
@@ -28,32 +28,36 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 ![screenshot.png](https://cdn.lixingyong.com/halo-sakura/image/1591804854.jpg)
 
 ## ⚡ 功能
-
-- [x] 完善导航栏，支持图标
+<details>
+<summary>点击查看完整功能列表</summary>
+- [x] 完善导航栏，支持图标，支持多级菜单
 - [x] 美化首页，支持故障文本和头像
 - [x] 集成音乐播放器插件，可在文章中使用
-- [x] 全站 pjax
-- [x] 背景视频，支持bilibili
-- [x] Lazyload
-- [x] 集成Live2D
-- [x] 代码高亮，且实现仿Mac
-- [x] 自定义评论
-- [x] 文章目录
-- [x] 主题切换（支持页面模式）
-- [x] 友链页面
+- [x] 全站 Pjax
+- [x] 背景视频，支持最高 2K 的 Bilibili，支持流加载
+- [x] 图片懒加载
+- [x] 集成 Live2D
+- [x] 代码高亮，实现仿 Mac 风格
+- [x] 自定义评论样式，可以发送表情
+- [x] 文章目录（支持单个文章内显隐）
+- [x] 主题切换
+- [x] 自定义友链页面
 - [x] 移动客户端适配
 - [x] 404 页面
 - [x] 个人信息（页脚）
 - [x] 分享功能（实现部分）
 - [x] 自定义邮件模板
-- [x] 标签目录页面（需要手动在菜单中配置/tags链接）
+- [x] 分类、标签支持雷达图及云标签
 - [x] 全局提示&复制提醒功能
 - [x] 相册
 - [x] 说说
 - [x] 国际化
 
+
 > Tip:
->> 上述功能大部分均可配置。具体操作在 后台 -> 外观 -> 主题 -> 设置 中进行配置   
+>> 上述功能大部分均可配置。具体操作在 后台 -> 外观 -> 主题 -> 设置 中进行配置
+</details>
+
 ## <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">  待完成功能
 - [ ] 归档重写
 - [ ] 集成视频播放插件
