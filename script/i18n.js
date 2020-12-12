@@ -51,8 +51,8 @@ var I18N = function () {
     }
 
     function execI18n() {
-        if(getCookie(i18nlanguage + ".yml")) {
-            doc = JSON.parse(getCookie(i18nlanguage + ".yml"));
+        if(getLocalStorage(i18nlanguage + ".yml")) {
+            doc = JSON.parse(getLocalStorage(i18nlanguage + ".yml"));
             renderI18n();
         } else {
             $.ajax({
@@ -63,7 +63,7 @@ var I18N = function () {
                         console.warn("读取读取国际化数据失败");
                         return;
                     }
-                    setCookie(i18nlanguage + ".yml", JSON.stringify(doc), 1);
+                    setLocalStorage(i18nlanguage + ".yml", JSON.stringify(doc), 60 * 60 * 24);
                     // 执行渲染
                     renderI18n();
                 }
@@ -84,26 +84,40 @@ var I18N = function () {
         return currentLang;
     }
 
-    function setCookie(name, value, days) {
-        var expires = "";
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-            expires = "; expires=" + date.toUTCString();
+    /**
+     * 存储浏览器数据
+     * @param {*} key 
+     * @param {*} value 
+     * @param {*} expires 存储时间。单位/秒
+     */
+    function setLocalStorage(key, value, expires = 3600) {
+        var keyVE = key + "v1.3.0";
+        var date = new Date();
+        try {
+            localStorage.setItem(keyVE, JSON.stringify({
+                expires: date.valueOf() + expires * 1000,
+                data: value
+            }));
+        } catch (e) {
+            if (e.name === 'QuotaExceededError') {
+                console.log("数据已满，自动清空");
+                localStorage.clear();
+                setLocalStorage(key, value, expires);
+            }
         }
-        document.cookie =
-            name + "v1.0.0" + "=" + (value || "") + expires + "; path=/";
     }
 
-    function getCookie(name) {
-        var nameEQ = name + "v1.0.0" + "=";
-        var ca = document.cookie.split(";");
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == " ") c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    function getLocalStorage(key) {
+        var keyVE = key + "v1.3.0";
+
+        var result = JSON.parse(localStorage.getItem(keyVE));
+        var date = new Date();
+        if (result && result.expires > date) {
+            return result.data;
+        } else {
+            localStorage.removeItem(keyVE);
+            return null;
         }
-        return null;
     }
 
     function loadJS(url, callback) {
@@ -132,12 +146,12 @@ var I18N = function () {
     // 获取用户指定的语言，如果用户未指定或者未自动，则读取缓存，否则读取浏览器语言
     if (Poi.i18n && Poi.i18n != "auto") {
         i18nlanguage = Poi.i18n;
-    } else if (getCookie("i18nlanguage")) {
-        i18nlanguage = getCookie("i18nlanguage");
+    } else if (getLocalStorage("i18nlanguage")) {
+        i18nlanguage = getLocalStorage("i18nlanguage");
     } else {
         // 从浏览器读取
         i18nlanguage = getNavLang();
-        setCookie("i18nlanguage", i18nlanguage);
+        setLocalStorage("i18nlanguage", i18nlanguage, 60 * 60 * 24 * 30);
     }
 
     if (!i18nlanguage) {
