@@ -41,7 +41,6 @@ var LIlGGAttachContext = {
       $bg_video_stu = $(".video-stu"),
       $bg_video_add = $("#video-add"),
       dom = $bg_video[0],
-      diskTime = 20 * 1000,
       flvPlayer,
       mediaBlob;
 
@@ -146,13 +145,16 @@ var LIlGGAttachContext = {
                   result["segments"] = result["playUrl"];
                   for (var i = 0; i < result["segments"].length; i++) {
                     result["segments"][i]["duration"] = result["segments"][i]["length"];
+                    result["segments"][i]["filesize"] = result["segments"][i]["size"];
                   }
-
-                  config = {
+                  var isCache =  result["segments"][0]["isCached"]
+                  config = isCache ? {
+                    enableStashBuffer: true,
+                  } : {
                     rangeLoadZeroStart: true,
-                    lazyLoadMaxDuration: 10,
-                    lazyLoadRecoverDuration: 10,
-                    enableStashBuffer: false
+                    enableStashBuffer: false,
+                    lazyLoadMaxDuration: 8,
+                    lazyLoadRecoverDuration: 5
                   }
                   break;
               }
@@ -176,13 +178,11 @@ var LIlGGAttachContext = {
             url: result.url || ''
           };
           if (result.segments) {
-            // 对视频进行物理分片
-            for (var i = 0; i < result.segments.length; i++) {
-              var bitRate = parseInt(Math.round((result.segments[i].size / result.segments[i].length) * 1000) / 1000);
-              result.segments[i].url = result.segments[i].url + "&bitRate=" + bitRate * diskTime + "&size=" + result.segments[i].size
-            }
             mediaDataSource.segments = result.segments;
           }
+          // 关闭日志
+          flvjs.LoggingControl.enableAll = false;
+          flvjs.LoggingControl.enableError = true;
           flvPlayer = flvjs.createPlayer(mediaDataSource, config);
           flvPlayer.attachMediaElement(dom);
           flvPlayer.load();
