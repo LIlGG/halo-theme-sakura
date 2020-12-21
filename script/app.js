@@ -32,7 +32,7 @@ var LIlGGAttachContext = {
     LIlGGAttachContext.PHO(); // 图库功能
     LIlGGAttachContext.CMN(); // 评论组件
     // i18n
-    I18N();
+    I18N.init();
   },
   // 背景视频
   BGV: function () {
@@ -147,15 +147,15 @@ var LIlGGAttachContext = {
                     result["segments"][i]["duration"] = result["segments"][i]["length"];
                     result["segments"][i]["filesize"] = result["segments"][i]["size"];
                   }
-                  var isCache =  result["segments"][0]["isCached"]
+                  var isCache = result["segments"][0]["isCached"]
                   config = isCache ? {
                     enableStashBuffer: true,
                   } : {
-                    rangeLoadZeroStart: true,
-                    enableStashBuffer: false,
-                    lazyLoadMaxDuration: 8,
-                    lazyLoadRecoverDuration: 5
-                  }
+                      rangeLoadZeroStart: true,
+                      enableStashBuffer: false,
+                      lazyLoadMaxDuration: 8,
+                      lazyLoadRecoverDuration: 5
+                    }
                   break;
               }
               break;
@@ -439,7 +439,7 @@ var LIlGGAttachContext = {
      * 检查并回显主题
      */
     var checkBgImgEcho = function () {
-      var configTag = utils.getCookie("bgTagClass");
+      var configTag = Util.getCookie("bgTagClass");
       if (!configTag) return;
       var bgConfigTags = Object.keys(bgConfig);
       // 默认为bg_0
@@ -464,7 +464,7 @@ var LIlGGAttachContext = {
         $(".skin-menu " + "#" + currBg).on("click", function () {
           changeBg(currBg, function () {
             // 保存tagClass, 方便下次查询
-            utils.setCookie("bgTagClass", currBg, 30);
+            Util.setCookie("bgTagClass", currBg, 30);
             // 绑定完之后隐藏主题开关
             $(".skin-menu").removeClass("show");
             setTimeout(function () {
@@ -1265,7 +1265,7 @@ $(function () {
   LIlGGAttachContext.CMN();
   // PJAX
   Poi.pjax && pjaxFun();
-  I18N();
+  I18N.init();
   // 全局提示组件
   if (Poi.openToast && window.outerWidth > 860) {
     toast = new Toast();
@@ -1393,300 +1393,6 @@ if (
     },
     false
   );
-}
-
-// 自定义工具包
-var utils = {
-  setCookie: function (name, value, days) {
-    var expires = "";
-    if (days) {
-      var date = new Date();
-      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-      expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie =
-      name + "v1.0.0" + "=" + (value || "") + expires + "; path=/";
-  },
-
-  getCookie: function (name) {
-    var nameEQ = name + "v1.0.0" + "=";
-    var ca = document.cookie.split(";");
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == " ") c = c.substring(1, c.length);
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-  },
-
-  removeCookie: function (name) {
-    document.cookie =
-      name + mashiro_option.cookie_version + "=; Max-Age=-99999999;";
-  },
-  /**
-   * 视频流关键帧搜索
-   * @param {*} keyframesIndex 关键帧索引
-   * @param {*} milliseconds 秒
-   */
-  getNearestKeyframe: function (keyframesIndex, milliseconds) {
-    var keyframeIdx = this._search(keyframesIndex.times, milliseconds);
-
-    return {
-      index: keyframeIdx,
-      milliseconds: table.times[keyframeIdx],
-      fileposition: table.filepositions[keyframeIdx]
-    };
-  },
-  /**
-   * 搜索方式
-   * @param {*} list 
-   * @param {*} value 
-   */
-  _search: function (list, value) {
-    var idx = 0;
-
-    var last = list.length - 1;
-    var mid = 0;
-    var lbound = 0;
-    var ubound = last;
-
-    if (value < list[0]) {
-      idx = 0;
-      lbound = ubound + 1;
-    }
-
-    while (lbound <= ubound) {
-      mid = lbound + Math.floor((ubound - lbound) / 2);
-      if (mid === last || (value >= list[mid] && value < list[mid + 1])) {
-        idx = mid;
-        break;
-      } else if (list[mid] < value) {
-        lbound = mid + 1;
-      } else {
-        ubound = mid - 1;
-      }
-    }
-
-    return idx;
-  },
-};
-
-/**
- * 封装的toast组件（使用纯js，可以单独拿出去使用）
- * @author LIlGG
- */
-var Toast = function Toast() {
-  _classCallCheck(this, Toast);
-
-  this._t = null;
-  this._timeOut = null;
-  this._settings = {
-    duration: 2000,
-    width: 260,
-    height: 60,
-    top: "top",
-    background: "#fe9600",
-    color: "#fff",
-    "font-size": 14,
-  };
-
-  Toast.prototype.init = function (opt) {
-    _extend(this._settings, opt);
-  };
-  /**
-   * 创建Toast
-   * @param {*} text 显示的文本
-   * @param {*} duration 持续时间
-   */
-
-  Toast.prototype.create = function (text, duration) {
-    // 清除原有的Toast
-    if (this._timeOut) {
-      clearTimeout(this._timeOut);
-      document.body.removeChild(this._t);
-      this._t = null;
-    }
-
-    if (!text) {
-      console.error("提示文本不能为空");
-      return;
-    }
-
-    this._t = document.createElement("div");
-    this._t.className = "t-toast";
-    this._t.innerHTML = '<p class="message"><span>' + text + "</span></p>";
-    document.body.appendChild(this._t);
-    this.setStyle();
-
-    var _that = this;
-
-    this._timeOut = setTimeout(function () {
-      // 移除
-      document.body.removeChild(_that._t);
-      _that._timeOut = null;
-      _that._t = null;
-    }, duration || this._settings.duration);
-  };
-
-  Toast.prototype.setStyle = function () {
-    this._t.style.width = this._settings.width + "px";
-    this._t.style.height = this._settings.height + "px";
-    this._t.style.position = "fixed";
-    this._t.style["text-align"] = "center";
-    this._t.style["z-index"] = "20200531";
-
-    if (isNaN(Number(this._settings.top))) {
-      if (this._settings.top == "centent") {
-        this._t.style.top = _viewHeight() / 2 + "px";
-      } else if (this._settings.top == "top") {
-        this._t.style.top = "0px";
-      }
-    } else {
-      this._t.style.top = this._settings.top + "px";
-    }
-
-    this._t.style.left = "50%";
-    this._t.style["margin-left"] = "-" + this._settings.width / 2 + "px";
-    this._t.style.background = this._settings.background;
-    this._t.style.color = this._settings.color;
-    this._t.style["border-bottom-left-radius"] = "4px";
-    this._t.style["border-bottom-right-radius"] = "4px";
-    this._t.style["font-size"] = this._settings["font-size"] + "px";
-    this._t.style.display = "flex";
-    this._t.style["justify-content"] = "center";
-    this._t.style["align-items"] = "center";
-  };
-
-  function _viewHeight() {
-    return document.documentElement.clientHeight;
-  }
-
-  function _extend(o1, o2) {
-    for (var attr in o2) {
-      o1[attr] = o2[attr];
-    }
-  }
-
-};
-
-/**
- * 自定义日志
- */
-var Log = function () {
-  return {
-    e: function (tag, msg) {
-      if (!tag || Log.FORCE_GLOBAL_TAG)
-        tag = Log.GLOBAL_TAG;
-
-      let str = `[${tag}] > ${msg}`;
-
-      if (!Log.ENABLE_ERROR) {
-        return;
-      }
-
-      if (console.error) {
-        console.error(str);
-      } else if (console.warn) {
-        console.warn(str);
-      } else {
-        console.log(str);
-      }
-    },
-
-    i: function (tag, msg) {
-      if (!tag || Log.FORCE_GLOBAL_TAG)
-        tag = Log.GLOBAL_TAG;
-
-      let str = `[${tag}] > ${msg}`;
-
-      if (!Log.ENABLE_INFO) {
-        return;
-      }
-
-      if (console.info) {
-        console.info(str);
-      } else {
-        console.log(str);
-      }
-    },
-
-    w: function (tag, msg) {
-      if (!tag || Log.FORCE_GLOBAL_TAG)
-        tag = Log.GLOBAL_TAG;
-
-      let str = `[${tag}] > ${msg}`;
-
-      if (!Log.ENABLE_WARN) {
-        return;
-      }
-
-      if (console.warn) {
-        console.warn(str);
-      } else {
-        console.log(str);
-      }
-    },
-
-    d: function (tag, msg) {
-      if (!tag || Log.FORCE_GLOBAL_TAG)
-        tag = Log.GLOBAL_TAG;
-
-      let str = `[${tag}] > ${msg}`;
-
-      if (!Log.ENABLE_DEBUG) {
-        return;
-      }
-
-      if (console.debug) {
-        console.debug(str);
-      } else {
-        console.log(str);
-      }
-    },
-
-    v: function (tag, msg) {
-      if (!tag || Log.FORCE_GLOBAL_TAG)
-        tag = Log.GLOBAL_TAG;
-
-      let str = `[${tag}] > ${msg}`;
-
-      if (!Log.ENABLE_VERBOSE) {
-        return;
-      }
-
-      console.log(str);
-    }
-  }
-}();
-
-Log.GLOBAL_TAG = 'Sakura';
-Log.FORCE_GLOBAL_TAG = false;
-Log.ENABLE_ERROR = true;
-Log.ENABLE_INFO = true;
-Log.ENABLE_WARN = true;
-Log.ENABLE_DEBUG = true;
-Log.ENABLE_VERBOSE = true;
-
-/**
- * 自定义异常
- * @param {*} message 
- */
-var RuntimeException = function (message) {
-  this._message = message;
-
-  RuntimeException.prototype = {
-    get name() {
-      return 'RuntimeException';
-    },
-
-    get message() {
-      return this._message;
-    },
-
-    toString() {
-      return this.name + ': ' + this.message;
-    }
-  }
 }
 
 var IllegalStateException = function (message) {

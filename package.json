@@ -10,7 +10,8 @@
     "build-clean": "rimraf css",
     "build-app-js": "babel script/app.js -o script/app.min.js && uglifyjs script/app.min.js -o script/app.min.js",
     "build-i18n-js": "babel script/i18n.js -o script/i18n.min.js && uglifyjs script/i18n.min.js -o script/i18n.min.js",
-    "build-js": "npm run build-app-js && npm run build-i18n-js",
+    "build-utils-js": "babel script/utils.js -o script/utils.min.js && uglifyjs script/utils.min.js -o script/utils.min.js",
+    "build-js": "npm run build-app-js && npm run build-i18n-js && npm run build-utils-js",
     "deploy": "npm run build"
   },
   "browserify": {
