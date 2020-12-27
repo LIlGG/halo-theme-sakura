@@ -769,7 +769,7 @@ a:active {
 	/** 使视频全屏。并保证填满屏幕 */
 	height: 100vh;
 	-o-object-fit: fill;
-	   object-fit: fill;
+	object-fit: fill;
 }
 
 #video-btn,
@@ -1170,12 +1170,12 @@ a:active {
 }
 
 .site-top .lower-cantiner {
-    position: absolute;
-    text-align: center;
-    left: -2%;
-    min-width: 758.4px;
-    pointer-events: none;
-    width: 100%;
+	position: absolute;
+	text-align: center;
+	left: -2%;
+	min-width: 758.4px;
+	pointer-events: none;
+	width: 100%;
 }
 
 .site-top .lower {
@@ -7723,6 +7723,12 @@ a.toc-link {
 	color: #21252b
 }
 
+.hljs-ln-line span::-moz-selection,
+.hljs-ln-line::-moz-selection {
+	background: #fff;
+	color: #21252b
+}
+
 .hljs-ln-line span::-moz-selection, .hljs-ln-line::-moz-selection {
 	background: #fff;
 	color: #21252b
@@ -9062,10 +9068,10 @@ body.dark #grid-changer svg {
 	fill: #fafafa;
 }
 
-body.dark #grid-changer ul li a.active, 
+body.dark #grid-changer ul li a.active,
 body.dark #grid-changer ul li a.active:hover {
 	border-color: #fafafa;
-    color: #fafafa;
+	color: #fafafa;
 }
 
 /* body.dark #grid-changer ul li a {
@@ -9165,5 +9171,15 @@ h1.main-title {
 
 .header-info p {
 	transition: color .4s;
+}
+
+/* MathJax v2.7.5 from 'cdnjs.cloudflare.com' */
+.mjx-chtml {
+	outline: 0;
+}
+
+.MJXc-display {
+	overflow-x: auto;
+	overflow-y: hidden;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1816,3 +1816,14 @@ plugin:
           label: 开启
         - value: false
           label: 关闭
+    mathjax:
+      name: mathjax
+      label: 开启 mathjax 数学公式插件
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭

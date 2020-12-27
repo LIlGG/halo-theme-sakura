@@ -186,7 +186,8 @@
 		"photosStyle": "${(settings.photos_style)!'justify'}",
 		"photosGutter": ${(settings.photos_gutter)!10},
 		"tocDepth": ${(settings.toc_depth)!0},
-		"i18n": "${settings.i18n!'auto'}"
+		"i18n": "${settings.i18n!'auto'}",
+		"mathjax": "${(settings.mathjax!false)?string('true','')}"
 	};
 	var bgConfig = {
 	<#list 0..7 as i>
@@ -225,7 +226,7 @@
 </#if>
 <#if settings.is_aplayer!false>
 	<script src="${res_base_url!}/source/lib/APlayer/APlayer.min.js" defer></script>
-	<script src="${theme_base!}/plugins/aplayer/js/index.js" defer></script>
+	<script src="${res_base_url!}/plugins/aplayer/js/index.js" defer></script>
 </#if>
 <#if settings.post_toc!true>
 	<script src="${res_base_url!}/source/lib/tocbot/dist/tocbot.min.js" defer></script>
@@ -257,7 +258,10 @@
 </#if>
 <script type='text/javascript' src='${res_base_url!}/source/js/qrcode.min.js' defer></script>
 <script type='text/javascript' src='${res_base_url!}/source/lib/flv.min/index.js' defer></script>
-<script type='text/javascript' src='${res_base_url!}/script/i18n.min.js?ver=1.3.0'></script>
+<script type='text/javascript' src='${res_base_url!}/script/i18n.min.js?ver=1.3.0' defer></script>
+<#if settings.mathjax!false>
+<script type='text/javascript' src="${res_base_url!}/plugins/mathjax/js/index.js"></script>
+</#if>
 <script type='text/javascript' src='${theme_base!}/script/app.min.js?ver=1.3.0'></script>
 <#nested />
 <#if settings.live2d_switch!true>

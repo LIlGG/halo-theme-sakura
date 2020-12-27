@@ -27,7 +27,8 @@ var LIlGGAttachContext = {
       }
     } catch (e) { }
 
-    if (Poi.toc) LIlGGAttachContext.TOC(); // 文章目录
+    Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
+    Poi.mathjax && LIlGGAttachContext.MATHJAX(); // 数学公式
     LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.PHO(); // 图库功能
     LIlGGAttachContext.CMN(); // 评论组件
@@ -773,6 +774,12 @@ var LIlGGAttachContext = {
       // 注入外部css
       comments[i].shadowRoot.appendChild(commentStyle[0]);
     }
+  },
+  // 渲染数学公式
+  MATHJAX: function() {
+    if (window.MathJax) {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementsByClassName('entry-content')[0]]);
+    }
   }
 };
 
@@ -1228,6 +1235,7 @@ $(function () {
   LIlGGAttachContext.PLSA(); // 文章列表动画
   (Poi.headFocus && Poi.bgvideo) && LIlGGAttachContext.BGV(); // 背景视频
   Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
+  Poi.mathjax && LIlGGAttachContext.MATHJAX(); // 数学公式
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部
   (Poi.photosStyle == "packery") && supplement();
