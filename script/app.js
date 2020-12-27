@@ -1137,8 +1137,11 @@ var home = location.href,
             } else {
               $("#pagination").html("<span>没有更多文章了</span>");
             }
+
+            I18N.init();
           },
         });
+        
         return false;
       });
       /**

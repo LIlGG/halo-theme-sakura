@@ -32,11 +32,16 @@
 				<a href="${post.fullPath!}"><i class="iconfont icon-caidan"></i></a>
 			</div>
 			<div class="info-meta">
+				<#if !settings.keep_record_mode!false>
 				<div class="comnum">
-					<span><i class="iconfont icon-mark"></i><span class="i18n" data-iname="postlist.heat" data-ivalue="${post.visits?c}"></span></span>
+					<span>
+						<i class="iconfont icon-mark"></i>
+						<a href="${post.fullPath!}#comments"><span class="i18n" data-iname="postlist.comments" data-ivalue="${post.commentCount!0}"></span></a>
+					</span>
 				</div>
+				</#if>
 				<div class="views">
-					<span><i class="iconfont icon-attention"></i><span class="i18n" data-iname="postlist.comments" data-ivalue="${post.commentCount!0}"></span></span>
+					<span><i class="iconfont icon-attention"></i><span class="i18n" data-iname="postlist.heat" data-ivalue="${post.visits?c}"></span></span>
 				</div>
 			</div>
 		</footer><!-- .entry-footer -->

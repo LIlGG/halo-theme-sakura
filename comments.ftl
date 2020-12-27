@@ -9,7 +9,7 @@
 		loadingStyle: "balls"
 	}
 	</script>
-	<#if !target.disallowComment!false>
+	<#if !target.disallowComment!false && !settings.keep_record_mode!false>
 		<section id="comments" class="comments">
 			<div class="comments-main">
 				<h3 id="comments-list-title">

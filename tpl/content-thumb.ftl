@@ -27,7 +27,13 @@
 			<a href="${post.fullPath!}" class="post-title"><h3>${post.title!}</h3></a>
 			<div class="post-meta">
 				<span><i class="iconfont icon-attention"></i><span class="i18n" data-iname="postlist.heat" data-ivalue="${post.visits?c}"></span></span>
-				<span class="comments-number"><i class="iconfont icon-mark"></i><span class="i18n" data-iname="postlist.comments" data-ivalue="${post.commentCount!0}"></span></span>
+				<span class="comments-number">
+					<#if !settings.keep_record_mode!false>
+					<i class="iconfont icon-mark"></i>
+					<span class="i18n" data-iname="postlist.comments" data-ivalue="${post.commentCount!0}">
+					</span>
+					</#if>
+				</span>
 				<#if post.categories?? && post.categories?size gt 0>
 				<span><i class="iconfont icon-file"></i><a href="${post.categories[0].fullPath!}">${post.categories[0].name!}</a></span>
 				</#if>

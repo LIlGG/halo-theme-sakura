@@ -1791,6 +1791,18 @@ others:
       label: 公告内容
       type: textarea
       placeholder: '公告内容，文字超出142个字节将会被滚动显示（移动端无效），一个汉字 = 3字节，一个字母 = 1字节，自己计算吧'
+    keep_record_mode:
+      name: keep_record_mode
+      label: 备案模式
+      type: radio
+      data-type: bool
+      default: false
+      description: 备案模式，开启之后将隐藏所有留言、评论功能
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
 plugin:
   label: 插件功能
   items:
