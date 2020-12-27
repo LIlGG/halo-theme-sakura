@@ -187,6 +187,32 @@ var Util = {
     },
 
     /**
+     * 获取随机颜色值
+     * 当获取的值越小，色调越偏冷
+     * @param {Number} min 色调值，0 - 1 之间的值
+     * @param {Number} max 色调值，需要大于min且为0 - 1之间的值
+     */
+    getRandomColor: function (min = 0, max = 1) {
+        if (!min) {
+            min = 0;
+        }
+        if (!max) {
+            max = 0;
+        }
+        min = isNaN(min) ? 0 : Number(min);
+        max = isNaN(max) ? 1 : Number(max);
+        min = Math.min(Math.max(Math.abs(min), 0), 1);
+        max = Math.min(Math.max(Math.abs(max), 0), 1);
+        max = max < min ? 1 : max;
+        return (
+            "#" +
+            (function (h) {
+                return new Array(7 - h.length).join("0") + h;
+            })((((Math.random() * (max - min) + min) * 0x1000000) << 0).toString(16))
+        );
+    },
+
+    /**
      * 关键帧搜索
      * @param {*} keyframesIndex 关键帧索引
      * @param {*} milliseconds 秒
@@ -240,7 +266,7 @@ var Util = {
  * 封装的toast组件（使用纯js，可以单独拿出去使用）
  * @author LIlGG
  */
-var Toast = function() {
+var Toast = function () {
     _classCallCheck(this, Toast);
 
     this._t = null;

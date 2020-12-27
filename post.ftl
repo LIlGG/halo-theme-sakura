@@ -3,11 +3,19 @@
 -->
 <#include "header.ftl">
 <@header title="${post.title!} - ${blog_title!}">
-    <#if (settings.patternimg!true) && (post.thumbnail?? && post.thumbnail!='')>
+    <#if (settings.patternimg!true) && (post.thumbnail?? && post.thumbnail!='') || ((metas.ri?boolean)!true && settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!='')>
         <div class="pattern-center-blank"></div>
         <div class="pattern-center single-center">
             <div class="pattern-attachment-img">
-                <img data-src="${post.thumbnail!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
+                <#if (settings.patternimg!true) && (post.thumbnail?? && post.thumbnail!='')>
+                <img class="lazyload" data-src="${post.thumbnail!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
+                <#else>
+                    <#if settings.rimage_cover_itype == 'image'>
+                    <img class="lazyload" data-src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=image&qn=${(settings.rimage_cover_detail_qn)!'0'}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
+                    <#else>
+                    <img class="lazyload" data-src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}&id=${(settings.rimage_cover_id)!''}&qn=${(settings.rimage_cover_detail_qn)!'0'}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
+                    </#if>
+                </#if>
             </div>
             <header class="pattern-header single-header">
                 <h1 class="entry-title">${post.title!}</h1>

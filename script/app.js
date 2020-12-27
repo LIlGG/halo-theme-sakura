@@ -411,7 +411,7 @@ var LIlGGAttachContext = {
       if (Poi.codeLine) hljs.lineNumbersBlock($code[0]);
     });
     /**
-     * [#23](https://github.com/LIlGG/halo-theme-sakura/issues/23) 减少失误，将双击改为单击
+     * [#23](https://github.com/LIlGG/halo-theme-sakura/issues/23) 减少失误，将单击改为双击
      */
     $("pre").on("dblclick", function (e) {
       if (e.target !== this) return;
@@ -793,30 +793,7 @@ var imgError = function (ele, type) {
   ele.src = type.url;
 };
 
-/**
- * 获取随机颜色值
- * 当获取的值越小，色调越偏冷
- * @param {*} min 色调值，0 - 1 之间的值
- * @param {*} max 色调值，需要大于min且为0 - 1之间的值
- */
-var getRandomColor = function (min, max) {
-  if (!min || min === undefined || min === "null" || min === "undefined") {
-    min = 0;
-  }
-  if (!max || max === undefined || max === "null" || max === "undefined") {
-    max = 0;
-  }
-  min = isNaN(min) ? 0 : Number(min);
-  max = isNaN(max) ? 1 : Number(max);
-  min = min < 0 ? 0 : min > 1 ? 1 : min;
-  max = max < min ? 1 : max > 1 ? 1 : max;
-  return (
-    "#" +
-    (function (h) {
-      return new Array(7 - h.length).join("0") + h;
-    })((((Math.random() * (max - min) + min) * 0x1000000) << 0).toString(16))
-  );
-};
+
 
 /**
  * pjax功能
@@ -956,7 +933,7 @@ var home = location.href,
         $(".chip").each(function () {
           $(this).css(
             "background-color",
-            getRandomColor(Poi.tagRandomColorMin, Poi.tagRandomColorMax)
+            Util.getRandomColor(Poi.tagRandomColorMin, Poi.tagRandomColorMax)
           );
         });
       }

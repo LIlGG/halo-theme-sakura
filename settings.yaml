@@ -728,6 +728,104 @@ photos:
           label: 7
         - value: 8
           label: 8
+random_image:
+  label: 随机图
+  items:
+    rimage_url:
+      name: rimage_url
+      label: 随机图 API 地址
+      type: text
+      default: 'https://api.lixingyong.com/api/images'
+      placeholder: 请输入 API 地址
+      description: 随机图 API 地址，有能力者可以自行搭建。不过一般建议使用默认的即可，否则可能无法解析。
+    rimage_cover_open:
+      name: rimage_cover_open
+      label: 是否开启随机封面图
+      type: radio
+      data-type: bool
+      default: true
+      description: 开启随机封面图之后，如果没有为文章设置封面图，则会从随机图库内取一张
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    rimage_cover_itype:
+      name: rimage_cover_itype
+      label: 封面列表图获取范围
+      type: select
+      data-type: string
+      default: image
+      description: 封面图获取范围，设置之后，将从设置范围中返回图片
+      options:
+        - value: image
+          label: 所有图片
+        - value: album
+          label: 相册
+        - value: category
+          label: 分类
+        - value: user
+          label: 用户
+    rimage_cover_id:
+      name: rimage_cover_id
+      label: 封面图获取范围编号
+      type: text
+      description: 当‘封面列表图获取范围’为所有图片时可不填。其他情况下必须填写对应的编号，如相册编号、分类编号或用户名
+    rimage_cover_home_qn:
+      name: rimage_cover_home_qn
+      label: 首页列表图清晰度
+      type: select
+      data-type: long
+      default: 0
+      description: 封面图首页列表的清晰度，推荐原图，但如果觉得获取速度慢，可以选择其他清晰度
+      options:
+        - value: 0
+          label: 原图
+        - value: 1
+          label: 中等大小
+        - value: 2
+          label: 缩略图
+    rimage_cover_detail_qn:
+      name: rimage_cover_detail_qn
+      label: 文章页封面图清晰度
+      type: select
+      data-type: long
+      default: 0
+      description: 文章页封面图的清晰度，推荐原图
+      options:
+        - value: 0
+          label: 原图
+        - value: 1
+          label: 中等大小
+        - value: 2
+          label: 缩略图
+    rimage_cover_content_qn:
+      name: rimage_cover_content_qn
+      label: 标签、搜索等列表页图片清晰度
+      type: select
+      data-type: long
+      default: 1
+      description: 标签、搜索等列表页图片清晰度，推荐中等图或缩略图。其他配置跟随列表图
+      options:
+        - value: 0
+          label: 原图
+        - value: 1
+          label: 中等大小
+        - value: 2
+          label: 缩略图
+    rimage_cover_sheet_open:
+      name: rimage_cover_sheet_open
+      label: 页面是否使用随机图
+      type: radio
+      data-type: bool
+      default: true
+      description: 页面是否使用随机图的设置随机获取图片。其他配置与封面图一致。(如果某个页面或文章不想使用随机图，则可以使用元数据取消。如 K -> ri, value-> false)
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+
 theme:
   label: 主题切换
   items:

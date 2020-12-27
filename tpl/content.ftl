@@ -4,17 +4,20 @@
 <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
 	<div class="post-entry">
 		<div class="feature">
-			<#if post.thumbnail?? && post.thumbnail!=''>
 			<a href="${post.fullPath!}">
 				<div class="overlay"><i class="iconfont icon-text"></i></div>
-				<img width="150" height="150" src="${post.thumbnail!}" class="attachment-post-thumbnail size-post-thumbnail" />
+				<#if post.thumbnail?? && post.thumbnail!=''>
+				<img width="150" height="150" src="${post.thumbnail!}" class="attachment-post-thumbnail size-post-thumbnail" onerror="imgError(this, IMG_Type.DEFAULT)"/>
+				<#elseif settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!=''>
+					<#if settings.rimage_cover_itype == 'image'>
+					<img width="150" height="150" src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=image&qn=${(settings.rimage_cover_content_qn)!'0'}" class="attachment-post-thumbnail size-post-thumbnail" onerror="imgError(this, IMG_Type.DEFAULT)">
+					<#else>
+					<img width="150" height="150" src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}&id=${(settings.rimage_cover_id)!''}&qn=${(settings.rimage_cover_content_qn)!'0'}" class="attachment-post-thumbnail size-post-thumbnail" onerror="imgError(this, IMG_Type.DEFAULT)">
+					</#if>
+				<#else>
+				<img src="${res_base_url!}/source/images/random/d-${randomMethod(1,10)}.jpg" onerror="imgError(this, IMG_Type.DEFAULT)"/>
+				</#if>		
 			</a>
-			<#else>
-			<a href="${post.fullPath!}">
-				<div class="overlay"><i class="iconfont icon-text"></i></div>
-				<img src="${res_base_url!}/source/images/random/d-${randomMethod(1,10)}.jpg"/>
-			</a>
-			</#if>
 		</div>
 		<h1 class="entry-title"><a href="${post.fullPath!}">${post.title!}</a></h1>
 		<div class="p-time">

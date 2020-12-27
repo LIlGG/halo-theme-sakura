@@ -4,16 +4,19 @@
 <#list posts.content as post>
 <article class="post post-list-thumb <#if (post_index+1) % 2==0>post-list-thumb-left</#if>" itemscope="" itemtype="http://schema.org/BlogPosting">
 	<div class="post-thumb">
+		<a href="${post.fullPath!}">
 		<#if post.thumbnail?? && post.thumbnail!=''>
-			<a href="${post.fullPath!}">
-				<#--  <#include "../layouts/lazyload-img.ftl">  -->
-				<img class="lazyload" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" data-src="${post.thumbnail!}" onerror="imgError(this, IMG_Type.DEFAULT)">
-			</a>
+			<img class="lazyload" data-src="${post.thumbnail!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
+		<#elseif settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!=''>
+			<#if settings.rimage_cover_itype == 'image'>
+			<img class="lazyload" data-src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=image&qn=${(settings.rimage_cover_home_qn)!'0'}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
+			<#else>
+			<img class="lazyload" data-src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}&id=${(settings.rimage_cover_id)!''}&qn=${(settings.rimage_cover_home_qn)!'0'}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
+			</#if>
 		<#else>
-			<a href="${post.fullPath!}">
-				<img class="lazyload" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" data-src="${res_base_url!}/source/images/temp.jpg" onerror="imgError(this, IMG_Type.DEFAULT)">
-			</a>
+			<img class="lazyload" data-src="${res_base_url!}/source/images/temp.jpg" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
 		</#if>
+		</a>
 	</div><!-- thumbnail-->
 	<div class="post-content-wrap">
 		<div class="post-content">
