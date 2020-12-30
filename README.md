@@ -25,11 +25,12 @@
 DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 
 截图：
-![screenshot.png](https://cdn.lixingyong.com/halo-sakura/image/1591804854.jpg)
+![screenshot.png](https://raw.githubusercontent.com/LIlGG/halo-theme-sakura/dev/screenshot.png)
 
 ## ⚡ 功能
 <details>
 <summary>点击查看完整功能列表</summary>
+
 - [x] 完善导航栏，支持图标，支持多级菜单
 - [x] 美化首页，支持故障文本和头像
 - [x] 集成音乐播放器插件，可在文章中使用
