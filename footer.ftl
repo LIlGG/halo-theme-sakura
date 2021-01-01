@@ -191,7 +191,8 @@
 		"coverNum": "${(settings.rimage_cover_back_num)!'0'}",
 		"rimageUrl": "${(settings.rimage_url)!''}",
 		"coverOpen": "${(settings.rimage_cover_back_open!false)?string('true','')}",
-		"meEmail": "${(settings.email)!''}"
+		"meEmail": "${(settings.email)!''}",
+		"defaultTheme": "${(settings.default_theme)!'bg_0'}"
 	};
 	var bgConfig = {
 	<#list 0..7 as i>

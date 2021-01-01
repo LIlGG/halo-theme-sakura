@@ -439,10 +439,12 @@ var LIlGGAttachContext = {
      */
     var checkBgImgEcho = function () {
       var configTag = Util.getCookie("bgTagClass");
-      if (!configTag) return;
+      if(!configTag) {
+        configTag = Poi.defaultTheme;
+      }
       var bgConfigTags = Object.keys(bgConfig);
       // 默认为bg_0
-      bgConfigTags.includes(configTag) ? configTag : (configTag = "bg_0");
+      bgConfigTags.includes(configTag) ? configTag : Poi.defaultTheme;
       // 切换主题
       changeBg(configTag);
     };
@@ -828,7 +830,7 @@ var LIlGGAttachContext = {
     if(!Poi.meEmail) {
       return;
     }
-    
+
     var mail =  "mailto:" + Poi.meEmail;
     window.open(mail);
   }

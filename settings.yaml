@@ -871,6 +871,30 @@ theme:
           label: 开启
         - value: false
           label: 关闭
+    default_theme:
+      name: default_theme
+      label: 默认主题
+      type: select
+      default: "bg_0"
+      description: 可以设置默认主题，指定任何用户进入页面之后所看到的主题样式
+      options:
+        - value: "bg_0"
+          label: 主题一
+        - value: "bg_1"
+          label: 主题二
+        - value: "bg_2"
+          label: 主题三
+        - value: "bg_3"
+          label: 主题四
+        - value: "bg_4"
+          label: 主题五
+        - value: "bg_5"
+          label: 主题六
+        - value: "bg_6"
+          label: 主题七
+        - value: "bg_7"
+          label: 主题八
+
     theme_dark:
       name: theme_dark
       label: 黑夜模式主题色
