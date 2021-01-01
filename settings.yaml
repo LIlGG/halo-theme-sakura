@@ -750,6 +750,18 @@ random_image:
           label: 开启
         - value: false
           label: 关闭
+    rimage_cover_lqip:
+      name: rimage_cover_lqip
+      label: 延迟占位方式
+      type: select
+      data-type: string
+      default: loading
+      description: 在图片还未加载之前的过渡效果
+      options:
+        - value: loading
+          label: 固定加载图
+        - value: lowquality
+          label: 低质量图
     rimage_cover_itype:
       name: rimage_cover_itype
       label: 封面列表图获取范围
@@ -771,48 +783,6 @@ random_image:
       label: 封面图获取范围编号
       type: text
       description: 当‘封面列表图获取范围’为所有图片时可不填。其他情况下必须填写对应的编号，如相册编号、分类编号或用户名
-    rimage_cover_home_qn:
-      name: rimage_cover_home_qn
-      label: 首页列表图清晰度
-      type: select
-      data-type: long
-      default: 0
-      description: 封面图首页列表的清晰度，推荐原图，但如果觉得获取速度慢，可以选择其他清晰度
-      options:
-        - value: 0
-          label: 原图
-        - value: 1
-          label: 中等大小
-        - value: 2
-          label: 缩略图
-    rimage_cover_detail_qn:
-      name: rimage_cover_detail_qn
-      label: 文章页封面图清晰度
-      type: select
-      data-type: long
-      default: 0
-      description: 文章页封面图的清晰度，推荐原图
-      options:
-        - value: 0
-          label: 原图
-        - value: 1
-          label: 中等大小
-        - value: 2
-          label: 缩略图
-    rimage_cover_content_qn:
-      name: rimage_cover_content_qn
-      label: 标签、搜索等列表页图片清晰度
-      type: select
-      data-type: long
-      default: 1
-      description: 标签、搜索等列表页图片清晰度，推荐中等图或缩略图。其他配置跟随列表图
-      options:
-        - value: 0
-          label: 原图
-        - value: 1
-          label: 中等大小
-        - value: 2
-          label: 缩略图
     rimage_cover_sheet_open:
       name: rimage_cover_sheet_open
       label: 页面是否使用随机图
@@ -825,6 +795,54 @@ random_image:
           label: 开启
         - value: false
           label: 关闭
+    rimage_cover_back_open:
+      name: rimage_cover_back_open
+      label: 首页背景是否使用随机图
+      type: radio
+      data-type: bool
+      default: false
+      description: 首页背景是否启用随机图，如果启用，则第一屏中的首页背景图片将会无效化
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    rimage_cover_back_itype:
+      name: rimage_cover_back_itype
+      label: 背景图获取范围
+      type: select
+      data-type: string
+      default: image
+      description: 封面图获取范围，设置之后，将从设置范围中返回图片
+      options:
+        - value: image
+          label: 所有图片
+        - value: album
+          label: 相册
+        - value: category
+          label: 分类
+        - value: user
+          label: 用户
+    rimage_cover_back_id:
+      name: rimage_cover_id
+      label: 背景图获取范围编号
+      type: text
+      description: 当‘封面列表图获取范围’为所有图片时可不填。其他情况下必须填写对应的编号，如相册编号、分类编号或用户名
+    rimage_cover_back_num:
+      name: rimage_cover_back_num
+      label: 背景图片循环张数
+      type: select
+      data-type: long
+      default: 5
+      options:
+        - value: 3
+          label: 三张
+        - value: 5
+          label: 五张
+        - value: 10
+          label: 十张
+        - value: 0
+          label: 无限
 
 theme:
   label: 主题切换

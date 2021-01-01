@@ -9,11 +9,7 @@
 				<#if post.thumbnail?? && post.thumbnail!=''>
 				<img width="150" height="150" src="${post.thumbnail!}" class="attachment-post-thumbnail size-post-thumbnail" onerror="imgError(this, IMG_Type.DEFAULT)"/>
 				<#elseif settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!=''>
-					<#if settings.rimage_cover_itype == 'image'>
-					<img width="150" height="150" src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=image&qn=${(settings.rimage_cover_content_qn)!'0'}" class="attachment-post-thumbnail size-post-thumbnail" onerror="imgError(this, IMG_Type.DEFAULT)">
-					<#else>
-					<img width="150" height="150" src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}&id=${(settings.rimage_cover_id)!''}&qn=${(settings.rimage_cover_content_qn)!'0'}" class="attachment-post-thumbnail size-post-thumbnail" onerror="imgError(this, IMG_Type.DEFAULT)">
-					</#if>
+				<img width="150" height="150" src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=150" class="attachment-post-thumbnail size-post-thumbnail"/>
 				<#else>
 				<img src="${res_base_url!}/source/images/random/d-${randomMethod(1,10)}.jpg" onerror="imgError(this, IMG_Type.DEFAULT)"/>
 				</#if>		

@@ -9,7 +9,7 @@
 				<#if (settings.patternimg!true) && (prevPost.thumbnail?? && prevPost.thumbnail!='')>
 				<div class="background" style="background-image:url('${prevPost.thumbnail!}');"></div>
 				<#elseif ((metas.ri?boolean)!true && settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!='')>
-				<div class="background" style="background-image:url(${settings.rimage_url!}?postid=${prevPost.id}&type=url&itype=image&qn=${(settings.rimage_cover_detail_qn)!'0'});"></div>
+				<div class="background" style="background-image:url(${settings.rimage_url!}?postid=${prevPost.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"></div>
 				<#else>
 				<div class="background" style="background-image:url();"></div>
 				</#if>
@@ -23,7 +23,7 @@
 			<#if (settings.patternimg!true) && (nextPost.thumbnail?? && nextPost.thumbnail!='')>
 			<div class="background" style="background-image:url('${nextPost.thumbnail!}');"></div>
 			<#elseif ((metas.ri?boolean)!true && settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!='')>
-			<div class="background" style="background-image:url(${settings.rimage_url!}?postid=${nextPost.id}&type=url&itype=image&qn=${(settings.rimage_cover_detail_qn)!'0'});"></div>
+			<div class="background" style="background-image:url(${settings.rimage_url!}?postid=${nextPost.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"></div>
 			<#else>
 			<div class="background" style="background-image:url();"></div>
 			</#if>

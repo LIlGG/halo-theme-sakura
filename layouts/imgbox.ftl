@@ -1,4 +1,10 @@
-<figure id="centerbg" class="centerbg" style="background-image: url('${settings.focus_img_1!'${res_base_url!}/source/images/hd.jpg'}');
+<figure id="centerbg" class="centerbg" style="background-image: url(
+	<#if settings.rimage_cover_back_open!false && settings.rimage_url?? && settings.rimage_url!=''>
+		${settings.rimage_url!}?home=home&type=url&itype=${settings.rimage_cover_back_itype!}&id=${(settings.rimage_cover_back_id)!''}&t=<#if settings.rimage_cover_back_num != 0>${randomMethod(1,settings.rimage_cover_back_num + 1)}<#else>${.now?string('yyyyMMddHHmmssSSS')}</#if>
+	<#else>
+	${settings.focus_img_1!'${res_base_url!}/source/images/hd.jpg'}
+	</#if>
+	);
 	<#if !(settings.focus_height!true)>
 		background-position: center center;background-attachment: inherit;
 	</#if>

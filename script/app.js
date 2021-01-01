@@ -9,14 +9,12 @@
 var LIlGGAttachContext = {
   // 补充功能的PJAX
   PJAX: function () {
+    // 背景图片点击
+    LIlGGAttachContext.BGEVEN();
     // 暂停背景视频
     if (Poi.headFocus && Poi.bgvideo) LIlGGAttachContext.BGV().bgPause();
     // 渲染主题
     LIlGGAttachContext.CBG().changeSkinSecter();
-    // 延迟加载图片
-    lazyload(undefined, {
-      rootMargin: "150px",
-    });
     try {
       $("#to-load-aplayer").on("click", function () {
         reloadAplayer();
@@ -780,6 +778,48 @@ var LIlGGAttachContext = {
     if (window.MathJax) {
       MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementsByClassName('entry-content')[0]]);
     }
+  },
+  // 背景视频点击切换
+  BGEVEN: function() {
+    function nextBG() {
+      if (Poi.coverOpen == 'true' && Poi.rimageUrl != '') {
+        var url = new URL($(".centerbg").css("background-image").split("\"")[1]);
+        if(!url) {
+          return;
+        }
+        if(Poi.coverNum == 0) {
+          url.searchParams.set("t", new Date().getTime());
+        } else {
+          url.searchParams.set("t", (url.searchParams.get("t") % Poi.coverNum) + 1)
+        }
+        $(".centerbg").css("background-image",  "url(" + url.href + ")");
+      }
+    }
+
+    function preBG() {
+      if (Poi.coverOpen == 'true' && Poi.rimageUrl != '') {
+        var url = new URL($(".centerbg").css("background-image").split("\"")[1]);
+        if(!url) {
+          return;
+        }
+        if(Poi.coverNum == 0) {
+          url.searchParams.set("t", new Date().getTime());
+        } else {
+          var t = url.searchParams.get("t");
+          t = t - 1 || Poi.coverNum
+          url.searchParams.set("t", t);
+        }
+        $(".centerbg").css("background-image",  "url(" + url.href + ")");
+      }
+    }
+
+    $("#bg-next").on('click', function() {
+      nextBG();
+    });
+
+    $("#bg-pre").on('click', function() {
+      preBG();
+    });
   }
 };
 
@@ -1126,9 +1166,6 @@ var home = location.href,
             // 添加新的内容
             $("#main").append(result.fadeIn(500));
             $("#pagination a").removeClass("loading").text("下一页");
-            lazyload(undefined, {
-              rootMargin: "150px",
-            });
             // 加载完成不改变位置
             $(window).scrollTop(tempScrollTop);
             LIlGGAttachContext.PLSA();
@@ -1161,9 +1198,6 @@ var home = location.href,
             $("#journals-pagination a")
               .removeClass("loading")
               .text("加载更多...");
-            lazyload(undefined, {
-              rootMargin: "150px",
-            });
             LIlGGAttachContext.SS()();
             // 加载完成不改变位置
             $(window).scrollTop(tempScrollTop);
@@ -1234,6 +1268,8 @@ $(function () {
   Siren.MN(); // 移动端菜单
 
   // 新增功能
+  // 背景视频点击切换
+  LIlGGAttachContext.BGEVEN();
   Poi.themeChange && LIlGGAttachContext.CBG(); // 主题切换
   LIlGGAttachContext.PLSA(); // 文章列表动画
   (Poi.headFocus && Poi.bgvideo) && LIlGGAttachContext.BGV(); // 背景视频
@@ -1245,10 +1281,6 @@ $(function () {
   LIlGGAttachContext.PHO(); // 图库功能
   // 复制提示
   Poi.copyMonitor && LIlGGAttachContext.CPY();
-  // 延迟加载图片
-  lazyload(undefined, {
-    rootMargin: "150px",
-  });
   // 评论组件
   LIlGGAttachContext.CMN();
   // PJAX
