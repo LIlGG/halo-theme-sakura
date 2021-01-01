@@ -820,6 +820,17 @@ var LIlGGAttachContext = {
     $("#bg-pre").on('click', function() {
       preBG();
     });
+  },
+  /**
+   * 发送 Email
+   */
+  TOMAIL: function() {
+    if(!Poi.meEmail) {
+      return;
+    }
+    
+    var mail =  "mailto:" + Poi.meEmail;
+    window.open(mail);
   }
 };
 

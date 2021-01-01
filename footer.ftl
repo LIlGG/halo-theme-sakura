@@ -190,7 +190,8 @@
 		"mathjax": "${(settings.mathjax!false)?string('true','')}",
 		"coverNum": "${(settings.rimage_cover_back_num)!'0'}",
 		"rimageUrl": "${(settings.rimage_url)!''}",
-		"coverOpen": "${(settings.rimage_cover_back_open!false)?string('true','')}"
+		"coverOpen": "${(settings.rimage_cover_back_open!false)?string('true','')}",
+		"meEmail": "${(settings.email)!''}"
 	};
 	var bgConfig = {
 	<#list 0..7 as i>

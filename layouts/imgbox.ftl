@@ -129,6 +129,27 @@
 					</a>
 				</li>
 			</#if>
+			<#if settings.telegram??>
+				<li>
+					<a href="${settings.telegram!}" target="_blank" class="i18n" data-iname="icon_alt.telegram" data-iattr="title">
+						<img src="${res_base_url!}/source/images/sns/telegram.svg"/>
+					</a>
+				</li>
+			</#if>
+			<#if settings.email??>
+				<li>
+					<a onclick="LIlGGAttachContext.TOMAIL()" target="_blank" class="i18n" data-iname="icon_alt.email" data-iattr="title">
+						<img src="${res_base_url!}/source/images/sns/email.svg"/>
+					</a>
+				</li>
+			</#if>
+			<#if settings.stackoverflow??>
+				<li>
+					<a href="${settings.stackoverflow!}" target="_blank" class="i18n" data-iname="icon_alt.stackoverflow" data-iattr="title">
+						<img src="${res_base_url!}/source/images/sns/stackoverflow.svg"/>
+					</a>
+				</li>
+			</#if>
 				<li id="bg-next">
             		<img src="${res_base_url!}/source/images/next-b.svg">
           		</li>

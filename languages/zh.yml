@@ -85,6 +85,9 @@ icon_alt:
   jianshu: 简书
   zhihu: 知乎
   csdn: CSDN
+  telegram: 电报
+  email: 邮箱
+  stackoverflow: Stack Overflow
 
 share:
   weibo: 分享至微博

@@ -330,6 +330,18 @@ sns:
       name: zhihu
       label: 知乎
       type: text
+    telegram:
+      name: telegram
+      label: Telegram
+      type: text
+    email:
+      name: email
+      label: 邮箱
+      type: text
+    stackoverflow:
+      name: stackoverflow
+      label: Stack Overflow
+      type: text
 focus:
   label: 聚焦图
   items:
