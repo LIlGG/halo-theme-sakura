@@ -8862,7 +8862,8 @@ body.dark .header-user-menu,
 body.dark #tags,
 body.dark #category-echarts,
 body.dark .pattern-center:after,
-body.dark .headertop-bar::after {
+body.dark .headertop-bar::after,
+body.dark .table-wrapper>table tr {
 	background: #31363b !important;
 }
 

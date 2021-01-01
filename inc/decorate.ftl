@@ -305,7 +305,7 @@
         box-shadow: inset 0 0 10px ${settings.theme_dark!};
     }
 </style>
-
+<!-- 黑夜模式评论模块 -->
 <style id="comment-style" type="text/css" media="noexist">
     .halo-comment.dark button,
     .halo-comment.dark input,
