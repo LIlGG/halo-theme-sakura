@@ -1250,7 +1250,9 @@ a:active {
 .site-top ul li a {
 	padding: 10px 0;
 	display: inline-block;
-	color: #666
+	color: #666;
+	width: auto;
+    white-space: nowrap;
 }
 
 .site-top ul li a:hover {
@@ -1340,8 +1342,8 @@ a:active {
 	background: #fff;
 	padding: 10px;
 	top: 46px;
-	right: -13px;
-	width: 80px;
+	right: -50%;
+	width: auto;
 	text-align: center;
 	z-index: 9999;
 	border-radius: 5px;
