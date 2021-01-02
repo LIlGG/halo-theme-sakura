@@ -229,6 +229,30 @@
     }
     </#if>
 
+    <#if settings.top_back_mode == 'simplify'>
+    .cd-top {
+		display: none;
+		height: 60px;
+		width: 50px
+	}
+
+	.cd-top span {
+		height: 10px;
+		width: 50px
+	}
+
+	.m-cd-top {
+		display: block;
+        bottom: 40px;
+	}
+
+    @media screen and (max-width:860px) { 
+        .m-cd-top {
+            bottom: 10px;
+        }
+    }
+    </#if>
+
 
     /*黑夜模式控件透明度*/
     body.dark .header-info,

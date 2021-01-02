@@ -1813,6 +1813,17 @@ others:
       label: 邮件回复模块图片
       type: attachment
       default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/other/head_2.jpg"
+    top_back_mode:
+      name: top_back_mode
+      label: 回到顶部样式
+      type: select
+      default: lanyard
+      description: 回到顶部样式，可以通过此选项，将 PC 设置与移动端一样的
+      options:
+        - value: lanyard
+          label: 挂绳
+        - value: simplify
+          label: 精简
     top_back_img:
       name: 回到顶部图片
       label: 回到顶部图片
