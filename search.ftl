@@ -3,13 +3,25 @@
 -->
 <#include "header.ftl">
 <@header title="${keyword!} - 搜索结果 - ${blog_title!}">
-	<#if (settings.patternimg!true) && (settings.searh_patternimg?? && settings.searh_patternimg!='')>
+	<#if (settings.patternimg!true) && (settings.searh_patternimg?? && settings.searh_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!='')>
 		<div class="pattern-center">
 			<div class="pattern-attachment-img">
-				<img data-src="${settings.searh_patternimg!}" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
+				<#if (settings.patternimg!true) && (settings.searh_patternimg?? && settings.searh_patternimg!='')>
+                <img data-src="${settings.searh_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
+                <#else>
+					<img
+                        src="${settings.rimage_url!}?serach=serach&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"
+                        srcset="<#if settings.rimage_cover_lqip == 'loading'>${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg<#else>${settings.rimage_url!}?serach=serach&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=150</#if>"
+                        data-srcset="${settings.rimage_url!}?serach=serach&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=640 640w,
+                            ${settings.rimage_url!}?serach=serach&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=960 960w,
+                            ${settings.rimage_url!}?serach=serach&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=1280 1280w,
+                            ${settings.rimage_url!}?serach=serach&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if> 1440w"
+                        data-sizes="auto"
+                        class="lazyload<#if settings.rimage_cover_lqip == 'lowquality'> blur-up</#if>" />
+                </#if>
 			</div>
 			<header class="pattern-header">
-				<h1 class="entry-title search-title"> 关于“ ${keyword!} ”的搜索结果</h1>
+				<h1 class="entry-title search-title i18n" data-iname="page.search.title"></h1>
 			</header>
 		</div>
 	<#else>
@@ -22,7 +34,7 @@
 		<main id="main" class="site-main" role="main">
 			<#if !(settings.patternimg!true) || !(settings.searh_patternimg?? && settings.searh_patternimg!='')>
 			<header class="page-header">
-				<h1 class="page-title">搜索结果: <span>${keyword!}</span></h1>
+				<h1 class="page-title"><span class="i18n" data-iname="page.search.sresult"></span><span>${keyword!}</span></h1>
 			</header><!-- .page-header -->
 			</#if>
 			<#list posts.content as post>
@@ -31,24 +43,7 @@
 		</main><!-- #main -->
 		<#if posts.totalPages gt 1>
 			<@paginationTag method="search" page="${posts.number}" total="${posts.totalPages}" display="3" keyword="${keyword!}">
-				<#if (settings.pagenav_style!'ajax') == 'ajax'>
-					<div id="pagination">
-						<#if pagination.hasNext>
-								<a href="${pagination.nextPageFullPath!}" class="">Previous</a>
-						<#else>
-							<span>没有更多文章了</span>
-						</#if>
-					</div>
-				<#else>
-					<nav class="navigator">
-						<#if pagination.hasPrev>
-							<a href="${pagination.prevPageFullPath!}"><i class="iconfont icon-previous"></i></a>
-						</#if>
-						<#if pagination.hasNext>
-							<a href="${pagination.nextPageFullPath!}"><i class="iconfont icon-next"></i></a>
-						</#if>
-					</nav>
-				</#if>
+				<#include "layouts/list-nextprev.ftl">
 			</@paginationTag>
 		</#if>
     <#else>

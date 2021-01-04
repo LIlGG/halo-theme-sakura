@@ -1,7 +1,7 @@
 @charset "utf-8";
 /*
 Description: Halo版本的Sakura主题（原版地址 https://github.com/mashirozx/Sakura）
-Version: 1.2.0
+Version: 1.3.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: LIlGG
@@ -765,7 +765,11 @@ a:active {
 	padding: 0;
 	min-width: 99.999%;
 	min-height: 550px;
-	z-index: 0
+	z-index: 0;
+	/** 使视频全屏。并保证填满屏幕 */
+	height: 100vh;
+	-o-object-fit: fill;
+	object-fit: fill;
 }
 
 #video-btn,
@@ -789,17 +793,7 @@ a:active {
 	opacity: 1
 }
 
-.video-play,
-.loadvideo {
-	background-image: url('https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/play@32x32.png')
-}
-
-.video-pause {
-	background-image: url('https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/pause@32x32.png')
-}
-
 #video-add {
-	background-image: url('https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/add@32x32.png');
 	bottom: 45px;
 	display: none
 }
@@ -835,7 +829,8 @@ a:active {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background-color: rgba(0, 0, 0, .3)
+	background-color: rgba(0, 0, 0, .3);
+	z-index: 1;
 }
 
 .pattern-center:after {
@@ -996,7 +991,8 @@ a:active {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background-color: rgba(0, 0, 0, .3)
+	background-color: rgba(0, 0, 0, .3);
+	z-index: 1
 }
 
 .pattern-center-sakura header.pattern-header {
@@ -1177,9 +1173,11 @@ a:active {
 
 .site-top .lower-cantiner {
 	position: absolute;
-	left: 50%;
+	text-align: center;
+	left: -2%;
 	min-width: 758.4px;
-	pointer-events: none
+	pointer-events: none;
+	width: 100%;
 }
 
 .site-top .lower {
@@ -1187,7 +1185,6 @@ a:active {
 	margin: 15px 0 0 10px;
 	font-size: 16px;
 	position: relative;
-	left: -50%;
 	pointer-events: auto !important
 }
 
@@ -1201,10 +1198,6 @@ a:active {
 @media (max-width:1200px) {
 	.site-top .lower {
 		left: 15px
-	}
-
-	.site-top .lower-cantiner {
-		left: 200px;
 	}
 
 	.site-top .lower nav.hide {
@@ -1257,7 +1250,9 @@ a:active {
 .site-top ul li a {
 	padding: 10px 0;
 	display: inline-block;
-	color: #666
+	color: #666;
+	width: auto;
+    white-space: nowrap;
 }
 
 .site-top ul li a:hover {
@@ -1347,8 +1342,8 @@ a:active {
 	background: #fff;
 	padding: 10px;
 	top: 46px;
-	right: -13px;
-	width: 80px;
+	right: -50%;
+	width: auto;
 	text-align: center;
 	z-index: 9999;
 	border-radius: 5px;
@@ -2838,13 +2833,12 @@ h1.page-title.mb- {
 	height: 40px;
 	text-align: center;
 	line-height: 45px;
-	background-image: url("https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/disqus-preloader.svg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: auto 100%
 }
 
-h3#comments-list-title {
+h3#comments-list-title .name {
 	max-width: 860px;
 	width: 100%;
 	margin: 0 auto;
@@ -2853,7 +2847,7 @@ h3#comments-list-title {
 	font-weight: 400
 }
 
-#comments-list-title span {
+#comments-list-title .noticom {
 	font-size: 13px;
 	font-weight: 400;
 	color: #909090
@@ -3616,20 +3610,6 @@ li.feature-2 {
 	background-color: rgba(0, 0, 0, .3)
 }
 
-.headertop.filter-grid:before {
-	background-image: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/grid.png)
-}
-
-.headertop.filter-dot:before {
-	background-image: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/dot.gif)
-}
-
-@media (max-width:860px) {
-	.headertop.filter-dot:before {
-		background-image: url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/grid.png)
-	}
-}
-
 .headertop-bar:after {
 	content: '';
 	width: 150%;
@@ -4004,7 +3984,6 @@ i.iconfont.js-toggle-search.iconsearch {
 	opacity: .99;
 	-webkit-animation: elastic .5s;
 	animation: elastic .5s;
-	background-image: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.2.1/img/other/iloli.gif);
 	background-repeat: no-repeat;
 	background-position: bottom right
 }
@@ -4374,7 +4353,6 @@ i.iconfont.down {
 }
 
 #pagination .loading {
-	background: url("https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/wordpress-rotating-ball-o.svg");
 	background-position: center;
 	background-repeat: no-repeat;
 	color: #555;
@@ -5581,14 +5559,6 @@ i.iconfont.down {
 		opacity: 1;
 		transform: translateY(0)
 	}
-}
-
-.oshimai {
-	height: 2em;
-	width: 6.11em;
-	background: url("https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/oshimai.svg");
-	background-size: cover;
-	margin: 0 auto
 }
 
 .single-reward {
@@ -7757,6 +7727,12 @@ a.toc-link {
 	color: #21252b
 }
 
+.hljs-ln-line span::-moz-selection,
+.hljs-ln-line::-moz-selection {
+	background: #fff;
+	color: #21252b
+}
+
 .hljs-ln-line span::-moz-selection, .hljs-ln-line::-moz-selection {
 	background: #fff;
 	color: #21252b
@@ -8165,7 +8141,6 @@ img[src*="#in-center"] {
 #banner_wave_1 {
 	width: auto;
 	height: 65px;
-	background: url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.5.1/img/Sakura/images/wave1.png") repeat-x;
 	_filter: alpha(opacity=80);
 	position: absolute;
 	bottom: 0;
@@ -8180,7 +8155,6 @@ img[src*="#in-center"] {
 #banner_wave_2 {
 	width: auto;
 	height: 80px;
-	background: url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.5.1/img/Sakura/images/wave2.png") repeat-x;
 	_filter: alpha(opacity=80);
 	position: absolute;
 	bottom: 0;
@@ -8890,7 +8864,8 @@ body.dark .header-user-menu,
 body.dark #tags,
 body.dark #category-echarts,
 body.dark .pattern-center:after,
-body.dark .headertop-bar::after {
+body.dark .headertop-bar::after,
+body.dark .table-wrapper>table tr {
 	background: #31363b !important;
 }
 
@@ -9098,10 +9073,10 @@ body.dark #grid-changer svg {
 	fill: #fafafa;
 }
 
-body.dark #grid-changer ul li a.active, 
+body.dark #grid-changer ul li a.active,
 body.dark #grid-changer ul li a.active:hover {
 	border-color: #fafafa;
-    color: #fafafa;
+	color: #fafafa;
 }
 
 /* body.dark #grid-changer ul li a {
@@ -9201,5 +9176,24 @@ h1.main-title {
 
 .header-info p {
 	transition: color .4s;
+}
+
+/* MathJax v2.7.5 from 'cdnjs.cloudflare.com' */
+.mjx-chtml {
+	outline: 0;
+}
+
+.MJXc-display {
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.blur-up {
+	filter: blur(5px);
+	transition: filter 400ms;
+}
+
+.blur-up.lazyloaded {
+	filter: blur(0);
 }
 /*# sourceMappingURL=style.css.map */

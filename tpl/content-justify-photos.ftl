@@ -1,14 +1,20 @@
 <section>
     <#if !(settings.patternimg!true) || !(settings.photos_patternimg?? && settings.photos_patternimg!='')>
     <header class="entry-header">
-        <h1 class="entry-title">${options.photos_title?default('图库')}</h1>
+        <h1 class="entry-title">
+        	<#if options.photos_title?default("")?trim?length gt 1>
+			<span>${options.photos_title}</span>
+			<#else>
+			<span class="i18n" data-iname="page.photos.title"></span>
+			</#if>
+        </h1>
     </header><!-- .entry-header -->
     </#if>
     <div  class="wrapper justify-wrapper">
         <nav id="gallery-filter">
             <ul>
                 <li>
-                    <a href="javascript:void(0);" data-filter="*" class="active">全部</a>
+                    <a href="javascript:void(0);" data-filter="*" class="active i18n" data-iname="page.photos.all"></a>
                 </li>
                 <@photoTag method="listTeams">
                 <#list teams as item>

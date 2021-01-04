@@ -1,0 +1,8 @@
+{
+    "directory": "source/lib",
+    "json": "./bower.json",
+    "ignoredDependencies": [
+        "ev-emitter",
+        "jquery"
+    ]
+}

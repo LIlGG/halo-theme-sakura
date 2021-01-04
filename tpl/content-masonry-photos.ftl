@@ -1,14 +1,20 @@
 <section>
     <#if !(settings.patternimg!true) || !(settings.photos_patternimg?? && settings.photos_patternimg!='')>
     <header class="entry-header">
-        <h1 class="entry-title">${options.photos_title?default('图库')}</h1>
+        <h1 class="entry-title">
+            <#if options.photos_title?default("")?trim?length gt 1>
+			<span>${options.photos_title}</span>
+			<#else>
+			<span class="i18n" data-iname="page.photos.title"></span>
+			</#if>
+        </h1>
     </header><!-- .entry-header -->
     </#if>
     <div class="wrapper">
         <nav id="gallery-filter">
             <ul>
                 <li>
-                    <a href="javascript:void(0);" data-filter="*" class="active">全部</a>
+                    <a href="javascript:void(0);" data-filter="*" class="active i18n" data-iname="page.photos.all"></a>
                 </li>
                 <@photoTag method="listTeams">
                 <#list teams as item>
@@ -54,9 +60,9 @@
                 <header class="gallery-icon">
                     <a data-fancybox="gallery" href="${photo.url!}">
                         <#if settings.is_thumbnail!true>
-                        <img class="lazyload" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.9/img/load/load_0.gif" data-src="${photo.thumbnail!}" alt="${photo.name!}"/>
+                        <img class="lazyload" src="${res_base_url!}/source/images/load/load.gif" data-src="${photo.thumbnail!}" alt="${photo.name!}"/>
                         <#else>
-                        <img class="lazyload" src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.9/img/load/load_0.gif" data-src="${photo.url!}" alt="${photo.name!}"/>
+                        <img class="lazyload" src="${res_base_url!}/source/images/load/load.gif" data-src="${photo.url!}" alt="${photo.name!}"/>
                         </#if>
                     </a>
                 </header>

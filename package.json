@@ -1,6 +1,6 @@
 {
   "name": "halo-theme-sakura",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "description": "<h1 align=\"center\">Sakura<img src=\"https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif\" width=\"50\"></h1>\r <p align=\"center\">\r   <a href=\"https://lixingyong.com\">预览</a> | <a href=\"#安装主题\">安装</a> | <a href=\"https://lixingyong.com/s/halo-theme-sakure\">更新日志</a>\r   </p>",
   "main": "index.js",
   "scripts": {
@@ -8,9 +8,24 @@
     "build-autoprefix": "postcss --use autoprefixer --map false --output styles/style.css styles/style.css",
     "build-cleancss": "cleancss -o styles/style.min.css styles/style.css",
     "build-clean": "rimraf css",
-    "build-app-js": "uglifyjs js/app.js -o js/app.min.js",
-    "build-js": "npm run build-app-js",
+    "build-app-js": "babel script/app.js -o script/app.min.js && uglifyjs script/app.min.js -o script/app.min.js",
+    "build-i18n-js": "babel script/i18n.js -o script/i18n.min.js && uglifyjs script/i18n.min.js -o script/i18n.min.js",
+    "build-utils-js": "babel script/utils.js -o script/utils.min.js && uglifyjs script/utils.min.js -o script/utils.min.js",
+    "build-js": "npm run build-app-js && npm run build-i18n-js && npm run build-utils-js",
     "deploy": "npm run build"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ],
+          "sourceMap": true
+        }
+      ]
+    ]
   },
   "repository": {
     "type": "git",
@@ -23,10 +38,15 @@
   },
   "homepage": "https://github.com/LIlGG/halo-theme-sakura#readme",
   "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
     "autoprefixer": "^9.7.4",
     "clean-css-cli": "^4.3.0",
     "postcss-cli": "^7.1.0",
     "rimraf": "^3.0.2",
     "uglify-js": "^3.8.0"
-  }
+  },
+  "dependencies": {}
 }

@@ -1,0 +1,16 @@
+{
+  "name": "flv.min",
+  "_cacheHeaders": {
+    "ETag": "\"857bd850aa7ae067f385ed9fdc5ee8dc\"",
+    "Last-Modified": "Fri, 14 Dec 2018 01:30:25 GMT",
+    "Content-Length": "173418",
+    "Content-Type": "application/octet-stream",
+    "Content-Disposition": "attachment; filename=flv.min.js"
+  },
+  "_release": "e-tag:857bd850a",
+  "main": "index.js",
+  "_source": "https://github.com/bilibili/flv.js/releases/download/v1.5.0/flv.min.js",
+  "_target": "*",
+  "_originalSource": "https://github.com/bilibili/flv.js/releases/download/v1.5.0/flv.min.js",
+  "_direct": true
+}

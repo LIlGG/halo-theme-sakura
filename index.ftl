@@ -1,11 +1,12 @@
 <#--
 	@package Akina
 -->
+<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.0", theme_base)/>
+
 <#include "header.ftl">
 <@header title="${blog_title!}">
 	<div class="blank"></div>
 </@header>
-
 
 <#if settings.head_notice!false && settings.notice_title!=''>
 	<div class="notice" style="
@@ -26,7 +27,7 @@
 	<main id="main" class="site-main" role="main">
 		<h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
 		<i class="fa fa-envira" aria-hidden="true"></i>
-		 Discovery
+		<span class="i18n" data-iname="home.discovery"> </span>
 		</h1>
 		<#if posts?? && posts.getTotalElements() gt 0>
 			<#--Start the Loop-->
@@ -43,24 +44,7 @@
 	</main><!-- #main -->
 
 	<@paginationTag method="index" page="${posts.number}" total="${posts.totalPages}" display="3">
-		<#if (settings.pagenav_style!'ajax') == 'ajax'>
-			<div id="pagination">
-				<#if pagination.hasNext>
-					<a href="${pagination.nextPageFullPath!}" class="">下一页</a>
-				<#else>
-					<span>没有更多文章了</span>
-				</#if>
-			</div>
-		<#else>
-			<nav class="navigator">
-				<#if pagination.hasPrev>
-					<a href="${pagination.prevPageFullPath!}"><i class="iconfont icon-previous"></i></a>
-				</#if>
-				<#if pagination.hasNext>
-					<a href="${pagination.nextPageFullPath!}"><i class="iconfont icon-next"></i></a>
-				</#if>
-			</nav>
-		</#if>
+		<#include "layouts/list-nextprev.ftl">
 	</@paginationTag>
 </div><!-- #primary -->
 

@@ -1,3 +1,5 @@
+
+<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.0", theme_base)/>
 <div style="background: white;
       width: 95%;
       max-width: 800px;
@@ -8,7 +10,7 @@
       -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.12);
       box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.18);">
     <header style="overflow: hidden;">
-        <img style="width:100%;z-index: 666;" src="${settings.reply_mail_img!'https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/other/head_2.jpg'}">
+        <img style="width:100%;z-index: 666;" src="${settings.reply_mail_img!'${res_base_url!}/source/images/other/head.jpg'}">
     </header>
     <div style="padding: 5px 20px;">
         <p style="position: relative;
@@ -20,7 +22,7 @@
         margin: -25px auto 0 ;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.30)">Dear ${baseAuthor!}</p>
         <br>
-        <h3>您有一条来自<a style="text-decoration: none;color: orange " target="_blank" href="${blog_url!}" rel="noopener">${blog_title!}</a>的回复</h3>
+        <h3 class="i18n" data-iname="mail.title">您有一条来自<a style="text-decoration: none;color: orange " target="_blank" href="${blog_url!}" rel="noopener">${blog_title!}</a>的回复</h3>
         <br>
         <p style="font-size: 14px;">您在文章《${pageTitle!}》上发表的评论：</p>
         <p style="border-bottom:#ddd 1px solid;border-left:#ddd 1px solid;padding-bottom:20px;background-color:#eee;margin:15px 0px;padding-left:20px;padding-right:20px;border-top:#ddd 1px solid;border-right:#ddd 1px solid;padding-top:20px">${baseContent!}</p>
@@ -30,7 +32,7 @@
             <a style="text-decoration: none;color: orange" target="_blank" href="${blog_url!}" rel="noopener">${user.nickname!}</a>&nbsp;双手呈上~
         </p>
         <div style="text-align: center;">
-          <img src="https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/other/hr.png" style="width:100%;margin:5px auto 5px auto; display: block;">
+          <img src="${res_base_url!}/source/images/other/hr.png" style="width:100%;margin:5px auto 5px auto; display: block;">
           <a style="text-transform: uppercase;
                       text-decoration: none;
                       font-size: 14px;
@@ -43,5 +45,5 @@
        <p style="font-size: 12px;text-align: center;color: #999;">本邮件为系统自动发出，请勿直接回复<br>
         © ${.now?string("yyyy")} ${(user.nickname)!}
        </p>
-    </div>       
+    </div>
 </div>

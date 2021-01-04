@@ -1,0 +1,101 @@
+home:
+  feature:
+    title: 聚焦
+    one: 
+      title: 聚焦图1
+      desc: 这是聚焦图1
+    two:
+      title: 聚焦图2
+      desc: 这是聚焦图2
+    three:
+      title: 聚焦图3
+      desc: 这是聚焦图3
+  discovery: 发现
+
+postlist:
+  time: 发布于 %s
+  heat: '%s 热度'
+  comments: '%s 条评论'
+
+post:
+  prev: Previous Post
+  next: Next Post
+  visits: '%s 次阅读'
+  reward: 赏
+  creative_commons: 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议
+
+page:
+  next: 下一页
+  theend: 没有更多文章了
+  archives:
+    title: 文章归档
+  categories:
+    title: 文章分类
+    item_title: 分类：%s
+  photos:
+    title: 图库
+    all: 全部
+  links:
+    title: 友情链接
+  journal:
+    title: 日志
+    loadmore: 加载更多...
+    empty: 博主太懒了，这里还什么都没有呢！！！
+  search:
+    title: 关于“ %s ”的搜索结果
+    sresult: '搜索结果: '
+  tags:
+    title: 文章标签
+    item:
+      title: 标签：%s
+
+  none:
+    title: 没有找到任何东西！
+    search: 没有找到你想要的，看看其他的吧。
+    notfound: 我们似乎没有找到你想要的东西. 或许你可以搜索一下试试。
+
+
+comment:
+  number: '%s 条评论'
+  name: Comments | 
+
+notfound:
+  title: 页面不存在 - %s
+  golast: 返回上一页
+  gohome: 返回主页
+  search: 别急，试试站内搜索？
+  search_2: Don't worry, search in site?
+  searchinput: Search...
+
+user:
+  description: 我喜欢做的事就是不写个性签名
+
+icon_alt:
+  wechat: 微信公众号
+  sina: 微博
+  qq: 开始聊天？
+  qzone: QQ 空间
+  github: Github
+  lofter: 乐乎
+  bili: 哔哩哔哩
+  cloudmusic: 网易云音乐
+  twitter: 推特
+  facebook: 脸书
+  googleplus: Google+
+  jianshu: 简书
+  zhihu: 知乎
+  csdn: CSDN
+  telegram: 电报
+  email: 邮箱
+  stackoverflow: Stack Overflow
+
+share:
+  weibo: 分享至微博
+  qq: 分享至 QQ
+  wechat:
+    qcode_title: 微信扫一扫：分享
+    help_1: 微信里点“发现”，扫一下
+    help_2: 二维码便可将本文分享至朋友圈。
+  douban: 分享至豆瓣
+  qzone: 分享至 QQ 空间
+  linkedin: 分享至领英

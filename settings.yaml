@@ -215,7 +215,7 @@ mainScreen:
           label: 关闭  
     bgvideo_url:
       name: bgvideo_url
-      label: 视频链接（优先选择）
+      label: 视频链接（优先播放视频链接）
       type: attachment
     bgvideo_server:
       name: bgvideo_server
@@ -230,6 +230,47 @@ mainScreen:
       label: 视频id
       type: text
       description: 'B站视频可选择AV/BV号，目前只支持B站视频'
+    bilibili_video_cid:
+      name: bilibili_video_cid
+      label: B站视频分P id
+      type: text
+      description: '分P ID不设置则默认为 1P'
+    bilibili_video_qn:
+      name: bilibili_video_qn
+      label: B站视频清晰度
+      type: select
+      data-type: long
+      default: 6
+      options:
+        - value: 6
+          label: 极速
+        - value: 16
+          label: 流畅
+        - value: 32
+          label: 清晰
+        - value: 64
+          label: 720P
+        - value: 74
+          label: 720P60
+        - value: 80
+          label: 高清
+        - value: 112
+          label: 1080P+
+        - value: 116
+          label: 1080P60
+      description: '这里展示的是除了4K之外的所有清晰度，并不代表目标视频的清晰度，请确定好目标视频所支持的清晰度，否则将报错'
+    bilibili_video_vtype:
+      name: bilibili_video_vtype
+      label: B站视频格式
+      type: select
+      data-type: long
+      default: 0
+      options:
+        - value: 0
+          label: FLV
+        - value: 1
+          label: MP4
+      description: 'MP4只有流畅或清晰'
 sns:
   label: 社交网络
   items:
@@ -289,6 +330,18 @@ sns:
       name: zhihu
       label: 知乎
       type: text
+    telegram:
+      name: telegram
+      label: Telegram
+      type: text
+    email:
+      name: email
+      label: 邮箱
+      type: text
+    stackoverflow:
+      name: stackoverflow
+      label: Stack Overflow
+      type: text
 focus:
   label: 聚焦图
   items:
@@ -313,7 +366,7 @@ focus:
       name: feature_title
       label: 聚焦标题
       type: text
-      default: ' START:DASH!!'
+      default: ''
       placeholder: '默认为聚焦，你也可以修改为其他，当然不能当广告用！不允许！！'
     feature1_img:
       name: feature1_img
@@ -324,12 +377,10 @@ focus:
       name: feature1_title
       label: 聚焦图一标题
       type: text
-      default: 'feature1'
     feature1_desc:
       name: feature1_desc
       label: 聚焦图一描述
       type: text
-      default: 'feature1'
     feature1_link:
       name: feature1_link
       label: 聚焦图一链接
@@ -344,12 +395,10 @@ focus:
       name: feature2_title
       label: 聚焦图二标题
       type: text
-      default: 'feature2'
     feature2_desc:
       name: feature2_desc
       label: 聚焦图二描述
       type: text
-      default: 'feature2'
     feature2_link:
       name: feature2_link
       label: 聚焦图二链接
@@ -364,12 +413,10 @@ focus:
       name: feature3_title
       label: 聚焦图三标题
       type: text
-      default: 'feature3'
     feature3_desc:
       name: feature3_desc
       label: 聚焦图三描述
       type: text
-      default: 'feature3'
     feature3_link:
       name: feature3_link
       label: 聚焦图三链接
@@ -506,7 +553,7 @@ tagAndCategory:
       description: '标签随机颜色最低值,值越低越偏冷色调，取值范围在0-1之间，需要小于最大值'
     tag_randomColorMax:
       name: tag_randomColorMax
-      label: 标签页及分类页最大值
+      label: 标签页及分类页颜色最大值
       type: text
       data-type: double
       default: 1
@@ -693,6 +740,122 @@ photos:
           label: 7
         - value: 8
           label: 8
+random_image:
+  label: 随机图
+  items:
+    rimage_url:
+      name: rimage_url
+      label: 随机图 API 地址
+      type: text
+      default: 'https://api.lixingyong.com/api/images'
+      placeholder: 请输入 API 地址
+      description: 随机图 API 地址，有能力者可以自行搭建。不过一般建议使用默认的即可，否则可能无法解析。
+    rimage_cover_open:
+      name: rimage_cover_open
+      label: 是否开启随机封面图
+      type: radio
+      data-type: bool
+      default: true
+      description: 开启随机封面图之后，如果没有为文章设置封面图，则会从随机图库内取一张
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    rimage_cover_lqip:
+      name: rimage_cover_lqip
+      label: 延迟占位方式
+      type: select
+      data-type: string
+      default: loading
+      description: 在图片还未加载之前的过渡效果
+      options:
+        - value: loading
+          label: 固定加载图
+        - value: lowquality
+          label: 低质量图
+    rimage_cover_itype:
+      name: rimage_cover_itype
+      label: 封面列表图获取范围
+      type: select
+      data-type: string
+      default: image
+      description: 封面图获取范围，设置之后，将从设置范围中返回图片
+      options:
+        - value: image
+          label: 所有图片
+        - value: album
+          label: 相册
+        - value: category
+          label: 分类
+        - value: user
+          label: 用户
+    rimage_cover_id:
+      name: rimage_cover_id
+      label: 封面图获取范围编号
+      type: text
+      description: 当‘封面列表图获取范围’为所有图片时可不填。其他情况下必须填写对应的编号，如相册编号、分类编号或用户名
+    rimage_cover_sheet_open:
+      name: rimage_cover_sheet_open
+      label: 页面是否使用随机图
+      type: radio
+      data-type: bool
+      default: true
+      description: 页面是否使用随机图的设置随机获取图片。其他配置与封面图一致。(如果某个页面或文章不想使用随机图，则可以使用元数据取消。如 K -> ri, value-> false)
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    rimage_cover_back_open:
+      name: rimage_cover_back_open
+      label: 首页背景是否使用随机图
+      type: radio
+      data-type: bool
+      default: false
+      description: 首页背景是否启用随机图，如果启用，则第一屏中的首页背景图片将会无效化
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    rimage_cover_back_itype:
+      name: rimage_cover_back_itype
+      label: 背景图获取范围
+      type: select
+      data-type: string
+      default: image
+      description: 封面图获取范围，设置之后，将从设置范围中返回图片
+      options:
+        - value: image
+          label: 所有图片
+        - value: album
+          label: 相册
+        - value: category
+          label: 分类
+        - value: user
+          label: 用户
+    rimage_cover_back_id:
+      name: rimage_cover_id
+      label: 背景图获取范围编号
+      type: text
+      description: 当‘封面列表图获取范围’为所有图片时可不填。其他情况下必须填写对应的编号，如相册编号、分类编号或用户名
+    rimage_cover_back_num:
+      name: rimage_cover_back_num
+      label: 背景图片循环张数
+      type: select
+      data-type: long
+      default: 5
+      options:
+        - value: 3
+          label: 三张
+        - value: 5
+          label: 五张
+        - value: 10
+          label: 十张
+        - value: 0
+          label: 无限
+
 theme:
   label: 主题切换
   items:
@@ -708,6 +871,30 @@ theme:
           label: 开启
         - value: false
           label: 关闭
+    default_theme:
+      name: default_theme
+      label: 默认主题
+      type: select
+      default: "bg_0"
+      description: 可以设置默认主题，指定任何用户进入页面之后所看到的主题样式
+      options:
+        - value: "bg_0"
+          label: 主题一
+        - value: "bg_1"
+          label: 主题二
+        - value: "bg_2"
+          label: 主题三
+        - value: "bg_3"
+          label: 主题四
+        - value: "bg_4"
+          label: 主题五
+        - value: "bg_5"
+          label: 主题六
+        - value: "bg_6"
+          label: 主题七
+        - value: "bg_7"
+          label: 主题八
+
     theme_dark:
       name: theme_dark
       label: 黑夜模式主题色
@@ -1577,7 +1764,7 @@ toast:
       label: 复制内容增加版权声明
       type: radio
       data-type: bool
-      default: true
+      default: false
       options:
         - value: true
           label: 开启
@@ -1597,11 +1784,46 @@ others:
           label: 开启
         - value: false
           label: 关闭
+    cdn:
+      name: cdn
+      label: 资源使用CDN
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+      description: '开启后静态资源将使用免费的 jsdelivr CDN加载，关闭后使用服务器网络加载'
+    i18n:
+      name: i18n
+      label: 主题语言
+      type: select
+      default: auto
+      options:
+        - value: auto
+          label: 自动
+        - value: zh
+          label: 中文（简体）
+        # - value: en
+        #   label: 英文
     reply_mail_img:
       name: reply_mail_img
       label: 邮件回复模块图片
       type: attachment
       default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/other/head_2.jpg"
+    top_back_mode:
+      name: top_back_mode
+      label: 回到顶部样式
+      type: select
+      default: lanyard
+      description: 回到顶部样式，可以通过此选项，将 PC 设置与移动端一样的
+      options:
+        - value: lanyard
+          label: 挂绳
+        - value: simplify
+          label: 精简
     top_back_img:
       name: 回到顶部图片
       label: 回到顶部图片
@@ -1634,6 +1856,18 @@ others:
       label: 公告内容
       type: textarea
       placeholder: '公告内容，文字超出142个字节将会被滚动显示（移动端无效），一个汉字 = 3字节，一个字母 = 1字节，自己计算吧'
+    keep_record_mode:
+      name: keep_record_mode
+      label: 备案模式
+      type: radio
+      data-type: bool
+      default: false
+      description: 备案模式，开启之后将隐藏所有留言、评论功能
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
 plugin:
   label: 插件功能
   items:
@@ -1651,6 +1885,17 @@ plugin:
     live2d_switch:
       name: live2d_switch
       label: 开启Live2D插件
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    mathjax:
+      name: mathjax
+      label: 开启 mathjax 数学公式插件
       type: radio
       data-type: bool
       default: false

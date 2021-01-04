@@ -1,0 +1,28 @@
+{
+  "name": "takagi-sakura",
+  "main": "index.js",
+  "authors": [
+    "takagi <takagi@halo.run>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/LIlGG/halo-theme-sakura",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "source/lib",
+    "test",
+    "tests",
+    "src"
+  ],
+  "dependencies": {
+    "flv.min": "https://github.com/bilibili/flv.js/releases/download/v1.5.0/flv.min.js",
+    "isotope.pkgd.min": "https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js",
+    "imagesloaded": "^4.1.4",
+    "packery-mode.pkgd.min": "https://github.com/metafizzy/isotope-packery/blob/master/packery-mode.pkgd.min.js",
+    "tocbot": "^4.12.0",
+    "jquery-ui": "^1.12.1",
+    "js-yaml": "^3.14.0",
+    "lazysizes": "^5.2.2"
+  }
+}
