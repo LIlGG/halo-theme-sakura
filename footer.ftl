@@ -9,7 +9,7 @@
  * @package Akina
  */
 -->
-<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.2.1", theme_base)/>
+<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.0", theme_base)/>
 <#macro footer>
 </div><!-- #content -->
 <#include "comments.ftl">
