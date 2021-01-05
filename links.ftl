@@ -26,6 +26,7 @@
                 <h1 class="entry-title">${options.links_title}</h1>
                 <#else>
                 <h1  class="entry-title i18n" data-iname="page.links.title"></h1>
+                </#if>
             </header>
         </div>
     <#else>
