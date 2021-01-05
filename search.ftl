@@ -21,7 +21,7 @@
                 </#if>
 			</div>
 			<header class="pattern-header">
-				<h1 class="entry-title search-title i18n" data-iname="page.search.title"></h1>
+				<h1 class="entry-title search-title i18n" data-iname="page.search.title" data-ivalue="${keyword!}"></h1>
 			</header>
 		</div>
 	<#else>
@@ -32,7 +32,7 @@
 <section id="primary" class="content-area">
 	<#if posts?? && posts.content?size gt 0>
 		<main id="main" class="site-main" role="main">
-			<#if !(settings.patternimg!true) || !(settings.searh_patternimg?? && settings.searh_patternimg!='')>
+			<#if !((settings.patternimg!true) && (settings.searh_patternimg?? && settings.searh_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!=''))>
 			<header class="page-header">
 				<h1 class="page-title"><span class="i18n" data-iname="page.search.sresult"></span><span>${keyword!}</span></h1>
 			</header><!-- .page-header -->
