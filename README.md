@@ -6,7 +6,7 @@
   <a href="./LICENSE"><img alt="LICENSE MIT" src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge"></a>
 </p>
 <p align="center">
-  <a href="https://lixingyong.com">预览</a> | <a href="#安装主题">安装</a> | <a href="https://lixingyong.com/s/halo-theme-sakure">更新日志</a>
+  <a href="https://lixingyong.com">预览</a> | <a href="#安装主题">安装</a> | <a href="https://lixingyong.com/2021/01/05/halo%E4%B8%BB%E9%A2%98sakura%E9%A3%9F%E7%94%A8%E8%AF%B4%E6%98%8E">使用文档</a> | <a href="https://lixingyong.com/s/halo-theme-sakure">更新日志</a>
 </p>
 
 ## 🧐 说明
@@ -16,7 +16,7 @@
 
 由于本人前端水平不足，也是第一次接触 Freemarker ，因此可能达不到与原版 100% 相似度，见谅。
 
-如果各位有什么更好的做法，希望可以提交 `PR`；
+如果各位有什么好的想法，希望可以提交 `PR`；
 
 本主题所使用的评论组件为自定义组件，详见：[halo-comment-sakura](https://github.com/LIlGG/halo-comment-sakura)
 
