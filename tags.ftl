@@ -68,9 +68,11 @@
     <div id="tags" class="container chip-container">
         <div class="card">
             <div class="card-content">
+                <#if !((settings.patternimg!true) && (settings.tag_patternimg?? && settings.tag_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!=''))>
                 <div class="tag-title center-align">
                     <i class="fa fa-tags"></i>&nbsp;&nbsp;<span class="i18n" data-iname="page.tags.title"></span>
                 </div>
+                </#if>
                 <div class="tag-chips">
                 <@tagTag method="list">
                 <#list tags as tag>
