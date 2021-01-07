@@ -35,7 +35,7 @@
 </@header>
 <article class="post-item page type-page status-publish hentry">
     <div id="archives-temp">
-        <#if !(settings.patternimg!true) || !(settings.archives_patternimg?? && settings.archives_patternimg!='')>
+        <#if !((settings.patternimg!true) && (settings.archives_patternimg?? && settings.archives_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!=''))>
                 <#if options.archives_title?default("")?trim?length gt 1>
                 <h2>${options.archives_title}</h2>
                 <#else>
