@@ -2,7 +2,7 @@
     @package Akina
 -->
 <article id="post-${post.id?c}">
-    <#if !(settings.patternimg!true) || !(post.thumbnail?? && post.thumbnail!='')>
+    <#if !((settings.patternimg!true) && (post.thumbnail?? && post.thumbnail!='') || ((metas.ri?boolean)!true && settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!=''))>
         <header class="entry-header">
             <h1 class="entry-title">${post.title!}</h1>
             <p class="entry-census">${post.createTime?string('yyyy-MM-dd')}
