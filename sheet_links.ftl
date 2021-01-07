@@ -27,6 +27,15 @@
 		</div>
 	<#else>
 		<div class="blank"></div>
+        <header class="entry-header">
+        <h1 class="entry-title">
+            <#if options.links_title?default("")?trim?length gt 1>
+			<span>${options.links_title}</span>
+			<#else>
+			<span class="i18n" data-iname="page.links.title"></span>
+            </#if>
+        </h1>
+        </header><!-- .entry-header -->
 		<style>
             .toc-container {
                 top: 210px;
