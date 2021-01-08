@@ -40,7 +40,7 @@
 <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
         <#if posts?? && posts.content?size gt 0>
-            <#if !(settings.patternimg!true) || !((tag.thumbnail?? && tag.thumbnail!='') || (settings.tag_patternimg?? && settings.tag_patternimg!=''))>
+            <#if !((settings.patternimg!true) && ((tag.thumbnail?? && tag.thumbnail!='') || (settings.tag_patternimg?? && settings.tag_patternimg!='')) || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!=''))>
                 <header class="page-header">
                     <h1 class="cat-title">${tag.name!}</h1>
                     <span class="cat-des">

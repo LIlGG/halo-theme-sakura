@@ -48,9 +48,11 @@
     <div id="tags" class="container chip-container" style="margin-top: 0px;">
         <div class="card">
             <div class="card-content">
+                <#if !((settings.patternimg!true) && (settings.category_patternimg?? && settings.category_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!=''))>
                 <div class="tag-title center-align">
                     <i class="fa fa-bookmark"></i>&nbsp;&nbsp;<span class="i18n" data-iname="page.categories.title"></span>
                 </div>
+                </#if>
                 <div class="tag-chips">
                 <@categoryTag method="list">
                 <#list categories as category>
