@@ -1,5 +1,5 @@
 <section>
-    <#if !(settings.patternimg!true) || !(settings.photos_patternimg?? && settings.photos_patternimg!='')>
+    <#if !((settings.patternimg!true) && (settings.photos_patternimg?? && settings.photos_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!=''))>
     <header class="entry-header">
         <h1 class="entry-title">
         	<#if options.photos_title?default("")?trim?length gt 1>
