@@ -841,7 +841,8 @@ a:active {
 	left: -25%;
 	bottom: -2.875rem;
 	border-radius: 100%;
-	position: absolute
+	position: absolute;
+	z-index: 2;
 }
 
 .pattern-attachment-img {
