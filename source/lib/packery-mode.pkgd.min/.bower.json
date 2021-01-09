@@ -2,7 +2,7 @@
   "name": "packery-mode.pkgd.min",
   "_cacheHeaders": {
     "ETag": "W/\"96392bad6e888e7e6b0e81289066b99c\"",
-    "Content-Type": "text/html; charset=utf-8"
+    "Content-Type": "application/javascript; charset=utf-8"
   },
   "_release": "e-tag:W/\"96392ba",
   "main": "index.js",
