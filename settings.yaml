@@ -1836,10 +1836,22 @@ others:
       default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/sakura.svg"
     footer_case_number:
       name: footer_case_number
-      label: 备案信息
+      label: ICP 备案信息
       type: text
       default: ""
-      description: "为空则不展示备案号（建议添加）"
+      description: "为空则不展示 ICP 备案号（建议添加）"
+    footer_ga_case_number:
+      name: footer_ga_case_number
+      label: 公安备案信息
+      type: text
+      default: ""
+      description: "为空则不展示公安备案信息"
+    footer_ga_select_number:
+      name: footer_ga_select_number
+      label: 公安联网备案号
+      type: text
+      default: ""
+      description: "应与公安备案信息内的编号一致"   
     head_notice:
       name: head_notice
       label: 开启公告

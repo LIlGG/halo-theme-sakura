@@ -44,7 +44,14 @@
 			<p>
 				© ${.now?string("yyyy")} ${(user.nickname)!}
 				<#if settings.footer_case_number??  && settings.footer_case_number != "">
-				<a href="https://beian.miit.gov.cn/ " target="_blank">${settings.footer_case_number}</a>
+				&nbsp;
+				<a href="https://beian.miit.gov.cn/" target="_blank">${settings.footer_case_number}</a>
+				</#if>
+				<#if settings.footer_ga_case_number??  && settings.footer_ga_case_number != "">
+				&nbsp;
+				<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${settings.footer_ga_select_number!}" target="_blank">
+					<img src="${res_base_url!}/source/images/other/gongan.png">${settings.footer_ga_case_number}
+				</a>	
 				</#if>
 			</p>
 		</div>
