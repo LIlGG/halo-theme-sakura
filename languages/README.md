@@ -61,7 +61,7 @@ placeholder: 这是提示文本
 <title class="i18n" data-iname="page.title" data-ivalue="${blog_title!}"></title>
 ```
 
-`data-ivalue` 可以接收一个或多个可变参数【多个参数使用英文逗号（`,`）分隔】。在执行国际化的时候，会将此值带入并进行渲染。
+`data-ivalue` 可以接收一个或多个可变参数【多个参数使用英文分号（`;`）分隔】。在执行国际化的时候，会将此值带入并进行渲染。
 
 使用通配符方式时，`zh.yml` 应该使用如下方式编写：
 

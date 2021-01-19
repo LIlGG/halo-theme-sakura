@@ -39,7 +39,7 @@ var I18N = function() {
             var attr = $(this).data('iattr');
             args.push(name);
             if (value) {
-                value = value.split(",");
+                value = value.split(";");
                 args = args.concat(value);
             }
 
