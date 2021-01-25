@@ -8,7 +8,7 @@
         <div class="pattern-center">
             <div class="pattern-attachment-img">
                 <#if (settings.patternimg!true) && (settings.journals_patternimg?? && settings.journals_patternimg!='')>
-                <img data-src="${settings.journals_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this, IMG_Type.DEFAULT)">
+                <img data-src="${settings.journals_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this)">
                 <#else>
                     <img
                         src="${settings.rimage_url!}?journal=journal&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"
@@ -51,7 +51,7 @@
       <#list journals.content as journal>
         <li id="journal-${journal.id?c}" class="journal">
           <span class="journal-author-img">
-            <img class="lazyload avatar" data-src="${user.avatar!}" alt="${user.nickname!}"  width="48" height="48" src="${res_base_url!}/source/images/svg/loader/trans.ajax-spinner-preloader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
+            <img class="lazyload avatar" data-src="${user.avatar!}" alt="${user.nickname!}"  width="48" height="48" src="${res_base_url!}/source/images/svg/loader/trans.ajax-spinner-preloader.svg" onerror="imgError(this)">
           <span class="journal-label">${journal.content!}
             <p class="journal-time">
               <span> ${journal.createTime?string('yyyy-MM-dd HH:mm:ss')}</span>

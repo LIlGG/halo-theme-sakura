@@ -6,7 +6,7 @@
 	<div class="post-thumb">
 		<a href="${post.fullPath!}">
 		<#if post.thumbnail?? && post.thumbnail!=''>
-			<img class="lazyload" data-src="${post.thumbnail!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
+			<img class="lazyload" data-src="${post.thumbnail!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this)">
 		<#elseif settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!=''>
 			<img
                 src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"
@@ -18,7 +18,7 @@
                 data-sizes="auto"
                 class="lazyload<#if settings.rimage_cover_lqip == 'lowquality'> blur-up</#if>" />
 		<#else>
-			<img class="lazyload" data-src="${res_base_url!}/source/images/temp.jpg" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this, IMG_Type.DEFAULT)">
+			<img class="lazyload" data-src="${res_base_url!}/source/images/temp.jpg" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this)">
 		</#if>
 		</a>
 	</div><!-- thumbnail-->

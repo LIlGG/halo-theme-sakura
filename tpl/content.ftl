@@ -7,11 +7,11 @@
 			<a href="${post.fullPath!}">
 				<div class="overlay"><i class="iconfont icon-text"></i></div>
 				<#if post.thumbnail?? && post.thumbnail!=''>
-				<img width="150" height="150" src="${post.thumbnail!}" class="attachment-post-thumbnail size-post-thumbnail" onerror="imgError(this, IMG_Type.DEFAULT)"/>
+				<img width="150" height="150" src="${post.thumbnail!}" class="attachment-post-thumbnail size-post-thumbnail" onerror="imgError(this)"/>
 				<#elseif settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!=''>
 				<img width="150" height="150" src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=150" class="attachment-post-thumbnail size-post-thumbnail"/>
 				<#else>
-				<img src="${res_base_url!}/source/images/random/d-${randomMethod(1,10)}.jpg" onerror="imgError(this, IMG_Type.DEFAULT)"/>
+				<img src="${res_base_url!}/source/images/random/d-${randomMethod(1,10)}.jpg" onerror="imgError(this)"/>
 				</#if>		
 			</a>
 		</div>
