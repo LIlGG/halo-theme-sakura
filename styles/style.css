@@ -945,7 +945,12 @@ a:active {
 	.pattern-center h1.cat-title,
 	.pattern-center h1.entry-title,
 	.single-center .single-header h1.entry-title {
-		font-size: 26px
+		font-size: 26px;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
 	}
 
 	.single-center .single-header h1.entry-title {
