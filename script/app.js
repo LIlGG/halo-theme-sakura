@@ -853,14 +853,12 @@ var imgError = function (ele, type) {
   ele.src = type.url;
 };
 
-
-
 /**
  * pjax功能
  */
 var pjaxFun = function () {
   $(document)
-    .pjax("a[target!=_top]", "#page", {
+    .pjax("a[target!=_top][target!=_blank]", "#page", {
       fragment: "#page",
       timeout: 8000,
     })
