@@ -956,14 +956,13 @@ var home = location.href,
           .wrap("<div class='table-wrapper'></div>");
       }
 
-      // 为文章中的图片增加灯箱设置
+      // 为文章中的图片增加灯箱设置，并在图片加载完成之后，重新计算菜单高度
       if (
         $(".entry-content").length > 0 &&
         $(".entry-content").find("img").length > 0
       ) {
-        $(".entry-content")
-          .find("img")
-          .each(function () {
+        var $imgs = $(".entry-content").find("img");
+        $imgs.each(function () {
             if (!$(this).hasClass("gallery-img")) {
               $(this)
                 .addClass("gallery-img")
@@ -974,6 +973,16 @@ var home = location.href,
                 );
             }
           });
+        // 每次图片加载完成都重新计算高度
+        if(Poi.toc) {
+          $imgs.on("load", function() {
+            if ($("div").hasClass("toc")) {
+              $(".toc-container").css("height", $(".site-content").outerHeight());
+            } else {
+              return;
+            }
+          })
+        }
       }
 
       // 标签云
