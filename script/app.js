@@ -396,6 +396,9 @@ var LIlGGAttachContext = {
         var autolanguage = hljs.highlightAuto($code.text());
         $code.removeClass("language-" + lang);
         lang = autolanguage.language;
+        if(lang == undefined) {
+          lang = "text";
+        }
         $code.addClass("language-" + lang);
       } else {
         lang = language.name;
