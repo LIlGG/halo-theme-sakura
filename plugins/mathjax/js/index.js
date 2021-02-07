@@ -6,7 +6,8 @@ function initMathjaxConfig() {
     tex2jax: {
       inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
       displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
-      skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"], //避开某些标签
+      ignoreClass: "no-math"
     },
     "HTML-CSS": {
       availableFonts: ["STIX", "TeX"], //可选字体
@@ -15,11 +16,9 @@ function initMathjaxConfig() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  if (!window.MathJax) {
-    // 加载 MathJax
-    Util.loadJS("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML", initMathjaxConfig)
-  } else {
-    initMathjaxConfig();
-  }
-})
+if (!window.MathJax) {
+  // 加载 MathJax
+  Util.loadJS("https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML", initMathjaxConfig)
+} else {
+  initMathjaxConfig();
+}

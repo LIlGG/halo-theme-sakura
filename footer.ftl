@@ -18,6 +18,20 @@
 <#elseif is_sheet??>
 	<@comment sheet,"sheet" />
 </#if>
+<!-- 定义可变属性，会根据页面的改变而变化 -->
+<script type='text/javascript'>
+	/* <![CDATA[ */
+    var PageAttr = {
+        "metas": {
+			<#if metas??>
+				<#list metas?keys as key>
+					"${key}": "${metas['${key}']}",
+				</#list>
+			</#if>
+        },
+    }
+	/* ]]> */
+</script>
 </div><!-- #page Pjax container-->
 <footer id="colophon" class="site-footer" role="contentinfo">
 	<div class="site-info">
@@ -170,6 +184,7 @@
 		"pjax":"${(settings.poi_pjax!true)?string('true','')}",
 		"windowheight":"${(!(settings.focus_height!true))?string('fixed','auto')}",
 		"ajaxurl":"${blog_url!}",
+		"resBaseUrl": "${res_base_url!}",
 		"formpostion":"bottom",
 		"toc": "${(settings.post_toc!true)?string('true','')}",
 		"codeLine": "${(settings.code_line!true)?string('true','')}",
@@ -272,9 +287,6 @@
 <script type='text/javascript' src='${res_base_url!}/source/js/qrcode.min.js' defer></script>
 <script type='text/javascript' src='${res_base_url!}/source/lib/flv.min/index.js' defer></script>
 <script type='text/javascript' src='${res_base_url!}/script/i18n.min.js?ver=1.3.0' defer></script>
-<#if settings.mathjax!false>
-<script type='text/javascript' src="${res_base_url!}/plugins/mathjax/js/index.js"></script>
-</#if>
 <script type='text/javascript' src='${theme_base!}/script/app.min.js?ver=1.3.0'></script>
 <#nested />
 <#if settings.live2d_switch!true>

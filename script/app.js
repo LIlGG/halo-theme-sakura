@@ -9,6 +9,8 @@
 var LIlGGAttachContext = {
   // 补充功能的PJAX
   PJAX: function () {
+    // 加载动态属性
+    LIlGGAttachContext.LA();
     // 背景图片点击
     LIlGGAttachContext.BGEVEN();
     // 暂停背景视频
@@ -26,7 +28,7 @@ var LIlGGAttachContext = {
     } catch (e) { }
 
     Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
-    Poi.mathjax && LIlGGAttachContext.MATHJAX(); // 数学公式
+    Poi.mathjax && !!PageAttr.metas.math && PageAttr.metas.math == "true" && LIlGGAttachContext.MATHJAX(); // 数学公式
     LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.PHO(); // 图库功能
     LIlGGAttachContext.CMN(); // 评论组件
@@ -782,6 +784,12 @@ var LIlGGAttachContext = {
   MATHJAX: function() {
     if (window.MathJax) {
       MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementsByClassName('entry-content')[0]]);
+    } else {
+      Util.loadJS("https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML", function() {
+        Util.loadJS(Poi.resBaseUrl + "/plugins/mathjax/js/index.js", function() {
+          MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementsByClassName('entry-content')[0]]);
+        })
+      })
     }
   },
   // 背景视频点击切换
@@ -836,6 +844,11 @@ var LIlGGAttachContext = {
 
     var mail =  "mailto:" + Poi.meEmail;
     window.open(mail);
+  },
+
+
+  LA: function() {
+
   }
 };
 
@@ -1288,7 +1301,7 @@ $(function () {
   LIlGGAttachContext.PLSA(); // 文章列表动画
   (Poi.headFocus && Poi.bgvideo) && LIlGGAttachContext.BGV(); // 背景视频
   Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
-  Poi.mathjax && LIlGGAttachContext.MATHJAX(); // 数学公式
+  Poi.mathjax && !!PageAttr.metas.math && PageAttr.metas.math == "true" && LIlGGAttachContext.MATHJAX(); // 数学公式
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部
   (Poi.photosStyle == "packery") && supplement();
