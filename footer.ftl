@@ -225,6 +225,7 @@
 				isNight = (("settings.bg_night_" + i)?eval)?default("") />
 		
 		"bg_${i}": {
+			"id": "${i}",
 			"name": "${name}",
 			"desc": "${desc}",
 			"url": "${url}",

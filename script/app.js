@@ -515,6 +515,11 @@ var LIlGGAttachContext = {
       var bgAttr = themeConfig.bgAttr;
       // 如果为黑夜模式，也会影响到评论组件
       var comments = document.getElementsByTagName("halo-comment");
+      // 删除以 theme_ 开头的 class
+      Util.removeClassByPrefix($("body")[0], "theme_");
+      // 增加 class
+      $("body").remove("theme_" + bgAttr["id"]);
+      $("body").addClass("theme_" + bgAttr["id"]);
       // 黑夜模式下
       if (bgAttr["isNight"]) {
         $("html").css("background", "#31363b");

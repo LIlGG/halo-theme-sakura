@@ -259,6 +259,19 @@ var Util = {
 
         return idx;
     },
+
+    /**
+     * 删除元素的 class，可根据前缀来删除
+     * @param {*} el 需要删除的 dom 元素
+     * @param {*} prefix 需要删除的 class，可以仅为前缀
+     */
+    removeClassByPrefix: function (el, prefix) {
+        var classes = el.className.split(" ").filter(function(c) {
+            return c.lastIndexOf(prefix, 0) !== 0;
+        })
+
+        el.className = classes.join(" ").trim();
+    },
 }
 
 
