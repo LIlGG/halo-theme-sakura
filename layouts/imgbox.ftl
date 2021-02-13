@@ -150,6 +150,15 @@
 					</a>
 				</li>
 			</#if>
+				
+			<#if settings.customize_link?? && settings.customize_icon?? && settings.customize_title??>
+				<li>
+					<a href="${settings.customize_link!}" target="_blank" title="${settings.customize_title!}">
+						<img src="${settings.customize_icon}"/>
+					</a>
+				</li>
+			</#if>
+		
 				<li id="bg-next">
             		<img src="${res_base_url!}/source/images/next-b.svg">
           		</li>

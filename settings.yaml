@@ -342,6 +342,18 @@ sns:
       name: stackoverflow
       label: Stack Overflow
       type: text
+    customize_icon:
+      name: customize_icon
+      label: 自定义社交图标
+      type: text
+    customize_title:
+      name: customize_title
+      label: 自定义社交标题
+      type: text
+    customize_link:
+      name: customize_link
+      label: 自定义社交链接
+      type: text
 focus:
   label: 聚焦图
   items:
