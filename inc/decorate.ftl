@@ -266,7 +266,8 @@
         background-color: rgba(0,0,0,${(settings.dark_widget_tmd)!0.7});
     }
 
-    body.dark .skin-menu {
+    body.dark .skin-menu,
+    body.dark .m-cd-top {
         background-color:rgba(0,0,0,${(settings.dark_widget_tmd)!0.7}) !important;
     }
 
