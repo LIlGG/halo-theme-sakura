@@ -1566,7 +1566,8 @@ i.iconfont.hotpost {
 }
 
 .comnum {
-	float: left
+	float: left;
+	width: 100%;
 }
 
 .info-meta a {
