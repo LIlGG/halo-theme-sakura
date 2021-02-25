@@ -3277,7 +3277,8 @@ span.sitename {
 	top: 0;
 	left: -60px;
 	z-index: -1;
-	transition: all .5s
+	transition: all .5s;
+	opacity: 0.2;
 }
 
 .links ul li:hover {
