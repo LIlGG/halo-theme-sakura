@@ -647,10 +647,24 @@ var LIlGGAttachContext = {
     var $masonrys = $(".masonry-gallery.gallery");
 
     var justify = function () {
-      $masonrys.justifiedGallery({
-        margins: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter),
-        rowHeight: 200,
-      });
+      var option = {
+          margins: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter),
+          rowHeight: 200,
+      }
+      // 默认过滤
+      if (Poi.defaultGroup) {
+        var filter =  "." + Poi.defaultGroup;
+        $("#gallery-filter li a").removeClass("active");
+        $("#gallery-filter li a").each(function() {
+          if ($(this).data("filter") == filter) {
+            $(this).addClass("active");
+            return false;
+          }
+        })
+        option.filter = filter
+      }
+
+      $masonrys.justifiedGallery(option);
 
       // 过滤
       $("#gallery-filter li a").on("click", function () {
@@ -682,8 +696,23 @@ var LIlGGAttachContext = {
             itemSelector: ".gallery-item",
           };
 
+      // 默认过滤
+      if (Poi.defaultGroup) {
+        var filter =  "." + Poi.defaultGroup;
+
+        $("#gallery-filter li a").each(function() {
+          $("#gallery-filter li a").removeClass("active");
+          if ($(this).data("filter") == filter) {
+            $(this).addClass("active");
+            return false;
+          }
+        })
+        option.filter = filter
+      }
+
       $masonrys.find("img.lazyload").on('load', function () {
-        $(this).parents(".gallery-item").css("background", "#222")
+        $(this).parents(".gallery-item").css("background", "#222");
+        delete option.filter;
         $masonrys.isotope(option);
       })
 

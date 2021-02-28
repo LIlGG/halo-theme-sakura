@@ -214,7 +214,8 @@
 		"rimageUrl": "${(settings.rimage_url)!''}",
 		"coverOpen": "${(settings.rimage_cover_back_open!false)?string('true','')}",
 		"meEmail": "${(settings.email)!''}",
-		"defaultTheme": "${(settings.default_theme)!'bg_0'}"
+		"defaultTheme": "${(settings.default_theme)!'bg_0'}",
+		"defaultGroup": "${(settings.default_group)?replace(' ', '-')}"
 	};
 	var bgConfig = {
 	<#list 0..7 as i>

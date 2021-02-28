@@ -677,7 +677,7 @@ photos:
           label: 填充式瀑布流布局（实验性）
     is_thumbnail:
       name: is_thumbnail
-      label: 列表使用缩略图
+      label: 相册列表使用缩略图
       type: radio
       data-type: bool
       default: true
@@ -686,6 +686,13 @@ photos:
           label: 开启
         - value: false
           label: 关闭
+    default_group:
+      name: default_group
+      label: 默认展示分组
+      type: text
+      data-type: string
+      default: ''
+      placeholder: '请填写分组名称'
     photos_gutter:
       name: photos_gutter
       label: 图像之间的间距
