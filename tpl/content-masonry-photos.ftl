@@ -19,7 +19,7 @@
                 <@photoTag method="listTeams">
                 <#list teams as item>
                 <li>
-                    <a href="javascript:void(0);" data-filter=".${((item.team)?length>0)?string((item.team),'默认')}">${((item.team)?length>0)?string((item.team),'默认')}</a>
+                    <a href="javascript:void(0);" data-filter=".${((item.team)?length>0)?string((item.team),'默认')?replace(' ', '-')}">${((item.team)?length>0)?string((item.team),'默认')}</a>
                 </li>
                 </#list>
                 </@photoTag>
@@ -53,9 +53,9 @@
             <@photoTag method="list">
             <#list photos as photo>
             <#if settings.photos_style == "masonry">
-            <figure class="gallery-item col-${settings.masonry_column!'3'} ${((photo.team)?length>0)?string((photo.team),'默认')}">
+            <figure class="gallery-item col-${settings.masonry_column!'3'} ${((photo.team)?length>0)?string((photo.team),'默认')?replace(' ', '-')}">
             <#else>
-            <figure class="gallery-item ${((photo.team)?length>0)?string((photo.team),'默认')}">
+            <figure class="gallery-item ${((photo.team)?length>0)?string((photo.team),'默认')?replace(' ', '-')}">
             </#if>
                 <header class="gallery-icon">
                     <a data-fancybox="gallery" href="${photo.url!}">
