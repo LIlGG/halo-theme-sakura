@@ -93,7 +93,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 ## 赞助
 > 由于主题开发需要一定的周期，再加上主题内部 API 所需的服务器和 CDN 都是一笔不小的开支，如果您喜欢我的主题，可以考虑资助一下~ 您的支持将是我继续开发主题的动力。
 
-| <img src="https://cdn.lixingyong.com/img/other/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210114094011.jpg" width="100px;"/><br /><b>微信</b><br /> | <img src="https://v-lxy-cdn.oss-cn-beijing.aliyuncs.com/img/other/%E6%94%AF%E4%BB%98%E5%AE%9D.png" width="100px;"/><br /><b>支付宝</b><br />  | 
+| <img src="https://cdn.lixingyong.com/img/other/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210114094011.jpg" width="160px;"/><br /><b>微信</b><br /> | <img src="https://v-lxy-cdn.oss-cn-beijing.aliyuncs.com/img/other/%E6%94%AF%E4%BB%98%E5%AE%9D.png" width="160px;"/><br /><b>支付宝</b><br />  | 
 | :---: | :---: |
 
 欢迎其他各种形式的捐助！
