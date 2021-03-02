@@ -87,8 +87,15 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 
 | [<img src="https://avatars2.githubusercontent.com/u/31335418?v=4" width="100px;"/><br /><sub><b>Takagi</b></sub>](https://lixingyong.com/)<br />[💻](https://github.com/LIlGG/halo-theme-sakura/commits?author=LIlGG "编码") [📖](https://github.com/LIlGG/halo-theme-sakura/commits?author=LIlGG "文档") [💡](#example-LIlGG "示例") | [<img src="https://avatars2.githubusercontent.com/u/21301288?v=4" width="100px;"/><br /><sub><b>Ryan Wang</b></sub>](https://ryanc.cc/)<br /> [🎨](#design-ruibaby "设计") [🤔](#design-ruibaby "想法与计划") | [<img src="https://avatars2.githubusercontent.com/u/22992947?v=4" width="100px;"/><br /><sub><b>Parasomnia</b></sub>](https://mashiro.best/)<br /> [💻](https://github.com/LIlGG/halo-theme-sakura/commits?author=parasomn1a "编码") [🎨](#design-parasomn1a "设计") | [<img src="https://avatars2.githubusercontent.com/u/16148054?v=4" width="100px;"/><br /><sub><b>Mashiro</b></sub>](https://2heng.xin/)<br />[🎨](#design-Mashiro "设计") [🤔](#design-Mashiro "想法与思路")|
 | :---: | :---: | :---: | :---: |
+该项目遵循 [所有参与者](https://github.com/kentcdodds/all-contributors) 规范。 
 
-该项目遵循 [所有参与者](https://github.com/kentcdodds/all-contributors) 规范。 欢迎各种形式的捐助！
+## 赞助
+> 由于主题开发需要一定的周期，再加上主题内部 API 所需的服务器和 CDN 都是一笔不小的开支，如果您喜欢我的主题，可以考虑资助一下~ 您的支持将是我继续开发主题的动力。
+
+| <img src="https://cdn.lixingyong.com/img/other/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210114094011.jpg" width="100px;"/><br /><b>微信</b><br /> | <img src="https://v-lxy-cdn.oss-cn-beijing.aliyuncs.com/img/other/%E6%94%AF%E4%BB%98%E5%AE%9D.png" width="100px;"/><br /><b>支付宝</b><br />  | 
+| :---: | :---: |
+
+欢迎其他各种形式的捐助！
 
 ## 作者
 
