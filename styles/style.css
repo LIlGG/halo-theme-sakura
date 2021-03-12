@@ -1242,7 +1242,7 @@ a:active {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	display: inline-block
+	display: block
 }
 
 .site-top ul li {
