@@ -4748,6 +4748,10 @@ i.iconfont.down {
 		border-radius: 100%
 	}
 
+	#mo-nav .social {
+		margin: 0 10px;
+	}
+
 	#mo-nav .m-search form {
 		position: relative;
 		width: 250px;
