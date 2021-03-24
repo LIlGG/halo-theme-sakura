@@ -99,27 +99,32 @@
 	</#if>
 
 	<#if settings.focus_infos!true>
-		<p style="text-align: center; word-spacing: 20px;">
+		<p style="display:flex; justify-content:center;">
 			<#if settings.twitter??>
-				<a href="${settings.twitter!}" class="social-twitter" target="_blank" style="color: #00aced"><img src="${res_base_url!}/source/images/sns/twitter.png" width="18"/></a>
+				<a href="${settings.twitter!}" class="social social-twitter" target="_blank"><img src="${res_base_url!}/source/images/sns/twitter.png" width="18"/></a>
 			</#if>
 			<#if settings.sina??>
-				<a href="${settings.sina!}" class="social-sina" target="_blank" style="color: #dd4b39"><img src="${res_base_url!}/source/images/sns/sina.png" width="18"/></a>
+				<a href="${settings.sina!}" class="social social-sina" target="_blank"><img src="${res_base_url!}/source/images/sns/sina.png" width="18"/></a>
 			</#if>
 			<#if settings.github??>
-				<a href="${settings.github!}" class="social-github" target="_blank" style="color: #333"><img src="${res_base_url!}/source/images/sns/github.png" width="18"/></a>
+				<a href="${settings.github!}" class="social social-github" target="_blank"><img src="${res_base_url!}/source/images/sns/github.png" width="18"/></a>
 			</#if>
 			<#if settings.wechat??>
-				<a href="${settings.wechat!}" class="social-wechat" target="_blank" style="color: #333"><img src="${res_base_url!}/source/images/sns/wechat.png" width="18"/></a>
+				<a href="${settings.wechat!}" class="social social-wechat" target="_blank"><img src="${res_base_url!}/source/images/sns/wechat.png" width="18"/></a>
 			</#if>
 			<#if settings.qq??>
-				<a href="//wpa.qq.com/msgrd?v=3&uin=${settings.qq!}&site=qq&menu=yes" class="social-wangyiyun" target="_blank" style="color: #333"><img src="${res_base_url!}/source/images/sns/qq.png" width="18"/></a>
+				<a href="//wpa.qq.com/msgrd?v=3&uin=${settings.qq!}&site=qq&menu=yes" class="social social-wangyiyun" target="_blank"><img src="${res_base_url!}/source/images/sns/qq.png" width="18"/></a>
 			</#if>
 			<#if settings.bili??>
-				<a href="${settings.bili!}" class="social-bili" target="_blank" style="color: #333"><img src="${res_base_url!}/source/images/sns/bilibili.png" width="18"/></a>
+				<a href="${settings.bili!}" class="social social-bili" target="_blank"><img src="${res_base_url!}/source/images/sns/bilibili.png" width="18"/></a>
 			</#if>
 			<#if settings.wangyiyun??>
-				<a href="${settings.wangyiyun!}" class="social-wangyiyun" target="_blank" style="color: #333"><img src="${res_base_url!}/source/images/sns/wangyiyun.png" width="18"/></a>
+				<a href="${settings.wangyiyun!}" class="social social-wangyiyun" target="_blank"><img src="${res_base_url!}/source/images/sns/wangyiyun.png" width="18"/></a>
+			</#if>
+			<#if settings.customize_link?? && settings.customize_icon?? && settings.customize_title??>
+				<a href="${settings.customize_link!}" class="social" target="_blank" title="${settings.customize_title!}">
+					<img src="${settings.customize_icon}" width="18"/>
+				</a>
 			</#if>
 		</p>
 	</#if>
