@@ -547,8 +547,73 @@ comment:
       label: 评论模块js
       type: text
       default: "https://cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura/dist/halo-comment.min.js"
-      description: "评论js模块，如果当前为空，则获取评论设置中的模块js"
-    comment_custom_style:
+      description: "评论js模块，如果当前设置为空，则使用评论设置中的模块js"
+    comment_auto_load:
+      name: comment_custom_style
+      label: 是否自动加载评论列表
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    comment_show_user_agent:
+      name: comment_show_user_agent
+      label: 是否显示评论者的 UA 信息
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    comment_gravatar_source:
+      name: comment_gravatar_source
+      label: Gravatar 源地址
+      type: text
+      default: "//cn.gravatar.com/avatar"
+      description: "暂时用于适配 Halo 1.4.8 以下用户，当主题最低要求 Halo 1.4.8 之后将移除"
+    comment_loading_style:
+      name: comment_loading_style
+      label: 评论加载样式
+      type: select
+      default: default
+      options:
+        - value: default
+          label: 默认
+        - value: circle
+          label: 循环圆圈
+        - value: balls
+          label: 圆圈波浪
+    comment_a_word:
+      name: comment_a_word
+      label: 评论框内的一言
+      type: text
+      default: "你是我一生只会遇见一次的惊喜 ..."
+    comment_author_popup:
+      name: comment_author_popup
+      label: 填写昵称时的提示
+      type: text
+      default: "输入QQ号将自动拉取昵称和头像"
+    comment_email_popup:
+      name: comment_email_popup
+      label: 填写 email 时的提示
+      type: text
+      default: "你将收到回复通知"
+    comment_url_popup:
+      name: comment_url_popup
+      label: 填写网站链接时的提示
+      type: text
+      default: "禁止小广告😀"
+    comment_not_comment:
+      name: comment_not_comment
+      label: 没有评论时显示的语句
+      type: text
+      default: "暂无评论"
+comment_custom_style:
       name: comment_custom_style
       label: 自定义评论组件CSS样式
       type: textarea
