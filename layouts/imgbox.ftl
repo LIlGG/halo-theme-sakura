@@ -22,9 +22,11 @@
 			<h1 class="center-text glitch" data-text="${settings.glitch_text}">${settings.glitch_text}</h1>
 			</#if>
 		</#if>
-		<div class="header-info">
+		<div class="header-info
 			<#if user.description?default("")?trim?length gt 1>
-			<p><i class="fa fa-quote-left"></i>${user.description}<i class="fa fa-quote-right"></i></p>
+			 info-desc"><p><i class="fa fa-quote-left"></i>${user.description}<i class="fa fa-quote-right"></i></p>
+			<#else>
+			">
 			</#if>
 			<div class="top-social_v2">
 			    <li id="bg-pre">

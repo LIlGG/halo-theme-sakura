@@ -394,6 +394,18 @@ th {
 	padding: 0
 }
 
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.is-show {
+	display: block;
+}
+
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
@@ -3695,7 +3707,7 @@ li.feature-2 {
 
 .focusinfo img {
 	width: 130px;
-	height: auto;
+	height: 130px;
 	padding: 2px;
 	border-radius: 100%
 }
@@ -3815,7 +3827,13 @@ li.feature-2 {
 }
 
 .header-tou+.header-info:before {
-	top: 127px;
+	bottom: 60px;
+	content: "";
+
+}
+
+.header-tou+.header-info.info-desc:before {
+	bottom: 89.5px;
 	content: "";
 
 }
@@ -6060,7 +6078,6 @@ button.botui-actions-buttons-button {
 	padding-bottom: 0;
 	padding-top: 1px;
 	-webkit-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
 	text-size-adjust: 100%;
 	width: auto
 }
@@ -7275,7 +7292,6 @@ li>ol {
 }
 
 .toc {
-	position: -webkit-sticky;
 	position: sticky;
 	top: 100px
 }
@@ -8860,6 +8876,14 @@ em {
 
 .journal-label img:hover {
 	transform: scale(3.5);
+}
+
+.journal-label .comment-js {
+	cursor: pointer;
+}
+
+.journal-label .comment {
+	display: none;
 }
 
 /** journal end */
