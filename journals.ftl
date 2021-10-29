@@ -2,6 +2,7 @@
     日志页面
 -->
 <#include "header.ftl">
+<#include "comments.ftl">
 <@header title="${options.journals_title?default('日志')} - ${blog_title!}">
     <#if (settings.patternimg!true) && (settings.journals_patternimg?? && settings.journals_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!='')>
         <div class="pattern-center-blank"></div>
@@ -55,6 +56,15 @@
           <span class="journal-label">${journal.content!}
             <p class="journal-time">
               <span> ${journal.createTime?string('yyyy-MM-dd HH:mm:ss')}</span>
+              <#-- 评论内容 -->
+              <span class="comment-js noselect" style="float: right">
+                <i class="iconfont icon-mark">
+                  <span class="noticom">${journal.commentCount!0}</span>
+                </i>
+              </span>
+              <div class="comment">
+                <@comment journal, "journal" />
+              <div>
               <#-- TODO 由于接口功能的原因，点赞功能暂时不设置 -->
               <#--  <span style="float: right">
                 <span><i class="iconfont icon-dz"></i></span>

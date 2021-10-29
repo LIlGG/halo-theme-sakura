@@ -330,7 +330,7 @@
         box-shadow: inset 0 0 10px ${settings.theme_dark!};
     }
 </style>
-<!-- 黑夜模式评论模块 -->
+<!-- 评论模块独立样式 -->
 <style id="comment-style" type="text/css" media="noexist">
     .halo-comment.dark button,
     .halo-comment.dark input,
@@ -374,6 +374,12 @@
     .halo-comment.dark .notification, 
     .halo-comment.dark .comment-respond .logged-in-as a {
         color: #9499a8;
+    }
+
+    /** 说说评论样式 */
+    .halo-comment.journal {
+        max-height: 600px;
+        overflow: auto;
     }
 
     <#if settings.comment_custom_style??>

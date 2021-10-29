@@ -238,7 +238,8 @@ var LIlGGAttachContext = {
     if (
       dom != undefined &&
       dom.oncanplay == undefined &&
-      document.body.clientWidth > 860
+      document.body.clientWidth > 860 &&
+      Poi.windowheight != "fixed"
     ) {
       bindBgVideoEvent();
     }
@@ -773,12 +774,13 @@ var LIlGGAttachContext = {
         return ICON_NIGHT;
       }
     };
-
+    
     return function () {
       if ($(".journal").length > 0) {
         $(".journal").each(function () {
+          let that = $(this);
           // 为日志设置时间图标
-          var $firstSpan = $(this).find(".journal-time>span").first();
+          var $firstSpan =that.find(".journal-time>span").first();
           if ($firstSpan.find("i").length == 0) {
             $firstSpan.prepend(
               '<i class="iconfont icon-' +
@@ -786,8 +788,9 @@ var LIlGGAttachContext = {
               '"></i> '
             );
           }
+          
           // 为所有图片增加box
-          var $imgs = $(this).find(".journal-label img");
+          var $imgs = that.find(".journal-label img:not('.avatar')");
           $imgs.each(function () {
             if (!$(this).hasClass("journal-img")) {
               $(this)
@@ -799,19 +802,42 @@ var LIlGGAttachContext = {
                 );
             }
           });
+
+          // 为说说评论增加额外 class
+          var comment = that.find("halo-comment");
+          if (comment.length > 0) {
+            var $comment = $(comment[0].shadowRoot.getElementById("halo-comment"));
+            if (!$comment.hasClass("journal")) {
+              $comment.addClass("journal");
+            }
+
+            // 如果是黑夜模式，还需要额外添加黑夜模式 class
+            if ($("body").hasClass("dark") && !$comment.hasClass("dark")) {
+              $comment.addClass("dark");
+            }
+          }
+          
+          // 说说评论展开/收起
+          that.find(".journal-label .comment-js").off("click").on("click", function () {
+            that.find(".journal-label .comment").toggle();
+          });
         });
       }
+
+      
     };
   },
   // 评论组件
   CMN: function () {
-    // 复制一个css副本
-    var commentStyle = $("#comment-style").clone();
-    commentStyle.attr("media", "all");
     var comments = $("halo-comment");
     for (var i = 0; i < comments.length; i++) {
+      // 复制一个css副本
+      var commentStyle = $("#comment-style").clone();
+      commentStyle.attr("media", "all");
       // 注入外部css
-      comments[i].shadowRoot.appendChild(commentStyle[0]);
+      if (!comments[i].shadowRoot.getElementById("comment-style")) {
+        comments[i].shadowRoot.appendChild(commentStyle[0]);
+      }
     }
   },
   // 渲染数学公式
@@ -1135,14 +1161,6 @@ var home = location.href,
 
     // 点击事件
     CE: function () {
-      // 显示&隐藏评论
-      // $('.comments-hidden').show();
-      // $('.comments-main').hide();
-      // $('.comments-hidden').click(function () {
-      //     $('.comments-main').slideDown(500);
-      //     $('.comments-hidden').hide();
-      // });
-
       // 归档页
       $(".archives").hide();
       $(".archives:first").show();
@@ -1260,6 +1278,8 @@ var home = location.href,
               .removeClass("loading")
               .text("加载更多...");
             LIlGGAttachContext.SS()();
+            // 注入评论 CSS
+            LIlGGAttachContext.CMN();
             // 加载完成不改变位置
             $(window).scrollTop(tempScrollTop);
             if (nextHref != undefined) {
