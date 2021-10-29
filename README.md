@@ -1,6 +1,6 @@
 <h1 align="center">Sakura<img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"></h1>
 <p align="center">
-  <a href="https://github.com/halo-dev/halo"><img alt="Halo version" src="https://img.shields.io/badge/halo-1.3.2%2B-brightgreen?style=for-the-badge" /></a>
+  <a href="https://github.com/halo-dev/halo"><img alt="Halo version" src="https://img.shields.io/badge/halo-1.4.3%2B-brightgreen?style=for-the-badge" /></a>
   <a href="https://github.com/LIlGG/halo-theme-sakura"><img alt="Build Status" src="https://img.shields.io/badge/build-positive-brightgreen?style=for-the-badge"></a>
   <a href="https://github.com/prettier/prettier"><img alt="Code Style: Prettier" src="https://img.shields.io/badge/release-1.3.2-blue?style=for-the-badge"></a>
   <a href="./LICENSE"><img alt="LICENSE MIT" src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge"></a>
