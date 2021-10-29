@@ -613,7 +613,7 @@ comment:
       label: 没有评论时显示的语句
       type: text
       default: "暂无评论"
-comment_custom_style:
+    comment_custom_style:
       name: comment_custom_style
       label: 自定义评论组件CSS样式
       type: textarea
@@ -1980,7 +1980,7 @@ plugin:
           label: 关闭
     live2d_switch:
       name: live2d_switch
-      label: 开启Live2D插件
+      label: 开启看板娘插件
       type: radio
       data-type: bool
       default: false
@@ -1995,6 +1995,7 @@ plugin:
       type: radio
       data-type: bool
       default: false
+      description: 数学公式还需要在文章元数据中填写 【K：math, V：true】 才能开启
       options:
         - value: true
           label: 开启
