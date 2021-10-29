@@ -15,7 +15,7 @@
 
 	<@global.head />
 	<link rel='stylesheet' href='${theme_base!}/styles/style.min.css?ver=1.3.1' type='text/css' media='all'>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="noexist" onload="this.media='all'">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC&display=swap" media="noexist" onload="this.media='all'">
 	<link rel="stylesheet" href="//at.alicdn.com/t/font_2010950_uq2c7ykeiyk.css" media="noexist" onload="this.media='all'">
 	<link rel="stylesheet" href="${res_base_url!}/source/css/lib.css" media="noexist" onload="this.media='all'">
 	<link rel='stylesheet' href="${res_base_url!}/source/css/highlight/highlight-${settings.code_pretty!'Default'}.css" type="text/css" media="noexist" onload="this.media='all'">
@@ -42,7 +42,7 @@
 		<#include "layouts/imgbox.ftl">
 		<!-- 背景视频 -->
 		<#if settings.bgvideo!false>
-			<#if settings.bgvideo_url?? && settings.bgvideo_url!= '' || settings.bgvideo_id?? && settings.bgvideo_id!= ''>
+			<#if settings.focus_height!true && settings.bgvideo_url?? && settings.bgvideo_url!= '' || settings.bgvideo_id?? && settings.bgvideo_id!= ''>
 			<#include "layouts/videobox.ftl">
 			</#if>
 		</#if>
