@@ -294,7 +294,7 @@
 <script type='text/javascript' src='${res_base_url!}/source/js/qrcode.min.js' defer></script>
 <script type='text/javascript' src='${res_base_url!}/source/lib/flv.min/index.js' defer></script>
 <script type='text/javascript' src='${res_base_url!}/script/i18n.min.js?ver=1.3.1' defer></script>
-<script type='text/javascript' src='${theme_base!}/script/app.min.js?ver=1.3.1'></script>
+<script type='text/javascript' src='${theme_base!}/script/app.min.js?ver=1.3.2'></script>
 <#nested />
 <#if settings.live2d_switch!true>
 <script src="${res_base_url!}/source/lib/jquery-ui/jquery-ui.min.js" async defer></script>
