@@ -243,21 +243,21 @@
 	/* ]]> */
 </script>
 <script type='text/javascript' src='${res_base_url!}/script/utils.min.js?ver=1.3.1'></script>
-<script type="text/javascript" src="${res_base_url!}/source/lib/lazysizes/lazysizes.min.js"></script>
+<script type="text/javascript" src="${res_base_url!}/source/lib/lazysizes/lazysizes.min.js" async></script>
 <script type="text/javascript" src="${res_base_url!}/source/js/lib.js"></script>
 <!-- 相册 -->
 <#if settings.photos_style == "justify">
-<script src="${res_base_url!}/source/lib/justifiedGallery/jquery.justifiedGallery.min.js"></script>
+<script src="${res_base_url!}/source/lib/justifiedGallery/jquery.justifiedGallery.min.js" async></script>
 <#elseif settings.photos_style == "masonry" || settings.photos_style == "packery">
-<script src="${res_base_url!}/source/lib/isotope.pkgd.min/index.js"></script>
-<script src="${res_base_url!}/source/lib/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="${res_base_url!}/source/lib/isotope.pkgd.min/index.js" async></script>
+<script src="${res_base_url!}/source/lib/imagesloaded/imagesloaded.pkgd.min.js" defer></script>
 <#if settings.photos_style == "packery">
-<script type='text/javascript' src='${res_base_url!}/source/lib/packery-mode.pkgd.min/index.js'></script>
+<script type='text/javascript' src='${res_base_url!}/source/lib/packery-mode.pkgd.min/index.js' async></script>
 </#if>
 </#if>
-<script type="text/javascript" src="${res_base_url!}/source/js/highlight/highlight.pack.js"></script>
+<script type="text/javascript" src="${res_base_url!}/source/js/highlight/highlight.pack.js" defer></script>
 <#if settings.code_line!true>
-	<script type="text/javascript" src="${res_base_url!}/source/js/highlight/highlightjs-line-numbers.min.js"></script>
+	<script type="text/javascript" src="${res_base_url!}/source/js/highlight/highlightjs-line-numbers.min.js" defer></script>
 </#if>
 <#if settings.is_aplayer!false>
 	<script src="${res_base_url!}/source/lib/APlayer/APlayer.min.js" defer></script>
