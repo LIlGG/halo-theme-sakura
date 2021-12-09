@@ -3,7 +3,7 @@
 -->
 <#include "header.ftl">
 <#include "comments.ftl">
-<@header title="${options.journals_title?default('日志')} - ${blog_title!}">
+<@header title="${settings.journals_title?default('日志')} - ${blog_title!}">
     <#if (settings.patternimg!true) && (settings.journals_patternimg?? && settings.journals_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!='')>
         <div class="pattern-center-blank"></div>
         <div class="pattern-center">
@@ -23,8 +23,8 @@
                 </#if>
             </div>
             <header class="pattern-header">
-                <#if options.journals_title?default("")?trim?length gt 1>
-                <h1 class="entry-title">${options.journals_title}</h1>
+                <#if settings.journals_title?default("")?trim?length gt 1>
+                <h1 class="entry-title">${settings.journals_title}</h1>
                 <#else>
                 <h1 class="entry-title i18n" data-iname="page.journal.title"></h1>
                 </#if>
@@ -33,8 +33,8 @@
     <#else>
         <div class="blank"></div>
         <header class="entry-header">
-              <#if options.journals_title?default("")?trim?length gt 1>
-              <h1 class="entry-title">${options.journals_title}</h1>
+              <#if settings.journals_title?default("")?trim?length gt 1>
+              <h1 class="entry-title">${settings.journals_title}</h1>
               <#else>
               <h1 class="entry-title i18n" data-iname="page.journal.title"></h1>
               </#if>

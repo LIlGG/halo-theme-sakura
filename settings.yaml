@@ -660,6 +660,11 @@ tagAndCategory:
 journal:
   label: 日志页
   items:
+    journals_title:
+      name: journals_title
+      label: 日志页面标题
+      type: text
+      default: 日志
     journal_color_bg_1:
       name: journal_color_bg_1
       label: 日志背景颜色1&按钮颜色1
