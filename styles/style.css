@@ -7945,6 +7945,12 @@ td.hljs-ln-numbers {
 	overflow: hidden
 }
 
+/* 解决 journals 中，代码块 fixed 定位相对于父 DOM 而不是视窗的 BUG */
+.code-block-fullscreen-html-scroll .journal-label {
+	z-index: auto !important;
+	transform: none !important;
+}
+
 .chinese-font {
 	font-family: 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif
 }
@@ -8871,7 +8877,6 @@ em {
 	cursor: pointer;
 	transition: all 1s;
 	z-index: 2;
-	width: 20%;
 }
 
 .journal-label img:hover {
