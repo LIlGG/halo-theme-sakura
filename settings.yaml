@@ -1774,6 +1774,11 @@ additional:
         - value: false
           label: 关闭
       description: 由于浏览器限制，此功能可能无法生效！（也建议不要开启，会产生噪音，影响用户体验）
+    aplayer_volume:
+      name: aplayer_volume
+      label: 默认音量
+      type: number
+      default: 0.7  
     aplayer_order:
       name: aplayer_order
       label: 循环顺序
