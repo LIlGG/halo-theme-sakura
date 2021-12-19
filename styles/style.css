@@ -2367,17 +2367,17 @@ h1.page-title.mb- {
 	height: 82px
 }
 
-.post-lincenses {
+.post-license {
 	text-align: center;
 	padding-bottom: 5px;
 	font-size: 14px
 }
 
-.post-lincenses a:hover {
+.post-license a:hover {
 	color: #888
 }
 
-.post-lincenses a {
+.post-license a {
 	color: #b3b3b3
 }
 

@@ -36,7 +36,7 @@
     </div>
     </#if>
     <footer class="post-footer">
-        <div class="post-lincenses">
+        <div class="post-license">
             <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow">
                 <i class="fa fa-creative-commons" aria-hidden="true"></i>
                 <span class="i18n" data-iname="post.creative_commons"></span>
