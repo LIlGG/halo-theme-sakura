@@ -55,6 +55,7 @@
 		</div>
 	</#if>
 	<div id="page" class="site wrapper">
+		<#include "inc/pjax_decorate.ftl">
 		<header class="site-header  <#if (is_index)!false == true>is-homepage</#if>" role="banner">
 			<div class="site-top">
 				<div class="site-branding">
