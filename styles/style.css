@@ -8879,10 +8879,6 @@ em {
 	z-index: 2;
 }
 
-.journal-label img:hover {
-	transform: scale(3.5);
-}
-
 .journal-label .comment-js {
 	cursor: pointer;
 }
