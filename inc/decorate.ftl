@@ -1,4 +1,4 @@
-<!-- 全局公共样式 -->
+<#-- 全局公共样式 -->
 <@compress single_line=true>
 <style type="text/css">
     <#if settings.shownav!false>

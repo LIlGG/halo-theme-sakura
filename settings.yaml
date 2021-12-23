@@ -470,6 +470,17 @@ post:
           label: 开启
         - value: false
           label: 关闭
+    post_line_indent:
+      name: post_line_indent
+      label: 文章首行缩进
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
     toc_depth:
       name: toc_depth
       label: 目录标题展开级别
@@ -1499,17 +1510,6 @@ live2d:
     live2d_canTurnToHomePage:
       name: live2d_canTurnToHomePage
       label: 返回首页 按钮
-      type: radio
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 显示
-        - value: false
-          label: 隐藏
-    live2d_canTurnToAboutPage:
-      name: live2d_canTurnToAboutPage
-      label: 跳转关于页 按钮
       type: radio
       data-type: bool
       default: true
