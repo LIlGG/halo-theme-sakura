@@ -21,15 +21,16 @@
 <!-- 定义可变属性，会根据页面的改变而变化 -->
 <script type='text/javascript'>
 	/* <![CDATA[ */
-    var PageAttr = {
-        "metas": {
+    var PageAttr = {
+	"metas": {
 			<#if metas??>
 				<#list metas?keys as key>
 					"${key}": "${metas['${key}']}",
 				</#list>
 			</#if>
-        },
-    }
+		},
+		"isPost": "${(is_post!false)?string('true','false')}"
+	}
 	/* ]]> */
 </script>
 </div><!-- #page Pjax container-->

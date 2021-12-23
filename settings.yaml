@@ -437,6 +437,17 @@ focus:
 post:
   label: 文章页
   items:
+    post_auto_collapse:
+      name: post_auto_collapse
+      label: 文章页导航栏自动收起
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
     post_share:
       name: post_share
       label: 文章分享
