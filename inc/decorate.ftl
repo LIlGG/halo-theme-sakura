@@ -145,6 +145,14 @@
         color: ${settings.theme_skin!}
     }
 
+    blockquote:before {
+        color: ${settings.theme_skin!};
+    }
+
+    blockquote:after {
+        color: ${settings.theme_skin!};
+    }
+
     @media (max-width: 860px) {
         #mo-nav ul li a:hover {
             color: ${settings.theme_skin!};
