@@ -7696,6 +7696,45 @@ a.toc-link {
 	transform: translateX(0)
 }
 
+.minicode {
+	margin: 20px 0;
+	padding: 15px 15px 15px 40px;
+	position: relative;
+	box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+	border-radius: 5px;
+}
+
+.minicode i {
+	padding-right: 20px;
+}
+
+.minicode a {
+	padding: 5px;
+}
+
+.buy {
+	background: #9dd7e8;
+	color: #03536b;
+	text-indent: 0;
+}
+
+.warning {
+	background: #ffea97;
+	color: #9f6f26;
+	text-indent: 0;
+}
+
+.noway {
+	background: #efcec9;
+	color: #820b0b;
+	text-indent: 0;
+}
+
+.task {
+	background: #e7e7e7;
+	color: #333;
+}
+
 .highlight-wrap:before {
 	content: " ";
 	position: absolute;
