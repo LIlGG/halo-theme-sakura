@@ -14,7 +14,7 @@
   	<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 
 	<@global.head />
-	<link rel='stylesheet' href='${theme_base!}/styles/style.min.css?ver=1.3.2' type='text/css' media='all'>
+	<link rel='stylesheet' href='${theme_base!}/styles/style.min.css?ver=1.3.3' type='text/css' media='all'>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC&display=swap" media="noexist" onload="this.media='all'">
 	<link rel="stylesheet" href="//at.alicdn.com/t/font_2010950_uq2c7ykeiyk.css" media="noexist" onload="this.media='all'">
 	<link rel="stylesheet" href="${res_base_url!}/source/css/lib.css" media="noexist" onload="this.media='all'">

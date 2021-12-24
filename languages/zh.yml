@@ -18,6 +18,8 @@ postlist:
   comments: '%s 条评论'
 
 post:
+  time: 发布于 %s
+  edit_time: 最后编辑于 %s
   prev: Previous Post
   next: Next Post
   visits: '%s 次阅读'

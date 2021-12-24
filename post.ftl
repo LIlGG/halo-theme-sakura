@@ -32,7 +32,9 @@
                     <span>
                         <a href="${blog_url!}">${user.nickname!}</a>
                     </span>
-                    <span class="bull">·</span>${post.createTime?string('yyyy-MM-dd')}
+                    <#assign format="${settings.post_time_display_type!'yyyy-MM-dd'}">
+                    <span class="bull">·</span><span class="i18n" data-iname="post.time" data-ivalue="${post.createTime?string(format)}"></span>
+                    <span class="bull">·</span><span class="i18n" data-iname="post.edit_time" data-ivalue="${post.editTime?string(format)}"></span>
                     <span class="bull">·</span><span class="i18n" data-iname="post.visits" data-ivalue="${post.visits!0}"></span>
                 </p>
             </header>

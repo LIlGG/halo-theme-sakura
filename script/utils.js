@@ -5,7 +5,7 @@
  * @version 1.0
  */
 var Util = {
-    _version: '1.3.1',
+    _version: '1.3.3',
     /**
     * 获取当前浏览器语言
     * 使用当前方法，只会得到语言前两个字符
@@ -272,6 +272,131 @@ var Util = {
 
         el.className = classes.join(" ").trim();
     },
+
+    /**
+     * 根据文章字数，计算预计阅读时间，单位 秒
+     * @param count 文章字数
+     * @param coefficient 文章难度系数，默认难度为 3，最小为 1，最大为 6。值越小代表越难以理解
+     */
+    caclEstimateReadTime: function (count, coefficient = 3) {
+        // 默认阅读速度 200 字每分钟
+        const defaultSpeed = 400;
+        coefficient = Math.min(6, Math.max(1, coefficient));
+        // 每降低一个难度，就提升每分钟 100 的阅读速度。
+        var speed = defaultSpeed + (coefficient - 1) * 100;
+        // 根据字数计算所需秒数
+        // 将分钟转化为对应的时间
+        return Math.ceil((count / speed) * 60);
+    },
+
+    /**
+     * 将秒转换为时间串。最大值为天
+     * 例如：
+     * 10 -> 10 秒
+     * 60 -> 1 分钟
+     * 3600 -> 1 小时
+     * 3600 * 24 -> 1 天
+     * @param s 秒
+     */
+    minuteToTimeString: function (s) {
+        var timeStr = "";
+        var day = Math.floor(s / 3600 / 24);
+        if (day !== 0) {
+            timeStr = timeStr + day + " 天 ";
+        }
+
+        var hours = Math.floor(s / 3600 % 24);
+        if (day !== 0 || hours !== 0) {
+            timeStr = timeStr + hours + " 小时 ";
+        }
+
+        var points = Math.floor(s / 60 % 60);
+        if (hours !== 0 || points !== 0) {
+            timeStr = timeStr + points + " 分钟 ";
+        }
+
+        var seconds = Math.floor(s % 60);
+        if (points !== 0 || seconds !== 0) {
+            timeStr = timeStr + seconds + " 秒";
+        }
+
+        return timeStr;
+    },
+
+    /**
+     * 将时间转化为距目前多长时间的格式
+     * @param time 时间字符戳
+     * @returns {string|*} 距离时间格式的字符串形式
+     */
+    timeAgo: function (time) {
+        var currentTime = new Date().getTime();
+        var between = currentTime - time;
+        var days = Math.floor(between / (24 * 3600 * 1000));
+        if (days === 0) {
+            var leave1 = between % (24 * 3600 * 1000);
+            var hours = Math.floor(leave1 / (3600 * 1000));
+            if (hours === 0) {
+                var leave2 = leave1 % (3600 * 1000);
+                var minutes = Math.floor(leave2 / (60 * 1000));
+                if (minutes === 0) {
+                    var leave3 = leave2 % (60 * 1000);
+                    var seconds = Math.round(leave3 / 1000);
+                    return seconds + ' 秒前';
+                }
+                return minutes + ' 分钟前';
+            }
+            return hours + ' 小时前';
+        }
+        if (days < 0) {
+            return '刚刚';
+        }
+        if (days < 30) {
+            return days + ' 天前';
+        }
+        var years = Math.floor(days / (30 * 12));
+        if (years === 0) {
+            var months = Math.floor(days / 30);
+            return months + ' 月前';
+        }
+
+        return years + ' 年前';
+    },
+
+    /**
+     * 格式化时间
+     * @param date 需要格式化的时间
+     * @param fmt 格式化文本
+     * @returns {*} 格式化后的时间串
+     */
+    formatDate: function (date, fmt) {
+        date = new Date(date);
+        if (/(y+)/.test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+        }
+        let o = {
+            'M+': date.getMonth() + 1,
+            'd+': date.getDate(),
+            'h+': date.getHours(),
+            'm+': date.getMinutes(),
+            's+': date.getSeconds()
+        };
+        for (let k in o) {
+            if (new RegExp(`(${k})`).test(fmt)) {
+                let str = o[k] + '';
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : Util.padLeftZero(str));
+            }
+        }
+        return fmt;
+    },
+
+    /**
+     * 补位
+     * @param str
+     * @returns {string}
+     */
+    padLeftZero: function (str) {
+        return ('00' + str).substr(str.length);
+    }
 }
 
 

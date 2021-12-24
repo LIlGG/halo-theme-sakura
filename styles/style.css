@@ -7712,6 +7712,143 @@ a.toc-link {
 	padding: 5px;
 }
 
+.content_toast {
+	padding: 7px 7px 7px 15px;
+	margin: 10px 0;
+	height: 36px;
+	word-break:keep-all;
+	white-space:nowrap;
+	overflow:hidden;
+	-webkit-animation: content_toast .5s;
+	        animation: content_toast .5s;
+	-webkit-animation-fill-mode: forwards;
+	        animation-fill-mode: forwards;
+	-webkit-animation-direction: alternate;
+	        animation-direction: alternate;
+}
+
+.content_toast:hover {
+	-webkit-animation: content_toast_hover .5s;
+	        animation: content_toast_hover .5s;
+	-webkit-animation-fill-mode: forwards;
+	        animation-fill-mode: forwards;
+	-webkit-animation-direction: alternate;
+	        animation-direction: alternate;
+}
+
+@-webkit-keyframes content_toast_hover {
+	from {
+		transform: scale(1);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+
+	to {
+		transform: scale(1.01);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+}
+
+@keyframes content_toast_hover {
+	from {
+		transform: scale(1);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+
+	to {
+		transform: scale(1.01);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+}
+
+@-webkit-keyframes content_toast {
+	from {
+		transform: scale(1.01);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+
+	to {
+		transform: scale(1);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+}
+
+@keyframes content_toast {
+	from {
+		transform: scale(1.01);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+
+	to {
+		transform: scale(1);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+}
+
+.content_toast i {
+	float: right;
+	line-height: inherit;
+	cursor: pointer;
+}
+
+.content_toast.hide {
+	-webkit-animation: hide .5s linear forwards;
+	        animation: hide .5s linear forwards;
+}
+
+@-webkit-keyframes hide {
+	0% {
+		height: 36px;
+		width: 100%;
+		opacity: 1;
+	}
+
+	100% {
+		height: 0;
+		width: 0;
+		opacity: 0;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+	}
+}
+
+@keyframes hide {
+	0% {
+		height: 36px;
+		width: 100%;
+		opacity: 1;
+	}
+
+	100% {
+		height: 0;
+		width: 0;
+		opacity: 0;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+	}
+}
+
+.word_count {
+	margin: 0
+}
+
 .buy {
 	background: #9dd7e8;
 	color: #03536b;

@@ -29,6 +29,7 @@ var LIlGGAttachContext = {
 
     Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
     LIlGGAttachContext.MINI_CODE(); // 迷你代码块
+    PageAttr.isPost === "true" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
     Poi.mathjax && !!PageAttr.metas.math && PageAttr.metas.math == "true" && LIlGGAttachContext.MATHJAX(); // 数学公式
     LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.PHO(); // 图库功能
@@ -944,7 +945,7 @@ var LIlGGAttachContext = {
       return createToast("warning", text.match(reg)[0]);
     })
 
-    contentDom.innerHTML = content;
+    $(contentDom).replaceWith(content);
 
     function createToast(type, msg) {
       var icon = "";
@@ -965,12 +966,93 @@ var LIlGGAttachContext = {
           break;
       }
       if (icon === '') {
-        return '<div class="' + type + ' minicode>' + msg + '</div>';
+        return `<div class="${ type } minicode">${ msg }</div>`;
       }
 
-      return '<div class="' + type + ' minicode"><i class="' + icon + '"></i>' + msg + '</div>';
+      return `<div class="${ type } minicode"><i class="${ icon }" aria-hidden="true"></i>${ msg }</div>`;
     }
   },
+
+  // 内容处理
+  POST_CONTEXT: function() {
+    const normal = "rgba(167, 210, 226, 1)";
+    const medium = "rgba(255, 197, 160, 1)";
+    const difficulty = "rgba(239, 206, 201, 1)";
+
+    var msg, div, remind;
+    var contentDom = document.getElementsByClassName("entry-content")[0];
+
+    if (Poi.isPostWordCountToast === "true") {
+      var coefficient = 3;
+      if (!!PageAttr.metas.level) {
+        coefficient = Number(PageAttr.metas.level);
+      }
+
+      if (!!PageAttr.postWordCount) {
+        var color = "";
+        var oldWordCount = PageAttr.postWordCount;
+        var wordCount = Number(PageAttr.postWordCount.replaceAll(",", ""));
+        var seconds = Util.caclEstimateReadTime(wordCount, coefficient);
+        var timeStr = Util.minuteToTimeString(seconds);
+        // 时间段为 x 0<=10<=30<=+∞ 分钟
+        if (seconds <= (60 * 10)) {
+          remind = Poi.postWordCountToastNormal || "文章篇幅适中，可以放心阅读。";
+          color = normal;
+        } else if (seconds <= (60 * 30) && seconds > (60 * 10)) {
+          remind = Poi.postWordCountToastMedium || "文章比较长，建议分段阅读。"
+          color = medium;
+        } else {
+          remind = Poi.postWordCountToastDifficulty || "文章内容很长，提前准备好咖啡!!!"
+          color = difficulty;
+        }
+
+        msg = `文章共 <b>${oldWordCount}</b> 字，全部阅读完预计需要 <b>${timeStr}</b>。 ${remind}`;
+        div = buildToastDiv("word_count", color, msg);
+
+        contentDom.insertAdjacentHTML("afterbegin", div);
+      }
+    }
+
+    if (Poi.isPostEditTimeToast === "true") {
+        // 获取上次至今的时间差
+        var editTime = new Date(PageAttr.postEditTime);
+        if (!isNaN(editTime.getTime())) {
+            var time = new Date().getTime() - editTime.getTime();
+            var sinceLastTime = Util.timeAgo(editTime.getTime());
+            // 时间段为 x 0<=1<=3<=+∞ 月
+            if (time <= (1000 * 60 * 60 * 24 * 30)) {
+              remind = Poi.postEditTimeToastNormal || "近期有所更新，请放心阅读！";
+              color = normal;
+            } else if (time > (1000 * 60 * 60 * 24 * 30) && time <= (1000 * 60 * 60 * 24 * 90)) {
+              remind = Poi.postEditTimeToastMedium || "文章距上次编辑时间较远，部分内容可能已经过时！";
+              color = medium;
+            } else {
+              remind = Poi.postEditTimeToastDifficulty || "文章内容已经很陈旧了，也许不再适用！";
+              color = difficulty;
+            }
+
+          msg = `文章内容上次编辑时间于 <b>${sinceLastTime}</b>。 ${remind}`;
+          div = buildToastDiv("last_time", color, msg);
+
+          contentDom.insertAdjacentHTML("afterbegin", div);
+        }
+    }
+
+    var contentToast = contentDom.getElementsByClassName("content_toast");
+    Array.prototype.forEach.call(contentToast, (content) => {
+      var i = content.getElementsByTagName("i")[0];
+      i.onclick = function () {
+        content.classList.toggle('hide');
+      }
+    })
+
+    function buildToastDiv(type, color, msg) {
+      return `<div class="${ type } content_toast minicode" style="background-color: ${ color }">
+                ${ msg }
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </div>`
+    }
+  }
 };
 
 /**
@@ -1417,6 +1499,7 @@ $(function () {
   (Poi.headFocus && Poi.bgvideo) && LIlGGAttachContext.BGV(); // 背景视频
   Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
   LIlGGAttachContext.MINI_CODE(); // 迷你代码块
+  PageAttr.isPost === "true" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
   Poi.mathjax && !!PageAttr.metas.math && PageAttr.metas.math === "true" && LIlGGAttachContext.MATHJAX(); // 数学公式
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部

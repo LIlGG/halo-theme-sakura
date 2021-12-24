@@ -9,7 +9,7 @@
  * @package Akina
  */
 -->
-<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.1", theme_base)/>
+<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.3", theme_base)/>
 <#macro footer>
 </div><!-- #content -->
 <#include "comments.ftl">
@@ -22,14 +22,18 @@
 <script type='text/javascript'>
 	/* <![CDATA[ */
     var PageAttr = {
-	"metas": {
+		"metas": {
 			<#if metas??>
 				<#list metas?keys as key>
 					"${key}": "${metas['${key}']}",
 				</#list>
 			</#if>
 		},
-		"isPost": "${(is_post!false)?string('true','false')}"
+		"isPost": "${(is_post!false)?string('true','false')}",
+		<#if is_post??>
+		"postWordCount": "${post.wordCount!0}",
+		"postEditTime": "${post.editTime?string('yyyy-MM-dd HH:mm:ss')}"
+		</#if>
 	}
 	/* ]]> */
 </script>
@@ -42,12 +46,12 @@
 			<@global.footer />
 		</div>
 		<div class="footer-device">
-			<!-- 请尊重作者，请务必保留版权 -->
+			<#-- 请尊重作者，务必保留版权! -->
 			<p style="font-family: 'Ubuntu', sans-serif;">
 				<span>Powered 
  					<i class="fa fa-vimeo animated" style="color: #e74c3c;"></i> 
 					by 
-					<a rel="me" target="_blank"  href="http://halo.run" title="一个优秀的开源博客发布应用" style="text-decoration:none;">Halo</a>
+					<a rel="me" target="_blank"  href="http://halo.run" title="一款优秀的开源博客内容发布系统" style="text-decoration:none;">Halo</a>
 				</span>
 				 •
 				<span>Crafted with
@@ -221,7 +225,15 @@
 		"coverOpen": "${(settings.rimage_cover_back_open!false)?string('true','')}",
 		"meEmail": "${(settings.email)!''}",
 		"defaultTheme": "${(settings.default_theme)!'bg_0'}",
-		"defaultGroup": "${(settings.default_group)?replace(' ', '-')}"
+		"defaultGroup": "${(settings.default_group)?replace(' ', '-')}",
+		"isPostWordCountToast": "${(settings.post_word_count_toast!true)?string('true','')}",
+		"isPostEditTimeToast": "${(settings.post_edit_time_toast!true)?string('true','')}",
+		"postWordCountToastNormal": "${(settings.post_word_count_toast_normal)!''}",
+		"postWordCountToastMedium": "${(settings.post_word_count_toast_medium)!''}",
+		"postWordCountToastDifficulty": "${(settings.post_word_count_toast_difficulty)!''}",
+		"postEditTimeToastNormal": "${(settings.post_edit_time_toast_normal)!''}",
+		"postEditTimeToastMedium": "${(settings.post_edit_time_toast_medium)!''}",
+		"postEditTimeToastDifficulty": "${(settings.post_edit_time_toast_difficulty)!''}",
 	};
 	var bgConfig = {
 	<#list 0..7 as i>
@@ -243,7 +255,7 @@
 	};
 	/* ]]> */
 </script>
-<script type='text/javascript' src='${res_base_url!}/script/utils.min.js?ver=1.3.1'></script>
+<script type='text/javascript' src='${res_base_url!}/script/utils.min.js?ver=1.3.3'></script>
 <script type="text/javascript" src="${res_base_url!}/source/lib/lazysizes/lazysizes.min.js" async></script>
 <script type="text/javascript" src="${res_base_url!}/source/js/lib.js"></script>
 <!-- 相册 -->
@@ -294,8 +306,8 @@
 </#if>
 <script type='text/javascript' src='${res_base_url!}/source/js/qrcode.min.js' defer></script>
 <script type='text/javascript' src='${res_base_url!}/source/lib/flv.min/index.js' defer></script>
-<script type='text/javascript' src='${res_base_url!}/script/i18n.min.js?ver=1.3.1' defer></script>
-<script type='text/javascript' src='${theme_base!}/script/app.min.js?ver=1.3.2'></script>
+<script type='text/javascript' src='${res_base_url!}/script/i18n.min.js?ver=1.3.3' defer></script>
+<script type='text/javascript' src='${theme_base!}/script/app.min.js?ver=1.3.3'></script>
 <#nested />
 <#if settings.live2d_switch!true>
 <script src="${res_base_url!}/source/lib/jquery-ui/jquery-ui.min.js" async defer></script>
