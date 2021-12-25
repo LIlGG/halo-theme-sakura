@@ -53,6 +53,8 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 相册
 - [x] 说说
 - [x] 国际化
+- [x] 更新时间提醒
+- [x] 自定义轻代码块
 
 
 > Tip:
