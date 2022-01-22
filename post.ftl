@@ -5,7 +5,7 @@
 <@header title="${post.title!} - ${blog_title!}">
     <#if (settings.patternimg!true) && (post.thumbnail?? && post.thumbnail!='') || ((metas.ri?boolean)!true && settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!='')>
         <div class="pattern-center-blank"></div>
-        <div class="pattern-center single-center">
+        <div class="pattern-center single-center no-select">
             <div class="pattern-attachment-img">
                 <#if (settings.patternimg!true) && (post.thumbnail?? && post.thumbnail!='')>
                 <img class="lazyload" data-src="${post.thumbnail!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this)">

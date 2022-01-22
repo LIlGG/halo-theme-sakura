@@ -4378,7 +4378,8 @@ i.iconfont.down {
 	color: orange
 }
 
-#pagination .loading {
+#pagination .loading,
+#journals-pagination .loading {
 	background-position: center;
 	background-repeat: no-repeat;
 	color: #555;
@@ -4386,10 +4387,20 @@ i.iconfont.down {
 	background-size: auto 100%
 }
 
-#pagination .loading:hover {
+#pagination .loading,
+#journals-pagination .loading {
 	border: none;
 	-o-box-shadow: none;
 	box-shadow: none
+}
+
+.at_button.loading {
+	background-color: inherit;
+	padding: 25px;
+}
+
+.at_button.loading:hover {
+	background: inherit;
 }
 
 #pagination.pagination-archive {
@@ -9005,8 +9016,13 @@ ul.journals-line {
 	font-size: 12px;
 }
 
-.journal-time .icon-dz {
+.journal-time > .journal-like {
 	cursor: pointer;
+}
+
+.journal-time > .journal-like:hover,
+.journal-time > .journal-like.on {
+	color: #00a1d6;
 }
 
 /** button */
@@ -9409,4 +9425,5 @@ h1.main-title {
 .blur-up.lazyloaded {
 	filter: blur(0);
 }
+
 /*# sourceMappingURL=style.css.map */

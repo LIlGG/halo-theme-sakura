@@ -212,7 +212,7 @@ mainScreen:
         - value: true
           label: 开启
         - value: false
-          label: 关闭  
+          label: 关闭
     bgvideo_url:
       name: bgvideo_url
       label: 视频链接（优先播放视频链接）
@@ -501,7 +501,7 @@ post:
       name: post_word_count_toast_medium
       label: 阅读时间略长提示语
       type: text
-      default: "文章内容较长，提前准备好咖啡!!!"
+      default: "文章内容较长，请提前准备好咖啡!!!"
     post_word_count_toast_difficulty:
       name: post_word_count_toast_difficulty
       label: 阅读时间超长提示语
@@ -790,30 +790,28 @@ journal:
         - value: false
           label: 关闭
       description: '只针对于使用图片作为日志背景的情况下'
-    # journal_likes:
-    #   name: journal_likes
-    #   label: 日志点赞
-    #   type: radio
-    #   data-type: bool
-    #   default: false
-    #   options:
-    #     - value: true
-    #       label: 开启
-    #     - value: false
-    #       label: 关闭
-    #   description: '由于接口问题，目前该功能还不能使用'
-    # journal_comment:
-    #   name: journal_comment
-    #   label: 日志评论
-    #   type: radio
-    #   data-type: bool
-    #   default: false
-    #   options:
-    #     - value: true
-    #       label: 开启
-    #     - value: false
-    #       label: 关闭
-    #   description: '需要评论模块支持，之后增加' 
+    journal_likes:
+      name: journal_likes
+      label: 日志点赞
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    journal_comment:
+      name: journal_comment
+      label: 日志评论
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
 photos:
   label: 相册页
   items:
@@ -1077,7 +1075,7 @@ theme:
       name: dark_imgbri
       label: 黑夜模式图像亮度
       type: number
-      default: 0.7  
+      default: 0.7
     dark_widget_tmd:
       name: dark_widget_tmd
       label: 黑夜模式控件透明度
@@ -2013,7 +2011,7 @@ others:
       label: 公安联网备案号
       type: text
       default: ""
-      description: "应与公安备案信息内的编号一致"   
+      description: "应与公安备案信息内的编号一致"
     head_notice:
       name: head_notice
       label: 开启公告

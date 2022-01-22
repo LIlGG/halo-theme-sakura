@@ -13,16 +13,16 @@
 	<div class="focusinfo">
 		<#if settings.focus_tou == "avatar">
 			<#if user.avatar??>
-			<div class="header-tou"><a href="${blog_url!}" ><img src="${user.avatar!}"></a></div>
+			<div class="header-tou no-select"><a href="${blog_url!}" ><img src="${user.avatar!}"></a></div>
 			<#else>
-			<div class="header-tou" ><a href="${blog_url!}"><img src="${res_base_url!}/source/images/avatar.jpg"></a></div>
+			<div class="header-tou no-select" ><a href="${blog_url!}"><img src="${res_base_url!}/source/images/avatar.jpg"></a></div>
 			</#if>
 		<#elseif settings.focus_tou == "glitch-text">
 			<#if settings.glitch_text??>
 			<h1 class="center-text glitch" data-text="${settings.glitch_text}">${settings.glitch_text}</h1>
 			</#if>
 		</#if>
-		<div class="header-info
+		<div class="header-info no-select
 			<#if user.description?default("")?trim?length gt 1>
 			 info-desc"><p><i class="fa fa-quote-left"></i>${user.description}<i class="fa fa-quote-right"></i></p>
 			<#else>
@@ -152,7 +152,7 @@
 					</a>
 				</li>
 			</#if>
-				
+
 			<#if settings.customize_link?? && settings.customize_icon?? && settings.customize_title??>
 				<li>
 					<a href="${settings.customize_link!}" target="_blank" title="${settings.customize_title!}">
@@ -160,7 +160,7 @@
 					</a>
 				</li>
 			</#if>
-		
+
 				<li id="bg-next">
             		<img src="${res_base_url!}/source/images/next-b.svg">
           		</li>

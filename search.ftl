@@ -4,13 +4,12 @@
 <#include "header.ftl">
 <@header title="${keyword!} - 搜索结果 - ${blog_title!}">
 	<#if (settings.patternimg!true) && (settings.searh_patternimg?? && settings.searh_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!='')>
-		<div class="pattern-center">
+		<div class="pattern-center no-select">
 			<div class="pattern-attachment-img">
 				<#if (settings.patternimg!true) && (settings.searh_patternimg?? && settings.searh_patternimg!='')>
                 <img data-src="${settings.searh_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload" onerror="imgError(this)">
                 <#else>
-					<img
-                        src="${settings.rimage_url!}?serach=serach&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"
+					<img src="${settings.rimage_url!}?serach=serach&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"
                         srcset="<#if settings.rimage_cover_lqip == 'loading'>${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg<#else>${settings.rimage_url!}?serach=serach&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=150</#if>"
                         data-srcset="${settings.rimage_url!}?serach=serach&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=640 640w,
                             ${settings.rimage_url!}?serach=serach&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=960 960w,

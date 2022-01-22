@@ -34,6 +34,7 @@ var LIlGGAttachContext = {
     LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.PHO(); // 图库功能
     LIlGGAttachContext.CMN(); // 评论组件
+    LIlGGAttachContext.SS(); // 日志功能
     // i18n
     I18N.init();
   },
@@ -754,58 +755,38 @@ var LIlGGAttachContext = {
   },
   // 日志
   SS: function () {
-    /**
-     * 根据日期时间，获取对应的图标
-     * @param {*} time
-     */
-    var getTimeIcon = function (time) {
-      var ICON_DAY = "kaiqitaiyangguangshezhi",
-        ICON_MORN = "gengzaotubiao_tianqi-qingchen",
-        ICON_NIGHT = "yueliang";
-      var date = new Date(time);
-      var hours = date.getHours();
-      if (isNaN(hours)) {
-        return ICON_DAY;
-      }
-
-      if (5 <= hours && hours < 12) {
-        return ICON_MORN;
-      } else if (12 <= hours && hours < 18) {
-        return ICON_DAY;
-      } else {
-        return ICON_NIGHT;
-      }
-    };
-    
-    return function () {
-      if ($(".journal").length > 0) {
-        $(".journal").each(function () {
-          let that = $(this);
-          // 为日志设置时间图标
-          var $firstSpan =that.find(".journal-time>span").first();
-          if ($firstSpan.find("i").length == 0) {
-            $firstSpan.prepend(
+    if ($(".journal").length > 0) {
+      var journalIds = Util.getLocalStorage("journalIds") || [];
+      $(".journal").each(function () {
+        let that = $(this);
+        let idDoms = that.attr("id").split("-");
+        let jid = Number(idDoms[idDoms.length - 1]);
+        // 为日志设置时间图标
+        var $firstSpan =that.find(".journal-time>span").first();
+        if ($firstSpan.find("i").length == 0) {
+          $firstSpan.prepend(
               '<i class="iconfont icon-' +
               getTimeIcon($firstSpan.text()) +
               '"></i> '
-            );
-          }
-          
-          // 为所有图片增加box
-          var $imgs = that.find(".journal-label img:not('.avatar')");
-          $imgs.each(function () {
-            if (!$(this).hasClass("journal-img")) {
-              $(this)
+          );
+        }
+
+        // 为所有图片增加box
+        var $imgs = that.find(".journal-label img:not('.avatar')");
+        $imgs.each(function () {
+          if (!$(this).hasClass("journal-img")) {
+            $(this)
                 .addClass("journal-img")
                 .wrap(
-                  '<a data-fancybox="gallery" href="' +
-                  $(this).attr("src") +
-                  '">'
+                    '<a data-fancybox="gallery" href="' +
+                    $(this).attr("src") +
+                    '">'
                 );
-            }
-          });
+          }
+        });
 
-          // 为说说评论增加额外 class
+        // 为说说评论增加额外 class
+        if (Poi.journalComment) {
           var comment = that.find("halo-comment");
           if (comment.length > 0) {
             var $comment = $(comment[0].shadowRoot.getElementById("halo-comment"));
@@ -818,16 +799,48 @@ var LIlGGAttachContext = {
               $comment.addClass("dark");
             }
           }
-          
           // 说说评论展开/收起
           that.find(".journal-label .comment-js").off("click").on("click", function () {
             that.find(".journal-label .comment").toggle();
           });
-        });
-      }
-
-      
-    };
+        }
+        if (Poi.journalLikes) {
+          // 说说是否已经点赞
+          var $like = that.find(".journal-label .journal-like")
+          if ($like.length > 0) {
+            journalIds.includes(jid) ? $like.addClass("on") : "";
+            // 说说点赞
+            that.find(".journal-label .journal-like").off("click").on("click", function () {
+              // 目前仅能前端控制是否已经点赞
+              var $dom = $(this)
+              var links = $dom.data("links")
+              journalIds = Util.getLocalStorage("journalIds") || [];
+              var flag = journalIds.includes(jid);
+              if (flag) {
+                return;
+              }
+              $.ajax({
+                url: "/api/content/journals/" + jid + "/likes",
+                type: "post",
+                dataType: "json",
+                success(res) {
+                  if (res.status !== 200) {
+                    Log.e(res.message);
+                    return;
+                  }
+                  links++;
+                  journalIds.push(jid);
+                  $dom.addClass("on");
+                  Util.setLocalStorage("journalIds", journalIds, 60 * 60 * 24);
+                  $dom.children( ":last-child").text(links);
+                  $dom.data("links", links);
+                }
+              })
+            });
+          }
+        }
+      });
+    }
   },
   // 评论组件
   CMN: function () {
@@ -1061,6 +1074,29 @@ var LIlGGAttachContext = {
  */
 var imgError = function (ele) {
   ele.src = "https://cdn.lixingyong.com/2020/07/18/98fca04416944b282a558b98b2131879.png";
+};
+
+/**
+ * 根据日期时间，获取对应的图标
+ * @param {*} time
+ */
+var getTimeIcon = function (time) {
+  var ICON_DAY = "kaiqitaiyangguangshezhi",
+      ICON_MORN = "gengzaotubiao_tianqi-qingchen",
+      ICON_NIGHT = "yueliang";
+  var date = new Date(time);
+  var hours = date.getHours();
+  if (isNaN(hours)) {
+    return ICON_DAY;
+  }
+
+  if (5 <= hours && hours < 12) {
+    return ICON_MORN;
+  } else if (12 <= hours && hours < 18) {
+    return ICON_DAY;
+  } else {
+    return ICON_NIGHT;
+  }
 };
 
 /**
@@ -1298,8 +1334,6 @@ var home = location.href,
           colorLight: "#ffffff",
         });
       }
-      // 日志所需渲染方法
-      LIlGGAttachContext.SS()();
     },
 
     // 点击事件
@@ -1400,7 +1434,6 @@ var home = location.href,
             I18N.init();
           },
         });
-        
         return false;
       });
       /**
@@ -1420,7 +1453,7 @@ var home = location.href,
             $("#journals-pagination a")
               .removeClass("loading")
               .text("加载更多...");
-            LIlGGAttachContext.SS()();
+            LIlGGAttachContext.SS();
             // 注入评论 CSS
             LIlGGAttachContext.CMN();
             // 加载完成不改变位置
@@ -1505,6 +1538,7 @@ $(function () {
   LIlGGAttachContext.MGT(); // 移动端回到顶部
   (Poi.photosStyle == "packery") && supplement();
   LIlGGAttachContext.PHO(); // 图库功能
+  LIlGGAttachContext.SS(); // 日志功能
   // 复制提示
   Poi.copyMonitor && LIlGGAttachContext.CPY();
   // 评论组件

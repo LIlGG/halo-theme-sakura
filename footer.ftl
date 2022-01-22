@@ -48,15 +48,15 @@
 		<div class="footer-device">
 			<#-- 请尊重作者，务必保留版权! -->
 			<p style="font-family: 'Ubuntu', sans-serif;">
-				<span>Powered 
- 					<i class="fa fa-vimeo animated" style="color: #e74c3c;"></i> 
-					by 
+				<span>Powered
+ 					<i class="fa fa-vimeo animated" style="color: #e74c3c;"></i>
+					by
 					<a rel="me" target="_blank"  href="http://halo.run" title="一款优秀的开源博客内容发布系统" style="text-decoration:none;">Halo</a>
 				</span>
 				 •
 				<span>Crafted with
- 					<i class="fa fa-heart animated" style="color: #e74c3c;"></i> 
-					by 
+ 					<i class="fa fa-heart animated" style="color: #e74c3c;"></i>
+					by
 					<a rel="me" target="_blank" href="https://github.com/LIlGG/halo-theme-sakura" style="text-decoration:none;">LIlGG</a>
 				</span>
 			</p>
@@ -70,7 +70,7 @@
 				&nbsp;
 				<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${settings.footer_ga_select_number!}" target="_blank">
 					<img src="${res_base_url!}/source/images/other/gongan.png">${settings.footer_ga_case_number}
-				</a>	
+				</a>
 				</#if>
 			</p>
 		</div>
@@ -234,15 +234,17 @@
 		"postEditTimeToastNormal": "${(settings.post_edit_time_toast_normal)!''}",
 		"postEditTimeToastMedium": "${(settings.post_edit_time_toast_medium)!''}",
 		"postEditTimeToastDifficulty": "${(settings.post_edit_time_toast_difficulty)!''}",
+    "journalLikes": "${(settings.journal_likes!false)?string('true','')}",
+    "journalComment": "${(settings.journal_comment!false)?string('true','')}",
 	};
 	var bgConfig = {
 	<#list 0..7 as i>
-		<#assign name = (("settings.bg_name_" + i)?eval)?default(""), 
+		<#assign name = (("settings.bg_name_" + i)?eval)?default(""),
 				desc = (("settings.bg_desc_" + i)?eval)?default(""),
 				url = (("settings.bg_url_" + i)?eval)?default(""),
 				strategy = (("settings.bg_img_strategy_" + i)?eval)?default(""),
 				isNight = (("settings.bg_night_" + i)?eval)?default("") />
-		
+
 		"bg_${i}": {
 			"id": "${i}",
 			"name": "${name}",
