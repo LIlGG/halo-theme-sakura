@@ -1,7 +1,7 @@
 <#--
     @package Akina
 -->
-<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.1", theme_base)/>
+<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.3", theme_base)/>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -29,7 +29,7 @@
         <p style="margin-bottom: 1em;margin-top: 1.5em;text-align: center;font-size: 15px;"></p>
         <form class="s-search" method="get" action="/search" role="search">
             <i class="iconfont icon-search" style="bottom: 9px;left: 15px;"></i>
-            <input class="text-input i18n" style="padding: 8px 20px 8px 46px;" type="search" name="keyword" required data-iname="notfound.searchinput" data-iattr="placeholder" placeholder="Search...">	
+            <input class="text-input i18n" style="padding: 8px 20px 8px 46px;" type="search" name="keyword" required data-iname="notfound.searchinput" data-iattr="placeholder" placeholder="Search...">
         </form>
     </div>
 </section>
@@ -43,8 +43,8 @@
     }
 </script>
 <script src="${res_base_url!}/source/js/404.js" type="text/javascript"></script>
-<script type='text/javascript' src='${res_base_url!}/script/utils.min.js?ver=1.3.1'></script>
-<script type='text/javascript' src='${res_base_url!}/script/i18n.min.js?ver=1.3.1'></script>
+<script type='text/javascript' src='${res_base_url!}/script/utils.min.js?ver=1.3.3'></script>
+<script type='text/javascript' src='${res_base_url!}/script/i18n.min.js?ver=1.3.3'></script>
 <script>
 var Poi = {
     "themeBase": "${res_base_url!}",

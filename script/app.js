@@ -28,10 +28,13 @@ var LIlGGAttachContext = {
     } catch (e) { }
 
     Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
+    LIlGGAttachContext.MINI_CODE(); // 迷你代码块
+    PageAttr.isPost === "true" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
     Poi.mathjax && !!PageAttr.metas.math && PageAttr.metas.math == "true" && LIlGGAttachContext.MATHJAX(); // 数学公式
     LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.PHO(); // 图库功能
     LIlGGAttachContext.CMN(); // 评论组件
+    LIlGGAttachContext.SS(); // 日志功能
     // i18n
     I18N.init();
   },
@@ -752,58 +755,38 @@ var LIlGGAttachContext = {
   },
   // 日志
   SS: function () {
-    /**
-     * 根据日期时间，获取对应的图标
-     * @param {*} time
-     */
-    var getTimeIcon = function (time) {
-      var ICON_DAY = "kaiqitaiyangguangshezhi",
-        ICON_MORN = "gengzaotubiao_tianqi-qingchen",
-        ICON_NIGHT = "yueliang";
-      var date = new Date(time);
-      var hours = date.getHours();
-      if (isNaN(hours)) {
-        return ICON_DAY;
-      }
-
-      if (5 <= hours && hours < 12) {
-        return ICON_MORN;
-      } else if (12 <= hours && hours < 18) {
-        return ICON_DAY;
-      } else {
-        return ICON_NIGHT;
-      }
-    };
-    
-    return function () {
-      if ($(".journal").length > 0) {
-        $(".journal").each(function () {
-          let that = $(this);
-          // 为日志设置时间图标
-          var $firstSpan =that.find(".journal-time>span").first();
-          if ($firstSpan.find("i").length == 0) {
-            $firstSpan.prepend(
+    if ($(".journal").length > 0) {
+      var journalIds = Util.getLocalStorage("journalIds") || [];
+      $(".journal").each(function () {
+        let that = $(this);
+        let idDoms = that.attr("id").split("-");
+        let jid = Number(idDoms[idDoms.length - 1]);
+        // 为日志设置时间图标
+        var $firstSpan =that.find(".journal-time>span").first();
+        if ($firstSpan.find("i").length == 0) {
+          $firstSpan.prepend(
               '<i class="iconfont icon-' +
               getTimeIcon($firstSpan.text()) +
               '"></i> '
-            );
-          }
-          
-          // 为所有图片增加box
-          var $imgs = that.find(".journal-label img:not('.avatar')");
-          $imgs.each(function () {
-            if (!$(this).hasClass("journal-img")) {
-              $(this)
+          );
+        }
+
+        // 为所有图片增加box
+        var $imgs = that.find(".journal-label img:not('.avatar')");
+        $imgs.each(function () {
+          if (!$(this).hasClass("journal-img")) {
+            $(this)
                 .addClass("journal-img")
                 .wrap(
-                  '<a data-fancybox="gallery" href="' +
-                  $(this).attr("src") +
-                  '">'
+                    '<a data-fancybox="gallery" href="' +
+                    $(this).attr("src") +
+                    '">'
                 );
-            }
-          });
+          }
+        });
 
-          // 为说说评论增加额外 class
+        // 为说说评论增加额外 class
+        if (Poi.journalComment) {
           var comment = that.find("halo-comment");
           if (comment.length > 0) {
             var $comment = $(comment[0].shadowRoot.getElementById("halo-comment"));
@@ -816,16 +799,48 @@ var LIlGGAttachContext = {
               $comment.addClass("dark");
             }
           }
-          
           // 说说评论展开/收起
           that.find(".journal-label .comment-js").off("click").on("click", function () {
             that.find(".journal-label .comment").toggle();
           });
-        });
-      }
-
-      
-    };
+        }
+        if (Poi.journalLikes) {
+          // 说说是否已经点赞
+          var $like = that.find(".journal-label .journal-like")
+          if ($like.length > 0) {
+            journalIds.includes(jid) ? $like.addClass("on") : "";
+            // 说说点赞
+            that.find(".journal-label .journal-like").off("click").on("click", function () {
+              // 目前仅能前端控制是否已经点赞
+              var $dom = $(this)
+              var links = $dom.data("links")
+              journalIds = Util.getLocalStorage("journalIds") || [];
+              var flag = journalIds.includes(jid);
+              if (flag) {
+                return;
+              }
+              $.ajax({
+                url: "/api/content/journals/" + jid + "/likes",
+                type: "post",
+                dataType: "json",
+                success(res) {
+                  if (res.status !== 200) {
+                    Log.e(res.message);
+                    return;
+                  }
+                  links++;
+                  journalIds.push(jid);
+                  $dom.addClass("on");
+                  Util.setLocalStorage("journalIds", journalIds, 60 * 60 * 24);
+                  $dom.children( ":last-child").text(links);
+                  $dom.data("links", links);
+                }
+              })
+            });
+          }
+        }
+      });
+    }
   },
   // 评论组件
   CMN: function () {
@@ -909,6 +924,147 @@ var LIlGGAttachContext = {
 
   LA: function() {
 
+  },
+
+  // 内容提示块
+  MINI_CODE: function() {
+    const reg = new RegExp("(?<=]).+(?=\\[/)","g")
+
+    const noway = new RegExp("(?=\\[noway])(\\S*)(\\[/noway]=?)","g");
+    const buy = new RegExp("(?=\\[buy])(\\S*)(\\[/buy]=?)","g");
+    const task = new RegExp("(?=\\[task])(\\S*)(\\[/task]=?)","g");
+    const warning = new RegExp("(?=\\[warning])(\\S*)(\\[/warning]=?)","g");
+
+    var contentDom = document.getElementsByClassName('site-content')[0];
+    if (!contentDom) {
+      return;
+    }
+
+    var content = contentDom.outerHTML;
+    // 获取提示块中的内容提示信息及类型
+    content = content.replaceAll(noway, (text) => {
+      return createToast("noway", text.match(reg)[0]);
+    })
+
+    content = content.replaceAll(buy, (text) => {
+      return createToast("buy", text.match(reg)[0]);
+    })
+
+    content = content.replaceAll(task, (text) => {
+      return createToast("task", text.match(reg)[0]);
+    })
+
+    content = content.replaceAll(warning, (text) => {
+      return createToast("warning", text.match(reg)[0]);
+    })
+
+    $(contentDom).replaceWith(content);
+
+    function createToast(type, msg) {
+      var icon = "";
+      switch (type) {
+        case "noway":
+          icon = "fa fa-exclamation-circle";
+          break;
+        case "buy":
+          icon = "fa fa-check-square";
+          break;
+        case "task":
+          icon = "fa fa-tasks";
+          break;
+        case "warning":
+          icon = "fa fa-warning";
+          break;
+        default:
+          break;
+      }
+      if (icon === '') {
+        return `<div class="${ type } minicode">${ msg }</div>`;
+      }
+
+      return `<div class="${ type } minicode"><i class="${ icon }" aria-hidden="true"></i>${ msg }</div>`;
+    }
+  },
+
+  // 内容处理
+  POST_CONTEXT: function() {
+    const normal = "rgba(167, 210, 226, 1)";
+    const medium = "rgba(255, 197, 160, 1)";
+    const difficulty = "rgba(239, 206, 201, 1)";
+
+    var msg, div, remind;
+    var contentDom = document.getElementsByClassName("entry-content")[0];
+
+    if (Poi.isPostWordCountToast === "true") {
+      var coefficient = 3;
+      if (!!PageAttr.metas.level) {
+        coefficient = Number(PageAttr.metas.level);
+      }
+
+      if (!!PageAttr.postWordCount) {
+        var color = "";
+        var oldWordCount = PageAttr.postWordCount;
+        var wordCount = Number(PageAttr.postWordCount.replaceAll(",", ""));
+        var seconds = Util.caclEstimateReadTime(wordCount, coefficient);
+        var timeStr = Util.minuteToTimeString(seconds);
+        // 时间段为 x 0<=10<=30<=+∞ 分钟
+        if (seconds <= (60 * 10)) {
+          remind = Poi.postWordCountToastNormal || "文章篇幅适中，可以放心阅读。";
+          color = normal;
+        } else if (seconds <= (60 * 30) && seconds > (60 * 10)) {
+          remind = Poi.postWordCountToastMedium || "文章比较长，建议分段阅读。"
+          color = medium;
+        } else {
+          remind = Poi.postWordCountToastDifficulty || "文章内容很长，提前准备好咖啡!!!"
+          color = difficulty;
+        }
+
+        msg = `文章共 <b>${oldWordCount}</b> 字，全部阅读完预计需要 <b>${timeStr}</b>。 ${remind}`;
+        div = buildToastDiv("word_count", color, msg);
+
+        contentDom.insertAdjacentHTML("afterbegin", div);
+      }
+    }
+
+    if (Poi.isPostEditTimeToast === "true") {
+        // 获取上次至今的时间差
+        var editTime = new Date(PageAttr.postEditTime);
+        if (!isNaN(editTime.getTime())) {
+            var time = new Date().getTime() - editTime.getTime();
+            var sinceLastTime = Util.timeAgo(editTime.getTime());
+            // 时间段为 x 0<=1<=3<=+∞ 月
+            if (time <= (1000 * 60 * 60 * 24 * 30)) {
+              remind = Poi.postEditTimeToastNormal || "近期有所更新，请放心阅读！";
+              color = normal;
+            } else if (time > (1000 * 60 * 60 * 24 * 30) && time <= (1000 * 60 * 60 * 24 * 90)) {
+              remind = Poi.postEditTimeToastMedium || "文章距上次编辑时间较远，部分内容可能已经过时！";
+              color = medium;
+            } else {
+              remind = Poi.postEditTimeToastDifficulty || "文章内容已经很陈旧了，也许不再适用！";
+              color = difficulty;
+            }
+
+          msg = `文章内容上次编辑时间于 <b>${sinceLastTime}</b>。 ${remind}`;
+          div = buildToastDiv("last_time", color, msg);
+
+          contentDom.insertAdjacentHTML("afterbegin", div);
+        }
+    }
+
+    var contentToast = contentDom.getElementsByClassName("content_toast");
+    Array.prototype.forEach.call(contentToast, (content) => {
+      var i = content.getElementsByTagName("i")[0];
+      i.onclick = function () {
+        content.classList.toggle('hide');
+      }
+    })
+
+    function buildToastDiv(type, color, msg) {
+      return `<div class="${ type } content_toast minicode" style="background-color: ${ color }">
+                ${ msg }
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </div>`
+    }
   }
 };
 
@@ -918,6 +1074,29 @@ var LIlGGAttachContext = {
  */
 var imgError = function (ele) {
   ele.src = "https://cdn.lixingyong.com/2020/07/18/98fca04416944b282a558b98b2131879.png";
+};
+
+/**
+ * 根据日期时间，获取对应的图标
+ * @param {*} time
+ */
+var getTimeIcon = function (time) {
+  var ICON_DAY = "kaiqitaiyangguangshezhi",
+      ICON_MORN = "gengzaotubiao_tianqi-qingchen",
+      ICON_NIGHT = "yueliang";
+  var date = new Date(time);
+  var hours = date.getHours();
+  if (isNaN(hours)) {
+    return ICON_DAY;
+  }
+
+  if (5 <= hours && hours < 12) {
+    return ICON_MORN;
+  } else if (12 <= hours && hours < 18) {
+    return ICON_DAY;
+  } else {
+    return ICON_NIGHT;
+  }
 };
 
 /**
@@ -1155,8 +1334,6 @@ var home = location.href,
           colorLight: "#ffffff",
         });
       }
-      // 日志所需渲染方法
-      LIlGGAttachContext.SS()();
     },
 
     // 点击事件
@@ -1257,7 +1434,6 @@ var home = location.href,
             I18N.init();
           },
         });
-        
         return false;
       });
       /**
@@ -1277,7 +1453,7 @@ var home = location.href,
             $("#journals-pagination a")
               .removeClass("loading")
               .text("加载更多...");
-            LIlGGAttachContext.SS()();
+            LIlGGAttachContext.SS();
             // 注入评论 CSS
             LIlGGAttachContext.CMN();
             // 加载完成不改变位置
@@ -1355,11 +1531,14 @@ $(function () {
   LIlGGAttachContext.PLSA(); // 文章列表动画
   (Poi.headFocus && Poi.bgvideo) && LIlGGAttachContext.BGV(); // 背景视频
   Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
-  Poi.mathjax && !!PageAttr.metas.math && PageAttr.metas.math == "true" && LIlGGAttachContext.MATHJAX(); // 数学公式
+  LIlGGAttachContext.MINI_CODE(); // 迷你代码块
+  PageAttr.isPost === "true" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
+  Poi.mathjax && !!PageAttr.metas.math && PageAttr.metas.math === "true" && LIlGGAttachContext.MATHJAX(); // 数学公式
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部
   (Poi.photosStyle == "packery") && supplement();
   LIlGGAttachContext.PHO(); // 图库功能
+  LIlGGAttachContext.SS(); // 日志功能
   // 复制提示
   Poi.copyMonitor && LIlGGAttachContext.CPY();
   // 评论组件

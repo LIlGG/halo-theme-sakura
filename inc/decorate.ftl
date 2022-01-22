@@ -1,3 +1,4 @@
+<#-- 全局公共样式 -->
 <@compress single_line=true>
 <style type="text/css">
     <#if settings.shownav!false>
@@ -43,7 +44,8 @@
         background-image: url(${res_base_url!}/source/images/other/iloli.gif);
     }
 
-    #pagination .loading {
+    #pagination .loading,
+    #journals-pagination .loading {
         background-image: url(${res_base_url!}/source/images/rotating-ball-o.svg);
     }
 
@@ -145,6 +147,14 @@
         color: ${settings.theme_skin!}
     }
 
+    blockquote:before {
+        color: ${settings.theme_skin!};
+    }
+
+    blockquote:after {
+        color: ${settings.theme_skin!};
+    }
+
     @media (max-width: 860px) {
         #mo-nav ul li a:hover {
             color: ${settings.theme_skin!};
@@ -181,7 +191,7 @@
         margin: 0 auto;
     }
     </#if>
-    
+
     .masonry-gallery .gallery-item {
 	    margin-bottom: ${(settings.photos_gutter)!10}px
     }
@@ -246,7 +256,7 @@
         bottom: 40px;
 	}
 
-    @media screen and (max-width:860px) { 
+    @media screen and (max-width:860px) {
         .m-cd-top {
             bottom: 10px;
         }
@@ -292,7 +302,7 @@
     body.dark .user-menu-option a:hover ,
     body.dark .menu-list li:hover ,
     body.dark .font-family-controls button:hover ,
-    body.dark .openNav .icon, 
+    body.dark .openNav .icon,
     body.dark .openNav .icon:before ,
     body.dark .openNav .icon:after ,
     body.dark .openNav .icon:after ,
@@ -320,7 +330,7 @@
         fill: ${settings.theme_dark!}
     }
 
-    body.dark #moblieGoTop:hover , 
+    body.dark #moblieGoTop:hover ,
     body.dark #changskin:hover {
         color: ${settings.theme_dark!};
         opacity:.8;
@@ -368,10 +378,10 @@
         background-color: #31363b !important;
     }
 
-    .halo-comment.dark .comment .info, 
+    .halo-comment.dark .comment .info,
     .halo-comment.dark .comment .comment-time,
-    .halo-comment.dark .comment-respond .logged-in-as, 
-    .halo-comment.dark .notification, 
+    .halo-comment.dark .comment-respond .logged-in-as,
+    .halo-comment.dark .notification,
     .halo-comment.dark .comment-respond .logged-in-as a {
         color: #9499a8;
     }

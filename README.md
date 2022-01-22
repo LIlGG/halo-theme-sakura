@@ -2,7 +2,7 @@
 <p align="center">
   <a href="https://github.com/halo-dev/halo"><img alt="Halo version" src="https://img.shields.io/badge/halo-1.4.3%2B-brightgreen?style=for-the-badge" /></a>
   <a href="https://github.com/LIlGG/halo-theme-sakura"><img alt="Build Status" src="https://img.shields.io/badge/build-positive-brightgreen?style=for-the-badge"></a>
-  <a href="https://github.com/prettier/prettier"><img alt="Code Style: Prettier" src="https://img.shields.io/badge/release-1.3.2-blue?style=for-the-badge"></a>
+  <a href="https://github.com/prettier/prettier"><img alt="Code Style: Prettier" src="https://img.shields.io/badge/release-1.3.3-blue?style=for-the-badge"></a>
   <a href="./LICENSE"><img alt="LICENSE MIT" src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge"></a>
 </p>
 <p align="center">
@@ -50,9 +50,11 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 自定义邮件模板
 - [x] 分类、标签支持雷达图及云标签
 - [x] 全局提示&复制提醒功能
-- [x] 相册
-- [x] 说说
+- [x] 瀑布流相册
+- [x] 说说页面，支持点赞和评论
 - [x] 国际化
+- [x] 更新时间提醒
+- [x] 自定义轻代码块
 
 
 > Tip:

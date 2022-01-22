@@ -5,7 +5,7 @@
 <@header title="${post.title!} - ${blog_title!}">
     <#if (settings.patternimg!true) && (post.thumbnail?? && post.thumbnail!='') || ((metas.ri?boolean)!true && settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!='')>
         <div class="pattern-center-blank"></div>
-        <div class="pattern-center single-center">
+        <div class="pattern-center single-center no-select">
             <div class="pattern-attachment-img">
                 <#if (settings.patternimg!true) && (post.thumbnail?? && post.thumbnail!='')>
                 <img class="lazyload" data-src="${post.thumbnail!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this)">
@@ -32,7 +32,9 @@
                     <span>
                         <a href="${blog_url!}">${user.nickname!}</a>
                     </span>
-                    <span class="bull">·</span>${post.createTime?string('yyyy-MM-dd')}
+                    <#assign format="${settings.post_time_display_type!'yyyy-MM-dd'}">
+                    <span class="bull">·</span><span class="i18n" data-iname="post.time" data-ivalue="${post.createTime?string(format)}"></span>
+                    <span class="bull">·</span><span class="i18n" data-iname="post.edit_time" data-ivalue="${post.editTime?string(format)}"></span>
                     <span class="bull">·</span><span class="i18n" data-iname="post.visits" data-ivalue="${post.visits!0}"></span>
                 </p>
             </header>

@@ -5,7 +5,7 @@
 <@header title="分类：${category.name!} - ${blog_title!}">
     <#if (settings.patternimg!true) && ((category.thumbnail?? && category.thumbnail!='') || (settings.category_patternimg?? && settings.category_patternimg!='')) || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!='')>
         <div class="pattern-center-blank"></div>
-        <div class="pattern-center">
+        <div class="pattern-center no-select">
             <div class="pattern-attachment-img">
                 <#if (settings.patternimg!true) && ((category.thumbnail?? && category.thumbnail!='') || (settings.category_patternimg?? && settings.category_patternimg!=''))>
                 <img data-src='${((category.thumbnail)?length>0)?string((category.thumbnail),"${settings.category_patternimg!}")}' src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" class="lazyload" onerror="imgError(this)">

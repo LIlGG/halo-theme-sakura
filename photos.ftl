@@ -5,7 +5,7 @@
 <@header title="${options.photos_title?default('图库')} - ${blog_title!}">
     <#if (settings.patternimg!true) && (settings.photos_patternimg?? && settings.photos_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!='')>
         <div class="pattern-center-blank"></div>
-        <div class="pattern-center">
+        <div class="pattern-center no-select">
             <div class="pattern-attachment-img">
             	<#if (settings.patternimg!true) && (settings.photos_patternimg?? && settings.photos_patternimg!='')>
                  <img data-src="${settings.photos_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this)">

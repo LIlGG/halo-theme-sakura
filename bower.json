@@ -4,7 +4,7 @@
   "authors": [
     "takagi <takagi@halo.run>"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://github.com/LIlGG/halo-theme-sakura",
   "ignore": [
     "**/.*",

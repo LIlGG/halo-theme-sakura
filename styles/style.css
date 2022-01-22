@@ -1,7 +1,7 @@
 @charset "utf-8";
 /*
-Description: Halo版本的Sakura主题（原版地址 https://github.com/mashirozx/Sakura）
-Version: 1.3.1
+Description: Halo 版本的 Sakura 主题（原版地址 https://github.com/mashirozx/Sakura）
+Version: 1.3.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: LIlGG
@@ -2367,17 +2367,17 @@ h1.page-title.mb- {
 	height: 82px
 }
 
-.post-lincenses {
+.post-license {
 	text-align: center;
 	padding-bottom: 5px;
 	font-size: 14px
 }
 
-.post-lincenses a:hover {
+.post-license a:hover {
 	color: #888
 }
 
-.post-lincenses a {
+.post-license a {
 	color: #b3b3b3
 }
 
@@ -4378,7 +4378,8 @@ i.iconfont.down {
 	color: orange
 }
 
-#pagination .loading {
+#pagination .loading,
+#journals-pagination .loading {
 	background-position: center;
 	background-repeat: no-repeat;
 	color: #555;
@@ -4386,10 +4387,20 @@ i.iconfont.down {
 	background-size: auto 100%
 }
 
-#pagination .loading:hover {
+#pagination .loading,
+#journals-pagination .loading {
 	border: none;
 	-o-box-shadow: none;
 	box-shadow: none
+}
+
+.at_button.loading {
+	background-color: inherit;
+	padding: 25px;
+}
+
+.at_button.loading:hover {
+	background: inherit;
 }
 
 #pagination.pagination-archive {
@@ -7696,6 +7707,182 @@ a.toc-link {
 	transform: translateX(0)
 }
 
+.minicode {
+	margin: 20px 0;
+	padding: 15px 15px 15px 40px;
+	position: relative;
+	box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+	border-radius: 5px;
+}
+
+.minicode i {
+	padding-right: 20px;
+}
+
+.minicode a {
+	padding: 5px;
+}
+
+.content_toast {
+	padding: 7px 7px 7px 15px;
+	margin: 10px 0;
+	height: 36px;
+	word-break:keep-all;
+	white-space:nowrap;
+	overflow:hidden;
+	-webkit-animation: content_toast .5s;
+	        animation: content_toast .5s;
+	-webkit-animation-fill-mode: forwards;
+	        animation-fill-mode: forwards;
+	-webkit-animation-direction: alternate;
+	        animation-direction: alternate;
+}
+
+.content_toast:hover {
+	-webkit-animation: content_toast_hover .5s;
+	        animation: content_toast_hover .5s;
+	-webkit-animation-fill-mode: forwards;
+	        animation-fill-mode: forwards;
+	-webkit-animation-direction: alternate;
+	        animation-direction: alternate;
+}
+
+@-webkit-keyframes content_toast_hover {
+	from {
+		transform: scale(1);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+
+	to {
+		transform: scale(1.01);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+}
+
+@keyframes content_toast_hover {
+	from {
+		transform: scale(1);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+
+	to {
+		transform: scale(1.01);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+}
+
+@-webkit-keyframes content_toast {
+	from {
+		transform: scale(1.01);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+
+	to {
+		transform: scale(1);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+}
+
+@keyframes content_toast {
+	from {
+		transform: scale(1.01);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+
+	to {
+		transform: scale(1);
+		-webkit-transform-style: preserve-3d;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+}
+
+.content_toast i {
+	float: right;
+	line-height: inherit;
+	cursor: pointer;
+}
+
+.content_toast.hide {
+	-webkit-animation: hide .5s linear forwards;
+	        animation: hide .5s linear forwards;
+}
+
+@-webkit-keyframes hide {
+	0% {
+		height: 36px;
+		width: 100%;
+		opacity: 1;
+	}
+
+	100% {
+		height: 0;
+		width: 0;
+		opacity: 0;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+	}
+}
+
+@keyframes hide {
+	0% {
+		height: 36px;
+		width: 100%;
+		opacity: 1;
+	}
+
+	100% {
+		height: 0;
+		width: 0;
+		opacity: 0;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+	}
+}
+
+.word_count {
+	margin: 0
+}
+
+.buy {
+	background: #9dd7e8;
+	color: #03536b;
+	text-indent: 0;
+}
+
+.warning {
+	background: #ffea97;
+	color: #9f6f26;
+	text-indent: 0;
+}
+
+.noway {
+	background: #efcec9;
+	color: #820b0b;
+	text-indent: 0;
+}
+
+.task {
+	background: #e7e7e7;
+	color: #333;
+}
+
 .highlight-wrap:before {
 	content: " ";
 	position: absolute;
@@ -7943,6 +8130,12 @@ td.hljs-ln-numbers {
 
 .code-block-fullscreen-html-scroll {
 	overflow: hidden
+}
+
+/* 解决 journals 中，代码块 fixed 定位相对于父 DOM 而不是视窗的 BUG */
+.code-block-fullscreen-html-scroll .journal-label {
+	z-index: auto !important;
+	transform: none !important;
 }
 
 .chinese-font {
@@ -8823,8 +9016,13 @@ ul.journals-line {
 	font-size: 12px;
 }
 
-.journal-time .icon-dz {
+.journal-time > .journal-like {
 	cursor: pointer;
+}
+
+.journal-time > .journal-like:hover,
+.journal-time > .journal-like.on {
+	color: #00a1d6;
 }
 
 /** button */
@@ -8871,11 +9069,6 @@ em {
 	cursor: pointer;
 	transition: all 1s;
 	z-index: 2;
-	width: 20%;
-}
-
-.journal-label img:hover {
-	transform: scale(3.5);
 }
 
 .journal-label .comment-js {
@@ -9232,4 +9425,5 @@ h1.main-title {
 .blur-up.lazyloaded {
 	filter: blur(0);
 }
+
 /*# sourceMappingURL=style.css.map */

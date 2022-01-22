@@ -212,7 +212,7 @@ mainScreen:
         - value: true
           label: 开启
         - value: false
-          label: 关闭  
+          label: 关闭
     bgvideo_url:
       name: bgvideo_url
       label: 视频链接（优先播放视频链接）
@@ -437,6 +437,17 @@ focus:
 post:
   label: 文章页
   items:
+    post_auto_collapse:
+      name: post_auto_collapse
+      label: 文章页导航栏自动收起
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
     post_share:
       name: post_share
       label: 文章分享
@@ -459,6 +470,84 @@ post:
           label: 开启
         - value: false
           label: 关闭
+    post_line_indent:
+      name: post_line_indent
+      label: 文章首行缩进
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    post_word_count_toast:
+      name: post_word_count_toast
+      label: 文章字数统计及阅读时间提示
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    post_word_count_toast_normal:
+      name: post_word_count_toast_normal
+      label: 阅读时间正常提示语
+      type: text
+      default: "文章篇幅适中，可以放心阅读。"
+    post_word_count_toast_medium:
+      name: post_word_count_toast_medium
+      label: 阅读时间略长提示语
+      type: text
+      default: "文章内容较长，请提前准备好咖啡!!!"
+    post_word_count_toast_difficulty:
+      name: post_word_count_toast_difficulty
+      label: 阅读时间超长提示语
+      type: text
+      default: "文章内容很长，建议分段阅读。"
+    post_edit_time_toast:
+      name: post_edit_time_toast
+      label: 文章距上次编辑时间提示
+      type: radio
+      data-type: bool
+      default: true
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    post_edit_time_toast_normal:
+      name: post_edit_time_toast_normal
+      label: 近期更新过文章提示语
+      type: text
+      default: "近期有所更新，请放心阅读！"
+    post_edit_time_toast_medium:
+      name: post_edit_time_toast_medium
+      label: 一段时间未更新文章提示语
+      type: text
+      default: "文章距上次编辑时间较远，部分内容可能已经过时！"
+    post_edit_time_toast_difficulty:
+      name: post_edit_time_toast_difficulty
+      label: 很长时间未更新文章提示语
+      type: text
+      default: "文章内容已经很陈旧了，也许不再适用！"
+    post_time_display_type:
+      name: post_time_display_type
+      label: 文章时间显示类别
+      type: select
+      data-type: text
+      default: "yyyy-MM-dd"
+      options:
+        - value: "yyyy-MM-dd"
+          label: 日期
+        - value: "HH:mm:ss"
+          label: 时间
+        - value: "yyyy-MM-dd HH:mm:ss"
+          label: 日期时间
+        - value: ""
+          label: 12 小时制
     toc_depth:
       name: toc_depth
       label: 目录标题展开级别
@@ -701,30 +790,28 @@ journal:
         - value: false
           label: 关闭
       description: '只针对于使用图片作为日志背景的情况下'
-    # journal_likes:
-    #   name: journal_likes
-    #   label: 日志点赞
-    #   type: radio
-    #   data-type: bool
-    #   default: false
-    #   options:
-    #     - value: true
-    #       label: 开启
-    #     - value: false
-    #       label: 关闭
-    #   description: '由于接口问题，目前该功能还不能使用'
-    # journal_comment:
-    #   name: journal_comment
-    #   label: 日志评论
-    #   type: radio
-    #   data-type: bool
-    #   default: false
-    #   options:
-    #     - value: true
-    #       label: 开启
-    #     - value: false
-    #       label: 关闭
-    #   description: '需要评论模块支持，之后增加' 
+    journal_likes:
+      name: journal_likes
+      label: 日志点赞
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
+    journal_comment:
+      name: journal_comment
+      label: 日志评论
+      type: radio
+      data-type: bool
+      default: false
+      options:
+        - value: true
+          label: 开启
+        - value: false
+          label: 关闭
 photos:
   label: 相册页
   items:
@@ -988,7 +1075,7 @@ theme:
       name: dark_imgbri
       label: 黑夜模式图像亮度
       type: number
-      default: 0.7  
+      default: 0.7
     dark_widget_tmd:
       name: dark_widget_tmd
       label: 黑夜模式控件透明度
@@ -1507,17 +1594,6 @@ live2d:
           label: 显示
         - value: false
           label: 隐藏
-    live2d_canTurnToAboutPage:
-      name: live2d_canTurnToAboutPage
-      label: 跳转关于页 按钮
-      type: radio
-      data-type: bool
-      default: true
-      options:
-        - value: true
-          label: 显示
-        - value: false
-          label: 隐藏
     live2d_modelStorage:
       name: live2d_modelStorage
       label: 记录 ID (刷新后恢复)
@@ -1873,7 +1949,7 @@ others:
       label: 资源使用CDN
       type: radio
       data-type: bool
-      default: true
+      default: false
       options:
         - value: true
           label: 开启
@@ -1935,7 +2011,7 @@ others:
       label: 公安联网备案号
       type: text
       default: ""
-      description: "应与公安备案信息内的编号一致"   
+      description: "应与公安备案信息内的编号一致"
     head_notice:
       name: head_notice
       label: 开启公告
