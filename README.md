@@ -25,7 +25,7 @@
 DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 
 截图：
-![screenshot.png](https://raw.githubusercontent.com/LIlGG/halo-theme-sakura/dev/screenshot.png)
+![screenshot.png](https://raw.githubusercontent.com/LIlGG/halo-theme-sakura/master/screenshot.png)
 
 ## ⚡ 功能
 <details>
