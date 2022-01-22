@@ -1,7 +1,7 @@
 <#--
 	@package Akina
 -->
-<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.1", theme_base)/>
+<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.3", theme_base)/>
 <#macro header title>
 <!DOCTYPE html>
 <html lang="zh-CN">
