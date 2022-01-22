@@ -1949,7 +1949,7 @@ others:
       label: 资源使用CDN
       type: radio
       data-type: bool
-      default: true
+      default: false
       options:
         - value: true
           label: 开启
