@@ -337,36 +337,44 @@ var LIlGGAttachContext = {
       },
     });
 
-    (function () {
-      $(".toc").css(
-        "max-height",
-        $(document).scrollTop() + ($(window).height() - baseTopPadding) + "px"
-      );
+    var interval = setInterval(function () {
+      if(document.readyState == "complete"){
+        $(".toc").css(
+          "max-height",
+          $(document).scrollTop() + ($(window).height() - baseTopPadding) + "px"
+        );
 
-      $(window).scroll(function () {
-        var s = $(document).scrollTop();
-        if (s == 0) {
-          $(".toc").css(
-            "max-height",
-            $(document).scrollTop() +
-            ($(window).height() - baseTopPadding) +
-            "px"
-          );
-        } else if (s > offset) {
-          $(".toc").css(
-            "max-height",
-            $(window).height() - maxToppadding + "px"
-          );
-        } else {
-          $(".toc").css(
-            "max-height",
-            $(document).scrollTop() +
-            ($(window).height() - baseTopPadding) +
-            "px"
-          );
-        }
-      });
-    })();
+        $(".toc-container").css(
+          "height",
+          $(document).scrollTop() + ($(window).height() - baseTopPadding) + "px"
+        );
+
+        $(window).scroll(function () {
+          var s = $(document).scrollTop();
+          if (s == 0) {
+            $(".toc").css(
+              "max-height",
+              $(document).scrollTop() +
+              ($(window).height() - baseTopPadding) +
+              "px"
+            );
+          } else if (s > offset) {
+            $(".toc").css(
+              "max-height",
+              $(window).height() - maxToppadding + "px"
+            );
+          } else {
+            $(".toc").css(
+              "max-height",
+              $(document).scrollTop() +
+              ($(window).height() - baseTopPadding) +
+              "px"
+            );
+          }
+        });
+        clearInterval(interval);
+      }
+    },2000);
   },
   // 文章代码样式
   CHS: function () {
@@ -928,6 +936,9 @@ var LIlGGAttachContext = {
 
   // 内容提示块
   MINI_CODE: function() {
+    if (!!$('.is-homepage')[0]) {
+      return;
+    }
     const reg = new RegExp("(?<=]).+(?=\\[/)","g")
 
     const noway = new RegExp("(?=\\[noway])(\\S*)(\\[/noway]=?)","g");
@@ -935,31 +946,32 @@ var LIlGGAttachContext = {
     const task = new RegExp("(?=\\[task])(\\S*)(\\[/task]=?)","g");
     const warning = new RegExp("(?=\\[warning])(\\S*)(\\[/warning]=?)","g");
 
-    var contentDom = document.getElementsByClassName('site-content')[0];
-    if (!contentDom) {
+    let $contentDom = $('.site-content p');
+    if (!$contentDom) {
       return;
     }
 
-    var content = contentDom.outerHTML;
-    // 获取提示块中的内容提示信息及类型
-    content = content.replaceAll(noway, (text) => {
-      return createToast("noway", text.match(reg)[0]);
+    $contentDom.each(function () {
+      var text = $(this).html();
+      // 获取提示块中的内容提示信息及类型
+      text = text.replace(noway, (text) => {
+        return createToast("noway", text.match(reg)[0]);
+      })
+
+      text = text.replace(buy, (text) => {
+        return createToast("buy", text.match(reg)[0]);
+      })
+
+      text = text.replace(task, (text) => {
+        return createToast("task", text.match(reg)[0]);
+      })
+
+      text = text.replace(warning, (text) => {
+        return createToast("warning", text.match(reg)[0]);
+      })
+
+      $(this).html(text)
     })
-
-    content = content.replaceAll(buy, (text) => {
-      return createToast("buy", text.match(reg)[0]);
-    })
-
-    content = content.replaceAll(task, (text) => {
-      return createToast("task", text.match(reg)[0]);
-    })
-
-    content = content.replaceAll(warning, (text) => {
-      return createToast("warning", text.match(reg)[0]);
-    })
-
-    $(contentDom).replaceWith(content);
-
     function createToast(type, msg) {
       var icon = "";
       switch (type) {
@@ -1219,16 +1231,6 @@ var home = location.href,
                 );
             }
           });
-        // 每次图片加载完成都重新计算高度
-        if(Poi.toc) {
-          $imgs.on("load", function() {
-            if ($("div").hasClass("toc")) {
-              $(".toc-container").css("height", $(".site-content").outerHeight());
-            } else {
-              return;
-            }
-          })
-        }
       }
 
       // 标签云
