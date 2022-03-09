@@ -219,7 +219,6 @@
 		"photosGutter": ${(settings.photos_gutter)!10},
 		"tocDepth": ${(settings.toc_depth)!0},
 		"i18n": "${settings.i18n!'auto'}",
-		"mathjax": "${(settings.mathjax!false)?string('true','')}",
 		"coverNum": "${(settings.rimage_cover_back_num)!'0'}",
 		"rimageUrl": "${(settings.rimage_url)!''}",
 		"coverOpen": "${(settings.rimage_cover_back_open!false)?string('true','')}",

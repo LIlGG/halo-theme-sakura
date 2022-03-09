@@ -6089,7 +6089,8 @@ button.botui-actions-buttons-button {
 	padding-bottom: 0;
 	padding-top: 1px;
 	-webkit-text-size-adjust: 100%;
-	text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	     text-size-adjust: 100%;
 	width: auto
 }
 
@@ -7303,6 +7304,7 @@ li>ol {
 }
 
 .toc {
+	position: -webkit-sticky;
 	position: sticky;
 	top: 100px
 }
@@ -9425,5 +9427,4 @@ h1.main-title {
 .blur-up.lazyloaded {
 	filter: blur(0);
 }
-
 /*# sourceMappingURL=style.css.map */

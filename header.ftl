@@ -28,6 +28,9 @@
 	<#if settings.photos_style == "justify">
 	<link rel="stylesheet" href="${res_base_url!}/source/lib/justifiedGallery/justifiedGallery.min.css" media="noexist" onload="this.media='all'">
 	</#if>
+	<#if settings.katex!false && (is_post?? || is_sheet??)>
+		<link rel="stylesheet" href="https://unpkg.com/katex@0.12.0/dist/katex.min.css" />
+	</#if>
 	<#include "inc/decorate.ftl">
 	<script type="text/javascript">
 		if (!!window.ActiveXObject || "ActiveXObject" in window) {
