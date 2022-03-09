@@ -30,7 +30,6 @@ var LIlGGAttachContext = {
     Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
     LIlGGAttachContext.MINI_CODE(); // 迷你代码块
     PageAttr.isPost === "true" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
-    Poi.mathjax && !!PageAttr.metas.math && PageAttr.metas.math == "true" && LIlGGAttachContext.MATHJAX(); // 数学公式
     LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.PHO(); // 图库功能
     LIlGGAttachContext.CMN(); // 评论组件
@@ -863,18 +862,6 @@ var LIlGGAttachContext = {
       }
     }
   },
-  // 渲染数学公式
-  MATHJAX: function() {
-    if (window.MathJax) {
-      MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementsByClassName('entry-content')[0]]);
-    } else {
-      Util.loadJS("https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML", function() {
-        Util.loadJS(Poi.resBaseUrl + "/plugins/mathjax/js/index.js", function() {
-          MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementsByClassName('entry-content')[0]]);
-        })
-      })
-    }
-  },
   // 背景视频点击切换
   BGEVEN: function() {
     function nextBG() {
@@ -1535,7 +1522,6 @@ $(function () {
   Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
   LIlGGAttachContext.MINI_CODE(); // 迷你代码块
   PageAttr.isPost === "true" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
-  Poi.mathjax && !!PageAttr.metas.math && PageAttr.metas.math === "true" && LIlGGAttachContext.MATHJAX(); // 数学公式
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部
   (Poi.photosStyle == "packery") && supplement();

@@ -2065,13 +2065,12 @@ plugin:
           label: 开启
         - value: false
           label: 关闭
-    mathjax:
-      name: mathjax
-      label: 开启 mathjax 数学公式插件
+    katex:
+      name: katex
+      label: 开启 Katex 公式渲染
       type: radio
       data-type: bool
       default: false
-      description: 数学公式还需要在文章元数据中填写 【K：math, V：true】 才能开启
       options:
         - value: true
           label: 开启
