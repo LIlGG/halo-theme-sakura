@@ -28,7 +28,6 @@ var LIlGGAttachContext = {
     } catch (e) { }
 
     Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
-    LIlGGAttachContext.MINI_CODE(); // 迷你代码块
     PageAttr.isPost === "true" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
     LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.PHO(); // 图库功能
@@ -921,70 +920,6 @@ var LIlGGAttachContext = {
 
   },
 
-  // 内容提示块
-  MINI_CODE: function() {
-    if (!!$('.is-homepage')[0]) {
-      return;
-    }
-    const reg = new RegExp("(?<=]).+(?=\\[/)","g")
-
-    const noway = new RegExp("(?=\\[noway])(\\S*)(\\[/noway]=?)","g");
-    const buy = new RegExp("(?=\\[buy])(\\S*)(\\[/buy]=?)","g");
-    const task = new RegExp("(?=\\[task])(\\S*)(\\[/task]=?)","g");
-    const warning = new RegExp("(?=\\[warning])(\\S*)(\\[/warning]=?)","g");
-
-    let $contentDom = $('.site-content p');
-    if (!$contentDom) {
-      return;
-    }
-
-    $contentDom.each(function () {
-      var text = $(this).html();
-      // 获取提示块中的内容提示信息及类型
-      text = text.replace(noway, (text) => {
-        return createToast("noway", text.match(reg)[0]);
-      })
-
-      text = text.replace(buy, (text) => {
-        return createToast("buy", text.match(reg)[0]);
-      })
-
-      text = text.replace(task, (text) => {
-        return createToast("task", text.match(reg)[0]);
-      })
-
-      text = text.replace(warning, (text) => {
-        return createToast("warning", text.match(reg)[0]);
-      })
-
-      $(this).html(text)
-    })
-    function createToast(type, msg) {
-      var icon = "";
-      switch (type) {
-        case "noway":
-          icon = "fa fa-exclamation-circle";
-          break;
-        case "buy":
-          icon = "fa fa-check-square";
-          break;
-        case "task":
-          icon = "fa fa-tasks";
-          break;
-        case "warning":
-          icon = "fa fa-warning";
-          break;
-        default:
-          break;
-      }
-      if (icon === '') {
-        return `<div class="${ type } minicode">${ msg }</div>`;
-      }
-
-      return `<div class="${ type } minicode"><i class="${ icon }" aria-hidden="true"></i>${ msg }</div>`;
-    }
-  },
-
   // 内容处理
   POST_CONTEXT: function() {
     const normal = "rgba(167, 210, 226, 1)";
@@ -1520,7 +1455,6 @@ $(function () {
   LIlGGAttachContext.PLSA(); // 文章列表动画
   (Poi.headFocus && Poi.bgvideo) && LIlGGAttachContext.BGV(); // 背景视频
   Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
-  LIlGGAttachContext.MINI_CODE(); // 迷你代码块
   PageAttr.isPost === "true" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部
