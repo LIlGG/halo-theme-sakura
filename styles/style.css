@@ -212,6 +212,10 @@ summary {
 	display: block;
 }
 
+details > summary:first-of-type {
+    display: list-item;
+}
+
 audio,
 canvas,
 progress,
@@ -9427,4 +9431,5 @@ h1.main-title {
 .blur-up.lazyloaded {
 	filter: blur(0);
 }
+
 /*# sourceMappingURL=style.css.map */
