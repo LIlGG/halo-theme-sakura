@@ -343,8 +343,7 @@ var LIlGGAttachContext = {
         );
 
         $(".toc-container").css(
-          "height",
-          $(document).scrollTop() + ($(window).height() - baseTopPadding) + "px"
+          "height", ($(".site-content").outerHeight() - baseTopPadding) + "px"
         );
 
         $(window).scroll(function () {
