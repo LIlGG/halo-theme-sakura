@@ -1,15 +1,18 @@
 <#--
-	分享/点赞页 
+	分享/点赞页
 	实际上我感觉原版的分享风格更好看，因此保留原版的
 	简单起见，这里暂时不封装
 -->
 <style>
+.s-wechat {
+    position: relative;
+}
+
 .s-wechat .wechat-qrcode {
 	display: none;
 	border: 1px solid #eee;
 	position: absolute;
-	z-index: 999;
-	top: -205px;
+	top: -215px;
 	left: -84px;
 	width: 200px;
 	height: 192px;
@@ -86,7 +89,7 @@
 	<ul class="social-share sharehidden">
 		<li>
 			<a href="http://service.weibo.com/share/share.php?url=${post.fullPath!}&appkey=&title=${post.title!}|${user.nickname!}&pic=${post.thumbnail!}" onclick="window.open(this.href, 'weibo-share', 'width=490,height=700');return false;" class="s-weibo i18n" data-iname="share.weibo" data-iattr="title">
-				<img src="${res_base_url!}/source/images/sns/weibo.png"/> 
+				<img src="${res_base_url!}/source/images/sns/weibo.png"/>
 			</a>
 		</li>
 		<li>
