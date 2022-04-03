@@ -7725,6 +7725,12 @@ a.toc-link {
 	padding-right: 20px;
 }
 
+@media all and (max-width: 860px) {
+    .minicode i {
+        padding-right: 0;
+    }
+}
+
 .minicode a {
 	padding: 5px;
 }

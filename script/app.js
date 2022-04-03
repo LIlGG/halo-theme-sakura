@@ -937,7 +937,7 @@ var LIlGGAttachContext = {
       if (!!PageAttr.postWordCount) {
         var color = "";
         var oldWordCount = PageAttr.postWordCount;
-        var wordCount = Number(PageAttr.postWordCount.replaceAll(",", ""));
+        var wordCount = Number(PageAttr.postWordCount.replace(/,/g, ""));
         var seconds = Util.caclEstimateReadTime(wordCount, coefficient);
         var timeStr = Util.minuteToTimeString(seconds);
         // 时间段为 x 0<=10<=30<=+∞ 分钟
@@ -952,7 +952,8 @@ var LIlGGAttachContext = {
           color = difficulty;
         }
 
-        msg = `文章共 <b>${oldWordCount}</b> 字，全部阅读完预计需要 <b>${timeStr}</b>。 ${remind}`;
+        msg = `文章共 <b>${oldWordCount}</b> 字，阅读完预计需要 <b>${timeStr}</b>。`;
+        msg = mobileMsgProcess(msg, remind);
         div = buildToastDiv("word_count", color, msg);
 
         contentDom.insertAdjacentHTML("afterbegin", div);
@@ -977,7 +978,8 @@ var LIlGGAttachContext = {
               color = difficulty;
             }
 
-          msg = `文章内容上次编辑时间于 <b>${sinceLastTime}</b>。 ${remind}`;
+          msg = `文章内容上次编辑时间于 <b>${sinceLastTime}</b>。`;
+          msg = mobileMsgProcess(msg, remind);
           div = buildToastDiv("last_time", color, msg);
 
           contentDom.insertAdjacentHTML("afterbegin", div);
@@ -997,6 +999,13 @@ var LIlGGAttachContext = {
                 ${ msg }
                 <i class="fa fa-times" aria-hidden="true"></i>
               </div>`
+    }
+
+    function mobileMsgProcess(msg, remind) {
+      if (window.innerWidth <= 860) {
+        return msg;
+      }
+      return msg + `${remind}`
     }
   }
 };
