@@ -9001,6 +9001,15 @@ ul.journals-line {
 	display: block;
 }
 
+@media all and (max-width: 860px) {
+    .journals-line>li .journal-label {
+        margin: 0 0 45px 0;
+    }
+    .journals-line>li .journal-label:after {
+        display: none;
+    }
+}
+
 .journals-line>li .journal-label:after {
 	right: 100%;
 	border: solid transparent;
