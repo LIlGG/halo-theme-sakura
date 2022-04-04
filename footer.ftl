@@ -268,7 +268,7 @@
 <#if settings.post_toc!true>
 	<script src="${res_base_url!}/source/lib/tocbot/dist/tocbot.min.js" defer></script>
 </#if>
-<script src="${settings.comment_mode!'//cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura@v1.3.3/dist/halo-comment.min.js'}" defer></script>
+<script src="${settings.comment_mode!'${res_base_url!}/source/js/comment/sakura-comment.min.js?ver=${theme.version!}'}" defer></script>
 <#if settings.tag_cloud!true>
 <script src="${res_base_url!}/source/lib/jqcloud2/jqcloud.min.js" defer></script>
 <script type='text/javascript'>
@@ -296,7 +296,7 @@
 <script type='text/javascript' src='${res_base_url!}/source/js/qrcode.min.js' defer></script>
 <script type='text/javascript' src='${res_base_url!}/source/lib/flv.min/index.js' defer></script>
 <script type='text/javascript' src='${res_base_url!}/script/i18n.min.js?ver=${theme.version!}' defer></script>
-<script type='text/javascript' src='${theme_base!}/script/app.js?ver=${theme.version!}'></script>
+<script type='text/javascript' src='${theme_base!}/script/app.min.js?ver=${theme.version!}'></script>
 <#nested />
 <#if settings.live2d_switch!true>
 <script src="${res_base_url!}/source/lib/jquery-ui/jquery-ui.min.js" async defer></script>

@@ -635,8 +635,7 @@ comment:
       name: comment_mode
       label: 评论模块js
       type: text
-      default: "https://cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura/dist/halo-comment.min.js"
-      description: "评论 js 模块，如果当前设置为空，则使用评论设置中的模块 js"
+      description: "评论 js 模块，如果当前设置为空，则使用本地服务器中的评论 js"
     comment_auto_load:
       name: comment_custom_style
       label: 是否自动加载评论列表
@@ -1998,12 +1997,12 @@ others:
       name: 回到顶部图片
       label: 回到顶部图片
       type: attachment
-      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/scroll.png"
+      default: "https://takagi-api.com/directlink/1/cdn/1.0.8/img/Sakura/images/scroll.png"
     footer_logo:
       name: footer_logo
       label: 页脚 Logo
       type: attachment
-      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/sakura.svg"
+      default: "https://takagi-api.com/directlink/1/cdn/1.0.8/img/Sakura/images/sakura.svg"
     footer_case_number:
       name: footer_case_number
       label: ICP 备案信息
