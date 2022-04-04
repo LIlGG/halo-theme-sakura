@@ -1,15 +1,3 @@
-<#--
-/**
- * The template for displaying the footer.
- *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package Akina
- */
--->
-<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.3", theme_base)/>
 <#macro footer>
 </div><!-- #content -->
 <#include "comments.ftl">
@@ -256,7 +244,7 @@
 	};
 	/* ]]> */
 </script>
-<script type='text/javascript' src='${res_base_url!}/script/utils.min.js?ver=1.3.3'></script>
+<script type='text/javascript' src='${res_base_url!}/script/utils.min.js?ver=${theme.version!}'></script>
 <script type="text/javascript" src="${res_base_url!}/source/lib/lazysizes/lazysizes.min.js" async></script>
 <script type="text/javascript" src="${res_base_url!}/source/js/lib.js"></script>
 <!-- 相册 -->
@@ -307,8 +295,8 @@
 </#if>
 <script type='text/javascript' src='${res_base_url!}/source/js/qrcode.min.js' defer></script>
 <script type='text/javascript' src='${res_base_url!}/source/lib/flv.min/index.js' defer></script>
-<script type='text/javascript' src='${res_base_url!}/script/i18n.min.js?ver=1.3.3' defer></script>
-<script type='text/javascript' src='${theme_base!}/script/app.min.js?ver=1.3.3'></script>
+<script type='text/javascript' src='${res_base_url!}/script/i18n.min.js?ver=${theme.version!}' defer></script>
+<script type='text/javascript' src='${theme_base!}/script/app.js?ver=${theme.version!}'></script>
 <#nested />
 <#if settings.live2d_switch!true>
 <script src="${res_base_url!}/source/lib/jquery-ui/jquery-ui.min.js" async defer></script>

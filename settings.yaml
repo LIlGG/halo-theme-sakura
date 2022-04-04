@@ -1949,13 +1949,23 @@ others:
       label: 资源使用 CDN
       type: radio
       data-type: bool
-      default: false
+      default: true
       options:
         - value: true
           label: 开启
         - value: false
           label: 关闭
-      description: '开启后静态资源将使用免费的 jsDelivr CDN 加载，关闭后使用服务器网络加载'
+      description: '开启后静态资源将使用免费 CDN 加载，关闭后使用服务器网络加载'
+    cdn_href:
+      name: cdn_href
+      label: CDN 地址
+      type: select
+      default: "//takagi-api.com/file/1/halo-theme-sakura/"
+      options:
+        - value: "//takagi-api.com/file/1/halo-theme-sakura/"
+          label: takagiの公共资源库
+        - value: "//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@"
+          label: jsdelivr
     i18n:
       name: i18n
       label: 主题语言
