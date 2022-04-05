@@ -306,8 +306,8 @@ var LIlGGAttachContext = {
       headingSelector: "h1, h2, h3, h4, h5",
       collapseDepth: !!PageAttr.metas.tocDepth && [0,1,2,3,4,5].includes(Number(PageAttr.metas.tocDepth)) ? Number(PageAttr.metas.tocDepth) : Poi.tocDepth,
       hasInnerContainers: false,
-      headingsOffset:
-        $("#page").find(".pattern-center").length > 0 ? -500 : -230,
+      disableTocScrollSync: true,
+      headingsOffset: $("#page").find(".pattern-center").length > 0 ? -500 : -230,
       scrollEndCallback: function (e) {
         if ($(".is-active-link").length == 0) {
           return;
@@ -1162,7 +1162,6 @@ var home = location.href,
             }
           });
       }
-
       // 标签云
       if (
         $("#tag-wordcloud").length > 0 &&
@@ -1583,9 +1582,14 @@ if (
 ) {
   window.addEventListener(
     "hashchange",
-    function () {
+    function (e) {
       var id = location.hash.substring(1),
         element;
+
+      // fix #221 图库展示结束后禁止重新跳转
+      if (e.oldURL.indexOf('#gallery-') !== -1) {
+        return;
+      }
 
       if (!/^[A-z0-9_-]+$/.test(id)) {
         return;
