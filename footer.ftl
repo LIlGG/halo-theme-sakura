@@ -282,7 +282,7 @@
 </script>
 </#if>
 <#if settings.category_radar!true>
-<script src="${res_base_url!}/source/js/echarts/echarts.min.js" defer></script>
+<script src="${res_base_url!}/source/js/echarts/echarts.min.js" async defer></script>
 <script type='text/javascript'>
 	var categoryRadar = {
 		<@categoryTag method="list">

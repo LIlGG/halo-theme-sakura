@@ -658,12 +658,6 @@ comment:
           label: 开启
         - value: false
           label: 关闭
-    comment_gravatar_source:
-      name: comment_gravatar_source
-      label: Gravatar 源地址
-      type: text
-      default: "//cn.gravatar.com/avatar"
-      description: "暂时用于适配 Halo 1.4.8 以下用户，当主题最低要求 Halo 1.4.8 之后将移除"
     comment_loading_style:
       name: comment_loading_style
       label: 评论加载样式
@@ -1959,11 +1953,11 @@ others:
       name: cdn_href
       label: CDN 地址
       type: select
-      default: "//takagi-api.com/file/1/halo-theme-sakura/"
+      default: "https://takagi-api.com/file/1/halo-theme-sakura/"
       options:
-        - value: "//takagi-api.com/file/1/halo-theme-sakura/"
+        - value: "https:///takagi-api.com/file/1/halo-theme-sakura/"
           label: takagiの公共资源库
-        - value: "//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@"
+        - value: "https://cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@"
           label: jsdelivr
     i18n:
       name: i18n

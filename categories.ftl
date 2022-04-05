@@ -69,9 +69,9 @@
     </div>
 </div>
 <#if settings.category_radar!true>
-<style type="text/css">
+<style>
     .tag-contents {
-        margin-top: 14px;
+        margin: 14px 0;
     }
     #category-echarts {
         width: 100%;
