@@ -1,7 +1,7 @@
 @charset "utf-8";
 /*
 Description: Halo 版本的 Sakura 主题（原版地址 https://github.com/mashirozx/Sakura）
-Version: 1.3.3
+Version: 1.3.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: LIlGG
@@ -210,6 +210,10 @@ nav,
 section,
 summary {
 	display: block;
+}
+
+details > summary:first-of-type {
+    display: list-item;
 }
 
 audio,
@@ -3855,6 +3859,18 @@ li.feature-2 {
 	white-space: nowrap;
 }
 
+/**
+* fix #248
+ */
+.info-desc .desc {
+    width: 94%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    word-break: keep-all;
+    display: inline-flex;
+}
+
 .top-social {
 	height: 32px;
 	margin-top: 30px;
@@ -6089,7 +6105,8 @@ button.botui-actions-buttons-button {
 	padding-bottom: 0;
 	padding-top: 1px;
 	-webkit-text-size-adjust: 100%;
-	text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	     text-size-adjust: 100%;
 	width: auto
 }
 
@@ -7303,6 +7320,7 @@ li>ol {
 }
 
 .toc {
+	position: -webkit-sticky;
 	position: sticky;
 	top: 100px
 }
@@ -7717,6 +7735,12 @@ a.toc-link {
 
 .minicode i {
 	padding-right: 20px;
+}
+
+@media all and (max-width: 860px) {
+    .minicode i {
+        padding-right: 0;
+    }
 }
 
 .minicode a {
@@ -8993,6 +9017,15 @@ ul.journals-line {
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 	cursor: pointer;
 	display: block;
+}
+
+@media all and (max-width: 860px) {
+    .journals-line>li .journal-label {
+        margin: 0 0 45px 0;
+    }
+    .journals-line>li .journal-label:after {
+        display: none;
+    }
 }
 
 .journals-line>li .journal-label:after {

@@ -24,7 +24,7 @@
 		</#if>
 		<div class="header-info no-select
 			<#if user.description?default("")?trim?length gt 1>
-			 info-desc"><p><i class="fa fa-quote-left"></i>${user.description}<i class="fa fa-quote-right"></i></p>
+			 info-desc"><p><i class="fa fa-quote-left"></i><span class="desc">${user.description}</span><i class="fa fa-quote-right"></i></p>
 			<#else>
 			">
 			</#if>

@@ -1,8 +1,6 @@
 <#--
 	@package Akina
 -->
-<#global res_base_url = settings.cdn?then("//cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@1.3.3", theme_base)/>
-
 <#include "header.ftl">
 <@header title="${blog_title!}">
 	<div class="blank"></div>

@@ -28,9 +28,7 @@ var LIlGGAttachContext = {
     } catch (e) { }
 
     Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
-    LIlGGAttachContext.MINI_CODE(); // 迷你代码块
     PageAttr.isPost === "true" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
-    Poi.mathjax && !!PageAttr.metas.math && PageAttr.metas.math == "true" && LIlGGAttachContext.MATHJAX(); // 数学公式
     LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.PHO(); // 图库功能
     LIlGGAttachContext.CMN(); // 评论组件
@@ -308,8 +306,8 @@ var LIlGGAttachContext = {
       headingSelector: "h1, h2, h3, h4, h5",
       collapseDepth: !!PageAttr.metas.tocDepth && [0,1,2,3,4,5].includes(Number(PageAttr.metas.tocDepth)) ? Number(PageAttr.metas.tocDepth) : Poi.tocDepth,
       hasInnerContainers: false,
-      headingsOffset:
-        $("#page").find(".pattern-center").length > 0 ? -500 : -230,
+      disableTocScrollSync: true,
+      headingsOffset: $("#page").find(".pattern-center").length > 0 ? -500 : -230,
       scrollEndCallback: function (e) {
         if ($(".is-active-link").length == 0) {
           return;
@@ -345,8 +343,7 @@ var LIlGGAttachContext = {
         );
 
         $(".toc-container").css(
-          "height",
-          $(document).scrollTop() + ($(window).height() - baseTopPadding) + "px"
+          "height", ($(".site-content").outerHeight() - baseTopPadding) + "px"
         );
 
         $(window).scroll(function () {
@@ -863,18 +860,6 @@ var LIlGGAttachContext = {
       }
     }
   },
-  // 渲染数学公式
-  MATHJAX: function() {
-    if (window.MathJax) {
-      MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementsByClassName('entry-content')[0]]);
-    } else {
-      Util.loadJS("https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML", function() {
-        Util.loadJS(Poi.resBaseUrl + "/plugins/mathjax/js/index.js", function() {
-          MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementsByClassName('entry-content')[0]]);
-        })
-      })
-    }
-  },
   // 背景视频点击切换
   BGEVEN: function() {
     function nextBG() {
@@ -934,70 +919,6 @@ var LIlGGAttachContext = {
 
   },
 
-  // 内容提示块
-  MINI_CODE: function() {
-    if (!!$('.is-homepage')[0]) {
-      return;
-    }
-    const reg = new RegExp("(?<=]).+(?=\\[/)","g")
-
-    const noway = new RegExp("(?=\\[noway])(\\S*)(\\[/noway]=?)","g");
-    const buy = new RegExp("(?=\\[buy])(\\S*)(\\[/buy]=?)","g");
-    const task = new RegExp("(?=\\[task])(\\S*)(\\[/task]=?)","g");
-    const warning = new RegExp("(?=\\[warning])(\\S*)(\\[/warning]=?)","g");
-
-    let $contentDom = $('.site-content p');
-    if (!$contentDom) {
-      return;
-    }
-
-    $contentDom.each(function () {
-      var text = $(this).html();
-      // 获取提示块中的内容提示信息及类型
-      text = text.replace(noway, (text) => {
-        return createToast("noway", text.match(reg)[0]);
-      })
-
-      text = text.replace(buy, (text) => {
-        return createToast("buy", text.match(reg)[0]);
-      })
-
-      text = text.replace(task, (text) => {
-        return createToast("task", text.match(reg)[0]);
-      })
-
-      text = text.replace(warning, (text) => {
-        return createToast("warning", text.match(reg)[0]);
-      })
-
-      $(this).html(text)
-    })
-    function createToast(type, msg) {
-      var icon = "";
-      switch (type) {
-        case "noway":
-          icon = "fa fa-exclamation-circle";
-          break;
-        case "buy":
-          icon = "fa fa-check-square";
-          break;
-        case "task":
-          icon = "fa fa-tasks";
-          break;
-        case "warning":
-          icon = "fa fa-warning";
-          break;
-        default:
-          break;
-      }
-      if (icon === '') {
-        return `<div class="${ type } minicode">${ msg }</div>`;
-      }
-
-      return `<div class="${ type } minicode"><i class="${ icon }" aria-hidden="true"></i>${ msg }</div>`;
-    }
-  },
-
   // 内容处理
   POST_CONTEXT: function() {
     const normal = "rgba(167, 210, 226, 1)";
@@ -1016,7 +937,7 @@ var LIlGGAttachContext = {
       if (!!PageAttr.postWordCount) {
         var color = "";
         var oldWordCount = PageAttr.postWordCount;
-        var wordCount = Number(PageAttr.postWordCount.replaceAll(",", ""));
+        var wordCount = Number(PageAttr.postWordCount.replace(/,/g, ""));
         var seconds = Util.caclEstimateReadTime(wordCount, coefficient);
         var timeStr = Util.minuteToTimeString(seconds);
         // 时间段为 x 0<=10<=30<=+∞ 分钟
@@ -1031,7 +952,8 @@ var LIlGGAttachContext = {
           color = difficulty;
         }
 
-        msg = `文章共 <b>${oldWordCount}</b> 字，全部阅读完预计需要 <b>${timeStr}</b>。 ${remind}`;
+        msg = `文章共 <b>${oldWordCount}</b> 字，阅读完预计需要 <b>${timeStr}</b>。`;
+        msg = mobileMsgProcess(msg, remind);
         div = buildToastDiv("word_count", color, msg);
 
         contentDom.insertAdjacentHTML("afterbegin", div);
@@ -1056,7 +978,8 @@ var LIlGGAttachContext = {
               color = difficulty;
             }
 
-          msg = `文章内容上次编辑时间于 <b>${sinceLastTime}</b>。 ${remind}`;
+          msg = `文章内容上次编辑时间于 <b>${sinceLastTime}</b>。`;
+          msg = mobileMsgProcess(msg, remind);
           div = buildToastDiv("last_time", color, msg);
 
           contentDom.insertAdjacentHTML("afterbegin", div);
@@ -1076,6 +999,13 @@ var LIlGGAttachContext = {
                 ${ msg }
                 <i class="fa fa-times" aria-hidden="true"></i>
               </div>`
+    }
+
+    function mobileMsgProcess(msg, remind) {
+      if (window.innerWidth <= 860) {
+        return msg;
+      }
+      return msg + `${remind}`
     }
   }
 };
@@ -1232,7 +1162,6 @@ var home = location.href,
             }
           });
       }
-
       // 标签云
       if (
         $("#tag-wordcloud").length > 0 &&
@@ -1533,9 +1462,7 @@ $(function () {
   LIlGGAttachContext.PLSA(); // 文章列表动画
   (Poi.headFocus && Poi.bgvideo) && LIlGGAttachContext.BGV(); // 背景视频
   Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
-  LIlGGAttachContext.MINI_CODE(); // 迷你代码块
   PageAttr.isPost === "true" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
-  Poi.mathjax && !!PageAttr.metas.math && PageAttr.metas.math === "true" && LIlGGAttachContext.MATHJAX(); // 数学公式
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部
   (Poi.photosStyle == "packery") && supplement();
@@ -1655,9 +1582,14 @@ if (
 ) {
   window.addEventListener(
     "hashchange",
-    function () {
+    function (e) {
       var id = location.hash.substring(1),
         element;
+
+      // fix #221 图库展示结束后禁止重新跳转
+      if (e.oldURL.indexOf('#gallery-') !== -1) {
+        return;
+      }
 
       if (!/^[A-z0-9_-]+$/.test(id)) {
         return;

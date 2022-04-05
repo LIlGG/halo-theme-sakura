@@ -5,7 +5,7 @@
  * @version 1.0
  */
 var Util = {
-    _version: '1.3.3',
+    _version: '1.3.4',
     /**
     * 获取当前浏览器语言
     * 使用当前方法，只会得到语言前两个字符
@@ -44,7 +44,7 @@ var Util = {
 
     /**
      * 获取存储在浏览器 cookie 内的数据
-     * @param {String} key 
+     * @param {String} key
      * @return 如果没能获取到数据，则返回 null。否则，返回目标数据字符串
      */
     getCookie: function (key) {
@@ -125,7 +125,7 @@ var Util = {
     },
 
     /**
-     * 异步加载 JS 
+     * 异步加载 JS
      * @param {*} url 需要加载 JS 地址
      * @param {*} callback 加载完成回调
      */
@@ -598,7 +598,7 @@ Log.ENABLE_VERBOSE = true;
 
 /**
  * 自定义异常
- * @param {*} message 
+ * @param {*} message
  */
 var RuntimeException = function (message) {
     this._message = message;

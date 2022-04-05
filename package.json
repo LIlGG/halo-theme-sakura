@@ -1,6 +1,6 @@
 {
   "name": "halo-theme-sakura",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "<h1 align=\"center\">Sakura<img src=\"https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif\" width=\"50\"></h1>\r <p align=\"center\">\r   <a href=\"https://lixingyong.com\">预览</a> | <a href=\"#安装主题\">安装</a> | <a href=\"https://lixingyong.com/s/halo-theme-sakure\">更新日志</a>\r   </p>",
   "main": "index.js",
   "scripts": {
@@ -38,15 +38,15 @@
   },
   "homepage": "https://github.com/LIlGG/halo-theme-sakura#readme",
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
     "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
-    "autoprefixer": "^9.7.4",
+    "@babel/preset-env": "^7.16.11",
+    "autoprefixer": "^9.8.8",
     "clean-css-cli": "^4.3.0",
-    "postcss-cli": "^7.1.0",
+    "postcss-cli": "^7.1.2",
     "rimraf": "^3.0.2",
-    "uglify-js": "^3.8.0"
+    "uglify-js": "^3.15.2"
   },
   "dependencies": {}
 }

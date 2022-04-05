@@ -3,9 +3,9 @@ name: Sakura
 author:
   name: LIlGG
   website: https://lixingyong.com
-description: halo版本的樱花🌸主题
+description: Halo 版本的樱花🌸主题
 logo:
 website: https://github.com/LIlGG/halo-theme-sakura
 repo: https://github.com/LIlGG/halo-theme-sakura
-version: 1.3.3
-require: 1.4.3
+version: 1.3.4
+require: 1.5.0

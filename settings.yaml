@@ -69,7 +69,7 @@ general:
       default: ajax
       options:
         - value: ajax
-          label: ajax加载
+          label: Ajax 加载
         - value: np
           label: 上一页和下一页
     site_custom_style:
@@ -90,7 +90,7 @@ patternimg:
           label: 开启
         - value: false
           label: 关闭
-      description: '文章或部分页面的head图片'
+      description: '文章或部分页面的 head 图片'
     archives_patternimg:
       name: archives_patternimg
       label: 归档页装饰图
@@ -258,7 +258,7 @@ mainScreen:
           label: 1080P+
         - value: 116
           label: 1080P60
-      description: '这里展示的是除了4K之外的所有清晰度，并不代表目标视频的清晰度，请确定好目标视频所支持的清晰度，否则将报错'
+      description: '这里展示的是除了 4K 之外的所有清晰度，并不代表目标视频的清晰度，请确定好目标视频所支持的清晰度，否则将报错'
     bilibili_video_vtype:
       name: bilibili_video_vtype
       label: B站视频格式
@@ -270,7 +270,7 @@ mainScreen:
           label: FLV
         - value: 1
           label: MP4
-      description: 'MP4只有流畅或清晰'
+      description: 'MP4 只有流畅或清晰'
 sns:
   label: 社交网络
   items:
@@ -635,8 +635,7 @@ comment:
       name: comment_mode
       label: 评论模块js
       type: text
-      default: "https://cdn.jsdelivr.net/gh/LIlGG/halo-comment-sakura/dist/halo-comment.min.js"
-      description: "评论js模块，如果当前设置为空，则使用评论设置中的模块js"
+      description: "评论 js 模块，如果当前设置为空，则使用本地服务器中的评论 js"
     comment_auto_load:
       name: comment_custom_style
       label: 是否自动加载评论列表
@@ -659,12 +658,6 @@ comment:
           label: 开启
         - value: false
           label: 关闭
-    comment_gravatar_source:
-      name: comment_gravatar_source
-      label: Gravatar 源地址
-      type: text
-      default: "//cn.gravatar.com/avatar"
-      description: "暂时用于适配 Halo 1.4.8 以下用户，当主题最低要求 Halo 1.4.8 之后将移除"
     comment_loading_style:
       name: comment_loading_style
       label: 评论加载样式
@@ -686,7 +679,7 @@ comment:
       name: comment_author_popup
       label: 填写昵称时的提示
       type: text
-      default: "输入QQ号将自动拉取昵称和头像"
+      default: "输入 QQ 号将自动拉取昵称和头像"
     comment_email_popup:
       name: comment_email_popup
       label: 填写 email 时的提示
@@ -706,7 +699,7 @@ comment:
       name: comment_custom_style
       label: 自定义评论组件CSS样式
       type: textarea
-      description: '确保样式以.halo-comment开头，防止污染其他css。如果属性不生效，则加上!important提升优先度'
+      description: '确保样式以 .halo-comment 开头，防止污染其他 css。如果属性不生效，则加上 !important 提升优先度'
 tagAndCategory:
   label: 标签及分类页
   items:
@@ -716,14 +709,14 @@ tagAndCategory:
       type: text
       data-type: double
       default: 0.999
-      description: '标签随机颜色最低值,值越低越偏冷色调，取值范围在0-1之间，需要小于最大值'
+      description: '标签随机颜色最低值,值越低越偏冷色调，取值范围在 0-1 之间，需要小于最大值'
     tag_randomColorMax:
       name: tag_randomColorMax
       label: 标签页及分类页颜色最大值
       type: text
       data-type: double
       default: 1
-      description: '标签随机颜色最大值,值越高越偏暖色调，取值范围在0-1之间，需要大于最小值'
+      description: '标签随机颜色最大值,值越高越偏暖色调，取值范围在 0-1 之间，需要大于最小值'
     tag_cloud:
       name: tag_cloud
       label: 开启标签云
@@ -1092,7 +1085,7 @@ theme:
       label: 主题一 描述
       type: text
       default: '默认是纯洁的白色~'
-      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+      description: '主题描述，应用于 live2d，如 live2d 未开启无需输入'
     bg_url_0:
       name: bg_url_0
       label: 主题一 图片链接
@@ -1140,7 +1133,7 @@ theme:
       label: 主题二 描述
       type: text
       default: '樱花飞舞~'
-      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+      description: '主题描述，应用于 live2d，如 live2d 未开启无需输入'
     bg_url_1:
       name: bg_url_1
       label: 主题二 图片链接
@@ -1188,7 +1181,7 @@ theme:
       label: 主题三 描述
       type: text
       default: '格子控！'
-      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+      description: '主题描述，应用于 live2d，如 live2d 未开启无需输入'
     bg_url_2:
       name: bg_url_2
       label: 主题三 图片链接
@@ -1236,7 +1229,7 @@ theme:
       label: 主题四 描述
       type: text
       default: '小点点~'
-      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+      description: '主题描述，应用于 live2d，如 live2d 未开启无需输入'
     bg_url_3:
       name: bg_url_3
       label: 主题四 图片链接
@@ -1284,7 +1277,7 @@ theme:
       label: 主题五 描述
       type: text
       default: '充满力量的橙色'
-      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+      description: '主题描述，应用于 live2d，如 live2d 未开启无需输入'
     bg_url_4:
       name: bg_url_4
       label: 主题五 图片链接
@@ -1332,7 +1325,7 @@ theme:
       label: 主题六 描述
       type: text
       default: 'pixiv主题~'
-      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+      description: '主题描述，应用于 live2d，如 live2d 未开启无需输入'
     bg_url_5:
       name: bg_url_5
       label: 主题六 图片链接
@@ -1380,7 +1373,7 @@ theme:
       label: 主题七 描述
       type: text
       default: '必应图片'
-      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+      description: '主题描述，应用于 live2d，如 live2d 未开启无需输入'
     bg_url_6:
       name: bg_url_6
       label: 主题七 图片链接
@@ -1428,7 +1421,7 @@ theme:
       label: 主题八 描述
       type: text
       default: '关灯！'
-      description: '主题描述，应用于live2d，如live2d未开启无需输入'
+      description: '主题描述，应用于 live2d，如 live2d 未开启无需输入'
     bg_url_7:
       name: bg_url_7
       label: 主题八 图片链接
@@ -1473,13 +1466,13 @@ live2d:
       label: 看板娘API地址
       type: text
       default: "//live2d.fghrsh.net/api/"
-      description: '后台API地址，有能力的可以自己搭建'
+      description: '后台 API 地址，有能力的可以自己搭建'
     live2d_tipsMessage:
       name: live2d_tipsMessage
       label: 提示语文件地址
       type: text
       default: ""
-      description: '提示语地址，不填则默认在live2d插件目录下 /json/***-tips.json'
+      description: '提示语地址，不填则默认在 live2d 插件目录下 /json/***-tips.json'
     live2d_hitokotoAPI:
       name: live2d_hitokotoAPI
       label: 一言API接口
@@ -1935,7 +1928,7 @@ others:
   items:
     poi_pjax:
       name: poi_pjax
-      label: 开启PJAX局部刷新
+      label: 开启 PJAX 局部刷新
       type: radio
       data-type: bool
       default: true
@@ -1946,16 +1939,26 @@ others:
           label: 关闭
     cdn:
       name: cdn
-      label: 资源使用CDN
+      label: 资源使用 CDN
       type: radio
       data-type: bool
-      default: false
+      default: true
       options:
         - value: true
           label: 开启
         - value: false
           label: 关闭
-      description: '开启后静态资源将使用免费的 jsdelivr CDN加载，关闭后使用服务器网络加载'
+      description: '开启后静态资源将使用免费 CDN 加载，关闭后使用服务器网络加载'
+    cdn_href:
+      name: cdn_href
+      label: CDN 地址
+      type: select
+      default: "https://takagi-api.com/file/1/halo-theme-sakura/"
+      options:
+        - value: "https:///takagi-api.com/file/1/halo-theme-sakura/"
+          label: takagiの公共资源库
+        - value: "https://cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@"
+          label: jsdelivr
     i18n:
       name: i18n
       label: 主题语言
@@ -1988,12 +1991,12 @@ others:
       name: 回到顶部图片
       label: 回到顶部图片
       type: attachment
-      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/scroll.png"
+      default: "https://takagi-api.com/directlink/1/cdn/1.0.8/img/Sakura/images/scroll.png"
     footer_logo:
       name: footer_logo
-      label: 页脚logo
+      label: 页脚 Logo
       type: attachment
-      default: "https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/sakura.svg"
+      default: "https://takagi-api.com/directlink/1/cdn/1.0.8/img/Sakura/images/sakura.svg"
     footer_case_number:
       name: footer_case_number
       label: ICP 备案信息
@@ -2027,7 +2030,7 @@ others:
       name: notice_title
       label: 公告内容
       type: textarea
-      placeholder: '公告内容，文字超出142个字节将会被滚动显示（移动端无效），一个汉字 = 3字节，一个字母 = 1字节，自己计算吧'
+      placeholder: '公告内容，文字超出142个字节将会被滚动显示（移动端无效），一个汉字 = 3字节，一个字母 = 1字节。'
     keep_record_mode:
       name: keep_record_mode
       label: 备案模式
@@ -2045,7 +2048,7 @@ plugin:
   items:
     is_aplayer:
       name: is_aplayer
-      label: 开启Aplayer插件
+      label: 开启 Aplayer 插件
       type: radio
       data-type: bool
       default: false
@@ -2065,13 +2068,12 @@ plugin:
           label: 开启
         - value: false
           label: 关闭
-    mathjax:
-      name: mathjax
-      label: 开启 mathjax 数学公式插件
+    katex:
+      name: katex
+      label: 开启 Katex 公式渲染
       type: radio
       data-type: bool
       default: false
-      description: 数学公式还需要在文章元数据中填写 【K：math, V：true】 才能开启
       options:
         - value: true
           label: 开启
