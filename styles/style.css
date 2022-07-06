@@ -3865,10 +3865,9 @@ li.feature-2 {
 .info-desc .desc {
     width: 94%;
     overflow: hidden;
-    white-space: nowrap;
+    white-space: normal;
     text-overflow: clip;
     word-break: keep-all;
-    display: inline-flex;
 }
 
 .top-social {
@@ -9458,5 +9457,4 @@ h1.main-title {
 .blur-up.lazyloaded {
 	filter: blur(0);
 }
-
 /*# sourceMappingURL=style.css.map */
