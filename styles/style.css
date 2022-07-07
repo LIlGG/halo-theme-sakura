@@ -3865,10 +3865,9 @@ li.feature-2 {
 .info-desc .desc {
     width: 94%;
     overflow: hidden;
-    white-space: nowrap;
+    white-space: normal;
     text-overflow: clip;
     word-break: keep-all;
-    display: inline-flex;
 }
 
 .top-social {
@@ -5643,10 +5642,10 @@ i.iconfont.down {
 .single-reward .reward-main {
 	position: absolute;
 	top: 40px;
-	left: -157px;
+	left: -187px;
 	margin: 0;
 	padding: 15px 0 0;
-	width: 355px;
+	width: 415px;
 	background: 0 0;
 	display: none;
 	-webkit-animation: main .4s;
@@ -5687,8 +5686,8 @@ i.iconfont.down {
 }
 
 .reward-row li img {
-	width: 130px;
-	max-width: 130px;
+	width: 160px;
+	max-width: 160px;
 	border-radius: 3px;
 	position: relative
 }
@@ -9458,5 +9457,4 @@ h1.main-title {
 .blur-up.lazyloaded {
 	filter: blur(0);
 }
-
 /*# sourceMappingURL=style.css.map */
