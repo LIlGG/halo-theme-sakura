@@ -1,0 +1,103 @@
+home:
+  feature:
+    title: 焦点
+    one:
+      title: 焦点のイラスト1
+      desc: これは焦点のイラスト1
+    two:
+      title: 焦点のイラスト2
+      desc: これは焦点のイラスト2
+    three:
+      title: 焦点のイラスト3
+      desc: これは焦点のイラスト3
+  discovery: 見つける
+
+postlist:
+  time: 発表は %s
+  heat: '%s 人気'
+  comments: '%s つコメント'
+
+post:
+  time: 発表は %s
+  edit_time: 最終編集は %s
+  prev: Previous Post
+  next: Next Post
+  visits: '%s 回読む'
+  reward: ご褒美
+  creative_commons: 表示 - 非営利 - 継承 4.0 国際 (CC BY-NC-SA 4.0)
+
+page:
+  next: 次のページ
+  theend: ブログ投稿はもうない
+  archives:
+    title: アーカイブ
+  categories:
+    title: 分類
+    item_title: 分類：%s
+  photos:
+    title: ギャラリー
+    all: 全部
+  links:
+    title: リンク集
+  journal:
+    title: 日誌
+    loadmore: もっと読み込む...
+    empty: ブロガーが怠け過ぎて、ここにはまだ何もないよ~
+  search:
+    title: 「 %s 」の検索結果
+    sresult: '検索結果：'
+  tags:
+    title: タグ
+    item:
+      title: タグ：%s
+
+  none:
+    title: 何も見つからない！(つд⊂)
+    search: 期待するものが見つからない。他に見てご覧？(๑ŏ _ ŏ๑)
+    notfound: 期待するものが見つからなかったらしい。検索してみる。(  ˶ˊᵕˋ)੭♡
+
+
+comment:
+  number: '%s つコメント'
+  name: コメント |
+
+notfound:
+  title: ページが見つからない - %s
+  golast: 前のページに戻る
+  gohome: ホームページに戻る
+  search: 焦らないで、サイト内検索してみる？
+  search_2: Don't worry, search in site?
+  searchinput: 検索...
+
+user:
+  description: 俺様はステータスなしが大好き😎
+
+icon_alt:
+  wechat: WeChat 公式アカウント
+  sina: Weibo
+  qq: チャットする？
+  qzone: QQ 空間
+  github: Github
+  lofter: LOFTER
+  bili: ビリビリ
+  cloudmusic: NetEase Cloud Music
+  twitter: ツイッター
+  facebook: フェイスブック
+  googleplus: Google+
+  jianshu: Jianshu
+  zhihu: 知乎
+  csdn: CSDN
+  telegram: テレグラム
+  email: メール
+  stackoverflow: Stack Overflow
+
+share:
+  weibo: Weibo に共有する
+  qq: QQ に共有する
+  wechat:
+    qcode_title: WeChat スキャン：共有する
+    help_1: WeChatに「発見」をクリックして、
+    help_2: QRコードをスキャンしたら、このブログ投稿がモーメンツに共有してある。
+  douban: Douban に共有する
+  qzone: QQ 空間に共有する
+  linkedin: リンクトインに共有する
