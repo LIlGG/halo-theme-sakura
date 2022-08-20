@@ -1969,6 +1969,8 @@ others:
           label: 自动
         - value: zh
           label: 中文（简体）
+        - value: ja
+          label: 日本語
         # - value: en
         #   label: 英文
     reply_mail_img:
