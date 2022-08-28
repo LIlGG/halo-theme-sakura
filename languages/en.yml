@@ -1,0 +1,103 @@
+home:
+  feature:
+    title: Top Feature
+    one:
+      title: Top Feature 1
+      desc: This is top feature 1
+    two:
+      title: Top Feature 2
+      desc: This is top feature 2
+    three:
+      title: Top Feature 3
+      desc: This is top feature 3
+  discovery: Discovery
+
+postlist:
+  time: Posted on %s
+  heat: '%s hits'
+  comments: '%s comments'
+
+post:
+  time: Posted on %s
+  edit_time: Last updated on %s
+  prev: Previous Post
+  next: Next Post
+  visits: '%s Views'
+  reward: $
+  creative_commons: Attribution-NonCommercial-ShareAlike 4.0 International
+
+page:
+  next: Next Page
+  theend: No more post(s)
+  archives:
+    title: Post Archive
+  categories:
+    title: Post Category
+    item_title: Category：%s
+  photos:
+    title: Images
+    all: All
+  links:
+    title: Links
+  journal:
+    title: Log
+    loadmore: Load more...
+    empty: This guy is so lazy ╮(╯▽╰)╭ Noting here!!!
+  search:
+    title: "Search results for \" %s \""
+    sresult: 'Search result: '
+  tags:
+    title: Tags
+    item:
+      title: Tag：%s
+
+  none:
+    title: There is nothing here！
+    search: Didn't find what you want, look at the other ones.
+    notfound: We didn't seem to find what you want. Maybe you can search for it.
+
+
+comment:
+  number: '%s comment(s)'
+  name: Comments |
+
+notfound:
+  title: Page Not Found - %s
+  golast: return to previous page
+  gohome: return to home page
+  search: Don't worry, search in site?
+  search_2: Don't worry, search in site?
+  searchinput: Search...
+
+user:
+  description: My favorite thing is to leave this blank :)
+
+icon_alt:
+  wechat: Wechat
+  sina: Sina Weibo
+  qq: Tencent QQ
+  qzone: QZone
+  github: Github
+  lofter: Lofter
+  bili: Bilibili
+  cloudmusic: Netease Cloud Music
+  twitter: Twitter
+  facebook: Facebook
+  googleplus: Google+
+  jianshu: Jianshu
+  zhihu: Zhihu
+  csdn: CSDN
+  telegram: Telegram
+  email: Email
+  stackoverflow: Stack Overflow
+
+share:
+  weibo: Share to Sina Weibo
+  qq: Share to QQ
+  wechat:
+    qcode_title: Scan QR code
+    help_1: Click "Discover" and scan it
+    help_2: QR code can share this to Moments
+  douban: Share to Douban
+  qzone: Share to QZone
+  linkedin: Share to LinkedIn
