@@ -1971,8 +1971,8 @@ others:
           label: 中文（简体）
         - value: ja
           label: 日本語
-        # - value: en
-        #   label: 英文
+        - value: en
+          label: 英文
     reply_mail_img:
       name: reply_mail_img
       label: 邮件回复模块图片
