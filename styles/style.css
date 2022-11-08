@@ -3868,6 +3868,7 @@ li.feature-2 {
     white-space: normal;
     text-overflow: clip;
     word-break: keep-all;
+	display: inline;
 }
 
 .top-social {
