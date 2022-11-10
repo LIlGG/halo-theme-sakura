@@ -1826,6 +1826,11 @@ additional:
           label: metadata
         - value: auto
           label: auto
+    aplayer_volume:
+      name: aplayer_volume
+      label: 默认音量大小
+      type: number
+      default: 0.7
     aplayer_autoplay:
       name: aplayer_autoplay
       label: 自动播放
