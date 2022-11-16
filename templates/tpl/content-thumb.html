@@ -1,0 +1,99 @@
+<!--
+	@package Akina
+-->
+<th:block th:fragment="content-thumb(postItems)">
+  <article
+    th:each="post : ${postItems}"
+    class="post post-list-thumb <#if (post_index+1) % 2==0>post-list-thumb-left</#if>"
+    itemscope=""
+    itemtype="http://schema.org/BlogPosting"
+  >
+    <div class="post-thumb">
+      <a th:href="${post.status.permalink}" th:alt="${post.spec.title}">
+        <img
+          th:if="${not #strings.isEmpty(post.spec.cover)}"
+          class="lazyload"
+          th:attr="data-src=${post.spec.cover}"
+          src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"
+          onerror="imgError(this)"
+        />
+        <img
+          th:if="${#strings.isEmpty(post.spec.cover)} and ${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+          src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"
+          srcset="<#if settings.rimage_cover_lqip == 'loading'>${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg<#else>${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=150</#if>"
+          data-srcset="${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=640 640w,
+                    ${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=960 960w,
+                    ${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=1280 1280w,
+                    ${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if> 1440w"
+          data-sizes="auto"
+          class="lazyload<#if settings.rimage_cover_lqip == 'lowquality'> blur-up</#if>"
+        />
+        <img
+          th:if="${#strings.isEmpty(post.spec.cover)} and ${not theme.config.random_image.rimage_cover_open} and ${#strings.isEmpty(theme.config.random_image.rimage_url)}"
+          class="lazyload"
+          data-src="${res_base_url!}/source/images/temp.jpg"
+          src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"
+          onerror="imgError(this)"
+        />
+      </a>
+    </div>
+    <!-- thumbnail-->
+    <div class="post-content-wrap">
+      <div class="post-content">
+        <div class="post-date">
+          <i class="iconfont icon-time"> </i>
+          <span
+            class="i18n"
+            data-iname="postlist.time"
+            th:attr="data-ivalue=${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+          ></span>
+          <th:block th:if="${post.spec.pinned}">
+            &nbsp;<i class="iconfont icon-hot hotpost"></i>
+          </th:block>
+        </div>
+        <a th:href="${post.status.permalink}" class="post-title">
+          <h3 th:text="${post.spec.title}"></h3>
+        </a>
+        <div class="post-meta">
+          <span>
+            <i class="iconfont icon-attention"></i>
+            <spa
+              class="i18n"
+              data-iname="postlist.heat"
+              th:attr="data-ivalue=${post.stats.visit}"
+            ></spa
+          ></span>
+          <span class="comments-number">
+            <th:block th:if="${theme.config.others.keep_record_mode}">
+              <i class="iconfont icon-mark"></i>
+              <span
+                class="i18n"
+                data-iname="postlist.comments"
+                th:attr="data-ivalue=${post.stats.comment}"
+              >
+              </span>
+            </th:block>
+          </span>
+          <th:block th:if="${#lists.size(post.categories)} gt 0">
+            <span>
+              <i class="iconfont icon-file"></i>
+              <a
+                th:href="${post.categories[0].status.permalink}"
+                th:text="${post.categories[0].spec.displayName}"
+              >
+              </a>
+            </span>
+          </th:block>
+        </div>
+        <div class="float-content">
+          <p th:text="${post.status.excerpt}"></p>
+          <div class="post-bottom">
+            <a th:href="${post.status.permalink}" class="button-normal">
+              <i class="iconfont icon-caidan"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</th:block>

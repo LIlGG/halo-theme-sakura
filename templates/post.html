@@ -1,0 +1,96 @@
+<!--
+    @package Akina
+-->
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}"
+>
+  <th:block th:fragment="header">
+    <!-- TODO: -->
+    <!-- <#if (settings.patternimg!true) && (post.thumbnail?? && post.thumbnail!='') || ((metas.ri?boolean)!true && settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!='')> -->
+    <th:block
+      th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)}"
+    >
+      <div class="pattern-center-blank"></div>
+      <div class="pattern-center single-center no-select">
+        <div class="pattern-attachment-img">
+          <img
+            th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)}"
+            class="lazyload"
+            data-src="${post.thumbnail!}"
+            src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"
+            onerror="imgError(this)"
+          />
+          <img
+            th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)}"
+            src="${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"
+            srcset="<#if settings.rimage_cover_lqip == 'loading'>${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg<#else>${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=150</#if>"
+            data-srcset="${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=640 640w,
+                        ${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=960 960w,
+                        ${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=1280 1280w,
+                        ${settings.rimage_url!}?postid=${post.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if> 1440w"
+            data-sizes="auto"
+            class="lazyload<#if settings.rimage_cover_lqip == 'lowquality'> blur-up</#if>"
+          />
+        </div>
+        <header class="pattern-header single-header">
+          <h1 class="entry-title" th:text="${post.spec.title}"></h1>
+          <p class="entry-census">
+            <span>
+              <a href="/">
+                <img th:src="${post.owner.avatar}" />
+              </a>
+            </span>
+            <span>
+              <a href="/" th:text="${post.owner.displayName}"></a>
+            </span>
+            <!-- <#assign format="${settings.post_time_display_type!'yyyy-MM-dd'}"> -->
+            <span class="bull">·</span
+            ><span
+              class="i18n"
+              data-iname="post.time"
+              data-ivalue="${post.createTime?string(format)}"
+            ></span>
+            <span class="bull">·</span
+            ><span
+              class="i18n"
+              data-iname="post.edit_time"
+              data-ivalue="${post.editTime?string(format)}"
+            ></span>
+            <span class="bull">·</span
+            ><span
+              class="i18n"
+              data-iname="post.visits"
+              data-ivalue="${post.visits!0}"
+            ></span>
+          </p>
+        </header>
+      </div>
+    </th:block>
+    <th:block
+      th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)}"
+    >
+      <div class="blank"></div>
+      <style>
+        .toc-container {
+          top: 210px;
+        }
+      </style>
+    </th:block>
+  </th:block>
+
+  <th:block th:fragment="content">
+    <div id="primary" class="content-area">
+      <main id="main" class="site-main" role="main">
+        <th:block
+          th:replace="~{tpl/content-single :: content-single(${post})}"
+        />
+        <!-- <#include "layouts/post-nextprev.ftl">
+            <#include "layouts/authorprofile.ftl"> -->
+      </main>
+      <!-- #main -->
+    </div>
+    <!-- #primary -->
+  </th:block>
+</html>

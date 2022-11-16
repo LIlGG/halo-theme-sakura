@@ -1,0 +1,38 @@
+<div class="top-feature">
+  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif">
+    <i
+      th:if="${not #strings.isEmpty(theme.config.focus.feature_icon)}"
+      th:class="${theme.config.focus.feature_icon}"
+      aria-hidden="true"
+    ></i>
+    <span
+      th:if="${not #strings.isEmpty(theme.config.focus.feature_title)}"
+      th:text="${theme.config.focus.feature_title}"
+    ></span>
+    <span
+      th:if="${#strings.isEmpty(theme.config.focus.feature_title)}"
+      class="i18n"
+      data-iname="home.feature.title"
+    ></span>
+  </h1>
+  <div
+    th:each="feature : ${theme.config.focus.features}"
+    class="top-feature-v2"
+  >
+    <div class="the-feature square from_left_and_right">
+      <a th:href="${feature.link}" target="_blank">
+        <div class="img">
+          <img th:src="${feature.image}" />
+        </div>
+        <div class="info">
+          <h3>
+            <span th:text="${feature.title}"></span>
+          </h3>
+          <p>
+            <span th:text="${feature.description}"></span>
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

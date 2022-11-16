@@ -1,0 +1,53 @@
+<!--
+	@package Akina
+-->
+
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}"
+>
+
+<th:block th:fragment="header">
+	<div class="blank"></div>
+</th:block>
+
+<th:block th:fragment="content">
+
+<div th:if="${theme.config.others.head_notice} and ${not #strings.isEmpty(theme.config.others.notice_title)}" th:style="${theme.config.mainScreen.focus_height ? 'margin-top: 20px;':''}" class="notice">
+	<i class="iconfont icon-broadcast"></i>
+	<div class="notice-content" th:text="${theme.config.others.notice_title}"></div>
+</div>
+
+<th:block th:if="${theme.config.focus.top_feature}">
+	<th:block th:replace="~{layouts/feature}" />
+</th:block>
+
+<div id="primary" class="content-area" th:with="postItems=${posts.items}">
+	<main id="main" class="site-main" role="main" >
+		<h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
+		<i class="fa fa-envira" aria-hidden="true"></i>
+		<span class="i18n" data-iname="home.discovery"> </span>
+		</h1>
+		<th:block th:if="${posts.totalPages gt 0}">
+			<!--Start the Loop-->
+			<th:block th:if="${theme.config.general.post_list_style == 'standard'}">
+				<th:block th:each="post : ${postItems}">
+					<th:block th:replace="~{tpl/content :: content(${post})}" />
+				</th:block>
+			</th:block>
+			<th:block th:unless="${theme.config.general.post_list_style == 'standard'}">
+				<th:block th:replace="~{tpl/content-thumb :: content-thumb(${postItems})}" />
+			</th:block>
+		</th:block>
+		<th:block th:unless="${posts.total gt 0}">
+			<th:block th:replace="~{tpl/content-none}" />
+		</th:block>
+	</main><!-- #main -->
+
+	<@paginationTag method="index" page="${posts.number}" total="${posts.totalPages}" display="3">
+		<#include "layouts/list-nextprev.ftl">
+	</@paginationTag>
+</div><!-- #primary -->
+</th:block>
+</html>
