@@ -3698,7 +3698,7 @@ li.feature-2 {
 
 .focusinfo {
 	position: relative;
-	max-width: 800px;
+	/* max-width: 800px; */
 	padding: 0 10px;
 	top: 49.3%;
 	left: 50%;
