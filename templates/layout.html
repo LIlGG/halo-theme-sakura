@@ -30,23 +30,25 @@
 </head>
 <body class="hfeed chinese-font serif">
     <section id="main-container">
-        <#if settings.head_focus!true>
-            <div class="headertop ${settings.focus_img_filter!'filter-nothing'}">
-            <#include "layouts/imgbox.ftl">
+        <th:block th:if="${theme.config.mainScreen.head_focus}">
+            <div class="headertop" th:classappend="${theme.config.mainScreen.focus_img_filter}">
+            <!-- <th:block th:replace="~{layouts/imgbox}" /> -->
+            
             <!-- 背景视频 -->
             <#if settings.bgvideo!false>
                 <!-- <#if settings.focus_height!true && settings.bgvideo_url?? && settings.bgvideo_url!= '' || settings.bgvideo_id?? && settings.bgvideo_id!= ''> -->
                 <#include "layouts/videobox.ftl">
                 </#if>
             </#if>
+
             <!-- 首页下拉箭头 -->
             <div th:if="${theme.config.mainScreen.focus_godown}" class="headertop-down faa-float animated" onclick="headertop_down()">
                 <span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
             </div>
             </div>
-        </#if>
+        </th:block>
         <div id="page" class="site wrapper">
-            <#include "inc/pjax_decorate.ftl">
+            <th:block th:replace="~{inc/pjax_decorate}" />
             <header class="site-header  <#if (is_index)!false == true>is-homepage</#if>" role="banner">
                 <div class="site-top">
                     <div class="site-branding">
@@ -99,20 +101,21 @@
             <!-- 定义可变属性，会根据页面的改变而变化 -->
             <script type='text/javascript'>
                 /* <![CDATA[ */
-                var PageAttr = {
-                    "metas": {
-                        <#if metas??>
-                            <#list metas?keys as key>
-                                "${key}": "${metas['${key}']}",
-                            </#list>
-                        </#if>
-                    },
-                    "isPost": "${(is_post!false)?string('true','false')}",
-                    <#if is_post??>
-                    "postWordCount": "${post.wordCount!0}",
-                    "postEditTime": "${post.editTime?string('yyyy-MM-dd HH:mm:ss')}"
-                    </#if>
-                }
+                // TODO:
+                // var PageAttr = {
+                //     "metas": {
+                //         // <#if metas??>
+                //         //     <#list metas?keys as key>
+                //         //         "${key}": "${metas['${key}']}",
+                //         //     </#list>
+                //         // </#if>
+                //     },
+                //     "isPost": "${(is_post!false)?string('true','false')}",
+                //     <#if is_post??>
+                //     "postWordCount": "${post.wordCount!0}",
+                //     "postEditTime": "${post.editTime?string('yyyy-MM-dd HH:mm:ss')}"
+                //     </#if>
+                // }
                 /* ]]> */
             </script>
             </div><!-- #page Pjax container-->
@@ -147,7 +150,7 @@
                             <#if settings.footer_ga_case_number??  && settings.footer_ga_case_number != "">
                             &nbsp;
                             <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${settings.footer_ga_select_number!}" target="_blank">
-                                <img src="${res_base_url!}/source/images/other/gongan.png">${settings.footer_ga_case_number}
+                                <img th:src="@{/assets/images/other/gongan.png}">${settings.footer_ga_case_number}
                             </a>
                             </#if>
                         </p>
@@ -181,25 +184,25 @@
                 <#if settings.focus_infos!true>
                     <p style="display:flex; justify-content:center;">
                         <#if settings.twitter??>
-                            <a href="${settings.twitter!}" class="social social-twitter" target="_blank"><img src="${res_base_url!}/source/images/sns/twitter.png" width="18"/></a>
+                            <a href="${settings.twitter!}" class="social social-twitter" target="_blank"><img th:src="@{/assets/images/sns/twitter.png}" width="18"/></a>
                         </#if>
                         <#if settings.sina??>
-                            <a href="${settings.sina!}" class="social social-sina" target="_blank"><img src="${res_base_url!}/source/images/sns/sina.png" width="18"/></a>
+                            <a href="${settings.sina!}" class="social social-sina" target="_blank"><img th:src="@{/assets/images/sns/sina.png}" width="18"/></a>
                         </#if>
                         <#if settings.github??>
-                            <a href="${settings.github!}" class="social social-github" target="_blank"><img src="${res_base_url!}/source/images/sns/github.png" width="18"/></a>
+                            <a href="${settings.github!}" class="social social-github" target="_blank"><img th:src="@{/assets/images/sns/github.png}" width="18"/></a>
                         </#if>
                         <#if settings.wechat??>
-                            <a href="${settings.wechat!}" class="social social-wechat" target="_blank"><img src="${res_base_url!}/source/images/sns/wechat.png" width="18"/></a>
+                            <a href="${settings.wechat!}" class="social social-wechat" target="_blank"><img th:src="@{/assets/images/sns/wechat.png}" width="18"/></a>
                         </#if>
                         <#if settings.qq??>
-                            <a href="//wpa.qq.com/msgrd?v=3&uin=${settings.qq!}&site=qq&menu=yes" class="social social-wangyiyun" target="_blank"><img src="${res_base_url!}/source/images/sns/qq.png" width="18"/></a>
+                            <a href="//wpa.qq.com/msgrd?v=3&uin=${settings.qq!}&site=qq&menu=yes" class="social social-wangyiyun" target="_blank"><img th:src="@{/assets/images/sns/qq.png}" width="18"/></a>
                         </#if>
                         <#if settings.bili??>
-                            <a href="${settings.bili!}" class="social social-bili" target="_blank"><img src="${res_base_url!}/source/images/sns/bilibili.png" width="18"/></a>
+                            <a href="${settings.bili!}" class="social social-bili" target="_blank"><img th:src="@{/assets/images/sns/bilibili.png}" width="18"/></a>
                         </#if>
                         <#if settings.wangyiyun??>
-                            <a href="${settings.wangyiyun!}" class="social social-wangyiyun" target="_blank"><img src="${res_base_url!}/source/images/sns/wangyiyun.png" width="18"/></a>
+                            <a href="${settings.wangyiyun!}" class="social social-wangyiyun" target="_blank"><img th:src="@{/assets/images/sns/wangyiyun.png}" width="18"/></a>
                         </#if>
                         <!-- <#if settings.customize_link?? && settings.customize_icon?? && settings.customize_title??> -->
                             <a href="${settings.customize_link!}" class="social" target="_blank" title="${settings.customize_title!}">
@@ -214,7 +217,7 @@
                         <input class="m-search-input" type="search" name="keyword" placeholder="搜索..." required>
                     </form>
                 </div>
-                <#include "layouts/nav.ftl">
+                <th:block th:replace="~{layouts/nav}" />
                 <p class="m-footer">© <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" /> ${(user.nickname)!}</p>
             </div><!-- m-nav-center end -->
             <a href="#" class="cd-top"></a>
@@ -262,77 +265,78 @@
         </th:block>
             <!-- theme-change end -->
             <!-- 定义全局属性 -->
-            <script type='text/javascript'>
+            <script type='text/javascript' th:inline="javascript">
                 /* <![CDATA[ */
                 var Poi = {
-                    "pjax":"${(settings.poi_pjax!true)?string('true','')}",
-                    "windowheight":"${(!(settings.focus_height!true))?string('fixed','auto')}",
-                    "ajaxurl":"${blog_url!}",
-                    "resBaseUrl": "${res_base_url!}",
+                    "pjax":"[(${theme.config.others.poi_pjax})]",
+                    "windowheight":"[(${theme.config.mainScreen.focus_height ? 'fixed' : 'auto'})]",
+                    "ajaxurl":"http://localhost:8090", // TODO:
+                    "resBaseUrl": "[(${#theme.assets('')})]",
                     "formpostion":"bottom",
-                    "toc": "${(settings.post_toc!true)?string('true','')}",
-                    "codeLine": "${(settings.code_line!true)?string('true','')}",
-                    "themeChange": "${(settings.code_line!true)?string('true','')}",
-                    "headFocus": "${(settings.head_focus!true)?string('true','')}",
-                    "bgvideo": "${(settings.bgvideo!true)?string('true','')}",
-                    "tagRandomColorMin": "${settings.tag_randomColorMin!0.965}",
-                    "tagRandomColorMax": "${settings.tag_randomColorMax!0.969}",
-                    "nickname": "${user.nickname!}",
-                    "sitename": "${blog_title!}",
-                    "themeBase": "${theme_base!}",
-                    "openToast": "${(settings.open_toast!true)?string('true','')}",
-                    "toastWidth": ${settings.toast_width!},
-                    "toastHeight": ${settings.toast_height!},
-                    "toastTop": "${settings.toast_top!}",
-                    "toastBackground": "${settings.theme_skin!}",
-                    "toastColor": "${settings.toast_color!}",
-                    "toastFontSize": ${settings.toast_font_size!},
-                    "copyMonitor": "${(settings.copy_monitor!true)?string('true','')}",
-                    "copyrightNotice": "${(settings.copyright_notice!true)?string('true','')}",
-                    "photosStyle": "${(settings.photos_style)!'justify'}",
-                    "photosGutter": ${(settings.photos_gutter)!10},
-                    "tocDepth": ${(settings.toc_depth)!0},
-                    "i18n": "${settings.i18n!'auto'}",
-                    "coverNum": "${(settings.rimage_cover_back_num)!'0'}",
-                    "rimageUrl": "${(settings.rimage_url)!''}",
-                    "coverOpen": "${(settings.rimage_cover_back_open!false)?string('true','')}",
-                    "meEmail": "${(settings.email)!''}",
-                    "defaultTheme": "${(settings.default_theme)!'bg_0'}",
-                    "defaultGroup": "${(settings.default_group)?replace(' ', '-')}",
-                    "isPostWordCountToast": "${(settings.post_word_count_toast!true)?string('true','')}",
-                    "isPostEditTimeToast": "${(settings.post_edit_time_toast!true)?string('true','')}",
-                    "postWordCountToastNormal": "${(settings.post_word_count_toast_normal)!''}",
-                    "postWordCountToastMedium": "${(settings.post_word_count_toast_medium)!''}",
-                    "postWordCountToastDifficulty": "${(settings.post_word_count_toast_difficulty)!''}",
-                    "postEditTimeToastNormal": "${(settings.post_edit_time_toast_normal)!''}",
-                    "postEditTimeToastMedium": "${(settings.post_edit_time_toast_medium)!''}",
-                    "postEditTimeToastDifficulty": "${(settings.post_edit_time_toast_difficulty)!''}",
-                "journalLikes": "${(settings.journal_likes!false)?string('true','')}",
-                "journalComment": "${(settings.journal_comment!false)?string('true','')}",
+                    "toc": "[(${theme.config.post.post_toc ? 'true' : ''})]",
+                    "codeLine": "[(${theme.config.post.code_line ? 'true' : ''})]",
+                    "themeChange": "[(${theme.config.theme.theme_change ? 'true' : ''})]",
+                    "headFocus": "[(${theme.config.mainScreen.focus_height ? 'true' : ''})]",
+                    "bgvideo": "[(${theme.config.mainScreen.bgvideo ? 'true' : ''})]",
+                    "tagRandomColorMin": "[(${theme.config.tagAndCategory.tag_randomColorMin})]",
+                    "tagRandomColorMax": "[(${theme.config.tagAndCategory.tag_randomColorMax})]",
+                    "nickname": "Ryan Wang", // TODO:
+                    "sitename": "[(${site.title})]",
+                    "themeBase": "[(${#theme.assets('')})]",
+                    "openToast": "[(${theme.config.toast.open_toast ? 'true' : ''})]",
+                    "toastWidth": /*[(${theme.config.toast.toast_width})]*/,
+                    "toastHeight": /*[(${theme.config.toast.toast_height})]*/,
+                    "toastTop": "[(${theme.config.toast.toast_top})]",
+                    "toastBackground": "[(${theme.config.general.theme_skin})]",
+                    "toastColor": "[(${theme.config.toast.toast_color})]",
+                    "toastFontSize": /*[(${theme.config.toast.toast_font_size})]*/,
+                    "copyMonitor": "[(${theme.config.toast.copy_monitor ? 'true' : ''})]",
+                    "copyrightNotice": "[(${theme.config.toast.copyright_notice ? 'true' : ''})]",
+                    "photosStyle": "[(${theme.config.photos.photos_style})]",
+                    "photosGutter": /*[(${theme.config.photos.photos_gutter})]*/,
+                    "tocDepth": /*[(${theme.config.post.toc_depth})]*/,
+                    "i18n": "[(${theme.config.others.i18n})]",
+                    "coverNum": "[(${theme.config.random_image.rimage_cover_back_num})]",
+                    "rimageUrl": "[(${theme.config.random_image.rimage_url})]",
+                    "coverOpen": "[(${theme.config.random_image.rimage_cover_back_open ? 'true' : ''})]",
+                    "meEmail": "i@example.com", // TODO:
+                    "defaultTheme": "[(${theme.config.theme.default_theme})]",
+                    "defaultGroup": "[(${theme.config.photos.default_group})]",
+                    "isPostWordCountToast": "[(${theme.config.post.post_word_count_toast ? 'true' : ''})]",
+                    "isPostEditTimeToast": "[(${theme.config.post.post_edit_time_toast ? 'true' : ''})]",
+                    "postWordCountToastNormal": "[(${theme.config.post.post_word_count_toast_normal})]",
+                    "postWordCountToastMedium": "[(${theme.config.post.post_word_count_toast_medium})]",
+                    "postWordCountToastDifficulty": "[(${theme.config.post.post_word_count_toast_difficulty})]",
+                    "postEditTimeToastNormal": "[(${theme.config.post.post_edit_time_toast_normal})]",
+                    "postEditTimeToastMedium": "[(${theme.config.post.post_edit_time_toast_medium})]",
+                    "postEditTimeToastDifficulty": "[(${theme.config.post.post_edit_time_toast_difficulty})]",
+                    "journalLikes": "[(${theme.config.journal.journal_likes ? 'true' : ''})]",
+                    "journalComment": "[(${theme.config.journal.journal_comment ? 'true' : ''})]",
                 };
-                var bgConfig = {
-                <#list 0..7 as i>
-                    <#assign name = (("settings.bg_name_" + i)?eval)?default(""),
-                            desc = (("settings.bg_desc_" + i)?eval)?default(""),
-                            url = (("settings.bg_url_" + i)?eval)?default(""),
-                            strategy = (("settings.bg_img_strategy_" + i)?eval)?default(""),
-                            isNight = (("settings.bg_night_" + i)?eval)?default("") />
+                // TODO:
+                // var bgConfig = {
+                // <#list 0..7 as i>
+                //     <#assign name = (("settings.bg_name_" + i)?eval)?default(""),
+                //             desc = (("settings.bg_desc_" + i)?eval)?default(""),
+                //             url = (("settings.bg_url_" + i)?eval)?default(""),
+                //             strategy = (("settings.bg_img_strategy_" + i)?eval)?default(""),
+                //             isNight = (("settings.bg_night_" + i)?eval)?default("") />
             
-                    "bg_${i}": {
-                        "id": "${i}",
-                        "name": "${name}",
-                        "desc": "${desc}",
-                        "url": "${url}",
-                        "strategy": "${strategy}",
-                        "isNight": "${(isNight!true)?string('true', '')}"
-                    },
-                </#list>
-                };
+                //     "bg_${i}": {
+                //         "id": "${i}",
+                //         "name": "${name}",
+                //         "desc": "${desc}",
+                //         "url": "${url}",
+                //         "strategy": "${strategy}",
+                //         "isNight": "${(isNight!true)?string('true', '')}"
+                //     },
+                // </#list>
+                // };
                 /* ]]> */
             </script>
             <script type='text/javascript' th:src='@{/assets/script/utils.min.js?v={version}(version=${theme.spec.version})}'></script>
-            <script type="text/javascript" th:src="@{/assets/source/lib/lazysizes/lazysizes.min.js}" async></script>
-            <script type="text/javascript" th:src="@{/assets/source/js/lib.js}"></script>
+            <script type="text/javascript" th:src="@{/assets/lib/lazysizes/lazysizes.min.js}" async></script>
+            <script type="text/javascript" th:src="@{/assets/js/lib.js}"></script>
             <!-- 相册 -->
             <script th:if="${theme.config.photos.photos_style == 'justify'}" th:src="@{/assets/lib/justifiedGallery/jquery.justifiedGallery.min.js}" async></script>
             <script th:if="${theme.config.photos.photos_style == 'masonry'} or ${theme.config.photos.photos_style == 'packery'}" th:src="@{/assets/lib/isotope.pkgd.min/index.js}" async></script>
@@ -362,9 +366,9 @@
             </th:block>
             <th:block th:if="${theme.config.tagAndCategory.category_radar}">
             <script th:src="@{/assets/js/echarts/echarts.min.js}" async defer></script>
-            <script type='text/javascript'>
+            <script type='text/javascript' th:inline="javascript">
                 var categories = /*[[${categoryFinder.listAll()}]]*/
-                vat categoryRadar = categories.reduce((acc,curr)=> (acc[curr.spec.displayName]=curr.postCount,acc),{});
+                var categoryRadar = categories.reduce((acc,curr)=> (acc[curr.spec.displayName]=curr.postCount,acc),{});
             </script>
             </th:block>
             <script type='text/javascript' th:src='@{/assets/js/qrcode.min.js}' defer></script>

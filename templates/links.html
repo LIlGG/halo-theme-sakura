@@ -1,14 +1,18 @@
-<#--
+<!--
     Template Name: links
 -->
-<#include "header.ftl">
-<@header title="${options.links_title?default('友情链接')} - ${blog_title!}">
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}"
+>
+<th:block th:fragment="header">
     <#if (settings.patternimg!true) && (settings.links_patternimg?? && settings.links_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!='')>
         <div class="pattern-center-blank"></div>
         <div class="pattern-center no-select">
             <div class="pattern-attachment-img">
                 <#if (settings.patternimg!true) && (settings.links_patternimg?? && settings.links_patternimg!='')>
-                <img data-src="${settings.links_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this)">
+                <img data-src="${settings.links_patternimg!}" th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"  class="lazyload" onerror="imgError(this)">
                 <#else>
                     <img
                         src="${settings.rimage_url!}?link=link&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"
@@ -37,12 +41,13 @@
             }
 		</style>
     </#if>
-</@header>
+</th:block>
+<th:block th:fragment="content">
     <#include "tpl/content-links.ftl">
     <#if (metas.toc?boolean)!true>
     <div class="toc-container">
         <div class="toc"></div>
     </div>
     </#if>
-<#include "footer.ftl">
-<@footer />
+</th:block>
+</html>

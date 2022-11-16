@@ -14,7 +14,7 @@
           th:if="${not #strings.isEmpty(post.spec.cover)}"
           class="lazyload"
           th:attr="data-src=${post.spec.cover}"
-          src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"
+          th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"
           onerror="imgError(this)"
         />
         <img
@@ -32,7 +32,7 @@
           th:if="${#strings.isEmpty(post.spec.cover)} and ${not theme.config.random_image.rimage_cover_open} and ${#strings.isEmpty(theme.config.random_image.rimage_url)}"
           class="lazyload"
           data-src="${res_base_url!}/source/images/temp.jpg"
-          src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"
+          th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"
           onerror="imgError(this)"
         />
       </a>

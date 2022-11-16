@@ -1590,25 +1590,6 @@ spec:
               label: 开启
             - value: false
               label: 关闭
-        - $formkit: radio
-          name: cdn
-          label: 资源使用 CDN
-          value: true
-          help: 开启后静态资源将使用免费 CDN 加载，关闭后使用服务器网络加载
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: select
-          name: cdn_href
-          label: CDN 地址
-          value: https://takagi-api.com/file/1/halo-theme-sakura/
-          options:
-            - value: https:///takagi-api.com/file/1/halo-theme-sakura/
-              label: takagiの公共资源库
-            - value: https://cdn.jsdelivr.net/gh/LIlGG/halo-theme-sakura@
-              label: jsdelivr
         - $formkit: select
           name: i18n
           label: 主题语言

@@ -9,7 +9,7 @@
         <div class="pattern-center no-select">
             <div class="pattern-attachment-img">
                 <#if (settings.patternimg!true) && (settings.journals_patternimg?? && settings.journals_patternimg!='')>
-                <img data-src="${settings.journals_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this)">
+                <img data-src="${settings.journals_patternimg!}" th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"  class="lazyload" onerror="imgError(this)">
                 <#else>
                     <img
                         src="${settings.rimage_url!}?journal=journal&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"

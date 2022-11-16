@@ -1,16 +1,20 @@
-<#--
+<!--
 /**
  * 标签页
  */
 -->
-<#include "header.ftl">
-<@header title="标签：${tag.name!} - ${blog_title!}">
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}"
+>
+<th:block th:fragment="header">
     <#if (settings.patternimg!true) && ((tag.thumbnail?? && tag.thumbnail!='') || (settings.tag_patternimg?? && settings.tag_patternimg!='')) || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!='')>
         <div class="pattern-center-blank"></div>
         <div class="pattern-center no-select">
             <div class="pattern-attachment-img">
                 <#if (settings.patternimg!true) && ((tag.thumbnail?? && tag.thumbnail!='') || (settings.tag_patternimg?? && settings.tag_patternimg!=''))>
-                <img class="lazyload" data-src='${((tag.thumbnail)?length>0)?string((tag.thumbnail),"${settings.tag_patternimg!}")}' src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg" onerror="imgError(this)">
+                <img class="lazyload" data-src='${((tag.thumbnail)?length>0)?string((tag.thumbnail),"${settings.tag_patternimg!}")}' th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}" onerror="imgError(this)">
                 <#else>
                     <img
                         src="${settings.rimage_url!}?tagid=${tag.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"
@@ -35,8 +39,8 @@
             }
 		</style>
     </#if>
-</@header>
-
+</th:block>
+<th:block th:fragment="content">
 <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
         <#if posts?? && posts.content?size gt 0>
@@ -61,5 +65,5 @@
         <#include "layouts/list-nextprev.ftl">
     </@paginationTag>
 </div><!-- #primary -->
-<#include "footer.ftl">
-<@footer />
+</th:block>
+</html>

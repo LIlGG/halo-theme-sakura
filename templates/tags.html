@@ -1,18 +1,22 @@
-<#--
+<!--
 /**
  * 主题的标签目录，用来展示所有的标签，需要手动在菜单中添加
  * 菜单链接如下： https://{youraddress}/tags
  * @author LIlGG
  */
 -->
-<#include "header.ftl">
-<@header title="${options.tags_title?default('文章标签')} - ${blog_title!}">
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}"
+>
+<th:block th:fragment="header">
     <#if (settings.patternimg!true) && (settings.tag_patternimg?? && settings.tag_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!='')>
         <div class="pattern-center-blank"></div>
         <div class="pattern-center no-select">
             <div class="pattern-attachment-img">
                 <#if (settings.patternimg!true) && (settings.tag_patternimg?? && settings.tag_patternimg!='')>
-                <img data-src="${settings.tag_patternimg!}" src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"  class="lazyload" onerror="imgError(this)">
+                <img data-src="${settings.tag_patternimg!}" th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"  class="lazyload" onerror="imgError(this)">
                 <#else>
                     <img
                         src="${settings.rimage_url!}?tagid=tag&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"
@@ -43,7 +47,8 @@
             </#if>
         </header>
     </#if>
-</@header>
+</th:block>
+<th:block th:fragment="content">
 <#if settings.tag_cloud!true>
 <style type="text/css">
     .site-content {
@@ -88,6 +93,5 @@
         </div>
     </div>
 </div>
-<#include "footer.ftl">
-<@footer>
-</@footer>
+</th:block>
+</html>

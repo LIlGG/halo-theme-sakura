@@ -19,7 +19,7 @@
             th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)}"
             class="lazyload"
             data-src="${post.thumbnail!}"
-            src="${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg"
+            th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"
             onerror="imgError(this)"
           />
           <img
