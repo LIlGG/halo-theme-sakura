@@ -9,7 +9,7 @@
 		background-position: center center;background-attachment: inherit;
 	</#if>
 ">
-	<#if settings.focus_infos!true>
+	<#--  <#if settings.focus_infos!true>  -->
 	<div class="focusinfo">
 		<#if settings.focus_tou == "avatar">
 			<#if user.avatar??>
@@ -167,5 +167,5 @@
 			</div>
 		</div>
 	</div>
-	</#if>
+	<#--  </#if>  -->
 </figure>
