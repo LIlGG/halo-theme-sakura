@@ -1,0 +1,94 @@
+<!---
+    @package Akina
+-->
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}"
+>
+  <th:block th:fragment="header">
+    <th:block
+      th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)} and ${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+    >
+      <div class="pattern-center-blank"></div>
+      <div class="pattern-center no-select">
+        <div class="pattern-attachment-img">
+          <img
+            th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)}"
+            th:attr="data-src=${theme.config.patternimg.archives_patternimg}"
+            th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"
+            class="lazyload"
+            onerror="imgError(this)"
+          />
+          <img
+            th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)}"
+            src="${settings.rimage_url!}?archives=archives&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"
+            srcset="<#if settings.rimage_cover_lqip == 'loading'>${res_base_url!}/source/images/svg/loader/orange.progress-bar-stripe-loader.svg<#else>${settings.rimage_url!}?archives=archives&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=150</#if>"
+            data-srcset="${settings.rimage_url!}?archives=archives&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=640 640w,
+                            ${settings.rimage_url!}?archives=archives&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=960 960w,
+                            ${settings.rimage_url!}?archives=archives&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=1280 1280w,
+                            ${settings.rimage_url!}?archives=archives&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if> 1440w"
+            data-sizes="auto"
+            th:class="'lazyload '+${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
+          />
+        </div>
+        <header class="pattern-header">
+          <h1 class="entry-title i18n" data-iname="page.archives.title"></h1>
+        </header>
+      </div>
+    </th:block>
+    <th:block
+      th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)} and ${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+    >
+      <div class="blank"></div>
+    </th:block>
+  </th:block>
+  <th:block th:fragment="content">
+    <article class="post-item page type-page status-publish hentry">
+      <div id="archives-temp">
+        <!-- <#if !((settings.patternimg!true) && (settings.archives_patternimg?? && settings.archives_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!=''))>
+                <#if options.archives_title?default("")?trim?length gt 1>
+                <h2>${options.archives_title}</h2>
+                <#else>
+                <h2 class="i18n" data-iname="page.archives.title"></h2>
+                </#if>
+        </#if> -->
+        <div id="archives-content">
+          <th:block th:each="archive : ${archives.items}">
+            <th:block th:each="month,monthStat : ${archive.months}">
+              <div
+                class="archive-title"
+                th:id="'arti-'+${archive.year}+'-'+${month.month}"
+              >
+                <span class="ar-time"><i class="iconfont icon-log"></i></span>
+                <h3 th:text="${archive.year}+'-'+${month.month}"></h3>
+                <div
+                  th:class="'archives archives-'+${monthStat.index}"
+                  id="monlist"
+                  th:attr="data-date=${archive.year}+'-'+${month.month}"
+                  style="display: block; overflow: hidden"
+                >
+                  <th:block th:each="post : ${month.posts}">
+                    <span class="ar-circle"></span>
+                    <div class="arrow-left-ar"></div>
+                    <div class="brick">
+                      <a th:href="${post.status.permalink}">
+                        <span class="time">
+                          <i class="iconfont icon-time"> </i>
+                          <th:block
+                            th:text="${#dates.format(post.spec.publishTime,'MM-dd')}"
+                          ></th:block>
+                        </span>
+                        <th:block th:text="${post.spec.title}"></th:block>
+                      </a>
+                    </div>
+                  </th:block>
+                </div>
+              </div>
+            </th:block>
+          </th:block>
+        </div>
+      </div>
+    </article>
+  </th:block>
+</html>
