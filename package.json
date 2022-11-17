@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run build-clean && npm run build-autoprefix && npm run build-cleancss  && npm run build-js",
-    "build-autoprefix": "postcss --use autoprefixer --map false --output templates/assets/styles/style.css templates/assets/styles/style.css",
-    "build-cleancss": "cleancss -o templates/assets/styles/style.min.css templates/assets/styles/style.css",
+    "build-autoprefix": "postcss --use autoprefixer --map false --output styles/style.css styles/style.css",
+    "build-cleancss": "cleancss -o styles/style.min.css styles/style.css",
     "build-clean": "rimraf css",
-    "build-app-js": "babel templates/assets/script/app.js -o templates/assets/script/app.min.js && uglifyjs templates/assets/script/app.min.js -o templates/assets/script/app.min.js",
-    "build-i18n-js": "babel templates/assets/script/i18n.js -o templates/assets/script/i18n.min.js && uglifyjs templates/assets/script/i18n.min.js -o templates/assets/script/i18n.min.js",
-    "build-utils-js": "babel templates/assets/script/utils.js -o templates/assets/script/utils.min.js && uglifyjs templates/assets/script/utils.min.js -o templates/assets/script/utils.min.js",
+    "build-app-js": "babel script/app.js -o script/app.min.js && uglifyjs script/app.min.js -o script/app.min.js",
+    "build-i18n-js": "babel script/i18n.js -o script/i18n.min.js && uglifyjs script/i18n.min.js -o script/i18n.min.js",
+    "build-utils-js": "babel script/utils.js -o script/utils.min.js && uglifyjs script/utils.min.js -o script/utils.min.js",
     "build-js": "npm run build-app-js && npm run build-i18n-js && npm run build-utils-js",
     "deploy": "npm run build"
   },
