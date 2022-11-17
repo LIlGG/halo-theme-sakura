@@ -63,7 +63,7 @@
             <div class="tag-chips">
               <a
                 th:each="category : ${categories}"
-                th:href="${category.status.permalink}"
+                th:href="@{${category.status.permalink}}"
                 th:title="${category.spec.displayName}+': '+${category.postCount}"
               >
                 <span

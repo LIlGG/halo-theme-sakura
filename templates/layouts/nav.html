@@ -1,6 +1,6 @@
 <ul id="menu-menu-1" class="menu" th:with="menu = ${menuFinder.getPrimary()}">
   <li th:each="menuItem : ${menu.menuItems}">
-    <a th:href="${menuItem.status?.href}">
+    <a th:href="@{${menuItem.status?.href}}">
       <span class="faa-parent animated-hover">
         <!-- <#if menu.icon?? && menu.icon?trim?length gt 0>
                             <i class="${menu.icon}" aria-hidden="true"></i>

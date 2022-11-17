@@ -59,7 +59,7 @@
         <i class="iconfont icon-tags"></i>
         <a
           th:each="tag : ${post.tags}"
-          th:href="${tag.status.permalink}"
+          th:href="@{${tag.status.permalink}}"
           rel="tag"
           th:text="${tag.spec.displayName}"
         ></a>

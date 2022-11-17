@@ -4,7 +4,7 @@
 <article th:fragment="content(post)" class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
   <div class="post-entry">
     <div class="feature">
-      <a th:href="${post.status.permalink}">
+      <a th:href="@{${post.status.permalink}}">
         <div class="overlay"><i class="iconfont icon-text"></i></div>
         <img
           th:if="${not #strings.isEmpty(post.spec.cover)}"
@@ -29,7 +29,7 @@
       </a>
     </div>
     <h1 class="entry-title">
-      <a th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
+      <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"></a>
     </h1>
     <div class="p-time">
       <i th:if="${post.spec.pinned}" class="iconfont icon-hot hotpost"></i>
@@ -44,7 +44,7 @@
     <p th:text="${post.status.excerpt}"></p>
     <footer class="entry-footer">
       <div class="post-more">
-        <a th:href="${post.status.permalink}">
+        <a th:href="@{${post.status.permalink}}">
           <i class="iconfont icon-caidan"></i>
         </a>
       </div>
@@ -52,7 +52,7 @@
         <div th:if="${theme.config.others.keep_record_mode}" class="comnum">
           <span>
             <i class="iconfont icon-mark"></i>
-            <a th:href="${post.status.permalink}+'#comments'">
+            <a th:href="@{${post.status.permalink}+'#comments'}">
               <span class="i18n" data-iname="postlist.comments" th:attr="data-ivalue=${post.stats.comment}"> </span>
             </a>
           </span>

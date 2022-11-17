@@ -1,4 +1,4 @@
-<figure id="centerbg" class="centerbg" style="background-image: url(
+<!-- <figure id="centerbg" class="centerbg" style="background-image: url(
 	<#if settings.rimage_cover_back_open!false && settings.rimage_url?? && settings.rimage_url!=''>
 		${settings.rimage_url!}?home=home&type=url&itype=${settings.rimage_cover_back_itype!}&id=${(settings.rimage_cover_back_id)!''}&t=<#if settings.rimage_cover_back_num != 0>${randomMethod(1,settings.rimage_cover_back_num + 1)}<#else>${.now?string('yyyyMMddHHmmssSSS')}</#if>
 	<#else>
@@ -8,52 +8,68 @@
 	<#if !(settings.focus_height!true)>
 		background-position: center center;background-attachment: inherit;
 	</#if>
-">
-	<#if settings.focus_infos!true>
-	<div class="focusinfo">
-		<#if settings.focus_tou == "avatar">
-			<#if user.avatar??>
-			<div class="header-tou no-select"><a href="${blog_url!}" ><img src="${user.avatar!}"></a></div>
-			<#else>
-			<div class="header-tou no-select" ><a href="${blog_url!}"><img th:src="@{/assets/images/avatar.jpg}"></a></div>
-			</#if>
-		<#elseif settings.focus_tou == "glitch-text">
-			<#if settings.glitch_text??>
-			<h1 class="center-text glitch" data-text="${settings.glitch_text}">${settings.glitch_text}</h1>
-			</#if>
-		</#if>
-		<div class="header-info no-select
-			<#if user.description?default("")?trim?length gt 1>
-			 info-desc"><p><i class="fa fa-quote-left"></i><span class="desc">${user.description}</span><i class="fa fa-quote-right"></i></p>
-			<#else>
-			">
-			</#if>
-			<div class="top-social_v2">
-			    <li id="bg-pre">
-            		<img class="flipx" th:src="@{/assets/images/next-b.svg}">
-          		</li>
-				<th:block th:each="item : ${theme.config.sns.items}">
-					<th:block th:if="${item.url_type == 'normal'}">
-						<li>
-							<a th:href="${item.url}" target="_blank" class="social-sina i18n" data-iname="icon_alt.sina" data-iattr="title">
-								<img th:src="${/assets/images/sns/{icon}(icon=${item.icon})}"/>
-							</a>
-						</li>
-					</th:block>
-					<th:block th:if="${item.url_type == 'image'}">
-						<li class="wechat"><a href="#">
-							<img th:src="${/assets/images/sns/{icon}(icon=${item.icon})}"/>
-							<div class="wechatInner">
-								<img th:src="${item.url}" class="i18n" data-iname="icon_alt.wechat" data-iattr="alt">
-							</div>
-						</li>
-					</th:block>
-				</th:block>
-				<li id="bg-next">
-            		<img th:src="@{/assets/images/next-b.svg}">
-          		</li>
-			</div>
-		</div>
-	</div>
-	</#if>
+"
+> -->
+<figure id="centerbg" class="centerbg">
+  <div th:if="${theme.config.mainScreen.focus_infos}" class="focusinfo">
+    <th:block th:if="${theme.config.mainScreen.focus_tou == 'avatar'}">
+      <div th:if="${not #strings.isEmpty(site.logo)}" class="header-tou no-select">
+        <a href="/">
+          <img th:src="${site.logo}" />
+        </a>
+      </div>
+      <div th:if="${#strings.isEmpty(site.logo)}" class="header-tou no-select">
+        <a href="/">
+          <img th:src="@{/assets/images/avatar.jpg}" />
+        </a>
+      </div>
+    </th:block>
+    <th:block th:if="${theme.config.mainScreen.focus_tou == 'glitch-text'}">
+      <h1
+        th:if="${not #strings.isEmpty(theme.config.mainScreen.glitch_text)}"
+        class="center-text glitch"
+        th:attr="data-text=${theme.config.mainScreen.glitch_text}"
+        th:text="${theme.config.mainScreen.glitch_text}"
+      ></h1>
+    </th:block>
+    <div th:class="'header-info no-select'+${#strings.isEmpty(site.subtitle) ? '' : 'info-desc'}">
+      <p th:if="${not #strings.isEmpty(site.subtitle)}">
+        <i class="fa fa-quote-left"></i>
+        <span class="desc" th:text="${site.subtitle}"></span>
+        <i class="fa fa-quote-right"></i>
+      </p>
+      <div class="top-social_v2">
+        <li id="bg-pre">
+          <img class="flipx" th:src="@{/assets/images/next-b.svg}" />
+        </li>
+        <th:block th:each="item : ${theme.config.sns.items}">
+          <th:block th:if="${item.url_type == 'normal'}">
+            <li>
+              <a
+                th:href="${item.url}"
+                target="_blank"
+                class="social-sina i18n"
+                data-iname="icon_alt.sina"
+                data-iattr="title"
+              >
+                <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" />
+              </a>
+            </li>
+          </th:block>
+          <th:block th:if="${item.url_type == 'image'}">
+            <li class="wechat">
+              <a href="#"></a>
+              <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" />
+              <div class="wechatInner">
+                <img th:src="${item.url}" class="i18n" data-iname="icon_alt.wechat" data-iattr="alt" />
+              </div>
+            </li>
+          </th:block>
+        </th:block>
+        <li id="bg-next">
+          <img th:src="@{/assets/images/next-b.svg}" />
+        </li>
+      </div>
+    </div>
+  </div>
 </figure>

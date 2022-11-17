@@ -68,7 +68,7 @@
                     <span class="ar-circle"></span>
                     <div class="arrow-left-ar"></div>
                     <div class="brick">
-                      <a th:href="${post.status.permalink}">
+                      <a th:href="@{${post.status.permalink}}">
                         <span class="time">
                           <i class="iconfont icon-time"> </i>
                           <th:block th:text="${#dates.format(post.spec.publishTime,'MM-dd')}"></th:block>

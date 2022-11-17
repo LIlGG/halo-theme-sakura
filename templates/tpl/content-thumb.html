@@ -9,7 +9,7 @@
     itemtype="http://schema.org/BlogPosting"
   >
     <div class="post-thumb">
-      <a th:href="${post.status.permalink}" th:alt="${post.spec.title}">
+      <a th:href="@{${post.status.permalink}}" th:alt="${post.spec.title}">
         <img
           th:if="${not #strings.isEmpty(post.spec.cover)}"
           class="lazyload"
@@ -51,7 +51,7 @@
           ></span>
           <th:block th:if="${post.spec.pinned}"> &nbsp;<i class="iconfont icon-hot hotpost"></i> </th:block>
         </div>
-        <a th:href="${post.status.permalink}" class="post-title">
+        <a th:href="@{${post.status.permalink}}" class="post-title">
           <h3 th:text="${post.spec.title}"></h3>
         </a>
         <div class="post-meta">
@@ -75,7 +75,7 @@
         <div class="float-content">
           <p th:text="${post.status.excerpt}"></p>
           <div class="post-bottom">
-            <a th:href="${post.status.permalink}" class="button-normal">
+            <a th:href="@{${post.status.permalink}}" class="button-normal">
               <i class="iconfont icon-caidan"></i>
             </a>
           </div>
