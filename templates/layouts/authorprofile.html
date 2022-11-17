@@ -1,24 +1,25 @@
-<#--
+<!--
 	AUTHOR PROFILE
  -->
-<#if settings.author_profile!true>
-	<section class="author-profile">
-		<div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-			<a href="${blog_url!}" class="profile gravatar"><img src="${user.avatar!}" itemprop="image" alt="${user.nickname!}" height="70" width="70"></a>
-			<div class="meta">
-				<span class="title">${user.nickname!}</span>
-				<h3 itemprop="name">
-					<a href="${blog_url!}" itemprop="url" rel="author">${user.nickname!}</a>
-				</h3>						
-			</div>
-		</div>
-		<hr>
-		<p><i class="iconfont icon-pencil"></i>
-			<#if user.description?default("")?trim?length gt 1>
-			<span>${user.description}</span>
-			<#else>
-			<span class="i18n" data-iname="user.description"></span>
-			</#if>
-		</p>
-	</section>
-</#if>
+<th:block th:fragment="authorprofile(post)">
+  <section th:if="${theme.config.post.author_profile}" class="author-profile">
+    <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <!-- TODO: 改为作者地址 -->
+      <a href="/" class="profile gravatar">
+        <img th:src="${post.owner.avatar}" itemprop="image" th:alt="${post.owner.displayName}" height="70" width="70" />
+      </a>
+      <div class="meta">
+        <span class="title" th:text="${post.owner.displayName}"></span>
+        <h3 itemprop="name">
+          <a href="/" itemprop="url" rel="author" th:text="${post.owner.name}"></a>
+        </h3>
+      </div>
+    </div>
+    <hr />
+    <p>
+      <i class="iconfont icon-pencil"></i>
+      <span th:if="${#strings.isEmpty(post.owner.bio)}" th:text="${post.owner.bio}"></span>
+      <span th:unless="${#strings.isEmpty(post.owner.bio)}" class="i18n" data-iname="user.description"></span>
+    </p>
+  </section>
+</th:block>

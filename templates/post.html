@@ -2,10 +2,7 @@
     @package Akina
 -->
 <!DOCTYPE html>
-<html
-  xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}"
->
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
   <th:block th:fragment="header">
     <th:block
       th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
@@ -60,11 +57,7 @@
               th:attr="data-ivalue=${#dates.format(post.spec.publishTime,theme.config.post.post_time_display_type ?: 'yyyy-MM-dd')}"
             ></span>
             <span class="bull">·</span>
-            <span
-              class="i18n"
-              data-iname="post.visits"
-              th:attr="data-ivalue=${post.stats.visit}"
-            ></span>
+            <span class="i18n" data-iname="post.visits" th:attr="data-ivalue=${post.stats.visit}"></span>
           </p>
         </header>
       </div>
@@ -84,14 +77,9 @@
   <th:block th:fragment="content">
     <div id="primary" class="content-area">
       <main id="main" class="site-main" role="main">
-        <th:block
-          th:replace="~{tpl/content-single :: content-single(${post})}"
-        />
-        <th:block
-          th:replace="~{layouts/post-nextprev :: post-nextprev(${post})}"
-        />
-        <!-- 
-            <#include "layouts/authorprofile.ftl"> -->
+        <th:block th:replace="~{tpl/content-single :: content-single(${post})}" />
+        <th:block th:replace="~{layouts/post-nextprev :: post-nextprev(${post})}" />
+        <th:block th:replace="~{layouts/authorprofile :: authorprofile(${post})}" />
       </main>
       <!-- #main -->
     </div>

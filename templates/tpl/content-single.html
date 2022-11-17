@@ -8,14 +8,8 @@
     <header class="entry-header">
       <h1 class="entry-title" th:text="${post.spec.title}"></h1>
       <p class="entry-census">
-        <th:block
-          th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
-        ></th:block>
-        &nbsp;&nbsp;<span
-          class="i18n"
-          data-iname="post.visits"
-          th:attr="data-ivalue=${post.stats.visit}"
-        ></span>
+        <th:block th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></th:block>
+        &nbsp;&nbsp;<span class="i18n" data-iname="post.visits" th:attr="data-ivalue=${post.stats.visit}"></span>
       </p>
       <hr />
     </header>
@@ -43,16 +37,10 @@
       <span class="i18n" data-iname="post.reward"></span>
       <div class="reward-main">
         <ul class="reward-row">
-          <li
-            th:if="${not #strings.isEmpty(theme.config.post.alipay_code)}"
-            class="alipay-code"
-          >
+          <li th:if="${not #strings.isEmpty(theme.config.post.alipay_code)}" class="alipay-code">
             <img th:src="${theme.config.post.alipay_code}" />
           </li>
-          <li
-            th:if="${not #strings.isEmpty(theme.config.post.wechat_code)}"
-            class="wechat-code"
-          >
+          <li th:if="${not #strings.isEmpty(theme.config.post.wechat_code)}" class="wechat-code">
             <img th:src="${theme.config.post.wechat_code}" />
           </li>
         </ul>
@@ -61,11 +49,7 @@
   </div>
   <footer class="post-footer">
     <div class="post-license">
-      <a
-        href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-        target="_blank"
-        rel="nofollow"
-      >
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow">
         <i class="fa fa-creative-commons" aria-hidden="true"></i>
         <span class="i18n" data-iname="post.creative_commons"></span>
       </a>

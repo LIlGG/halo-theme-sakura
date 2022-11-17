@@ -9,11 +9,11 @@ var I18N = function() {
     // 加载资源
     var _load = function() {
         if(!window.$) {
-            Util.loadJS(Poi.themeBase + "/source/js/lib.js", _load)
+            Util.loadJS(Poi.themeBase + "/js/lib.js", _load)
         } else if(!window.$.i18n) {
-            Util.loadJS(Poi.themeBase + "/source/lib/jquery-i18n/jquery.i18n.min.js", _load)
+            Util.loadJS(Poi.themeBase + "/lib/jquery-i18n/jquery.i18n.min.js", _load)
         } else if (!window.jsyaml) {
-            Util.loadJS(Poi.themeBase + "/source/lib/js-yaml/dist/js-yaml.min.js", _load)
+            Util.loadJS(Poi.themeBase + "/lib/js-yaml/dist/js-yaml.min.js", _load)
         } else {
             _execI18n();
         }

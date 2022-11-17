@@ -1,12 +1,7 @@
 <!--
 	@package Akina
 -->
-<article
-  th:fragment="content(post)"
-  class="post post-list"
-  itemscope=""
-  itemtype="http://schema.org/BlogPosting"
->
+<article th:fragment="content(post)" class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
   <div class="post-entry">
     <div class="feature">
       <a th:href="${post.status.permalink}">
@@ -58,24 +53,14 @@
           <span>
             <i class="iconfont icon-mark"></i>
             <a th:href="${post.status.permalink}+'#comments'">
-              <span
-                class="i18n"
-                data-iname="postlist.comments"
-                th:attr="data-ivalue=${post.stats.comment}"
-              >
-              </span>
+              <span class="i18n" data-iname="postlist.comments" th:attr="data-ivalue=${post.stats.comment}"> </span>
             </a>
           </span>
         </div>
         <div class="views">
           <span>
             <i class="iconfont icon-attention"></i>
-            <span
-              class="i18n"
-              data-iname="postlist.heat"
-              th:attr="data-ivalue=${post.stats.visit}"
-            >
-            </span>
+            <span class="i18n" data-iname="postlist.heat" th:attr="data-ivalue=${post.stats.visit}"> </span>
           </span>
         </div>
       </div>

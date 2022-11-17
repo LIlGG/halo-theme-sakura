@@ -12,7 +12,8 @@
     "build-i18n-js": "babel templates/assets/script/i18n.js -o templates/assets/script/i18n.min.js && uglifyjs templates/assets/script/i18n.min.js -o templates/assets/script/i18n.min.js",
     "build-utils-js": "babel templates/assets/script/utils.js -o templates/assets/script/utils.min.js && uglifyjs templates/assets/script/utils.min.js -o templates/assets/script/utils.min.js",
     "build-js": "npm run build-app-js && npm run build-i18n-js && npm run build-utils-js",
-    "deploy": "npm run build"
+    "deploy": "npm run build",
+    "prettier": "prettier --write './src/**/*.{js,ts,css,json,ml,yaml,html}' './templates/**/*.html'"
   },
   "browserify": {
     "transform": [
@@ -45,8 +46,8 @@
     "autoprefixer": "^9.8.8",
     "clean-css-cli": "^4.3.0",
     "postcss-cli": "^7.1.2",
+    "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "uglify-js": "^3.15.2"
-  },
-  "dependencies": {}
+  }
 }

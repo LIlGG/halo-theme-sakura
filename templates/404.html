@@ -3,12 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title
-      itemprop="name"
-      class="i18n"
-      data-iname="notfound.title"
-      data-ivalue="${blog_title!}"
-    ></title>
+    <title itemprop="name" class="i18n" data-iname="notfound.title" data-ivalue="${blog_title!}"></title>
 
     <@global.head /> <#include "inc/decorate.ftl">
     <link
@@ -17,11 +12,7 @@
       media="noexist"
       onload="this.media='all'"
     />
-    <link
-      rel="stylesheet"
-      href="${theme_base!}/styles/style.min.css"
-      type="text/css"
-    />
+    <link rel="stylesheet" href="${theme_base!}/styles/style.min.css" type="text/css" />
   </head>
   <body class="error404 hfeed">
     <section class="error-404 not-found">
@@ -29,49 +20,21 @@
         <div class="anim-icon" id="404" style="height: 66%"></div>
       </div>
       <div class="err-button back">
-        <a
-          id="golast"
-          href="javascript:history.go(-1);"
-          class="i18n"
-          data-iname="notfound.golast"
-          >返回上一页</a
-        >
-        <a
-          id="gohome"
-          href="${blog_url!}"
-          class="i18n"
-          data-iname="notfound.gohome"
-          >返回主页</a
-        >
+        <a id="golast" href="javascript:history.go(-1);" class="i18n" data-iname="notfound.golast">返回上一页</a>
+        <a id="gohome" href="${blog_url!}" class="i18n" data-iname="notfound.gohome">返回主页</a>
       </div>
       <p
-        style="
-          margin-bottom: 1em;
-          margin-top: 1.5em;
-          text-align: center;
-          font-size: 15px;
-        "
+        style="margin-bottom: 1em; margin-top: 1.5em; text-align: center; font-size: 15px"
         class="i18n"
         data-iname="notfound.search"
       >
         别急，试试站内搜索？
       </p>
-      <p
-        style="margin-bottom: 1em; text-align: center; font-size: 15px"
-        class="i18n"
-        data-iname="notfound.search_2"
-      >
+      <p style="margin-bottom: 1em; text-align: center; font-size: 15px" class="i18n" data-iname="notfound.search_2">
         Don't worry, search in site?
       </p>
       <div style="display: block; width: 284px; margin: auto">
-        <p
-          style="
-            margin-bottom: 1em;
-            margin-top: 1.5em;
-            text-align: center;
-            font-size: 15px;
-          "
-        ></p>
+        <p style="margin-bottom: 1em; margin-top: 1.5em; text-align: center; font-size: 15px"></p>
         <form class="s-search" method="get" action="/search" role="search">
           <i class="iconfont icon-search" style="bottom: 9px; left: 15px"></i>
           <input
