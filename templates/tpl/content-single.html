@@ -2,22 +2,24 @@
     @package Akina
 -->
 <article th:fragment="content-single(post)" id="post-${post.id?c}">
-  <!-- TODO: -->
-  <!-- <#if !((settings.patternimg!true) && (post.thumbnail?? && post.thumbnail!='') || ((metas.ri?boolean)!true && settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!=''))> -->
-  <header class="entry-header">
-    <h1 class="entry-title" th:text="${post.spec.title}"></h1>
-    <p class="entry-census">
-      <th:block
-        th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
-      ></th:block>
-      &nbsp;&nbsp;<span
-        class="i18n"
-        data-iname="post.visits"
-        data-ivalue="${post.visits!0}"
-      ></span>
-    </p>
-    <hr />
-  </header>
+  <th:block
+    th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)} and ${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+  >
+    <header class="entry-header">
+      <h1 class="entry-title" th:text="${post.spec.title}"></h1>
+      <p class="entry-census">
+        <th:block
+          th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+        ></th:block>
+        &nbsp;&nbsp;<span
+          class="i18n"
+          data-iname="post.visits"
+          th:attr="data-ivalue=${post.stats.visit}"
+        ></span>
+      </p>
+      <hr />
+    </header>
+  </th:block>
   <!-- .entry-header -->
   <!-- TODO: -->
   <!-- <#if (metas.toc?boolean)!true>
@@ -79,7 +81,7 @@
         ></a>
       </th:block>
     </div>
-    <th:block th:replace="~{layouts/sharelike}" />
+    <th:block th:replace="~{layouts/sharelike :: sharelike(${post})}" />
   </footer>
   <!-- .entry-footer -->
 </article>

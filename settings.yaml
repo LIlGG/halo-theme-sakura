@@ -78,25 +78,25 @@ spec:
               label: 开启
             - value: false
               label: 关闭
-        - $formkit: text
+        - $formkit: attachment
           name: archives_patternimg
           label: 归档页装饰图
-        - $formkit: text
+        - $formkit: attachment
           name: photos_patternimg
           label: 图库页装饰图
-        - $formkit: text
+        - $formkit: attachment
           name: journals_patternimg
           label: 日志页装饰图
-        - $formkit: text
+        - $formkit: attachment
           name: links_patternimg
           label: 友链页装饰图
-        - $formkit: text
+        - $formkit: attachment
           name: searh_patternimg
           label: 搜索页装饰图
-        - $formkit: text
+        - $formkit: attachment
           name: tag_patternimg
           label: 标签页默认装饰图
-        - $formkit: text
+        - $formkit: attachment
           name: category_patternimg
           label: 分类页默认装饰图
     - group: mainScreen

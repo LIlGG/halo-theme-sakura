@@ -22,7 +22,7 @@
                             ${settings.rimage_url!}?sheetid=${sheet.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>&th=1280 1280w,
                             ${settings.rimage_url!}?sheetid=${sheet.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if> 1440w"
                         data-sizes="auto"
-                        class="lazyload<#if settings.rimage_cover_lqip == 'lowquality'> blur-up</#if>" />
+                        th:class="'lazyload '+${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}" />
                 </#if>
 			</div>
 			<header class="pattern-header">
