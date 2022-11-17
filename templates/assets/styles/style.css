@@ -1964,10 +1964,6 @@ i.iconfont.hotpost {
 	-webkit-animation: poi-deg 12s infinite linear
 }
 
-.site-statistics {
-	display: none
-}
-
 .entry-content .begin,
 .single-begin {
 	float: left;

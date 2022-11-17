@@ -375,13 +375,5 @@
             <script type='text/javascript' th:src='@{/assets/lib/flv.min/index.js}' defer></script>
             <script type='text/javascript' th:src='@{/assets/script/i18n.min.js?v={version}(version=${theme.spec.version})}' defer></script>
             <script type='text/javascript' th:src='@{/assets/script/app.min.js?v={version}(version=${theme.spec.version})}'></script>
-            <th:block th:if="${theme.config.plugin.live2d_switch}">
-                <script th:src="@{/assets/lib/jquery-ui/jquery-ui.min.js}" async defer></script>
-                <#include "plugins/live2d/ftl/live2d.ftl">
-                <@live2d/>
-            </th:block>
-            <div class="site-statistics">
-                <@global.statistics />
-            </div>
             </body>
 </html>
