@@ -3,8 +3,8 @@
 -->
 <th:block th:fragment="content-thumb(postItems)">
   <article
-    th:each="post : ${postItems}"
-    class="post post-list-thumb <#if (post_index+1) % 2==0>post-list-thumb-left</#if>"
+    th:each="post,postStat : ${postItems}"
+    th:class="'post post-list-thumb '+${postStat.odd ? '' : 'post-list-thumb-left'}"
     itemscope=""
     itemtype="http://schema.org/BlogPosting"
   >

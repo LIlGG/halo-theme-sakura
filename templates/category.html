@@ -5,7 +5,7 @@
 <html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
   <th:block th:fragment="header">
     <th:block
-      th:if="${theme.config.patternimg.patternimg} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}) and ${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+      th:if="${theme.config.patternimg.patternimg} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
       <div class="pattern-center-blank"></div>
       <div class="pattern-center no-select">

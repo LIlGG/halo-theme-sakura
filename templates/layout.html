@@ -35,11 +35,13 @@
             <!-- <th:block th:replace="~{layouts/imgbox}" /> -->
             
             <!-- 背景视频 -->
-            <#if settings.bgvideo!false>
-                <!-- <#if settings.focus_height!true && settings.bgvideo_url?? && settings.bgvideo_url!= '' || settings.bgvideo_id?? && settings.bgvideo_id!= ''> -->
-                <#include "layouts/videobox.ftl">
-                </#if>
-            </#if>
+
+            <th:block th:if="${theme.config.mainScreen.bgvideo}">
+                <th:block th:if="${theme.config.mainScreen.focus_height} and (${not #strings.isEmpty(theme.config.mainScreen.bgvideo_url)} or ${not #strings.isEmpty(theme.config.mainScreen.bgvideo_id)})">
+                    <th:block th:replace="~{layouts/videobox}" />
+                </th:block>
+
+            </th:block>
 
             <!-- 首页下拉箭头 -->
             <div th:if="${theme.config.mainScreen.focus_godown}" class="headertop-down faa-float animated" onclick="headertop_down()">
@@ -92,12 +94,12 @@
             <div id="content" class="site-content">
                 <th:block th:replace="${content}" />
             </div><!-- #content -->
-            <#include "comments.ftl">
+            <!-- <#include "comments.ftl">
             <#if is_post??>
                 <@comment post,"post" />
             <#elseif is_sheet??>
                 <@comment sheet,"sheet" />
-            </#if>
+            </#if> -->
             <!-- 定义可变属性，会根据页面的改变而变化 -->
             <script type='text/javascript'>
                 /* <![CDATA[ */
@@ -133,7 +135,7 @@
                             <span>Powered
                                  <i class="fa fa-vimeo animated" style="color: #e74c3c;"></i>
                                 by
-                                <a rel="me" target="_blank"  href="http://halo.run" title="一款优秀的开源博客内容发布系统" style="text-decoration:none;">Halo</a>
+                                <a rel="me" target="_blank"  href="http://halo.run" title="一款现代化的开源建站 / CMS 系统。" style="text-decoration:none;">Halo</a>
                             </span>
                              •
                             <span>Crafted with
@@ -143,17 +145,17 @@
                             </span>
                         </p>
                         <p>
-                            © <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" /> ${(user.nickname)!}
-                            <#if settings.footer_case_number??  && settings.footer_case_number != "">
-                            &nbsp;
-                            <a href="https://beian.miit.gov.cn/" target="_blank">${settings.footer_case_number}</a>
-                            </#if>
-                            <#if settings.footer_ga_case_number??  && settings.footer_ga_case_number != "">
-                            &nbsp;
-                            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${settings.footer_ga_select_number!}" target="_blank">
-                                <img th:src="@{/assets/images/other/gongan.png}">${settings.footer_ga_case_number}
-                            </a>
-                            </#if>
+                            © <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" /> <th:block th:text="${site.title}"></th:block>
+                            <th:block th:if="${not #strings.isEmpty(theme.config.others.footer_case_number)}">
+                                &nbsp;
+                                <a href="https://beian.miit.gov.cn/" target="_blank" th:text="${theme.config.others.footer_case_number}"></a>
+                            </th:block>
+                            <th:block th:if="${not #strings.isEmpty(theme.config.others.footer_ga_case_number)}">
+                                &nbsp;
+                                <a th:href="@{http://www.beian.gov.cn/portal/registerSystemInfo?recordcode={recordcode}(recordcode=${theme.config.others.footer_ga_case_number})}" target="_blank">
+                                    <img th:src="@{/assets/images/other/gongan.png}"><th:block th:text="${theme.config.others.footer_ga_case_number}"></th:block>
+                                </a>
+                            </th:block>
                         </p>
                     </div>
                 </div><!-- .site-info -->
@@ -182,7 +184,7 @@
             
                 <p th:if="${theme.config.mainScreen.glitch_text}" style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">${settings.glitch_text}</p>
             
-                <#if settings.focus_infos!true>
+                <th:block th:if="${theme.config.mainScreen.focus_infos}">
                     <p style="display:flex; justify-content:center;">
                         <#if settings.twitter??>
                             <a href="${settings.twitter!}" class="social social-twitter" target="_blank"><img th:src="@{/assets/images/sns/twitter.png}" width="18"/></a>
@@ -205,13 +207,8 @@
                         <#if settings.wangyiyun??>
                             <a href="${settings.wangyiyun!}" class="social social-wangyiyun" target="_blank"><img th:src="@{/assets/images/sns/wangyiyun.png}" width="18"/></a>
                         </#if>
-                        <!-- <#if settings.customize_link?? && settings.customize_icon?? && settings.customize_title??> -->
-                            <a href="${settings.customize_link!}" class="social" target="_blank" title="${settings.customize_title!}">
-                                <img src="${settings.customize_icon}" width="18"/>
-                            </a>
-                        </#if>
                     </p>
-                </#if>
+                </th:block>
             
                 <div class="m-search">
                     <form class="m-search-form" method="get" action="/search" role="search">
@@ -219,7 +216,7 @@
                     </form>
                 </div>
                 <th:block th:replace="~{layouts/nav}" />
-                <p class="m-footer">© <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" /> ${(user.nickname)!}</p>
+                <p class="m-footer">© <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" /> <th:block th:text="${site.title}"></th:block></p>
             </div><!-- m-nav-center end -->
             <a href="#" class="cd-top"></a>
             <!-- m-cd-top start -->
@@ -334,6 +331,7 @@
                 // </#list>
                 // };
                 /* ]]> */
+                var bgConfig = {}
             </script>
             <script type='text/javascript' th:src='@{/assets/script/utils.min.js?v={version}(version=${theme.spec.version})}'></script>
             <script type="text/javascript" th:src="@{/assets/lib/lazysizes/lazysizes.min.js}" async></script>
