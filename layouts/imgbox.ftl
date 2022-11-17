@@ -9,7 +9,6 @@
 		background-position: center center;background-attachment: inherit;
 	</#if>
 ">
-	<#--  <#if settings.focus_infos!true>  -->
 	<div class="focusinfo">
 		<#if settings.focus_tou == "avatar">
 			<#if user.avatar??>
@@ -22,6 +21,7 @@
 			<h1 class="center-text glitch" data-text="${settings.glitch_text}">${settings.glitch_text}</h1>
 			</#if>
 		</#if>
+	<#if settings.focus_infos!true>
 		<div class="header-info no-select
 			<#if user.description?default("")?trim?length gt 1>
 			 info-desc"><p><i class="fa fa-quote-left"></i><span class="desc">${user.description}</span><i class="fa fa-quote-right"></i></p>
@@ -166,6 +166,6 @@
           		</li>
 			</div>
 		</div>
+	</#if>
 	</div>
-	<#--  </#if>  -->
 </figure>

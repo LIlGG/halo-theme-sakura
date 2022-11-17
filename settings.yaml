@@ -362,7 +362,7 @@ focus:
       label: 是否开启聚焦
       type: radio
       data-type: bool
-      default: false
+      default: true
       options:
         - value: true
           label: 开启
@@ -1947,7 +1947,7 @@ others:
       label: 资源使用 CDN
       type: radio
       data-type: bool
-      default: false
+      default: true
       options:
         - value: true
           label: 开启
