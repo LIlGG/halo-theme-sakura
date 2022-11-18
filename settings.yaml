@@ -1354,7 +1354,7 @@ spec:
             - value: simplify
               label: 精简
         - $formkit: text
-          name: 回到顶部图片
+          name: top_back_img
           label: 回到顶部图片
           value: https://takagi-api.com/directlink/1/cdn/1.0.8/img/Sakura/images/scroll.png
         - $formkit: text
