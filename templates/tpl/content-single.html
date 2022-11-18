@@ -1,72 +1,72 @@
 <!--
     @package Akina
 -->
-<article th:fragment="content-single(post)" id="post-${post.id?c}">
-  <th:block
-    th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)} and ${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
-  >
-    <header class="entry-header">
-      <h1 class="entry-title" th:text="${post.spec.title}"></h1>
-      <p class="entry-census">
-        <th:block th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></th:block>
-        &nbsp;&nbsp;<span class="i18n" data-iname="post.visits" th:attr="data-ivalue=${post.stats.visit}"></span>
-      </p>
-      <hr />
-    </header>
-  </th:block>
-  <!-- .entry-header -->
-  <!-- TODO: -->
-  <!-- <#if (metas.toc?boolean)!true>
+<th:block th:fragment="content-single(post)">
+  <article th:id="'post-'+${post.metadata.name}">
+    <th:block
+      th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)} and ${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+    >
+      <header class="entry-header">
+        <h1 class="entry-title" th:text="${post.spec.title}"></h1>
+        <p class="entry-census">
+          <th:block th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></th:block>
+          &nbsp;&nbsp;<span class="i18n" data-iname="post.visits" th:attr="data-ivalue=${post.stats.visit}"></span>
+        </p>
+        <hr />
+      </header>
+    </th:block>
+    <!-- .entry-header -->
+    <!-- TODO: -->
     <div class="toc-container">
-        <div class="toc"></div>
+      <div class="toc"></div>
     </div>
-    </#if> -->
-  <div class="entry-content">
-    <th:block th:utext="${post.content.content}"></th:block>
-    <p>
-      Q.E.D.
-      <i class="fa fa-meetup" aria-hidden="true" style="color: #d34836"></i>
-    </p>
-  </div>
-  <!-- .entry-content -->
-  <div
-    th:if="${not #strings.isEmpty(theme.config.post.alipay_code)} or ${not #strings.isEmpty(theme.config.post.wechat_code)}"
-    class="single-reward"
-  >
-    <div class="reward-open">
-      <span class="i18n" data-iname="post.reward"></span>
-      <div class="reward-main">
-        <ul class="reward-row">
-          <li th:if="${not #strings.isEmpty(theme.config.post.alipay_code)}" class="alipay-code">
-            <img th:src="${theme.config.post.alipay_code}" />
-          </li>
-          <li th:if="${not #strings.isEmpty(theme.config.post.wechat_code)}" class="wechat-code">
-            <img th:src="${theme.config.post.wechat_code}" />
-          </li>
-        </ul>
+    <div class="entry-content">
+      <th:block th:utext="${post.content.content}"></th:block>
+      <p>
+        Q.E.D.
+        <i class="fa fa-meetup" aria-hidden="true" style="color: #d34836"></i>
+      </p>
+    </div>
+    <!-- .entry-content -->
+    <div
+      th:if="${not #strings.isEmpty(theme.config.post.alipay_code)} or ${not #strings.isEmpty(theme.config.post.wechat_code)}"
+      class="single-reward"
+    >
+      <div class="reward-open">
+        <span class="i18n" data-iname="post.reward"></span>
+        <div class="reward-main">
+          <ul class="reward-row">
+            <li th:if="${not #strings.isEmpty(theme.config.post.alipay_code)}" class="alipay-code">
+              <img th:src="${theme.config.post.alipay_code}" />
+            </li>
+            <li th:if="${not #strings.isEmpty(theme.config.post.wechat_code)}" class="wechat-code">
+              <img th:src="${theme.config.post.wechat_code}" />
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-  <footer class="post-footer">
-    <div class="post-license">
-      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow">
-        <i class="fa fa-creative-commons" aria-hidden="true"></i>
-        <span class="i18n" data-iname="post.creative_commons"></span>
-      </a>
-    </div>
-    <div class="post-tags">
-      <th:block th:if="${not #lists.isEmpty(post.tags)}">
-        <i class="iconfont icon-tags"></i>
-        <a
-          th:each="tag : ${post.tags}"
-          th:href="@{${tag.status.permalink}}"
-          rel="tag"
-          th:text="${tag.spec.displayName}"
-        ></a>
-      </th:block>
-    </div>
-    <th:block th:replace="~{layouts/sharelike :: sharelike(${post})}" />
-  </footer>
-  <!-- .entry-footer -->
-</article>
-<!-- #post-## -->
+    <footer class="post-footer">
+      <div class="post-license">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow">
+          <i class="fa fa-creative-commons" aria-hidden="true"></i>
+          <span class="i18n" data-iname="post.creative_commons"></span>
+        </a>
+      </div>
+      <div class="post-tags">
+        <th:block th:if="${not #lists.isEmpty(post.tags)}">
+          <i class="iconfont icon-tags"></i>
+          <a
+            th:each="tag : ${post.tags}"
+            th:href="@{${tag.status.permalink}}"
+            rel="tag"
+            th:text="${tag.spec.displayName}"
+          ></a>
+        </th:block>
+      </div>
+      <th:block th:replace="~{layouts/sharelike :: sharelike(${post})}" />
+    </footer>
+    <!-- .entry-footer -->
+  </article>
+  <!-- #post-## -->
+</th:block>

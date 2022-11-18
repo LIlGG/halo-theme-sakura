@@ -25,7 +25,7 @@
             th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}"
             th:src="${theme.config.random_image.rimage_url}+'?category=category&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}"
             th:attr="
-            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'category=category&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '')},
+            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'category=category&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id + '&th=150' : '')},
             data-srcset=${theme.config.random_image.rimage_url}+'?category=category&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=640 640w,'+
             ${theme.config.random_image.rimage_url}+'?category=category&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=960 960w,'+
             ${theme.config.random_image.rimage_url}+'?category=category&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=1280 1280w,'+
@@ -41,7 +41,7 @@
       </div>
     </th:block>
     <th:block
-      th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)} and ${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+      th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
       <div class="blank"></div>
       <header class="entry-header">
@@ -55,11 +55,12 @@
       <div id="tags" class="container chip-container" style="margin-top: 0px">
         <div class="card">
           <div class="card-content">
-            <!-- <#if !((settings.patternimg!true) && (settings.category_patternimg?? && settings.category_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!=''))>
-                <div class="tag-title center-align">
-                    <i class="fa fa-bookmark"></i>&nbsp;&nbsp;<span class="i18n" data-iname="page.categories.title"></span>
-                </div>
-                </#if> -->
+            <div
+              th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+              class="tag-title center-align"
+            >
+              <i class="fa fa-bookmark"></i>&nbsp;&nbsp;<span class="i18n" data-iname="page.categories.title"></span>
+            </div>
             <div class="tag-chips">
               <a
                 th:each="category : ${categories}"

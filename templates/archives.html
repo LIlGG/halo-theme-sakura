@@ -21,7 +21,7 @@
             th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)}"
             th:src="${theme.config.random_image.rimage_url}+'?archives=archives&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}"
             th:attr="
-            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'archives=archives&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '')},
+            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'archives=archives&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id + '&th=150': '')},
             data-srcset=${theme.config.random_image.rimage_url}+'?archives=archives&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=640 640w,'+
             ${theme.config.random_image.rimage_url}+'?archives=archives&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=960 960w,'+
             ${theme.config.random_image.rimage_url}+'?archives=archives&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=1280 1280w,'+
@@ -37,7 +37,7 @@
       </div>
     </th:block>
     <th:block
-      th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)} and ${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+      th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
       <div class="blank"></div>
     </th:block>
@@ -45,13 +45,11 @@
   <th:block th:fragment="content">
     <article class="post-item page type-page status-publish hentry">
       <div id="archives-temp">
-        <!-- <#if !((settings.patternimg!true) && (settings.archives_patternimg?? && settings.archives_patternimg!='') || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!=''))>
-                <#if options.archives_title?default("")?trim?length gt 1>
-                <h2>${options.archives_title}</h2>
-                <#else>
-                <h2 class="i18n" data-iname="page.archives.title"></h2>
-                </#if>
-        </#if> -->
+        <h2
+          th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+          class="i18n"
+          data-iname="page.archives.title"
+        ></h2>
         <div id="archives-content">
           <th:block th:each="archive : ${archives.items}">
             <th:block th:each="month,monthStat : ${archive.months}">
