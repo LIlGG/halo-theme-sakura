@@ -67,6 +67,9 @@
         alert("请抛弃万恶的IE系列浏览器吧。");
       }
     </script>
+
+    <!-- TODO: only for pjax -->
+    <script src="/plugins/PluginCommentWidget/assets/static/comment-widget.iife.js"></script>
   </head>
   <body class="hfeed chinese-font serif">
     <section id="main-container">
@@ -144,13 +147,6 @@
         <div id="content" class="site-content">
           <th:block th:replace="${content}" />
         </div>
-        <!-- #content -->
-        <!-- <#include "comments.ftl">
-            <#if is_post??>
-                <@comment post,"post" />
-            <#elseif is_sheet??>
-                <@comment sheet,"sheet" />
-            </#if> -->
         <!-- 定义可变属性，会根据页面的改变而变化 -->
         <script type="text/javascript">
           /* <![CDATA[ */
@@ -461,8 +457,6 @@
       <script th:src="@{/assets/plugins/aplayer/js/index.js}" defer></script>
     </th:block>
     <script th:if="${theme.config.post.post_toc}" th:src="@{/assets/lib/tocbot/dist/tocbot.min.js}" defer></script>
-    <!-- TODO: 2.0 的评论部分已经重构，这里的引入不再有效 -->
-    <!-- <script src="${settings.comment_mode!'${res_base_url!}/source/js/comment/sakura-comment.min.js?ver=${theme.version!}'}" defer></script> -->
     <th:block th:if="${theme.config.tagAndCategory.tag_cloud}">
       <script th:src="@{/assets/lib/jqcloud2/jqcloud.min.js}" defer></script>
       <script type="text/javascript" th:inline="javascript">
