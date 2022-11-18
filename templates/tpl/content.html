@@ -22,7 +22,7 @@
           class="attachment-post-thumbnail size-post-thumbnail"
         />
         <img
-          th:unless="${#strings.isEmpty(post.spec.cover)} and ${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+          th:if="${#strings.isEmpty(post.spec.cover)} and (${not theme.config.random_image.rimage_cover_open} or ${#strings.isEmpty(theme.config.random_image.rimage_url)})"
           th:src="${#theme.assets('/images/random/d-1.jpg')}"
           onerror="imgError(this)"
         />
