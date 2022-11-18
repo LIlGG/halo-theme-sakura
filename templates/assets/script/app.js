@@ -985,10 +985,6 @@ var pjaxFun = function () {
         fragment: "#page",
         timeout: 8000,
       });
-      if ($(".js-search.is-visible").length > 0) {
-        $(".js-toggle-search").toggleClass("is-active");
-        $(".js-search").toggleClass("is-visible");
-      }
     });
   window.addEventListener(
     "popstate",
@@ -1174,14 +1170,8 @@ var home = location.href,
 
       // 搜索框
       $(".js-toggle-search").on("click", function () {
-        $(".js-toggle-search").toggleClass("is-active");
-        $(".js-search").toggleClass("is-visible");
-      });
-      $(".search_close").on("click", function () {
-        if ($(".js-search").hasClass("is-visible")) {
-          $(".js-toggle-search").toggleClass("is-active");
-          $(".js-search").toggleClass("is-visible");
-        }
+        // https://github.com/halo-sigs/plugin-search-widget
+        window.SearchWidget.open();
       });
 
       // 导航菜单
