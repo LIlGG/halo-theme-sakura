@@ -292,6 +292,55 @@ spec:
                   value: normal
                 - label: 图片
                   value: image
+        - $formkit: repeater
+          name: mobile_items
+          label: 移动端侧边栏社交网络
+          value:
+            - icon:
+              url:
+          children:
+            - $formkit: select
+              name: icon
+              label: 图标
+              options:
+                - label: 微信
+                  value: wechat.png
+                - label: 微博
+                  value: weibo.png
+                - label: 腾讯 QQ
+                  value: qq.png
+                - label: QQ 空间
+                  value: qzone.png
+                - label: GitHub
+                  value: github.png
+                - label: Lofter
+                  value: lofter.png
+                - label: 哔哩哔哩
+                  value: bilibili.png
+                - label: 网易云音乐
+                  value: wangyiyun.png
+                - label: Twitter
+                  value: twitter.png
+                - label: Facebook
+                  value: facebook.png
+                - label: Google Plus
+                  value: googleplus.png
+                - label: 简书
+                  value: jianshu.png
+                - label: CSDN
+                  value: csdn.png
+                - label: 知乎
+                  value: zhihu.png
+                - label: Telegram
+                  value: telegram.svg
+                - label: 邮箱
+                  value: email.svg
+                - label: Stack Overflow
+                  value: stackoverflow.svg
+            - $formkit: text
+              name: url
+              label: 链接
+              validation: "required"
     - group: focus
       label: 聚焦图
       formSchema:

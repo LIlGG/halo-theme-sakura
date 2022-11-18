@@ -2,40 +2,48 @@
 	NEXT / PREVIOUS POSTS (精华版)
 -->
 <th:block th:fragment="post-nextprev(post)">
-	<th:block th:if="${theme.config.post.post_nepre}">
-	<section th:with="postCursor = ${postFinder.cursor(post.metadata.name)}" class="post-squares nextprev">
-			<div th:if="${postCursor.hasPrevious()}" th:class="'post-nepre '+${postCursor.hasNext() ? 'half' : 'full'}+' previous'">
-				<a th:href="@{${postCursor.previous.status.permalink}}" rel="prev">
-					<!-- TODO: -->
-					<!-- <#if (settings.patternimg!true) && (prevPost.thumbnail?? && prevPost.thumbnail!='')>
+  <th:block th:if="${theme.config.post.post_nepre}">
+    <section th:with="postCursor = ${postFinder.cursor(post.metadata.name)}" class="post-squares nextprev">
+      <div
+        th:if="${postCursor.hasPrevious()}"
+        th:class="'post-nepre '+${postCursor.hasNext() ? 'half' : 'full'}+' previous'"
+      >
+        <a th:href="@{${postCursor.previous.status.permalink}}" rel="prev">
+          <!-- TODO: -->
+          <!-- <#if (settings.patternimg!true) && (prevPost.thumbnail?? && prevPost.thumbnail!='')>
 					<div th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(postCursor.previous.spec.cover)}" class="background" th:style="'background-image:url(\''+${postCursor.previous.spec.cover}+'\');'"></div>
 					<#elseif ((metas.ri?boolean)!true && settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!='')>
 					<div class="background" style="background-image:url(${settings.rimage_url!}?postid=${prevPost.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"></div>
 					<#else>
 					<div class="background" style="background-image:url();"></div>
 					</#if> -->
-					<span class="label i18n" data-iname="post.prev"></span>
-					<div class="info">
-						<h3 th:text="${postCursor.previous.spec.title}"></h3><hr>
-					</div>
-				</a>
-			</div>
-		<div th:if="${postCursor.hasNext()}" th:class="'post-nepre '+${postCursor.hasPrevious() ? 'half' : 'full'}+' next'">
-			<a th:href="@{${postCursor.next.status.permalink}}" rel="next">
-				<!-- TODO: -->
-				<!-- <#if (settings.patternimg!true) && (nextPost.thumbnail?? && nextPost.thumbnail!='')>
+          <span class="label i18n" data-iname="post.prev"></span>
+          <div class="info">
+            <h3 th:text="${postCursor.previous.spec.title}"></h3>
+            <hr />
+          </div>
+        </a>
+      </div>
+      <div
+        th:if="${postCursor.hasNext()}"
+        th:class="'post-nepre '+${postCursor.hasPrevious() ? 'half' : 'full'}+' next'"
+      >
+        <a th:href="@{${postCursor.next.status.permalink}}" rel="next">
+          <!-- TODO: -->
+          <!-- <#if (settings.patternimg!true) && (nextPost.thumbnail?? && nextPost.thumbnail!='')>
 				<div class="background" style="background-image:url('${nextPost.thumbnail!}');"></div>
 				<#elseif ((metas.ri?boolean)!true && settings.rimage_cover_open!true && settings.rimage_url?? && settings.rimage_url!='')>
 				<div class="background" style="background-image:url(${settings.rimage_url!}?postid=${nextPost.id}&type=url&itype=${settings.rimage_cover_itype!}<#if settings.rimage_cover_itype != 'image'>&id=${(settings.rimage_cover_id)!''}</#if>"></div>
 				<#else>
 				<div class="background" style="background-image:url();"></div>
 				</#if> -->
-				<span class="label i18n" data-iname="post.next"></span>
-				<div class="info">
-					<h3 th:text="${postCursor.next.spec.title}"></h3><hr>
-				</div>
-			</a>
-		</div>
-	</section>
-	</th:block>
+          <span class="label i18n" data-iname="post.next"></span>
+          <div class="info">
+            <h3 th:text="${postCursor.next.spec.title}"></h3>
+            <hr />
+          </div>
+        </a>
+      </div>
+    </section>
+  </th:block>
 </th:block>
