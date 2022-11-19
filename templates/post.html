@@ -35,12 +35,13 @@
           <h1 class="entry-title" th:text="${post.spec.title}"></h1>
           <p class="entry-census">
             <span>
-              <a href="/">
+              <!-- TODO: 改为作者地址 -->
+              <a th:href="${site.url}">
                 <img th:src="${post.owner.avatar}" />
               </a>
             </span>
             <span>
-              <a href="/" th:text="${post.owner.displayName}"></a>
+              <a th:href="${site.url}" th:text="${post.owner.displayName}"></a>
             </span>
             <span class="bull">·</span>
             <span
@@ -84,10 +85,6 @@
       <!-- #main -->
     </div>
     <!-- #primary -->
-    <halo:comment
-      group="content.halo.run"
-      kind="Post"
-      th:attr="name=${post.metadata.name}"
-    />
+    <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
   </th:block>
 </html>

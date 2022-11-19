@@ -100,12 +100,12 @@
           <div class="site-top">
             <div class="site-branding">
               <div th:if="${not #strings.isEmpty(site.logo)}" class="site-title">
-                <a href="/">
+                <a th:href="${site.url}">
                   <img th:src="${site.logo}" />
                 </a>
               </div>
               <h1 th:unless="${not #strings.isEmpty(site.logo)}" class="site-title">
-                <a href="/" th:text="${site.title}"></a>
+                <a th:href="${site.url}" th:text="${site.title}"></a>
               </h1>
               <!-- logo end -->
             </div>
@@ -242,12 +242,12 @@
         </div>
         <div class="site-branding">
           <div th:if="${not #strings.isEmpty(site.logo)}" class="site-title">
-            <a href="/">
+            <a th:href="${site.url}">
               <img th:src="${site.logo}" />
             </a>
           </div>
           <h1 th:unless="${#strings.isEmpty(site.logo)}" class="site-title">
-            <a href="/" th:text="${site.title}"></a>
+            <a th:href="${site.url}" th:text="${site.title}"></a>
           </h1>
         </div>
       </div>
@@ -358,7 +358,7 @@
       var Poi = {
           "pjax":"[(${theme.config.others.poi_pjax})]",
           "windowheight":"[(${theme.config.mainScreen.focus_height ? 'fixed' : 'auto'})]",
-          "ajaxurl":"http://localhost:8090", // TODO:
+          "ajaxurl":"[(${site.url})]",
           "resBaseUrl": "[(${#theme.assets('')})]",
           "formpostion":"bottom",
           "toc": "[(${theme.config.post.post_toc ? 'true' : ''})]",

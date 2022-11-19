@@ -14,12 +14,12 @@
   <div th:if="${theme.config.mainScreen.focus_infos}" class="focusinfo">
     <th:block th:if="${theme.config.mainScreen.focus_tou == 'avatar'}">
       <div th:if="${not #strings.isEmpty(site.logo)}" class="header-tou no-select">
-        <a href="/">
+        <a th:href="${site.url}">
           <img th:src="${site.logo}" />
         </a>
       </div>
       <div th:if="${#strings.isEmpty(site.logo)}" class="header-tou no-select">
-        <a href="/">
+        <a th:href="${site.url}">
           <img th:src="@{/assets/images/avatar.jpg}" />
         </a>
       </div>
