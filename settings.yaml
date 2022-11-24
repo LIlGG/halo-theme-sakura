@@ -354,7 +354,7 @@ spec:
             - value: false
               label: 关闭
         - $formkit: text
-          name: feature_title
+          name: feature_icon
           label: 聚焦图标
           placeholder: 聚焦前的小图标，不填写就不显示！
           value: fa fa-anchor
