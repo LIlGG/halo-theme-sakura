@@ -65,7 +65,7 @@
       }
     </script>
 
-    <!-- TODO: only for pjax -->
+    <!--/* TODO: only for pjax */-->
     <script src="/plugins/PluginCommentWidget/assets/static/comment-widget.iife.js"></script>
   </head>
   <body class="hfeed chinese-font serif">
@@ -74,7 +74,7 @@
         <div class="headertop" th:classappend="${theme.config.mainScreen.focus_img_filter}">
           <th:block th:replace="~{layouts/imgbox}" />
 
-          <!-- 背景视频 -->
+          <!--/* 背景视频 */-->
 
           <th:block th:if="${theme.config.mainScreen.bgvideo}">
             <th:block
@@ -84,7 +84,7 @@
             </th:block>
           </th:block>
 
-          <!-- 首页下拉箭头 -->
+          <!--/* 首页下拉箭头 */-->
           <div
             th:if="${theme.config.mainScreen.focus_godown}"
             class="headertop-down faa-float animated"
@@ -96,7 +96,7 @@
       </th:block>
       <div id="page" class="site wrapper">
         <th:block th:replace="~{inc/pjax_decorate}" />
-        <header class="site-header <#if (is_index)!false == true>is-homepage</#if>" role="banner">
+        <header class="site-header" th:classappend="${_templateId == 'index' ? 'is-homepage' : ''}" role="banner">
           <div class="site-top">
             <div class="site-branding">
               <div th:if="${not #strings.isEmpty(site.logo)}" class="site-title">
@@ -107,11 +107,11 @@
               <h1 th:unless="${not #strings.isEmpty(site.logo)}" class="site-title">
                 <a th:href="${site.url}" th:text="${site.title}"></a>
               </h1>
-              <!-- logo end -->
+              <!--/* logo end */-->
             </div>
-            <!-- .site-branding -->
+            <!--/* .site-branding */-->
             <div class="header-user-avatar">
-              <!-- TODO: 目前 Halo 2.0 没有提供全局的用户信息-->
+              <!--/* TODO: 目前 Halo 2.0 没有提供全局的用户信息 */-->
               <img src="https://ryanc.cc/avatar" width="30" height="30" />
               <div class="header-user-menu">
                 <div class="herder-user-name">
@@ -132,19 +132,19 @@
                 <nav th:class="${theme.config.general.shownav ? 'navbar' : ''}">
                   <th:block th:replace="~{layouts/nav}" />
                 </nav>
-                <!-- #site-navigation -->
+                <!--/* #site-navigation */-->
               </div>
             </div>
           </div>
         </header>
-        <!-- #masthead -->
+        <!--/* #masthead */-->
         <th:block th:if="${header != null}">
           <th:block th:replace="${header}" />
         </th:block>
         <div id="content" class="site-content">
           <th:block th:replace="${content}" />
         </div>
-        <!-- 定义可变属性，会根据页面的改变而变化 -->
+        <!--/* 定义可变属性，会根据页面的改变而变化 */-->
         <script type="text/javascript">
           /* <![CDATA[ */
           // TODO:
@@ -166,7 +166,7 @@
           /* ]]> */
         </script>
       </div>
-      <!-- #page Pjax container-->
+      <!--/* #page Pjax container */-->
       <footer id="colophon" class="site-footer" role="contentinfo">
         <div class="site-info">
           <div class="footertext">
@@ -179,7 +179,7 @@
             <halo:footer />
           </div>
           <div class="footer-device">
-            <!-- 请尊重作者，务必保留版权! -->
+            <!--/* 请尊重作者，务必保留版权! */-->
             <p style="font-family: 'Ubuntu', sans-serif">
               <span
                 >Powered
@@ -233,9 +233,9 @@
             </p>
           </div>
         </div>
-        <!-- .site-info -->
+        <!--/* .site-info */-->
       </footer>
-      <!-- #colophon -->
+      <!--/* #colophon */-->
       <div class="openNav">
         <div class="iconflat">
           <div class="icon"></div>
@@ -251,13 +251,13 @@
           </h1>
         </div>
       </div>
-      <!-- m-nav-bar -->
+      <!--/* m-nav-bar */-->
     </section>
-    <!-- #section -->
-    <!-- m-nav-center -->
+    <!--/* #section */-->
+    <!--/* m-nav-center */-->
     <div id="mo-nav">
       <div class="m-avatar">
-        <!-- TODO: 当前 Halo 2.0 没有提供全局的用户，暂用 Logo 代替 -->
+        <!--/* TODO: 当前 Halo 2.0 没有提供全局的用户，暂用 Logo 代替 */-->
         <img th:src="${site.logo ?: #theme.assets('/images/avatar.jpg')}" />
       </div>
 
@@ -292,16 +292,17 @@
         <th:block th:text="${site.title}"></th:block>
       </p>
     </div>
-    <!-- m-nav-center end -->
+    <!--/* m-nav-center end */-->
     <a href="#" class="cd-top"></a>
-    <!-- m-cd-top start -->
+    <!--/* m-cd-top start */-->
     <button class="m-cd-top" title="Go to top">
       <i class="fa fa-chevron-up" aria-hidden="true"></i>
     </button>
-    <!-- m-cd-top end -->
-    <!-- search start -->
-    <!-- TODO: 搜索功能由插件提供 https://github.com/halo-sigs/plugin-search-widget -->
-    <!-- <form class="js-search search-form search-form--modal" method="get" action="/search" role="search">
+    <!--/* m-cd-top end */-->
+    <!--/* search start */-->
+    <!--/* TODO: 搜索功能由插件提供 https://github.com/halo-sigs/plugin-search-widget */-->
+    <!--/*-->
+    <form class="js-search search-form search-form--modal" method="get" action="/search" role="search">
       <div class="search-form__inner">
         <div>
           <p class="micro mb-">输入后按回车搜索 ...</p>
@@ -310,9 +311,10 @@
         </div>
       </div>
       <div class="search_close"></div>
-    </form> -->
-    <!-- search end -->
-    <!-- aplayer start -->
+    </form>
+    <!--*/-->
+    <!--/* search end */-->
+    <!--/* aplayer start */-->
     <div
       th:if="${theme.config.plugin.is_aplayer} and ${theme.config.additional.aplayer_float}"
       id="aplayer-float"
@@ -329,8 +331,8 @@
       data-autoplay="${(settings.aplayer_autoplay!false)?string('true', 'false')}"
       data-volume="${settings.aplayer_volume!'0.7'}"
     ></div>
-    <!-- aplayer end -->
-    <!-- theme-change start -->
+    <!--/* aplayer end */-->
+    <!--/* theme-change start */-->
     <th:block th:if="${theme.config.theme.theme_change}">
       <div class="changeSkin-gear no-select">
         <div class="keys">
@@ -351,8 +353,8 @@
         </div>
       </div>
     </th:block>
-    <!-- theme-change end -->
-    <!-- 定义全局属性 -->
+    <!--/* theme-change end */-->
+    <!--/* 定义全局属性 */-->
     <script type="text/javascript" th:inline="javascript">
       /* <![CDATA[ */
       var Poi = {
@@ -421,7 +423,7 @@
     ></script>
     <script type="text/javascript" th:src="@{/assets/lib/lazysizes/lazysizes.min.js}" async></script>
     <script type="text/javascript" th:src="@{/assets/js/lib.js}"></script>
-    <!-- 相册 -->
+    <!--/* 相册 */-->
     <script
       th:if="${theme.config.photos.photos_style == 'justify'}"
       th:src="@{/assets/lib/justifiedGallery/jquery.justifiedGallery.min.js}"

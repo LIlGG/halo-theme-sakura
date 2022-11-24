@@ -1,6 +1,6 @@
-<!--
+<!--/*-->
 	@package Akina
--->
+<!--*/-->
 <article th:fragment="content(post)" class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
   <div class="post-entry">
     <div class="feature">
@@ -18,7 +18,7 @@
           th:if="${#strings.isEmpty(post.spec.cover)} and ${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
           width="150"
           height="150"
-          th:src="${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id + '&th=150' : ''}"
+          th:src="${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '' }+'&th=150'"
           class="attachment-post-thumbnail size-post-thumbnail"
         />
         <img
@@ -65,8 +65,8 @@
         </div>
       </div>
     </footer>
-    <!-- .entry-footer -->
+    <!--/* .entry-footer */-->
   </div>
   <hr />
 </article>
-<!-- #post-## -->
+<!--/* #post-## */-->

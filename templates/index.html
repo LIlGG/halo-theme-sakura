@@ -1,6 +1,6 @@
-<!--
+<!--/* -->
 	@package Akina
--->
+<!--*/-->
 
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
@@ -29,7 +29,7 @@
           <span class="i18n" data-iname="home.discovery"> </span>
         </h1>
         <th:block th:if="${posts.totalPages gt 0}">
-          <!--Start the Loop-->
+          <!--/* Start the Loop */-->
           <th:block th:if="${theme.config.general.post_list_style == 'standard'}">
             <th:block th:each="post : ${postItems}">
               <th:block th:replace="~{tpl/content :: content(${post})}" />
@@ -43,8 +43,9 @@
           <th:block th:replace="~{tpl/content-none}" />
         </th:block>
       </main>
-      <!-- #main -->
-
+      <!--/* #main */-->
+      
+      <!--/* #pagination */-->
       <th:block th:if="${theme.config.general.pagenav_style == 'ajax'}">
         <div id="pagination">
           <a th:if="${posts.hasNext()}" th:href="@{${posts.nextUrl}}" class="i18n" data-iname="page.next"></a>
@@ -58,6 +59,6 @@
         </nav>
       </th:block>
     </div>
-    <!-- #primary -->
+    <!--/* #primary */-->
   </th:block>
 </html>
