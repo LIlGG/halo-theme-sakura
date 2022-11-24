@@ -407,3 +407,28 @@
     }
   </style>
 </th:block>
+
+<th:block th:if="${#bools.isTrue(theme.config.random_image.rimage_cover_back_open) and (not #strings.isEmpty(theme.config.random_image.rimage_url))}">
+  <style>
+    .centerbg {
+      background-image: url([(${theme.config.random_image.rimage_url})]?home=home&type=url&itype=[(${theme.config.random_image.rimage_cover_back_itype})]&id=[(${theme.config.random_image.rimage_cover_back_id})]&t=[(${#strings.randomAlphanumeric(1)})])
+    }
+  </style>
+</th:block>
+
+<th:block th:unless="${#bools.isTrue(theme.config.random_image.rimage_cover_back_open) and (not #strings.isEmpty(theme.config.random_image.rimage_url))}">
+  <style>
+    .centerbg {
+      background-image: url([(${theme.config.mainScreen.focus_img_1 ?: #theme.assets("/images/hd.jpg")})])
+    }
+  </style>
+</th:block>
+
+<th:block th:unless="${theme.config.mainScreen.focus_height ?: true}">
+  <style>
+    .centerbg {
+      background-position: center center;
+      background-attachment: inherit;
+    }
+  </style>
+</th:block>
