@@ -172,9 +172,7 @@
           <div class="footertext">
             <p
               class="foo-logo"
-              style="
-                background-image: url('${settings.footer_logo?default('${res_base_url!}/source/images/sakura.svg')}');
-              "
+              th:style="'background-image: url(' + ${theme.config.others.footer_logo ?: #theme.assets('/images/sakura.svg')} + ');'"
             ></p>
             <halo:footer />
           </div>
@@ -321,15 +319,15 @@
       style="z-index: 100"
       class="aplayer"
       data-global="true"
-      data-id="${settings.aplayer_id!'2345868969'}"
-      data-server="${settings.aplayer_server!'netease'}"
-      data-type="${settings.aplayer_type!'playlist'}"
-      data-fixed="true"
-      data-preload="${settings.aplayer_preload!'none'}"
-      data-order="${settings.aplayer_order!'list'}"
-      data-theme="${settings.aplayer_theme!'orange'}"
-      data-autoplay="${(settings.aplayer_autoplay!false)?string('true', 'false')}"
-      data-volume="${settings.aplayer_volume!'0.7'}"
+      th:data-id="${theme.config.additional.aplayer_id}"
+      th:data-server="${theme.config.additional.aplayer_server}"
+      th:data-type="${theme.config.additional.aplayer_type}"
+      th:data-fixed="true"
+      th:data-preload="${theme.config.additional.aplayer_preload}"
+      th:data-order="${theme.config.additional.aplayer_order}"
+      th:data-theme="${theme.config.additional.aplayer_theme}"
+      th:data-autoplay="${theme.config.additional.aplayer_autoplay}"
+      th:data-volume="${theme.config.additional.aplayer_volume}"
     ></div>
     <!--/* aplayer end */-->
     <!--/* theme-change start */-->
