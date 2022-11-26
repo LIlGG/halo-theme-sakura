@@ -1,11 +1,7 @@
-<!--
-/**
- * 标签页
- */
--->
+<!--/* 标签页 */-->
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
-  <th:block th:fragment="header">
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::headers},content = ~{::content})}">
+  <th:block th:fragment="headers">
     <th:block
       th:if="${theme.config.patternimg.patternimg} and (${not #strings.isEmpty(tag.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
@@ -23,7 +19,7 @@
             th:unless="${theme.config.patternimg.patternimg} and (${not #strings.isEmpty(tag.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)})"
             th:src="${theme.config.random_image.rimage_url}+'?tagid='+${tag.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}"
             th:attr="
-            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'tagid=' + tag.metadata.name + '&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id + '&th=150' : '')},
+            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'tagid=' + tag.metadata.name + '&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '') + '&th=150'},
             data-srcset=${theme.config.random_image.rimage_url}+'?tagid='+${tag.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=640 640w,'+
             ${theme.config.random_image.rimage_url}+'?tagid='+${tag.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=960 960w,'+
             ${theme.config.random_image.rimage_url}+'?tagid='+${tag.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=1280 1280w,'+
@@ -42,8 +38,7 @@
       </div>
     </th:block>
     <th:block
-      th:unless="${theme.config.patternimg.patternimg} and (${not #strings.isEmpty(tag.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)}) and ${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
-    >
+      th:unless="${theme.config.patternimg.patternimg} and (${not #strings.isEmpty(tag.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
       <div class="blank"></div>
       <style>
         .toc-container {
@@ -56,15 +51,14 @@
     <div id="primary" class="content-area" th:with="postItems=${posts.items}">
       <main id="main" class="site-main" role="main">
         <th:block th:if="${posts.totalPages gt 0}">
-          <!-- <#if !((settings.patternimg!true) && ((tag.thumbnail?? && tag.thumbnail!='') || (settings.tag_patternimg?? && settings.tag_patternimg!='')) || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!=''))>
-                <header class="page-header">
-                    <h1 class="cat-title">${tag.name!}</h1>
-                    <span class="cat-des">
-
-                    </span>
-                </header><!-- .page-header -->
-          <!-- </#if> -->
-          <!-- Start the Loop -->
+          <header class="page-header" th:unless="${theme.config.patternimg.patternimg} and (${not #strings.isEmpty(tag.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
+            <h1
+            class="cat-title"
+            th:text="${tag.spec.displayName}"
+            ></h1>
+            <span class="cat-des"></span>
+          </header>
+          <!--/* Start the Loop */-->
           <th:block th:each="post : ${postItems}">
             <th:block th:replace="~{tpl/content :: content(${post})}" />
           </th:block>
@@ -74,10 +68,10 @@
           <th:block th:replace="~{tpl/content-none}" />
         </th:block>
       </main>
-      <!-- #main -->
+      <!--/* #main */-->
       <!--/* #pagination */-->
       <th:block th:replace="~{layouts/list-nextprev :: pagination(${posts})}"></th:block>
     </div>
-    <!-- #primary -->
+    <!--/* #primary */-->
   </th:block>
 </html>
