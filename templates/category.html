@@ -2,8 +2,8 @@
     分类页面
 -->
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
-  <th:block th:fragment="header">
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::headers},content = ~{::content})}">
+  <th:block th:fragment="headers">
     <th:block
       th:if="${theme.config.patternimg.patternimg} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
@@ -22,7 +22,7 @@
             th:src="${theme.config.random_image.rimage_url}+'?category='+${category.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}"
             th:attr="
             data-src=${category.spec.cover ?: theme.config.patternimg.category_patternimg},
-            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'category=' + category.metadata.name + '&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id + '&th=150' : '')},
+            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'category=' + category.metadata.name + '&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '') + '&th=150'},
             data-srcset=${theme.config.random_image.rimage_url}+'?category='+${category.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=640 640w,'+
             ${theme.config.random_image.rimage_url}+'?category='+${category.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=960 960w,'+
             ${theme.config.random_image.rimage_url}+'?category='+${category.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=1280 1280w,'+
@@ -51,14 +51,10 @@
     <div id="primary" class="content-area" th:with="postItems=${posts.items}">
       <main id="main" class="site-main" role="main">
         <th:block th:if="${posts.totalPages gt 0}">
-          <!-- <#if !((settings.patternimg!true) && ((category.thumbnail?? && category.thumbnail!='') || (settings.category_patternimg?? && settings.category_patternimg!='')) || ((metas.ri?boolean)!true && settings.rimage_cover_sheet_open!true && settings.rimage_url?? && settings.rimage_url!=''))>
-                <header class="page-header">
-                    <h1 class="cat-title">${category.name!}</h1>
-                    <span class="cat-des">
-                        ${category.description!}
-                    </span>
-                </header>
-            </#if> -->
+          <header class="page-header" th:unless="${theme.config.patternimg.patternimg} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
+            <h1 class="cat-title" th:text="${category.spec.displayName}"></h1>
+            <span class="cat-des" th:text="${category.spec.description}"></span>
+          </header>
           <th:block th:each="post : ${postItems}">
             <th:block th:replace="~{tpl/content :: content(${post})}" />
           </th:block>
