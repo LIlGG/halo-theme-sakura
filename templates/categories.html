@@ -1,10 +1,10 @@
-<!--
+<!--/*-->
 /**
  * 主题的分类目录，用来展示所有的标签，需要手动在菜单中添加
  * 菜单链接如下： https://{youraddress}/categories
  * @author LIlGG
  */
--->
+<!--*/-->
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
   <th:block th:fragment="header">
@@ -25,7 +25,7 @@
             th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}"
             th:src="${theme.config.random_image.rimage_url}+'?category=category&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}"
             th:attr="
-            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'category=category&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id + '&th=150' : '')},
+            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'category=category&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '') + '&th=150'},
             data-srcset=${theme.config.random_image.rimage_url}+'?category=category&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=640 640w,'+
             ${theme.config.random_image.rimage_url}+'?category=category&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=960 960w,'+
             ${theme.config.random_image.rimage_url}+'?category=category&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=1280 1280w,'+
@@ -79,7 +79,7 @@
         </div>
       </div>
     </div>
-    <th:block th:text="${theme.config.tagAndCategory.category_radar}">
+    <th:block th:if="${theme.config.tagAndCategory.category_radar}">
       <style>
         .tag-contents {
           margin: 14px 0;

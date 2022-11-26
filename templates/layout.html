@@ -469,7 +469,7 @@
       </script>
     </th:block>
     <th:block th:if="${theme.config.tagAndCategory.category_radar}">
-      <script th:src="@{/assets/js/echarts/echarts.min.js}" async defer></script>
+      <script th:src="@{/assets/js/echarts/echarts.min.js}" defer></script>
       <script type="text/javascript" th:inline="javascript">
         var categories = /*[[${categoryFinder.listAll()}]]*/
         var categoryRadar = categories.reduce((acc,curr)=> (acc[curr.spec.displayName]=curr.postCount,acc),{});
@@ -484,7 +484,7 @@
     ></script>
     <script
       type="text/javascript"
-      th:src="@{/assets/script/app.min.js?v={version}(version=${theme.spec.version})}"
+      th:src="@{/assets/script/app.js?v={version}(version=${theme.spec.version})}"
     ></script>
   </body>
 </html>
