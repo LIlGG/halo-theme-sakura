@@ -5,13 +5,13 @@ spec:
   author:
     name: LIlGG
     website: https://lixingyong.com
-  description: Halo 版本的樱花🌸主题
+  description: Halo 2.x 版本樱花🌸主题
   logo:
   website: https://github.com/LIlGG/halo-theme-sakura
-  repo: https://github.com/LIlGG/halo-theme-sakura
+  repo: https://github.com/LIlGG/halo-theme-sakura.git
   settingName: theme-sakura-setting
   configMapName: theme-sakura-configMap
-  version: 0.0.0
+  version: 2.0.0
   require: 2.0
 metadata:
   name: theme-sakura
