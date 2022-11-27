@@ -1,6 +1,6 @@
-<!--
+<!--/*-->
     @package Akina
--->
+<!--*/-->
 <th:block th:fragment="content-page(page)">
   <article
     th:id="'post-'+${page.metadata.name}"
@@ -12,15 +12,15 @@
     >
       <h1 class="entry-title" th:text="${page.spec.title}"></h1>
     </header>
-    <!-- .entry-header -->
+    <!--/* .entry-header */-->
     <div class="toc-container">
       <div class="toc"></div>
     </div>
     <div class="entry-content" th:utext="${page.content.content}"></div>
-    <!-- .entry-content -->
+    <!--/* .entry-content */-->
 
     <footer class="entry-footer"></footer>
-    <!-- .entry-footer -->
+    <!--/* .entry-footer */-->
   </article>
 </th:block>
-<!-- #post-## -->
+<!--/* #post-## */-->
