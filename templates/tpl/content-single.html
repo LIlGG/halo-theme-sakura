@@ -1,10 +1,10 @@
-<!--
+<!--/*-->
     @package Akina
--->
+<!--*/-->
 <th:block th:fragment="content-single(post)">
   <article th:id="'post-'+${post.metadata.name}">
     <th:block
-      th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)} and ${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+      th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)} or (${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
       <header class="entry-header">
         <h1 class="entry-title" th:text="${post.spec.title}"></h1>
@@ -15,8 +15,8 @@
         <hr />
       </header>
     </th:block>
-    <!-- .entry-header -->
-    <!-- TODO: -->
+    <!--/* .entry-header */-->
+    <!--/* TODO: 2.0 无法通过元数据来控制单个文章是否显示 toc*/-->
     <div class="toc-container">
       <div class="toc"></div>
     </div>
@@ -27,7 +27,7 @@
         <i class="fa fa-meetup" aria-hidden="true" style="color: #d34836"></i>
       </p>
     </div>
-    <!-- .entry-content -->
+    <!--/* .entry-content */-->
     <div
       th:if="${not #strings.isEmpty(theme.config.post.alipay_code)} or ${not #strings.isEmpty(theme.config.post.wechat_code)}"
       class="single-reward"
@@ -66,7 +66,7 @@
       </div>
       <th:block th:replace="~{layouts/sharelike :: sharelike(${post})}" />
     </footer>
-    <!-- .entry-footer -->
+    <!--/* .entry-footer */-->
   </article>
-  <!-- #post-## -->
+  <!--/* #post-## */-->
 </th:block>

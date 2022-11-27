@@ -296,10 +296,12 @@ var LIlGGAttachContext = {
       tocSelector: ".toc",
       contentSelector: [".entry-content", ".links"],
       headingSelector: "h1, h2, h3, h4, h5",
-      collapseDepth:
-        !!PageAttr.metas.tocDepth && [0, 1, 2, 3, 4, 5].includes(Number(PageAttr.metas.tocDepth))
-          ? Number(PageAttr.metas.tocDepth)
-          : Poi.tocDepth,
+      collapseDepth: Poi.tocDepth,
+      // TODO: 2.0 无元数据
+      // collapseDepth:
+      //   !!PageAttr.metas.tocDepth && [0, 1, 2, 3, 4, 5].includes(Number(PageAttr.metas.tocDepth))
+      //     ? Number(PageAttr.metas.tocDepth)
+      //     : Poi.tocDepth,
       hasInnerContainers: false,
       disableTocScrollSync: true,
       headingsOffset: $("#page").find(".pattern-center").length > 0 ? -500 : -230,

@@ -1,10 +1,10 @@
-<!--
+<!--/*-->
 	AUTHOR PROFILE
- -->
+<!--*/-->
 <th:block th:fragment="authorprofile(post)">
   <section th:if="${theme.config.post.author_profile}" class="author-profile">
     <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <!-- TODO: 改为作者地址 -->
+      <!--/* TODO: 改为作者地址 */-->
       <a th:href="${site.url}" class="profile gravatar">
         <img th:src="${post.owner.avatar}" itemprop="image" th:alt="${post.owner.displayName}" height="70" width="70" />
       </a>
