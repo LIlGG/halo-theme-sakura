@@ -1,8 +1,8 @@
 <h1 align="center">Sakura<img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"></h1>
 <p align="center">
-  <a href="https://github.com/halo-dev/halo"><img alt="Halo version" src="https://img.shields.io/badge/halo-1.4.3%2B-brightgreen?style=for-the-badge" /></a>
+  <a href="https://github.com/halo-dev/halo"><img alt="Halo version" src="https://img.shields.io/badge/halo-2.0.0%2B-brightgreen?style=for-the-badge" /></a>
   <a href="https://github.com/LIlGG/halo-theme-sakura"><img alt="Build Status" src="https://img.shields.io/badge/build-positive-brightgreen?style=for-the-badge"></a>
-  <a href="https://github.com/prettier/prettier"><img alt="Code Style: Prettier" src="https://img.shields.io/badge/release-1.3.4-blue?style=for-the-badge"></a>
+  <a href="https://github.com/prettier/prettier"><img alt="Code Style: Prettier" src="https://img.shields.io/badge/release-2.0.0-blue?style=for-the-badge"></a>
   <a href="./LICENSE"><img alt="LICENSE MIT" src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge"></a>
 </p>
 <p align="center">
@@ -10,15 +10,12 @@
 </p>
 
 ## 🧐 说明
-该主题的基础版为 [halo-theme-siren](https://github.com/halo-dev/halo-theme-siren),非常感谢将基础版主题移植过来，给了我后续补充内容的条件。
+
+主题已适配 Halo 2.x 版本，部分不匹配内容将陆续支持。
 
 > 本主题参照 WordPress 主题 [Sakura](https://github.com/mashirozx/Sakura) 制作，在原有的 [Siren](https://github.com/halo-dev/halo-theme-siren) 主题上添加了 Sakura 的内容，并优化了部分内容。
 
-由于本人前端水平不足，也是第一次接触 Freemarker ，因此可能达不到与原版 100% 相似度，见谅。
-
 如果各位有什么好的想法，希望可以提交 `PR`；
-
-本主题所使用的评论组件为自定义组件，详见：[halo-comment-sakura](https://github.com/LIlGG/halo-comment-sakura)
 
 ## 😃 预览
 
@@ -65,6 +62,14 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [ ] 归档重写
 - [ ] 集成视频播放插件
 
+## <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">  待适配功能
+- [ ] 插件化支持 Live2D
+- [ ] 友链页面
+- [ ] 图库页面
+- [ ] 说说页面
+- [ ] 404 页面
+- [ ] 自定义回复邮箱
+- [ ] 用户登录及文章所属用户
 ## ⭐️ 安装主题
 
 ### 本地安装

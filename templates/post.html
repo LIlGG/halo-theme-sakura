@@ -1,0 +1,90 @@
+<!--/*-->
+    @package Akina
+<!--*/-->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
+  <th:block th:fragment="header">
+    <th:block
+      th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+    >
+      <div class="pattern-center-blank"></div>
+      <div class="pattern-center single-center no-select">
+        <div class="pattern-attachment-img">
+          <img
+            th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)}"
+            class="lazyload"
+            th:attr="data-src=${post.spec.cover}"
+            th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"
+            onerror="imgError(this)"
+          />
+          <img
+            th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)}"
+            th:src="${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}"
+            th:attr="
+            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'postid=' + post.metadata.name + '&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '') + '&th=150'},
+            data-srcset=${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=640 640w,'+
+            ${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=960 960w,'+
+            ${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=1280 1280w,'+
+            ${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+' 1440w'
+            "
+            data-sizes="auto"
+            th:class="'lazyload '+${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
+          />
+        </div>
+        <header class="pattern-header single-header">
+          <h1 class="entry-title" th:text="${post.spec.title}"></h1>
+          <p class="entry-census">
+            <span>
+              <!--/* TODO: 改为作者地址 */-->
+              <a th:href="${site.url}">
+                <img th:src="${post.owner.avatar}" />
+              </a>
+            </span>
+            <span>
+              <a th:href="${site.url}" th:text="${post.owner.displayName}"></a>
+            </span>
+            <span class="bull">·</span>
+            <span
+              class="i18n"
+              data-iname="post.time"
+              th:attr="data-ivalue=${#dates.format(post.spec.publishTime,theme.config.post.post_time_display_type ?: 'yyyy-MM-dd')}"
+            >
+            </span>
+            <span class="bull">·</span>
+            <!--/* TODO: last edit time */-->
+            <span
+              class="i18n"
+              data-iname="post.edit_time"
+              th:attr="data-ivalue=${#dates.format(post.spec.publishTime,theme.config.post.post_time_display_type ?: 'yyyy-MM-dd')}"
+            ></span>
+            <span class="bull">·</span>
+            <span class="i18n" data-iname="post.visits" th:attr="data-ivalue=${post.stats.visit}"></span>
+          </p>
+        </header>
+      </div>
+    </th:block>
+    <th:block
+      th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+    >
+      <div class="blank"></div>
+      <style>
+        .toc-container {
+          top: 210px;
+        }
+      </style>
+    </th:block>
+  </th:block>
+
+  <th:block th:fragment="content">
+    <!--/* #primary */-->
+    <div id="primary" class="content-area">
+      <main id="main" class="site-main" role="main">
+        <th:block th:replace="~{tpl/content-single :: content-single(${post})}" />
+        <th:block th:replace="~{layouts/post-nextprev :: post-nextprev(${post})}" />
+        <th:block th:replace="~{layouts/authorprofile :: authorprofile(${post})}" />
+      </main>
+      <!--/* #main */-->
+    </div>
+    <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
+  </th:block>
+</html>

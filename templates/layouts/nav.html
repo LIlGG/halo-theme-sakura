@@ -1,0 +1,25 @@
+<!--/* TODO: 2.0 版本菜单暂无图标 */-->
+<ul id="menu-menu-1" class="menu" th:with="menu = ${menuFinder.getPrimary()}">
+  <li th:each="menuItem : ${menu.menuItems}">
+    <a th:href="@{${menuItem.status?.href}}">
+      <span class="faa-parent animated-hover">
+        <!--/*--> <#if menu.icon?? && menu.icon?trim?length gt 0>
+                            <i class="${menu.icon}" aria-hidden="true"></i>
+                        </#if> 
+        <!--*/-->
+        <th:block th:text="${menuItem.status.displayName}"></th:block>
+      </span>
+    </a>
+    <ul th:if="${not #lists.isEmpty(menuItem.children)}" class="sub-menu">
+      <li th:each="child : ${menuItem.children}">
+        <a th:href="${child.status.href}">
+          <!--/*--> <#if child.icon?? && child.icon?trim?length gt 1>
+									<i class="${child.icon}" aria-hidden="true"></i>
+									</#if>
+          <!--*/-->
+          <th:block th:text="${child.status.displayName}"></th:block>
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>

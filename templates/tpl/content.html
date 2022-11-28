@@ -1,0 +1,72 @@
+<!--/*-->
+	@package Akina
+<!--*/-->
+<article th:fragment="content(post)" class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a th:href="@{${post.status.permalink}}">
+        <div class="overlay"><i class="iconfont icon-text"></i></div>
+        <img
+          th:if="${not #strings.isEmpty(post.spec.cover)}"
+          width="150"
+          height="150"
+          th:src="${post.spec.cover}"
+          class="attachment-post-thumbnail size-post-thumbnail"
+          onerror="imgError(this)"
+        />
+        <img
+          th:if="${#strings.isEmpty(post.spec.cover)} and ${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+          width="150"
+          height="150"
+          th:src="${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '' }+'&th=150'"
+          class="attachment-post-thumbnail size-post-thumbnail"
+        />
+        <img
+          th:if="${#strings.isEmpty(post.spec.cover)} and (${not theme.config.random_image.rimage_cover_open} or ${#strings.isEmpty(theme.config.random_image.rimage_url)})"
+          th:src="${#theme.assets('/images/random/d-1.jpg')}"
+          onerror="imgError(this)"
+        />
+      </a>
+    </div>
+    <h1 class="entry-title">
+      <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"></a>
+    </h1>
+    <div class="p-time">
+      <i th:if="${post.spec.pinned}" class="iconfont icon-hot hotpost"></i>
+      <i class="iconfont icon-time"> </i>
+      <span
+        class="i18n"
+        data-iname="postlist.time"
+        th:attr="data-ivalue=${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+      >
+      </span>
+    </div>
+    <p th:text="${post.status.excerpt}"></p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a th:href="@{${post.status.permalink}}">
+          <i class="iconfont icon-caidan"></i>
+        </a>
+      </div>
+      <div class="info-meta">
+        <div th:if="${theme.config.others.keep_record_mode}" class="comnum">
+          <span>
+            <i class="iconfont icon-mark"></i>
+            <a th:href="@{${post.status.permalink}+'#comments'}">
+              <span class="i18n" data-iname="postlist.comments" th:attr="data-ivalue=${post.stats.comment}"> </span>
+            </a>
+          </span>
+        </div>
+        <div class="views">
+          <span>
+            <i class="iconfont icon-attention"></i>
+            <span class="i18n" data-iname="postlist.heat" th:attr="data-ivalue=${post.stats.visit}"> </span>
+          </span>
+        </div>
+      </div>
+    </footer>
+    <!--/* .entry-footer */-->
+  </div>
+  <hr />
+</article>
+<!--/* #post-## */-->

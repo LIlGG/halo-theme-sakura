@@ -1,0 +1,99 @@
+<!--/*-->
+/**
+ * 主题的分类目录，用来展示所有的标签，需要手动在菜单中添加
+ * 菜单链接如下： https://{youraddress}/categories
+ * @author LIlGG
+ */
+<!--*/-->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
+  <th:block th:fragment="header">
+    <th:block
+      th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+    >
+      <div class="pattern-center-blank"></div>
+      <div class="pattern-center no-select">
+        <div class="pattern-attachment-img">
+          <img
+            th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}"
+            th:attr="data-src=${theme.config.patternimg.category_patternimg}"
+            th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"
+            class="lazyload"
+            onerror="imgError(this)"
+          />
+          <img
+            th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}"
+            th:src="${theme.config.random_image.rimage_url}+'?category=category&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}"
+            th:attr="
+            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'category=category&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '') + '&th=150'},
+            data-srcset=${theme.config.random_image.rimage_url}+'?category=category&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=640 640w,'+
+            ${theme.config.random_image.rimage_url}+'?category=category&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=960 960w,'+
+            ${theme.config.random_image.rimage_url}+'?category=category&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=1280 1280w,'+
+            ${theme.config.random_image.rimage_url}+'?category=category&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+' 1440w'
+            "
+            data-sizes="auto"
+            th:class="'lazyload '+${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
+          />
+        </div>
+        <header class="pattern-header">
+          <h1 class="entry-title i18n" data-iname="page.categories.title"></h1>
+        </header>
+      </div>
+    </th:block>
+    <th:block
+      th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+    >
+      <div class="blank"></div>
+      <header class="entry-header">
+        <h1 class="entry-title i18n" data-iname="page.categories.title"></h1>
+      </header>
+      <!--/* .entry-header */-->
+    </th:block>
+  </th:block>
+  <th:block th:fragment="content">
+    <div class="tag-contents">
+      <div id="tags" class="container chip-container" style="margin-top: 0px">
+        <div class="card">
+          <div class="card-content">
+            <div
+              th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+              class="tag-title center-align"
+            >
+              <i class="fa fa-bookmark"></i>&nbsp;&nbsp;<span class="i18n" data-iname="page.categories.title"></span>
+            </div>
+            <div class="tag-chips">
+              <a
+                th:each="category : ${categories}"
+                th:href="@{${category.status.permalink}}"
+                th:title="${category.spec.displayName}+': '+${category.postCount}"
+              >
+                <span
+                  class="chip center-align waves-effect waves-light chip-default"
+                  th:attr="data-tagname=${category.spec.displayName}"
+                  ><th:block th:text="${category.spec.displayName}"></th:block>
+                  <span class="tag-length" th:text="${category.postCount}"></span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <th:block th:if="${theme.config.tagAndCategory.category_radar}">
+      <style>
+        .tag-contents {
+          margin: 14px 0;
+        }
+        #category-echarts {
+          width: 100%;
+          height: 360px;
+        }
+      </style>
+      <div class="tag-contents category-show">
+        <div class="card">
+          <div id="category-echarts"></div>
+        </div>
+      </div>
+    </th:block>
+  </th:block>
+</html>

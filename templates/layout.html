@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="zh-CN" th:fragment="html (header,content)">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title itemprop="name" th:text="${site.title}"></title>
+
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/styles/style.min.css?v={version}(version=${theme.spec.version})}"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC&display=swap"
+      media="noexist"
+      onload="this.media='all'"
+    />
+    <link
+      rel="stylesheet"
+      href="//at.alicdn.com/t/font_2010950_sh9o0r7ahar.css"
+      media="noexist"
+      onload="this.media='all'"
+    />
+    <link rel="stylesheet" th:href="@{/assets/css/lib.css}" media="noexist" onload="this.media='all'" />
+    <link
+      rel="stylesheet"
+      th:href="@{/assets/css/highlight/highlight-{code_pretty}.css(code_pretty=${theme.config.post.code_pretty})}"
+      type="text/css"
+      media="noexist"
+      onload="this.media='all'"
+    />
+    <link
+      th:if="${theme.config.plugin.is_aplayer}"
+      rel="stylesheet"
+      th:href="@{/assets/lib/APlayer/APlayer.min.css}"
+      media="all"
+    />
+    <link
+      th:if="${theme.config.tagAndCategory.tag_cloud}"
+      rel="stylesheet"
+      th:href="@{/assets/lib/jqcloud2/jqcloud.min.css}"
+      media="noexist"
+      onload="this.media='all'"
+    />
+    <link
+      th:if="${theme.config.photos.photos_style == 'justify'}"
+      rel="stylesheet"
+      th:href="@{/assets/lib/justifiedGallery/justifiedGallery.min.css}"
+      media="noexist"
+      onload="this.media='all'"
+    />
+    <link
+      th:if="${theme.config.plugin.katex}"
+      rel="stylesheet"
+      href="https://unpkg.com/katex@0.12.0/dist/katex.min.css"
+      media="noexist"
+      onload="this.media='all'"
+    />
+    <th:block th:replace="~{inc/decorate}" />
+    <script type="text/javascript">
+      if (!!window.ActiveXObject || "ActiveXObject" in window) {
+        alert("请抛弃万恶的IE系列浏览器吧。");
+      }
+    </script>
+
+    <!--/* TODO: only for pjax */-->
+    <script src="/plugins/PluginCommentWidget/assets/static/comment-widget.iife.js"></script>
+  </head>
+  <body class="hfeed chinese-font serif">
+    <section id="main-container">
+      <th:block th:if="${theme.config.mainScreen.head_focus}">
+        <div class="headertop" th:classappend="${theme.config.mainScreen.focus_img_filter}">
+          <th:block th:replace="~{layouts/imgbox}" />
+
+          <!--/* 背景视频 */-->
+
+          <th:block th:if="${theme.config.mainScreen.bgvideo}">
+            <th:block
+              th:if="${theme.config.mainScreen.focus_height} and (${not #strings.isEmpty(theme.config.mainScreen.bgvideo_url)} or ${not #strings.isEmpty(theme.config.mainScreen.bgvideo_id)})"
+            >
+              <th:block th:replace="~{layouts/videobox}" />
+            </th:block>
+          </th:block>
+
+          <!--/* 首页下拉箭头 */-->
+          <div
+            th:if="${theme.config.mainScreen.focus_godown}"
+            class="headertop-down faa-float animated"
+            onclick="headertop_down()"
+          >
+            <span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+          </div>
+        </div>
+      </th:block>
+      <div id="page" class="site wrapper">
+        <th:block th:replace="~{inc/pjax_decorate}" />
+        <header class="site-header" th:classappend="${_templateId == 'index' ? 'is-homepage' : ''}" role="banner">
+          <div class="site-top">
+            <div class="site-branding">
+              <div th:if="${not #strings.isEmpty(site.logo)}" class="site-title">
+                <a th:href="${site.url}">
+                  <img th:src="${site.logo}" />
+                </a>
+              </div>
+              <h1 th:unless="${not #strings.isEmpty(site.logo)}" class="site-title">
+                <a th:href="${site.url}" th:text="${site.title}"></a>
+              </h1>
+              <!--/* logo end */-->
+            </div>
+            <!--/* .site-branding */-->
+            <div class="header-user-avatar">
+              <!--/* TODO: 目前 Halo 2.0 没有提供全局的用户信息 */-->
+              <img src="https://ryanc.cc/avatar" width="30" height="30" />
+              <div class="header-user-menu">
+                <div class="herder-user-name">
+                  <div class="herder-user-name-u">Ryan Wang</div>
+                </div>
+              </div>
+            </div>
+            <div th:if="${theme.config.general.top_search}" class="searchbox">
+              <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+            </div>
+            <div class="lower-cantiner">
+              <div class="lower">
+                <div th:if="${theme.config.general.shownav}" id="show-nav" class="showNav mobile-fit">
+                  <div class="line line1"></div>
+                  <div class="line line2"></div>
+                  <div class="line line3"></div>
+                </div>
+                <nav th:class="${theme.config.general.shownav ? 'navbar' : ''}">
+                  <th:block th:replace="~{layouts/nav}" />
+                </nav>
+                <!--/* #site-navigation */-->
+              </div>
+            </div>
+          </div>
+        </header>
+        <!--/* #masthead */-->
+        <th:block th:if="${header != null}">
+          <th:block th:replace="${header}" />
+        </th:block>
+        <div id="content" class="site-content">
+          <th:block th:replace="${content}" />
+        </div>
+        <!--/* 定义可变属性，会根据页面的改变而变化 */-->
+        <script type="text/javascript">
+          /* <![CDATA[ */
+          // TODO:
+          var PageAttr = {};
+          // var PageAttr = {
+          //     "metas": {
+          //         // <#if metas??>
+          //         //     <#list metas?keys as key>
+          //         //         "${key}": "${metas['${key}']}",
+          //         //     </#list>
+          //         // </#if>
+          //     },
+          //     "isPost": "${(is_post!false)?string('true','false')}",
+          //     <#if is_post??>
+          //     "postWordCount": "${post.wordCount!0}",
+          //     "postEditTime": "${post.editTime?string('yyyy-MM-dd HH:mm:ss')}"
+          //     </#if>
+          // }
+          /* ]]> */
+        </script>
+      </div>
+      <!--/* #page Pjax container */-->
+      <footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="site-info">
+          <div class="footertext">
+            <p
+              class="foo-logo"
+              th:style="'background-image: url(' + ${theme.config.others.footer_logo ?: #theme.assets('/images/sakura.svg')} + ');'"
+            ></p>
+            <halo:footer />
+          </div>
+          <div class="footer-device">
+            <!--/* 请尊重作者，务必保留版权! */-->
+            <p style="font-family: 'Ubuntu', sans-serif">
+              <span
+                >Powered
+                <i class="fa fa-vimeo animated" style="color: #e74c3c"></i>
+                by
+                <a
+                  rel="me"
+                  target="_blank"
+                  href="http://halo.run"
+                  title="一款现代化的开源建站 / CMS 系统。"
+                  style="text-decoration: none"
+                  >Halo</a
+                >
+              </span>
+              •
+              <span
+                >Crafted with
+                <i class="fa fa-heart animated" style="color: #e74c3c"></i>
+                by
+                <a
+                  rel="me"
+                  target="_blank"
+                  href="https://github.com/LIlGG/halo-theme-sakura"
+                  style="text-decoration: none"
+                  >LIlGG</a
+                >
+              </span>
+            </p>
+            <p>
+              © <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
+              <th:block th:text="${site.title}"></th:block>
+              <th:block th:if="${not #strings.isEmpty(theme.config.others.footer_case_number)}">
+                &nbsp;
+                <a
+                  href="https://beian.miit.gov.cn/"
+                  target="_blank"
+                  th:text="${theme.config.others.footer_case_number}"
+                ></a>
+              </th:block>
+              <th:block th:if="${not #strings.isEmpty(theme.config.others.footer_ga_case_number)}">
+                &nbsp;
+                <a
+                  th:href="@{http://www.beian.gov.cn/portal/registerSystemInfo?recordcode={recordcode}(recordcode=${theme.config.others.footer_ga_case_number})}"
+                  target="_blank"
+                >
+                  <img th:src="@{/assets/images/other/gongan.png}" /><th:block
+                    th:text="${theme.config.others.footer_ga_case_number}"
+                  ></th:block>
+                </a>
+              </th:block>
+            </p>
+          </div>
+        </div>
+        <!--/* .site-info */-->
+      </footer>
+      <!--/* #colophon */-->
+      <div class="openNav">
+        <div class="iconflat">
+          <div class="icon"></div>
+        </div>
+        <div class="site-branding">
+          <div th:if="${not #strings.isEmpty(site.logo)}" class="site-title">
+            <a th:href="${site.url}">
+              <img th:src="${site.logo}" />
+            </a>
+          </div>
+          <h1 th:unless="${#strings.isEmpty(site.logo)}" class="site-title">
+            <a th:href="${site.url}" th:text="${site.title}"></a>
+          </h1>
+        </div>
+      </div>
+      <!--/* m-nav-bar */-->
+    </section>
+    <!--/* #section */-->
+    <!--/* m-nav-center */-->
+    <div id="mo-nav">
+      <div class="m-avatar">
+        <!--/* TODO: 当前 Halo 2.0 没有提供全局的用户，暂用 Logo 代替 */-->
+        <img th:src="${site.logo ?: #theme.assets('/images/avatar.jpg')}" />
+      </div>
+
+      <p
+        th:if="${not #strings.isEmpty(theme.config.mainScreen.glitch_text)}"
+        style="
+          text-align: center;
+          color: #333;
+          font-weight: 900;
+          font-family: 'Ubuntu', sans-serif;
+          letter-spacing: 1.5px;
+        "
+        th:text="${theme.config.mainScreen.glitch_text}"
+      ></p>
+
+      <th:block th:if="${theme.config.mainScreen.focus_infos}">
+        <p style="display: flex; justify-content: center">
+          <a th:each="item : ${theme.config.sns.mobile_items}" th:href="${item.url}" class="social" target="_blank">
+            <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" width="18" />
+          </a>
+        </p>
+      </th:block>
+
+      <div class="m-search">
+        <form class="m-search-form" method="get" action="/search" role="search">
+          <input class="m-search-input" type="search" name="keyword" placeholder="搜索..." required />
+        </form>
+      </div>
+      <th:block th:replace="~{layouts/nav}" />
+      <p class="m-footer">
+        © <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
+        <th:block th:text="${site.title}"></th:block>
+      </p>
+    </div>
+    <!--/* m-nav-center end */-->
+    <a href="#" class="cd-top"></a>
+    <!--/* m-cd-top start */-->
+    <button class="m-cd-top" title="Go to top">
+      <i class="fa fa-chevron-up" aria-hidden="true"></i>
+    </button>
+    <!--/* m-cd-top end */-->
+    <!--/* search start */-->
+    <!--/* TODO: 搜索功能由插件提供 https://github.com/halo-sigs/plugin-search-widget */-->
+    <!--/*-->
+    <form class="js-search search-form search-form--modal" method="get" action="/search" role="search">
+      <div class="search-form__inner">
+        <div>
+          <p class="micro mb-">输入后按回车搜索 ...</p>
+          <i class="iconfont icon-search"></i>
+          <input class="text-input" type="search" name="keyword" placeholder="Search" required />
+        </div>
+      </div>
+      <div class="search_close"></div>
+    </form>
+    <!--*/-->
+    <!--/* search end */-->
+    <!--/* aplayer start */-->
+    <div
+      th:if="${theme.config.plugin.is_aplayer} and ${theme.config.additional.aplayer_float}"
+      id="aplayer-float"
+      style="z-index: 100"
+      class="aplayer"
+      data-global="true"
+      th:data-id="${theme.config.additional.aplayer_id}"
+      th:data-server="${theme.config.additional.aplayer_server}"
+      th:data-type="${theme.config.additional.aplayer_type}"
+      th:data-fixed="true"
+      th:data-preload="${theme.config.additional.aplayer_preload}"
+      th:data-order="${theme.config.additional.aplayer_order}"
+      th:data-theme="${theme.config.additional.aplayer_theme}"
+      th:data-autoplay="${theme.config.additional.aplayer_autoplay}"
+      th:data-volume="${theme.config.additional.aplayer_volume}"
+    ></div>
+    <!--/* aplayer end */-->
+    <!--/* theme-change start */-->
+    <th:block th:if="${theme.config.theme.theme_change}">
+      <div class="changeSkin-gear no-select">
+        <div class="keys">
+          <span id="open-skinMenu"
+            >切换主题 | SCHEME TOOL &nbsp;<i class="iconfont icon-gear inline-block rotating"></i
+          ></span>
+        </div>
+      </div>
+      <div class="skin-menu no-select">
+        <div class="theme-controls row-container">
+          <ul class="menu-list">
+            <th:block th:each="i : ${#numbers.sequence(0,7)}">
+              <li th:id="'bg_'+${i}" th:attr="data-text=${theme.config.theme['bg_desc_'+i]}">
+                <i th:class="${theme.config.theme['bg_icon_'+i]}" aria-hidden="true"></i>
+              </li>
+            </th:block>
+          </ul>
+        </div>
+      </div>
+    </th:block>
+    <!--/* theme-change end */-->
+    <!--/* 定义全局属性 */-->
+    <script type="text/javascript" th:inline="javascript">
+      /* <![CDATA[ */
+      var Poi = {
+          "pjax":"[(${theme.config.others.poi_pjax})]",
+          "windowheight":"[(${theme.config.mainScreen.focus_height ? 'auto' : 'fixed'})]",
+          "ajaxurl":"[(${site.url})]",
+          "resBaseUrl": "[(${#theme.assets('')})]",
+          "formpostion":"bottom",
+          "toc": "[(${theme.config.post.post_toc ? 'true' : ''})]",
+          "codeLine": "[(${theme.config.post.code_line ? 'true' : ''})]",
+          "themeChange": "[(${theme.config.theme.theme_change ? 'true' : ''})]",
+          "headFocus": "[(${theme.config.mainScreen.focus_height ? 'true' : ''})]",
+          "bgvideo": "[(${theme.config.mainScreen.bgvideo ? 'true' : ''})]",
+          "tagRandomColorMin": "[(${theme.config.tagAndCategory.tag_randomColorMin})]",
+          "tagRandomColorMax": "[(${theme.config.tagAndCategory.tag_randomColorMax})]",
+          "nickname": "Ryan Wang", // TODO:
+          "sitename": "[(${site.title})]",
+          "themeBase": "[(${#theme.assets('')})]",
+          "openToast": "[(${theme.config.toast.open_toast ? 'true' : ''})]",
+          "toastWidth": /*[(${theme.config.toast.toast_width})]*/,
+          "toastHeight": /*[(${theme.config.toast.toast_height})]*/,
+          "toastTop": "[(${theme.config.toast.toast_top})]",
+          "toastBackground": "[(${theme.config.general.theme_skin})]",
+          "toastColor": "[(${theme.config.toast.toast_color})]",
+          "toastFontSize": /*[(${theme.config.toast.toast_font_size})]*/,
+          "copyMonitor": "[(${theme.config.toast.copy_monitor ? 'true' : ''})]",
+          "copyrightNotice": "[(${theme.config.toast.copyright_notice ? 'true' : ''})]",
+          "photosStyle": "[(${theme.config.photos.photos_style})]",
+          "photosGutter": /*[(${theme.config.photos.photos_gutter})]*/,
+          "tocDepth": /*[(${theme.config.post.toc_depth})]*/,
+          "i18n": "[(${theme.config.others.i18n})]",
+          "coverNum": "[(${theme.config.random_image.rimage_cover_back_num})]",
+          "rimageUrl": "[(${theme.config.random_image.rimage_url})]",
+          "coverOpen": "[(${theme.config.random_image.rimage_cover_back_open ? 'true' : ''})]",
+          "meEmail": "i@example.com", // TODO:
+          "defaultTheme": "[(${theme.config.theme.default_theme})]",
+          "defaultGroup": "[(${theme.config.photos.default_group})]",
+          "isPostWordCountToast": "[(${theme.config.post.post_word_count_toast ? 'true' : ''})]",
+          "isPostEditTimeToast": "[(${theme.config.post.post_edit_time_toast ? 'true' : ''})]",
+          "postWordCountToastNormal": "[(${theme.config.post.post_word_count_toast_normal})]",
+          "postWordCountToastMedium": "[(${theme.config.post.post_word_count_toast_medium})]",
+          "postWordCountToastDifficulty": "[(${theme.config.post.post_word_count_toast_difficulty})]",
+          "postEditTimeToastNormal": "[(${theme.config.post.post_edit_time_toast_normal})]",
+          "postEditTimeToastMedium": "[(${theme.config.post.post_edit_time_toast_medium})]",
+          "postEditTimeToastDifficulty": "[(${theme.config.post.post_edit_time_toast_difficulty})]",
+          "journalLikes": "[(${theme.config.journal.journal_likes ? 'true' : ''})]",
+          "journalComment": "[(${theme.config.journal.journal_comment ? 'true' : ''})]",
+      };
+      var bgConfig = {
+          /*[# th:each="i : ${#numbers.sequence(0,7)}"]*/
+              "bg_[(${i})]": {
+                  "id": "[(${i})]",
+                  "name": "[(${theme.config.theme['bg_name_' + i]})]",
+                  "desc": "[(${theme.config.theme['bg_desc_' + i]})]",
+                  "url": "[(${theme.config.theme['bg_url_' + i]})]",
+                  "strategy": "[(${theme.config.theme['bg_img_strategy_' + i]})]",
+                  "isNight": "[(${theme.config.theme['bg_night_' + i] ? 'true' : ''})]"
+              },
+          /*[/]*/
+      }
+      /* ]]> */
+    </script>
+    <script
+      type="text/javascript"
+      th:src="@{/assets/script/utils.min.js?v={version}(version=${theme.spec.version})}"
+    ></script>
+    <script type="text/javascript" th:src="@{/assets/lib/lazysizes/lazysizes.min.js}" async></script>
+    <script type="text/javascript" th:src="@{/assets/js/lib.js}"></script>
+    <!--/* 相册 */-->
+    <script
+      th:if="${theme.config.photos.photos_style == 'justify'}"
+      th:src="@{/assets/lib/justifiedGallery/jquery.justifiedGallery.min.js}"
+      async
+    ></script>
+    <script
+      th:if="${theme.config.photos.photos_style == 'masonry'} or ${theme.config.photos.photos_style == 'packery'}"
+      th:src="@{/assets/lib/isotope.pkgd.min/index.js}"
+      async
+    ></script>
+    <script
+      th:if="${theme.config.photos.photos_style == 'masonry'} or ${theme.config.photos.photos_style == 'packery'}"
+      th:src="@{/assets/lib/imagesloaded/imagesloaded.pkgd.min.js}"
+      defer
+    ></script>
+    <script
+      th:if="${theme.config.photos.photos_style == 'packery'}"
+      type="text/javascript"
+      th:src="@{/assets/lib/packery-mode.pkgd.min/index.js}"
+      async
+    ></script>
+    <script type="text/javascript" th:src="@{/assets/js/highlight/highlight.pack.js}" defer></script>
+    <script
+      th:if="${theme.config.post.code_line}"
+      type="text/javascript"
+      th:src="@{/assets/js/highlight/highlightjs-line-numbers.min.js}"
+      defer
+    ></script>
+    <th:block th:if="${theme.config.plugin.is_aplayer}">
+      <script th:src="@{/assets/lib/APlayer/APlayer.min.js}" defer></script>
+      <script th:src="@{/assets/plugins/aplayer/js/index.js}" defer></script>
+    </th:block>
+    <script th:if="${theme.config.post.post_toc}" th:src="@{/assets/lib/tocbot/dist/tocbot.min.js}" defer></script>
+    <th:block th:if="${theme.config.tagAndCategory.tag_cloud}">
+      <script th:src="@{/assets/lib/jqcloud2/jqcloud.min.js}" defer></script>
+      <script type="text/javascript" th:inline="javascript">
+        const tags = /*[[${tagFinder.listAll()}]]*/
+        var wordcloud = tags.map(tag => {
+            return {
+                text: tag.spec.displayName,
+                weight: tag.postCount,
+                link: tag.status.permalink
+            }
+        })
+      </script>
+    </th:block>
+    <th:block th:if="${theme.config.tagAndCategory.category_radar}">
+      <script th:src="@{/assets/js/echarts/echarts.min.js}" defer></script>
+      <script type="text/javascript" th:inline="javascript">
+        var categories = /*[[${categoryFinder.listAll()}]]*/
+        var categoryRadar = categories.reduce((acc,curr)=> (acc[curr.spec.displayName]=curr.postCount,acc),{});
+      </script>
+    </th:block>
+    <script type="text/javascript" th:src="@{/assets/js/qrcode.min.js}" defer></script>
+    <script type="text/javascript" th:src="@{/assets/lib/flv.min/index.js}" defer></script>
+    <script
+      type="text/javascript"
+      th:src="@{/assets/script/i18n.min.js?v={version}(version=${theme.spec.version})}"
+      defer
+    ></script>
+    <script
+      type="text/javascript"
+      th:src="@{/assets/script/app.min.js?v={version}(version=${theme.spec.version})}"
+    ></script>
+  </body>
+</html>

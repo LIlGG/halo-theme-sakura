@@ -1,0 +1,15 @@
+<!--/* 列表所使用的分页 */-->
+<th:block th:fragment="pagination(posts)">
+    <th:block th:if="${theme.config.general.pagenav_style == 'ajax'}">
+        <div id="pagination">
+          <a th:if="${posts.hasNext()}" th:href="@{${posts.nextUrl}}" class="i18n" data-iname="page.next"></a>
+          <span th:unless="${posts.hasNext()}" class="i18n" data-iname="page.theend"></span>
+        </div>
+    </th:block>
+    <th:block th:unless="${theme.config.general.pagenav_style == 'ajax'}">
+        <nav class="navigator">
+          <a th:if="${posts.hasPrevious()}" th:href="@{${posts.prevUrl}}"><i class="iconfont icon-previous"></i></a>
+          <a th:if="${posts.hasNext()}" th:href="@{${posts.nextUrl}}"><i class="iconfont icon-next"></i></a>
+        </nav>
+    </th:block>
+</th:block>

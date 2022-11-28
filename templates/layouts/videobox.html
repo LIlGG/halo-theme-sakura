@@ -1,0 +1,17 @@
+<div id="video-container">
+  <video
+    id="bgvideo"
+    class="video"
+    th:data-id="${theme.config.mainScreen.bgvideo_id}"
+    th:data-server="${theme.config.mainScreen.bgvideo_server}"
+    th:data-url="${theme.config.mainScreen.bgvideo_url}"
+    width="auto"
+    preload="auto"
+    th:data-cid="${theme.config.mainScreen.bilibili_video_cid}"
+    th:data-qn="${theme.config.mainScreen.bilibili_video_qn}"
+    th:data-vtype="${theme.config.mainScreen.bilibili_video_vtype}">
+  </video>
+  <div id="video-btn" class="loadvideo videolive"></div>
+  <div id="video-add"></div>
+  <div class="video-stu"></div>
+</div>

@@ -1,18 +1,19 @@
 {
   "name": "halo-theme-sakura",
-  "version": "1.3.4",
+  "version": "2.0.0",
   "description": "<h1 align=\"center\">Sakura<img src=\"https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif\" width=\"50\"></h1>\r <p align=\"center\">\r   <a href=\"https://lixingyong.com\">预览</a> | <a href=\"#安装主题\">安装</a> | <a href=\"https://lixingyong.com/s/halo-theme-sakure\">更新日志</a>\r   </p>",
   "main": "index.js",
   "scripts": {
     "build": "npm run build-clean && npm run build-autoprefix && npm run build-cleancss  && npm run build-js",
-    "build-autoprefix": "postcss --use autoprefixer --map false --output styles/style.css styles/style.css",
-    "build-cleancss": "cleancss -o styles/style.min.css styles/style.css",
+    "build-autoprefix": "postcss --use autoprefixer --map false --output templates/assets/styles/style.css templates/assets/styles/style.css",
+    "build-cleancss": "cleancss -o templates/assets/styles/style.min.css templates/assets/styles/style.css",
     "build-clean": "rimraf css",
-    "build-app-js": "babel script/app.js -o script/app.min.js && uglifyjs script/app.min.js -o script/app.min.js",
-    "build-i18n-js": "babel script/i18n.js -o script/i18n.min.js && uglifyjs script/i18n.min.js -o script/i18n.min.js",
-    "build-utils-js": "babel script/utils.js -o script/utils.min.js && uglifyjs script/utils.min.js -o script/utils.min.js",
+    "build-app-js": "babel templates/assets/script/app.js -o templates/assets/script/app.min.js && uglifyjs templates/assets/script/app.min.js -o templates/assets/script/app.min.js",
+    "build-i18n-js": "babel templates/assets/script/i18n.js -o templates/assets/script/i18n.min.js && uglifyjs templates/assets/script/i18n.min.js -o templates/assets/script/i18n.min.js",
+    "build-utils-js": "babel templates/assets/script/utils.js -o templates/assets/script/utils.min.js && uglifyjs templates/assets/script/utils.min.js -o templates/assets/script/utils.min.js",
     "build-js": "npm run build-app-js && npm run build-i18n-js && npm run build-utils-js",
-    "deploy": "npm run build"
+    "deploy": "npm run build",
+    "prettier": "prettier --write './src/**/*.{js,ts,css,json,ml,yaml,html}' './templates/**/*.html'"
   },
   "browserify": {
     "transform": [
@@ -45,8 +46,8 @@
     "autoprefixer": "^9.8.8",
     "clean-css-cli": "^4.3.0",
     "postcss-cli": "^7.1.2",
+    "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "uglify-js": "^3.15.2"
-  },
-  "dependencies": {}
+  }
 }
