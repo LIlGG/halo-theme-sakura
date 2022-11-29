@@ -1826,6 +1826,11 @@ additional:
           label: metadata
         - value: auto
           label: auto
+    aplayer_volume:
+      name: aplayer_volume
+      label: 默认音量大小
+      type: number
+      default: 0.7
     aplayer_autoplay:
       name: aplayer_autoplay
       label: 自动播放
@@ -1969,8 +1974,10 @@ others:
           label: 自动
         - value: zh
           label: 中文（简体）
-        # - value: en
-        #   label: 英文
+        - value: ja
+          label: 日本語
+        - value: en
+          label: 英文
     reply_mail_img:
       name: reply_mail_img
       label: 邮件回复模块图片
