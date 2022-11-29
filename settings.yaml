@@ -1826,11 +1826,6 @@ additional:
           label: metadata
         - value: auto
           label: auto
-    aplayer_volume:
-      name: aplayer_volume
-      label: 默认音量大小
-      type: number
-      default: 0.7
     aplayer_autoplay:
       name: aplayer_autoplay
       label: 自动播放
@@ -1974,10 +1969,8 @@ others:
           label: 自动
         - value: zh
           label: 中文（简体）
-        - value: ja
-          label: 日本語
-        - value: en
-          label: 英文
+        # - value: en
+        #   label: 英文
     reply_mail_img:
       name: reply_mail_img
       label: 邮件回复模块图片
@@ -2022,6 +2015,18 @@ others:
       type: text
       default: ""
       description: "应与公安备案信息内的编号一致"
+    footer_moe_case_name:
+      name: footer_moe_case_name
+      label: 自定义备案信息
+      type: text
+      default: ""
+      description: "建议按照备案格式填写.且只有信息和地址均填写时才会显示！"
+    footer_moe_case_number:
+      name: footer_moe_case_number
+      label: 自定义备案地址
+      type: text
+      default: ""
+      description: "自定义备案信息！（推荐萌备案）"
     head_notice:
       name: head_notice
       label: 开启公告

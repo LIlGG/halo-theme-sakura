@@ -33,7 +33,8 @@
 			   style="background-image: url('${settings.footer_logo?default('${res_base_url!}/source/images/sakura.svg')}');"></p>
 			<@global.footer />
 		</div>
-		<div class="footer-device">
+		<div class="footer-device
+
 			<#-- 请尊重作者，务必保留版权! -->
 			<p style="font-family: 'Ubuntu', sans-serif;">
 				<span>Powered
@@ -51,14 +52,21 @@
 			<p>
 				© ${.now?string("yyyy")} ${(user.nickname)!}
 				<#if settings.footer_case_number??  && settings.footer_case_number != "">
-				&nbsp;
+				<!-- 备案 -->
+                  &nbsp;
 				<a href="https://beian.miit.gov.cn/" target="_blank">${settings.footer_case_number}</a>
 				</#if>
 				<#if settings.footer_ga_case_number??  && settings.footer_ga_case_number != "">
+                  <!-- 公安备案 -->
 				&nbsp;
 				<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${settings.footer_ga_select_number!}" target="_blank">
 					<img src="${res_base_url!}/source/images/other/gongan.png">${settings.footer_ga_case_number}
 				</a>
+				</#if>
+                  <#if settings.footer_moe_case_number??  && settings.footer_moe_case_number != "" && settings.footer_moe_case_name??  && settings.footer_moe_case_name != "">
+				<!-- 自定义备案 -->
+                    &nbsp;
+				<a href= ${settings.footer_moe_case_number} target="_blank">${settings.footer_moe_case_name}</a>
 				</#if>
 			</p>
 		</div>
@@ -150,7 +158,7 @@
 <!-- search end -->
 <!-- aplayer start -->
 <#if settings.is_aplayer && settings.aplayer_float>
-<div id="aplayer-float" style="z-index: 100;" class="aplayer" data-global="true" data-id="${settings.aplayer_id!'2345868969'}" data-server="${settings.aplayer_server!'netease'}" data-type="${settings.aplayer_type!'playlist'}" data-fixed="true" data-preload="${settings.aplayer_preload!'none'}" data-order="${settings.aplayer_order!'list'}" data-theme="${settings.aplayer_theme!'orange'}" data-autoplay="${(settings.aplayer_autoplay!false)?string('true', 'false')}" data-volume="${settings.aplayer_volume!'0.7'}"></div>
+<div id="aplayer-float" style="z-index: 100;" class="aplayer" data-global="true" data-id="${settings.aplayer_id!'2345868969'}" data-server="${settings.aplayer_server!'netease'}" data-type="${settings.aplayer_type!'playlist'}" data-fixed="true" data-preload="${settings.aplayer_preload!'none'}" data-order="${settings.aplayer_order!'list'}" data-theme="${settings.aplayer_theme!'orange'}" data-autoplay="${(settings.aplayer_autoplay!false)?string('true', 'false')}"></div>
 </#if>
 <!-- aplayer end -->
 <!-- theme-change start -->
