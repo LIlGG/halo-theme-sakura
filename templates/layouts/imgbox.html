@@ -30,13 +30,13 @@
         th:text="${theme.config.mainScreen.glitch_text}"
       ></h1>
     </th:block>
-    <div class="header-info no-select" th:classappend="${#strings.isEmpty(site.subtitle) ? '' : 'info-desc'}">
+    <div class="header-info no-select" th:classappend="${#strings.isEmpty(site.subtitle) ? '' : 'info-desc'}" th:if="${not #strings.isEmpty(site.subtitle) or not #arrays.isEmpty(theme.config.sns.items) }">
       <p th:if="${not #strings.isEmpty(site.subtitle)}">
         <i class="fa fa-quote-left"></i>
         <span class="desc" th:text="${site.subtitle}"></span>
         <i class="fa fa-quote-right"></i>
       </p>
-      <div class="top-social_v2">
+      <div class="top-social_v2" th:if="${not #arrays.isEmpty(theme.config.sns.items)}">
         <li id="bg-pre">
           <img class="flipx" th:src="@{/assets/images/next-b.svg}" />
         </li>

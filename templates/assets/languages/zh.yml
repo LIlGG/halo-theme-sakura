@@ -71,6 +71,10 @@ notfound:
 
 user:
   description: 我喜欢做的事就是不写个性签名
+  login: 登录
+  has_logged: 当前已登录
+  info: 个人资料
+  logout: 退出登录
 
 icon_alt:
   wechat: 微信公众号

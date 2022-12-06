@@ -3,20 +3,20 @@
 <html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::headers},content = ~{::content})}">
   <th:block th:fragment="headers">
     <th:block
-      th:if="${theme.config.patternimg.patternimg} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+      th:if="${theme.config.patternimg.patternimg_image} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
       <div class="pattern-center-blank"></div>
       <div class="pattern-center no-select">
         <div class="pattern-attachment-img">
           <img
-            th:if="${theme.config.patternimg.patternimg} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)})"
+            th:if="${theme.config.patternimg.patternimg_image} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)})"
             th:attr="data-src=${not #strings.isEmpty(category.spec.cover) ? category.spec.cover : theme.config.patternimg.category_patternimg}"
             th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"
             class="lazyload"
             onerror="imgError(this)"
           />
           <img
-            th:unless="${theme.config.patternimg.patternimg} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)})"
+            th:unless="${theme.config.patternimg.patternimg_image} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)})"
             th:src="${theme.config.random_image.rimage_url}+'?category='+${category.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}"
             th:attr="
             data-src=${category.spec.cover ?: theme.config.patternimg.category_patternimg},
@@ -49,7 +49,7 @@
     <div id="primary" class="content-area" th:with="postItems=${posts.items}">
       <main id="main" class="site-main" role="main">
         <th:block th:if="${posts.totalPages gt 0}">
-          <header class="page-header" th:unless="${theme.config.patternimg.patternimg} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
+          <header class="page-header" th:unless="${theme.config.patternimg.patternimg_image} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
             <h1 class="cat-title" th:text="${category.spec.displayName}"></h1>
             <span class="cat-des" th:text="${category.spec.description}"></span>
           </header>

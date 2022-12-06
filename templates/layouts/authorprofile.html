@@ -6,7 +6,7 @@
     <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <!--/* TODO: 改为作者地址 */-->
       <a th:href="${site.url}" class="profile gravatar">
-        <img th:src="${post.owner.avatar}" itemprop="image" th:alt="${post.owner.displayName}" height="70" width="70" />
+        <img th:src="${post.owner.avatar ?: #theme.assets('/images/avatar.jpg')}" itemprop="image" th:alt="${post.owner.displayName}" height="70" width="70" />
       </a>
       <div class="meta">
         <span class="title" th:text="${post.owner.displayName}"></span>

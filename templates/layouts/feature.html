@@ -1,4 +1,4 @@
-<div class="top-feature">
+<div class="top-feature" th:if="${not #arrays.isEmpty(theme.config.focus.features)}">
   <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif">
     <i
       th:if="${not #strings.isEmpty(theme.config.focus.feature_icon)}"

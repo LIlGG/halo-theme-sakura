@@ -71,6 +71,10 @@ notfound:
 
 user:
   description: 俺様はステータスなしが大好き😎
+  login: ログイン
+  has_logged: ようこそ
+  info: プロフィール
+  logout: ログアウト
 
 icon_alt:
   wechat: WeChat 公式アカウント

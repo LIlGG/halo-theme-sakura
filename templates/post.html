@@ -5,20 +5,20 @@
 <html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
   <th:block th:fragment="header">
     <th:block
-      th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+      th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(post.spec.cover)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
       <div class="pattern-center-blank"></div>
       <div class="pattern-center single-center no-select">
         <div class="pattern-attachment-img">
           <img
-            th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)}"
+            th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(post.spec.cover)}"
             class="lazyload"
             th:attr="data-src=${post.spec.cover}"
             th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"
             onerror="imgError(this)"
           />
           <img
-            th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)}"
+            th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(post.spec.cover)}"
             th:src="${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}"
             th:attr="
             srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'postid=' + post.metadata.name + '&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '') + '&th=150'},
@@ -37,7 +37,7 @@
             <span>
               <!--/* TODO: 改为作者地址 */-->
               <a th:href="${site.url}">
-                <img th:src="${post.owner.avatar}" />
+                <img th:src="${post.owner.avatar ?: #theme.assets('/images/avatar.jpg')}" />
               </a>
             </span>
             <span>
@@ -64,7 +64,7 @@
       </div>
     </th:block>
     <th:block
-      th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(post.spec.cover)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+      th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(post.spec.cover)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
       <div class="blank"></div>
       <style>

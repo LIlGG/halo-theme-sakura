@@ -110,13 +110,28 @@
               <!--/* logo end */-->
             </div>
             <!--/* .site-branding */-->
-            <div class="header-user-avatar">
-              <!--/* TODO: 目前 Halo 2.0 没有提供全局的用户信息 */-->
-              <img src="https://ryanc.cc/avatar" width="30" height="30" />
+            <div 
+              class="header-user-avatar" 
+              th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}">
+              <img th:src="${currentUser.avatar ?: #theme.assets('/images/none.png')}" width="30" height="30" />
               <div class="header-user-menu">
-                <div class="herder-user-name">
-                  <div class="herder-user-name-u">Ryan Wang</div>
-                </div>
+                <th:block sec:authorize="isAnonymous()">
+                  <div class="herder-user-name no-logged">
+                    <a href="/console" style="font-weight:bold; text-decoration:none; color: #333;" class="i18n" data-iname="user.login"></a>
+                  </div>
+                </th:block>
+                <th:block sec:authorize="isAuthenticated()">
+                  <div class="herder-user-name">
+                    <div class="i18n" data-iname="user.has_logged"></div>
+                    <div class="herder-user-name-u" th:text="${currentUser.displayName}"></div>
+                  </div>
+                  <div class="user-menu-option">
+                    <!-- 个人资料 -->
+                    <a href="/console#/users/admin/detail" target="_blank" class="i18n" data-iname="user.info"></a>
+                    <!-- 退出登录 -->
+                    <a href="/logout" target="_top" class="i18n" data-iname="user.logout"></a>
+                  </div>
+                </th:block>
               </div>
             </div>
             <div th:if="${theme.config.general.top_search}" class="searchbox">
@@ -254,9 +269,8 @@
     <!--/* #section */-->
     <!--/* m-nav-center */-->
     <div id="mo-nav">
-      <div class="m-avatar">
-        <!--/* TODO: 当前 Halo 2.0 没有提供全局的用户，暂用 Logo 代替 */-->
-        <img th:src="${site.logo ?: #theme.assets('/images/avatar.jpg')}" />
+      <div class="m-avatar" th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}">
+        <img th:src="${currentUser.avatar ?: #theme.assets('/images/avatar.jpg')}" />
       </div>
 
       <p
@@ -298,19 +312,17 @@
     </button>
     <!--/* m-cd-top end */-->
     <!--/* search start */-->
-    <!--/* TODO: 搜索功能由插件提供 https://github.com/halo-sigs/plugin-search-widget */-->
-    <!--/*-->
-    <form class="js-search search-form search-form--modal" method="get" action="/search" role="search">
+    <!--/* 搜索功能由插件提供 https://github.com/halo-sigs/plugin-search-widget */-->
+    <!-- <div class="js-search search-form search-form--modal" role="search">
       <div class="search-form__inner">
         <div>
           <p class="micro mb-">输入后按回车搜索 ...</p>
           <i class="iconfont icon-search"></i>
-          <input class="text-input" type="search" name="keyword" placeholder="Search" required />
+          <input class="text-input js-search-input" type="search" name="keyword" placeholder="Search" required />
         </div>
       </div>
       <div class="search_close"></div>
-    </form>
-    <!--*/-->
+    </div> -->
     <!--/* search end */-->
     <!--/* aplayer start */-->
     <div
@@ -342,9 +354,9 @@
       <div class="skin-menu no-select">
         <div class="theme-controls row-container">
           <ul class="menu-list">
-            <th:block th:each="i : ${#numbers.sequence(0,7)}">
-              <li th:id="'bg_'+${i}" th:attr="data-text=${theme.config.theme['bg_desc_'+i]}">
-                <i th:class="${theme.config.theme['bg_icon_'+i]}" aria-hidden="true"></i>
+            <th:block th:each="themeItem, status : ${theme.config.theme.bg_themes}">
+              <li th:id="'bg_'+${status.index}">
+                <i th:class="${themeItem.bg_icon}" aria-hidden="true"></i>
               </li>
             </th:block>
           </ul>
@@ -368,7 +380,7 @@
           "bgvideo": "[(${theme.config.mainScreen.bgvideo ? 'true' : ''})]",
           "tagRandomColorMin": "[(${theme.config.tagAndCategory.tag_randomColorMin})]",
           "tagRandomColorMax": "[(${theme.config.tagAndCategory.tag_randomColorMax})]",
-          "nickname": "Ryan Wang", // TODO:
+          "nickname": "Ryan Wang",
           "sitename": "[(${site.title})]",
           "themeBase": "[(${#theme.assets('')})]",
           "openToast": "[(${theme.config.toast.open_toast ? 'true' : ''})]",
@@ -378,8 +390,7 @@
           "toastBackground": "[(${theme.config.general.theme_skin})]",
           "toastColor": "[(${theme.config.toast.toast_color})]",
           "toastFontSize": /*[(${theme.config.toast.toast_font_size})]*/,
-          "copyMonitor": "[(${theme.config.toast.copy_monitor ? 'true' : ''})]",
-          "copyrightNotice": "[(${theme.config.toast.copyright_notice ? 'true' : ''})]",
+          "copyrightNotice": "[(${theme.config.post.copyright_notice ? 'true' : ''})]",
           "photosStyle": "[(${theme.config.photos.photos_style})]",
           "photosGutter": /*[(${theme.config.photos.photos_gutter})]*/,
           "tocDepth": /*[(${theme.config.post.toc_depth})]*/,
@@ -402,14 +413,14 @@
           "journalComment": "[(${theme.config.journal.journal_comment ? 'true' : ''})]",
       };
       var bgConfig = {
-          /*[# th:each="i : ${#numbers.sequence(0,7)}"]*/
-              "bg_[(${i})]": {
-                  "id": "[(${i})]",
-                  "name": "[(${theme.config.theme['bg_name_' + i]})]",
-                  "desc": "[(${theme.config.theme['bg_desc_' + i]})]",
-                  "url": "[(${theme.config.theme['bg_url_' + i]})]",
-                  "strategy": "[(${theme.config.theme['bg_img_strategy_' + i]})]",
-                  "isNight": "[(${theme.config.theme['bg_night_' + i] ? 'true' : ''})]"
+          /*[# th:each="themeItem, status : ${theme.config.theme.bg_themes}"]*/
+              "bg_[(${status.index})]": {
+                  "id": "[(${status.index})]",
+                  "name": "[(${themeItem.bg_name})]",
+                  "url": "[(${themeItem.bg_url})]",
+                  "strategy": "[(${themeItem.bg_img_strategy})]",
+                  "isNight": [(${themeItem.bg_night})],
+                  "isDefault": [(${themeItem.bg_isdefault})]
               },
           /*[/]*/
       }

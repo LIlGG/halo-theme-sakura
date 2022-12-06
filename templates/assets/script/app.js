@@ -32,6 +32,8 @@ var LIlGGAttachContext = {
     LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.PHO(); // 图库功能
     LIlGGAttachContext.SS(); // 日志功能
+    // 复制提示
+    LIlGGAttachContext.CPY();
     // i18n
     I18N.init();
   },
@@ -425,16 +427,21 @@ var LIlGGAttachContext = {
      * 检查并回显主题
      */
     var checkBgImgEcho = function () {
-      var configTag = Util.getCookie("bgTagClass");
-      if (!configTag) {
-        configTag = Poi.defaultTheme;
-      }
+      var configTag = Util.getLocalStorage("bgTagClass");
       var bgConfigTags = Object.keys(bgConfig);
       // 默认为bg_0
-      bgConfigTags.includes(configTag) ? configTag : Poi.defaultTheme;
+      configTag = bgConfigTags.includes(configTag) ? configTag : defaultTheme();
       // 切换主题
       changeBg(configTag);
     };
+    var defaultTheme = function() {
+      for(let key of Object.keys(bgConfig)) {
+        if (bgConfig[key]["isDefault"]) {
+          return key;
+        }
+      }
+      return Object.keys(bgConfig)[0];
+    }
 
     /**
      * 切换主题开关
@@ -452,7 +459,7 @@ var LIlGGAttachContext = {
         $(".skin-menu " + "#" + currBg).on("click", function () {
           changeBg(currBg, function () {
             // 保存tagClass, 方便下次查询
-            Util.setCookie("bgTagClass", currBg, 30);
+            Util.setLocalStorage("bgTagClass", currBg, 30*24*60*60);
             // 绑定完之后隐藏主题开关
             $(".skin-menu").removeClass("show");
             setTimeout(function () {
@@ -521,7 +528,7 @@ var LIlGGAttachContext = {
       }
     };
 
-    // 检查cookie并回显
+    // 检查 localstore 并回显
     if (document.body.clientWidth > 860) {
       checkBgImgEcho();
       // 切换主题开关
@@ -556,50 +563,37 @@ var LIlGGAttachContext = {
   },
   // 复制提示
   CPY: function () {
-    document.body.addEventListener("copy", function (e) {
-      if (Poi.copyrightNotice && window.getSelection().toString().length > 30) {
-        setClipboardText(e);
-      }
-      if (toast) {
-        toast.create("复制成功！<br>Copied to clipboard successfully!", 2000);
-      }
-    });
-
-    var setClipboardText = function (event) {
+    let postDom = document.getElementsByClassName("post-article");
+    Array.prototype.forEach.call(postDom, (item) => {
+      item.addEventListener("copy", function(e) {
+        if (Poi.copyrightNotice && window.getSelection().toString().length > 30) {
+          setClipboardText(e, $(this).data());
+        }
+  
+        if (toast) {
+          toast.create("复制成功！<br>Copied to clipboard successfully!", 2000);
+        }
+      })
+    })
+    
+    var setClipboardText = function (event, post) {
       event.preventDefault();
-      var htmlData =
-        "# 商业转载请联系作者获得授权，非商业转载请注明出处。<br>" +
-        "# For commercial use, please contact the author for authorization. For non-commercial use, please indicate the source.<br>" +
-        "# 协议(License)：署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)<br>" +
-        "# 作者(Author)：" +
-        Poi.nickname +
-        "<br>" +
-        "# 链接(URL)：" +
-        window.location.href +
-        "<br>" +
-        "# 来源(Source)：" +
-        Poi.sitename +
-        "<br><br>" +
-        window.getSelection().toString().replace(/\r\n/g, "<br>");
-      var textData =
-        "# 商业转载请联系作者获得授权，非商业转载请注明出处。\n" +
-        "# For commercial use, please contact the author for authorization. For non-commercial use, please indicate the source.\n" +
-        "# 协议(License)：署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)\n" +
-        "# 作者(Author)：" +
-        Poi.nickname +
-        "\n" +
-        "# 链接(URL)：" +
-        window.location.href +
-        "\n" +
-        "# 来源(Source)：" +
-        Poi.sitename +
-        "\n\n" +
-        window.getSelection().toString().replace(/\r\n/g, "\n");
+      let templateStr = 
+      `
+      # 商业转载请联系作者获得授权，非商业转载请注明出处。<br>
+      # For commercial use, please contact the author for authorization. For non-commercial use, please indicate the source.<br>
+      # 协议(License): 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)<br>
+      # 作者(Author): ${post.owner} <br>
+      # 链接(URL): ${post.url} <br>
+      # 来源(Source): ${Poi.sitename} <br><br>
+      `
+      let htmlStr = templateStr + window.getSelection().toString().replace(/\r\n/g, "<br>");
+      let textStr = templateStr.replace(/<br>/g, "\n") + window.getSelection().toString().replace(/\r\n/g, "\n");
       if (event.clipboardData) {
-        event.clipboardData.setData("text/html", htmlData);
-        event.clipboardData.setData("text/plain", textData);
+        event.clipboardData.setData("text/html", htmlStr);
+        event.clipboardData.setData("text/plain", textStr);
       } else if (window.clipboardData) {
-        return window.clipboardData.setData("text", textData);
+        return window.clipboardData.setData("text", textStr);
       }
     };
   },
@@ -1170,11 +1164,32 @@ var home = location.href,
         return false;
       });
 
-      // 搜索框
-      $(".js-toggle-search").on("click", function () {
-        // https://github.com/halo-sigs/plugin-search-widget
-        window.SearchWidget.open();
-      });
+      // 搜索框 TODO 后续再进行完善
+      // $(".js-toggle-search").on("click", function () {
+      //   $(".js-toggle-search").toggleClass("is-active");
+      //   $(".js-search").toggleClass("is-visible");
+      // });
+
+      // $(".search_close").on("click", function () {
+      //   if ($(".js-search").hasClass("is-visible")) {
+      //     $(".js-toggle-search").toggleClass("is-active");
+      //     $(".js-search").toggleClass("is-visible");
+      //   }
+      // });
+
+      // $(".js-search-input").keydown(function(event) {
+      //   if (event.keyCode == 13) {
+      //     let keyword = $(".js-search-input").val();
+      //     $.ajax({
+      //       url: "/apis/api.halo.run/v1alpha1/indices/post?keyword=" + keyword + "&highlightPreTag=<mark>&highlightPostTag=</mark>",
+      //       type: "get",
+      //       dataType: "json",
+      //       success(res) {
+      //         debugger
+      //       },
+      //     });
+      //   }
+      // })
 
       // 导航菜单
       $("#show-nav").on("click", function () {
@@ -1347,7 +1362,7 @@ $(function () {
   LIlGGAttachContext.PHO(); // 图库功能
   LIlGGAttachContext.SS(); // 日志功能
   // 复制提示
-  Poi.copyMonitor && LIlGGAttachContext.CPY();
+  LIlGGAttachContext.CPY();
   // PJAX
   Poi.pjax && pjaxFun();
   I18N.init();

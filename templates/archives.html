@@ -5,20 +5,20 @@
 <html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
   <th:block th:fragment="header">
     <th:block
-      th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+      th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
       <div class="pattern-center-blank"></div>
       <div class="pattern-center no-select">
         <div class="pattern-attachment-img">
           <img
-            th:if="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)}"
+            th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)}"
             th:attr="data-src=${theme.config.patternimg.archives_patternimg}"
             th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"
             class="lazyload"
             onerror="imgError(this)"
           />
           <img
-            th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)}"
+            th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)}"
             th:src="${theme.config.random_image.rimage_url}+'?archives=archives&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}"
             th:attr="
             srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'archives=archives&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id + '&th=150': '')},
@@ -37,7 +37,7 @@
       </div>
     </th:block>
     <th:block
-      th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+      th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
       <div class="blank"></div>
     </th:block>
@@ -46,7 +46,7 @@
     <article class="post-item page type-page status-publish hentry">
       <div id="archives-temp">
         <h2
-          th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+          th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
           class="i18n"
           data-iname="page.archives.title"
         ></h2>

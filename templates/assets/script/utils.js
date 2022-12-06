@@ -5,7 +5,7 @@
  * @version 1.0
  */
 var Util = {
-    _version: '1.3.4',
+    _version: '2.0.0',
     /**
     * 获取当前浏览器语言
     * 使用当前方法，只会得到语言前两个字符
@@ -25,7 +25,7 @@ var Util = {
     /**
      * 存储数据到浏览器的 cookie 内
      * 不建议向 cookie 内存入大量数据，如果有大数据需求的话
-     * 或许可以考虑 {@link Util#setLocalStorageByJSON}
+     * 或许可以考虑 {@link Util#setLocalStorage}
      * @param {String} key 需要存储的 key
      * @param {String} value 需要存储在 cookie 内的值
      * @param {Number} days 存储时间。单位/天。不输入则为永久存储

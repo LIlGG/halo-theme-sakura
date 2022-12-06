@@ -7,7 +7,7 @@
     th:class="'post-item post-'+${page.metadata.name}+' page type-page status-publish hentry'"
   >
     <header
-      th:unless="${theme.config.patternimg.patternimg} and ${not #strings.isEmpty(page.spec.cover)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+      th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(page.spec.cover)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
       class="entry-header"
     >
       <h1 class="entry-title" th:text="${page.spec.title}"></h1>

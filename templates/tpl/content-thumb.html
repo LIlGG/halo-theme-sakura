@@ -15,7 +15,7 @@
           class="lazyload"
           th:attr="data-src=${post.spec.cover}"
           th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"
-          onerror="imgError(this)"
+          th:onerror="'this.src=' + @{/assets/images/temp.jpg}"
         />
         <img
           th:if="${#strings.isEmpty(post.spec.cover)} and ${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
@@ -29,11 +29,12 @@
           "
           data-sizes="auto"
           th:class="'lazyload '+${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
+          th:onerror="'javascript:this.src=' + @{/assets/images/temp.jpg}"
         />
         <img
-          th:if="${#strings.isEmpty(post.spec.cover)} and ${not theme.config.random_image.rimage_cover_open} and ${#strings.isEmpty(theme.config.random_image.rimage_url)}"
+          th:if="${#strings.isEmpty(post.spec.cover) and !(theme.config.random_image.rimage_cover_open and not #strings.isEmpty(theme.config.random_image.rimage_url))}"
           class="lazyload"
-          data-src="${res_base_url!}/source/images/temp.jpg"
+          th:data-src="@{/assets/images/temp.jpg}"
           th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"
           onerror="imgError(this)"
         />

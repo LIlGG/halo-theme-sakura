@@ -71,6 +71,10 @@ notfound:
 
 user:
   description: My favorite thing is to leave this blank :)
+  login: login
+  has_logged: current logged in
+  info: user info
+  logout: logout
 
 icon_alt:
   wechat: Wechat
