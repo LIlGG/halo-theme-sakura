@@ -15,7 +15,7 @@
 
 > 本主题参照 WordPress 主题 [Sakura](https://github.com/mashirozx/Sakura) 制作，在原有的 [Siren](https://github.com/halo-dev/halo-theme-siren) 主题上添加了 Sakura 的内容，并优化了部分内容。
 
-如果各位有什么好的想法，希望可以提交 `PR`；
+如果各位有什么好的想法，希望可以提交 `ISSUE`，如果有兴趣参与内容贡献，可以直接提交 `PR`；
 
 ## 😃 预览
 
@@ -73,16 +73,11 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 ## ⭐️ 安装主题
 
 ### 本地安装
-1. 点击[下载](https://github.com/LIlGG/halo-theme-sakura/archive/master.zip)
-2. 进入后台 -> 外观 -> 主题
-3. 点击右下方按钮选择安装主题，随后选择 `本地上传`。
-4. 选择下载好的主题包（zip）即可。
-
-### 远程安装
-1. 复制 `https://github.com/LIlGG/halo-theme-sakura`。
-2. 进入后台 -> 外观 -> 主题。
-3. 点击右下方按钮选择安装主题，随后选择 `远程拉取`。
-4. 粘贴复制的链接到远程地址，点击下载即可。
+1. 点击[下载](https://github.com/LIlGG/halo-theme-sakura/archive/next.zip)
+2. 进入 Halo 后台 -> 外观 -> 主题
+3. 点击右上角 “切换主题”， 在弹出的窗口中选择 “安装主题”
+4. 选择下载好的主题包（zip）
+5. 安装完成后的主题将会出现在 “未安装” 内，点击启用主题
 
 ## 📄 更新日志
 
