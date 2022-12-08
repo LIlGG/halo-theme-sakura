@@ -960,31 +960,31 @@ spec:
               bg_night: false
               bg_isdefault: true
             - bg_name: sakura
-              bg_url: https://view.lixingyong.com/images/2020/07/23/695cc3a80b21ee7f18bd731824ab9638.png
+              bg_url: /themes/theme-sakura/assets/images/themes/sakura.png
               bg_img_strategy: none
               bg_icon: iconfont icon-sakura
               bg_night: false
               bg_isdefault: false
             - bg_name: gribs
-              bg_url: https://view.lixingyong.com/images/2020/07/23/defc1b6783cd16774900517d3b38ded7.jpg
+              bg_url: /themes/theme-sakura/assets/images/themes/gribs.jpg
               bg_img_strategy: none
               bg_icon: fa fa-slack
               bg_night: false
               bg_isdefault: false
             - bg_name: KAdots
-              bg_url: https://view.lixingyong.com/images/2020/07/23/kyotoanimation.png
+              bg_url: /themes/theme-sakura/assets/images/themes/kyotoanimation.png
               bg_img_strategy: none
               bg_icon: iconfont icon-dots
               bg_night: false
               bg_isdefault: false
             - bg_name: totem
-              bg_url: https://view.lixingyong.com/images/2020/07/23/little-monster.png
+              bg_url: /themes/theme-sakura/assets/images/themes/little-monster.png
               bg_img_strategy: none
               bg_icon: fa fa-optin-monster
               bg_night: false
               bg_isdefault: false
             - bg_name: pixiv
-              bg_url: https://view.lixingyong.com/images/2020/07/23/star02.png
+              bg_url: /themes/theme-sakura/assets/images/themes/star02.png
               bg_img_strategy: none
               bg_icon: iconfont icon-pixiv
               bg_night: false

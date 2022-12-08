@@ -447,13 +447,6 @@ var LIlGGAttachContext = {
      * 切换主题开关
      */
     var changeSkinGear = function () {
-      // 这里使用off来解决匿名空间的问题
-      $(".changeSkin-gear")
-        .off("click")
-        .on("click", function () {
-          $(".skin-menu").toggleClass("show");
-        });
-
       //绑定主题子项点击事件
       Object.keys(bgConfig).forEach(function (currBg) {
         $(".skin-menu " + "#" + currBg).on("click", function () {
@@ -535,6 +528,18 @@ var LIlGGAttachContext = {
       changeSkinGear();
     }
 
+    $(".changeSkin-gear")
+    .off("click")
+    .on("click", function () {
+      $(".skin-menu").toggleClass("show");
+    });
+
+    $("#m-changskin")
+      .off("click")
+      .on("click", function () {
+        $(".skin-menu").toggleClass("show");
+    });
+
     return {
       changeSkinSecter: changeSkinSecter,
     };
@@ -543,12 +548,15 @@ var LIlGGAttachContext = {
   MGT: function () {
     var offset = 20,
       scroll_top_duration = 700,
-      $m_back_to_top = $(".m-cd-top");
+      $m_back_to_top = $(".m-cd-top"),
+      $m_changskin = $("#m-changskin");
     $(window).scroll(function () {
       if ($(this).scrollTop() > offset) {
         $m_back_to_top.addClass("cd-is-visible");
+        $m_changskin.addClass("cd-is-visible");
       } else {
         $m_back_to_top.removeClass("cd-is-visible");
+        $m_changskin.removeClass("cd-is-visible");
       }
     });
     $m_back_to_top.on("click", function (event) {

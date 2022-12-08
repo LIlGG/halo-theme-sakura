@@ -2265,7 +2265,8 @@ h1.page-title.mb- {
 	display: none;
 	opacity: 0;
 	position: fixed;
-	bottom: 10px;
+	bottom: 70px;
+	font-size: 16px;
 	right: 10px;
 	z-index: 99;
 	border: 0;
@@ -2274,10 +2275,9 @@ h1.page-title.mb- {
 	color: #404040;
 	cursor: pointer;
 	padding: 15px;
-	border-radius: 10px;
 	border-radius: 12px;
 	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, .12), 0px 2px 2px 0px rgba(0, 0, 0, .24);
-	transition: box-shadow .2s ease;
+	transition: all 0.8s ease !important;
 }
 
 .m-cd-top.cd-is-visible {
@@ -6840,6 +6840,14 @@ input[type=radio]:checked:before {
 }
 
 @media (max-width:800px) {
+	.changeSkin-gear {
+		display: none !important;
+	}
+
+	#m-changskin {
+		display: block !important;
+	}
+
 	.changeSkin-gear span:before {
 		content: ""
 	}
@@ -6853,19 +6861,37 @@ input[type=radio]:checked:before {
 	}
 }
 
-@media (max-width:800px) {
-	.changeSkin-gear span:before {
-		content: ""
-	}
-
-	.changeSkin i {
-		font-size: 20px
-	}
-
-	.changeSkin-gear i {
-		font-size: 20px
-	}
+/** 移动端切换主题样式 **/
+#m-changskin {	
+	display: none;
+	position: fixed;
+	bottom: 15px;
+	right: 10px;
+	z-index: 99;
+	opacity: 0;
+	border: 0;
+	outline: 0;
+	background-color: #fff;
+	color: #404040;
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 12px;
+	box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, .12), 0px 2px 2px 0px rgba(0, 0, 0, .24);
+	transition: box-shadow .2s ease;
+	transition: all 0.8s ease !important;
 }
+
+#m-changskin:hover {
+	color: org;
+	background-color: #fff;
+	opacity: .8;
+	transition: all 0.8s ease !important;
+}
+
+#m-changskin.cd-is-visible {
+	opacity: 1;
+}
+
 
 .img-preload {
 	visibility: hidden;
@@ -8208,11 +8234,14 @@ td.hljs-ln-numbers {
 	z-index: 99;
 	font-family: 'Ubuntu', sans-serif;
 	transform: scaleX(0);
-	transition-duration: .3s, .3s
+	transition: .5s;
 }
 
 .skin-menu.show {
-	transform: scaleX(1)
+	transform: scaleX(1);
+	transition: .5s;
+	right: 70px;
+	box-shadow: 0 1px 40px -8px rgba(0, 0, 0, .1);
 }
 
 .skin-menu:after {
@@ -8238,6 +8267,22 @@ td.hljs-ln-numbers {
 	text-align: center;
 	padding: 0;
 	margin: 10px auto
+}
+
+@media (max-width:800px) {
+	.skin-menu:after {
+		display: none;
+	}
+
+	.skin-menu {
+		bottom: 15px;
+		right: 70px;
+		transform: scaleY(0);
+	}
+
+	.skin-menu.show {
+		transform: scaleY(1);
+	}
 }
 
 .menu-list li {
@@ -9367,7 +9412,7 @@ body.dark .site-header:hover {
 }
 
 body.dark #moblieGoTop,
-body.dark #changskin {
+body.dark #m-changskin {
 	background-color: #232629;
 }
 
@@ -9400,7 +9445,7 @@ html,
 .site-footer,
 .site-wrapper,
 #moblieGoTop:hover,
-#changskin:hover,
+#m-changskin:hover,
 .post-list-show,
 .post-list hr,
 .post-date,

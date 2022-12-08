@@ -6,7 +6,7 @@ spec:
     name: LIlGG
     website: https://lixingyong.com
   description: Halo 2.x 版本樱花🌸主题
-  logo:
+  logo: /themes/theme-sakura/assets/images/other/iloli.gif
   website: https://github.com/LIlGG/halo-theme-sakura
   repo: https://github.com/LIlGG/halo-theme-sakura.git
   settingName: theme-sakura-setting
