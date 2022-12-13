@@ -1,25 +1,30 @@
-<article>
-    <#if is_sheet??>
-     ${sheet.formatContent!}
-    </#if>
+<th:block th:fragment="content-links">
+  <article>
+    <th:block
+      th:if="${_templateId == 'page'}"
+      th:utext="${singlePage.content.content}">
+    </th:block>
     <div class="links">
-        <@linkTag method="listTeams">
-            <#list teams as item>
-                <h3 class="link-title">
-                    <span class="fake-title">${((item.team!'')?length>0)?string((item.team!''), '小伙伴们')}</span>
-                </h3>
-                <ul class="link-items fontSmooth">
-                <#list item.links?sort_by('priority')?reverse as link>
-                    <li class="link-item">
-                        <a class="link-item-inner effect-apollo" href="${link.url!}" title="${link.name!}" target="_blank">
-                            <img class="lazyload" data-src="${link.logo!}" src="${res_base_url!}/source/images/svg/loader/trans.ajax-spinner-preloader.svg" onerror="imgError(this)">
-                            <span class="sitename">${link.name!}</span>
-                            <div class="linkdes">${link.description!}</div>
-                        </a>
-                    </li> 
-                </#list>
-                </ul>
-            </#list>
-        </@linkTag>
+      <th:block th:each="group : ${linkFinder.groupBy()}">
+        <h3 class="link-title">
+          <span class="fake-title" th:text="${group.spec.displayName}"></span>
+        </h3>
+        <ul class="link-items fontSmooth">
+          <li 
+            class="link-item" th:each="link : ${group.links}" :key="i">
+            <a 
+              class="link-item-inner effect-apollo" th:href="${link.spec.url}" th:title="${link.spec.displayName}" target="_blank">
+                <img 
+                  class="lazyload" 
+                  th:attr="data-src=${link.spec.logo}"
+                  th:src="@{/assets/images/svg/loader/trans.ajax-spinner-preloader.svg}" 
+                  onerror="imgError(this)">
+                <span class="sitename" th:text="${link.spec.displayName}"></span>
+                <div class="linkdes" th:text="${link.spec.description}"></div>
+            </a>
+          </li> 
+        </ul>
+      </th:block>
     </div>       
-</article>
+  </article>
+</th:block>

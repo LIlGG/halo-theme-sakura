@@ -1,6 +1,12 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 spec:
+  customTemplates:
+    page:
+      - name: 友情链接
+        description: 支持可预设文本的友链
+        screenshot: 
+        file: page_links.html
   displayName: Sakura
   author:
     name: LIlGG
