@@ -12,7 +12,7 @@
           <div 
             th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.previous.spec.cover)}" 
             class="background" 
-            th:style="'background-image:url(' + postCursor.previous.spec.cover + ');'">
+            th:style="'background-image:url(' + ${postCursor.previous.spec.cover} + ');'">
           </div>
           <th:block th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.previous.spec.cover)}">
             <div 
@@ -40,7 +40,7 @@
           <div 
             th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.next.spec.cover)}" 
             class="background" 
-            th:style="'background-image:url(' + postCursor.next.spec.cover + ');'">
+            th:style="'background-image:url(' + ${postCursor.next.spec.cover} + ');'">
           </div>
           <th:block th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.next.spec.cover)}">
             <div 
