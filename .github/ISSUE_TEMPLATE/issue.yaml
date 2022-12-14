@@ -1,4 +1,4 @@
-name: ISSUE 提交
+name: 问题或建议
 description: 提交一个新的 ISSUE
 body:
   - type: markdown
