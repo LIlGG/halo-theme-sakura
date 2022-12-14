@@ -1,4 +1,5 @@
 name: ISSUE 提交
+description: 提交一个新的 ISSUE
 body:
   - type: markdown
     id: environment
