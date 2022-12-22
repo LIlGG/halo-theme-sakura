@@ -128,6 +128,7 @@ spec:
           if: "$get(head_focus).value == true"
           name: focus_tou
           id: focus_tou
+          key: focus_tou
           label: 头部样式
           value: glitch-text
           options:
@@ -135,11 +136,11 @@ spec:
               label: 无
             - value: avatar
               label: 头像
-            - value: glitch-text
+            - value: "glitch-text"
               label: 故障文字
         - $formkit: text
           name: glitch_text
-          if: "$get(focus_tou) == glitch-text"
+          if: "$get(focus_tou).value == 'glitch-text'"
           label: 聚焦故障文本
           value: Hi,Friend
           help: 移动端：将显示在导航栏中，桌面端：该文本只有头部样式开启故障文字才能显示
