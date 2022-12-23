@@ -795,12 +795,13 @@ spec:
         - $formkit: text
           name: rimage_url
           label: 随机图 API 地址
-          placeholder: 请输入 API 地址
+          validation: "required|url"
           value: https://api.lixingyong.com/api/images
           help: 随机图 API 地址，有能力者可以自行搭建。不过一般建议使用默认的即可，否则可能无法解析。
         - $formkit: radio
           name: rimage_cover_open
           id: rimage_cover_open
+          key: rimage_cover_open
           label: 文章随机封面图
           value: true
           help: 文章是否使用随机图的设置随机获取图片
@@ -812,6 +813,7 @@ spec:
         - $formkit: radio
           name: rimage_cover_sheet_open
           id: rimage_cover_sheet_open
+          key: rimage_cover_sheet_open
           label: 页面随机封面图图
           value: true
           help: 页面是否使用随机图的设置随机获取图片
@@ -852,9 +854,11 @@ spec:
           name: rimage_cover_id
           label: 封面图获取范围编号
           help: 相册编号、分类编号或用户名
+          validation: "required"
         - $formkit: radio
           name: rimage_cover_back_open
           id: rimage_cover_back_open
+          key: rimage_cover_back_open
           label: 首页背景是否使用随机图
           value: false
           help: 首页背景是否启用随机图，如果启用，则第一屏中的首页背景图片将会无效化
@@ -867,6 +871,7 @@ spec:
           if: "$get(rimage_cover_back_open).value == true"
           name: rimage_cover_back_itype
           id: rimage_cover_back_itype
+          key: rimage_cover_back_itype
           label: 背景图获取范围
           value: image
           help: 封面图获取范围，设置之后，将从设置范围中返回图片
