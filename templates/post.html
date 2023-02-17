@@ -51,11 +51,10 @@
             >
             </span>
             <span class="bull">·</span>
-            <!--/* TODO: last edit time */-->
             <span
               class="i18n"
               data-iname="post.edit_time"
-              th:attr="data-ivalue=${#dates.format(post.spec.publishTime,theme.config.post.post_time_display_type ?: 'yyyy-MM-dd')}"
+              th:attr="data-ivalue=${#dates.format(post.status.lastModifyTime,theme.config.post.post_time_display_type ?: 'yyyy-MM-dd')}"
             ></span>
             <span class="bull">·</span>
             <span class="i18n" data-iname="post.visits" th:attr="data-ivalue=${post.stats.visit}"></span>
