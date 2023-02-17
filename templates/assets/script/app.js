@@ -39,6 +39,7 @@ var LIlGGAttachContext = {
   },
   // 背景视频
   BGV: function () {
+    console.log(123)
     var $bg_video_btn = $("#video-btn"),
       $bg_video = $("#bgvideo"),
       $bg_video_stu = $(".video-stu"),

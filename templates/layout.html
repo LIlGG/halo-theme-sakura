@@ -370,49 +370,49 @@
     <script type="text/javascript" th:inline="javascript">
       /* <![CDATA[ */
       var Poi = {
-          "pjax":"[(${theme.config.others.poi_pjax})]",
+          "pjax": /*[(${theme.config.others.poi_pjax})]*/,
           "windowheight":"[(${theme.config.mainScreen.focus_height ? 'auto' : 'fixed'})]",
           "ajaxurl":"[(${site.url})]",
           "resBaseUrl": "[(${#theme.assets('')})]",
           "formpostion":"bottom",
-          "toc": "[(${theme.config.post.post_toc})]",
-          "codeLine": "[(${theme.config.post.code_line})]",
-          "themeChange": "[(${theme.config.theme.theme_change})]",
-          "headFocus": "[(${theme.config.mainScreen.focus_height})]",
-          "bgvideo": "[(${theme.config.mainScreen.bgvideo})]",
+          "toc": /*[(${theme.config.post.post_toc})]*/,
+          "codeLine": /*[(${theme.config.post.code_line})]*/,
+          "themeChange": /*[(${theme.config.theme.theme_change})]*/,
+          "headFocus": /*[(${theme.config.mainScreen.focus_height})]*/,
+          "bgvideo": /*[(${theme.config.mainScreen.bgvideo})]*/,
           "tagRandomColorMin": "[(${theme.config.tagAndCategory.tag_randomColorMin})]",
           "tagRandomColorMax": "[(${theme.config.tagAndCategory.tag_randomColorMax})]",
           "nickname": "Ryan Wang",
           "sitename": "[(${site.title})]",
           "themeBase": "[(${#theme.assets('')})]",
-          "openToast": "[(${theme.config.toast.open_toast})]",
+          "openToast": /*[(${theme.config.toast.open_toast})]*/,
           "toastWidth": /*[(${theme.config.toast.toast_width})]*/,
           "toastHeight": /*[(${theme.config.toast.toast_height})]*/,
           "toastTop": "[(${theme.config.toast.toast_top})]",
           "toastBackground": "[(${theme.config.general.theme_skin})]",
           "toastColor": "[(${theme.config.toast.toast_color})]",
           "toastFontSize": /*[(${theme.config.toast.toast_font_size})]*/,
-          "copyrightNotice": "[(${theme.config.post.copyright_notice})]",
+          "copyrightNotice": /*[(${theme.config.post.copyright_notice})]*/,
           "photosStyle": "[(${theme.config.photos.photos_style})]",
           "photosGutter": /*[(${theme.config.photos.photos_gutter})]*/,
           "tocDepth": /*[(${theme.config.post.toc_depth})]*/,
           "i18n": "[(${theme.config.others.i18n})]",
           "coverNum": "[(${theme.config.random_image.rimage_cover_back_num})]",
           "rimageUrl": "[(${theme.config.random_image.rimage_url})]",
-          "coverOpen": "[(${theme.config.random_image.rimage_cover_back_open})]",
+          "coverOpen": /*[(${theme.config.random_image.rimage_cover_back_open})]*/,
           "meEmail": "i@example.com", // TODO:
           "defaultTheme": "[(${theme.config.theme.default_theme})]",
           "defaultGroup": "[(${theme.config.photos.default_group})]",
-          "isPostWordCountToast": "[(${theme.config.post.post_word_count_toast})]",
-          "isPostEditTimeToast": "[(${theme.config.post.post_edit_time_toast})]",
+          "isPostWordCountToast": /*[(${theme.config.post.post_word_count_toast})]*/,
+          "isPostEditTimeToast": /*[(${theme.config.post.post_edit_time_toast})]*/,
           "postWordCountToastNormal": "[(${theme.config.post.post_word_count_toast_normal})]",
           "postWordCountToastMedium": "[(${theme.config.post.post_word_count_toast_medium})]",
           "postWordCountToastDifficulty": "[(${theme.config.post.post_word_count_toast_difficulty})]",
           "postEditTimeToastNormal": "[(${theme.config.post.post_edit_time_toast_normal})]",
           "postEditTimeToastMedium": "[(${theme.config.post.post_edit_time_toast_medium})]",
           "postEditTimeToastDifficulty": "[(${theme.config.post.post_edit_time_toast_difficulty})]",
-          "journalLikes": "[(${theme.config.journal.journal_likes})]",
-          "journalComment": "[(${theme.config.journal.journal_comment})]",
+          "journalLikes": /*[(${theme.config.journal.journal_likes})]*/,
+          "journalComment": /*[(${theme.config.journal.journal_comment})]*/,
       };
       var bgConfig = {
           /*[# th:each="themeItem, status : ${theme.config.theme.bg_themes}"]*/
@@ -497,7 +497,7 @@
     ></script>
     <script
       type="text/javascript"
-      th:src="@{/assets/script/app.min.js?v={version}(version=${theme.spec.version})}"
+      th:src="@{/assets/script/app.js?v={version}(version=${theme.spec.version})}"
     ></script>
   </body>
 </html>
