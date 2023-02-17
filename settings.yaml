@@ -886,7 +886,7 @@ spec:
               label: 用户
         - $formkit: text
           if: "$get(rimage_cover_back_open).value == true && $get(rimage_cover_back_itype).value != image"
-          name: rimage_cover_id
+          name: rimage_cover_back_id
           label: 背景图获取范围编号
           help: 如相册编号、分类编号或用户名
         - $formkit: select
