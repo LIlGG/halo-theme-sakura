@@ -38,6 +38,11 @@
   </th:block>
   <th:block th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.links_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
     <div class="blank"></div>
+    <header class="entry-header">
+      <h1 class="entry-title">
+        <span class="i18n" data-iname="page.links.title"></span>
+      </h1>
+    </header>
     <style>
       .toc-container {
         top: 210px;
