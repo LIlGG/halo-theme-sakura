@@ -12,13 +12,13 @@
           <div 
             th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.previous.spec.cover)}" 
             class="background" 
-            th:style="'background-image:url(' + ${postCursor.previous.spec.cover} + ');'">
+            th:style="'background-image:url(\'' + ${postCursor.previous.spec.cover} + '\');'">
           </div>
           <th:block th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.previous.spec.cover)}">
             <div 
               th:if="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}" 
               class="background" 
-              th:style="'background-image:url(' + ${theme.config.random_image.rimage_url}+'?postid='+${postCursor.previous.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''} +');'">
+              th:style="'background-image:url(\'' + ${theme.config.random_image.rimage_url}+'?postid='+${postCursor.previous.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''} +'\');'">
             </div>
             <div 
               th:unless="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
@@ -40,13 +40,13 @@
           <div 
             th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.next.spec.cover)}" 
             class="background" 
-            th:style="'background-image:url(' + ${postCursor.next.spec.cover} + ');'">
+            th:style="'background-image:url(\'' + ${postCursor.next.spec.cover} + '\');'">
           </div>
           <th:block th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.next.spec.cover)}">
             <div 
               th:if="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}" 
               class="background" 
-              th:style="'background-image:url(' + ${theme.config.random_image.rimage_url}+'?postid='+${postCursor.next.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''} +'&th=150);'">
+              th:style="'background-image:url(\'' + ${theme.config.random_image.rimage_url}+'?postid='+${postCursor.next.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''} +'&th=150\');'">
             </div>
             <div 
               th:unless="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
