@@ -10,3 +10,45 @@ spec:
     - $formkit: "text"
       name: "icon"
       label: "图标"
+
+---
+
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
+    group: content.halo.run
+    kind: Post
+  formSchema:
+    - $formkit: radio
+      name: randomImage
+      label: 使用随机图
+      value: "true"
+      options:
+        - value: "true"
+          label: 开启
+        - value: "false"
+          label: 关闭
+
+---
+
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
+    group: content.halo.run
+    kind: SinglePage
+  formSchema:
+    - $formkit: radio
+      name: randomImage
+      label: 使用随机图
+      value: "true"
+      options:
+        - value: "true"
+          label: 开启
+        - value: "false"
+          label: 关闭

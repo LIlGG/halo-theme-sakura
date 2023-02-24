@@ -4,7 +4,7 @@
 <th:block th:fragment="content-single(post)">
   <article th:id="'post-'+${post.metadata.name}" class="post-article" th:data-owner="${post.owner.displayName}" th:data-url="${post.status.permalink}">
     <th:block
-      th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(post.spec.cover)} or (${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+      th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(post.spec.cover)} or (${#annotations.getOrDefault(post, 'randomImage', true)} and ${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
       <header class="entry-header">
         <h1 class="entry-title" th:text="${post.spec.title}"></h1>
