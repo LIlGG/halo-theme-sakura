@@ -8,7 +8,7 @@
     </a>
     <ul th:if="${not #lists.isEmpty(menuItem.children)}" class="sub-menu">
       <li th:each="child : ${menuItem.children}">
-        <a th:href="${child.status.href}" th:target="${child.spec.target}">
+        <a th:href="${child.status.href}" th:target="${child.spec.target?.value}">
           <i th:if="${#annotations.contains(child, 'icon')}" th:class="${#annotations.get(child, 'icon')}"></i>
           <th:block th:text="${child.status.displayName}"></th:block>
         </a>
