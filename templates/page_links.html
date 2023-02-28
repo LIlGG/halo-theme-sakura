@@ -54,7 +54,7 @@
   </th:block>
 <th:block th:fragment="content">
   <th:block th:replace="~{tpl/content-links}" />
-  <div class="toc-container">
+  <div th:if="${#annotations.getOrDefault(singlePage, 'toc', true)}" class="toc-container">
     <div class="toc"></div>
   </div>
   <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name=${singlePage.metadata.name}" />

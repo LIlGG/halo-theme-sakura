@@ -13,7 +13,7 @@
       <h1 class="entry-title" th:text="${page.spec.title}"></h1>
     </header>
     <!--/* .entry-header */-->
-    <div class="toc-container">
+    <div th:if="${#annotations.getOrDefault(page, 'toc', true)}" class="toc-container">
       <div class="toc"></div>
     </div>
     <div class="entry-content" th:utext="${page.content.content}"></div>

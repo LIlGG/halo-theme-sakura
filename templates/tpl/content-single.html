@@ -16,8 +16,7 @@
       </header>
     </th:block>
     <!--/* .entry-header */-->
-    <!--/* TODO: 2.0 无法通过元数据来控制单个文章是否显示 toc*/-->
-    <div class="toc-container">
+    <div th:if="${#annotations.getOrDefault(post, 'toc', true)}" class="toc-container">
       <div class="toc"></div>
     </div>
     <div class="entry-content">
