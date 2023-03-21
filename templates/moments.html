@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::headers},content = ~{::content})}">
+<th:block th:fragment="headers"></th:block>
+<th:block th:fragment="content">
+    <div>
+        <ul>
+            <li th:each="moment : ${moments.items}" th:with="content=${moment.spec.content}">
+                <div th:if="${not #strings.isEmpty(content.html)}" th:utext="${content.html}"></div>
+                <th:block th:if="${not #lists.isEmpty(content.medium)}" th:each="momentItem : ${content.medium}">
+                    <img th:if="${momentItem.type.name == 'PHOTO'}" th:src="${momentItem.url}" />
+                    <video th:if="${momentItem.type.name == 'VIDEO'}" th:src="${momentItem.url}"></video>
+                </th:block>
+            </li>
+        </ul>
+        <div th:if="${moments.hasPrevious() || moments.hasNext()}">
+            <a th:href="@{${moments.prevUrl}}">
+                <span>上一页</span>
+            </a>
+            <span th:text="${moments.page}"></span>
+            <a th:href="@{${moments.nextUrl}}">
+                <span>下一页</span>
+            </a>
+        </div>
+    </div>
+</th:block>
+
+</html>

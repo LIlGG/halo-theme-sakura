@@ -1210,13 +1210,6 @@ a:active {
 	pointer-events: auto !important
 }
 
-#show-nav.mobile-fit {
-	position: fixed !important;
-	right: 120px;
-	opacity: 0;
-	pointer-events: none
-}
-
 @media (max-width:1200px) {
 	.site-top .lower {
 		left: 15px
@@ -1224,11 +1217,6 @@ a:active {
 
 	.site-top .lower nav.hide {
 		display: none !important
-	}
-
-	#show-nav.mobile-fit {
-		opacity: 1;
-		pointer-events: auto
 	}
 }
 

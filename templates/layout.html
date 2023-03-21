@@ -139,11 +139,6 @@
             </div>
             <div class="lower-cantiner">
               <div class="lower">
-                <div th:if="${theme.config.general.shownav}" id="show-nav" class="showNav mobile-fit">
-                  <div class="line line1"></div>
-                  <div class="line line2"></div>
-                  <div class="line line3"></div>
-                </div>
                 <nav th:class="${theme.config.general.shownav ? 'navbar' : ''}">
                   <th:block th:replace="~{layouts/nav}" />
                 </nav>
@@ -497,7 +492,7 @@
     ></script>
     <script
       type="text/javascript"
-      th:src="@{/assets/script/app.min.js?v={version}(version=${theme.spec.version})}"
+      th:src="@{/assets/script/app.js?v={version}(version=${theme.spec.version})}"
     ></script>
   </body>
 </html>
