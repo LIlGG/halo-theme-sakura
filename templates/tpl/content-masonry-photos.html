@@ -18,7 +18,7 @@
                     </li>
                     <th:block th:each="group : ${photoFinder.groupBy()}">
                         <li>
-                            <a href="javascript:void(0);" th:data-filter=".${group.spec.displayName}" th:text="${group.spec.displayName}"></a>
+                            <a href="javascript:void(0);" th:data-filter="'.' + ${group.metadata.name}" th:text="${group.spec.displayName}"></a>
                         </li>
                     </th:block>
                 </ul>
@@ -48,7 +48,7 @@
             <div class="gallery masonry-gallery">
                 <th:block th:each="photo : ${photoFinder.listAll()}">
                     <figure class="gallery-item"
-                        th:classappend="${photo.spec.groupName} + ' ' + ${theme.config.photos.photos_style == 'masonry' ? 'col-' + theme.config.photos.masonry_column }">
+                        th:classappend="${photo.spec.groupName} + ' ' + ${theme.config.photos.photos_style == 'masonry' ? 'col-' + theme.config.photos.masonry_column : '' }">
                         <header class="gallery-icon">
                             <a data-fancybox="gallery" th:href="${photo.spec.url}">
                                 <img class="lazyload" src="${res_base_url!}/source/images/load/load.gif"
