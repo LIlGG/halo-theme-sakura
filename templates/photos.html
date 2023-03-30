@@ -32,8 +32,8 @@
             th:class="'lazyload '+${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}" />
       </div>
       <header class="pattern-header">
-        <h1 class="entry-title" th:if="${not #strings.isEmpty(photos_title)}" th:text="${photos_title}"></h1>
-        <span class="entry-title i18n" data-iname="page.photos.title" th:unless="${not #strings.isEmpty(photos_title)}"></span>
+        <h1 class="entry-title" th:if="${not #strings.isEmpty(title)}" th:text="${title}"></h1>
+        <span class="entry-title i18n" th:unless="${not #strings.isEmpty(title)} data-iname="page.photos.title"></span>
       </header>
     </div>
   </th:block>
