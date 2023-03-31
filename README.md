@@ -35,26 +35,23 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 美化首页，支持故障文本和头像
 - [x] 集成音乐播放器插件，可在文章中使用
 - [x] 全站 Pjax
-- [x] 背景视频，支持最高 2K 的 Bilibili，支持流加载
+- [x] ~~背景视频，支持最高 2K 的 Bilibili，支持流加载~~(接口目前有问题)
 - [x] 图片懒加载
 - [x] 集成 Live2D
 - [x] 代码高亮，实现仿 Mac 风格
-- [x] 自定义评论样式，可以发送表情
+- [x] ~~自定义评论样式，可以发送表情~~(2.x 不支持)
 - [x] 文章目录（支持单个文章内显隐）
 - [x] 主题切换
 - [x] 自定义友链页面
 - [x] 移动客户端适配
-- [x] 404 页面
 - [x] 个人信息（页脚）
 - [x] 分享功能（实现部分）
-- [x] 自定义邮件模板
 - [x] 分类、标签支持雷达图及云标签
 - [x] 全局提示&复制提醒功能
 - [x] 瀑布流相册
 - [x] 说说页面，支持点赞和评论
 - [x] 国际化
-- [x] 更新时间提醒
-- [x] 自定义轻代码块
+- [x] 文章更新时间提醒
 
 
 > Tip:
@@ -66,19 +63,20 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [ ] 集成视频播放插件
 
 ## <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">  待适配功能
-- [ ] 插件化支持 Live2D
-- [ ] 友链页面
-- [ ] 图库页面
-- [ ] 说说页面
+- [x] 插件化支持 Live2D，插件地址：[plugin-live2d](https://github.com/LIlGG/plugin-live2d)
+- [x] 友链页面，需插件 [plugin-links](https://github.com/halo-sigs/plugin-links) 支持
+- [x] 图库页面，需插件 [plugin-photos](https://github.com/halo-sigs/plugin-photos) 支持
+- [ ] 说说页面，需插件 [plugin-moments](https://github.com/halo-sigs/plugin-moments)
 - [ ] 404 页面
-- [ ] 自定义回复邮箱
-- [ ] 用户登录及文章所属用户
+- [ ] 自定义邮件模板
+- [x] 用户登录及文章所属用户
+- [ ] 自定义符合主题的评论插件
 ## ⭐️ 安装主题
 
 ### 本地安装
 1. 点击[下载](https://github.com/LIlGG/halo-theme-sakura/archive/next.zip)
 2. 进入 Halo 后台 -> 外观 -> 主题
-3. 点击右上角 “切换主题”， 在弹出的窗口中选择 “安装主题”
+3. 点击右上角 “主题管理”， 在弹出的窗口中选择 “安装主题”
 4. 选择下载好的主题包（zip）
 5. 安装完成后的主题将会出现在 “未安装” 内，点击启用主题
 

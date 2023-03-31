@@ -53,7 +53,8 @@
                 <span class="journal-author-img">
                     <img class="lazyload avatar" th:data-src="${moment.owner.avatar}"
                         th:alt="${moment.owner.displayName}" width="48" height="48"
-                        src="${res_base_url!}/source/images/svg/loader/trans.ajax-spinner-preloader.svg">
+                        onerror="imgError(this)"
+                        th:src="@{/assets/images/svg/loader/trans.ajax-spinner-preloader.svg}">
                     <span class="journal-label">
                         <th:block th:utext="${moment.spec.content.html}"></th:block>
                         <p class="journal-time">
@@ -82,7 +83,7 @@
         <th:block th:if="${moments.totalPages gt 1}">
             <center th:if="${moments.hasNext}" id="journals-pagination">
                 <a th:href="@{${moments.nextUrl}}" class="at_button i18n" data-iname="page.journal.loadmore"
-                    style="margin-bottom: 15px;">加载更多...</a>
+                    style="margin-bottom: 15px;"></a>
             </center>
         </th:block>
         <th:block th:unless="${moments.total gt 0}">

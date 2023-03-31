@@ -18,6 +18,6 @@ spec:
   settingName: theme-sakura-setting
   configMapName: theme-sakura-configMap
   version: 2.0.0
-  require: 2.4.0
+  require: 2.2.0
 metadata:
   name: theme-sakura
