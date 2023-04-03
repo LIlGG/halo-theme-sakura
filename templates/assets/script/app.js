@@ -724,8 +724,6 @@ var LIlGGAttachContext = {
       var journalIds = Util.getLocalStorage("journalIds") || [];
       $(".journal").each(function () {
         let that = $(this);
-        let idDoms = that.attr("id").split("-");
-        let jid = Number(idDoms[idDoms.length - 1]);
         // 为日志设置时间图标
         var $firstSpan = that.find(".journal-time>span").first();
         if ($firstSpan.find("i").length == 0) {
@@ -769,6 +767,10 @@ var LIlGGAttachContext = {
           // 说说是否已经点赞
           var $like = that.find(".journal-label .journal-like");
           if ($like.length > 0) {
+            let jid = that.data("name");
+            if(!jid) {
+              return;
+            }
             journalIds.includes(jid) ? $like.addClass("on") : "";
             // 说说点赞
             that
@@ -784,12 +786,18 @@ var LIlGGAttachContext = {
                   return;
                 }
                 $.ajax({
-                  url: "/api/content/journals/" + jid + "/likes",
+                  url: "/apis/api.halo.run/v1alpha1/trackers/upvote",
                   type: "post",
                   dataType: "json",
-                  success(res) {
-                    if (res.status !== 200) {
-                      Log.e(res.message);
+                  contentType : 'application/json',
+                  data: JSON.stringify({
+                    group: "moment.halo.run",
+                    plural: "moments",
+                    name: jid
+                  }),
+                  complete(res) {
+                    if (res.status != 200) {
+                      Log.e("点赞失败，请求异常");
                       return;
                     }
                     links++;
@@ -798,7 +806,7 @@ var LIlGGAttachContext = {
                     Util.setLocalStorage("journalIds", journalIds, 60 * 60 * 24);
                     $dom.children(":last-child").text(links);
                     $dom.data("links", links);
-                  },
+                  }
                 });
               });
           }
