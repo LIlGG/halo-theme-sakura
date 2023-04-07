@@ -49,7 +49,7 @@
 <th:block th:fragment="content">
     <div class="journals-content">
         <ul th:if="${moments.total gt 0}" id="main" class="journals-line" role="main">
-            <li th:each="moment : ${moments.items}" th:id="'journal-' + ${moment.metadata.name}" class="journal">
+            <li th:each="moment : ${moments.items}" th:data-name="${moment.metadata.name}" class="journal">
                 <span class="journal-author-img">
                     <img class="lazyload avatar" th:data-src="${moment.owner.avatar}"
                         th:alt="${moment.owner.displayName}" width="48" height="48"
