@@ -51,7 +51,8 @@
                         th:classappend="${photo.spec.groupName} + ' ' + ${theme.config.photos.photos_style == 'masonry' ? 'col-' + theme.config.photos.masonry_column : '' }">
                         <header class="gallery-icon">
                             <a data-fancybox="gallery" th:href="${photo.spec.url}">
-                                <img class="lazyload" src="${res_base_url!}/source/images/load/load.gif"
+                                <img class="lazyload"
+                                    th:src="@{/assets/images/load/load.gif}"
                                     th:alt="${photo.spec.displayName}"
                                     th:data-src="${#strings.isEmpty(photo.spec.cover) ? photo.spec.url : photo.spec.cover}"/>
                             </a>

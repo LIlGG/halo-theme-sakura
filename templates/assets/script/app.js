@@ -664,15 +664,17 @@ var LIlGGAttachContext = {
               },
               itemSelector: ".gallery-item",
             };
-
       // 默认过滤
       if (Poi.defaultGroup) {
         var filter = "." + Poi.defaultGroup;
-
         $("#gallery-filter li a").each(function () {
           $("#gallery-filter li a").removeClass("active");
           if ($(this).data("filter") == filter) {
             $(this).addClass("active");
+            var dataFilter = $(this).data("filter");
+            $masonrys.isotope({
+              filter: dataFilter,
+            });
             return false;
           }
         });
