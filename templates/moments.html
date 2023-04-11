@@ -1,0 +1,95 @@
+<!--
+    Template Name: photos
+-->
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
+<th:block th:fragment="header">
+    <th:block
+        th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.journals_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
+        <div class="pattern-center-blank"></div>
+        <div class="pattern-center no-select">
+            <div class="pattern-attachment-img">
+                <img th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.journals_patternimg)}"
+                    th:attr="data-src=${theme.config.patternimg.journals_patternimg}"
+                    th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}" class="lazyload"
+                    onerror="imgError(this)">
+                <img th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.journals_patternimg)}"
+                    th:src="${theme.config.random_image.rimage_url}+'?moments=moments&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}"
+                    th:attr="
+            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'category=' + category.metadata.name + '&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '') + '&th=150'},
+            data-srcset=${theme.config.random_image.rimage_url}+'?moments=moments&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=640 640w,'+
+            ${theme.config.random_image.rimage_url}+'?moments=moments&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=960 960w,'+
+            ${theme.config.random_image.rimage_url}+'?moments=moments&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=1280 1280w,'+
+            ${theme.config.random_image.rimage_url}+'?moments=moments&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+' 1440w'
+            " data-sizes="auto"
+                    th:class="'lazyload '+${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}" />
+            </div>
+            <header class="pattern-header">
+                <h1 class="entry-title" th:if="${not #strings.isEmpty(title)}" th:text="${title}"></h1>
+                <span class="entry-title i18n" th:unless="${not #strings.isEmpty(title)}"
+                    data-iname="page.journal.title"></span>
+            </header>
+        </div>
+    </th:block>
+    <th:block
+        th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.journals_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
+        <div class="blank"></div>
+        <header class="entry-header">
+            <h1 class="entry-title" th:if="${not #strings.isEmpty(title)}" th:text="${title}"></h1>
+            <h1 class="entry-title i18n" th:unless="${not #strings.isEmpty(title)}" data-iname="page.journal.title">
+            </h1>
+        </header>
+        <style>
+            .toc-container {
+                top: 210px;
+            }
+        </style>
+    </th:block>
+</th:block>
+<th:block th:fragment="content">
+    <div class="journals-content">
+        <ul th:if="${moments.total gt 0}" id="main" class="journals-line" role="main">
+            <li th:each="moment : ${moments.items}" th:data-name="${moment.metadata.name}" class="journal">
+                <span class="journal-author-img">
+                    <img class="lazyload avatar" th:data-src="${moment.owner.avatar}"
+                        th:alt="${moment.owner.displayName}" width="48" height="48"
+                        onerror="imgError(this)"
+                        th:src="@{/assets/images/svg/loader/trans.ajax-spinner-preloader.svg}">
+                    <span class="journal-label">
+                        <th:block th:utext="${moment.spec.content.html}"></th:block>
+                        <p class="journal-time">
+                            <span th:text="${#dates.format(moment.spec.releaseTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                            <!-- 评论内容 -->
+                            <span th:if="${theme.config.journal.journal_comment}" class="comment-js noselect"
+                                style="float: right;margin-left: 15px;">
+                                <i class="iconfont icon-mark">
+                                    <span class="noticom" th:text="${moment.stats.totalComment}"></span>
+                                </i>
+                            </span>
+                            <span th:if="${theme.config.journal.journal_likes}" class="journal-like noselect"
+                                th:data-links="${moment.stats.upvote}" style="float: right;margin-left: 15px;">
+                                <span><i class="iconfont icon-dianzan"></i></span>
+                                <span style="font-size: 16px;" th:text="${moment.stats.upvote}"></span>
+                            </span>
+                            <div th:if="${theme.config.journal.journal_comment}" class="comment">
+                                <halo:comment group="moment.halo.run" kind="Moment"
+                                    th:attr="name=${moment.metadata.name}" />
+                            </div>
+                        </p>
+                    </span>
+                </span>
+            </li>
+        </ul>
+        <th:block th:if="${moments.totalPages gt 1}">
+            <center th:if="${moments.hasNext}" id="journals-pagination">
+                <a th:href="@{${moments.nextUrl}}" class="at_button i18n" data-iname="page.journal.loadmore"
+                    style="margin-bottom: 15px;"></a>
+            </center>
+        </th:block>
+        <th:block th:unless="${moments.total gt 0}">
+            <span class="i18n" data-iname="page.journal.empty"></span>
+        </th:block>
+    </div>
+</th:block>
+
+</html>

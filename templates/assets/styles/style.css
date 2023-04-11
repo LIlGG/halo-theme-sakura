@@ -1210,13 +1210,6 @@ a:active {
 	pointer-events: auto !important
 }
 
-#show-nav.mobile-fit {
-	position: fixed !important;
-	right: 120px;
-	opacity: 0;
-	pointer-events: none
-}
-
 @media (max-width:1200px) {
 	.site-top .lower {
 		left: 15px
@@ -1224,11 +1217,6 @@ a:active {
 
 	.site-top .lower nav.hide {
 		display: none !important
-	}
-
-	#show-nav.mobile-fit {
-		opacity: 1;
-		pointer-events: auto
 	}
 }
 
@@ -8998,6 +8986,10 @@ img[src*="#in-center"] {
 /** journal */
 /** avatar */
 .journal-author-img .avatar {
+	width: 48px;
+	height: 48px;
+	-o-object-fit: cover;
+	   object-fit: cover;
 	border: 1px solid #ddd;
 	padding: 2px;
 	float: left;
@@ -9032,8 +9024,7 @@ ul.journals-line {
 
 .journal-label:hover {
 	/* transform:scale(1.05);*/
-	transform: translateY(-3px);
-	z-index: 1;
+	/* transform: translateY(3px); */
 	box-shadow: 0 15px 32px rgba(0, 0, 0, 0.15) !important
 }
 
@@ -9049,7 +9040,6 @@ ul.journals-line {
 
 .journals-line>li .journal-label {
 	margin: 0 0 45px 65px;
-	z-index: 1;
 	background: #F0FFFF;
 	color: black;
 	padding: .8em 1.2em .4em 1.2em;
@@ -9076,7 +9066,6 @@ ul.journals-line {
 .journals-line>li .journal-label:after {
 	right: 100%;
 	border: solid transparent;
-	z-index: -1;
 	content: " ";
 	height: 0;
 	width: 0;
@@ -9146,7 +9135,6 @@ em {
 .journal-label img {
 	cursor: pointer;
 	transition: all 1s;
-	z-index: 2;
 }
 
 .journal-label .comment-js {

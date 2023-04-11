@@ -39,7 +39,6 @@ var LIlGGAttachContext = {
   },
   // 背景视频
   BGV: function () {
-    console.log(123)
     var $bg_video_btn = $("#video-btn"),
       $bg_video = $("#bgvideo"),
       $bg_video_stu = $(".video-stu"),
@@ -435,14 +434,14 @@ var LIlGGAttachContext = {
       // 切换主题
       changeBg(configTag);
     };
-    var defaultTheme = function() {
-      for(let key of Object.keys(bgConfig)) {
+    var defaultTheme = function () {
+      for (let key of Object.keys(bgConfig)) {
         if (bgConfig[key]["isDefault"]) {
           return key;
         }
       }
       return Object.keys(bgConfig)[0];
-    }
+    };
 
     /**
      * 切换主题开关
@@ -453,7 +452,7 @@ var LIlGGAttachContext = {
         $(".skin-menu " + "#" + currBg).on("click", function () {
           changeBg(currBg, function () {
             // 保存tagClass, 方便下次查询
-            Util.setLocalStorage("bgTagClass", currBg, 30*24*60*60);
+            Util.setLocalStorage("bgTagClass", currBg, 30 * 24 * 60 * 60);
             // 绑定完之后隐藏主题开关
             $(".skin-menu").removeClass("show");
             setTimeout(function () {
@@ -530,16 +529,16 @@ var LIlGGAttachContext = {
     }
 
     $(".changeSkin-gear")
-    .off("click")
-    .on("click", function () {
-      $(".skin-menu").toggleClass("show");
-    });
+      .off("click")
+      .on("click", function () {
+        $(".skin-menu").toggleClass("show");
+      });
 
     $("#m-changskin")
       .off("click")
       .on("click", function () {
         $(".skin-menu").toggleClass("show");
-    });
+      });
 
     return {
       changeSkinSecter: changeSkinSecter,
@@ -574,28 +573,27 @@ var LIlGGAttachContext = {
   CPY: function () {
     let postDom = document.getElementsByClassName("post-article");
     Array.prototype.forEach.call(postDom, (item) => {
-      item.addEventListener("copy", function(e) {
+      item.addEventListener("copy", function (e) {
         if (Poi.copyrightNotice && window.getSelection().toString().length > 30) {
           setClipboardText(e, $(this).data());
         }
-  
+
         if (toast) {
           toast.create("复制成功！<br>Copied to clipboard successfully!", 2000);
         }
-      })
-    })
-    
+      });
+    });
+
     var setClipboardText = function (event, post) {
       event.preventDefault();
-      let templateStr = 
-      `
+      let templateStr = `
       # 商业转载请联系作者获得授权，非商业转载请注明出处。<br>
       # For commercial use, please contact the author for authorization. For non-commercial use, please indicate the source.<br>
       # 协议(License): 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)<br>
       # 作者(Author): ${post.owner} <br>
       # 链接(URL): ${post.url} <br>
       # 来源(Source): ${Poi.sitename} <br><br>
-      `
+      `;
       let htmlStr = templateStr + window.getSelection().toString().replace(/\r\n/g, "<br>");
       let textStr = templateStr.replace(/<br>/g, "\n") + window.getSelection().toString().replace(/\r\n/g, "\n");
       if (event.clipboardData) {
@@ -665,15 +663,17 @@ var LIlGGAttachContext = {
               },
               itemSelector: ".gallery-item",
             };
-
       // 默认过滤
       if (Poi.defaultGroup) {
         var filter = "." + Poi.defaultGroup;
-
         $("#gallery-filter li a").each(function () {
           $("#gallery-filter li a").removeClass("active");
           if ($(this).data("filter") == filter) {
             $(this).addClass("active");
+            var dataFilter = $(this).data("filter");
+            $masonrys.isotope({
+              filter: dataFilter,
+            });
             return false;
           }
         });
@@ -725,8 +725,6 @@ var LIlGGAttachContext = {
       var journalIds = Util.getLocalStorage("journalIds") || [];
       $(".journal").each(function () {
         let that = $(this);
-        let idDoms = that.attr("id").split("-");
-        let jid = Number(idDoms[idDoms.length - 1]);
         // 为日志设置时间图标
         var $firstSpan = that.find(".journal-time>span").first();
         if ($firstSpan.find("i").length == 0) {
@@ -743,10 +741,37 @@ var LIlGGAttachContext = {
           }
         });
 
+        // 为说说评论增加额外 class
+        if (Poi.journalComment) {
+          var comment = that.find("halo-comment-widget ");
+          if (comment.length > 0) {
+            var $comment = $(comment[0].shadowRoot.getElementById("halo-comment-widget"));
+            if (!$comment.hasClass("journal")) {
+              $comment.addClass("journal");
+            }
+
+            // 如果是黑夜模式，还需要额外添加黑夜模式 class
+            if ($("body").hasClass("dark") && !$comment.hasClass("dark")) {
+              $comment.addClass("dark");
+            }
+          }
+          // 说说评论展开/收起
+          that
+            .find(".journal-label .comment-js")
+            .off("click")
+            .on("click", function () {
+              that.find(".journal-label .comment").toggle();
+            });
+        }
+
         if (Poi.journalLikes) {
           // 说说是否已经点赞
           var $like = that.find(".journal-label .journal-like");
           if ($like.length > 0) {
+            let jid = that.data("name");
+            if(!jid) {
+              return;
+            }
             journalIds.includes(jid) ? $like.addClass("on") : "";
             // 说说点赞
             that
@@ -762,12 +787,18 @@ var LIlGGAttachContext = {
                   return;
                 }
                 $.ajax({
-                  url: "/api/content/journals/" + jid + "/likes",
+                  url: "/apis/api.halo.run/v1alpha1/trackers/upvote",
                   type: "post",
                   dataType: "json",
-                  success(res) {
-                    if (res.status !== 200) {
-                      Log.e(res.message);
+                  contentType : 'application/json',
+                  data: JSON.stringify({
+                    group: "moment.halo.run",
+                    plural: "moments",
+                    name: jid
+                  }),
+                  complete(res) {
+                    if (res.status != 200) {
+                      Log.e("点赞失败，请求异常");
                       return;
                     }
                     links++;
@@ -776,7 +807,7 @@ var LIlGGAttachContext = {
                     Util.setLocalStorage("journalIds", journalIds, 60 * 60 * 24);
                     $dom.children(":last-child").text(links);
                     $dom.data("links", links);
-                  },
+                  }
                 });
               });
           }
