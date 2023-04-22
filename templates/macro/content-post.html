@@ -1,0 +1,95 @@
+<th:block th:fragment="content-post(post)">
+  <article
+    th:id="'post-'+${post.metadata.name}"
+    class="post-article"
+    th:data-owner="${post.owner.displayName}"
+    th:data-url="${post.status.permalink}"
+  >
+    <link itemprop="mainEntityOfPage" th:href="@{${post.status.permalink}}" />
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" th:content="${post.owner.avatar}" />
+      <meta itemprop="name" th:content="${post.owner.displayName}" />
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" th:content="${site.title}" />
+      <meta itemprop="description" th:content="${site.subtitle}" />
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" th:content="${post.spec.title}" />
+      <meta itemprop="description" th:content="${post.status.excerpt}" />
+    </span>
+
+    <header class="pattern-header post-header" itemprop="name headline">
+      <h1 class="entry-title" th:text="${post.spec.title}"></h1>
+      <div class="post-meta-container">
+        <th:block th:replace="~{module/post/post-meta :: post-meta(${post})}" />
+      </div>
+    </header>
+    <!-- <header class="entry-header">
+      <h1 class="entry-title" th:text="${post.spec.title}"></h1>
+      <p class="entry-census">
+        <th:block th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></th:block>
+        &nbsp;&nbsp;<span class="i18n" data-iname="post.visits" th:attr="data-ivalue=${post.stats.visit}"></span>
+      </p>
+      <hr />
+    </header> -->
+    
+    <!--/* post body */-->
+    <div class="entry-content">
+      <th:block th:utext="${post.content.content}"></th:block>
+      <p>
+        Q.E.D.
+        <i class="fa fa-meetup" aria-hidden="true" style="color: #d34836"></i>
+      </p>
+    </div>
+
+    <div th:if="${#annotations.getOrDefault(post, 'toc', true)}" class="toc-container">
+      <div class="toc"></div>
+    </div>
+
+    <!--/* .entry-content */-->
+    <div
+      th:if="${not #strings.isEmpty(theme.config.post.alipay_code)} or ${not #strings.isEmpty(theme.config.post.wechat_code)}"
+      class="single-reward"
+    >
+      <div class="reward-open">
+        <span class="i18n" data-iname="post.reward"></span>
+        <div class="reward-main">
+          <ul class="reward-row">
+            <li th:if="${not #strings.isEmpty(theme.config.post.alipay_code)}" class="alipay-code">
+              <img th:src="${theme.config.post.alipay_code}" />
+            </li>
+            <li th:if="${not #strings.isEmpty(theme.config.post.wechat_code)}" class="wechat-code">
+              <img th:src="${theme.config.post.wechat_code}" />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer class="post-footer">
+      <div class="post-license">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow">
+          <i class="fa fa-creative-commons" aria-hidden="true"></i>
+          <span class="i18n" data-iname="post.creative_commons"></span>
+        </a>
+      </div>
+      <div class="post-tags">
+        <th:block th:if="${not #lists.isEmpty(post.tags)}">
+          <i class="iconfont icon-tags"></i>
+          <a
+            th:each="tag : ${post.tags}"
+            th:href="@{${tag.status.permalink}}"
+            rel="tag"
+            th:text="${tag.spec.displayName}"
+          ></a>
+        </th:block>
+      </div>
+      <th:block th:replace="~{module/sharelike :: sharelike(${post})}" />
+    </footer>
+    <!--/* .entry-footer */-->
+  </article>
+  <!--/* #post-## */-->
+</th:block>

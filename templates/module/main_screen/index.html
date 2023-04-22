@@ -1,0 +1,10 @@
+<!--/* 首屏 */-->
+<th:block th:fragment="header">
+  <th:block th:if="${theme.config.mainScreen.head_focus}">
+    <div class="headertop" th:classappend="${theme.config.mainScreen.focus_img_filter}">
+      <th:block th:replace="module/main_screen/img_box"></th:block>
+      <th:block th:if="${theme.config.mainScreen.bgvideo}" th:replace="module/main_screen/video_box"></th:block>
+      <th:block th:if="${theme.config.mainScreen.focus_godown}" th:replace="module/main_screen/go_down"></th:block>
+    </div>
+  </th:block>
+</th:block>

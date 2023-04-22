@@ -1,8 +1,16 @@
 <!--/* 分类页面 */-->
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::headers},content = ~{::content})}">
-  <th:block th:fragment="headers">
-    <th:block
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: layout(title = ~{::title}, header = ~{::header}, content = ~{::content})}"
+>
+  <th:block th:fragment="title">
+    <th:block th:text="${category.spec.displayName} + '|' + ${site.title}"></th:block>
+  </th:block>
+
+  <th:block th:fragment="header">
+    <th:block th:replace="~{macro/main-header :: main-header(${category}, ${category.spec.cover})}" />
+    <!-- <th:block
       th:if="${theme.config.patternimg.patternimg_image} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
       <div class="pattern-center-blank"></div>
@@ -42,29 +50,32 @@
     </th:block>
     <th:block>
       <div class="blank"></div>
-    </th:block>
+    </th:block> -->
   </th:block>
 
   <th:block th:fragment="content">
     <div id="primary" class="content-area" th:with="postItems=${posts.items}">
       <main id="main" class="site-main" role="main">
         <th:block th:if="${posts.totalPages gt 0}">
-          <header class="page-header" th:unless="${theme.config.patternimg.patternimg_image} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
+          <header
+            class="page-header"
+            th:unless="${theme.config.patternimg.patternimg_image} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+          >
             <h1 class="cat-title" th:text="${category.spec.displayName}"></h1>
             <span class="cat-des" th:text="${category.spec.description}"></span>
           </header>
           <th:block th:each="post : ${postItems}">
-            <th:block th:replace="~{tpl/content :: content(${post})}" />
+            <th:block th:replace="~{macro/content :: content(${post})}" />
           </th:block>
 
           <div class="clearer"></div>
         </th:block>
         <th:block th:unless="${posts.totalPages gt 0}">
-          <th:block th:replace="~{tpl/content-none}" />
+          <th:block th:replace="~{macro/content-none}" />
         </th:block>
       </main>
       <!--/* #pagination */-->
-      <th:block th:replace="~{layouts/list-nextprev :: pagination(${posts})}"></th:block>
+      <th:block th:replace="~{module/list-pagination :: pagination(${posts})}"></th:block>
     </div>
   </th:block>
 </html>

@@ -1,11 +1,19 @@
 <!--/*-->
-    @package Akina
+@package Akina
 <!--*/-->
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: layout(title = ~{::title}, header = ~{::header}, content = ~{::content})}"
+>
+  <th:block th:fragment="title">
+    <th:block th:text="${post.spec.title} + '|' + ${site.title}|"></th:block>
+  </th:block>
+
   <th:block th:fragment="header">
-    <th:block
-      th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(post.spec.cover)} or (${#annotations.getOrDefault(post, 'randomImage', true)} and ${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+    <th:block th:replace="~{macro/main-header :: main-header(${post}, ${post.spec.cover})}" />
+    <!-- <th:block
+      th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(post.spec.cover)} or (${#annotations.getOrDefault(post, 'randomImage', true)} and ${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
       <div class="pattern-center-blank"></div>
       <div class="pattern-center single-center no-select">
@@ -31,11 +39,10 @@
             th:class="'lazyload '+${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
           />
         </div>
-        <header class="pattern-header single-header">
+        <header class="pattern-header post-header">
           <h1 class="entry-title" th:text="${post.spec.title}"></h1>
           <p class="entry-census">
             <span>
-              <!--/* TODO: 改为作者地址 */-->
               <a th:href="${site.url}">
                 <img th:src="${post.owner.avatar ?: #theme.assets('/images/avatar.jpg')}" />
               </a>
@@ -71,17 +78,15 @@
           top: 210px;
         }
       </style>
-    </th:block>
+    </th:block> -->
   </th:block>
 
   <th:block th:fragment="content">
     <!--/* #primary */-->
     <div id="primary" class="content-area">
-      <main id="main" class="site-main" role="main">
-        <th:block th:replace="~{tpl/content-single :: content-single(${post})}" />
-        <th:block th:replace="~{layouts/post-nextprev :: post-nextprev(${post})}" />
-        <th:block th:replace="~{layouts/authorprofile :: authorprofile(${post})}" />
-      </main>
+      <th:block th:replace="~{macro/content-post :: content-post(${post})}" />
+      <th:block th:replace="~{module/post-pagination :: post-nextprev(${post})}" />
+      <th:block th:replace="~{module/authorprofile :: authorprofile(${post})}" />
       <!--/* #main */-->
     </div>
     <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />

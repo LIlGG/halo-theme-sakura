@@ -909,7 +909,7 @@ a:active {
 	display: none
 }
 
-.pattern-center header.single-header {
+.pattern-center header.post-header {
 	max-width: 800px;
 	padding: 0 10px;
 	margin-left: auto;
@@ -919,7 +919,7 @@ a:active {
 	bottom: 20px
 }
 
-.single-center .single-header h1.entry-title {
+.single-center .post-header h1.entry-title {
 	margin: 0;
 	font-size: 32px;
 	width: 100%
@@ -949,7 +949,7 @@ a:active {
 }
 
 @media (max-width:860px) {
-	.pattern-center header.single-header {
+	.pattern-center header.post-header {
 		padding: 0 4%;
 		top: 45%;
 	}
@@ -960,7 +960,7 @@ a:active {
 
 	.pattern-center h1.cat-title,
 	.pattern-center h1.entry-title,
-	.single-center .single-header h1.entry-title {
+	.single-center .post-header h1.entry-title {
 		font-size: 26px;
 		-webkit-line-clamp: 2;
 		overflow: hidden;
@@ -969,7 +969,7 @@ a:active {
 		-webkit-box-orient: vertical;
 	}
 
-	.single-center .single-header h1.entry-title {
+	.single-center .post-header h1.entry-title {
 		text-align: center;
 	}
 
@@ -1048,7 +1048,7 @@ a:active {
 	display: none
 }
 
-.pattern-center-sakura header.single-header {
+.pattern-center-sakura header.post-header {
 	max-width: 800px;
 	padding: 0 10px;
 	margin-left: auto;
@@ -1058,7 +1058,7 @@ a:active {
 	bottom: 20px
 }
 
-.single-center .single-header h1.entry-title {
+.single-center .post-header h1.entry-title {
 	margin: 0;
 	font-size: 32px;
 	width: 100%
@@ -1088,13 +1088,13 @@ a:active {
 }
 
 @media (max-width:860px) {
-	.pattern-center-sakura header.single-header {
+	.pattern-center-sakura header.post-header {
 		padding: 0 4%
 	}
 
 	.pattern-center-sakura h1.cat-title,
 	.pattern-center-sakura h1.entry-title,
-	.single-center .single-header h1.entry-title {
+	.single-center .post-header h1.entry-title {
 		font-size: 26px
 	}
 }

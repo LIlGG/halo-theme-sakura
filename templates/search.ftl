@@ -37,12 +37,12 @@
 			</header><!-- .page-header -->
 			</#if>
 			<#list posts.content as post>
-				<#include "tpl/content.ftl">
+				<#include "macro/content.ftl">
 			</#list>
 		</main><!-- #main -->
 		<#if posts.totalPages gt 1>
 			<@paginationTag method="search" page="${posts.number}" total="${posts.totalPages}" display="3" keyword="${keyword!}">
-				<#include "layouts/list-nextprev.ftl">
+				<#include "module/list-pagination.ftl">
 			</@paginationTag>
 		</#if>
     <#else>
@@ -54,7 +54,7 @@
 			</form>
 			<!-- search end -->
 		</div>
-		<#include "tpl/content-none.ftl">
+		<#include "macro/content-none.ftl">
     </#if>
 </section><!-- #primary -->
 <#include "footer.ftl">

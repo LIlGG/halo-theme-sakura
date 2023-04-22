@@ -4,10 +4,11 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}"
+  th:replace="~{layout :: layout(title = ~{::title}, header = ~{::header}, content = ~{::content})}"
 >
 <th:block th:fragment="header">
-  <th:block 
+  <th:block th:replace="~{macro/main-header :: main-header(extension=${photos}, frontCover=${theme.config.patternimg.photos_patternimg}, id='photos'), isRandomImage = true}" />
+  <!-- <th:block 
     th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.photos_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
     <div class="pattern-center-blank"></div>
     <div class="pattern-center no-select">
@@ -50,17 +51,17 @@
           }
       }
     </style>
-  </th:block>
+  </th:block> -->
 </th:block>
 <th:block th:fragment="content">
   <div class="photo-page">
     <th:block
       th:if="${theme.config.photos.photos_style == 'masonry' or theme.config.photos.photos_style == 'packery'}"
-      th:insert="~{tpl/content-masonry-photos}"
+      th:insert="~{macro/content-masonry-photos}"
       ></th:block>
     <th:block  
       th:if="${theme.config.photos.photos_style == 'justify'}"
-      th:insert="~{tpl/content-justify-photos}"
+      th:insert="~{macro/content-justify-photos}"
       ></th:block>
     </div>
 </th:block>

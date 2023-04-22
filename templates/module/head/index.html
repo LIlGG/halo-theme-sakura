@@ -1,0 +1,72 @@
+<th:block th:fragment="module_head">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+  <meta name="generator" content="Halo 2.0.0">
+
+  <!--/* css */-->
+  <link rel="stylesheet" th:href="@{/assets/dist/css/main.min.css?v={version}(version=${theme.spec.version})}">
+
+  <!--/* variables.html 根据配置设置 css 变量值，全局 css 通过变量值进行处理 */-->
+  <th:block th:replace="module/variables" />
+
+  <!--/* 待优化 css */-->
+  <link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC&display=swap"
+  media="noexist"
+  onload="this.media='all'"
+/>
+<link
+  rel="stylesheet"
+  href="//at.alicdn.com/t/font_2010950_sh9o0r7ahar.css"
+  media="noexist"
+  onload="this.media='all'"
+/>
+<link rel="stylesheet" th:href="@{/assets/css/lib.css}" media="noexist" onload="this.media='all'" />
+<link
+  rel="stylesheet"
+  th:href="@{/assets/css/highlight/highlight-{code_pretty}.css(code_pretty=${theme.config.post.code_pretty})}"
+  type="text/css"
+  media="noexist"
+  onload="this.media='all'"
+/>
+<link
+  th:if="${theme.config.plugin.is_aplayer}"
+  rel="stylesheet"
+  th:href="@{/assets/lib/APlayer/APlayer.min.css}"
+  media="all"
+/>
+<link
+  th:if="${theme.config.tagAndCategory.tag_cloud}"
+  rel="stylesheet"
+  th:href="@{/assets/lib/jqcloud2/jqcloud.min.css}"
+  media="noexist"
+  onload="this.media='all'"
+/>
+<link
+  th:if="${theme.config.photos.photos_style == 'justify'}"
+  rel="stylesheet"
+  th:href="@{/assets/lib/justifiedGallery/justifiedGallery.min.css}"
+  media="noexist"
+  onload="this.media='all'"
+/>
+<link
+  th:if="${theme.config.plugin.katex}"
+  rel="stylesheet"
+  href="https://unpkg.com/katex@0.12.0/dist/katex.min.css"
+  media="noexist"
+  onload="this.media='all'"
+/>
+<th:block th:replace="~{inc/decorate}" />
+
+  <!--/* TODO：头部加载进度条 */-->
+  <!-- <th:block th:if="${theme.config.global.pace}">
+    <link rel="stylesheet" th:href="@{/assets/lib/pace/css/pace-theme-{theme}.min.css(theme=${theme.config.global.pace_theme})}">
+    <script th:src="@{/assets/lib/pace/pace.min.js}"></script>
+  </th:block> -->
+
+  <!--/* 获取主题设置中的所有属性保存在 JS 变量中 */-->
+  <script th:inline="javascript">
+    const config = '[(${theme.config})]'
+  </script>
+</th:block>

@@ -1,0 +1,71 @@
+<!--/* 首页随机图使用 style 实现，详见 decorate.html。 另外由于 Thymeleaf 不支持随机数，因此 rimage_cover_back_num 暂时无效。*/-->
+<!--/*--> 
+<figure id="centerbg" class="centerbg" style="background-image: url(
+	<#if settings.rimage_cover_back_open!false && settings.rimage_url?? && settings.rimage_url!=''>
+		${settings.rimage_url!}?home=home&type=url&itype=${settings.rimage_cover_back_itype!}&id=${(settings.rimage_cover_back_id)!''}&t=<#if settings.rimage_cover_back_num != 0>${randomMethod(1,settings.rimage_cover_back_num + 1)}<#else>${.now?string('yyyyMMddHHmmssSSS')}</#if>
+	<#else>
+	${settings.focus_img_1!'${res_base_url!}/source/images/hd.jpg'}
+	</#if>
+	);
+	<#if !(settings.focus_height!true)>
+		background-position: center center;background-attachment: inherit;
+	</#if>
+">
+<!--*/-->
+<figure id="centerbg" class="centerbg" th:fragment="imgbox">
+  <div class="focusinfo">
+    <th:block th:if="${theme.config.mainScreen.focus_tou == 'avatar'}">
+      <div class="header-tou no-select">
+        <a th:href="${site.url}">
+          <img th:if="${#strings.isEmpty(site.logo)}" th:src="@{/assets/images/avatar.jpg}" />
+          <img th:unless="${#strings.isEmpty(site.logo)}" th:src="${site.logo}" />
+        </a>
+      </div>
+    </th:block>
+    <th:block th:if="${theme.config.mainScreen.focus_tou == 'glitch-text'}">
+      <h1
+        th:if="${not #strings.isEmpty(theme.config.mainScreen.glitch_text)}"
+        class="center-text glitch"
+        th:attr="data-text=${theme.config.mainScreen.glitch_text}"
+        th:text="${theme.config.mainScreen.glitch_text}"
+      ></h1>
+    </th:block>
+    <div th:if="${theme.config.mainScreen.focus_infos and (not #strings.isEmpty(site.subtitle) or not #arrays.isEmpty(theme.config.sns.items))}" class="header-info no-select" th:classappend="${#strings.isEmpty(site.subtitle) ? '' : 'info-desc'}">
+      <p th:if="${not #strings.isEmpty(site.subtitle)}">
+        <i class="fa fa-quote-left"></i>
+        <span class="desc" th:text="${site.subtitle}"></span>
+        <i class="fa fa-quote-right"></i>
+      </p>
+      <div class="top-social_v2" th:if="${not #arrays.isEmpty(theme.config.sns.items)}">
+        <li id="bg-pre">
+          <img class="flipx" th:src="@{/assets/images/next-b.svg}" />
+        </li>
+        <th:block th:each="item : ${theme.config.sns.items}">
+          <th:block th:if="${item.url_type == 'normal'}">
+            <li>
+              <a
+                th:href="${item.url}"
+                target="_blank"
+                class="social-sina"
+              >
+                <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" />
+              </a>
+            </li>
+          </th:block>
+          <th:block th:if="${item.url_type == 'image'}">
+            <li class="wechat">
+              <a href="#"></a>
+              <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" />
+              <div class="wechatInner">
+                <img th:src="${item.url}"/>
+              </div>
+            </li>
+          </th:block>
+        </th:block>
+        <li id="bg-next">
+          <img th:src="@{/assets/images/next-b.svg}" />
+        </li>
+      </div>
+    </div>
+  </div>
+</figure>

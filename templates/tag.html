@@ -1,8 +1,16 @@
 <!--/* 标签页 */-->
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::headers},content = ~{::content})}">
-  <th:block th:fragment="headers">
-    <th:block
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: layout(title = ~{::title}, header = ~{::header}, content = ~{::content})}"
+>
+  <th:block th:fragment="title">
+    <th:block th:text="${tag.spec.displayName} + '|' + ${site.title}"></th:block>
+  </th:block>
+
+  <th:block th:fragment="header">
+    <th:block th:replace="~{macro/main-header :: main-header(${tag}, ${tag.spec.cover})}" />
+    <!-- <th:block
       th:if="${theme.config.patternimg.patternimg_image} and (${not #strings.isEmpty(tag.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
       <div class="pattern-center-blank"></div>
@@ -38,39 +46,40 @@
       </div>
     </th:block>
     <th:block
-      th:unless="${theme.config.patternimg.patternimg_image} and (${not #strings.isEmpty(tag.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
+      th:unless="${theme.config.patternimg.patternimg_image} and (${not #strings.isEmpty(tag.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+    >
       <div class="blank"></div>
       <style>
         .toc-container {
           top: 210px;
         }
       </style>
-    </th:block>
+    </th:block> -->
   </th:block>
   <th:block th:fragment="content">
     <div id="primary" class="content-area" th:with="postItems=${posts.items}">
       <main id="main" class="site-main" role="main">
         <th:block th:if="${posts.totalPages gt 0}">
-          <header class="page-header" th:unless="${theme.config.patternimg.patternimg_image} and (${not #strings.isEmpty(tag.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
-            <h1
-            class="cat-title"
-            th:text="${tag.spec.displayName}"
-            ></h1>
+          <header
+            class="page-header"
+            th:unless="${theme.config.patternimg.patternimg_image} and (${not #strings.isEmpty(tag.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+          >
+            <h1 class="cat-title" th:text="${tag.spec.displayName}"></h1>
             <span class="cat-des"></span>
           </header>
           <!--/* Start the Loop */-->
           <th:block th:each="post : ${postItems}">
-            <th:block th:replace="~{tpl/content :: content(${post})}" />
+            <th:block th:replace="~{macro/content :: content(${post})}" />
           </th:block>
           <div class="clearer"></div>
         </th:block>
         <th:block th:unless="${posts.totalPages gt 0}">
-          <th:block th:replace="~{tpl/content-none}" />
+          <th:block th:replace="~{macro/content-none}" />
         </th:block>
       </main>
       <!--/* #main */-->
       <!--/* #pagination */-->
-      <th:block th:replace="~{layouts/list-nextprev :: pagination(${posts})}"></th:block>
+      <th:block th:replace="~{module/list-pagination :: pagination(${posts})}"></th:block>
     </div>
     <!--/* #primary */-->
   </th:block>

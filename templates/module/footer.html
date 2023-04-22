@@ -1,0 +1,56 @@
+<!--/* 页脚设置 */-->
+<th:block th:fragment="footer">
+  <div class="footertext">
+    <p
+      class="foo-logo"
+      th:style="'background-image: url(' + ${theme.config.others.footer_logo ?: #theme.assets('/images/sakura.svg')} + ');'"
+    ></p>
+    <halo:footer />
+  </div>
+  <div class="footer-device">
+    <!--/* 请尊重作者，务必保留版权! */-->
+    <p style="font-family: 'Ubuntu', sans-serif">
+      <span
+        >Powered
+        <i class="fa fa-vimeo animated" style="color: #e74c3c"></i>
+        by
+        <a
+          rel="me"
+          target="_blank"
+          href="http://halo.run"
+          title="一款现代化的开源建站 / CMS 系统。"
+          style="text-decoration: none"
+          >Halo</a
+        >
+      </span>
+      •
+      <span
+        >Crafted with
+        <i class="fa fa-heart animated" style="color: #e74c3c"></i>
+        by
+        <a rel="me" target="_blank" href="https://github.com/LIlGG/halo-theme-sakura" style="text-decoration: none"
+          >LIlGG</a
+        >
+      </span>
+    </p>
+    <p>
+      © <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
+      <th:block th:text="${site.title}"></th:block>
+      <th:block th:if="${not #strings.isEmpty(theme.config.others.footer_case_number)}">
+        &nbsp;
+        <a href="https://beian.miit.gov.cn/" target="_blank" th:text="${theme.config.others.footer_case_number}"></a>
+      </th:block>
+      <th:block th:if="${not #strings.isEmpty(theme.config.others.footer_ga_case_number)}">
+        &nbsp;
+        <a
+          th:href="@{http://www.beian.gov.cn/portal/registerSystemInfo?recordcode={recordcode}(recordcode=${theme.config.others.footer_ga_select_number})}"
+          target="_blank"
+        >
+          <img th:src="@{/assets/images/other/gongan.png}" /><th:block
+            th:text="${theme.config.others.footer_ga_case_number}"
+          ></th:block>
+        </a>
+      </th:block>
+    </p>
+  </div>
+</th:block>

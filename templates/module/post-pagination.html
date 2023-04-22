@@ -1,0 +1,71 @@
+<!--/*-->
+NEXT / PREVIOUS POSTS (精华版)
+<!--*/-->
+<th:block th:fragment="post-nextprev(post)">
+  <th:block th:if="${theme.config.post.post_nepre}">
+    <section th:with="postCursor = ${postFinder.cursor(post.metadata.name)}" class="post-squares nextprev">
+      <div
+        th:if="${postCursor.hasPrevious()}"
+        th:class="'post-nepre '+${postCursor.hasNext() ? 'half' : 'full'}+' previous'"
+      >
+        <a th:href="@{${postCursor.previous.status.permalink}}" rel="prev">
+          <div
+            th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.previous.spec.cover)}"
+            class="background"
+            th:style="'background-image:url(\'' + ${postCursor.previous.spec.cover} + '\');'"
+          ></div>
+          <th:block
+            th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.previous.spec.cover)}"
+          >
+            <div
+              th:if="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+              class="background"
+              th:style="'background-image:url(\'' + ${theme.config.random_image.rimage_url}+'?postid='+${postCursor.previous.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''} +'\');'"
+            ></div>
+            <div
+              th:unless="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+              class="background"
+              style="background-image: url()"
+            ></div>
+          </th:block>
+          <span class="label i18n" data-iname="post.prev"></span>
+          <div class="info">
+            <h3 th:text="${postCursor.previous.spec.title}"></h3>
+            <hr />
+          </div>
+        </a>
+      </div>
+      <div
+        th:if="${postCursor.hasNext()}"
+        th:class="'post-nepre '+${postCursor.hasPrevious() ? 'half' : 'full'}+' next'"
+      >
+        <a th:href="@{${postCursor.next.status.permalink}}" rel="next">
+          <div
+            th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.next.spec.cover)}"
+            class="background"
+            th:style="'background-image:url(\'' + ${postCursor.next.spec.cover} + '\');'"
+          ></div>
+          <th:block
+            th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.next.spec.cover)}"
+          >
+            <div
+              th:if="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+              class="background"
+              th:style="'background-image:url(\'' + ${theme.config.random_image.rimage_url}+'?postid='+${postCursor.next.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''} +'&th=150\');'"
+            ></div>
+            <div
+              th:unless="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+              class="background"
+              style="background-image: url()"
+            ></div>
+          </th:block>
+          <span class="label i18n" data-iname="post.next"></span>
+          <div class="info">
+            <h3 th:text="${postCursor.next.spec.title}"></h3>
+            <hr />
+          </div>
+        </a>
+      </div>
+    </section>
+  </th:block>
+</th:block>

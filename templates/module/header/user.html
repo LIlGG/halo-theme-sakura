@@ -1,0 +1,31 @@
+<div
+  class="header-user-avatar"
+  th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}"
+  th:fragment="user"
+>
+  <img th:src="${currentUser.avatar ?: #theme.assets('/images/none.png')}" width="30" height="30" />
+  <div class="header-user-menu">
+    <th:block sec:authorize="isAnonymous()">
+      <div class="herder-user-name no-logged">
+        <a
+          href="/console"
+          style="font-weight: bold; text-decoration: none; color: #333"
+          class="i18n"
+          data-iname="user.login"
+        ></a>
+      </div>
+    </th:block>
+    <th:block sec:authorize="isAuthenticated()">
+      <div class="herder-user-name">
+        <div class="i18n" data-iname="user.has_logged"></div>
+        <div class="herder-user-name-u" th:text="${currentUser.displayName}"></div>
+      </div>
+      <div class="user-menu-option">
+        <!-- 个人资料 -->
+        <a href="/console#/users/admin/detail" target="_blank" class="i18n" data-iname="user.info"></a>
+        <!-- 退出登录 -->
+        <a href="/logout" target="_top" class="i18n" data-iname="user.logout"></a>
+      </div>
+    </th:block>
+  </div>
+</div>
