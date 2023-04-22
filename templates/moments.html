@@ -1,10 +1,14 @@
-<!--
-    Template Name: photos
--->
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
-<th:block th:fragment="header">
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: layout(title = ~{::title}, header = ~{::header}, content = ~{::content})}"
+  th:with="momentTitle = ${title}"
+>
+  <th:block th:fragment="header">
     <th:block
+      th:replace="~{macro/main-header :: main-header(extension=${moments}, frontCover=${theme.config.patternimg.journals_patternimg}, id='moments', isRandomImage=true)}"
+    />
+    <!-- <th:block
         th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.journals_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
         <div class="pattern-center-blank"></div>
         <div class="pattern-center no-select">
@@ -44,52 +48,66 @@
                 top: 210px;
             }
         </style>
-    </th:block>
-</th:block>
-<th:block th:fragment="content">
+    </th:block> -->
+  </th:block>
+  <th:block th:fragment="content">
     <div class="journals-content">
-        <ul th:if="${moments.total gt 0}" id="main" class="journals-line" role="main">
-            <li th:each="moment : ${moments.items}" th:data-name="${moment.metadata.name}" class="journal">
-                <span class="journal-author-img">
-                    <img class="lazyload avatar" th:data-src="${moment.owner.avatar}"
-                        th:alt="${moment.owner.displayName}" width="48" height="48"
-                        onerror="imgError(this)"
-                        th:src="@{/assets/images/svg/loader/trans.ajax-spinner-preloader.svg}">
-                    <span class="journal-label">
-                        <th:block th:utext="${moment.spec.content.html}"></th:block>
-                        <p class="journal-time">
-                            <span th:text="${#dates.format(moment.spec.releaseTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
-                            <!-- 评论内容 -->
-                            <span th:if="${theme.config.journal.journal_comment}" class="comment-js noselect"
-                                style="float: right;margin-left: 15px;">
-                                <i class="iconfont icon-mark">
-                                    <span class="noticom" th:text="${moment.stats.totalComment}"></span>
-                                </i>
-                            </span>
-                            <span th:if="${theme.config.journal.journal_likes}" class="journal-like noselect"
-                                th:data-links="${moment.stats.upvote}" style="float: right;margin-left: 15px;">
-                                <span><i class="iconfont icon-dianzan"></i></span>
-                                <span style="font-size: 16px;" th:text="${moment.stats.upvote}"></span>
-                            </span>
-                            <div th:if="${theme.config.journal.journal_comment}" class="comment">
-                                <halo:comment group="moment.halo.run" kind="Moment"
-                                    th:attr="name=${moment.metadata.name}" />
-                            </div>
-                        </p>
-                    </span>
+      <ul th:if="${moments.total gt 0}" id="main" class="journals-line" role="main">
+        <li th:each="moment : ${moments.items}" th:data-name="${moment.metadata.name}" class="journal">
+          <span class="journal-author-img">
+            <img
+              class="lazyload avatar"
+              th:data-src="${moment.owner.avatar}"
+              th:alt="${moment.owner.displayName}"
+              width="48"
+              height="48"
+              onerror="imgError(this)"
+              th:src="@{/assets/images/svg/loader/trans.ajax-spinner-preloader.svg}"
+            />
+            <span class="journal-label">
+              <th:block th:utext="${moment.spec.content.html}"></th:block>
+              <p class="journal-time">
+                <span th:text="${#dates.format(moment.spec.releaseTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                <!-- 评论内容 -->
+                <span
+                  th:if="${theme.config.journal.journal_comment}"
+                  class="comment-js noselect"
+                  style="float: right; margin-left: 15px"
+                >
+                  <i class="iconfont icon-mark">
+                    <span class="noticom" th:text="${moment.stats.totalComment}"></span>
+                  </i>
                 </span>
-            </li>
-        </ul>
-        <th:block th:if="${moments.totalPages gt 1}">
-            <center th:if="${moments.hasNext}" id="journals-pagination">
-                <a th:href="@{${moments.nextUrl}}" class="at_button i18n" data-iname="page.journal.loadmore"
-                    style="margin-bottom: 15px;"></a>
-            </center>
-        </th:block>
-        <th:block th:unless="${moments.total gt 0}">
-            <span class="i18n" data-iname="page.journal.empty"></span>
-        </th:block>
+                <span
+                  th:if="${theme.config.journal.journal_likes}"
+                  class="journal-like noselect"
+                  th:data-links="${moment.stats.upvote}"
+                  style="float: right; margin-left: 15px"
+                >
+                  <span><i class="iconfont icon-dianzan"></i></span>
+                  <span style="font-size: 16px" th:text="${moment.stats.upvote}"></span>
+                </span>
+                <div th:if="${theme.config.journal.journal_comment}" class="comment">
+                  <halo:comment group="moment.halo.run" kind="Moment" th:attr="name=${moment.metadata.name}" />
+                </div>
+              </p>
+            </span>
+          </span>
+        </li>
+      </ul>
+      <th:block th:if="${moments.totalPages gt 1}">
+        <center th:if="${moments.hasNext}" id="journals-pagination">
+          <a
+            th:href="@{${moments.nextUrl}}"
+            class="at_button i18n"
+            data-iname="page.journal.loadmore"
+            style="margin-bottom: 15px"
+          ></a>
+        </center>
+      </th:block>
+      <th:block th:unless="${moments.total gt 0}">
+        <span class="i18n" data-iname="page.journal.empty"></span>
+      </th:block>
     </div>
-</th:block>
-
+  </th:block>
 </html>

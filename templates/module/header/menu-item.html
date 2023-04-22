@@ -1,0 +1,13 @@
+<li class="menu-item" th:classappend="|menu-item-${menuItem.metadata.name}|" th:fragment="menu-item(menuItem)">
+  <a th:href="@{${menuItem.status?.href}}" th:target="${menuItem.spec.target?.value}">
+    <span class="faa-parent animated-hover">
+      <i th:if="${#annotations.contains(menuItem, 'icon')}" th:class="${#annotations.get(menuItem, 'icon')}"></i>
+      <th:block th:text="${menuItem.status.displayName}"></th:block>
+    </span>
+  </a>
+  <ul th:if="${not #lists.isEmpty(menuItem.children)}" class="sub-menu">
+    <th:block th:each="child : ${menuItem.children}">
+      <th:block th:replace="module/header/menu-item :: menu-item(${child})" />
+    </th:block>
+  </ul>
+</li>

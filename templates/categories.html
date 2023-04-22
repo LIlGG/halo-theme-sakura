@@ -1,14 +1,17 @@
 <!--/*-->
-/**
- * 主题的分类目录，用来展示所有的标签，需要手动在菜单中添加
- * 菜单链接如下： https://{youraddress}/categories
- * @author LIlGG
- */
+/** * 主题的分类目录，用来展示所有的标签，需要手动在菜单中添加 * 菜单链接如下： https://{youraddress}/categories *
+@author LIlGG */
 <!--*/-->
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: layout(title = ~{::title}, header = ~{::header}, content = ~{::content})}"
+>
   <th:block th:fragment="header">
     <th:block
+    th:replace="~{macro/main-header :: main-header(extension=${categories}, frontCover=${theme.config.patternimg.category_patternimg}, id='categories')}"
+  />
+    <!-- <th:block
       th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
     >
       <div class="pattern-center-blank"></div>
@@ -48,7 +51,7 @@
         <h1 class="entry-title i18n" data-iname="page.categories.title"></h1>
       </header>
       <!--/* .entry-header */-->
-    </th:block>
+    </th:block> -->
   </th:block>
   <th:block th:fragment="content">
     <div class="tag-contents">

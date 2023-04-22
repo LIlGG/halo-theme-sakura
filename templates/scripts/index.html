@@ -1,0 +1,147 @@
+<!--/* TODO：主题 js */-->
+<th:block th:fragment="scripts">
+  <!--/* TODO：依赖 JS, 需要求在自定义 JS 前加载的 JS，不包括可选功能 JS。（但通常通过 webpack 也可内联，待定）  */-->
+  <th:block th:replace="scripts/libs"></th:block>
+
+  <!--/* 基础 JS */-->
+  <script type="module" th:src="@{/assets/dist/js/main.min.js?v={version}(version=${theme.spec.version})}"></script>
+
+  <!--/* PJAX */-->
+  <script type="module" th:if="${theme.config.others.poi_pjax}" th:src="@{/assets/dist/libs/pjax.min.js}"></script>
+
+  <!--/* 可选功能 JS，例如用户可以开关的其余功能（lazyload 等） */-->
+
+  <!--/* 待优化 js */-->
+  <script type="text/javascript" th:inline="javascript">
+    /* <![CDATA[ */
+    var Poi = {
+        "pjax": /*[(${theme.config.others.poi_pjax})]*/,
+        "windowheight":"[(${theme.config.mainScreen.focus_height ? 'auto' : 'fixed'})]",
+        "ajaxurl":"[(${site.url})]",
+        "resBaseUrl": "[(${#theme.assets('')})]",
+        "formpostion":"bottom",
+        "toc": /*[(${theme.config.post.post_toc})]*/,
+        "codeLine": /*[(${theme.config.post.code_line})]*/,
+        "themeChange": /*[(${theme.config.theme.theme_change})]*/,
+        "headFocus": /*[(${theme.config.mainScreen.focus_height})]*/,
+        "bgvideo": /*[(${theme.config.mainScreen.bgvideo})]*/,
+        "tagRandomColorMin": "[(${theme.config.tagAndCategory.tag_randomColorMin})]",
+        "tagRandomColorMax": "[(${theme.config.tagAndCategory.tag_randomColorMax})]",
+        "nickname": "Ryan Wang",
+        "sitename": "[(${site.title})]",
+        "themeBase": "[(${#theme.assets('')})]",
+        "openToast": /*[(${theme.config.toast.open_toast})]*/,
+        "toastWidth": /*[(${theme.config.toast.toast_width})]*/,
+        "toastHeight": /*[(${theme.config.toast.toast_height})]*/,
+        "toastTop": "[(${theme.config.toast.toast_top})]",
+        "toastBackground": "[(${theme.config.general.theme_skin})]",
+        "toastColor": "[(${theme.config.toast.toast_color})]",
+        "toastFontSize": /*[(${theme.config.toast.toast_font_size})]*/,
+        "copyrightNotice": /*[(${theme.config.post.copyright_notice})]*/,
+        "photosStyle": "[(${theme.config.photos.photos_style})]",
+        "photosGutter": /*[(${theme.config.photos.photos_gutter})]*/,
+        "tocDepth": /*[(${theme.config.post.toc_depth})]*/,
+        "i18n": "[(${theme.config.others.i18n})]",
+        "coverNum": "[(${theme.config.random_image.rimage_cover_back_num})]",
+        "rimageUrl": "[(${theme.config.random_image.rimage_url})]",
+        "coverOpen": /*[(${theme.config.random_image.rimage_cover_back_open})]*/,
+        "meEmail": "i@example.com", // TODO:
+        "defaultTheme": "[(${theme.config.theme.default_theme})]",
+        "defaultGroup": "[(${theme.config.photos.default_group})]",
+        "isPostWordCountToast": /*[(${theme.config.post.post_word_count_toast})]*/,
+        "isPostEditTimeToast": /*[(${theme.config.post.post_edit_time_toast})]*/,
+        "postWordCountToastNormal": "[(${theme.config.post.post_word_count_toast_normal})]",
+        "postWordCountToastMedium": "[(${theme.config.post.post_word_count_toast_medium})]",
+        "postWordCountToastDifficulty": "[(${theme.config.post.post_word_count_toast_difficulty})]",
+        "postEditTimeToastNormal": "[(${theme.config.post.post_edit_time_toast_normal})]",
+        "postEditTimeToastMedium": "[(${theme.config.post.post_edit_time_toast_medium})]",
+        "postEditTimeToastDifficulty": "[(${theme.config.post.post_edit_time_toast_difficulty})]",
+        "journalLikes": /*[(${theme.config.journal.journal_likes})]*/,
+        "journalComment": /*[(${theme.config.journal.journal_comment})]*/,
+    };
+    var bgConfig = {
+        /*[# th:each="themeItem, status : ${theme.config.theme.bg_themes}"]*/
+            "bg_[(${status.index})]": {
+                "id": "[(${status.index})]",
+                "name": "[(${themeItem.bg_name})]",
+                "url": "[(${themeItem.bg_url})]",
+                "strategy": "[(${themeItem.bg_img_strategy})]",
+                "isNight": [(${themeItem.bg_night})],
+                "isDefault": [(${themeItem.bg_isdefault})]
+            },
+        /*[/]*/
+    }
+    /* ]]> */
+  </script>
+  <script
+    type="text/javascript"
+    th:src="@{/assets/script/utils.min.js?v={version}(version=${theme.spec.version})}"
+  ></script>
+  <script type="text/javascript" th:src="@{/assets/lib/lazysizes/lazysizes.min.js}" async></script>
+  <script type="text/javascript" th:src="@{/assets/js/lib.js}"></script>
+  <!--/* 相册 */-->
+  <script
+    th:if="${theme.config.photos.photos_style == 'justify'}"
+    th:src="@{/assets/lib/justifiedGallery/jquery.justifiedGallery.min.js}"
+    async
+  ></script>
+  <script
+    th:if="${theme.config.photos.photos_style == 'masonry'} or ${theme.config.photos.photos_style == 'packery'}"
+    th:src="@{/assets/lib/isotope.pkgd.min/index.js}"
+    async
+  ></script>
+  <script
+    th:if="${theme.config.photos.photos_style == 'masonry'} or ${theme.config.photos.photos_style == 'packery'}"
+    th:src="@{/assets/lib/imagesloaded/imagesloaded.pkgd.min.js}"
+    defer
+  ></script>
+  <script
+    th:if="${theme.config.photos.photos_style == 'packery'}"
+    type="text/javascript"
+    th:src="@{/assets/lib/packery-mode.pkgd.min/index.js}"
+    async
+  ></script>
+  <script type="text/javascript" th:src="@{/assets/js/highlight/highlight.pack.js}" defer></script>
+  <script
+    th:if="${theme.config.post.code_line}"
+    type="text/javascript"
+    th:src="@{/assets/js/highlight/highlightjs-line-numbers.min.js}"
+    defer
+  ></script>
+  <th:block th:if="${theme.config.plugin.is_aplayer}">
+    <script th:src="@{/assets/lib/APlayer/APlayer.min.js}" defer></script>
+    <script th:src="@{/assets/plugins/aplayer/js/index.js}" defer></script>
+  </th:block>
+  <script th:if="${theme.config.post.post_toc}" th:src="@{/assets/lib/tocbot/dist/tocbot.min.js}" defer></script>
+  <th:block th:if="${theme.config.tagAndCategory.tag_cloud}">
+    <script th:src="@{/assets/lib/jqcloud2/jqcloud.min.js}" defer></script>
+    <script type="text/javascript" th:inline="javascript">
+      const tags = /*[[${tagFinder.listAll()}]]*/
+      var wordcloud = tags.map(tag => {
+          return {
+              text: tag.spec.displayName,
+              weight: tag.postCount,
+              link: tag.status.permalink
+          }
+      })
+    </script>
+  </th:block>
+  <th:block th:if="${theme.config.tagAndCategory.category_radar}">
+    <script th:src="@{/assets/js/echarts/echarts.min.js}" defer></script>
+    <script type="text/javascript" th:inline="javascript">
+      var categories = /*[[${categoryFinder.listAll()}]]*/
+      var categoryRadar = categories.reduce((acc,curr)=> (acc[curr.spec.displayName]=curr.postCount,acc),{});
+    </script>
+  </th:block>
+  <script type="text/javascript" th:src="@{/assets/js/qrcode.min.js}" defer></script>
+  <script type="text/javascript" th:src="@{/assets/lib/flv.min/index.js}" defer></script>
+  <script
+    type="text/javascript"
+    th:src="@{/assets/script/i18n.min.js?v={version}(version=${theme.spec.version})}"
+    defer
+  ></script>
+  <script
+    type="text/javascript"
+    th:src="@{/assets/script/app.min.js?v={version}(version=${theme.spec.version})}"
+  ></script>
+</th:block>

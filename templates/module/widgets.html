@@ -1,0 +1,121 @@
+<!--/* todo: 全局小部件 */-->
+<th:block th:fragment="widgets">
+  <!--/* 移动端侧边栏 */-->
+  <!--/* m-nav-center */-->
+  <div id="mo-nav">
+    <div class="m-avatar" th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}">
+      <img th:src="${currentUser.avatar ?: #theme.assets('/images/avatar.jpg')}" />
+    </div>
+
+    <p
+      th:if="${not #strings.isEmpty(theme.config.mainScreen.glitch_text)}"
+      style="
+        text-align: center;
+        color: #333;
+        font-weight: 900;
+        font-family: 'Ubuntu', sans-serif;
+        letter-spacing: 1.5px;
+      "
+      th:text="${theme.config.mainScreen.glitch_text}"
+    ></p>
+
+    <th:block th:if="${theme.config.mainScreen.focus_infos}">
+      <p style="display: flex; justify-content: center">
+        <a th:each="item : ${theme.config.sns.mobile_items}" th:href="${item.url}" class="social" target="_blank">
+          <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" width="18" />
+        </a>
+      </p>
+    </th:block>
+
+    <div class="m-search">
+      <form class="m-search-form" method="get" action="/search" role="search">
+        <input class="m-search-input" type="search" name="keyword" placeholder="搜索..." required />
+      </form>
+    </div>
+    <th:block th:replace="module/header/menu"></th:block>
+    <p class="m-footer">
+      © <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
+      <th:block th:text="${site.title}"></th:block>
+    </p>
+  </div>
+  <!--/* m-nav-bar */-->
+  <div class="openNav">
+    <div class="iconflat">
+      <div class="icon"></div>
+    </div>
+    <div class="site-branding">
+      <div th:if="${not #strings.isEmpty(site.logo)}" class="site-title">
+        <a th:href="${site.url}">
+          <img th:src="${site.logo}" />
+        </a>
+      </div>
+      <h1 th:unless="${#strings.isEmpty(site.logo)}" class="site-title">
+        <a th:href="${site.url}" th:text="${site.title}"></a>
+      </h1>
+    </div>
+  </div>
+
+  <!--/* 回到顶部小工具 */-->
+  <a href="#" class="cd-top"></a>
+  <button class="m-cd-top" title="Go to top">
+    <i class="fa fa-chevron-up" aria-hidden="true"></i>
+  </button>
+
+  <!--/* aplayer start */-->
+  <div
+    th:if="${theme.config.plugin.is_aplayer} and ${theme.config.additional.aplayer_float}"
+    id="aplayer-float"
+    style="z-index: 100"
+    class="aplayer"
+    data-global="true"
+    th:data-id="${theme.config.additional.aplayer_id}"
+    th:data-server="${theme.config.additional.aplayer_server}"
+    th:data-type="${theme.config.additional.aplayer_type}"
+    th:data-fixed="true"
+    th:data-preload="${theme.config.additional.aplayer_preload}"
+    th:data-order="${theme.config.additional.aplayer_order}"
+    th:data-theme="${theme.config.additional.aplayer_theme}"
+    th:data-autoplay="${theme.config.additional.aplayer_autoplay}"
+    th:data-volume="${theme.config.additional.aplayer_volume}"
+  ></div>
+  <!--/* aplayer end */-->
+
+  <!--/* theme-change start */-->
+  <th:block th:if="${theme.config.theme.theme_change}">
+    <div class="changeSkin-gear no-select">
+      <div class="keys">
+        <span id="open-skinMenu"
+          >切换主题 | SCHEME TOOL &nbsp;<i class="iconfont icon-gear inline-block rotating"></i
+        ></span>
+      </div>
+    </div>
+    <!-- mobile changeskin -->
+    <button id="m-changskin"><i class="iconfont icon-gear inline-block rotating"></i></button>
+    <div class="skin-menu no-select">
+      <div class="theme-controls row-container">
+        <ul class="menu-list">
+          <th:block th:each="themeItem, status : ${theme.config.theme.bg_themes}">
+            <li th:id="'bg_'+${status.index}">
+              <i th:class="${themeItem.bg_icon}" aria-hidden="true"></i>
+            </li>
+          </th:block>
+        </ul>
+      </div>
+    </div>
+  </th:block>
+  <!--/* theme-change end */-->
+
+  <!--/* search start */-->
+  <!--/* 搜索功能由插件提供 https://github.com/halo-sigs/plugin-search-widget */-->
+  <!--/* <div class="js-search search-form search-form--modal" role="search">
+      <div class="search-form__inner">
+        <div>
+          <p class="micro mb-">输入后按回车搜索 ...</p>
+          <i class="iconfont icon-search"></i>
+          <input class="text-input js-search-input" type="search" name="keyword" placeholder="Search" required />
+        </div>
+      </div>
+      <div class="search_close"></div>
+    </div> */-->
+  <!--/* search end */-->
+</th:block>

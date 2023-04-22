@@ -1,11 +1,10 @@
-<!--/* -->
-	@package Akina
-<!--*/-->
-
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{layout :: html(header = ~{::header},content = ~{::content})}">
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: layout(title = ~{::title}, header = ~{::header}, content = ~{::content})}"
+>
   <th:block th:fragment="header">
-    <div class="blank"></div>
+    <div th:replace="module/main_screen/index"></div>
   </th:block>
 
   <th:block th:fragment="content">
@@ -19,11 +18,11 @@
     </div>
 
     <th:block th:if="${theme.config.focus.top_feature}">
-      <th:block th:replace="~{layouts/feature}" />
+      <th:block th:replace="~{module/feature}" />
     </th:block>
 
     <div id="primary" class="content-area" th:with="postItems=${posts.items}">
-      <main id="main" class="site-main" role="main">
+      <div id="main" class="site-main">
         <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif">
           <i class="fa fa-envira" aria-hidden="true"></i>
           <span class="i18n" data-iname="home.discovery"> </span>
@@ -32,21 +31,21 @@
           <!--/* Start the Loop */-->
           <th:block th:if="${theme.config.general.post_list_style == 'standard'}">
             <th:block th:each="post : ${postItems}">
-              <th:block th:replace="~{tpl/content :: content(${post})}" />
+              <th:block th:replace="~{macro/content :: content(${post})}" />
             </th:block>
           </th:block>
           <th:block th:unless="${theme.config.general.post_list_style == 'standard'}">
-            <th:block th:replace="~{tpl/content-thumb :: content-thumb(${postItems})}" />
+            <th:block th:replace="~{macro/content-thumb :: content-thumb(${postItems})}" />
           </th:block>
         </th:block>
         <th:block th:unless="${posts.total gt 0}">
-          <th:block th:replace="~{tpl/content-none}" />
+          <th:block th:replace="~{macro/content-none}" />
         </th:block>
-      </main>
+      </div>
       <!--/* #main */-->
-      
+
       <!--/* #pagination */-->
-      <th:block th:replace="~{layouts/list-nextprev :: pagination(${posts})}"></th:block>
+      <th:block th:replace="~{module/list-pagination :: pagination(${posts})}"></th:block>
     </div>
     <!--/* #primary */-->
   </th:block>

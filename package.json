@@ -1,53 +1,49 @@
 {
   "name": "halo-theme-sakura",
+  "private": true,
   "version": "2.0.0",
-  "description": "<h1 align=\"center\">Sakura<img src=\"https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif\" width=\"50\"></h1>\r <p align=\"center\">\r   <a href=\"https://lixingyong.com\">预览</a> | <a href=\"#安装主题\">安装</a> | <a href=\"https://lixingyong.com/s/halo-theme-sakure\">更新日志</a>\r   </p>",
-  "main": "index.js",
+  "description": "Halo 版本的樱花🌸主题",
   "scripts": {
-    "build": "npm run build-clean && npm run build-autoprefix && npm run build-cleancss  && npm run build-js",
-    "build-autoprefix": "postcss --use autoprefixer --map false --output templates/assets/styles/style.css templates/assets/styles/style.css",
-    "build-cleancss": "cleancss -o templates/assets/styles/style.min.css templates/assets/styles/style.css",
-    "build-clean": "rimraf css",
-    "build-app-js": "babel templates/assets/script/app.js -o templates/assets/script/app.min.js && uglifyjs templates/assets/script/app.min.js -o templates/assets/script/app.min.js",
-    "build-i18n-js": "babel templates/assets/script/i18n.js -o templates/assets/script/i18n.min.js && uglifyjs templates/assets/script/i18n.min.js -o templates/assets/script/i18n.min.js",
-    "build-utils-js": "babel templates/assets/script/utils.js -o templates/assets/script/utils.min.js && uglifyjs templates/assets/script/utils.min.js -o templates/assets/script/utils.min.js",
-    "build-js": "npm run build-app-js && npm run build-i18n-js && npm run build-utils-js",
-    "deploy": "npm run build",
+    "dev": "vite build --watch",
+    "build": "tsc && vite build",
+    "lint": "eslint ./src --ext .js,.cjs,.mjs,.ts,.cts,.mts --ignore-path .gitignore",
     "prettier": "prettier --write './src/**/*.{js,ts,css,json,ml,yaml,html}' './templates/**/*.html'"
   },
-  "browserify": {
-    "transform": [
-      [
-        "babelify",
-        {
-          "presets": [
-            "es2015"
-          ],
-          "sourceMap": true
-        }
-      ]
-    ]
-  },
+  "keywords": [
+    "halo",
+    "sakura",
+    "LIlGG",
+    "takagi",
+    "theme-sakura",
+    "halo-theme",
+    "halo-theme-sakura"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LIlGG/halo-theme-sakura.git"
+    "url": "https://github.com/LIlGG/halo-theme-sakura"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "LIlGG",
+    "url": "https://github.com/LIlGG",
+    "email": "mail@e.lixingyong.com"
+  },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/LIlGG/halo-theme-sakura/issues"
   },
   "homepage": "https://github.com/LIlGG/halo-theme-sakura#readme",
+  "maintainers": [
+    {
+      "name": "LIlGG",
+      "url": "https://github.com/LIlGG",
+      "email": "mail@e.lixingyong.com"
+    }
+  ],
   "devDependencies": {
-    "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.5",
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.16.11",
-    "autoprefixer": "^9.8.8",
-    "clean-css-cli": "^4.3.0",
-    "postcss-cli": "^7.1.2",
-    "prettier": "^2.7.1",
-    "rimraf": "^3.0.2",
-    "uglify-js": "^3.15.2"
+    "glob": "^10.1.0",
+    "pjax": "^0.2.8",
+    "prettier": "^2.8.7",
+    "typescript": "^5.0.4",
+    "vite": "^4.2.1"
   }
 }
