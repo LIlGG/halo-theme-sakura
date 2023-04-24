@@ -842,7 +842,7 @@ a:active {
 	overflow: hidden
 }
 
-.pattern-center:before {
+.pattern-attachment-img:before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -850,10 +850,9 @@ a:active {
 	left: 0;
 	right: 0;
 	background-color: rgba(0, 0, 0, .3);
-	z-index: 1;
 }
 
-.pattern-center:after {
+/* .pattern-center:after {
 	content: '';
 	width: 150%;
 	height: 4.375rem;
@@ -863,39 +862,27 @@ a:active {
 	border-radius: 100%;
 	position: absolute;
 	z-index: 2;
-}
-
-/* .pattern-attachment-img {
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
-	background-origin: border-box;
-	width: 100%;
-	height: 400px
 } */
+
+.pattern-attachment-img {
+	height: 400px
+}
 
 .pattern-attachment-img img {
 	width: 100%;
 	-o-object-fit: cover;
 	object-fit: cover;
 	pointer-events: none;
-  height: 400px;
 }
 
 header.post-header {
-	position: absolute;
-	top: 45%;
-	left: 0;
-	right: 0;
-	text-align: center;
-	color: #fff;
-	text-shadow: 2px 2px 10px #000;
-	z-index: 1
+  position: sticky;
+  margin-top: -125px;
+	z-index: 1;
 }
 
 .post-header h1.cat-title,
 .post-header h1.entry-title {
-	color: #fff;
 	font-size: 40px;
 	font-weight: 500;
 	margin: auto;
@@ -913,23 +900,16 @@ header.post-header {
 }
 
 header.post-header {
-	max-width: 800px;
 	padding: 0 10px;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: left;
-	top: 270px;
-	bottom: 20px
 }
 
-.post-meta-container h1.entry-title {
+.post-header h1.entry-title {
 	margin: 0;
 	font-size: 32px;
 	width: 100%
 }
 
 .post-meta-container .entry-census {
-	color: #fff;
 	font-size: 14px;
 	padding: 18px 0 0;
 	line-height: 39px
@@ -941,10 +921,6 @@ header.post-header {
 	border-radius: 100%;
 	float: left;
 	margin-right: 12px
-}
-
-.post-meta-container .entry-census a {
-	color: #fff
 }
 
 .post-meta-container .post-meta-item:not(:last-child)::after {
@@ -976,7 +952,24 @@ header.post-header {
 	.post-header h1.entry-title {
 		text-align: center;
 	}
+}
 
+/* 有背景图的文章标题 header */
+.pattern-center + .site-content .post-header {
+  text-shadow: 2px 2px 10px #000;
+}
+
+.pattern-center + .site-content .post-header h1.cat-title,
+.pattern-center + .site-content .post-header h1.entry-title {
+  color: #fff;
+}
+
+.pattern-center + .site-content .post-meta-container .entry-census {
+  color: #fff;
+}
+
+.pattern-center + .site-content .post-meta-container .entry-census a {
+  color: #fff;
 }
 
 .pattern-center-sakura {
@@ -1069,7 +1062,6 @@ header.post-header {
 }
 
 .post-meta-container .entry-census {
-	color: #fff;
 	font-size: 14px;
 	padding: 18px 0 0;
 	line-height: 39px
@@ -1085,10 +1077,6 @@ header.post-header {
 	border-radius: 100%;
 	float: left;
 	margin-right: 12px
-}
-
-.post-meta-container .entry-census a {
-	color: #fff
 }
 
 @media (max-width:860px) {
@@ -1964,6 +1952,10 @@ i.iconfont.hotpost {
 	-webkit-animation: poi-deg 12s infinite linear
 }
 
+.entry-content {
+  margin-top: 40px;
+}
+
 .entry-content .begin,
 .single-begin {
 	float: left;
@@ -2232,7 +2224,6 @@ h1.entry-title {
 .entry-census {
 	font-size: 12px;
 	margin: 0;
-	color: #888
 }
 
 .entry-header hr {
@@ -8357,8 +8348,6 @@ h5[id*=toc-head]:before,
 h6[id*=toc-head]:before {
 	display: block;
 	content: " ";
-	height: 80px;
-	margin-top: -80px;
 	visibility: hidden
 }
 
