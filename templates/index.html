@@ -3,6 +3,7 @@
   xmlns:th="https://www.thymeleaf.org"
   th:replace="~{layout :: layout(title = ~{::title}, header = ~{::header}, content = ~{::content})}"
 >
+  <!--/* TODO：头部会有抖动 */-->
   <th:block th:fragment="header">
     <div th:replace="module/main_screen/index"></div>
   </th:block>

@@ -10,7 +10,7 @@
     th:if="${theme.config.patternimg.patternimg_image}"
     th:with="randomCoverAvailable = ${(isRandomImage == null ? #annotations.getOrDefault(extension, 'randomImage', true) : isRandomImage) and not #strings.isEmpty(theme.config.random_image.rimage_url) and (_templateId == 'post' ? theme.config.random_image.rimage_cover_open : theme.config.random_image.rimage_cover_sheet_open)}"
   >
-    <div class="pattern-center single-center no-select">
+    <div class="pattern-center single-center no-select" th:if="${not #strings.isEmpty(frontCover) || randomCoverAvailable}">
       <div class="pattern-attachment-img" itemscope itemtype="http://schema.org/ImageGallery">
         <!--/* 优先使用自定义封面图 */-->
         <th:block th:if="${not #strings.isEmpty(frontCover)}">
