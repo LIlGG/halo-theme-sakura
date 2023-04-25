@@ -1,0 +1,34 @@
+/**
+* mixin 功能，为全局 CSS 提供公共的 mixin。
+* 使用 postcss 插件 postcss-mixins。https://github.com/postcss/postcss-mixins
+*/
+/** 设备分辨率 **/
+@define-mixin screens-sm {
+  @media (max-width: 640px) {
+    @mixin-content;
+  }
+}
+
+@define-mixin screens-md {
+  @media (max-width: 768px) {
+    @mixin-content;
+  }
+}
+
+@define-mixin screens-lg {
+  @media (max-width: 1024px) {
+    @mixin-content;
+  }
+}
+
+@define-mixin screens-xl {
+  @media (max-width: 1280px) {
+    @mixin-content;
+  }
+}
+
+@define-mixin screens-2xl {
+  @media (max-width: 1536px) {
+    @mixin-content;
+  }
+}

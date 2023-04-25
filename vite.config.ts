@@ -1,34 +1,34 @@
-import { globSync } from 'glob';
+import { globSync } from "glob";
 import { defineConfig } from "vite";
 import { fileURLToPath } from "url";
-import path from 'path';
+import path from "path";
 
 export default defineConfig({
   build: {
     rollupOptions: {
       input: Object.fromEntries(
-        globSync(['src/main.ts', 'src/libs/**/*.*']).map(file => [
-          path.relative('src', file.slice(0, file.length - path.extname(file).length)),
-          fileURLToPath(new URL(file, import.meta.url))
+        globSync(["src/main.ts", "src/libs/**/*.*"]).map((file) => [
+          path.relative("src", file.slice(0, file.length - path.extname(file).length)),
+          fileURLToPath(new URL(file, import.meta.url)),
         ])
       ),
       output: {
         format: "es",
         dir: fileURLToPath(new URL("./templates/assets/dist", import.meta.url)),
-        entryFileNames: '[name].min.js',
+        entryFileNames: "[name].min.js",
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
-            return 'css/[name].min.[ext]';
+          if (assetInfo.name && assetInfo.name.endsWith(".css")) {
+            return "css/[name].min.[ext]";
           }
-          return '[name].min.[ext]';
-        }
+          return "[name].min.[ext]";
+        },
       },
     },
-    sourcemap: true
+    sourcemap: true,
   },
   resolve: {
-    alias:{
-      '@':path.resolve(__dirname,'./src')
-    }
-  }
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
 });

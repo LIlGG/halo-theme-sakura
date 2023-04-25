@@ -40,10 +40,15 @@
     }
   ],
   "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "colorguard": "^1.2.1",
     "glob": "^10.1.0",
     "pjax": "^0.2.8",
     "prettier": "^2.8.7",
     "typescript": "^5.0.4",
-    "vite": "^4.2.1"
+    "vite": "^4.2.1",
+    "postcss": "^8.4.20",
+    "postcss-mixins": "^9.0.4",
+    "postcss-nesting": "^10.2.0"
   }
 }

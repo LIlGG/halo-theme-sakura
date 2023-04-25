@@ -1,0 +1,372 @@
+::-moz-selection {
+  background: #444444;
+  color: #fff;
+}
+
+::selection {
+  background: #444444;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #444;
+  color: #fff;
+}
+
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  overflow-x: hidden;
+  word-break: break-all;
+  box-sizing: border-box;
+}
+
+body,
+select,
+textarea {
+  color: #404040;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+body {
+  background: #fff;
+  background-attachment: fixed;
+  margin: 0;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1);
+
+  &.serif {
+    font-family: "Noto Serif SC", "Source Han Serif SC", "Source Han Serif", "source-han-serif-sc", "PT Serif",
+      "SongTi SC", "MicroSoft Yahei", Georgia, serif;
+  }
+
+  &.chinese-font {
+    font-family: "Merriweather Sans", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei",
+      "WenQuanYi Micro Hei", sans-serif;
+  }
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+details > summary:first-of-type {
+  display: list-item;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden],
+template {
+  display: none;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+dfn {
+  font-style: italic;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+img {
+  border: 0;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+select {
+  text-transform: none;
+}
+
+fieldset {
+  border: 1px solid silver;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+  border: 0;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+optgroup {
+  font-weight: 700;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  clear: both;
+}
+
+p {
+  margin-bottom: 1.5em;
+}
+
+dfn,
+cite,
+em,
+i {
+  font-style: italic;
+}
+
+blockquote {
+  margin: 0;
+  padding: 30px 60px;
+  position: relative;
+  quotes: "" "";
+
+  &:before {
+    content: "\f10d";
+    font-size: 3rem;
+    position: absolute;
+    top: -25px;
+    left: 12px;
+    color: orange;
+    font-family: FontAwesome;
+  }
+
+  &:after {
+    content: "\f10e";
+    font-size: 3rem;
+    position: absolute;
+    bottom: -25px;
+    right: -5px;
+    color: orange;
+    font-family: FontAwesome;
+  }
+
+  & p {
+    margin: 5px 0;
+  }
+}
+
+address {
+  margin: 0 0 1.5em;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+  font-family: "Source Code Pro", monospace, Helvetica, Tahoma, Arial, STXihei, "STHeiti Light", "Microsoft YaHei",
+    sans-serif;
+}
+
+code,
+kbd,
+tt,
+var {
+  font-size: 15px;
+  font-size: 0.9375rem;
+}
+
+abbr,
+acronym {
+  border-bottom: 1px dotted #666;
+  cursor: help;
+}
+
+mark,
+ins {
+  background: #fff9c0;
+  text-decoration: none;
+}
+
+big {
+  font-size: 125%;
+}
+
+//
+* {
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+q:before,
+q:after {
+  content: "";
+}
+
+q {
+}
+
+hr {
+  background-color: #ccc;
+  border: 0;
+  height: 1px;
+  margin-bottom: 1.5em;
+}
+
+ul,
+ol {
+  margin: 0 0 1.5em 3em;
+}
+
+ul {
+  list-style: disc;
+}
+
+ol {
+  list-style: decimal;
+}
+
+li > ul,
+li > ol {
+  margin-bottom: 0;
+  margin-left: 1.5em;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin: 0 1.5em 1.5em;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+textarea {
+  padding-left: 3px;
+  width: 100%;
+  color: #666;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+
+  &:focus {
+    color: #111;
+  }
+}
+
+select {
+  border: 1px solid #ccc;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.is-show {
+  display: block;
+}
+
+.is-hide {
+  display: none;
+}

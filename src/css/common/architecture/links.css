@@ -1,0 +1,14 @@
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: #e67474;
+  outline: none;
+  transition: color 0.2s ease-out, border 0.2s ease-out, opacity 0.2s ease-out;
+
+  &:focus,
+  &:active,
+  &:hover {
+    outline: none;
+    color: orange;
+  }
+}

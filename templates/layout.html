@@ -14,25 +14,31 @@
     <!--/* noscript */-->
     <th:block th:replace="scripts/noscript" />
   </head>
-  <body itemscope itemtype="http://schema.org/WebPage" class="hfeed chinese-font serif">
+  <body itemscope itemtype="http://schema.org/WebPage" class="chinese-font serif">
     <section id="main-container" th:classappend="${_templateId == 'index' ? 'is-homepage' : ''}">
       <!--/* 导航栏 */-->
       <header class="site-header" itemscope itemtype="http://schema.org/WPHeader">
         <div class="header-inner" th:insert="module/header/index"></div>
       </header>
 
-      <div id="page" class="main-inner site wrapper">
+      <main id="page" class="main site wrapper">
         <!--/* TODO */-->
         <th:block th:replace="~{inc/pjax_decorate}" />
-        <!--/* 挂钩，不同路由将使用不同的 header 进行渲染, 随机图？文本？视频？ */-->
-        <th:block th:if="${header != null}">
-          <th:block th:replace="${header}" />
-        </th:block>
+        <!--/* 挂钩，文章 header 等内容 */-->
+        <div class="column">
+          <!--/* 页面头部，如文章页的随机图？文本？视频？ */-->
+          <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+            <th:block th:if="${header != null}">
+              <th:block th:replace="${header}" />
+            </th:block>
+          </header>
+          <!--/* 页面侧边栏，如 toc */-->
+        </div>
 
         <!--/* 挂钩，不同路由将使用不同的内容进行渲染 */-->
-        <main id="content" class="site-content" th:classappend="${_templateId}">
+        <div id="content" class="main-inner site-content" th:classappend="${_templateId}">
           <th:block th:replace="${content}" />
-        </main>
+        </div>
 
         <!--/* 评论组件 */-->
         <th:block th:replace="module/comments" />
@@ -58,7 +64,7 @@
           // }
           /* ]]> */
         </script>
-      </div>
+      </main>
     </section>
 
     <footer class="site-footer" role="contentinfo">

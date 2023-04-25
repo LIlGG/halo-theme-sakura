@@ -33,7 +33,7 @@ Tags: LIlGG
 # gallery
 # journals
 --------------------------------------------------------------*/
-.main-inner {
+.main {
   position: relative;
 }
 
@@ -165,568 +165,6 @@ Tags: LIlGG
 	}
 }
 
-/*--------------------------------------------------------------
-# Normalize
---------------------------------------------------------------*/
-html {
-	font-family: sans-serif;
-	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
-	overflow-x: hidden;
-	word-break: break-all;
-}
-
-body {
-	margin: 0;
-	font: 300 17px;
-	text-shadow: 0px 0px 1px rgba(0, 0, 0, .1);
-}
-
-input:-webkit-autofill {
-	-webkit-box-shadow: 0 0 0px 1000px white inset;
-}
-
-::-moz-selection {
-	background: #444444;
-	color: #fff;
-}
-
-::selection {
-	background: #444444;
-	color: #fff;
-}
-
-::-moz-selection {
-	background: #444;
-	color: #fff
-}
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-main,
-menu,
-nav,
-section,
-summary {
-	display: block;
-}
-
-details > summary:first-of-type {
-    display: list-item;
-}
-
-audio,
-canvas,
-progress,
-video {
-	display: inline-block;
-	vertical-align: baseline;
-}
-
-audio:not([controls]) {
-	display: none;
-	height: 0;
-}
-
-[hidden],
-template {
-	display: none;
-}
-
-a {
-	background-color: transparent;
-	text-decoration: none;
-}
-
-a:active,
-a:hover {
-	outline: none;
-}
-
-abbr[title] {
-	border-bottom: 1px dotted
-}
-
-b,
-strong {
-	font-weight: 700
-}
-
-dfn {
-	font-style: italic
-}
-
-h1 {
-	font-size: 2em;
-	margin: .67em 0
-}
-
-mark {
-	background: #ff0;
-	color: #000
-}
-
-small {
-	font-size: 80%
-}
-
-sub,
-sup {
-	font-size: 75%;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline
-}
-
-sup {
-	top: -.5em
-}
-
-sub {
-	bottom: -.25em
-}
-
-img {
-	border: 0
-}
-
-svg:not(:root) {
-	overflow: hidden
-}
-
-figure {
-	margin: 1em 40px
-}
-
-hr {
-	box-sizing: content-box;
-	height: 0
-}
-
-code,
-kbd,
-samp {
-	font-family: monospace, monospace;
-	font-size: 1em
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-	color: inherit;
-	font: inherit;
-	margin: 0
-}
-
-button {
-	overflow: visible
-}
-
-button,
-select {
-	text-transform: none
-}
-
-button,
-html input[type=button],
-input[type=reset],
-input[type=submit] {
-	-webkit-appearance: button;
-	cursor: pointer
-}
-
-button[disabled],
-html input[disabled] {
-	cursor: default
-}
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-	border: 0;
-	padding: 0
-}
-
-input {
-	line-height: normal
-}
-
-input[type=checkbox],
-input[type=radio] {
-	box-sizing: border-box;
-	padding: 0
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-	height: auto
-}
-
-input[type=search]::-webkit-search-cancel-button,
-input[type=search]::-webkit-search-decoration {
-	-webkit-appearance: none
-}
-
-fieldset {
-	border: 1px solid silver;
-	margin: 0 2px;
-	padding: .35em .625em .75em
-}
-
-legend {
-	border: 0;
-	padding: 0
-}
-
-textarea {
-	overflow: auto
-}
-
-optgroup {
-	font-weight: 700
-}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0
-}
-
-td,
-th {
-	padding: 0
-}
-
-.noselect {
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-.is-show {
-	display: block;
-}
-
-/*--------------------------------------------------------------
-# Typography
---------------------------------------------------------------*/
-body,
-button,
-input,
-select,
-textarea {
-	color: #404040;
-	font-size: 15px;
-	line-height: 1.5
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	clear: both
-}
-
-p {
-	margin-bottom: 1.5em;
-}
-
-dfn,
-cite,
-em,
-i {
-	font-style: italic
-}
-
-blockquote {
-	margin: 0;
-	padding: 30px 60px;
-	position: relative
-}
-
-blockquote:before {
-	content: "\f10d" !important;
-	font-size: 3rem;
-	position: absolute;
-	top: -25px;
-	left: 12px;
-	color: orange;
-	font-family: FontAwesome
-}
-
-blockquote:after {
-	content: '\f10e' !important;
-	font-size: 3rem;
-	position: absolute;
-	bottom: -25px;
-	right: -5px;
-	color: orange;
-	font-family: FontAwesome
-}
-
-blockquote p {
-	margin: 5px 0
-}
-
-address {
-	margin: 0 0 1.5em
-}
-
-kbd {
-	display: inline-block;
-	padding: 3px 5px;
-	font-size: 11px;
-	line-height: 10px;
-	color: #444d56;
-	vertical-align: middle;
-	background-color: #fafbfc;
-	border: solid 1px #c6cbd1;
-	border-bottom-color: #959da5;
-	border-radius: 3px;
-	box-shadow: inset 0 -1px 0 #959da5;
-	font-family: 'Source Code Pro', monospace, Helvetica, Tahoma, Arial, STXihei, "STHeiti Light", "Microsoft YaHei", sans-serif
-}
-
-code,
-kbd,
-tt,
-var {
-	font-size: 15px;
-	font-size: .9375rem
-}
-
-abbr,
-acronym {
-	border-bottom: 1px dotted #666;
-	cursor: help
-}
-
-mark,
-ins {
-	background: #fff9c0;
-	text-decoration: none
-}
-
-big {
-	font-size: 125%
-}
-
-/*--------------------------------------------------------------
-# Elements
---------------------------------------------------------------*/
-html {
-	box-sizing: border-box
-}
-
-* {
-	box-sizing: border-box
-}
-
-*:before,
-*:after {
-	box-sizing: inherit
-}
-
-body {
-	background: #fff;
-	background-attachment: fixed;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-	content: ""
-}
-
-blockquote,
-q {
-	quotes: """"
-}
-
-hr {
-	background-color: #ccc;
-	border: 0;
-	height: 1px;
-	margin-bottom: 1.5em
-}
-
-ul,
-ol {
-	margin: 0 0 1.5em 3em
-}
-
-ul {
-	list-style: disc
-}
-
-ol {
-	list-style: decimal
-}
-
-li>ul,
-li>ol {
-	margin-bottom: 0;
-	margin-left: 1.5em
-}
-
-dt {
-	font-weight: 700
-}
-
-dd {
-	margin: 0 1.5em 1.5em
-}
-
-img {
-	height: auto;
-	max-width: 100%
-}
-
-table {
-	width: 100%
-}
-
-/*--------------------------------------------------------------
-# Forms
---------------------------------------------------------------*/
-button,
-input[type=button],
-input[type=reset],
-input[type=submit] {
-	border: 1px solid;
-	border-color: #ccc #ccc #bbb;
-	border-radius: 3px;
-	background: #e6e6e6;
-	box-shadow: none;
-	color: rgba(0, 0, 0, .8);
-	font-size: 12px;
-	font-size: .75rem;
-	line-height: 1;
-	padding: .6em 1em .4em
-}
-
-button:hover,
-input[type=button]:hover,
-input[type=reset]:hover,
-input[type=submit]:hover {
-	border-color: #ccc #bbb #aaa;
-	box-shadow: none
-}
-
-button:focus,
-input[type=button]:focus,
-input[type=reset]:focus,
-input[type=submit]:focus,
-button:active,
-input[type=button]:active,
-input[type=reset]:active,
-input[type=submit]:active {
-	border-color: #aaa #bbb #bbb;
-	box-shadow: none
-}
-
-input[type=text],
-input[type=email],
-input[type=url],
-input[type=password],
-input[type=search],
-input[type=number],
-input[type=tel],
-input[type=range],
-input[type=date],
-input[type=month],
-input[type=week],
-input[type=time],
-input[type=datetime],
-input[type=datetime-local],
-input[type=color],
-textarea {
-	color: #666;
-	border: 1px solid #ccc;
-	border-radius: 3px
-}
-
-select {
-	border: 1px solid #ccc
-}
-
-input[type=text]:focus,
-input[type=email]:focus,
-input[type=url]:focus,
-input[type=password]:focus,
-input[type=search]:focus,
-input[type=number]:focus,
-input[type=tel]:focus,
-input[type=range]:focus,
-input[type=date]:focus,
-input[type=month]:focus,
-input[type=week]:focus,
-input[type=time]:focus,
-input[type=datetime]:focus,
-input[type=datetime-local]:focus,
-input[type=color]:focus,
-textarea:focus {
-	color: #111
-}
-
-input[type=text],
-input[type=email],
-input[type=url],
-input[type=password],
-input[type=search],
-input[type=number],
-input[type=tel],
-input[type=range],
-input[type=date],
-input[type=month],
-input[type=week],
-input[type=time],
-input[type=datetime],
-input[type=datetime-local],
-input[type=color] {
-	padding: 3px
-}
-
-textarea {
-	padding-left: 3px;
-	width: 100%;
-	color: #a5a5a5
-}
-
-/*--------------------------------------------------------------
-## Links
---------------------------------------------------------------*/
-a {
-	color: #e67474;
-	outline: none;
-	transition: color .2s ease-out, border .2s ease-out, opacity .2s ease-out
-}
-
-a:hover,
-a:focus,
-a:active {
-	color: orange
-}
-
-a:focus {
-	outline: none
-}
-
-a:hover,
-a:active {
-	outline: none;
-	color: orange
-}
 
 /*--------------------------------------------------------------
 ## body
@@ -876,8 +314,16 @@ a:active {
 	pointer-events: none;
 }
 
-.post-header h1.cat-title,
-.post-header h1.entry-title {
+.pattern-header {
+  display: flex;
+}
+
+.pattern-center + .pattern-title {
+  position: absolute;
+}
+
+.pattern-title h1.cat-title,
+.pattern-title h1.entry-title {
 	font-size: 40px;
 	font-weight: 500;
 	margin: auto;
@@ -885,7 +331,7 @@ a:active {
 	border: 0
 }
 
-.post-header .cat-des {
+.pattern-title .cat-des {
 	font-size: 16px;
 	display: block
 }
@@ -894,24 +340,24 @@ a:active {
 	display: none
 }
 
-header.post-header {
+.pattern-title {
 	padding: 0 10px;
 }
 
-.post-header h1.entry-title {
+.pattern-title h1.entry-title {
 	margin: 0;
 	font-size: 32px;
 	width: 100%
 }
 
-.page-header h1.entry-title {
+.pattern-title h1.entry-title {
   margin: 0;
 	font-size: 32px;
 	width: 100%;
   text-align: center;
 }
 
-.page-header h1.entry-title:before {
+.pattern-title h1.entry-title:before {
 	content: "{";
 	color: #f8ba0b;
 	font-size: 1.5em;
@@ -919,7 +365,7 @@ header.post-header {
 	vertical-align: sub
 }
 
-.page-header h1.entry-title:after {
+.pattern-title h1.entry-title:after {
 	content: "}";
 	color: #f8ba0b;
 	font-size: 1.5em;
@@ -8207,10 +7653,6 @@ td.hljs-ln-numbers {
 	transform: none !important;
 }
 
-.chinese-font {
-	font-family: 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif
-}
-
 .chinese-tranditional-font {
 	font-family: Helvetica, Tahoma, Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif
 }
@@ -8229,16 +7671,6 @@ td.hljs-ln-numbers {
 
 .Ubuntu-font {
 	font-family: 'Ubuntu', sans-serif
-}
-
-.serif {
-	font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif', 'source-han-serif-sc', 'PT Serif', 'SongTi SC', 'MicroSoft Yahei', Georgia, serif
-}
-
-@media (max-width:860px) {
-	.serif {
-		font-family: 'Merriweather Sans', Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', 'WenQuanYi Micro Hei', sans-serif
-	}
 }
 
 .moe-mashiro {

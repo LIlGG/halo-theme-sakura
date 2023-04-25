@@ -1,0 +1,41 @@
+button {
+  margin: 0;
+  overflow: visible;
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid;
+	border-color: #ccc #ccc #bbb;
+	border-radius: 3px;
+	background: #e6e6e6;
+	box-shadow: none;
+	color: rgba(0, 0, 0, .8);
+	font-size: .75rem;
+	line-height: 1;
+	padding: .6em 1em .4em;
+  text-transform: none;
+  -webkit-appearance: button;
+
+  &:hover {
+    border-color: #ccc #bbb #aaa;
+    box-shadow: none;
+  }
+
+  &:focus {
+    border-color: #aaa #bbb #bbb;
+    box-shadow: none;
+  }
+
+  &:active {
+    border-color: #aaa #bbb #bbb;
+    box-shadow: none;
+  }
+}
+
+button[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
