@@ -1,10 +1,14 @@
 <th:block th:fragment="content-links">
   <article>
+    <header class="pattern-header page-header link-page-header" itemprop="name headline">
+      <h1 class="entry-title" th:text="${singlePage.spec.title}"></h1>
+    </header>
+    
     <th:block
       th:if="${_templateId == 'page'}"
       th:utext="${singlePage.content.content}">
     </th:block>
-    <div class="links">
+    <div class="links" th:if="${pluginFinder.available('PluginLinks')}">
       <th:block th:each="group : ${linkFinder.groupBy()}">
         <h3 class="link-title">
           <span class="fake-title" th:text="${group.spec.displayName}"></span>
