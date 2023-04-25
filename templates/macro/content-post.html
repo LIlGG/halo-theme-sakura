@@ -1,10 +1,6 @@
 <th:block th:fragment="content-post(post)">
-  <article
-    th:id="'post-'+${post.metadata.name}"
-    class="post-article"
-    th:data-owner="${post.owner.displayName}"
-    th:data-url="${post.status.permalink}"
-  >
+  <article th:id="'post-'+${post.metadata.name}" class="post-article" th:data-owner="${post.owner.displayName}"
+    th:data-url="${post.status.permalink}">
     <link itemprop="mainEntityOfPage" th:href="@{${post.status.permalink}}" />
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -24,22 +20,18 @@
 
     <header class="pattern-header post-header" itemprop="name headline">
       <h1 class="entry-title" th:text="${post.spec.title}"></h1>
-      <div class="post-meta-container">
+      <div class="pattern-meta-container">
         <th:block th:replace="~{module/post/post-meta :: post-meta(${post})}" />
       </div>
     </header>
-    <!-- <header class="entry-header">
-      <h1 class="entry-title" th:text="${post.spec.title}"></h1>
-      <p class="entry-census">
-        <th:block th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></th:block>
-        &nbsp;&nbsp;<span class="i18n" data-iname="post.visits" th:attr="data-ivalue=${post.stats.visit}"></span>
-      </p>
-      <hr />
-    </header> -->
-    
+
     <!--/* post body */-->
     <div class="entry-content">
       <th:block th:utext="${post.content.content}"></th:block>
+    </div>
+
+    <!--/* TODO: post footer */-->
+    <div>
       <p>
         Q.E.D.
         <i class="fa fa-meetup" aria-hidden="true" style="color: #d34836"></i>
@@ -50,11 +42,9 @@
       <div class="toc"></div>
     </div>
 
-    <!--/* .entry-content */-->
     <div
       th:if="${not #strings.isEmpty(theme.config.post.alipay_code)} or ${not #strings.isEmpty(theme.config.post.wechat_code)}"
-      class="single-reward"
-    >
+      class="single-reward">
       <div class="reward-open">
         <span class="i18n" data-iname="post.reward"></span>
         <div class="reward-main">
@@ -79,17 +69,11 @@
       <div class="post-tags">
         <th:block th:if="${not #lists.isEmpty(post.tags)}">
           <i class="iconfont icon-tags"></i>
-          <a
-            th:each="tag : ${post.tags}"
-            th:href="@{${tag.status.permalink}}"
-            rel="tag"
-            th:text="${tag.spec.displayName}"
-          ></a>
+          <a th:each="tag : ${post.tags}" th:href="@{${tag.status.permalink}}" rel="tag"
+            th:text="${tag.spec.displayName}"></a>
         </th:block>
       </div>
       <th:block th:replace="~{module/sharelike :: sharelike(${post})}" />
     </footer>
-    <!--/* .entry-footer */-->
   </article>
-  <!--/* #post-## */-->
 </th:block>

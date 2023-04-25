@@ -1,14 +1,14 @@
 <th:block th:fragment="content-page(page)">
-  <article
-    th:id="'post-'+${page.metadata.name}"
-    th:class="'post-item post-'+${page.metadata.name}+' page type-page status-publish hentry'"
-  >
-    <header
-      th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(page.spec.cover)} or (${#annotations.getOrDefault(page, 'randomImage', true)} and ${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
-      class="entry-header"
-    >
+  <article th:id="|post-${page.metadata.name}|" class="post-item page type-page status-publish hentry"
+    th:classappend="|post-${page.metadata.name}|">
+
+    <header class="pattern-header page-header" itemprop="name headline">
       <h1 class="entry-title" th:text="${page.spec.title}"></h1>
     </header>
+<!-- 
+    <header class="entry-header">
+      <h1 class="entry-title" th:text="${page.spec.title}"></h1>
+    </header> -->
     <!--/* .entry-header */-->
     <div th:if="${#annotations.getOrDefault(page, 'toc', true)}" class="toc-container">
       <div class="toc"></div>
