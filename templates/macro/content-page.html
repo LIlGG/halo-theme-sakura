@@ -5,10 +5,7 @@
     <header class="pattern-header page-header" itemprop="name headline">
       <h1 class="entry-title" th:text="${page.spec.title}"></h1>
     </header>
-<!-- 
-    <header class="entry-header">
-      <h1 class="entry-title" th:text="${page.spec.title}"></h1>
-    </header> -->
+
     <!--/* .entry-header */-->
     <div th:if="${#annotations.getOrDefault(page, 'toc', true)}" class="toc-container">
       <div class="toc"></div>

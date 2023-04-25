@@ -988,7 +988,15 @@ header.post-header {
 .pattern-center + .site-content .page-header {
   margin-top: -285px;
   text-align: center;
-  margin-bottom: 230px;
+  margin-bottom: 200px;
+}
+
+.pattern-center + .site-content .page-header.link-page-header {
+  margin-top: -245px;
+}
+
+.pattern-center + .site-content .page-header h1.entry-title {
+  font-size: 40px;
 }
 
 .pattern-center + .site-content .page-header h1.entry-title:before {
