@@ -18,13 +18,6 @@
       <meta itemprop="description" th:content="${post.status.excerpt}" />
     </span>
 
-    <header class="pattern-header post-header" itemprop="name headline">
-      <h1 class="entry-title" th:text="${post.spec.title}"></h1>
-      <div class="pattern-meta-container">
-        <th:block th:replace="~{module/post/post-meta :: post-meta(${post})}" />
-      </div>
-    </header>
-
     <!--/* post body */-->
     <div class="entry-content">
       <th:block th:utext="${post.content.content}"></th:block>

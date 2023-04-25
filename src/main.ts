@@ -1,5 +1,5 @@
 import "@/module/index";
-import "@/css/index.css";
+import "@/css/main.css";
 
 /* 核心启动，通常不建议也不应当由用户调用，只能由启动代码使用  */
 interface Sakura {
