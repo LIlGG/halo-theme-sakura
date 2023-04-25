@@ -54,7 +54,7 @@ Tags: LIlGG
 }
 
 .searchbox,
-.site-top .lower,
+.header-inner .lower,
 .header-user-avatar {
 	-webkit-animation: searchbox 1s;
 	animation: searchbox 1s;
@@ -731,7 +731,7 @@ a:active {
 /*--------------------------------------------------------------
 ## body
 --------------------------------------------------------------*/
-.site-top {
+.header-inner {
 	width: 100%;
 	display: block;
 	margin: 0 auto;
@@ -1091,52 +1091,55 @@ header.post-header {
 	}
 }
 
+/* 菜单 */
 .site-header {
-	width: 100%;
-	height: 75px;
-  top: 0;
-  z-index: 9999;
   position: relative;
+  right: 0;
+  width: 100%;
+  z-index: 999!important;
 }
 
-.site-header:hover {
-  display: block;
-	background-color: #fff
+.header-inner {
+  transition: all 1s;
 }
 
-.site-header.is-homepage {
+.site-header .header-inner {
+  height: 75px;
+  width: 100%;
+}
+
+section:not(.is-homepage) .site-header .header-inner {
+  box-shadow: 0 1px 40px -8px #00000080;
+}
+
+.yya .header-inner {
+  position: fixed;
+  top: 0;
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 1px 40px -8px #00000080;
+}
+
+/* 首页 */
+.is-homepage .site-header {
   position: fixed;
 }
 
-.site-header.is-homepage .lower-cantiner {
-	display: none
+.is-homepage .site-header:hover .header-inner {
+  position: fixed;
+  top: 0;
+  background: rgba(255,255,255,.95);
 }
 
-.site-header.is-homepage.yya .lower-cantiner {
+.is-homepage .site-header .header-inner .lower-cantiner {
+  display: none;
+}
+
+.is-homepage .site-header:hover .header-inner .lower-cantiner {
 	display: block
 }
 
-.site-header:hover.is-homepage .lower-cantiner {
-	display: block
-}
-
-.yya {
-	position: fixed;
-	left: 0;
+.is-homepage .site-header.yya .header-inner .lower-cantiner {
   display: block;
-	background: rgba(255, 255, 255, .95);
-	box-shadow: 0 1px 40px -8px rgba(0, 0, 0, .5)
-}
-
-.gizle {
-	top: 0;
-	z-index: 9999
-}
-
-
-.sabit {
-	top: 0;
-	z-index: 9999
 }
 
 .site-branding {
@@ -1189,7 +1192,7 @@ header.post-header {
 	display: none
 }
 
-.site-top .lower-cantiner {
+.header-inner .lower-cantiner {
 	position: absolute;
 	text-align: center;
 	left: -2%;
@@ -1198,7 +1201,7 @@ header.post-header {
 	width: 100%;
 }
 
-.site-top .lower {
+.header-inner .lower {
 	display: inline-block;
 	margin: 15px 0 0 10px;
 	font-size: 16px;
@@ -1207,22 +1210,22 @@ header.post-header {
 }
 
 @media (max-width:1200px) {
-	.site-top .lower {
+	.header-inner .lower {
 		left: 15px
 	}
 
-	.site-top .lower nav.hide {
+	.header-inner .lower nav.hide {
 		display: none !important
 	}
 }
 
 @media (max-width:860px) {
-	.site-top .lower nav ul li .animated-hover i {
+	.header-inner .lower nav ul li .animated-hover i {
 		display: inline
 	}
 }
 
-.site-top .lower nav {
+.header-inner .lower nav {
 	position: relative;
 	float: right;
 	display: none;
@@ -1230,7 +1233,7 @@ header.post-header {
 	animation: searchbox .2s
 }
 
-.site-top .lower nav.navbar {
+.header-inner .lower nav.navbar {
 	display: block
 }
 
@@ -1238,14 +1241,14 @@ header.post-header {
 	display: none
 }
 
-.site-top ul {
+.header-inner ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 	display: block
 }
 
-.site-top ul li {
+.header-inner ul li {
 	float: left;
 	margin: 0 13px;
 	position: relative;
@@ -1253,7 +1256,7 @@ header.post-header {
 	-webkit-transition: all 1s ease
 }
 
-.site-top ul li a {
+.header-inner ul li a {
 	padding: 10px 0;
 	display: inline-block;
 	color: #666;
@@ -1261,11 +1264,11 @@ header.post-header {
     white-space: nowrap;
 }
 
-.site-top ul li a:hover {
+.header-inner ul li a:hover {
 	color: orange
 }
 
-.site-top ul li a:after {
+.header-inner ul li a:after {
 	content: "";
 	display: block;
 	position: absolute;
@@ -1277,7 +1280,7 @@ header.post-header {
 	transition: max-width .25s ease-in-out
 }
 
-.site-top ul li ul li a:after {
+.header-inner ul li ul li a:after {
 	content: "";
 	display: none;
 	position: absolute;
@@ -1289,7 +1292,7 @@ header.post-header {
 	transition: max-width .25s ease-in-out
 }
 
-.site-top ul li a:hover:after {
+.header-inner ul li a:hover:after {
 	max-width: 100%
 }
 
@@ -1404,7 +1407,7 @@ header.post-header {
 	margin: 0
 }
 
-.site-top .menu-item-has-children li a {
+.header-inner .menu-item-has-children li a {
 	font-size: 14px;
 	padding: 8px 18px;
 	text-transform: none;
@@ -9265,7 +9268,7 @@ body.dark .ex-new-account a {
 	color: #bebebe;
 }
 
-body.dark .site-top ul li a,
+body.dark .header-inner ul li a,
 body.dark .header-user-menu a,
 body.dark #mo-nav ul li a,
 body.dark .site-title a,
@@ -9410,7 +9413,7 @@ body.dark #show-nav .line {
 }
 
 @media (max-width: 1200px) {
-	body.dark .site-top .lower nav.navbar ul {
+	body.dark .header-inner .lower nav.navbar ul {
 		background: rgba(255, 255, 255, 0);
 	}
 }

@@ -15,13 +15,13 @@
     <th:block th:replace="scripts/noscript" />
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" class="hfeed chinese-font serif">
-    <section id="main-container">
+    <section id="main-container" th:classappend="${_templateId == 'index' ? 'is-homepage' : ''}">
       <!--/* 导航栏 */-->
       <header class="site-header" itemscope itemtype="http://schema.org/WPHeader">
         <div class="header-inner" th:insert="module/header/index"></div>
       </header>
 
-      <div id="page" class="main-inner site wrapper" th:classappend="${_templateId == 'index' ? 'is-homepage' : ''}">
+      <div id="page" class="main-inner site wrapper">
         <!--/* TODO */-->
         <th:block th:replace="~{inc/pjax_decorate}" />
         <!--/* 挂钩，不同路由将使用不同的 header 进行渲染, 随机图？文本？视频？ */-->
