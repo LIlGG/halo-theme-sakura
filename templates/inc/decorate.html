@@ -1,7 +1,7 @@
 <!-- 全局公共样式 -->
 <th:block th:if="${theme.config.general.shownav}">
   <style>
-    .site-top .lower nav {
+    .header-inner .lower nav {
       display: block !important;
     }
   </style>
@@ -107,7 +107,7 @@
   #comments-navi a.prev,
   #comments-navi a.next,
   .comment h4 a:hover,
-  .site-top ul li a:hover,
+  .header-inner ul li a:hover,
   .entry-title a:hover,
   #archives-temp h3,
   span.page-numbers.current,
@@ -141,7 +141,7 @@
     background-color: /*[(${theme.config.general.theme_skin})]*/ ;
   }
 
-  .site-top ul li a:after {
+  .header-inner ul li a:after {
     background-color: /*[(${theme.config.general.theme_skin})]*/ ;
   }
 
@@ -224,7 +224,7 @@
   body.dark .openNav .icon:before,
   body.dark .openNav .icon:after,
   body.dark .openNav .icon:after,
-  body.dark .site-top ul li a:after {
+  body.dark .header-inner ul li a:after {
     background-color: /*[(${theme.config.theme.theme_dark})]*/ ;
   }
   body.dark #archives-temp h3,
@@ -239,7 +239,7 @@
   body.dark .float-content i:hover,
   body.dark .menhera-container .emoji-item:hover,
   body.dark .comment-respond .logged-in-as a:hover,
-  body.dark .site-top ul li a:hover,
+  body.dark .header-inner ul li a:hover,
   body.dark i.iconfont.js-toggle-search.iconsearch:hover {
     color: /*[(${theme.config.theme.theme_dark})]*/ ;
   }
