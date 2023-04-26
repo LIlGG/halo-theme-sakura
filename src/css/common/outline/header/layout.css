@@ -1,0 +1,52 @@
+.site-header {
+  position: relative;
+  right: 0;
+  height: 75px;
+  width: 100%;
+  z-index: 999 !important;
+
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+    table-layout: fixed;
+  }
+
+  &:after {
+    clear: both;
+  }
+
+  &.iconsearch {
+    font-size: 18px;
+    font-size: 1.125rem;
+    position: relative;
+    z-index: 9998;
+
+    &:hover {
+      cursor: pointer;
+      color: #999;
+    }
+  }
+
+  & .header-inner {
+    height: 75px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  @mixin screens-md {
+    display: none;
+  }
+}
+
+/* 导航栏向下滚动样式 */
+.yya {
+  & .header-inner {
+    position: fixed;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 1px 40px -8px #00000080;
+  }
+}

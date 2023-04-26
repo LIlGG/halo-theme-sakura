@@ -14,57 +14,15 @@
 <!--*/-->
 <figure id="centerbg" class="centerbg" th:fragment="imgbox">
   <div class="focusinfo">
-    <th:block th:if="${theme.config.mainScreen.focus_tou == 'avatar'}">
-      <div class="header-tou no-select">
-        <a th:href="${site.url}">
-          <img th:if="${#strings.isEmpty(site.logo)}" th:src="@{/assets/images/avatar.jpg}" />
-          <img th:unless="${#strings.isEmpty(site.logo)}" th:src="${site.logo}" />
-        </a>
-      </div>
-    </th:block>
-    <th:block th:if="${theme.config.mainScreen.focus_tou == 'glitch-text'}">
-      <h1
-        th:if="${not #strings.isEmpty(theme.config.mainScreen.glitch_text)}"
-        class="center-text glitch"
-        th:attr="data-text=${theme.config.mainScreen.glitch_text}"
-        th:text="${theme.config.mainScreen.glitch_text}"
-      ></h1>
-    </th:block>
-    <div th:if="${theme.config.mainScreen.focus_infos and (not #strings.isEmpty(site.subtitle) or not #arrays.isEmpty(theme.config.sns.items))}" class="header-info no-select" th:classappend="${#strings.isEmpty(site.subtitle) ? '' : 'info-desc'}">
+    <th:block th:replace="module/main_screen/focus_tou"></th:block>
+    <div class="header-info no-select" th:classappend="${#strings.isEmpty(site.subtitle) ? '' : 'info-desc'}" th:if="${theme.config.mainScreen.focus_infos and (not #strings.isEmpty(site.subtitle) or not #arrays.isEmpty(theme.config.sns.items))}" >
       <p th:if="${not #strings.isEmpty(site.subtitle)}">
         <i class="fa fa-quote-left"></i>
         <span class="desc" th:text="${site.subtitle}"></span>
         <i class="fa fa-quote-right"></i>
       </p>
-      <div class="top-social_v2" th:if="${not #arrays.isEmpty(theme.config.sns.items)}">
-        <li id="bg-pre">
-          <img class="flipx" th:src="@{/assets/images/next-b.svg}" />
-        </li>
-        <th:block th:each="item : ${theme.config.sns.items}">
-          <th:block th:if="${item.url_type == 'normal'}">
-            <li>
-              <a
-                th:href="${item.url}"
-                target="_blank"
-                class="social-sina"
-              >
-                <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" />
-              </a>
-            </li>
-          </th:block>
-          <th:block th:if="${item.url_type == 'image'}">
-            <li class="wechat">
-              <a href="#"></a>
-              <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" />
-              <div class="wechatInner">
-                <img th:src="${item.url}"/>
-              </div>
-            </li>
-          </th:block>
-        </th:block>
-        <li id="bg-next">
-          <img th:src="@{/assets/images/next-b.svg}" />
-        </li>
+      <div class="top-social" th:if="${not #arrays.isEmpty(theme.config.sns.items)}">
+        <th:block th:replace="module/main_screen/top_social"></th:block>
       </div>
     </div>
   </div>

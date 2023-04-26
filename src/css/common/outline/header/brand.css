@@ -1,0 +1,55 @@
+.site-branding {
+  float: left;
+  position: relative;
+  height: 75px;
+  line-height: 75px;
+  margin-left: -6px;
+  -webkit-animation: sitetop 1s;
+  animation: sitetop 1s;
+
+  & .site-title {
+    margin: 0;
+
+    & a {
+      color: #464646;
+      font-weight: 400;
+
+      &:hover {
+        color: orange;
+      }
+    }
+
+    & img {
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    & a,
+    & img {
+      height: 40px;
+      margin-top: 17px;
+      opacity: 0.75;
+      transition: color 0.2s ease-out, border 0.2s ease-out, opacity 0.2s ease-out;
+    }
+  }
+
+  @mixin screens-md {
+    float: right;
+    height: 50px;
+    line-height: 43px;
+    margin-right: -6px;
+
+    & .site-title {
+      font-size: 20px;
+      margin-right: 10px;
+
+      & img {
+        height: 40px;
+        line-height: 40px;
+        margin: 0;
+        vertical-align: middle;
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+.search-form {
+  &.is-visible {
+    visibility: visible;
+    opacity: 0.99;
+    -webkit-animation: elastic 0.5s;
+    animation: elastic 0.5s;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+  }
+
+  & div {
+    position: relative;
+  }
+
+  & i {
+    font-size: 32px;
+    font-size: 2rem;
+    line-height: 1;
+    color: #ddd;
+    position: absolute;
+    bottom: 15px;
+    margin-top: -16px;
+    left: 16px;
+  }
+
+  & input {
+    font-size: 24px;
+    font-size: 1.5rem;
+    background: #fff;
+    padding: 12px 24px 12px 64px;
+    width: 100%;
+    outline: none;
+    border-radius: 50px;
+    box-sizing: border-box;
+    transition: background 1s;
+
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder {
+      color: #ddd;
+    }
+  }
+
+  & .search_close {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: 0 0;
+    top: 20px;
+    right: 15px;
+    cursor: pointer;
+
+    &:before,
+    &:after {
+      background-color: #222;
+      position: absolute;
+      content: "";
+      width: 30px;
+      height: 2px;
+      top: 17px;
+      left: 2px;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.search-form-modal {
+  transition: visibility 0.25s ease, opacity 0.25s ease;
+  overflow: hidden;
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  visibility: hidden;
+  opacity: 0;
+
+  & .search-form-inner {
+    max-width: 640px;
+    padding: 0 20px;
+    margin: auto;
+    text-align: left;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    height: 285px;
+    top: 0;
+    bottom: 0;
+
+    & p {
+      padding-left: 24px;
+    }
+  }
+}

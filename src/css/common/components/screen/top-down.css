@@ -1,0 +1,17 @@
+.headertop-down {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  cursor: pointer;
+  z-index: 5;
+
+  & i {
+    font-size: 28px;
+    color: #fff;
+    transform: scale(1.5, 1);
+  }
+
+  @mixin screens-md {
+    display: none;
+  }
+}

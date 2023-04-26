@@ -1,0 +1,38 @@
+@import "screen.css";
+
+.is-homepage {
+  & .site-header {
+    position: fixed;
+
+    &.yya {
+      & .header-inner .lower-cantiner {
+        display: block;
+      }
+    }
+
+    & .header-inner {
+      transition: background 1s;
+
+      & .lower-cantiner {
+        display: none;
+      }
+    }
+
+    &:hover {
+      & .header-inner {
+        position: fixed;
+        top: 0;
+        background: rgba(255, 255, 255, 0.95);
+
+        & .lower-cantiner {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+/* 非首页时 */
+section:not(.is-homepage) .site-header .header-inner {
+  box-shadow: 0 1px 40px -8px #00000080;
+}

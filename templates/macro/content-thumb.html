@@ -26,7 +26,7 @@
       <meta itemprop="description" th:content="${post.status.excerpt}" />
     </span>
 
-    <div class="post-thumb">
+    <!-- <div class="post-thumb">
       <a th:href="@{${post.status.permalink}}" th:alt="${post.spec.title}">
         <img
           th:if="${not #strings.isEmpty(post.spec.cover)}"
@@ -57,7 +57,7 @@
           onerror="imgError(this)"
         />
       </a>
-    </div>
+    </div> -->
 
     <div class="post-content-wrap">
       <div class="post-date">

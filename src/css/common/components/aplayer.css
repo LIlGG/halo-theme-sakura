@@ -1,0 +1,101 @@
+.aplayer-miniswitcher,
+.aplayer-icon {
+  border-radius: 0 6px 6px 0 !important;
+}
+
+.aplayer {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 1px #eee;
+  border-radius: 3px;
+  margin: 15px 0;
+  font-family: "Noto Serif CJK SC", "Noto Serif CJK", "Source Han Serif SC", "Source Han Serif", "source-han-serif-sc",
+    "PT Serif", "SongTi SC", "MicroSoft Yahei", Georgia, serif;
+
+  & .aplayer-lrc {
+    &:before,
+    &:after {
+      background: rgba(255, 255, 255, 0);
+      filter: none;
+    }
+  }
+
+  & .aplayer-info {
+    padding: 9px 7px 0 10px;
+
+    & .aplayer-controller {
+      & .aplayer-bar-wrap {
+        margin-left: 1px;
+        padding-right: 3px;
+
+        & .aplayer-bar {
+          &,
+          & .aplayer-loaded,
+          & .aplayer-played {
+            height: 6px;
+            border-radius: 10px;
+          }
+
+          & .aplayer-played {
+            & .aplayer-thumb {
+              height: 12px;
+              width: 12px;
+              right: 3px;
+              box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.18);
+              transition: all 0.35s;
+            }
+          }
+        }
+      }
+
+      & .aplayer-volume-wrap {
+        & .aplayer-volume-bar-wrap {
+          & .aplayer-volume-bar {
+            right: 10.5px;
+
+            &,
+            & .aplayer-volume {
+              border-radius: 10px;
+              width: 6px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & .aplayer-list {
+    & ol {
+      & li {
+        border-top: 0;
+
+        &.aplayer-list-light {
+          background: #f8f8f8;
+        }
+      }
+    }
+  }
+}
+
+.aplayer-float {
+  background: rgba(255, 255, 255, 1);
+  margin: 0;
+
+  & .aplayer-lrc-current {
+    color: orange;
+    font-size: 15px;
+    font-weight: bold;
+  }
+}
+
+.ap-hover {
+  border-radius: 0 6px 6px 0 !important;
+  left: -66px !important;
+
+  &:hover {
+    left: 0 !important;
+  }
+}
+
+.aplayer-lrc {
+  pointer-events: none;
+}

@@ -1,0 +1,21 @@
+.site-content {
+	max-width: 800px;
+	padding: 0 10px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: transparent;
+
+  &:before, &:after {
+    content: "";
+    display: table;
+    table-layout: fixed;
+  }
+
+  &:after {
+    clear: both;
+  }
+
+  @mixin screens-md {
+    padding: 0 4%;
+  } 
+}
