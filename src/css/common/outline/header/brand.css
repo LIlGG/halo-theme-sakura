@@ -1,10 +1,7 @@
 .site-branding {
   float: left;
   position: relative;
-  height: 75px;
   line-height: 75px;
-  margin-left: -6px;
-  -webkit-animation: sitetop 1s;
   animation: sitetop 1s;
 
   & .site-title {
