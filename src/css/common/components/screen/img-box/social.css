@@ -1,0 +1,69 @@
+.top-social {
+  height: 32px;
+  margin-bottom: -15px;
+  margin-left: 10px;
+  list-style: none;
+  display: inline-block;
+
+  & img {
+    height: 35px;
+    width: 35px;
+    padding: 6px;
+    background: 0 0;
+  }
+
+  & li {
+    float: left;
+    margin-right: 13px;
+  }
+
+  & .flipx {
+    transform: scaleX(-1);
+    filter: FlipH;
+  }
+
+  & .wechat {
+    width: 35px;
+    height: 35px;
+    position: relative;
+
+    & .wechatInner {
+      width: 121px;
+      height: 121px;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.4);
+      top: 40px;
+      left: -40px;
+      opacity: 0;
+      position: absolute;
+      border-radius: 8px;
+      transition: 0.7s all ease;
+      transform: translate3d(0, 50px, 0);
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        margin-left: -15px;
+        border-width: 15px;
+        border-style: solid;
+        border-color: transparent transparent rgba(0, 0, 0, 0.4) transparent;
+      }
+
+      & img {
+        border-radius: 0;
+        width: 121px;
+        height: auto;
+        padding: 0;
+        background: 0 0;
+      }
+    }
+
+    &:hover .wechatInner {
+      transform: translate3d(0, 16px, 0);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

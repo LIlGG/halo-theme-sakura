@@ -1,0 +1,144 @@
+.change-skin-gear {
+  position: fixed;
+  bottom: -999px;
+  right: 5px;
+  width: auto;
+  height: auto;
+  z-index: 99;
+  visibility: hidden;
+  white-space: nowrap;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px 10px 0 0;
+
+  @mixin screens-md {
+    display: none !important;
+
+    & span:before {
+      content: "";
+    }
+
+    & i {
+      font-size: 20px;
+    }
+  }
+}
+
+.rotating {
+  animation: rotating 3s linear infinite;
+}
+
+/* 移动端 */
+.m-change-skin {
+  display: none;
+  position: fixed;
+  bottom: 15px;
+  right: 10px;
+  z-index: 99;
+  opacity: 0;
+  border: 0;
+  outline: 0;
+  background-color: #fff;
+  color: #404040;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
+  transition: all 0.8s ease;
+
+  &:hover {
+    color: org;
+    background-color: #fff;
+    opacity: 0.8;
+    transition: all 0.8s ease;
+  }
+
+  &.cd-is-visible {
+    opacity: 1;
+  }
+
+  @mixin screens-md {
+    display: block;
+  }
+}
+.skin-menu {
+  position: fixed;
+  bottom: 50px;
+  right: 10px;
+  height: auto;
+  width: 220px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 1px 40px -8px rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  font-family: "Ubuntu", sans-serif;
+  transform: scaleX(0);
+  transition: 0.5s;
+
+  &.show {
+    transform: scaleX(1);
+    transition: 0.5s;
+    right: 70px;
+    box-shadow: 0 1px 40px -8px rgba(0, 0, 0, 0.1);
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #fff transparent transparent;
+  }
+
+  & .row-container {
+    height: auto;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+    &.font-family-controls {
+      padding: 3px 12px 16px;
+    }
+
+    & .menu-list {
+      display: block;
+      text-align: center;
+      padding: 0;
+      margin: 10px auto;
+    }
+  }
+
+  & .menu-list {
+    & li {
+      display: inline-block;
+      margin: 6px;
+      line-height: 36px;
+      width: 36px;
+      background-color: #f5f5f5;
+      border-radius: 50%;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #fc3;
+        color: #fff;
+      }
+    }
+  }
+
+  @mixin screens-md {
+    bottom: 15px;
+    right: 70px;
+    transform: scaleY(0);
+
+    &.show {
+      transform: scaleY(1);
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+}

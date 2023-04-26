@@ -1,0 +1,15 @@
+.searchbox {
+  float: right;
+  height: 75px;
+  line-height: 75px;
+  margin-left: 20px;
+  -webkit-animation: searchbox 1s;
+  animation: searchbox 1s;
+
+  & i.iconfont.js-toggle-search.iconsearch {
+    color: #666;
+    cursor: pointer;
+    font-size: 26px;
+    transition: all 0.3s ease-in-out;
+  }
+}

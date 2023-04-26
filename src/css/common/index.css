@@ -6,7 +6,7 @@
 @import "architecture";
 
 /* 主题网格轮廓样式 */
-/* @import "outline"; */
+@import "outline";
 
 /* 基础组件样式 */
-/* @import "components"; */
+@import "components";

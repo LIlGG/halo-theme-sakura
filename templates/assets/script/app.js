@@ -456,13 +456,13 @@ var LIlGGAttachContext = {
             // 绑定完之后隐藏主题开关
             $(".skin-menu").removeClass("show");
             setTimeout(function () {
-              $(".changeSkin-gear").css("visibility", "visible");
+              $(".change-skin-gear").css("visibility", "visible");
             }, 300);
           });
         });
       });
       // 显示切换主题功能
-      $(".changeSkin-gear").css("visibility", "visible");
+      $(".change-skin-gear").css("visibility", "visible");
     };
 
     /**
@@ -528,7 +528,7 @@ var LIlGGAttachContext = {
       changeSkinGear();
     }
 
-    $(".changeSkin-gear")
+    $(".change-skin-gear")
       .off("click")
       .on("click", function () {
         $(".skin-menu").toggleClass("show");
@@ -1345,14 +1345,14 @@ var home = location.href,
       $(window).scroll(function () {
         if ($(this).scrollTop() > offset) {
           $back_to_top.addClass("cd-is-visible");
-          $(".changeSkin-gear").css("bottom", "0"); // 显示主题
+          $(".change-skin-gear").css("bottom", "0"); // 显示主题
           if ($(window).height() > 950) {
             $(".cd-top.cd-is-visible").css("top", "0");
           } else {
             $(".cd-top.cd-is-visible").css("top", $(window).height() - 950 + "px");
           }
         } else {
-          $(".changeSkin-gear").css("bottom", "-999px"); // 隐藏主题
+          $(".change-skin-gear").css("bottom", "-999px"); // 隐藏主题
           $(".cd-top.cd-is-visible").css("top", "-900px");
           $back_to_top.removeClass("cd-is-visible cd-fade-out");
         }

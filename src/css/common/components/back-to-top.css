@@ -1,0 +1,70 @@
+.cd-top {
+  position: fixed;
+  right: 25px;
+  top: -900px;
+  z-index: 99;
+  width: 70px;
+  height: 900px;
+  background-size: contain;
+  transition: all 0.5s ease-in-out;
+  opacity: 1;
+
+  &.cd-is-visible {
+    top: -326px;
+  }
+
+  &:hover,
+  &.cd-fade-out,
+  &.cd-is-visible {
+    opacity: 1;
+  }
+
+  & span {
+    display: none;
+    color: #000;
+    position: absolute;
+    bottom: 0;
+    height: 20px;
+    width: 50px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 860px) {
+    display: none;
+    height: 60px;
+    width: 50px;
+
+    & span {
+      height: 10px;
+      width: 50px;
+    }
+  }
+}
+
+/* 移动端 */
+.m-cd-top {
+  display: none;
+  opacity: 0;
+  position: fixed;
+  bottom: 70px;
+  font-size: 16px;
+  right: 10px;
+  z-index: 99;
+  border: 0;
+  outline: 0;
+  background-color: #fff;
+  color: #404040;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
+  transition: all 0.8s ease;
+
+  &.cd-is-visible {
+    opacity: 1;
+  }
+
+  @media screen and (max-width: 860px) {
+    display: block;
+  }
+}

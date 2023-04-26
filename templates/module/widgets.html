@@ -66,7 +66,7 @@
     th:if="${theme.config.plugin.is_aplayer} and ${theme.config.additional.aplayer_float}"
     id="aplayer-float"
     style="z-index: 100"
-    class="aplayer"
+    class="aplayer aplayer-float"
     data-global="true"
     th:data-id="${theme.config.additional.aplayer_id}"
     th:data-server="${theme.config.additional.aplayer_server}"
@@ -82,15 +82,14 @@
 
   <!--/* theme-change start */-->
   <th:block th:if="${theme.config.theme.theme_change}">
-    <div class="changeSkin-gear no-select">
+    <div class="change-skin-gear no-select">
       <div class="keys">
-        <span id="open-skinMenu"
-          >切换主题 | SCHEME TOOL &nbsp;<i class="iconfont icon-gear inline-block rotating"></i
+        <span>切换主题 | SCHEME TOOL &nbsp;<i class="iconfont icon-gear inline-block rotating"></i
         ></span>
       </div>
     </div>
     <!-- mobile changeskin -->
-    <button id="m-changskin"><i class="iconfont icon-gear inline-block rotating"></i></button>
+    <button id="m-changskin" class="m-change-skin"><i class="iconfont icon-gear inline-block rotating"></i></button>
     <div class="skin-menu no-select">
       <div class="theme-controls row-container">
         <ul class="menu-list">
@@ -107,8 +106,8 @@
 
   <!--/* search start */-->
   <!--/* 搜索功能由插件提供 https://github.com/halo-sigs/plugin-search-widget */-->
-  <!--/* <div class="js-search search-form search-form--modal" role="search">
-      <div class="search-form__inner">
+  <!--/* <div class="js-search search-form search-form-modal" role="search">
+      <div class="search-form-inner">
         <div>
           <p class="micro mb-">输入后按回车搜索 ...</p>
           <i class="iconfont icon-search"></i>
