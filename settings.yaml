@@ -1185,7 +1185,7 @@ spec:
         - $formkit: text
           name: reply_mail_img
           label: 邮件回复模块图片
-          value: https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/other/head_2.jpg
+          value: /themes/theme-sakura/assets/images/other/head.jpg
         - $formkit: select
           name: top_back_mode
           label: 回到顶部样式
@@ -1199,11 +1199,11 @@ spec:
         - $formkit: text
           name: top_back_img
           label: 回到顶部图片
-          value: https://takagi-api.com/directlink/1/cdn/1.0.8/img/Sakura/images/scroll.png
+          value: /themes/theme-sakura/assets/images/scroll.png
         - $formkit: text
           name: footer_logo
           label: 页脚 Logo
-          value: https://takagi-api.com/directlink/1/cdn/1.0.8/img/Sakura/images/sakura.svg
+          value: /themes/theme-sakura/assets/images/sakura.svg
         - $formkit: text
           name: footer_case_number
           label: ICP 备案信息

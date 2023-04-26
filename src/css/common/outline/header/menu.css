@@ -1,10 +1,9 @@
 .lower-cantiner {
-  position: absolute;
   text-align: center;
-  left: -2%;
   min-width: 758.4px;
   pointer-events: none;
   width: 100%;
+  height: 100%;
 
   & .lower {
     -webkit-animation: searchbox 1s;
@@ -73,6 +72,13 @@
             & li {
               width: 100%;
               margin: 0;
+
+              & a {
+                &:after {
+                  content: "";
+                  display: none;
+                }
+              }
             }
           }
 
@@ -97,20 +103,6 @@
               width: 100%;
               max-width: 0;
               transition: max-width 0.25s ease-in-out;
-            }
-
-            & ul li a {
-              &:after {
-                content: "";
-                display: none;
-                position: absolute;
-                bottom: -21px;
-                height: 6px;
-                background-color: #fe9600;
-                width: 100%;
-                max-width: 0;
-                transition: max-width 0.25s ease-in-out;
-              }
             }
 
             &:hover:after {
