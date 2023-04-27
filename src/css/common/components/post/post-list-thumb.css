@@ -1,0 +1,242 @@
+.post-list-thumb {
+  display: flex;
+  width: 100%;
+  height: 300px;
+  position: relative;
+  margin: 20px 0 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255);
+  box-shadow: 0 1px 20px -6px rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  animation: main 0.6s;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    & img {
+      transform: scale(1.1);
+    }
+  }
+
+  & i {
+    margin-right: 5px;
+    color: #989898;
+    font-size: 14px;
+  }
+
+  & a {
+    color: #504e4e;
+  }
+
+  & .post-thumb {
+    width: 55%;
+
+    & a {
+      height: 300px;
+      position: relative;
+      display: block;
+      background-repeat: no-repeat;
+      background-size: cover;
+      overflow: hidden;
+      border-radius: 0 10px 10px 0;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        pointer-events: none;
+        transition: all 0.6s;
+      }
+    }
+  }
+
+  & .post-content-wrap {
+    position: relative;
+    display: inline-block;
+    padding-left: 0;
+    width: 40%;
+    margin: 20px 10px 0;
+    padding-right: 30px;
+
+    & .post-date {
+      color: #888;
+      font-size: 12px;
+      transition: background 1s;
+    }
+
+    & .post-meta {
+      &,
+      & a {
+        color: #888;
+        font-size: 12px;
+      }
+
+      & .comments-number {
+        margin: 0 10px;
+      }
+    }
+
+    & .float-content {
+      position: relative;
+      width: 100%;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      z-index: 50;
+      color: rgba(0, 0, 0, 0.66);
+
+      & .post-text {
+        display: inline-block;
+        text-align: justify;
+        font-size: 14px;
+      }
+
+      & i {
+        font-size: 25px;
+        color: #666;
+      }
+
+      & p {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        height: 67.5px;
+        overflow: hidden;
+      }
+    }
+  }
+
+  &.post-list-thumb-left {
+    flex-direction: row-reverse;
+
+    & .post-content-wrap {
+      padding-left: 10px;
+      text-align: right;
+      margin: 20px 10px 10px 0;
+    }
+
+    & .post-thumb {
+      & a {
+        border-radius: 10px 0 0 10px;
+      }
+    }
+  }
+
+  & .post-title {
+    color: #888;
+    font-size: 12px;
+
+    & h3 {
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      word-wrap: break-word;
+    }
+  }
+
+  @mixin screens-md {
+    margin: 0;
+    height: auto;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+
+    &:hover {
+      box-shadow: 0 5px 10px 5px rgba(110, 110, 110, 0.4);
+    }
+
+    &:before {
+      content: "";
+      width: 1px;
+      height: 100px;
+      background-color: rgba(0, 0, 0, 0);
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      bottom: -101px;
+      z-index: 0;
+    }
+
+    & .post-thumb {
+      width: 100%;
+      left: 0;
+
+      & a {
+        border-radius: 10px;
+      }
+    }
+
+    & .post-content-wrap {
+      width: 100%;
+      left: 0;
+      text-align: left;
+      margin: 0;
+      padding: 20px;
+      float: none;
+      box-shadow: none;
+      border-top: 0;
+
+      & .float-content {
+        width: 100%;
+        left: 0;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        transition: color 1s;
+
+        & p {
+          height: auto;
+          display: block;
+        }
+
+        & i {
+          &:hover {
+            transition: background 1s;
+          }
+        }
+
+        & .post-bottom {
+          display: none;
+          text-align: right;
+        }
+      }
+    }
+
+    &.post-list-thumb-left {
+      & .post-content-wrap {
+        text-align: left;
+        margin: 0;
+        padding: 20px;
+        float: none;
+        box-shadow: none;
+        border-top: 0;
+      }
+
+      & .post-thumb {
+        & a {
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+
+  @mixin screens-sm {
+    & .post-thumb {
+      & a {
+        height: 210px;
+      }
+    }
+
+    & .post-content-wrap {
+      & .float-content {
+        & .post-text {
+          font-size: 13px;
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+}
