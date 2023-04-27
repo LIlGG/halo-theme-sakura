@@ -1,0 +1,28 @@
+.notice {
+  padding: 20px;
+  border: 1px dashed #e6e6e6;
+  color: #969696;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  background: #fbfbfb50;
+  border-radius: 10px;
+  animation: main 0.6s;
+
+  & .notice-content {
+    display: initial;
+    vertical-align: middle;
+  }
+
+  & i {
+    float: left;
+    color: #999;
+    font-size: 18px;
+    padding-right: 10px;
+  }
+
+  @mixin screens-md {
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+}

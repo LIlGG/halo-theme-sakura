@@ -1457,6 +1457,10 @@ function headertop_down() {
   );
 }
 
+function imgError() {
+  return (this.src = "/assets/images/temp.jpg");
+}
+
 var supplement = function () {
   var PackeryMode = Isotope.LayoutMode.modes.packery;
   var __resetLayout = PackeryMode.prototype._resetLayout;

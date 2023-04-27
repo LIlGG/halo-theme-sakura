@@ -1,0 +1,20 @@
+.site-main {
+  padding: 40px 0 0;
+
+  .main-title {
+    color: #666;
+    font-size: 16px;
+    font-weight: 400;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+    border-bottom: 1px dashed #ececec;
+    transition: color 1s;
+    transition: border 1s;
+  }
+
+  @mixin screens-md {
+    padding: 15px 0 0;
+  }
+}
+
+

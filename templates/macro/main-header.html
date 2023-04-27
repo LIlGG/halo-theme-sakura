@@ -43,7 +43,7 @@
             data-sizes="auto"
             th:class="lazyload"
             th:classappend="${theme.config.random_image.rimage_cover_lqip == 'lowquality' ?: 'blur-up'}"
-            th:onerror="'javascript:this.src=' + @{/assets/images/temp.jpg}"
+            onerror="imgError(this)"
             itemprop="contentUrl"
           />
         </th:block>
