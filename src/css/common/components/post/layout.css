@@ -1,0 +1,14 @@
+.entry-title {
+  & a {
+    color: #504e4e;
+
+    &:hover {
+      color: orange;
+    }
+  }
+}
+
+.entry-footer {
+  margin: 0 0 0 17%;
+  list-style: none;
+}

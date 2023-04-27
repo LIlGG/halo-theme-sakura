@@ -1,4 +1,4 @@
-s<article th:fragment="content(post)" class="post post-list" itemscope itemtype="http://schema.org/Article">
+<article th:fragment="content(post)" class="post post-list" itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" th:href="@{${post.status.permalink}}" />
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -33,6 +33,7 @@ s<article th:fragment="content(post)" class="post post-list" itemscope itemtype=
         height="150"
         th:src="${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '' }+'&th=150'"
         class="attachment-post-thumbnail size-post-thumbnail"
+        onerror="imgError(this)"
       />
       <img
         th:if="${#strings.isEmpty(post.spec.cover)} and (${not theme.config.random_image.rimage_cover_open} or ${#strings.isEmpty(theme.config.random_image.rimage_url)})"
@@ -58,7 +59,7 @@ s<article th:fragment="content(post)" class="post post-list" itemscope itemtype=
       </a>
     </div>
     <div class="info-meta">
-      <div th:if="${theme.config.others.keep_record_mode}" class="comnum">
+      <div class="comnum" th:unless="${theme.config.others.keep_record_mode}">
         <span>
           <i class="iconfont icon-mark"></i>
           <a th:href="@{${post.status.permalink}+'#comments'}">

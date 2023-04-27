@@ -1,4 +1,10 @@
-@import "screen.css";
+@import "header.css";
+
+@import "notice.css";
+
+@import "top-feature.css";
+
+@import "content.css";
 
 .is-homepage {
   & .site-header {

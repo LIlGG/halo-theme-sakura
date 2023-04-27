@@ -116,6 +116,7 @@ spec:
         - $formkit: radio
           name: head_focus
           id: head_focus
+          key: head_focus
           label: 总开关
           help: 关闭之后第一屏将直接从文章开始显示
           value: true
@@ -130,9 +131,9 @@ spec:
           id: focus_tou
           key: focus_tou
           label: 头部样式
-          value: glitch-text
+          value: "glitch-text"
           options:
-            - value: no-tou
+            - value: "no-tou"
               label: 无
             - value: avatar
               label: 头像
@@ -140,6 +141,8 @@ spec:
               label: 故障文字
         - $formkit: text
           name: glitch_text
+          id: glitch_text
+          key: glitch_text
           if: "$get(focus_tou).value == 'glitch-text'"
           label: 聚焦故障文本
           value: Hi,Friend
@@ -197,6 +200,7 @@ spec:
           if: "$get(head_focus).value == true"
           name: bgvideo
           id: bgvideo
+          key: bgvideo
           label: 开启背景视频
           value: false
           options:
@@ -208,6 +212,7 @@ spec:
           if: "$get(bgvideo).value == true"
           name: bgvideo_server
           id: bgvideo_server
+          key: bgvideo_server
           label: 视频服务者
           value: local
           options:
@@ -216,22 +221,29 @@ spec:
             - value: bilibili
               label: 哔哩哔哩
         - $formkit: attachment
-          if: "$get(bgvideo_server).value == local"
+          if: "$get(bgvideo_server).value == 'local'"
+          id: bgvideo_url
           name: bgvideo_url
           key: bgvideo_url
           label: 视频/视频链接
         - $formkit: text
-          if: "$get(bgvideo_server).value == bilibili"
+          if: "$get(bgvideo_server).value == 'bilibili'"
           name: bgvideo_id
+          key: bgvideo_id
+          id: bgvideo_id
           label: AV/BV号
         - $formkit: text
-          if: "$get(bgvideo_server).value == bilibili"
+          if: "$get(bgvideo_server).value == 'bilibili'"
           name: bilibili_video_cid
+          key: bilibili_video_cid
+          id: bilibili_video_cid
           label: B站视频分P id
           help: 分P ID不设置则默认为 1P
         - $formkit: select
-          if: "$get(bgvideo_server).value == bilibili"
+          if: "$get(bgvideo_server).value == 'bilibili'"
           name: bilibili_video_qn
+          key: bilibili_video_qn
+          id: bilibili_video_qn
           label: B站视频清晰度
           value: 6
           help: 这里展示的是除了 4K 之外的所有清晰度，并不代表目标视频的清晰度，请确定好目标视频所支持的清晰度，否则将报错
@@ -253,8 +265,10 @@ spec:
             - value: 116
               label: 1080P60
         - $formkit: select
-          if: "$get(bgvideo_server).value == bilibili"
+          if: "$get(bgvideo_server).value == 'bilibili'"
           name: bilibili_video_vtype
+          key: bilibili_video_vtype
+          id: bilibili_video_vtype
           label: B站视频格式
           value: 0
           help: MP4 只有流畅或清晰
@@ -397,7 +411,7 @@ spec:
           if: "$get(top_feature).value == true"
           name: features
           max: 3
-          label: 聚焦图
+          label: 聚焦内容
           value: []
           children:
             - $formkit: text
@@ -1185,7 +1199,7 @@ spec:
         - $formkit: text
           name: reply_mail_img
           label: 邮件回复模块图片
-          value: /themes/theme-sakura/assets/images/other/head.jpg
+          value: /themes/theme-sakura/assets/images/other/head_2.jpg
         - $formkit: select
           name: top_back_mode
           label: 回到顶部样式

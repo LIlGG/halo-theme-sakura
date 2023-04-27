@@ -15,21 +15,25 @@
       data-iname="home.feature.title"
     ></span>
   </h1>
-  <div th:each="feature : ${theme.config.focus.features}" class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a th:href="${feature.link}" target="_blank">
-        <div class="img">
-          <img th:src="${feature.image}" />
-        </div>
-        <div class="info">
-          <h3>
-            <span th:text="${feature.title}"></span>
-          </h3>
-          <p>
-            <span th:text="${feature.description}"></span>
-          </p>
-        </div>
-      </a>
+
+  <div class="top-feature-inner">
+    <div class="top-feature-v2" th:each="feature : ${theme.config.focus.features}">
+      <div class="the-feature square from_left_and_right">
+        <a th:href="${feature.link}" target="_blank">
+          <div class="img">
+            <img th:src="${feature.image}" />
+          </div>
+          <div class="info">
+            <h3>
+              <span th:text="${feature.title}"></span>
+            </h3>
+            <p>
+              <span th:text="${feature.description}"></span>
+            </p>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
+
 </div>
