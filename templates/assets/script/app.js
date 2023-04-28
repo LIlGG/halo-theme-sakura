@@ -769,7 +769,7 @@ var LIlGGAttachContext = {
           var $like = that.find(".journal-label .journal-like");
           if ($like.length > 0) {
             let jid = that.data("name");
-            if(!jid) {
+            if (!jid) {
               return;
             }
             journalIds.includes(jid) ? $like.addClass("on") : "";
@@ -790,11 +790,11 @@ var LIlGGAttachContext = {
                   url: "/apis/api.halo.run/v1alpha1/trackers/upvote",
                   type: "post",
                   dataType: "json",
-                  contentType : 'application/json',
+                  contentType: "application/json",
                   data: JSON.stringify({
                     group: "moment.halo.run",
                     plural: "moments",
-                    name: jid
+                    name: jid,
                   }),
                   complete(res) {
                     if (res.status != 200) {
@@ -807,7 +807,7 @@ var LIlGGAttachContext = {
                     Util.setLocalStorage("journalIds", journalIds, 60 * 60 * 24);
                     $dom.children(":last-child").text(links);
                     $dom.data("links", links);
-                  }
+                  },
                 });
               });
           }
@@ -1281,7 +1281,7 @@ var home = location.href,
     // Ajax加载文章/说说
     XLS: function () {
       var $body = window.opera ? (document.compatMode == "CSS1Compat" ? $("html") : $("body")) : $("html,body");
-      $body.on("click", "#pagination a", function () {
+      $body.on("click", "#pagination a", function (e) {
         var tempScrollTop = $(window).scrollTop();
         $(this).addClass("loading").text("");
         $.ajax({
@@ -1291,7 +1291,7 @@ var home = location.href,
             var result = $(data).find("#main .post");
             var nextHref = $(data).find("#pagination a").attr("href");
             // 添加新的内容
-            $("#main").append(result.fadeIn(500));
+            $("#main").append(result);
             $("#pagination a").removeClass("loading").text("下一页");
             // 加载完成不改变位置
             $(window).scrollTop(tempScrollTop);
@@ -1305,6 +1305,8 @@ var home = location.href,
             I18N.init();
           },
         });
+        e.stopPropagation();
+        e.preventDefault();
         return false;
       });
       /**

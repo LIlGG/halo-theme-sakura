@@ -1,0 +1,187 @@
+.post-pagination {
+  overflow: hidden;
+  width: 100%;
+  margin: 55px 0;
+  background: #000;
+
+  & .background {
+    position: absolute;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-size: cover;
+    transition: opacity 0.15s ease-out;
+  }
+
+  & .info {
+    position: relative;
+    z-index: 98;
+  }
+
+  & article,
+  & a {
+    position: relative;
+    display: block;
+    float: left;
+    overflow: hidden;
+    height: 100%;
+    padding: 55px 25px;
+    text-align: center;
+
+    &:hover {
+      & > .background {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  & .category {
+    font-size: 10px;
+    padding: 7px 15px;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 90px;
+    background: #7fbb00;
+  }
+
+  & h3 {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 30px;
+    margin: 20px 0;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+
+    & a {
+      display: block;
+      color: #fff;
+    }
+  }
+
+  & hr {
+    width: 15%;
+    height: 0;
+    border: 0;
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  & .label {
+    font-size: 13px;
+    display: block;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  & .full {
+    width: 100%;
+  }
+
+  & .half {
+    width: 50%;
+    float: left;
+  }
+
+  & .third {
+    width: 33.333%;
+  }
+
+  &.nextprev {
+    & article,
+    & a {
+      height: 150px;
+      padding: 55px 40px;
+      text-align: left;
+    }
+
+    & a {
+      width: 100%;
+    }
+
+    & .label {
+      position: absolute;
+      z-index: 100;
+      top: 0;
+    }
+
+    & .info {
+      position: absolute;
+      width: 70%;
+    }
+
+    & .next,
+    & .previous {
+      & h3 {
+        font-size: 14px;
+      }
+    }
+
+    & .previous {
+      text-align: left;
+
+      & .info {
+        bottom: 40px;
+        left: 40px;
+      }
+
+      & .label {
+        top: 40px;
+        left: 40px;
+      }
+
+      & hr {
+        float: left;
+        margin: 0;
+      }
+    }
+
+    & .next {
+      & .info {
+        text-align: right;
+        right: 40px;
+        bottom: 40px;
+      }
+
+      & .label {
+        top: 40px;
+        right: 40px;
+      }
+
+      & hr {
+        float: right;
+        margin: 0;
+      }
+    }
+  }
+
+  &.post-squares-featured {
+    height: 250px;
+  }
+
+  @mixin screens-md {
+    & .third {
+      width: 100%;
+    }
+
+    & .half {
+      float: none;
+      width: 100%;
+    }
+
+    &.post-squares-featured {
+      display: none;
+    }
+
+    &.nextprev {
+      & article {
+        height: 150px;
+        width: 100%;
+      }
+    }
+  }
+}

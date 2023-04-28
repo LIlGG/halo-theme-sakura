@@ -1199,7 +1199,7 @@ spec:
         - $formkit: text
           name: reply_mail_img
           label: 邮件回复模块图片
-          value: /themes/theme-sakura/assets/images/other/head_2.jpg
+          value: /themes/theme-sakura/assets/images/other/head.jpg
         - $formkit: select
           name: top_back_mode
           label: 回到顶部样式
