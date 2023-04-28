@@ -38,10 +38,6 @@ Tags: LIlGG
   animation: main 1s;
 }
 
-.pattern-center {
-  -webkit-animation: header 1s;
-  animation: header 1s;
-}
 
 .comments {
   -webkit-animation: main 0.6s;
@@ -235,24 +231,6 @@ Tags: LIlGG
   transition: 0.4s ease all;
 }
 
-.pattern-center {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-}
-
-.pattern-attachment-img:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
 /* .pattern-center:after {
 	content: '';
 	width: 150%;
@@ -265,177 +243,8 @@ Tags: LIlGG
 	z-index: 2;
 } */
 
-.pattern-attachment-img {
-  height: 400px;
-}
-
-.pattern-attachment-img img {
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  pointer-events: none;
-}
-
 .pattern-header {
   display: flex;
-}
-
-.pattern-center + .pattern-title {
-  position: absolute;
-}
-
-.pattern-title h1.cat-title,
-.pattern-title h1.entry-title {
-  font-size: 40px;
-  font-weight: 500;
-  margin: auto;
-  padding: 0;
-  border: 0;
-}
-
-.pattern-title .cat-des {
-  font-size: 16px;
-  display: block;
-}
-
-.single-center:after {
-  display: none;
-}
-
-.pattern-title {
-  padding: 0 10px;
-}
-
-.pattern-title h1.entry-title {
-  margin: 0;
-  font-size: 32px;
-  width: 100%;
-}
-
-.pattern-title h1.entry-title {
-  margin: 0;
-  font-size: 32px;
-  width: 100%;
-  text-align: center;
-}
-
-.pattern-title h1.entry-title:before {
-  content: "{";
-  color: #f8ba0b;
-  font-size: 1.5em;
-  margin-right: 6px;
-  vertical-align: sub;
-}
-
-.pattern-title h1.entry-title:after {
-  content: "}";
-  color: #f8ba0b;
-  font-size: 1.5em;
-  margin-left: 6px;
-  vertical-align: sub;
-}
-
-.pattern-meta-container .entry-census {
-  font-size: 14px;
-  padding: 18px 0 0;
-  line-height: 39px;
-}
-
-.pattern-meta-container .entry-census span img {
-  width: 35px;
-  height: 35px;
-  border-radius: 100%;
-  float: left;
-  margin-right: 12px;
-}
-
-.pattern-meta-container .post-meta-item:not(:last-child)::after {
-  content: "·";
-  margin: 0 5px;
-}
-
-@media (max-width: 860px) {
-  header.post-header {
-    padding: 0 4%;
-    top: 45%;
-  }
-
-  .pattern-attachment-img img {
-    height: 280px;
-  }
-
-  .post-header h1.cat-title,
-  .post-header h1.entry-title,
-  .single-center .post-header h1.entry-title {
-    font-size: 26px;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-  }
-
-  .post-header h1.entry-title {
-    text-align: center;
-  }
-}
-
-/* 有背景图的文章标题 header */
-.pattern-center + .site-content .pattern-header {
-  position: sticky;
-  z-index: 1;
-  text-shadow: 2px 2px 10px #000;
-}
-
-/* 文章页面 */
-.pattern-center + .site-content .post-header {
-  margin-top: -125px;
-}
-
-/* 普通页面 */
-.pattern-center + .site-content .page-header {
-  margin-top: -285px;
-  text-align: center;
-  margin-bottom: 200px;
-}
-
-.pattern-center + .site-content .page-header.link-page-header {
-  margin-top: -245px;
-}
-
-.pattern-center + .site-content .page-header h1.entry-title {
-  font-size: 40px;
-}
-
-.pattern-center + .site-content .page-header h1.entry-title:before {
-  content: "";
-}
-
-.pattern-center + .site-content .page-header h1.entry-title:after {
-  content: "";
-}
-
-.pattern-center + .site-content .pattern-header h1.cat-title,
-.pattern-center + .site-content .pattern-header h1.entry-title {
-  color: #fff;
-}
-
-.pattern-center + .site-content .pattern-meta-container .entry-census {
-  color: #fff;
-}
-
-.pattern-center + .site-content .pattern-meta-container .entry-census a {
-  color: #fff;
-}
-
-.pattern-center-sakura {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 800px;
-  overflow: hidden;
-  margin: 0 auto;
 }
 
 .pattern-center-blank {
@@ -447,104 +256,8 @@ Tags: LIlGG
 ## header
 --------------------------------------------------------------*/
 @media (max-width: 860px) {
-  .pattern-center-sakura {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-  }
-
   .pattern-center-blank {
     padding-top: 0;
-  }
-}
-
-.pattern-center-sakura:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 1;
-}
-
-.pattern-center-sakura header.pattern-header {
-  position: absolute;
-  top: 45%;
-  left: 0;
-  right: 0;
-  text-align: center;
-  color: #fff;
-  text-shadow: 2px 2px 10px #000;
-  z-index: 1;
-}
-
-.pattern-center-sakura h1.cat-title,
-.pattern-center-sakura h1.entry-title {
-  color: #fff;
-  font-size: 40px;
-  font-weight: 500;
-  width: 80%;
-  margin: auto;
-  padding: 0;
-  border: 0;
-}
-
-.pattern-center-sakura .cat-des {
-  font-size: 16px;
-  display: block;
-}
-
-.single-center:after {
-  display: none;
-}
-
-.pattern-center-sakura header.post-header {
-  max-width: 800px;
-  padding: 0 10px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-  top: auto;
-  bottom: 20px;
-}
-
-.single-center .post-header h1.entry-title {
-  margin: 0;
-  font-size: 32px;
-  width: 100%;
-}
-
-.pattern-meta-container .entry-census {
-  font-size: 14px;
-  padding: 18px 0 0;
-  line-height: 39px;
-}
-
-.pattern-meta-container .entry-census .bull {
-  margin: 0 5px;
-}
-
-.pattern-meta-container .entry-census span img {
-  width: 35px;
-  height: 35px;
-  border-radius: 100%;
-  float: left;
-  margin-right: 12px;
-}
-
-@media (max-width: 860px) {
-  .pattern-center-sakura header.post-header {
-    padding: 0 4%;
-  }
-
-  .pattern-center-sakura h1.cat-title,
-  .pattern-center-sakura h1.entry-title,
-  .single-center .post-header h1.entry-title {
-    font-size: 26px;
   }
 }
 
@@ -877,11 +590,6 @@ i.iconfont.hotpost {
   transform-origin: bottom left;
 }
 
-h1.entry-title {
-  font-size: 24px;
-  font-weight: 300;
-}
-
 .entry-header h1.entry-title {
   margin: auto;
   text-align: center;
@@ -992,10 +700,7 @@ h1.entry-title {
   text-align: center;
 }
 
-.entry-census {
-  font-size: 12px;
-  margin: 0;
-}
+
 
 .entry-header hr {
   width: 30%;
@@ -6772,7 +6477,6 @@ body.dark #show-nav .line {
 /*切换动画*/
 html,
 #main-container,
-.pattern-center:after,
 #mo-nav,
 .headertop-bar::after,
 .comments,

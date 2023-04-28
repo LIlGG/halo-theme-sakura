@@ -9,7 +9,7 @@
 >
   <th:block th:fragment="header">
     <th:block
-    th:replace="~{macro/main-header :: main-header(extension=${categories}, frontCover=${theme.config.patternimg.category_patternimg}, id='categories')}"
+    th:replace="~{macro/page-header :: page-header(extension=${categories}, frontCover=${theme.config.patternimg.category_patternimg}, id='categories')}"
   />
     <!-- <th:block
       th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"

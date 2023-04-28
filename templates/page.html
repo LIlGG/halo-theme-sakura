@@ -11,7 +11,7 @@
   </th:block>
 
   <th:block th:fragment="header">
-    <th:block th:replace="~{macro/main-header :: main-header(${singlePage}, ${singlePage.spec.cover})}" />
+    <th:block th:replace="~{macro/page-header :: page-header(${singlePage}, ${singlePage.spec.cover})}" />
   </th:block>
   
   <th:block th:fragment="content">

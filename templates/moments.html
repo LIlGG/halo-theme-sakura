@@ -6,7 +6,7 @@
 >
   <th:block th:fragment="header">
     <th:block
-      th:replace="~{macro/main-header :: main-header(extension=${moments}, frontCover=${theme.config.patternimg.journals_patternimg}, id='moments', isRandomImage=true)}"
+      th:replace="~{macro/page-header :: page-header(extension=${moments}, frontCover=${theme.config.patternimg.journals_patternimg}, id='moments', isRandomImage=true)}"
     />
     <!-- <th:block
         th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.journals_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
