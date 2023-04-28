@@ -17,3 +17,10 @@ i.iconfont.hotpost {
   font-size: 14px;
   color: #ff3b00;
 }
+
+header.page-header {
+	position: relative;
+	text-align: center;
+	margin-bottom: 50px;
+	color: #9c9c9c
+}

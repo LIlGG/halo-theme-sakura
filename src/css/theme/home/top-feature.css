@@ -7,28 +7,8 @@
   & img {
     height: 160px;
     width: 256px;
-    border-radius: 10px;
-  }
-
-  & li {
-    width: 32.9%;
-    float: left;
-    margin: 0 auto;
-    position: relative;
     display: block;
-
-    &:hover {
-      & .foverlay-bg {
-        opacity: 1;
-      }
-
-      & .feature-title {
-        & .foverlay {
-          z-index: 9;
-          transform: translateY(0);
-        }
-      }
-    }
+    border-radius: 10px;
   }
 
   & .fes-title {
@@ -106,7 +86,7 @@
           }
 
           & a {
-            &: hover {
+            &:hover {
               & .img {
                 transform: scale(1.2);
               }
@@ -138,11 +118,6 @@
           &:hover {
             text-decoration: none;
           }
-        }
-
-        & img {
-          height: 160px;
-          width: 256px;
         }
       }
     }

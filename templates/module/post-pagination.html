@@ -3,10 +3,11 @@ NEXT / PREVIOUS POSTS (精华版)
 <!--*/-->
 <th:block th:fragment="post-nextprev(post)">
   <th:block th:if="${theme.config.post.post_nepre}">
-    <section th:with="postCursor = ${postFinder.cursor(post.metadata.name)}" class="post-squares nextprev">
+    <section th:with="postCursor = ${postFinder.cursor(post.metadata.name)}" class="post-pagination nextprev">
       <div
         th:if="${postCursor.hasPrevious()}"
-        th:class="'post-nepre '+${postCursor.hasNext() ? 'half' : 'full'}+' previous'"
+        class="post-nepre previous"
+        th:classappend="${postCursor.hasNext() ? 'half' : 'full'}"
       >
         <a th:href="@{${postCursor.previous.status.permalink}}" rel="prev">
           <div
