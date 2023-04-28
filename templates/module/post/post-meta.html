@@ -1,6 +1,6 @@
 <th:block th:fragment="post-meta(post)">
-  <div class="entry-census">
-    <span class="post-meta-item">
+  <div class="meta-container">
+    <div class="post-meta-item">
       <span class="post-meta-item-avatar" itemprop="about" itemscope itemtype="http://schema.org/Thing">
         <a th:href="${site.url}" itemprop="url" rel="index">
           <img th:src="${post.owner.avatar ?: #theme.assets('/images/avatar.jpg')}" />
@@ -10,9 +10,9 @@
       <span class="post-authore-item-name" itemprop="about" itemscope itemtype="http://schema.org/Thing">
         <a th:href="${site.url}" th:text="${post.owner.displayName}" itemprop="url" rel="index"></a>
       </span>
-    </span>
+    </div>
 
-    <span
+    <div
       class="post-meta-item"
       th:with="createTime = ${#dates.format(post.spec.publishTime,theme.config.post.post_time_display_type ?: 'yyyy-MM-dd')}"
     >
@@ -24,9 +24,9 @@
         itemprop="dateCreated datePublished"
       >
       </time>
-    </span>
+    </div>
 
-    <span
+    <div
       class="post-meta-item"
       th:with="editTime = ${#dates.format(post.status.lastModifyTime,theme.config.post.post_time_display_type ?: 'yyyy-MM-dd')}"
     >
@@ -37,10 +37,10 @@
         th:data-datetime="${editTime}"
         itemprop="dateModified"
       ></time>
-    </span>
+    </div>
 
-    <span class="post-meta-item">
+    <div class="post-meta-item">
       <span class="i18n" data-iname="post.visits" th:attr="data-ivalue=${post.stats.visit}"></span>
-    </span>
+    </div>
   </div>
 </th:block>

@@ -11,12 +11,10 @@
   </th:block>
 
   <th:block th:fragment="header">
-    <th:block th:replace="~{macro/main-header :: main-header(extension = ${post}, frontCover = ${post.spec.cover})}" />
+    <th:block th:replace="~{macro/page-header :: page-header(extension = ${post}, frontCover = ${post.spec.cover})}" />
     <div class="post-header pattern-title" itemprop="name headline">
       <h1 class="entry-title" th:text="${post.spec.title}"></h1>
-      <div class="pattern-meta-container">
-        <th:block th:replace="~{module/post/post-meta :: post-meta(${post})}" />
-      </div>
+      <th:block th:replace="~{module/post/post-meta :: post-meta(${post})}" />
     </div>
   </th:block>
 
