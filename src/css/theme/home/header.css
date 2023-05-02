@@ -1,7 +1,7 @@
 .headertop {
   position: relative;
   overflow: hidden;
-  height: 0;
+  width: 100%;
   animation: header 1s;
 
   &:before {
