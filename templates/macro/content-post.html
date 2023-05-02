@@ -1,6 +1,10 @@
 <th:block th:fragment="content-post(post)">
-  <article th:id="'post-'+${post.metadata.name}" class="post-article" th:data-owner="${post.owner.displayName}"
-    th:data-url="${post.status.permalink}">
+  <article
+    th:id="'post-'+${post.metadata.name}"
+    class="post-article"
+    th:data-owner="${post.owner.displayName}"
+    th:data-url="${post.status.permalink}"
+  >
     <link itemprop="mainEntityOfPage" th:href="@{${post.status.permalink}}" />
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -18,55 +22,63 @@
       <meta itemprop="description" th:content="${post.status.excerpt}" />
     </span>
 
-    <!--/* post body */-->
-    <div class="entry-content">
+    <div class="entry-content" itemprop="articleBody">
       <th:block th:utext="${post.content.content}"></th:block>
     </div>
 
-    <!--/* TODO: post footer */-->
-    <div>
-      <p>
-        Q.E.D.
-        <i class="fa fa-meetup" aria-hidden="true" style="color: #d34836"></i>
-      </p>
-    </div>
+    <footer class="post-footer">
+      <div>
+        <p>
+          Q.E.D.
+          <i class="fa fa-meetup" aria-hidden="true" style="color: #d34836"></i>
+        </p>
+      </div>
+
+      <div
+        th:if="${not #strings.isEmpty(theme.config.post.alipay_code)} or ${not #strings.isEmpty(theme.config.post.wechat_code)}"
+        class="single-reward"
+      >
+        <div class="reward-open">
+          <span class="i18n" data-iname="post.reward"></span>
+          <div class="reward-main">
+            <ul class="reward-row">
+              <li th:if="${not #strings.isEmpty(theme.config.post.alipay_code)}">
+                <img th:src="${theme.config.post.alipay_code}" />
+                <!--TODO: 国际化-->
+                <span class="reward-name">支付宝</span>
+              </li>
+              <li th:if="${not #strings.isEmpty(theme.config.post.wechat_code)}">
+                <img th:src="${theme.config.post.wechat_code}" />
+                <span class="reward-name">微信</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="post-footer-meta">
+        <div class="post-license">
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow">
+            <i class="fa fa-creative-commons" aria-hidden="true"></i>
+            <span class="i18n" data-iname="post.creative_commons"></span>
+          </a>
+        </div>
+        <div class="post-tags">
+          <th:block th:if="${not #lists.isEmpty(post.tags)}">
+            <i class="iconfont icon-tags"></i>
+            <a
+              th:each="tag : ${post.tags}"
+              th:href="@{${tag.status.permalink}}"
+              rel="tag"
+              th:text="${tag.spec.displayName}"
+            ></a>
+          </th:block>
+        </div>
+        <th:block th:replace="~{module/sharelike :: sharelike(${post})}" />
+      </div>
+    </footer>
 
     <div th:if="${#annotations.getOrDefault(post, 'toc', true)}" class="toc-container">
       <div class="toc"></div>
     </div>
-
-    <div
-      th:if="${not #strings.isEmpty(theme.config.post.alipay_code)} or ${not #strings.isEmpty(theme.config.post.wechat_code)}"
-      class="single-reward">
-      <div class="reward-open">
-        <span class="i18n" data-iname="post.reward"></span>
-        <div class="reward-main">
-          <ul class="reward-row">
-            <li th:if="${not #strings.isEmpty(theme.config.post.alipay_code)}" class="alipay-code">
-              <img th:src="${theme.config.post.alipay_code}" />
-            </li>
-            <li th:if="${not #strings.isEmpty(theme.config.post.wechat_code)}" class="wechat-code">
-              <img th:src="${theme.config.post.wechat_code}" />
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <footer class="post-footer">
-      <div class="post-license">
-        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow">
-          <i class="fa fa-creative-commons" aria-hidden="true"></i>
-          <span class="i18n" data-iname="post.creative_commons"></span>
-        </a>
-      </div>
-      <div class="post-tags">
-        <th:block th:if="${not #lists.isEmpty(post.tags)}">
-          <i class="iconfont icon-tags"></i>
-          <a th:each="tag : ${post.tags}" th:href="@{${tag.status.permalink}}" rel="tag"
-            th:text="${tag.spec.displayName}"></a>
-        </th:block>
-      </div>
-      <th:block th:replace="~{module/sharelike :: sharelike(${post})}" />
-    </footer>
   </article>
 </th:block>

@@ -1,0 +1,99 @@
+.post-footer {
+
+  & .single-reward {
+    position: relative;
+    width: 100%;
+    margin: 35px auto;
+    text-align: center;
+    z-index: 999;
+
+    & .reward-open {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      color: #fff;
+      line-height: 40px;
+      display: inline-block;
+      border-radius: 100%;
+      background: #d34836;
+      cursor: pointer;
+
+      &:hover {
+        & .reward-main {
+          display: block;
+        }
+      }
+    }
+
+    & .reward-main {
+      position: absolute;
+      top: 40px;
+      left: -187px;
+      margin: 0;
+      padding: 15px 0 0;
+      width: 415px;
+      background: 0 0;
+      display: none;
+      -webkit-animation: main 0.4s;
+      animation: main 0.4s;
+    }
+
+    & .reward-row {
+      margin: 0 auto;
+      padding: 20px 15px 0px 15px;
+      background: #f5f5f5;
+      display: inline-block;
+      border-radius: 4px;
+      cursor: auto;
+
+      &:before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 13px solid transparent;
+        border-right: 13px solid transparent;
+        border-bottom: 13px solid #f5f5f5;
+        position: absolute;
+        top: 2px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+
+      & li {
+        list-style-type: none;
+        padding: 0 12px;
+        display: inline-block;
+
+        & img {
+          width: 130px;
+          max-width: 130px;
+          border-radius: 3px;
+          position: relative;
+        }
+
+        & .reward-name {
+          display: block;
+          line-height: normal;
+          font-size: 13px;
+          color: #555;
+        }
+      }
+    }
+  }
+
+  & .post-footer-meta {
+    padding-top: 20px;
+    border-bottom: 1px dashed #ddd;
+    border-top: 1px dashed #ddd;
+    margin-top: 30px;
+    height: 60px;
+  }
+
+  @mixin screens-md {
+    & {
+      display: none;
+    }
+  }
+}
