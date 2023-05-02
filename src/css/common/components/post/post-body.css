@@ -1,0 +1,203 @@
+.entry-content {
+  margin-top: 20px;
+  position: relative;
+
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+    table-layout: fixed;
+  }
+
+  &:after {
+    clear: both;
+  }
+
+  & .begin {
+    float: left;
+    font-size: 3.6em;
+    line-height: 1em;
+    margin-right: 3px;
+    margin-top: 2px;
+    font-weight: 700;
+  }
+
+  & h2 {
+    &:after {
+      content: "\00B6";
+      position: absolute;
+      color: #ff6d6d;
+      font-family: "Merriweather Sans", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei",
+        "WenQuanYi Micro Hei", sans-serif;
+      padding-left: 6px;
+      font-size: 1.03em;
+    }
+  }
+
+  & h3 {
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #ddd;
+    color: #737373;
+
+    &:after {
+      content: "#";
+    }
+  }
+
+  & h4 {
+    &:after {
+      content: "▌";
+    }
+  }
+
+  & h5 {
+    &:after {
+      content: "♯";
+    }
+  }
+
+  & h3,
+  & h4,
+  & h5 {
+    padding-left: 16px;
+
+    &:after {
+      left: 0;
+      position: absolute;
+      color: #ff6d6d;
+    }
+  }
+
+  & a {
+    color: #e67474;
+    position: relative;
+
+    &:hover {
+      color: orange;
+      text-decoration: none;
+
+      &:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: orange;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+
+    & img {
+      &.alignleft,
+      &.alignright,
+      &.aligncenter {
+        cursor: -webkit-zoom-in;
+      }
+    }
+  }
+
+  & p {
+    color: #797979;
+    line-height: 30px;
+  }
+
+  & hr {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: block;
+    border: 0;
+    text-align: center;
+    background: 0 0;
+
+    &:before {
+      content: "...";
+      display: inline-block;
+      margin-left: 0.6em;
+      color: rgba(0, 0, 0, 0.8);
+      position: relative;
+      top: -30px;
+      font-size: 28px;
+      letter-spacing: 0.6em;
+    }
+  }
+
+  & code:not(.hljs) {
+    background: #fefac7;
+    color: #e67474;
+    word-break: break-word;
+    font-family: Source Code Pro, monospace;
+    padding: 2px;
+    text-shadow: none;
+    border-radius: 5px;
+  }
+
+  & ul {
+    list-style: disc;
+    border: 1px dashed #e4e4e4;
+    padding: 15px 10px 15px 50px;
+    color: #616161;
+    margin-left: 0;
+    border-radius: 10px;
+  }
+
+  & ol {
+    list-style: decimal;
+    border: 1px dashed #e4e4e4;
+    padding: 15px 10px 15px 50px;
+    color: #616161;
+    margin-left: 0;
+    border-radius: 10px;
+  }
+
+  & ol,
+  & ul {
+    & li {
+      padding: 8px 0;
+    }
+  }
+
+  & p,
+  & ul,
+  & ol {
+    transition: color 1s;
+  }
+
+  & .post-password-form {
+    text-align: center;
+  }
+
+  & .wp-smiley {
+    border: none;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0;
+  }
+
+  @mixin screens-md {
+    & p {
+      font-size: 14px;
+    }
+
+    & .begin {
+      margin-top: 6px;
+    }
+  }
+}
+
+.serif {
+  & .entry-content {
+    & h2 {
+      &:after {
+        font-size: 1.13em;
+      }
+    }
+  }
+}

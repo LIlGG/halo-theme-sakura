@@ -451,11 +451,6 @@ i.iconfont.hotpost {
   -webkit-animation: poi-deg 12s infinite linear;
 }
 
-.entry-content {
-  margin-top: 20px;
-}
-
-.entry-content .begin,
 .single-begin {
   float: left;
   font-size: 3.6em;
@@ -465,129 +460,10 @@ i.iconfont.hotpost {
   font-weight: 700;
 }
 
-.entry-content code:not(.hljs) {
-  background: #fefac7;
-  color: #e67474;
-  word-break: break-word;
-  font-family: Source Code Pro, monospace;
-  padding: 2px;
-  text-shadow: none;
-  border-radius: 5px;
-}
-
 @media screen and (max-width: 860px) {
-  .entry-content .begin,
   .single-begin {
     margin-top: 6px;
   }
-}
-
-.entry-content ul {
-  list-style: disc;
-  border: 1px dashed #e4e4e4;
-  padding: 15px 10px 15px 50px;
-  color: #616161;
-  margin-left: 0;
-  border-radius: 10px;
-}
-
-.entry-content ol {
-  list-style: decimal;
-  border: 1px dashed #e4e4e4;
-  padding: 15px 10px 15px 50px;
-  color: #616161;
-  margin-left: 0;
-  border-radius: 10px;
-}
-
-.entry-content ol li,
-.entry-content ul li {
-  padding: 8px 0;
-}
-
-.entry-content {
-  position: relative;
-}
-
-.entry-content h3 {
-  padding-bottom: 8px;
-  border-bottom: 1px dashed #ddd;
-  color: #737373;
-}
-
-.entry-content h3,
-.entry-content h4,
-.entry-content h5 {
-  padding-left: 16px;
-}
-
-.entry-content h2:after {
-  content: "\00B6";
-  position: absolute;
-  color: #ff6d6d;
-  font-family: "Merriweather Sans", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei",
-    "WenQuanYi Micro Hei", sans-serif;
-  padding-left: 6px;
-  font-size: 1.03em;
-}
-
-.serif .entry-content h2:after {
-  content: "\00B6";
-  position: absolute;
-  color: #ff6d6d;
-  font-family: "Merriweather Sans", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei",
-    "WenQuanYi Micro Hei", sans-serif;
-  padding-left: 6px;
-  font-size: 1.13em;
-}
-
-.entry-content h3:after {
-  content: "#";
-  left: 0;
-  position: absolute;
-  color: #ff6d6d;
-}
-
-.entry-content h4:after {
-  content: "▌";
-  left: 0;
-  position: absolute;
-  color: #ff6d6d;
-}
-
-.entry-content h5:after {
-  content: "♯";
-  left: 0;
-  position: absolute;
-  color: #ff6d6d;
-}
-
-.entry-content a {
-  color: #e67474;
-  position: relative;
-}
-
-.entry-content a:hover {
-  color: orange;
-  text-decoration: none;
-}
-
-.entry-content a:after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: orange;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-
-.entry-content a:hover:after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
 }
 
 .entry-header h1.entry-title {
@@ -595,38 +471,6 @@ i.iconfont.hotpost {
   text-align: center;
   font-weight: 700;
   text-transform: uppercase;
-}
-
-.entry-content p {
-  color: #797979;
-}
-
-.entry-content p {
-  line-height: 30px;
-}
-
-.entry-content hr {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  display: block;
-  border: 0;
-  text-align: center;
-  background: 0 0;
-}
-
-.entry-content hr:before {
-  content: "...";
-  display: inline-block;
-  margin-left: 0.6em;
-  color: rgba(0, 0, 0, 0.8);
-  position: relative;
-  top: -30px;
-  font-size: 28px;
-  letter-spacing: 0.6em;
-}
-
-.entry-content .post-password-form {
-  text-align: center;
 }
 
 .table-wrapper::-webkit-scrollbar {
@@ -749,14 +593,6 @@ h1.page-title.mb- {
 #moblieGoTop:hover {
   background-color: #fff;
   opacity: 0.8;
-}
-
-.post-footer {
-  padding: 20px 0;
-  border-bottom: 1px dashed #ddd;
-  border-top: 1px dashed #ddd;
-  margin-top: 30px;
-  height: 82px;
 }
 
 .post-license {
@@ -1092,12 +928,6 @@ h3#comments-list-title .name {
   margin-right: auto;
 }
 
-.entry-content a img.alignleft,
-.entry-content a img.alignright,
-.entry-content a img.aligncenter {
-  cursor: -webkit-zoom-in;
-}
-
 #baguetteBox-overlay .full-image {
   cursor: -webkit-zoom-out;
 }
@@ -1109,8 +939,6 @@ h3#comments-list-title .name {
 
 .clear:before,
 .clear:after,
-.entry-content:before,
-.entry-content:after,
 .comment-content:before,
 .comment-content:after {
   content: "";
@@ -1119,7 +947,6 @@ h3#comments-list-title .name {
 }
 
 .clear:after,
-.entry-content:after,
 .comment-content:after {
   clear: both;
 }
@@ -1922,7 +1749,6 @@ li.feature-2 {
 }
 
 .page-content .wp-smiley,
-.entry-content .wp-smiley,
 .comment-content .wp-smiley {
   border: none;
   margin-bottom: 0;
@@ -2195,11 +2021,6 @@ i.iconfont.down {
     padding: 15px 0;
   }
 
-  .entry-content p {
-    font-size: 14px;
-  }
-
-  .post-footer,
   .post-share,
   .post-like {
     display: none;
@@ -3084,96 +2905,6 @@ i.iconfont.down {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.single-reward {
-  position: relative;
-  width: 100%;
-  margin: 35px auto;
-  text-align: center;
-  z-index: 999;
-}
-
-.single-reward .reward-open {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  font-size: 18px;
-  padding: 7px;
-  color: #fff;
-  text-align: center;
-  display: inline-block;
-  border-radius: 100%;
-  background: #d34836;
-  cursor: pointer;
-}
-
-.single-reward .reward-main {
-  position: absolute;
-  top: 40px;
-  left: -187px;
-  margin: 0;
-  padding: 15px 0 0;
-  width: 415px;
-  background: 0 0;
-  display: none;
-  -webkit-animation: main 0.4s;
-  animation: main 0.4s;
-}
-
-.reward-open:hover .reward-main {
-  display: block;
-}
-
-.single-reward .reward-row {
-  margin: 0 auto;
-  padding: 20px 15px 10px;
-  background: #f5f5f5;
-  display: inline-block;
-  border-radius: 4px;
-  cursor: auto;
-}
-
-.single-reward .reward-row:before {
-  content: "";
-  width: 0;
-  height: 0;
-  border-left: 13px solid transparent;
-  border-right: 13px solid transparent;
-  border-bottom: 13px solid #f5f5f5;
-  position: absolute;
-  top: 2px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-}
-
-.single-reward .reward-row li {
-  list-style-type: none;
-  padding: 0 12px;
-  display: inline-block;
-}
-
-.reward-row li img {
-  width: 160px;
-  max-width: 160px;
-  border-radius: 3px;
-  position: relative;
-}
-
-.reward-row li:after {
-  display: block;
-  padding: 5px 0 0;
-  font-size: 13px;
-  color: #555;
-}
-
-.alipay-code:after {
-  content: "支付宝";
-}
-
-.wechat-code:after {
-  content: "微信";
 }
 
 .sm {
@@ -6491,9 +6222,6 @@ html,
   transition: background 1s;
 }
 
-.entry-content p,
-.entry-content ul,
-.entry-content ol,
 .comments .body p,
 .link-title {
   transition: color 1s;
