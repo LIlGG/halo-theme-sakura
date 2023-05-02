@@ -1,5 +1,49 @@
 .post-header {
-  margin-top: 15px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  & .post-meta,
+  & .pattern-title {
+    width: 780px;
+  }
+
+  & .page-header {
+    width: 100%;
+  }
+
+  & .post-meta {
+    & .meta-container {
+      justify-content: center;
+    }
+  }
+
+  & .is-decorate {
+    & .pattern-title {
+      bottom: 60px;
+
+      & .entry-title {
+        text-align: inherit;
+      }
+    }
+
+    & + .post-meta {
+      position: absolute;
+      bottom: 20px;
+
+      & .meta-container {
+        justify-content: inherit;
+        
+        & .post-meta-item {
+          & *,
+          &:after {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
 
   @mixin screens-md {
     padding: 0 4%;
