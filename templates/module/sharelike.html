@@ -2,90 +2,9 @@
 分享/点赞页 实际上我感觉原版的分享风格更好看，因此保留原版的 简单起见，这里暂时不封装
 <!--*/-->
 <th:block th:fragment="sharelike(post)">
-  <style>
-    .s-wechat {
-      position: relative;
-    }
-
-    .s-wechat .wechat-qrcode {
-      display: none;
-      border: 1px solid #eee;
-      position: absolute;
-      top: -215px;
-      left: -84px;
-      width: 200px;
-      height: 192px;
-      color: #666;
-      font-size: 12px;
-      text-align: center;
-      background-color: #fff;
-      box-shadow: 0 2px 10px #aaa;
-      transition: all 200ms;
-      -webkit-tansition: all 350ms;
-      -moz-transition: all 350ms;
-    }
-
-    .s-wechat .wechat-qrcode.bottom {
-      top: 40px;
-      left: -84px;
-    }
-
-    .s-wechat .wechat-qrcode.bottom:after {
-      display: none;
-    }
-
-    .s-wechat .wechat-qrcode h4 {
-      font-weight: normal;
-      height: 26px;
-      line-height: 26px;
-      font-size: 12px;
-      background-color: #f3f3f3;
-      margin: 0;
-      padding: 0;
-      color: #777;
-    }
-
-    .s-wechat .wechat-qrcode .qrcode {
-      width: 105px;
-      margin: 10px auto;
-    }
-
-    .s-wechat .qrcode table {
-      margin: 0 !important;
-    }
-
-    .s-wechat .wechat-qrcode .help p {
-      font-weight: normal;
-      line-height: 16px;
-      padding: 0;
-      margin: 0;
-    }
-
-    .s-wechat .wechat-qrcode:after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      margin-left: -6px;
-      bottom: -13px;
-      width: 0;
-      height: 0;
-      border-width: 8px 6px 6px 6px;
-      border-style: solid;
-      border-color: #fff transparent transparent transparent;
-    }
-
-    .s-wechat:hover .wechat-qrcode {
-      display: block;
-    }
-
-    .s-wechat .wechat-qrcode img {
-      width: auto;
-      height: auto;
-    }
-  </style>
   <th:block th:if="${theme.config.post.post_share}">
     <div class="post-share">
-      <ul class="social-share sharehidden">
+      <ul class="social-share share-hidden">
         <li>
           <a
             th:href="@{http://service.weibo.com/share/share.php?url={url}&appkey=&title={title}|{author}&pic={pic}(url=${post.status.permalink},title=${post.spec.title},author=${post.owner.displayName},pic=${post.spec.cover})}"

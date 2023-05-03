@@ -28,7 +28,7 @@ var LIlGGAttachContext = {
     } catch (e) {}
 
     Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
-    PageAttr.isPost === "true" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
+    Poi._templateId === "post" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
     LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.PHO(); // 图库功能
     LIlGGAttachContext.SS(); // 日志功能
@@ -880,17 +880,18 @@ var LIlGGAttachContext = {
     var msg, div, remind;
     var contentDom = document.getElementsByClassName("entry-content")[0];
 
-    if (Poi.isPostWordCountToast === "true") {
+    if (Poi.isPostWordCountToast) {
       var coefficient = 3;
-      if (!!PageAttr.metas.level) {
-        coefficient = Number(PageAttr.metas.level);
-      }
+      // TODO 后续补充元数据
+      // if (!!PageAttr.metas.level) {
+      //   coefficient = Number(PageAttr.metas.level);
+      // }
 
-      if (!!PageAttr.postWordCount) {
+      // TODO Halo2 不存在字数统计，进行前端统计
+      var postWordCount = Util.getWordCount(document.querySelector(".entry-content"));
+      if (!!postWordCount) {
         var color = "";
-        var oldWordCount = PageAttr.postWordCount;
-        var wordCount = Number(PageAttr.postWordCount.replace(/,/g, ""));
-        var seconds = Util.caclEstimateReadTime(wordCount, coefficient);
+        var seconds = Util.caclEstimateReadTime(postWordCount, coefficient);
         var timeStr = Util.minuteToTimeString(seconds);
         // 时间段为 x 0<=10<=30<=+∞ 分钟
         if (seconds <= 60 * 10) {
@@ -904,7 +905,7 @@ var LIlGGAttachContext = {
           color = difficulty;
         }
 
-        msg = `文章共 <b>${oldWordCount}</b> 字，阅读完预计需要 <b>${timeStr}</b>。`;
+        msg = `文章共 <b>${postWordCount}</b> 字，阅读完预计需要 <b>${timeStr}</b>。`;
         msg = mobileMsgProcess(msg, remind);
         div = buildToastDiv("word_count", color, msg);
 
@@ -912,7 +913,7 @@ var LIlGGAttachContext = {
       }
     }
 
-    if (Poi.isPostEditTimeToast === "true") {
+    if (Poi.isPostEditTimeToast) {
       // 获取上次至今的时间差
       var editTime = new Date(PageAttr.postEditTime);
       if (!isNaN(editTime.getTime())) {
@@ -942,14 +943,16 @@ var LIlGGAttachContext = {
     Array.prototype.forEach.call(contentToast, (content) => {
       var i = content.getElementsByTagName("i")[0];
       i.onclick = function () {
-        content.classList.toggle("hide");
+        content.parentElement.classList.toggle("hide");
       };
     });
 
     function buildToastDiv(type, color, msg) {
-      return `<div class="${type} content_toast minicode" style="background-color: ${color}">
-                ${msg}
-                <i class="fa fa-times" aria-hidden="true"></i>
+      return `<div class="${type} minicode" style="background-color: ${color}">
+                <span class="content_toast">
+                  ${msg}
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </span>
               </div>`;
     }
 
@@ -1397,7 +1400,7 @@ $(function () {
   LIlGGAttachContext.PLSA(); // 文章列表动画
   Poi.headFocus && Poi.bgvideo && LIlGGAttachContext.BGV(); // 背景视频
   Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
-  PageAttr.isPost === "true" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
+  Poi._templateId === "post" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部
   Poi.photosStyle == "packery" && supplement();

@@ -3,15 +3,12 @@ AUTHOR PROFILE
 <!--*/-->
 <th:block th:fragment="authorprofile(post)">
   <section th:if="${theme.config.post.author_profile}" class="author-profile">
-    <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <!--/* TODO: 改为作者地址 */-->
-      <a th:href="${site.url}" class="profile gravatar">
+    <div class="info" itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <a th:href="${post.owner.permalink}" class="profile gravatar">
         <img
           th:src="${post.owner.avatar ?: #theme.assets('/images/avatar.jpg')}"
           itemprop="image"
           th:alt="${post.owner.displayName}"
-          height="70"
-          width="70"
         />
       </a>
       <div class="meta">
@@ -24,8 +21,8 @@ AUTHOR PROFILE
     <hr />
     <p>
       <i class="iconfont icon-pencil"></i>
-      <span th:if="${#strings.isEmpty(post.owner.bio)}" th:text="${post.owner.bio}"></span>
-      <span th:unless="${#strings.isEmpty(post.owner.bio)}" class="i18n" data-iname="user.description"></span>
+      <span th:if="${not #strings.isEmpty(post.owner.bio)}" th:text="${post.owner.bio}" itemprop="description" ></span>
+      <span th:unless="${not #strings.isEmpty(post.owner.bio)}" class="i18n" data-iname="user.description"></span>
     </p>
   </section>
 </th:block>

@@ -97,3 +97,45 @@
     }
   }
 }
+
+.post-license {
+  text-align: center;
+  padding-bottom: 5px;
+  font-size: 14px;
+
+  & a {
+    color: #b3b3b3;
+
+    &:hover {
+      color: #888;
+    }
+  }
+}
+
+& .post-tags {
+  float: left;
+  font-size: 13px;
+  color: #b3b3b3;
+  text-transform: uppercase;
+
+  & a {
+    color: #b3b3b3;
+    margin-right: 5px;
+
+    &:hover {
+      color: orange;
+    }
+  }
+
+  & i {
+    margin-right: 5px;
+  }
+
+  @mixin screens-md {
+    text-align: center;
+    float: none;
+    font-size: 12px;
+  }
+}
+
+
