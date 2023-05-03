@@ -396,9 +396,31 @@ var Util = {
      */
     padLeftZero: function (str) {
         return ('00' + str).substr(str.length);
+    },
+    
+    /**
+     * 统计文章字数
+     * 按词统计
+     * 
+     * @param {Document} document 
+     */
+    getWordCount: function (document) {
+      if (!document) {
+        return 0;
+      }
+      return document.textContent.normalize().match(wordPattern)?.length ?? 0;
     }
 }
 
+const PatternString = {
+  cjk: "\\p{Script=Han}|\\p{Script=Kana}|\\p{Script=Hira}|\\p{Script=Hangul}",
+  word: "[\\p{L}|\\p{N}|._]+",
+};
+
+const wordPattern = new RegExp(
+  `${PatternString.cjk}|${PatternString.word}`,
+  "gu"
+);
 
 /**
  * 封装的toast组件（使用纯js，可以单独拿出去使用）

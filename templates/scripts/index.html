@@ -16,6 +16,7 @@
     /* <![CDATA[ */
     var Poi = {
         "pjax": /*[(${theme.config.others.poi_pjax})]*/,
+        "_templateId": "[(${_templateId})]",
         "windowheight":"[(${theme.config.mainScreen.focus_height ? 'auto' : 'fixed'})]",
         "ajaxurl":"[(${site.url})]",
         "resBaseUrl": "[(${#theme.assets('')})]",
@@ -75,7 +76,7 @@
   </script>
   <script
     type="text/javascript"
-    th:src="@{/assets/script/utils.min.js?v={version}(version=${theme.spec.version})}"
+    th:src="@{/assets/script/utils.js?v={version}(version=${theme.spec.version})}"
   ></script>
   <script type="text/javascript" th:src="@{/assets/lib/lazysizes/lazysizes.min.js}" async></script>
   <script type="text/javascript" th:src="@{/assets/js/lib.js}"></script>

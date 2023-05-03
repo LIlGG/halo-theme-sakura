@@ -1,29 +1,25 @@
-<!-- 跟随 Pjax 进行页面变化的样式 -->
-<style>
-  /** Post start */
-  <#if is_post??>
-      /** 文章页面导航栏自动收缩 */
-      <#if settings.post_auto_collapse!true>
+<!--/* 跟随 Pjax 进行页面变化的样式 */-->
+<!--/* post style */-->
+<th:block th:if="${_templateId == 'post'}">
+  <style th:inline="css">
+    [# th:if="${theme.config.post.post_auto_collapse}" ]
       .yya:not(.sabit) {
-          top: -100px;
-          transition: all .4s ease;
+        top: -100px;
+        transition: all .4s ease;
       }
 
       .sabit {
-          transition: all .4s ease;
+        transition: all .4s ease;
       }
-      </#if>
-
-      /** 文章页首行缩进 */
-      <#if settings.post_line_indent!false>
+    [/]
+    [# th:if="${theme.config.post.post_line_indent}" ]
       .entry-content p {
-          text-indent: 2em; /*首行缩进*/
+        text-indent: 2em; /*首行缩进*/
       }
 
       .toc-container {
-          right: calc((100% - 1000px - 250px)/2);
+        right: calc((100% - 1000px - 250px)/2);
       }
-      </#if>
-  </#if>
-  /** Post end */
-</style>
+    [/]
+  </style>
+</th:block>

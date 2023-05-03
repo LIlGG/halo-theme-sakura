@@ -1,0 +1,49 @@
+.word_count {
+  margin: 0;
+}
+
+.minicode {
+  box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+  border-radius: 5px;
+  margin: 10px 0;
+
+  & a {
+    padding: 5px;
+  }
+
+  & .content_toast {
+    display: block;
+    padding: 8px 8px 8px 16px;
+    height: 20px;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 95%;
+    transition: all 0.5s ease;
+  
+    & i {
+      float: right;
+      line-height: inherit;
+      cursor: pointer;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.01);
+    transition: all 0.5s ease;
+  }
+
+  &.hide {
+    & .content_toast {
+      opacity: 0;
+      height: 0;
+      padding: 0;
+    }
+  }
+
+  @mixin screens-md {
+    & i {
+      padding-right: 0;
+    }
+  }
+}
