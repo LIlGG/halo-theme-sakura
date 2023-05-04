@@ -16,6 +16,8 @@
 
 @import "post";
 
+@import "sidebar";
+
 @import "page-header.css";
 
 @import "sharelike.css";
