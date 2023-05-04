@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html
-  xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{layout :: layout(title = ~{::title}, header = ~{::header}, content = ~{::content})}"
->
-  <th:block th:fragment="title">
-    <th:block th:text="${post.spec.title} + '|' + ${site.title}|"></th:block>
-  </th:block>
+<html xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{layout :: layout(title = ~{::title}, header = ~{::header}, content = ~{::content}, sidebar = ~{::sidebar})}">
+<th:block th:fragment="title">
+  <th:block th:text="${post.spec.title} + '|' + ${site.title}|"></th:block>
+</th:block>
 
-  <th:block th:fragment="header">
-    <div class="post-header">
-      <th:block th:replace="~{macro/page-header :: page-header(extension = ${post}, frontCover = ${post.spec.cover}, headerTitle = ${post.spec.title})}" />
-      <div class="post-meta">
-        <th:block th:replace="~{module/post/post-meta :: post-meta(${post})}" />
-      </div>
+<th:block th:fragment="header">
+  <div class="post-header">
+    <th:block
+      th:replace="~{macro/page-header :: page-header(extension = ${post}, frontCover = ${post.spec.cover}, headerTitle = ${post.spec.title})}" />
+    <div class="post-meta">
+      <th:block th:replace="~{module/post/post-meta :: post-meta(${post})}" />
     </div>
-  </th:block>
+  </div>
+</th:block>
 
-  <th:block th:fragment="content">
-    <div id="primary" class="content-area">
-      <th:block th:replace="~{macro/content-post :: content-post(${post})}" />
-      <th:block th:replace="~{module/post-pagination :: post-nextprev(${post})}" />
-      <th:block th:replace="~{module/authorprofile :: authorprofile(${post})}" />
-    </div>
-    <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
-  </th:block>
+<th:block th:fragment="content">
+  <div id="primary" class="content-area">
+    <th:block th:replace="~{macro/content-post :: content-post(${post})}" />
+    <th:block th:replace="~{module/post-pagination :: post-nextprev(${post})}" />
+    <th:block th:replace="~{module/authorprofile :: authorprofile(${post})}" />
+  </div>
+  <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
+</th:block>
+
+<th:block th:fragment="sidebar">
+  <th:block th:replace="~{macro/sidebar :: sidebar(${#annotations.getOrDefault(post, 'toc', true)})}" />
+</th:block>
+
 </html>

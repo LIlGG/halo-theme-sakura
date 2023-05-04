@@ -1,9 +1,5 @@
 <th:block th:fragment="content-links">
-  <article>
-    <header class="pattern-header page-header link-page-header" itemprop="name headline">
-      <h1 class="entry-title" th:text="${singlePage.spec.title}"></h1>
-    </header>
-    
+  <article class="link-article">
     <th:block
       th:if="${_templateId == 'page'}"
       th:utext="${singlePage.content.content}">

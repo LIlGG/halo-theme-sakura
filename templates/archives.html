@@ -1,6 +1,3 @@
-<!---
-    @package Akina
--->
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
@@ -8,68 +5,28 @@
 >
   <th:block th:fragment="header">
     <th:block
-    th:replace="~{macro/page-header :: page-header(extension=${archives}, frontCover=${theme.config.patternimg.archives_patternimg}, id='archives', isRandomImage = true)}"
-  />
-    <!-- <th:block
-      th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
-    >
-      <div class="pattern-center-blank"></div>
-      <div class="pattern-center no-select">
-        <div class="pattern-attachment-img">
-          <img
-            th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)}"
-            th:attr="data-src=${theme.config.patternimg.archives_patternimg}"
-            th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"
-            class="lazyload"
-            onerror="imgError(this)"
-          />
-          <img
-            th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)}"
-            th:src="${theme.config.random_image.rimage_url}+'?archives=archives&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}"
-            th:attr="
-            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'archives=archives&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id + '&th=150': '')},
-            data-srcset=${theme.config.random_image.rimage_url}+'?archives=archives&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=640 640w,'+
-            ${theme.config.random_image.rimage_url}+'?archives=archives&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=960 960w,'+
-            ${theme.config.random_image.rimage_url}+'?archives=archives&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=1280 1280w,'+
-            ${theme.config.random_image.rimage_url}+'?archives=archives&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+' 1440w'
-            "
-            data-sizes="auto"
-            th:class="'lazyload '+${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
-          />
-        </div>
-        <header class="pattern-header">
-          <h1 class="entry-title i18n" data-iname="page.archives.title"></h1>
-        </header>
-      </div>
-    </th:block>
-    <th:block
-      th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
-    >
-      <div class="blank"></div>
-    </th:block> -->
+    th:replace="~{macro/page-header :: page-header(extension=${archives}, frontCover=${theme.config.patternimg.archives_patternimg}, headerTitle = '归档', id='archives', isRandomImage = true)}"
+    />
   </th:block>
   <th:block th:fragment="content">
-    <article class="post-item page type-page status-publish hentry">
-      <div id="archives-temp">
-        <h2
-          th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.archives_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
-          class="i18n"
-          data-iname="page.archives.title"
-        ></h2>
+    <article class="archives-article">
+      <div id="archives-temp" class="archives-inner">
         <div id="archives-content">
           <th:block th:each="archive : ${archives.items}">
             <th:block th:each="month,monthStat : ${archive.months}">
-              <div class="archive-title" th:id="'arti-'+${archive.year}+'-'+${month.month}">
-                <span class="ar-time"><i class="iconfont icon-log"></i></span>
-                <h3 th:text="${archive.year}+'-'+${month.month}"></h3>
+              <div class="archive-item" th:id="'arti-'+${archive.year}+'-'+${month.month}">
+                <div class="archive-title">
+                  <span class="archive-time"><i class="iconfont icon-log"></i></span>
+                  <h3 th:text="${archive.year}+'-'+${month.month}"></h3>
+                </div>
                 <div
-                  th:class="'archives archives-'+${monthStat.index}"
-                  id="monlist"
+                  class="archive-posts"
+                  th:classappend="|archives-${monthStat.index}|"
                   th:attr="data-date=${archive.year}+'-'+${month.month}"
                   style="display: block; overflow: hidden"
                 >
-                  <th:block th:each="post : ${month.posts}">
-                    <span class="ar-circle"></span>
+                  <div class="archive-post-item" th:each="post : ${month.posts}">
+                    <span class="archive-post-circle"></span>
                     <div class="arrow-left-ar"></div>
                     <div class="brick">
                       <a th:href="@{${post.status.permalink}}">
@@ -80,7 +37,7 @@
                         <th:block th:text="${post.spec.title}"></th:block>
                       </a>
                     </div>
-                  </th:block>
+                  </div>
                 </div>
               </div>
             </th:block>

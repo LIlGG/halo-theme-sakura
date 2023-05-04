@@ -1722,7 +1722,7 @@ i.iconfont.hotpost {
 	overflow: hidden
 }
 
-.post-list-thumb-left .post-content-wrap {
+.post-list-thumb-right .post-content-wrap {
 	float: left;
 	padding-left: 30px;
 	padding-right: 0;
@@ -1730,11 +1730,11 @@ i.iconfont.hotpost {
 	margin: 20px 10px 10px 0
 }
 
-.post-list-thumb-left .post-thumb {
+.post-list-thumb-right .post-thumb {
 	float: left
 }
 
-.post-list-thumb-left .post-thumb a {
+.post-list-thumb-right .post-thumb a {
 	border-radius: 10px 0 0 10px
 }
 
@@ -1762,7 +1762,7 @@ i.iconfont.hotpost {
 	}
 
 	.post-content-wrap,
-	.post-list-thumb-left .post-content-wrap {
+	.post-list-thumb-right .post-content-wrap {
 		text-align: left;
 		margin: 0;
 		padding: 20px;
@@ -1794,7 +1794,7 @@ i.iconfont.hotpost {
 		text-align: right
 	}
 
-	.post-list-thumb-left .post-thumb a,
+	.post-list-thumb-right .post-thumb a,
 	.post-thumb a {
 		border-radius: 10px
 	}

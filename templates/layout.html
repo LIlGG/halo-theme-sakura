@@ -32,12 +32,15 @@
               <th:block th:replace="${header}" />
             </th:block>
           </header>
-          <!--/* 页面侧边栏，如 toc */-->
         </div>
 
         <!--/* 挂钩，不同路由将使用不同的内容进行渲染 */-->
         <div id="content" class="main-inner site-content" th:classappend="${_templateId}">
           <th:block th:replace="${content}" />
+          <!--/* sidebar，侧边栏 */-->
+          <th:block th:if="${sidebar != null}">
+            <th:block th:replace="${sidebar}" />
+          </th:block>
         </div>
 
         <!--/* 评论组件 */-->
