@@ -1,0 +1,19 @@
+.single-page-header {
+  & .page-header {
+    &.is-decorate {
+      & .pattern-title {
+        & .entry-title {
+          font-size: 40px;
+        }
+      }
+    }
+
+    & .pattern-title {
+      & .entry-title {
+        font-size: 24px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

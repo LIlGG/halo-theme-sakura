@@ -14,16 +14,6 @@
       &:after {
         display: none;
       }
-
-      & .post-header {
-        & h1 {
-          &.entry-title {
-            margin: 0;
-            font-size: 32px;
-            width: 100%;
-          }
-        }
-      }
     }
 
     &:after {

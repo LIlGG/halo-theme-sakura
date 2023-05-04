@@ -1,6 +1,3 @@
-<!--/*-->
-@package Akina
-<!--*/-->
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
@@ -11,7 +8,9 @@
   </th:block>
 
   <th:block th:fragment="header">
-    <th:block th:replace="~{macro/page-header :: page-header(${singlePage}, ${singlePage.spec.cover})}" />
+    <div class="single-page-header">
+      <th:block th:replace="~{macro/page-header :: page-header(extension = ${singlePage}, frontCover = ${singlePage.spec.cover}, headerTitle = ${singlePage.spec.title})}" />
+    </div>
   </th:block>
   
   <th:block th:fragment="content">
