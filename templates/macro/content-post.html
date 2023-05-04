@@ -76,10 +76,5 @@
         <th:block th:replace="~{module/sharelike :: sharelike(${post})}" />
       </div>
     </footer>
-
-    <!--/* TODO 作为侧边栏，单独移出去 */-->
-    <div th:if="${#annotations.getOrDefault(post, 'toc', true)}" class="toc-container">
-      <div class="toc"></div>
-    </div>
   </article>
 </th:block>

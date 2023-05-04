@@ -21,6 +21,7 @@
     margin-right: 5px;
     color: #989898;
     font-size: 14px;
+    vertical-align: middle;
   }
 
   & a {
@@ -107,11 +108,17 @@
     }
   }
 
-  &.post-list-thumb-left {
+  &.post-list-thumb-right {
     flex-direction: row-reverse;
 
     & .post-content-wrap {
       text-align: right;
+
+      & .float-content {
+        & p {
+          text-align: right;
+        }
+      }
     }
 
     & .post-thumb {
@@ -203,7 +210,7 @@
       }
     }
 
-    &.post-list-thumb-left {
+    &.post-list-thumb-right {
       & .post-content-wrap {
         text-align: left;
         margin: 0;

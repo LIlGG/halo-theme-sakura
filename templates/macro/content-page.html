@@ -1,12 +1,7 @@
 <th:block th:fragment="content-page(page)">
-  <article th:id="|post-${page.metadata.name}|" class="post-item page type-page status-publish hentry"
+  <article th:id="|post-${page.metadata.name}|" class="page-article"
     th:classappend="|post-${page.metadata.name}|">
-    <div th:if="${#annotations.getOrDefault(page, 'toc', true)}" class="toc-container">
-      <div class="toc"></div>
-    </div>
-    <div class="entry-content" th:utext="${page.content.content}"></div>
 
-    <footer class="entry-footer"></footer>
+    <div class="entry-content" th:utext="${page.content.content}"></div>
   </article>
 </th:block>
-<!--/* #post-## */-->

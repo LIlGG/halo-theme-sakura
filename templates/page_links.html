@@ -11,14 +11,13 @@
   </th:block>
 
   <th:block th:fragment="header">
-    <th:block th:replace="~{macro/page-header :: page-header(${singlePage}, ${singlePage.spec.cover})}" />
+    <div class="link-page-header">
+      <th:block th:replace="~{macro/page-header :: page-header(${singlePage}, ${singlePage.spec.cover}, ${singlePage.spec.title})}" />
+    </div>
   </th:block>
   
   <th:block th:fragment="content">
     <th:block th:replace="~{macro/content-links}" />
-    <div th:if="${#annotations.getOrDefault(singlePage, 'toc', true)}" class="toc-container">
-      <div class="toc"></div>
-    </div>
-    <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name=${singlePage.metadata.name}" />
+    <!-- <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name=${singlePage.metadata.name}" /> -->
   </th:block>
 </html>
