@@ -10,13 +10,13 @@
   </th:block>
   
   <th:block th:fragment="content">
-    <div>
+    <div class="tags-container">
       <th:block th:if="${theme.config.tagAndCategory.tag_cloud}">
         <div class="tag-wordcloud-container">
           <div id="tag-wordcloud" class="jqcloud"></div>
         </div>
       </th:block>
-      <div class="tags-content">
+      <div class="card-container tags-content">
         <div id="tags" class="chip-container">
           <div class="card">
             <div class="card-content">
