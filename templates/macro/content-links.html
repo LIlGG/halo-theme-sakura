@@ -5,15 +5,15 @@
       th:utext="${singlePage.content.content}">
     </th:block>
     <div class="links" th:if="${pluginFinder.available('PluginLinks')}">
-      <th:block th:each="group : ${linkFinder.groupBy()}">
+      <th:block th:each="group : ${linkFinder.groupBy()}" th:if="${not #lists.isEmpty(group.links)}">
         <h3 class="link-title">
           <span class="fake-title" th:text="${group.spec.displayName}"></span>
         </h3>
-        <ul class="link-items fontSmooth">
+        <ul class="link-items">
           <li 
-            class="link-item" th:each="link : ${group.links}" :key="i">
+            class="link-item" th:each="link : ${group.links}">
             <a 
-              class="link-item-inner effect-apollo" th:href="${link.spec.url}" th:title="${link.spec.displayName}" target="_blank">
+              class="link-item-inner" th:href="${link.spec.url}" th:title="${link.spec.displayName}" target="_blank">
                 <img 
                   class="lazyload" 
                   th:attr="data-src=${link.spec.logo}"
