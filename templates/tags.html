@@ -1,7 +1,3 @@
-<!--/*-->
-/** * 主题的标签目录，用来展示所有的标签，需要手动在菜单中添加 * 菜单链接如下： https://{youraddress}/tags * @author *
-LIlGG */
-<!--*/-->
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
@@ -9,55 +5,42 @@ LIlGG */
 >
   <th:block th:fragment="header">
     <th:block
-      th:replace="~{macro/page-header :: page-header(extension=${tags}, frontCover=${theme.config.patternimg.tag_patternimg}, id='tags')}"
+      th:replace="~{macro/page-header :: page-header(extension=${tags}, frontCover=${theme.config.patternimg.tag_patternimg}, headerTitle = '标签', id='tags')}"
     />
   </th:block>
   
   <th:block th:fragment="content">
-    <th:block th:if="${theme.config.tagAndCategory.tag_cloud}">
-      <style type="text/css">
-        .site-content {
-          max-width: none;
-        }
-        #tag-wordcloud {
-          width: 100%;
-          height: 300px;
-        }
-
-        .tag-contents {
-          max-width: 800px;
-        }
-      </style>
-      <div class="container">
-        <div class="card">
-          <div id="tag-wordcloud" class="card-content jqcloud"></div>
+    <div>
+      <th:block th:if="${theme.config.tagAndCategory.tag_cloud}">
+        <div class="tag-wordcloud-container">
+          <div id="tag-wordcloud" class="jqcloud"></div>
         </div>
-      </div>
-    </th:block>
-    <div class="tag-contents">
-      <div id="tags" class="container chip-container">
-        <div class="card">
-          <div class="card-content">
-            <div
-              th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
-              class="tag-title center-align"
-            >
-              <i class="fa fa-tags"></i>&nbsp;&nbsp;<span class="i18n" data-iname="page.tags.title"></span>
-            </div>
-            <div class="tag-chips">
-              <a
-                th:each="tag : ${tags}"
-                th:href="@{${tag.status.permalink}}"
-                th:title="${tag.spec.displayName}+': '+${tag.postCount}"
+      </th:block>
+      <div class="tags-content">
+        <div id="tags" class="chip-container">
+          <div class="card">
+            <div class="card-content">
+              <div
+                th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+                class="tag-title"
               >
-                <span
-                  class="chip center-align waves-effect waves-light chip-default"
-                  th:attr="data-tagname=${tag.spec.displayName}"
+                <i class="fa fa-tags"></i>&nbsp;&nbsp;<span class="i18n" data-iname="page.tags.title"></span>
+              </div>
+              <div class="tag-chips">
+                <a
+                  th:each="tag : ${tags}"
+                  th:href="@{${tag.status.permalink}}"
+                  th:title="${tag.spec.displayName}+': '+${tag.postCount}"
                 >
-                  <th:block th:text="${tag.spec.displayName}"></th:block>
-                  <span class="tag-length" th:text="${tag.postCount}"> </span>
-                </span>
-              </a>
+                  <span
+                    class="chip chip-default"
+                    th:attr="data-tagname=${tag.spec.displayName}"
+                  >
+                    <th:block th:text="${tag.spec.displayName}"></th:block>
+                    <span class="tag-length" th:text="${tag.postCount}"> </span>
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
