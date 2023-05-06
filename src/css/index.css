@@ -598,12 +598,6 @@ h1.page-title.mb- {
 /**
 * tags样式
 */
-.category-show {
-  animation: post-list-show 2s;
-  -webkit-animation: post-list-show 2s;
-  opacity: 1;
-}
-
 .archive-calendar {
   margin-top: -60px;
   max-width: 820px;
