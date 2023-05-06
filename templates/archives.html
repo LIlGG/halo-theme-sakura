@@ -5,7 +5,7 @@
 >
   <th:block th:fragment="header">
     <th:block
-    th:replace="~{macro/page-header :: page-header(extension=${archives}, frontCover=${theme.config.patternimg.archives_patternimg}, headerTitle = '归档', id='archives', isRandomImage = true)}"
+    th:replace="~{macro/page-header :: page-header(extension=${archives}, frontCover=${theme.config.patternimg.archives_patternimg}, headerTitle = '文章归档', id='archives', isRandomImage = true)}"
     />
   </th:block>
   <th:block th:fragment="content">
@@ -23,8 +23,7 @@
                   class="archive-posts"
                   th:classappend="|archives-${monthStat.index}|"
                   th:attr="data-date=${archive.year}+'-'+${month.month}"
-                  style="display: block; overflow: hidden"
-                >
+                  style="display: block; overflow: hidden">
                   <div class="archive-post-item" th:each="post : ${month.posts}">
                     <span class="archive-post-circle"></span>
                     <div class="arrow-left-ar"></div>
