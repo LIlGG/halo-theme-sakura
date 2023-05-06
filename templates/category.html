@@ -15,33 +15,23 @@
   </th:block>
 
   <th:block th:fragment="headerTitle">
-    <h1 class="cat-title i18n" data-iname="page.categories.item_title"
-    th:attr="data-ivalue=${category.spec.displayName}"></h1>
-    <span class="cat-des" th:text="${category.spec.description}"> </span>
+    <h1 th:text="${category.spec.displayName}"></h1>
+    <span class="cat-des" th:text="${category.spec.description}"></span>
   </th:block>
 
   <th:block th:fragment="content">
-    <div id="primary" class="content-area" th:with="postItems=${posts.items}">
+    <div id="primary" th:with="postItems=${posts.items}">
       <main id="main" class="site-main" role="main">
         <th:block th:if="${posts.totalPages gt 0}">
-          <header
-            class="page-header"
-            th:unless="${theme.config.patternimg.patternimg_image} and (${not #strings.isEmpty(category.spec.cover)} or ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)}) or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
-          >
-            <h1 class="cat-title" th:text="${category.spec.displayName}"></h1>
-            <span class="cat-des" th:text="${category.spec.description}"></span>
-          </header>
           <th:block th:each="post : ${postItems}">
             <th:block th:replace="~{macro/content :: content(${post})}" />
           </th:block>
-
           <div class="clearer"></div>
         </th:block>
         <th:block th:unless="${posts.totalPages gt 0}">
           <th:block th:replace="~{macro/content-none}" />
         </th:block>
       </main>
-      <!--/* #pagination */-->
       <th:block th:replace="~{module/list-pagination :: pagination(${posts})}"></th:block>
     </div>
   </th:block>
