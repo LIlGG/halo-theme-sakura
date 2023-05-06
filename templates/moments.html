@@ -2,8 +2,12 @@
 <html
   xmlns:th="https://www.thymeleaf.org"
   th:replace="~{layout :: layout(_title = ~{::title}, _header = ~{::header}, _content = ~{::content})}"
-  th:with="momentTitle = ${title}"
 >
+
+  <th:block th:fragment="title">
+    <th:block th:text="${title} + '|' + ${site.title}"></th:block>
+  </th:block>
+
   <th:block th:fragment="header">
     <th:block
       th:replace="~{macro/page-header :: page-header(extension=${moments}, frontCover=${theme.config.patternimg.journals_patternimg}, headerTitle = ~{::headerTitle}, id='moments', isRandomImage=true)}"
@@ -11,13 +15,14 @@
   </th:block>
 
   <th:block th:fragment="headerTitle">
-    <h1 th:text="${momentTitle}"></h1>
+    <h1 th:text="${title}"></h1>
   </th:block>
 
   <th:block th:fragment="content">
-    <div class="journals-content">
-      <ul th:if="${moments.total gt 0}" id="main" class="journals-line" role="main">
-        <li th:each="moment : ${moments.items}" th:data-name="${moment.metadata.name}" class="journal">
+    <div class="moments-container">
+      <ul th:if="${moments.total gt 0}" class="moments-inner" role="main">
+        <li class="moment-item journal" th:each="moment : ${moments.items}" th:data-name="${moment.metadata.name}">
+          <!--/* todo */-->
           <span class="journal-author-img">
             <img
               class="lazyload avatar"
