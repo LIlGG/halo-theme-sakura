@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{layout :: layout(title = ~{::title}, header = ~{::header}, content = ~{::content})}"
+  th:replace="~{layout :: layout(_title = ~{::title}, _header = ~{::header}, _content = ~{::content})}"
 >
   <th:block th:fragment="header">
     <th:block

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" lang="zh-CN" th:fragment="layout(title, header, content)">
+<html xmlns:th="https://www.thymeleaf.org" lang="zh-CN" th:fragment="layout(_title, _header, _content)">
   <head>
     <!--/* 引入公共 Head */-->
     <th:block th:replace="module/head/index" />
     <!--/* title */-->
     <title>
-      <th:block th:if="${title != null}"> <th:block th:replace="${title}"></th:block> </th:block> <th:block
-      th:unless="${title != null}"> <th:block th:if="${#strings.isEmpty(site.subtitle)}"
+      <th:block th:if="${_title != null}"> <th:block th:replace="${_title}"></th:block> </th:block> <th:block
+      th:unless="${_title != null}"> <th:block th:if="${#strings.isEmpty(site.subtitle)}"
       th:text="${site.title}"></th:block> <th:block th:unless="${#strings.isEmpty(site.subtitle)}"
       th:text="|${site.title} - ${site.subtitle}|"></th:block> </th:block>
     </title>
@@ -28,18 +28,18 @@
         <div class="column">
           <!--/* 页面头部，如文章页的随机图？文本？视频？ */-->
           <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-            <th:block th:if="${header != null}">
-              <th:block th:replace="${header}" />
+            <th:block th:if="${_header != null}">
+              <th:block th:replace="${_header}" />
             </th:block>
           </header>
         </div>
 
         <!--/* 挂钩，不同路由将使用不同的内容进行渲染 */-->
         <div id="content" class="main-inner site-content" th:classappend="${_templateId}">
-          <th:block th:replace="${content}" />
+          <th:block th:replace="${_content}" />
           <!--/* sidebar，侧边栏 */-->
-          <th:block th:if="${sidebar != null}">
-            <th:block th:replace="${sidebar}" />
+          <th:block th:if="${_sidebar != null}">
+            <th:block th:replace="${_sidebar}" />
           </th:block>
         </div>
 
