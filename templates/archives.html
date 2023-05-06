@@ -5,9 +5,14 @@
 >
   <th:block th:fragment="header">
     <th:block
-    th:replace="~{macro/page-header :: page-header(extension=${archives}, frontCover=${theme.config.patternimg.archives_patternimg}, headerTitle = '文章归档', id='archives', isRandomImage = true)}"
+    th:replace="~{macro/page-header :: page-header(extension=${archives}, frontCover=${theme.config.patternimg.archives_patternimg}, headerTitle =  ~{::headerTitle},, id='archives', isRandomImage = true)}"
     />
   </th:block>
+
+  <th:block th:fragment="headerTitle">
+    <h1 class="i18n" data-iname="page.archives.title"></h1>
+  </th:block>
+
   <th:block th:fragment="content">
     <article class="archives-article">
       <div id="archives-temp" class="archives-inner">

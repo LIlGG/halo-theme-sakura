@@ -45,14 +45,12 @@
       &.single-center {
         & .post-header {
           & h1 {
-            &.entry-title {
-              font-size: 26px;
-              -webkit-line-clamp: 2;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              display: -webkit-box;
-              -webkit-box-orient: vertical;
-            }
+            font-size: 26px;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
           }
         }
       }
@@ -67,38 +65,28 @@
     margin-top: 50px;
 
     & h1 {
-      &.cat-title,
-      &.entry-title {
-        font-size: 40px;
-        font-weight: 500;
-        padding: 0;
-        border: 0;
-        margin: 0;
-        font-size: 32px;
-        width: 100%;
+      padding: 0;
+      border: 0;
+      width: 100%;
+      margin: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 300;
+
+      &:before,
+      &:after {
+        color: #f8ba0b;
+        font-size: 1.5em;
+        vertical-align: sub;
       }
 
-      &.entry-title {
-        margin: 0;
-        width: 100%;
-        text-align: center;
-        font-size: 24px;
-        font-weight: 300;
+      &:before {
+        content: "{";
+      }
 
-        &:before,
-        &:after {
-          color: #f8ba0b;
-          font-size: 1.5em;
-          vertical-align: sub;
-        }
-
-        &:before {
-          content: "{";
-        }
-
-        &:after {
-          content: "}";
-        }
+      &:after {
+        content: "}";
       }
     }
 
@@ -116,7 +104,7 @@
       position: absolute;
       text-shadow: 2px 2px 10px #000;
 
-      & .entry-title {
+      & h1 {
         font-size: 32px;
         color: #fff;
         font-weight: 500;
@@ -149,18 +137,12 @@
         }
 
         & h1 {
-          &.entry-title {
-            font-size: 40px;
+          font-size: 40px;
+          color: #fff;
 
-            &:before,
-            &:after {
-              content: "";
-            }
-          }
-
-          &.cat-title,
-          &.entry-title {
-            color: #fff;
+          &:before,
+          &:after {
+            content: "";
           }
         }
       }

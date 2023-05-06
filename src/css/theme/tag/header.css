@@ -2,23 +2,21 @@
   & .page-header {
     & .pattern-title {
       & h1 {
-        &.entry-title {
-          display: inline-block;
-          font-size: 25px;
-          font-weight: 400;
-          color: #676767;
+        display: inline-block;
+        font-size: 25px;
+        font-weight: 400;
+        color: #676767;
 
-          &:before {
-            content: "";
-          }
+        &:before {
+          content: "";
+        }
 
-          &:after {
-            content: "";
-            padding-right: 15px;
-            border-right: 1px dashed #ddd;
-            font-size: 30px;
-            vertical-align: middle;
-          }
+        &:after {
+          content: "";
+          padding-right: 15px;
+          border-right: 1px dashed #ddd;
+          font-size: 30px;
+          vertical-align: middle;
         }
       }
     }

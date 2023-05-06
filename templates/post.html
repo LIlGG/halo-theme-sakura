@@ -8,10 +8,14 @@
 <th:block th:fragment="header">
   <div class="post-header">
     <th:block
-      th:replace="~{macro/page-header :: page-header(extension = ${post}, frontCover = ${post.spec.cover}, headerTitle = ${post.spec.title})}" />
-    <div class="post-meta">
-      <th:block th:replace="~{module/post/post-meta :: post-meta(${post})}" />
-    </div>
+      th:replace="~{macro/page-header :: page-header(extension = ${post}, frontCover = ${post.spec.cover}, headerTitle = ~{::headerTitle})}" />
+  </div>
+</th:block>
+
+<th:block th:fragment="headerTitle">
+  <h1 th:text="${post.spec.title}"></h1>
+  <div class="post-meta">
+    <th:block th:replace="~{module/post/post-meta :: post-meta(${post})}" />
   </div>
 </th:block>
 

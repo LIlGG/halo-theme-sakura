@@ -4,19 +4,17 @@
   animation: main 0.6s;
 
   & h1 {
-    &.entry-title {
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 50px;
-      margin: 0 0 0 17%;
-      position: relative;
-      z-index: 1;
-      display: inline-block;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      width: 64%;
-    }
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 50px;
+    margin: 0 0 0 17%;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 64%;
   }
 
   & p {
@@ -156,11 +154,9 @@
 
   @mixin screens-md {
     & h1 {
-      &.entry-title {
-        margin: 0 0 0 65px;
-        font-size: 16px;
-        line-height: 30px;
-      }
+      margin: 0 0 0 65px;
+      font-size: 16px;
+      line-height: 30px;
     }
 
     & p {

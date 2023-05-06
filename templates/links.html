@@ -8,9 +8,14 @@
 >
   <th:block th:fragment="header">
     <th:block
-      th:replace="~{macro/page-header :: page-header(extension=${links}, frontCover=${theme.config.patternimg.links_patternimg}, id='links', isRandomImage=true)}"
+      th:replace="~{macro/page-header :: page-header(extension=${links}, frontCover=${theme.config.patternimg.links_patternimg}, headerTitle = ~{::headerTitle} id='links', isRandomImage=true)}"
     />
   </th:block>
+
+  <th:block th:fragment="headerTitle">
+    <h1 class="i18n" data-iname="page.links.title"></h1>
+  </th:block>
+
   <th:block th:fragment="content">
     <th:block th:replace="~{macro/content-links}" />
   </th:block>
