@@ -6,7 +6,7 @@
   * id 可选，每个模型唯一 id，不传入则默认取 extension.metadata.name
   * isRandomImage 可选,是否使用随机图. 不传则默认取 annotations 下的 randomImage 属性
   */-->
-<div class="page-header" th:fragment="page-header(extension, frontCover, headerTitle)" th:with="randomCoverAvailable = ${(isRandomImage == null ? #annotations.getOrDefault(extension, 'randomImage', true) : isRandomImage) and not #strings.isEmpty(theme.config.random_image.rimage_url) and (_templateId == 'post' ? theme.config.random_image.rimage_cover_open : theme.config.random_image.rimage_cover_sheet_open)}" th:classappend="${(not #strings.isEmpty(frontCover) || randomCoverAvailable) ? 'is-decorate' : ''}">
+<div class="page-header" th:fragment="page-header(extension, frontCover)" th:with="randomCoverAvailable = ${(isRandomImage == null ? #annotations.getOrDefault(extension, 'randomImage', true) : isRandomImage) and not #strings.isEmpty(theme.config.random_image.rimage_url) and (_templateId == 'post' ? theme.config.random_image.rimage_cover_open : theme.config.random_image.rimage_cover_sheet_open)}" th:classappend="${(not #strings.isEmpty(frontCover) || randomCoverAvailable) ? 'is-decorate' : ''}">
   <th:block
     th:if="${theme.config.patternimg.patternimg_image}"
   >
@@ -49,8 +49,10 @@
       </div>
     </div>
   </th:block>
-  <div class="pattern-title" itemprop="name headline">
-    <!--/* 标题需要支持国际化方案 */-->
-    <h1 class="entry-title" th:text="${headerTitle}"></h1>
-  </div>
+  <th:block th:if="${headerTitle != null}">
+    <div class="pattern-title" itemprop="name headline">
+      <!--/* 标题需要支持国际化方案 */-->
+      <th:block th:replace="${headerTitle}" />
+    </div>
+  </th:block>
 </div>

@@ -10,8 +10,14 @@
 
   <th:block th:fragment="header">
     <div class="category-header">
-      <th:block th:replace="~{macro/page-header :: page-header(${category}, ${category.spec.cover}, ${category.spec.displayName})}" />
+      <th:block th:replace="~{macro/page-header :: page-header(extension = ${category}, frontCover = ${category.spec.cover}, headerTitle = ~{::headerTitle})}" />
     </div>
+  </th:block>
+
+  <th:block th:fragment="headerTitle">
+    <h1 class="cat-title i18n" data-iname="page.categories.item_title"
+    th:attr="data-ivalue=${category.spec.displayName}"></h1>
+    <span class="cat-des" th:text="${category.spec.description}"> </span>
   </th:block>
 
   <th:block th:fragment="content">

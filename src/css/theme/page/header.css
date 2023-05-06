@@ -2,14 +2,14 @@
   & .page-header {
     &.is-decorate {
       & .pattern-title {
-        & .entry-title {
+        & h1 {
           font-size: 40px;
         }
       }
     }
 
     & .pattern-title {
-      & .entry-title {
+      & h1 {
         font-size: 24px;
         font-weight: 700;
         text-transform: uppercase;

@@ -5,10 +5,14 @@
 >
   <th:block th:fragment="header">
     <th:block
-      th:replace="~{macro/page-header :: page-header(extension=${tags}, frontCover=${theme.config.patternimg.tag_patternimg}, headerTitle = '标签', id='tags')}"
+      th:replace="~{macro/page-header :: page-header(extension=${tags}, frontCover=${theme.config.patternimg.tag_patternimg}, headerTitle = ~{::headerTitle}, id='tags')}"
     />
   </th:block>
   
+  <th:block th:fragment="headerTitle">
+    <h1 class="i18n" data-iname="page.tags.title"></h1>
+  </th:block>
+
   <th:block th:fragment="content">
     <div class="tags-container">
       <th:block th:if="${theme.config.tagAndCategory.tag_cloud}">

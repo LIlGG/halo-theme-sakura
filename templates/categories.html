@@ -3,7 +3,11 @@
   th:replace="~{layout :: layout(title = ~{::title}, header = ~{::header}, content = ~{::content})}">
 <th:block th:fragment="header">
   <th:block
-    th:replace="~{macro/page-header :: page-header(extension=${categories}, frontCover=${theme.config.patternimg.category_patternimg}, headerTitle = '分类',  id='categories')}" />
+    th:replace="~{macro/page-header :: page-header(extension=${categories}, frontCover=${theme.config.patternimg.category_patternimg}, headerTitle = ~{::headerTitle},  id='categories')}" />
+</th:block>
+
+<th:block th:fragment="headerTitle">
+  <h1 class="i18n" data-iname="page.categories.title"></h1>
 </th:block>
 
 <th:block th:fragment="content">
