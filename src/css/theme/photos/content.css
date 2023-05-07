@@ -1,0 +1,161 @@
+.photos-container {
+  margin: 50px 0;
+
+  & .photos-inner {
+    & .loading {
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #555;
+      border: none;
+      background-size: auto 100%;
+      box-shadow: none;
+      height: 60px;
+
+      & .gallery {
+        display: none;
+      }
+    }
+
+    & .photos-content {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @mixin screens-md {
+    padding-top: 2em;
+  }
+}
+
+.photos-group {
+  & ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+    letter-spacing: 0.2em;
+
+    & li {
+      display: inline-block;
+      vertical-align: bottom;
+      margin: 0 2em 1.5em 0;
+
+      & a {
+        display: block;
+        color: #222;
+        position: relative;
+
+        &::after {
+          content: "";
+          display: block;
+          border-bottom: 2px solid #ea8e00;
+          width: 0;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          transform: scale(0, 1);
+          transform-origin: 50% 0;
+          transition: transform 0.35s;
+        }
+
+        &:hover,
+        &.active {
+          &:after {
+            width: 100%;
+            transform: scale(1);
+          }
+        }
+      }
+    }
+  }
+}
+
+.gallery {
+  clear: both;
+  width: 100%;
+  margin: 0;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.35s;
+
+  & .gallery-item {
+    &:hover {
+      & .gallery-caption {
+        opacity: 0.6;
+        transition: opacity 0.2s ease;
+
+        & .entry-summary {
+          opacity: 1;
+
+          & h3,
+          & p {
+            transform: translate3d(0, 0, 0);
+          }
+        }
+      }
+    }
+
+    & .gallery-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 10;
+      pointer-events: none;
+
+      & .entry-summary {
+        display: inline-block;
+        position: absolute;
+        width: 100%;
+        opacity: 0;
+        margin: 1.5em 0 0;
+        transition: all 0.2s ease;
+        text-align: center;
+        bottom: 0;
+        padding-bottom: 1em;
+        font-size: 0.8em;
+        color: #f7f6f5;
+
+        & h3,
+        & p {
+          transition: transform 0.35s;
+          padding: 0;
+          margin: 0;
+        }
+
+        & p {
+          font-family: Times, serif;
+          font-style: italic;
+          font-size: 0.9em;
+          opacity: 0.8;
+        }
+
+        & h3 {
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size: 0.9em;
+          letter-spacing: 0.05em;
+          transform: translate3d(0,-20px,0);
+          margin-bottom: 0.5em;
+        }
+      }
+    }
+  }
+  
+  @mixin screens-md {
+    .gallery-item {
+      & .gallery-caption {
+        & h3,
+        & p {
+          transform: none;
+        }
+
+        & .entry-summary {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

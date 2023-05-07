@@ -715,6 +715,7 @@ spec:
         - $formkit: select
           name: photos_style
           id: photos_style
+          key: photos_style
           label: 相册布局风格
           value: justify
           options:
@@ -739,7 +740,10 @@ spec:
           placeholder: 请填写分组名称
           value: ""
         - $formkit: number
+          if: "$get(photos_style).value == justify"
           name: photos_gutter
+          id: photos_gutter
+          key: photos_gutter
           label: 图像之间的间距
           min: 1
           value: 10

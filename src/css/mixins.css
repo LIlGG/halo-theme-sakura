@@ -32,3 +32,9 @@
     @mixin-content;
   }
 }
+
+@define-mixin col $col: 3 {
+  &.col-$(col) {
+    width: calc((100% - ($(col) - 1) * 10px) / $(col));
+  }
+}
