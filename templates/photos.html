@@ -6,63 +6,38 @@
   xmlns:th="https://www.thymeleaf.org"
   th:replace="~{layout :: layout(_title = ~{::title}, _header = ~{::header}, _content = ~{::content})}"
 >
-<th:block th:fragment="header">
-  <th:block th:replace="~{macro/page-header :: page-header(extension=${photos}, frontCover=${theme.config.patternimg.photos_patternimg}, id='photos'), isRandomImage = true}" />
-  <!-- <th:block 
-    th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.photos_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
-    <div class="pattern-center-blank"></div>
-    <div class="pattern-center no-select">
-      <div class="pattern-attachment-img">
-          <img
-            th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.photos_patternimg)}"
-            th:attr="data-src=${theme.config.patternimg.photos_patternimg}"
-            th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"  
-            class="lazyload" 
-            onerror="imgError(this)">
-          <img
-            th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.photos_patternimg)}"
-            th:src="${theme.config.random_image.rimage_url}+'?photos=photos&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}"
-            th:attr="
-            srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'category=' + category.metadata.name + '&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '') + '&th=150'},
-            data-srcset=${theme.config.random_image.rimage_url}+'?photos=photos&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=640 640w,'+
-            ${theme.config.random_image.rimage_url}+'?photos=photos&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=960 960w,'+
-            ${theme.config.random_image.rimage_url}+'?photos=photos&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=1280 1280w,'+
-            ${theme.config.random_image.rimage_url}+'?photos=photos&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+' 1440w'
-            "
-            data-sizes="auto"
-            th:class="'lazyload '+${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}" />
-      </div>
-      <header class="pattern-header">
-        <h1 class="entry-title" th:if="${not #strings.isEmpty(title)}" th:text="${title}"></h1>
-        <span class="entry-title i18n" th:unless="${not #strings.isEmpty(title)}" data-iname="page.photos.title"></span>
-      </header>
-    </div>
+  <th:block th:fragment="title">
+    <th:block th:text="${title} + '|' + ${site.title}"></th:block>
   </th:block>
-  <th:block th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.photos_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})">
-    <div class="blank"></div>
+
+  <th:block th:fragment="header">
+    <th:block
+      th:replace="~{macro/page-header :: page-header(extension=${photos}, frontCover=${theme.config.patternimg.photos_patternimg}, headerTitle = ~{::headerTitle}, id='photos', isRandomImage=true)}"
+    />
+  </th:block>
+
+  <th:block th:fragment="headerTitle">
+    <h1 th:text="${title}"></h1>
+  </th:block>
+
+  <th:block th:fragment="content">
     <style>
       .site-content {
-          max-width: none;
-          padding: 0;
-      }
-      @media (max-width: 860px) {
-          .site-content {
-              padding: 0;
-          }
+        max-width: none;
+        padding: 0;
       }
     </style>
-  </th:block> -->
-</th:block>
-<th:block th:fragment="content">
-  <div class="photo-page">
-    <th:block
-      th:if="${theme.config.photos.photos_style == 'masonry' or theme.config.photos.photos_style == 'packery'}"
-      th:insert="~{macro/content-masonry-photos}"
-      ></th:block>
-    <th:block  
-      th:if="${theme.config.photos.photos_style == 'justify'}"
-      th:insert="~{macro/content-justify-photos}"
-      ></th:block>
+    <div class="photos-container">
+      <section class="photos-inner">
+        <th:block
+          th:if="${theme.config.photos.photos_style == 'masonry' or theme.config.photos.photos_style == 'packery'}"
+          th:insert="~{macro/content-masonry-photos}"
+        ></th:block>
+        <th:block
+          th:if="${theme.config.photos.photos_style == 'justify'}"
+          th:insert="~{macro/content-justify-photos}"
+        ></th:block>
+      </section>
     </div>
-</th:block>
+  </th:block>
 </html>

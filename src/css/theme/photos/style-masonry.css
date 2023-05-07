@@ -1,0 +1,84 @@
+.masonry-container {
+  margin: auto 4vw;
+
+  & .photos-content {
+    margin: 1.5em auto;
+
+    & .gallery {
+      & .gallery-item {
+        margin: 0;
+        margin-bottom: 10px;
+        
+        @mixin col 3;
+        @mixin col 4;
+        @mixin col 5;
+        @mixin col 6;
+        @mixin col 7;
+        @mixin col 8;
+      }
+    }
+  }
+
+  @mixin screens-md {
+    & .photos-content {
+      & .gallery {
+        & .gallery-item {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.masonry-tools {
+  display: flex;
+  justify-content: space-between;
+
+  & .grid-changer {
+    float: right;
+
+    & ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.8em;
+
+      & li {
+        display: inline-block;
+        margin-left: 0.2em;
+
+        & a {
+          display: block;
+          width: 30px;
+          height: 30px;
+          text-align: center;
+          color: #ccc;
+          position: relative;
+          border: 2px solid #999;
+          transition: all 0.2s ease;
+
+          &:hover {
+            border-color: #ea8e00;
+            color: #ea8e00;
+          }
+
+          &.active {
+            &,
+            &:hover {
+              border-color: #222;
+              color: #222;
+            }
+          }
+
+          & svg {
+            fill: #222;
+          }
+        }
+      }
+    }
+  }
+
+  @mixin screens-md {
+    display: none;
+  }
+}

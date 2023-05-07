@@ -606,18 +606,20 @@ var LIlGGAttachContext = {
   },
   // 图库功能
   PHO: function () {
-    var $photoPage = $(".photo-page");
+    var $photoPage = $(".photos-container");
     // 判断当前是否为图库界面
     if ($photoPage.length == 0) {
       return;
     }
     // 渲染图库信息
-    var $masonrys = $(".masonry-gallery.gallery");
+    var $masonrys = $(".photos-content .gallery");
 
     var justify = function () {
+      // http://miromannino.github.io/Justified-Gallery/options-and-events/
       var option = {
         margins: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter),
         rowHeight: 200,
+        captions: false
       };
       // 默认过滤
       if (Poi.defaultGroup) {
@@ -636,6 +638,10 @@ var LIlGGAttachContext = {
 
       // 过滤
       $("#gallery-filter li a").on("click", function () {
+        if ($(this).hasClass("active")) {
+          return false;
+        }
+        $photoPage.find(".photos-content").addClass("loading");
         $("#gallery-filter li a").removeClass("active");
         $(this).addClass("active");
         var dataFilter = $(this).data("filter");
@@ -644,6 +650,10 @@ var LIlGGAttachContext = {
         });
         return false;
       });
+
+      $masonrys.justifiedGallery().on('jg.complete', function (e) {
+        $photoPage.find(".photos-content").removeClass("loading");
+      });
     };
 
     var masonry = function () {
@@ -651,15 +661,16 @@ var LIlGGAttachContext = {
         Poi.photosStyle == "masonry"
           ? {
               masonry: {
-                gutter: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter),
+                gutter:  10,
               },
+              percentPosition: true,
               itemSelector: ".gallery-item",
             }
           : {
               layoutMode: "packery",
               packery: {
                 columnWidth: 100,
-                gutter: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter),
+                gutter:  10,
               },
               itemSelector: ".gallery-item",
             };

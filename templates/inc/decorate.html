@@ -46,7 +46,8 @@
   }
 
   #pagination .loading,
-  #journals-pagination .loading {
+  #journals-pagination .loading,
+  .photos-container .loading {
     background-image: url("[(${#theme.assets('/images/rotating-ball-o.svg')})]");
   }
 
@@ -339,14 +340,6 @@
 
     .feature i {
       border-radius: 0 !important;
-    }
-  </style>
-</th:block>
-
-<th:block th:if="${theme.config.photos.photos_style == 'justify'} or ${theme.config.photos.photos_style == 'packery'}">
-  <style>
-    #gallery-filter {
-      text-align: center;
     }
   </style>
 </th:block>
