@@ -8171,7 +8171,7 @@ td.hljs-ln-numbers {
 }
 
 /* 解决 journals 中，代码块 fixed 定位相对于父 DOM 而不是视窗的 BUG */
-.code-block-fullscreen-html-scroll .journal-label {
+.code-block-fullscreen-html-scroll .moment-content {
 	z-index: auto !important;
 	transform: none !important;
 }
@@ -8985,7 +8985,7 @@ img[src*="#in-center"] {
 
 /** journal */
 /** avatar */
-.journal-author-img .avatar {
+.moment-container .avatar {
 	width: 48px;
 	height: 48px;
 	-o-object-fit: cover;
@@ -8997,7 +8997,7 @@ img[src*="#in-center"] {
 	transition: all 1.0s;
 }
 
-.journal-author-img .avatar {
+.moment-container .avatar {
 	border-radius: 100%;
 	-moz-border-radius: 100%;
 	box-shadow: inset 0 -1px 0 3333sf;
@@ -9006,7 +9006,7 @@ img[src*="#in-center"] {
 	-moz-transition: -moz-transform 0.4s ease-out;
 }
 
-.journal-author-img .avatar:hover {
+.moment-container .avatar:hover {
 	transform: rotateZ(360deg);
 }
 
@@ -9022,23 +9022,23 @@ ul.journals-line {
 	position: relative;
 }
 
-.journal-label:hover {
+.moment-content:hover {
 	/* transform:scale(1.05);*/
 	/* transform: translateY(3px); */
 	box-shadow: 0 15px 32px rgba(0, 0, 0, 0.15) !important
 }
 
-.journals-line>li:nth-child(odd) .journal-label {
+.journals-line>li:nth-child(odd) .moment-content {
 	background: #E6E6FA;
 	color: black;
 }
 
-.journals-line>li:nth-child(odd) .journal-label:after {
+.journals-line>li:nth-child(odd) .moment-content:after {
 	border-right-color: #E6E6FA;
 	color: black;
 }
 
-.journals-line>li .journal-label {
+.journals-line>li .moment-content {
 	margin: 0 0 45px 65px;
 	background: #F0FFFF;
 	color: black;
@@ -9055,15 +9055,15 @@ ul.journals-line {
 }
 
 @media all and (max-width: 860px) {
-    .journals-line>li .journal-label {
+    .journals-line>li .moment-content {
         margin: 0 0 45px 0;
     }
-    .journals-line>li .journal-label:after {
+    .journals-line>li .moment-content:after {
         display: none;
     }
 }
 
-.journals-line>li .journal-label:after {
+.journals-line>li .moment-content:after {
 	right: 100%;
 	border: solid transparent;
 	content: " ";
@@ -9116,11 +9116,11 @@ ul.journals-line {
 }
 
 /** context */
-span.journal-label>p {
+span.moment-content>p {
 	overflow: unset;
 }
 
-.journal-label>p,
+.moment-content>p,
 h1,
 h2,
 h3,
@@ -9132,16 +9132,16 @@ em {
 	word-break: break-all;
 }
 
-.journal-label img {
+.moment-content img {
 	cursor: pointer;
 	transition: all 1s;
 }
 
-.journal-label .comment-js {
+.moment-content .comment-js {
 	cursor: pointer;
 }
 
-.journal-label .comment {
+.moment-content .comment {
 	display: none;
 }
 

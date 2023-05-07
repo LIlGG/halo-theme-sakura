@@ -1442,29 +1442,6 @@ i.iconfont.down {
   top: 1px;
 }
 
-#journals-pagination .loading {
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #555;
-  border: none;
-  background-size: auto 100%;
-}
-
-#journals-pagination .loading {
-  border: none;
-  -o-box-shadow: none;
-  box-shadow: none;
-}
-
-.at_button.loading {
-  background-color: inherit;
-  padding: 25px;
-}
-
-.at_button.loading:hover {
-  background: inherit;
-}
-
 @media (max-width: 630px) {
   .works-list {
     width: 100% !important;
@@ -4345,12 +4322,6 @@ td.hljs-ln-numbers {
   overflow: hidden;
 }
 
-/* 解决 journals 中，代码块 fixed 定位相对于父 DOM 而不是视窗的 BUG */
-.code-block-fullscreen-html-scroll .journal-label {
-  z-index: auto !important;
-  transform: none !important;
-}
-
 .chinese-tranditional-font {
   font-family: Helvetica, Tahoma, Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體",
     "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;
@@ -5042,61 +5013,10 @@ img[src*="#in-center"] {
 
 /** journal */
 /** avatar */
-.journals-content {
-  padding: 10px;
-}
-
-.journal-label:hover {
-  /* transform:scale(1.05);*/
-  /* transform: translateY(3px); */
-  box-shadow: 0 15px 32px rgba(0, 0, 0, 0.15) !important;
-}
-
-.journal-time {
-  margin-top: 10px;
-  border-top: 1px dashed #fff;
-  padding-top: 5px;
-  font-size: 12px;
-}
-
-.journal-time > .journal-like {
-  cursor: pointer;
-}
-
-.journal-time > .journal-like:hover,
-.journal-time > .journal-like.on {
-  color: #00a1d6;
-}
 
 /** button */
-.at_button {
-  background-color: #e6e6fa;
-  border: none;
-  margin-left: 5px;
-  color: block;
-  padding: 8px 16px;
-  text-align: center;
-  text-decoration: none;
-  height: auto;
-  line-height: 20px;
-  display: inline-block;
-  font-size: 12px;
-  border-radius: 12px;
-  outline: none;
-  cursor: pointer;
-}
-
-.at_button:hover {
-  background-color: #f0ffff;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.24), 0 8px 16px 0 rgba(0, 0, 0, 0.19);
-}
-
 /** context */
-span.journal-label > p {
-  overflow: unset;
-}
 
-.journal-label > p,
 h1,
 h2,
 h3,
@@ -5107,20 +5027,6 @@ em {
   word-wrap: break-word;
   word-break: break-all;
 }
-
-.journal-label img {
-  cursor: pointer;
-  transition: all 1s;
-}
-
-.journal-label .comment-js {
-  cursor: pointer;
-}
-
-.journal-label .comment {
-  display: none;
-}
-
 /** journal end */
 /** dark start */
 body.dark #main-container,

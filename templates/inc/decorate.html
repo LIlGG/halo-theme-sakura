@@ -168,7 +168,7 @@
   }
 
   /** 日志 */
-  .journals-line > li:nth-child(odd) .journal-label:after {
+  .journals-line > li:nth-child(odd) .moment-content:after {
     border-right-color: /*[(${theme.config.journal.journal_color_bg_1})]*/ ;
   }
 
@@ -361,21 +361,21 @@
 
 <th:block th:if="${not #strings.isEmpty(theme.config.journal.journal_bg)}">
   <style>
-    .journals-line > li:nth-child(odd) .journal-label {
+    .journals-line > li:nth-child(odd) .moment-content {
       color: /*[(${theme.config.journal.journal_color_font_1})]*/ ;
     }
-    .journals-line > li .journal-label {
+    .journals-line > li .moment-content {
       color: /*[(${theme.config.journal.journal_color_font_2})]*/ ;
     }
   </style>
 
   <th:block th:if="${theme.config.journal.journal_bg_blur}">
     <style>
-      .journals-line > li:nth-child(odd) .journal-label {
+      .journals-line > li:nth-child(odd) .moment-content {
         background: linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35) 95%) 0% 0% / cover,
           url(/*[(${theme.config.journal.journal_bg})]*/) 0% 0% / cover;
       }
-      .journals-line > li .journal-label {
+      .journals-line > li .moment-content {
         background: linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35) 95%) 0% 0% / cover,
           url(/*[(${theme.config.journal.journal_bg})]*/) 0% 0% / cover;
       }
@@ -384,10 +384,10 @@
 
   <th:block th:unless="${theme.config.journal.journal_bg_blur}">
     <style>
-        .journals-line > li:nth-child(odd) .journal-label {
+        .journals-line > li:nth-child(odd) .moment-content {
         background: url(/*[(${theme.config.journal.journal_bg})]*/) 0% 0% / cover;
       }
-      .journals-line > li .journal-label {
+      .journals-line > li .moment-content {
         background: url(/*[(${theme.config.journal.journal_bg})]*/) 0% 0% / cover;
       }
     </style>
@@ -396,12 +396,12 @@
 
 <th:block th:unless="${not #strings.isEmpty(theme.config.journal.journal_bg)}">
   <style>
-    .journals-line > li:nth-child(odd) .journal-label {
+    .journals-line > li:nth-child(odd) .moment-content {
       background: /*[(${theme.config.journal.journal_color_bg_1})]*/ ;
       color: /*[(${theme.config.journal.journal_color_font_1})]*/ ;
     }
 
-    .journals-line > li .journal-label {
+    .journals-line > li .moment-content {
       background: /*[(${theme.config.journal.journal_color_bg_2})]*/ ;
       color: /*[(${theme.config.journal.journal_color_font_2})]*/ ;
     }
