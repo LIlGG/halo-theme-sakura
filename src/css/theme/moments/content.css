@@ -1,81 +1,164 @@
 .moments-container {
-  padding-top: 20px;
+  margin: 20px 0;
 
   & .moments-inner {
     padding: 0;
-    margin: 30px 0 0 0;
+    margin: 0;
     list-style: none;
     display: inline;
     position: relative;
 
-    & .moment-item {
-      & .journal-author-img {
+    & .moments-item {
+      margin-bottom: 30px;
+      
+      & .moment-container {
+        display: flex;
+
+        &:nth-child(odd) {
+          & .moment-content {
+            background: #e6e6fa;
+            color: black;
+          }
+
+          &:after {
+            border-right-color: #e6e6fa;
+            color: black;
+          }
+        }
+
         & .avatar {
           width: 48px;
           height: 48px;
-          -o-object-fit: cover;
           object-fit: cover;
           border: 1px solid #ddd;
           padding: 2px;
           float: left;
-          transition: all 1s;
           border-radius: 100%;
-          box-shadow: inset 0 -1px 0 3333sf;
           transition: transform 0.4s ease-out;
 
           &:hover {
             transform: rotateZ(360deg);
           }
         }
+
+        & .moment-content {
+          position: relative;
+          width: 100%;
+          margin-left: 15px;
+          margin-top: 15px;
+          background: #f0ffff;
+          color: black;
+          padding: 0.8em 1.2em 0.4em 1.2em;
+          font-size: 1.2em;
+          font-weight: 400;
+          line-height: 1.5;
+          border-radius: 5px;
+          transition: all 0.3s ease 0s;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+          cursor: pointer;
+          display: block;
+
+          &:after {
+            right: 100%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-right-color: #f0ffff;
+            border-width: 10px;
+            top: 4px;
+          }
+
+          &:hover {
+            box-shadow: 0 15px 32px rgba(0, 0, 0, 0.15);
+          }
+
+          & > p {
+            overflow: unset;
+            word-wrap: break-word;
+            word-break: break-all;
+          }
+
+          & .journal-time {
+            margin-top: 10px;
+            border-top: 1px dashed #fff;
+            padding-top: 5px;
+            font-size: 14px;
+
+            & img {
+              cursor: pointer;
+              transition: all 1s;
+            }
+
+            & .comment-js,
+            & .journal-like {
+              float: right;
+              margin-left: 15px;
+            }
+
+            & .comment-js {
+              cursor: pointer;
+            }
+
+            & .journal-like {
+              cursor: pointer;
+
+              &:hover,
+              &.on {
+                color: #00a1d6;
+              }
+            }
+          }
+
+          & .comment {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  & .pagination {
+    display: flex;
+    justify-content: center;
+
+    & .at_button {
+      background-color: #e6e6fa;
+      border: none;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      height: 20px;
+      display: inline-block;
+      font-size: 12px;
+      border-radius: 12px;
+      outline: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #f0ffff;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.24), 0 8px 16px 0 rgba(0, 0, 0, 0.19);
       }
 
-      &:nth-child(odd) {
-        & .journal-label {
-          background: #e6e6fa;
-          color: black;
-        }
-
-        &:after {
-          border-right-color: #e6e6fa;
-          color: black;
-        }
-      }
-
-      & .journal-label {
-        margin: 0 0 45px 65px;
-        background: #f0ffff;
-        color: black;
-        padding: 0.8em 1.2em 0.4em 1.2em;
-        font-size: 1.2em;
-        font-weight: 300;
-        line-height: 1.4;
-        position: relative;
-        border-radius: 5px;
-        transition: all 0.3s ease 0s;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-        cursor: pointer;
-        display: block;
-
-        &:after {
-          right: 100%;
-          border: solid transparent;
-          content: " ";
-          height: 0;
-          width: 0;
-          position: absolute;
-          pointer-events: none;
-          border-right-color: #f0ffff;
-          border-width: 10px;
-          top: 4px;
-        }
+      &.loading {
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #555;
+        border: none;
+        background-size: auto 100%;
+        box-shadow: none;
+        background-color: inherit;
+        padding: 25px;
       }
     }
   }
 
   @mixin screens-md {
     & .moments-inner {
-      & .moment-item {
-        & .journal-label {
+      & .moments-item {
+        & .moment-content {
           margin: 0 0 45px 0;
 
           &:after {
@@ -85,4 +168,19 @@
       }
     }
   }
+}
+
+.code-block-fullscreen-html-scroll {
+  /* 解决 journals 中，代码块 fixed 定位相对于父 DOM 而不是视窗的 BUG */
+  & .moment-content {
+    z-index: auto !important;
+    transform: none !important;
+  }
+}
+
+:host {
+  display: inline-block;
+  overflow: hidden;
+  text-align: initial;
+  white-space: nowrap;
 }

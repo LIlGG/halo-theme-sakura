@@ -732,7 +732,7 @@ var LIlGGAttachContext = {
         }
 
         // 为所有图片增加box
-        var $imgs = that.find(".journal-label img:not('.avatar')");
+        var $imgs = that.find(".moment-content img:not('.avatar')");
         $imgs.each(function () {
           if (!$(this).hasClass("journal-img")) {
             $(this)
@@ -757,16 +757,16 @@ var LIlGGAttachContext = {
           }
           // 说说评论展开/收起
           that
-            .find(".journal-label .comment-js")
+            .find(".moment-content .comment-js")
             .off("click")
             .on("click", function () {
-              that.find(".journal-label .comment").toggle();
+              that.find(".moment-content .comment").toggle();
             });
         }
 
         if (Poi.journalLikes) {
           // 说说是否已经点赞
-          var $like = that.find(".journal-label .journal-like");
+          var $like = that.find(".moment-content .journal-like");
           if ($like.length > 0) {
             let jid = that.data("name");
             if (!jid) {
@@ -775,7 +775,7 @@ var LIlGGAttachContext = {
             journalIds.includes(jid) ? $like.addClass("on") : "";
             // 说说点赞
             that
-              .find(".journal-label .journal-like")
+              .find(".moment-content .journal-like")
               .off("click")
               .on("click", function () {
                 // 目前仅能前端控制是否已经点赞
@@ -1315,21 +1315,21 @@ var home = location.href,
       /**
        * 说说
        */
-      $body.on("click", "#journals-pagination a", function () {
-        $(this).addClass("loading").text("");
+      $body.on("click", "#journals-pagination a", function (e) {
         var tempScrollTop = $(window).scrollTop();
+        $(this).addClass("loading").text("");
         $.ajax({
           type: "GET",
-          url: $(this).attr("href") + "#main",
+          url: $(this).attr("href"),
           success: function (data) {
-            var result = $(data).find("#main .journal");
+            var result = $(data).find(".moments-container .moments-item");
             var nextHref = $(data).find("#journals-pagination a").attr("href");
             // 添加新的内容
-            $("#main").append(result.fadeIn(500));
+            $(".moments-inner").append(result.fadeIn(500));
             $("#journals-pagination a").removeClass("loading").text("加载更多...");
-            LIlGGAttachContext.SS();
             // 加载完成不改变位置
             $(window).scrollTop(tempScrollTop);
+            LIlGGAttachContext.SS();
             if (nextHref != undefined) {
               $("#journals-pagination a").attr("href", nextHref);
             } else {
@@ -1337,6 +1337,8 @@ var home = location.href,
             }
           },
         });
+        e.stopPropagation();
+        e.preventDefault();
         return false;
       });
     },
