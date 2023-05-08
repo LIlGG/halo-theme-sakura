@@ -25,7 +25,8 @@
     <th:block th:replace="~{module/post-pagination :: post-nextprev(${post})}" />
     <th:block th:replace="~{module/authorprofile :: authorprofile(${post})}" />
   </div>
-  <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
+  <!--/* 评论组件 */-->
+  <th:block th:replace="~{module/comment :: comment(group = 'content.halo.run', kind = 'Post', name = ${post.metadata.name})}" />
 </th:block>
 
 <th:block th:fragment="sidebar">

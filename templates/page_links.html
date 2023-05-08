@@ -22,6 +22,7 @@
   
   <th:block th:fragment="content">
     <th:block th:replace="~{macro/content-links}" />
-    <!-- <halo:comment group="content.halo.run" kind="SinglePage" th:attr="name=${singlePage.metadata.name}" /> -->
+      <!--/* 评论组件 */-->
+      <th:block th:replace="~{module/comment :: comment(group = 'content.halo.run', kind = 'SinglePage', name = ${singlePage.metadata.name})}" />
   </th:block>
 </html>
