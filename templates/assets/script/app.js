@@ -42,7 +42,6 @@ var LIlGGAttachContext = {
     var $bg_video_btn = $("#video-btn"),
       $bg_video = $("#bgvideo"),
       $bg_video_stu = $(".video-stu"),
-      $bg_video_add = $("#video-add"),
       dom = $bg_video[0],
       flvPlayer,
       mediaBlob;
@@ -65,7 +64,6 @@ var LIlGGAttachContext = {
 
       dom.oncanplay = function () {
         bgPlay();
-        $bg_video_add.show();
         $bg_video_btn.addClass("videolive");
         $bg_video_btn.addClass("haslive");
       };
@@ -78,14 +76,9 @@ var LIlGGAttachContext = {
         flvPlayer.destroy();
         flvPlayer = null;
       };
-
-      $bg_video_add.on("click", function () {
-        loadSource();
-      });
     };
 
     var defaultStyle = function () {
-      $bg_video_add.hide();
       $bg_video_btn.addClass("loadvideo").removeClass("video-pause");
       $bg_video_btn.removeClass("videolive");
       $bg_video_btn.removeClass("haslive");

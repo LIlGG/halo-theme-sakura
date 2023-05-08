@@ -173,62 +173,6 @@ Tags: LIlGG
 /*
  * 头部装饰图
 */
-#bgvideo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  min-width: 99.999%;
-  min-height: 550px;
-  z-index: 0;
-  /** 使视频全屏。并保证填满屏幕 */
-  height: 100vh;
-  -o-object-fit: fill;
-  object-fit: fill;
-}
-
-#video-btn,
-#video-add {
-  position: absolute;
-  bottom: 3px;
-  right: 5px;
-  width: 32px;
-  height: 32px;
-  z-index: 7;
-  background-position: center;
-  background-size: cover;
-  cursor: pointer;
-  opacity: 0.8;
-  -webkit-animation: poi-face 10s linear infinite alternate;
-  animation: poi-face 10s linear infinite alternate;
-}
-
-#video-btn:hover,
-#video-add:hover {
-  opacity: 1;
-}
-
-#video-add {
-  bottom: 45px;
-  display: none;
-}
-
-.video-stu {
-  position: absolute;
-  bottom: -100px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  padding: 6px 15px;
-  text-align: center;
-  color: #fff;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 0;
-  font-size: 18px;
-  transition: 0.4s ease all;
-}
 
 /* .pattern-center:after {
 	content: '';
@@ -241,36 +185,10 @@ Tags: LIlGG
 	position: absolute;
 	z-index: 2;
 } */
-
-.pattern-header {
-  display: flex;
-}
-
-.pattern-center-blank {
-  padding-top: 75px;
-  background-color: #fff;
-}
-
 /*--------------------------------------------------------------
 ## header
 --------------------------------------------------------------*/
-@media (max-width: 860px) {
-  .pattern-center-blank {
-    padding-top: 0;
-  }
-}
-
 /* 菜单 */
-.site-description {
-  float: right;
-}
-
-.header-focus {
-  height: 250px;
-  background: #f9f9f9;
-  margin: 0 auto;
-}
-
 .openNav {
   display: none;
 }
@@ -360,12 +278,6 @@ i.iconfont.hotpost {
   color: #ff3b00;
 }
 
-.post-list-show {
-  animation: post-list-show 0.5s;
-  -webkit-animation: post-list-show 0.5s;
-  opacity: 1;
-}
-
 @-webkit-keyframes post-list-show {
   0% {
     opacity: 0;
@@ -388,66 +300,6 @@ i.iconfont.hotpost {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.postava img {
-  border-radius: 50%;
-  padding: 2px;
-  border: 1px solid #e8e8e8;
-  margin-top: 25px;
-}
-
-.postava {
-  float: right;
-}
-
-.post-status p {
-  margin: 0;
-}
-
-.s-time {
-  position: relative;
-  top: 16px;
-  font-size: 12px;
-  color: #989898;
-  letter-spacing: 1px;
-  text-align: right;
-  margin-bottom: 10px;
-  margin-top: -15px;
-}
-
-.s-content {
-  min-height: 60px;
-  margin: 0 14% 0 2%;
-  padding: 15px 30px;
-  line-height: 30px;
-  border: 1px dashed #e0e0e0;
-  background: #fbfbfb;
-}
-
-.s-time i {
-  font-size: 13px;
-  margin-right: 5px;
-}
-
-.post-status {
-  margin-bottom: 80px;
-}
-
-.footertext p {
-  margin-bottom: 8px;
-}
-
-.footertext .foo-logo {
-  width: 30px;
-  height: 30px;
-  opacity: 0.3;
-  margin: 0 auto;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  animation: poi-deg 12s infinite linear;
-  -webkit-animation: poi-deg 12s infinite linear;
 }
 
 .single-begin {
@@ -1077,12 +929,6 @@ li.feature-2 {
   border-radius: 100%;
   position: absolute;
   z-index: 4;
-}
-
-@media (max-width: 860px) {
-  #video-container {
-    display: none;
-  }
 }
 
 .blank {
@@ -3321,24 +3167,6 @@ input[type="radio"]:checked:before {
   }
 }
 
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  padding-top: 30px;
-  height: 0;
-  overflow: hidden;
-}
-
-.video-container embed,
-.video-container iframe,
-.video-container object {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .hearthstone-deck {
   overflow: hidden;
 }
@@ -4486,10 +4314,6 @@ img[src*="#in-center"] {
   #banner_wave_2 {
     display: none;
   }
-}
-
-#video-add {
-  display: none !important;
 }
 
 .accordionMenu {

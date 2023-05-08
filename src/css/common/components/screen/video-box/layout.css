@@ -1,0 +1,53 @@
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+
+  & .video {
+    width: 100%;
+    z-index: 0;
+    /** 使视频全屏。并保证填满屏幕 */
+    height: 100vh;
+    object-fit: fill;
+  }
+
+  & .video-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    opacity: 0.8;
+    animation: poi-face 10s linear infinite alternate;
+    z-index: 1;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  & .video-stu {
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 6px 15px;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 0;
+    font-size: 18px;
+    transition: 0.4s ease all;
+  }
+
+  @mixin screens-md {
+    display: none;
+  }
+}
