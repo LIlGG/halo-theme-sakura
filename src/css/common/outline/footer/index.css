@@ -1,39 +1,7 @@
-.site-footer {
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  padding: max(2%, 45px);
-  margin-left: auto;
-  margin-right: auto;
-  -webkit-animation: blur 0.8s;
-  animation: blur 0.8s;
-  transition: all 0.8s ease;
+@import "layout.css";
 
-  &:before,
-  &:after {
-    content: "";
-    display: table;
-    table-layout: fixed;
-  }
+@import "logo.css";
 
-  &:after {
-    clear: both;
-  }
+@import "copyright.css";
 
-  & .site-info {
-    text-align: center;
-    font-size: 13px;
-    color: #b9b9b9;
-
-    & a {
-      color: #b9b9b9;
-
-      &:hover {
-        color: orange;
-      }
-    }
-  }
-
-  @mixin screens-lg {
-    padding: 30px;
-  }
-}
+@import "device.css";

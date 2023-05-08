@@ -1,0 +1,13 @@
+.footer-logo {
+  & p {
+    margin-bottom: 8px;
+    width: 30px;
+    height: 30px;
+    opacity: 0.3;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    animation: poi-deg 12s infinite linear;
+  }
+}
