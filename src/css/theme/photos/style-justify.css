@@ -5,24 +5,4 @@
 .justify-wrapper {
   max-width: 1024px;
   margin: 0 auto;
-
-  & .gallery-item {
-    & .gallery-caption {
-      height: 100%;
-      background: #222;
-      opacity: 0;
-    }
-
-    &:hover {
-      & .gallery-caption {
-        height: 100%;
-        transition: opacity 0.2s ease;
-        opacity: 0.6;
-
-        & .entry-summary {
-          opacity: 1;
-        }
-      }
-    }
-  }
 }

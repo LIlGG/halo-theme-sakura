@@ -8,13 +8,38 @@
       & .gallery-item {
         margin: 0;
         margin-bottom: 10px;
-        
+
         @mixin col 3;
         @mixin col 4;
-        @mixin col 5;
+        @mixin col 5 {
+          & .gallery-caption {
+            font-size: 0.85em;
+          }
+        }
         @mixin col 6;
         @mixin col 7;
         @mixin col 8;
+
+        & .gallery-icon {
+          position: relative;
+          z-index: 9;
+          transition: opacity 0.2s ease;
+          text-align: center;
+
+          & a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 9;
+          }
+
+          & img {
+            width: 100%;
+            height: auto;
+            margin: 0 0 -5px 0;
+          }
+        }
       }
     }
   }

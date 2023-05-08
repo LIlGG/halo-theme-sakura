@@ -12,7 +12,7 @@
       height: 60px;
 
       & .gallery {
-        display: none;
+        opacity: 0;
       }
     }
 
@@ -80,8 +80,15 @@
   transition: transform 0.35s;
 
   & .gallery-item {
+    & .gallery-caption {
+      height: 100%;
+      background: #222;
+      opacity: 0;
+    }
+
     &:hover {
       & .gallery-caption {
+        height: 100%;
         opacity: 0.6;
         transition: opacity 0.2s ease;
 
@@ -110,7 +117,7 @@
         position: absolute;
         width: 100%;
         opacity: 0;
-        margin: 1.5em 0 0;
+        margin: 0;
         transition: all 0.2s ease;
         text-align: center;
         bottom: 0;
@@ -130,6 +137,7 @@
           font-style: italic;
           font-size: 0.9em;
           opacity: 0.8;
+          transform: translate3d(0,20px,0);
         }
 
         & h3 {

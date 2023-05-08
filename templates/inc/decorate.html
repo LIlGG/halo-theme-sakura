@@ -344,14 +344,6 @@
   </style>
 </th:block>
 
-<th:block th:if="${theme.config.photos.photos_style == 'packery'}">
-  <style>
-    .masonry-gallery.gallery {
-      margin: 0 auto;
-    }
-  </style>
-</th:block>
-
 <th:block th:if="${not #strings.isEmpty(theme.config.journal.journal_bg)}">
   <style>
     .journals-line > li:nth-child(odd) .moment-content {

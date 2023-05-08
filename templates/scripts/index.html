@@ -87,20 +87,14 @@
     async
   ></script>
   <script
-    th:if="${theme.config.photos.photos_style == 'masonry'} or ${theme.config.photos.photos_style == 'packery'}"
+    th:if="${theme.config.photos.photos_style == 'masonry'}"
     th:src="@{/assets/lib/isotope.pkgd.min/index.js}"
     async
   ></script>
   <script
-    th:if="${theme.config.photos.photos_style == 'masonry'} or ${theme.config.photos.photos_style == 'packery'}"
+    th:if="${theme.config.photos.photos_style == 'masonry'}"
     th:src="@{/assets/lib/imagesloaded/imagesloaded.pkgd.min.js}"
     defer
-  ></script>
-  <script
-    th:if="${theme.config.photos.photos_style == 'packery'}"
-    type="text/javascript"
-    th:src="@{/assets/lib/packery-mode.pkgd.min/index.js}"
-    async
   ></script>
   <script type="text/javascript" th:src="@{/assets/js/highlight/highlight.pack.js}" defer></script>
   <script
