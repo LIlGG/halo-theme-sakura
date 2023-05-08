@@ -181,6 +181,67 @@
     padding: 0;
   }
 
+  & .table-wrapper {
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track-piece {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(176, 176, 176, 0.4);
+      cursor: pointer;
+      border-radius: 2px;
+
+      &:hover {
+        background: #b0b0b0;
+      }
+    }
+
+    & > table {
+      border-collapse: collapse;
+      overflow: auto;
+      max-width: 100%;
+      margin-right: 0.5rem;
+      vertical-align: text-top;
+
+      & th {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      & tr {
+        word-break: keep-all;
+
+        &:nth-child(2n) {
+          background-color: #f8f8f8;
+        }
+      }
+
+      & td,
+      & th {
+        padding: 8px 16px;
+        border: 1px solid #dfe2e5;
+        line-height: 1.5;
+        font-size: 90%;
+      }
+
+      & tbody {
+        & > tr {
+          transition: all 0.28s ease;
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+          }
+        }
+      }
+    }
+  }
+
   @mixin screens-md {
     & p {
       font-size: 14px;

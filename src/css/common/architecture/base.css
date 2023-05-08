@@ -355,11 +355,13 @@ select {
   border: 1px solid #ccc;
 }
 
+embed,
+iframe,
+object {
+  max-width: 100%;
+}
+
 .noselect {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
