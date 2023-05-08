@@ -55,7 +55,8 @@
                 th:if="${pluginFinder.available('PluginCommentWidget') and theme.config.journal.journal_comment}"
                 class="comment"
               >
-                <halo:comment group="moment.halo.run" kind="Moment" th:attr="name=${moment.metadata.name}" />
+                <!--/* 评论组件 */-->
+                <th:block th:replace="~{module/comment :: comment(group = 'moment.halo.run', kind = 'Moment', name = ${moment.metadata.name})}" />
               </div>
             </span>
           </span>

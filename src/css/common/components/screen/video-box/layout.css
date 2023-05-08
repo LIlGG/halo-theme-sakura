@@ -4,6 +4,7 @@
   left: 0;
   margin: 0;
   padding: 0;
+  width: 100%;
 
   & .video {
     width: 100%;
@@ -37,7 +38,7 @@
     left: 0;
     right: 0;
     margin: auto;
-    padding: 6px 15px;
+    padding: 10px 0;
     text-align: center;
     color: #fff;
     width: 100%;

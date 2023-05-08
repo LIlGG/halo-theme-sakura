@@ -1,0 +1,6 @@
+<!--/* TODO: 评论组件自定义及黑夜模式处理 */-->
+<th:block th:fragment="comment(group, kind, name)">
+  <div class="comment">
+    <halo:comment th:attr="name=${name},kind=${kind},group=${group}" />
+  </div>
+</th:block>
