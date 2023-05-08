@@ -8,17 +8,17 @@
           <li th:classappend="|col-${theme.config.photos.masonry_changer_min}|">
             <a href="javascript:void(0)" class="active">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                <rect width="10" height="10" x="8" y="8"></rect>
+                <rect width="10" height="10" x="10" y="10"></rect>
               </svg>
             </a>
           </li>
           <li th:classappend="|col-${theme.config.photos.masonry_changer_max}|">
             <a href="javascript:void(0)">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                <rect width="7" height="7" x="6" y="6"></rect>
-                <rect width="7" height="7" x="14" y="6"></rect>
-                <rect width="7" height="7" x="6" y="14"></rect>
-                <rect width="7" height="7" x="14" y="14"></rect>
+                <rect width="7" height="7" x="7" y="7"></rect>
+                <rect width="7" height="7" x="15" y="7"></rect>
+                <rect width="7" height="7" x="7" y="15"></rect>
+                <rect width="7" height="7" x="15" y="15"></rect>
               </svg>
             </a>
           </li>
@@ -26,7 +26,7 @@
       </nav>
     </div>
 
-    <div class="photos-content">
+    <div class="photos-content loading">
       <div class="gallery masonry-gallery">
         <th:block th:each="photo : ${photoFinder.listAll()}">
           <figure
@@ -40,7 +40,7 @@
                   th:src="@{/assets/images/load/load.gif}"
                   th:alt="${photo.spec.displayName}"
                   th:data-src="${#strings.isEmpty(photo.spec.cover) ? photo.spec.url : photo.spec.cover}"
-                />
+                  />
               </a>
             </header>
             <figcaption class="gallery-caption">

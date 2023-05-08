@@ -723,17 +723,6 @@ spec:
               label: 合理布局
             - value: masonry
               label: 瀑布流布局
-            - value: packery
-              label: 填充式瀑布流布局（实验性）
-        - $formkit: radio
-          name: is_thumbnail
-          label: 相册列表使用缩略图
-          value: true
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
         - $formkit: text
           name: default_group
           label: 默认展示分组
@@ -748,7 +737,7 @@ spec:
           min: 1
           value: 10
         - $formkit: select
-          if: "$get(photos_style).value == masonry || $get(photos_style).value == packery"
+          if: "$get(photos_style).value == masonry"
           name: masonry_column
           label: 瀑布流列数(移动端始终为1)
           value: 3
@@ -768,7 +757,7 @@ spec:
             - value: 8
               label: 8
         - $formkit: select
-          if: "$get(photos_style).value == masonry || $get(photos_style).value == packery"
+          if: "$get(photos_style).value == masonry"
           name: masonry_changer_min
           label: 瀑布流切换功能最小列数
           value: 3
@@ -788,7 +777,7 @@ spec:
             - value: 8
               label: 8
         - $formkit: select
-          if: "$get(photos_style).value == masonry || $get(photos_style).value == packery"
+          if: "$get(photos_style).value == masonry"
           name: masonry_changer_max
           label: 瀑布流切换功能最大列数
           value: 5

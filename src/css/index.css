@@ -4675,69 +4675,6 @@ img[src*="#in-center"] {
   }
 }
 
-/**
-* 图库
-*/
-.gallery-icon {
-  position: relative;
-  z-index: 9;
-  transition: opacity 0.2s ease;
-}
-
-.gallery-icon a {
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 9;
-}
-
-.gallery-icon img {
-  width: 100%;
-  height: auto;
-  margin: 0 0 -5px 0;
-}
-
-.masonry-gallery .gallery-item:hover .gallery-icon {
-  opacity: 0.3;
-}
-
-.masonry-gallery .gallery-icon {
-  text-align: center;
-}
-
-.masonry-gallery .gallery-caption .entry-summary {
-  text-align: center;
-  bottom: 0;
-  padding: 1em;
-  font-size: 0.8em;
-  color: #f7f6f5;
-}
-
-.masonry-gallery .gallery-item.col-5 .gallery-caption {
-  font-size: 0.85em;
-}
-
-.masonry-gallery .gallery-caption h3 {
-  transform: translate3d(0, -20px, 0);
-  margin-bottom: 0.5em;
-}
-
-.masonry-gallery .gallery-caption p {
-  transform: translate3d(0, 20px, 0);
-  padding-bottom: 1em;
-}
-
-/** 图库分组 */
-
-/** 切换按钮 */
-
-/** journal */
-/** avatar */
-
-/** button */
-/** context */
-
 h1,
 h2,
 h3,
