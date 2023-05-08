@@ -28,10 +28,7 @@
       }
     }
 
-    & + .post-meta {
-      position: absolute;
-      bottom: 20px;
-
+    & .post-meta {
       & .meta-container {
         justify-content: inherit;
         

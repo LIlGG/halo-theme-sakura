@@ -21,7 +21,7 @@ NEXT / PREVIOUS POSTS
             <div
               th:if="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
               class="background"
-              th:style="'background-image:url(\'' + ${theme.config.random_image.rimage_url}+'?postid='+${postCursor.previous.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''} +'\');'"
+              th:style="|background-image:url('${theme.config.random_image.rimage_url}?postid=${postCursor.previous.metadata.name}&type=url&itype=${theme.config.random_image.rimage_cover_itype}${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}&th=390')|"
             ></div>
             <div
               th:unless="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
@@ -52,7 +52,7 @@ NEXT / PREVIOUS POSTS
             <div
               th:if="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
               class="background"
-              th:style="'background-image:url(\'' + ${theme.config.random_image.rimage_url}+'?postid='+${postCursor.next.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''} +'&th=150\');'"
+              th:style="|background-image:url('${theme.config.random_image.rimage_url}?postid=${postCursor.next.metadata.name}&type=url&itype=${theme.config.random_image.rimage_cover_itype}${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}&th=390')|"
             ></div>
             <div
               th:unless="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
