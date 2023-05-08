@@ -176,6 +176,17 @@
         display: none;
       }
     }
+
+    & .entry-footer {
+      & .post-more {
+        display: none;
+      }
+
+      & .p-time {
+        position: relative;
+        margin: -15px 0 0 65px;
+      }
+    }
   }
 
   @mixin screens-lg {

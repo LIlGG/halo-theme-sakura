@@ -1,3 +1,14 @@
 .page-none-content {
   margin: 1.5em 0 0;
+
+  & .page-header {
+    & .page-title {
+      font-size: 20px;
+      font-weight: 400;
+      border: 1px dashed #ddd;
+      padding: 10px 15px;
+      color: #828282;
+      margin-bottom: 30px;
+    }
+  }
 }

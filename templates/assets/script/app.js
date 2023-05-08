@@ -1074,10 +1074,8 @@ var home = location.href,
     PE: function () {
       if ($(".headertop").length > 0) {
         if ($("h1.main-title").length > 0) {
-          $(".blank").css({ "padding-top": "0px" });
           $(".headertop").css({ height: "auto" }).show();
         } else {
-          $(".blank").css({ "padding-top": "5.2%" });
           $(".headertop").css({ height: "0px" }).hide();
         }
       }
