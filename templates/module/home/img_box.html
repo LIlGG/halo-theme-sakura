@@ -13,6 +13,19 @@
 ">
 <!--*/-->
 <figure id="centerbg" class="centerbg" th:fragment="imgbox">
+  <th:block th:if="${theme.config.random_image.rimage_cover_back_open and (not #strings.isEmpty(theme.config.random_image.rimage_url))}">
+    <img
+      th:with="imageUrl = |${theme.config.random_image.rimage_url}?home=home&type=url&itype=${theme.config.random_image.rimage_cover_back_itype}${theme.config.random_image.rimage_cover_back_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_back_id : ''}&t=${#strings.randomAlphanumeric(1)}|"
+      th:src="|${imageUrl}&th=150|"
+      th:data-src="${imageUrl}"
+      class="cover-bg lazyload blur-up"
+      onerror="imgError(this)"
+    />
+  </th:block>
+  <th:block th:unless="${theme.config.random_image.rimage_cover_back_open and (not #strings.isEmpty(theme.config.random_image.rimage_url))}">
+    <img class="cover-bg" th:src="${theme.config.mainScreen.focus_img_1 ?: #theme.assets('/images/hd.jpg')}" />
+  </th:block>
+
   <div class="focusinfo">
     <th:block th:replace="module/home/focus_tou"></th:block>
     <div class="header-info no-select" th:classappend="${#strings.isEmpty(site.subtitle) ? '' : 'info-desc'}" th:if="${theme.config.mainScreen.focus_infos and (not #strings.isEmpty(site.subtitle) or not #arrays.isEmpty(theme.config.sns.items))}" >

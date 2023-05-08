@@ -737,7 +737,7 @@ var LIlGGAttachContext = {
 
         // 为说说评论增加额外 class
         if (Poi.journalComment) {
-          var comment = that.find("halo-comment-widget ");
+          var comment = that.find("halo-comment-widget");
           if (comment.length > 0) {
             var $comment = $(comment[0].shadowRoot.getElementById("halo-comment-widget"));
             if (!$comment.hasClass("journal")) {

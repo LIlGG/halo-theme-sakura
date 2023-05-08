@@ -1,6 +1,3 @@
-<!--/*-->
-@package Akina
-<!--*/-->
 <th:block th:fragment="content-thumb(postItems)">
   <article
     th:each="post, postStat : ${postItems}"
@@ -75,29 +72,31 @@
         <img
           th:if="${not #strings.isEmpty(post.spec.cover)}"
           class="lazyload"
-          th:attr="data-src=${post.spec.cover}"
-          th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"
+          th:src="@{#theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg')}"
+          th:data-src="${post.spec.cover}"
           onerror="imgError(this)"
         />
         <img
           th:if="${#strings.isEmpty(post.spec.cover)} and ${theme.config.random_image.rimage_cover_open} and ${#annotations.getOrDefault(post, 'randomImage', true)} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
-          th:src="${theme.config.random_image.rimage_url} + '?postid=' + ${post.metadata.name} + '&type=url&itype=' + ${theme.config.random_image.rimage_cover_itype} + ${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}"
-          th:attr="
-          srcset=${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : theme.config.random_image.rimage_url + 'postid=' + post.metadata.name + '&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '') + '&th=150'},
-          data-srcset=${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=640 640w,'+
-          ${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=960 960w,'+
-          ${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+'&th=1280 1280w,'+
-          ${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}+' 1440w'
-          "
+          th:with="randomUrl = |${theme.config.random_image.rimage_url}?postid=${post.metadata.name}&type=url&itype=${theme.config.random_image.rimage_cover_itype}${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}|"
+          th:src="${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : (randomUrl + '&th=150')}"
+          th:data-srcset="|
+          ${randomUrl}&th=640 640w,
+          ${randomUrl}&th=960 960w,
+          ${randomUrl}&th=1280 1280w,
+          ${randomUrl}&th=1440 1440w,
+          ${randomUrl}&th=1920 1920w
+          |"
           data-sizes="auto"
-          th:class="'lazyload '+${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
+          th:class="lazyload"
+          th:classappend="${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
           onerror="imgError(this)"
         />
         <img
           th:unless="${#strings.isEmpty(post.spec.cover)} and ${theme.config.random_image.rimage_cover_open} and ${#annotations.getOrDefault(post, 'randomImage', true)} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
           class="lazyload"
-          th:data-src="@{/assets/images/temp.jpg}"
-          th:src="@{/assets/images/svg/loader/orange.progress-bar-stripe-loader.svg}"
+          th:src="@{#theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg')}"
+          th:data-src="@{#theme.assets('/images/temp.jpg')}"
           onerror="imgError(this)"
         />
       </a>
