@@ -1,0 +1,31 @@
+.error-404 {
+  margin-top: -120px;
+  margin-bottom: 20px;
+  
+  & .error-img {
+    text-align: center;
+  }
+
+  & .err-button {
+    text-align: center;
+
+    &.back {
+      & a {
+        padding: 10px 30px;
+        margin: 0 10px;
+        border: 1px solid orange;
+        color: orange;
+        border-radius: 50px;
+
+        &:hover {
+          box-shadow: 0 0 4px rgba(255, 165, 0, 0.85);
+        }
+      }
+
+      & .gohome {
+        background: orange;
+        color: #fff;
+      }
+    }
+  }
+}

@@ -449,32 +449,6 @@ i.iconfont.hotpost {
   left: 16px;
 }
 
-.error-img {
-  text-align: center;
-}
-
-.err-button.back {
-  text-align: center;
-}
-
-.err-button.back a {
-  padding: 10px 30px;
-  margin: 0 10px;
-  border: 1px solid orange;
-  color: orange;
-  border-radius: 50px;
-}
-
-#gohome {
-  background: orange;
-  color: #fff;
-}
-
-.err-button.back a:hover {
-  -o-box-shadow: 0 0 4px rgba(255, 165, 0, 0.85);
-  box-shadow: 0 0 4px rgba(255, 165, 0, 0.85);
-}
-
 @media (max-width: 860px) {
   .comments {
     max-width: 100% !important;
@@ -1697,21 +1671,6 @@ i.iconfont.hotpost {
   100% {
     transform: translate(0, 0) rotate(0);
   }
-}
-
-.hearthstone-deck {
-  overflow: hidden;
-}
-
-#Snow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 99999;
-  background: rgba(125, 137, 95, 0);
-  pointer-events: none;
 }
 
 .changeSkin {
