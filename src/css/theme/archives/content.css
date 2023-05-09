@@ -2,7 +2,18 @@
   margin-top: 50px;
   margin-bottom: 100px;
   position: relative;
-  border-left: 1px dashed #f5f5f5;
+
+  & .archives-content {
+    &::before {
+      content: "";
+      position: absolute;
+      height: 90%;
+      border-left: 1px dashed #f5f5f5;
+      left: 17px;
+      top: 30px;
+    }
+  }
+
 
   & h2 {
     font-weight: 400;
@@ -12,22 +23,10 @@
     text-align: center;
   }
 
-  & h3 {
-    letter-spacing: 2px;
-    font-style: italic;
-    font-size: 20px;
-    font-weight: 400;
-    color: orange;
-    margin-left: 10px;
-
-    &:hover {
-      color: #ddd;
-      cursor: pointer;
-    }
-  }
-
   & .archive-item {
     margin-top: 35px;
+    position: relative;
+    z-index: 1;
 
     & .archive-title {
       display: flex;
@@ -41,6 +40,20 @@
           color: #fff;
         }
       }
+
+      & h3 {
+        letter-spacing: 2px;
+        font-style: italic;
+        font-size: 20px;
+        font-weight: 400;
+        color: orange;
+        margin-left: 10px;
+    
+        &:hover {
+          color: #ddd !important;
+          cursor: pointer;
+        }
+      }
     }
 
     & .archive-posts {
@@ -48,14 +61,14 @@
         position: relative;
 
         & .archive-post-circle {
-          height: 10px;
-          width: 10px;
+          height: 11px;
+          width: 11px;
           background: orange;
           display: inline-block;
           position: absolute;
           margin-top: 22px;
           border-radius: 100px;
-          left: 10px;
+          left: 12px;
         }
 
         & .arrow-left-ar  {
@@ -100,6 +113,6 @@
   }
 
   @mixin screens-md {
-    padding: 0 20px;
+    margin: 0 20px;
   }
 }

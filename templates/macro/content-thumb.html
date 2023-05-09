@@ -93,7 +93,7 @@
           onerror="imgError(this)"
         />
         <img
-          th:unless="${#strings.isEmpty(post.spec.cover)} and ${theme.config.random_image.rimage_cover_open} and ${#annotations.getOrDefault(post, 'randomImage', true)} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
+          th:if="${#strings.isEmpty(post.spec.cover)} and (!${theme.config.random_image.rimage_cover_open} or !${#annotations.getOrDefault(post, 'randomImage', true)} or ${#strings.isEmpty(theme.config.random_image.rimage_url)})"
           class="lazyload"
           th:src="${#theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg')}"
           th:data-src="${#theme.assets('/images/temp.jpg')}"

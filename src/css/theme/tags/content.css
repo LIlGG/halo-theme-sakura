@@ -1,7 +1,7 @@
 .tag-wordcloud-container {
   width: 100vw;
   position: relative;
-  left: calc((780px - 100vw) / 2);
+  left: calc((100% - 100vw) / 2);
 
   & .jqcloud {
     height: 300px;
@@ -30,5 +30,9 @@
       margin-right: -2px;
       font-size: 0.9rem;
     }
+  }
+
+  @mixin screens-md {
+    margin: 20px 0;
   }
 }

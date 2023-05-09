@@ -12,14 +12,14 @@
 
   &::after,
   &::before {
-    transition: opacity .5s;
+    transition: left .5s;
     background: #fff;
     position: fixed;
     content: "";
     width: 30px;
     height: 3px;
     top: 20px;
-    left: 260px;
+    left: -100px;
     pointer-events: auto;
     opacity: 0;
   }
@@ -29,6 +29,7 @@
 
     &::before,
     &::after {
+      left: 260px;
       opacity: 1;
     }
 

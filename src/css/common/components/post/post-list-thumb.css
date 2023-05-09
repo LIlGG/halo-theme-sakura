@@ -146,15 +146,12 @@
     height: auto;
     padding: 0;
     border: 0;
-    box-shadow: none;
+    box-shadow: 0 5px 10px 5px rgba(110, 110, 110, 0.4);
+    margin-bottom: 20px;
 
     &,
     &.post-list-thumb-right {
       flex-direction: column-reverse;
-    }
-
-    &:hover {
-      box-shadow: 0 5px 10px 5px rgba(110, 110, 110, 0.4);
     }
 
     &::before {
@@ -184,9 +181,10 @@
       left: 0;
       text-align: left;
       margin: 0;
-      padding: 20px 0;
+      padding: 20px;
       float: none;
       box-shadow: none;
+      box-sizing: border-box;
       border-top: 0;
 
       & .float-content {
