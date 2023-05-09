@@ -83,7 +83,7 @@
       right: 0;
       margin: 0;
       padding: 0;
-      z-index: 50;
+      z-index: 9;
       color: rgba(0, 0, 0, 0.66);
 
       & .post-text {
@@ -172,7 +172,7 @@
       left: 0;
 
       & a {
-        border-radius: 10px;
+        border-radius: 10px 10px 0 0;
       }
     }
 
@@ -225,7 +225,7 @@
 
       & .post-thumb {
         & a {
-          border-radius: 10px;
+          border-radius: 10px 10px 0 0;
         }
       }
     }

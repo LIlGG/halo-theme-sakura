@@ -1,12 +1,12 @@
 #nprogress {
   pointer-events: none;
-  z-index: 99999;
+  z-index: 9;
   position: absolute;
 
   & .bar {
     background: orange;
     position: fixed;
-    z-index: 1031;
+    z-index: 9;
     top: 0;
     left: 0;
     width: 100%;
@@ -27,7 +27,7 @@
   & .spinner {
     display: block;
     position: fixed;
-    z-index: 9999;
+    z-index: 9;
     top: 27px;
     right: 24px;
     left: inherit;

@@ -16,8 +16,6 @@
     position: relative;
 
     & section {
-      max-width: 600px;
-
       & h1 {
         font-weight: 300;
         font-size: 30px;

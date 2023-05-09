@@ -158,11 +158,19 @@
   @mixin screens-md {
     & .moments-inner {
       & .moments-item {
-        & .moment-content {
-          margin: 0 0 45px 0;
-
-          &::after {
+        & .moment-container {
+          & .avatar {
             display: none;
+          }
+
+          & .moment-content {
+            &::after {
+              display: none;
+            }
+
+            & img {
+              max-width: 50%;
+            }
           }
         }
       }

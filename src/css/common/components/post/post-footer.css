@@ -5,7 +5,7 @@
     width: 100%;
     margin: 35px auto;
     text-align: center;
-    z-index: 999;
+    z-index: 1;
 
     & .reward-open {
       position: relative;

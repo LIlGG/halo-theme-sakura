@@ -18,6 +18,8 @@
 
 @import "sidebar";
 
+@import "highlight";
+
 @import "page-header.css";
 
 @import "sharelike.css";
