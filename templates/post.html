@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{layout :: layout(_title = ~{::title}, _header = ~{::header}, _content = ~{::content}, sidebar = ~{::sidebar})}">
+  th:replace="~{layout :: layout(_title = ~{::title}, _header = ~{::header}, _content = ~{::content}, _sidebar = ~{::sidebar})}">
 <th:block th:fragment="title">
   <th:block th:text="${post.spec.title} + '|' + ${site.title}|"></th:block>
 </th:block>
