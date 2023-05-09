@@ -64,4 +64,8 @@
       transition: all 0.2s ease-in-out;
     }
   }
+
+  @mixin screens-md {
+    margin: 0;
+  }
 }

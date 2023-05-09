@@ -51,4 +51,8 @@
 /* 非首页时 */
 section:not(.is-homepage) .site-header .header-inner {
   box-shadow: 0 1px 40px -8px #00000080;
+
+  @mixin screens-md {
+    box-shadow: none;
+  }
 }

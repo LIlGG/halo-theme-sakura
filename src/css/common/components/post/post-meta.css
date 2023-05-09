@@ -14,6 +14,7 @@
       border-radius: 100%;
       margin-right: 12px;
       display: block;
+      object-fit: cover;
     }
 
     &:not(:last-child) {
@@ -22,5 +23,9 @@
         margin: 0 5px;
       }
     }
+  }
+
+  @mixin screens-md {
+    flex-wrap: wrap;
   }
 }
