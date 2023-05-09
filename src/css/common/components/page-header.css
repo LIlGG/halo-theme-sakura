@@ -43,6 +43,10 @@
 
     @mixin screens-md {
       &.single-center {
+        & .pattern-attachment-img {
+          height: 280px;
+        }
+
         & .post-header {
           & h1 {
             font-size: 26px;
@@ -148,6 +152,16 @@
           & a {
             color: #fff;
           }
+        }
+      }
+    }
+  }
+
+  @mixin screens-md {
+    &.is-decorate {
+      & .pattern-title {
+        & h1 {
+          text-align: center !important;
         }
       }
     }

@@ -16,7 +16,7 @@
   <th:block th:fragment="content">
     <article class="archives-article">
       <div id="archives-temp" class="archives-inner">
-        <div id="archives-content">
+        <div class="archives-content">
           <th:block th:each="archive : ${archives.items}">
             <th:block th:each="month,monthStat : ${archive.months}">
               <div class="archive-item" th:id="'arti-'+${archive.year}+'-'+${month.month}">
