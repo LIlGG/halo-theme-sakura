@@ -62,7 +62,6 @@
   transition: all 0.5s ease;
 
   &.cd-is-visible {
-    display: block;
     opacity: 1;
   }
 
