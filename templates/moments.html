@@ -27,7 +27,7 @@
               th:data-src="${moment.owner.avatar != null ? moment.owner.avatar : #theme.assets('/images/avatar.jpg')}"
               th:alt="${moment.owner.displayName}"
               onerror="imgError(this)"
-              th:src="@{/assets/images/svg/loader/trans.ajax-spinner-preloader.svg}"
+              th:src="${#theme.assets('/images/svg/loader/trans.ajax-spinner-preloader.svg')}"
             />
             <span class="moment-content">
               <th:block th:utext="${moment.spec.content.html}"></th:block>

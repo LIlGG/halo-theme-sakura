@@ -17,7 +17,7 @@
                 <img 
                   class="lazyload" 
                   th:attr="data-src=${link.spec.logo}"
-                  th:src="@{/assets/images/svg/loader/trans.ajax-spinner-preloader.svg}" 
+                  th:src="${#theme.assets('/images/svg/loader/trans.ajax-spinner-preloader.svg')}" 
                   onerror="imgError(this)">
                 <span class="sitename" th:text="${link.spec.displayName}"></span>
                 <div class="linkdes" th:text="${link.spec.description}"></div>

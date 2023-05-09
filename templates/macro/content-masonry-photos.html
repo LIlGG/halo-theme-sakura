@@ -37,7 +37,7 @@
               <a data-fancybox="gallery" th:href="${photo.spec.url}">
                 <img
                   class="lazyload"
-                  th:src="@{/assets/images/load/load.gif}"
+                  th:src="${#theme.assets('/images/load/load.gif')}"
                   th:alt="${photo.spec.displayName}"
                   th:data-src="${#strings.isEmpty(photo.spec.cover) ? photo.spec.url : photo.spec.cover}"
                   />
