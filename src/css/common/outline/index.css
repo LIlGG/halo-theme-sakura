@@ -24,7 +24,7 @@
         height: 100%;
         position: fixed;
         background-color: rgba(0, 0, 0, .4);
-        z-index: 2;
+        z-index: 9;
       }
     }
   }

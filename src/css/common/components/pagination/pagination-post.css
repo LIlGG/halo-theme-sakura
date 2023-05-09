@@ -6,7 +6,6 @@
 
   & .background {
     position: absolute;
-    z-index: 50;
     top: 0;
     left: 0;
     width: 100%;
@@ -18,7 +17,6 @@
 
   & .info {
     position: relative;
-    z-index: 98;
   }
 
   & article,
@@ -103,7 +101,6 @@
 
     & .label {
       position: absolute;
-      z-index: 100;
       top: 0;
     }
 

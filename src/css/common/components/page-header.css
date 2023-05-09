@@ -45,6 +45,18 @@
       &.single-center {
         & .pattern-attachment-img {
           height: 280px;
+
+          &::after {
+            content: '';
+            width: 150%;
+            height: 4.375rem;
+            background: #fff;
+            left: -25%;
+            bottom: -2.875rem;
+            border-radius: 100%;
+            position: absolute;
+            z-index: 1;
+          }
         }
 
         & .post-header {

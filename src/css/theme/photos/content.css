@@ -24,7 +24,8 @@
   }
 
   @mixin screens-md {
-    padding-top: 2em;
+    padding-top: 0;
+    margin: 30px 0;
   }
 }
 

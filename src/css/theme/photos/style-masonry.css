@@ -48,7 +48,7 @@
     & .photos-content {
       & .gallery {
         & .gallery-item {
-          width: 100%;
+          width: 100% !important;
         }
       }
     }
@@ -104,6 +104,10 @@
   }
 
   @mixin screens-md {
-    display: none;
+    justify-content: center;
+    
+    & .grid-changer {
+      display: none;
+    }
   }
 }
