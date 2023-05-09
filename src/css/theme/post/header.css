@@ -46,6 +46,11 @@
     padding: 0 4%;
     top: 45%;
 
+    & .post-meta,
+    & .pattern-title {
+      width: 100%;
+    }
+
     & h1 {
       font-size: 26px;
       -webkit-line-clamp: 2;
