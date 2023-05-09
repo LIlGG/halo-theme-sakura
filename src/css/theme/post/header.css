@@ -34,7 +34,7 @@
         
         & .post-meta-item {
           & *,
-          &:after {
+          &::after {
             color: #fff;
           }
         }

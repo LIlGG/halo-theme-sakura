@@ -81,7 +81,7 @@
     transform: scaleX(1);
   }
 
-  &:after {
+  &::after {
     content: "";
     position: absolute;
     bottom: -20px;
@@ -136,7 +136,7 @@
       transform: scaleY(1);
     }
 
-    &:after {
+    &::after {
       display: none;
     }
   }

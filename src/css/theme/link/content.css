@@ -38,7 +38,7 @@
           color: #27323a;
           border: 1px solid orange;
 
-          &:before {
+          &::before {
             width: 140%;
           }
 
@@ -53,7 +53,7 @@
           }
         }
 
-        &:before {
+        &::before {
           content: "";
           background-color: orange;
           transform: skew(45deg);
@@ -124,7 +124,7 @@
         & li {
           width: 48.6%;
 
-          &:before {
+          &::before {
             display: none;
           }
 

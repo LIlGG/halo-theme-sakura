@@ -14,7 +14,7 @@
   transition: color 1s;
   transition: background 1s;
 
-  &:before {
+  &::before {
     position: absolute;
     left: 30%;
     margin-left: -15px;

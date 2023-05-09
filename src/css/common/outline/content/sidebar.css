@@ -40,7 +40,7 @@
             color: currentColor;
             height: 100%;
 
-            &:before {
+            &::before {
               background-color: #eee;
               content: " ";
               display: inline-block;

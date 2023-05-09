@@ -50,8 +50,8 @@
     right: 15px;
     cursor: pointer;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       background-color: #222;
       position: absolute;
       content: "";

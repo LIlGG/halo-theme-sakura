@@ -4,7 +4,7 @@
   width: 100%;
   animation: header 1s;
 
-  &:before {
+  &::before {
     content: "";
     position: absolute;
     top: 0;
@@ -16,7 +16,7 @@
   }
 
   &.headertop-bar {
-    &:after {
+    &::after {
       content: "";
       width: 150%;
       height: 4.375rem;

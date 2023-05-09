@@ -4,6 +4,8 @@
 
 @import "footer";
 
+@import "sidebar";
+
 .container {
   transition: background 1s;
 
@@ -16,13 +18,7 @@
     }
 
     &.open {
-      transform: translateX(250px) translateY(0px);
-      -webkit-transform: translateX(250px) translateY(0px);
-      position: fixed;
-      right: 0;
-      left: 0;
-
-      &:before {
+      &::before {
         content: "";
         width: 100%;
         height: 100%;
@@ -31,6 +27,10 @@
         z-index: 99;
       }
     }
+  }
+
+  @mixin dark {
+    background: #31363b;
   }
 }
 

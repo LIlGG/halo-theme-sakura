@@ -58,7 +58,7 @@
             -webkit-animation: fadeInUp 0.3s 0.1s ease both;
             -moz-animation: fadeInUp 0.3s 0.1s ease both;
 
-            &:before {
+            &::before {
               content: "";
               position: absolute;
               top: -20px;
@@ -74,7 +74,7 @@
               margin: 0;
 
               & a {
-                &:after {
+                &::after {
                   content: "";
                   display: none;
                 }
@@ -93,7 +93,7 @@
               color: orange;
             }
 
-            &:after {
+            &::after {
               content: "";
               display: block;
               position: absolute;

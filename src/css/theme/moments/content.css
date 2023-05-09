@@ -20,7 +20,7 @@
             color: black;
           }
 
-          &:after {
+          &::after {
             border-right-color: #e6e6fa;
             color: black;
           }
@@ -58,7 +58,7 @@
           cursor: pointer;
           display: block;
 
-          &:after {
+          &::after {
             right: 100%;
             border: solid transparent;
             content: " ";
@@ -161,7 +161,7 @@
         & .moment-content {
           margin: 0 0 45px 0;
 
-          &:after {
+          &::after {
             display: none;
           }
         }

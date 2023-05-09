@@ -62,7 +62,7 @@
 
         &:hover,
         &.active {
-          &:after {
+          &::after {
             width: 100%;
             transform: scale(1);
           }

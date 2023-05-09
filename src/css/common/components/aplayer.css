@@ -12,8 +12,8 @@
     "PT Serif", "SongTi SC", "MicroSoft Yahei", Georgia, serif;
 
   & .aplayer-lrc {
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       background: rgba(255, 255, 255, 0);
       filter: none;
     }

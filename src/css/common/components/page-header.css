@@ -11,19 +11,19 @@
     animation: header 1s;
 
     &.single-center {
-      &:after {
+      &::after {
         display: none;
       }
     }
 
-    &:after {
+    &::after {
       transition: background 1s;
     }
 
     & .pattern-attachment-img {
       height: 400px;
 
-      &:before {
+      &::before {
         content: "";
         position: absolute;
         top: 0;
@@ -74,18 +74,18 @@
       font-size: 24px;
       font-weight: 300;
 
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         color: #f8ba0b;
         font-size: 1.5em;
         vertical-align: sub;
       }
 
-      &:before {
+      &::before {
         content: "{";
       }
 
-      &:after {
+      &::after {
         content: "}";
       }
     }
@@ -104,8 +104,8 @@
         color: #fff;
         font-weight: 500;
 
-        &:before,
-        &:after {
+        &::before,
+        &::after {
           content: "";
         }
       }
@@ -135,8 +135,8 @@
           font-size: 40px;
           color: #fff;
 
-          &:before,
-          &:after {
+          &::before,
+          &::after {
             content: "";
           }
         }

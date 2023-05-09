@@ -2,14 +2,14 @@
   margin-top: 20px;
   position: relative;
 
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     content: "";
     display: table;
     table-layout: fixed;
   }
 
-  &:after {
+  &::after {
     clear: both;
   }
 
@@ -23,7 +23,7 @@
   }
 
   & h2 {
-    &:after {
+    &::after {
       content: "\00B6";
       position: absolute;
       color: #ff6d6d;
@@ -39,19 +39,19 @@
     border-bottom: 1px dashed #ddd;
     color: #737373;
 
-    &:after {
+    &::after {
       content: "#";
     }
   }
 
   & h4 {
-    &:after {
+    &::after {
       content: "▌";
     }
   }
 
   & h5 {
-    &:after {
+    &::after {
       content: "♯";
     }
   }
@@ -61,7 +61,7 @@
   & h5 {
     padding-left: 16px;
 
-    &:after {
+    &::after {
       left: 0;
       position: absolute;
       color: #ff6d6d;
@@ -76,13 +76,13 @@
       color: orange;
       text-decoration: none;
 
-      &:after {
+      &::after {
         transform: scaleX(1);
         transform-origin: bottom left;
       }
     }
 
-    &:after {
+    &::after {
       content: "";
       position: absolute;
       width: 100%;
@@ -117,7 +117,7 @@
     text-align: center;
     background: 0 0;
 
-    &:before {
+    &::before {
       content: "...";
       display: inline-block;
       margin-left: 0.6em;
@@ -256,7 +256,7 @@
 .serif {
   & .entry-content {
     & h2 {
-      &:after {
+      &::after {
         font-size: 1.13em;
       }
     }

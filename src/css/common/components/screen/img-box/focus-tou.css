@@ -11,13 +11,13 @@
     }
   }
   & + .header-info {
-    &:before {
+    &::before {
       bottom: 60px;
       content: "";
     }
 
     &..info-desc {
-      &:before {
+      &::before {
         bottom: 89.5px;
         content: "";
       }
@@ -40,8 +40,8 @@
   overflow: hidden;
   white-space: nowrap;
 
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     content: attr(data-text);
     position: absolute;
     top: 0;
@@ -50,30 +50,30 @@
     clip: rect(0, 0, 0, 0);
   }
 
-  &:before {
+  &::before {
     left: -1px;
     text-shadow: 1px 0 #ff3f1a;
   }
 
-  &:after {
+  &::after {
     left: 1px;
     text-shadow: -1px 0 #00a7e0;
   }
 
   &::hover {
-    &:before {
+    &::before {
       text-shadow: 4px 0 #ff3f1a;
       animation: glitch-loop-1 0.8s infinite ease-in-out alternate-reverse;
     }
 
-    &:after {
+    &::after {
       text-shadow: -5px 0 #00a7e0;
       animation: glitch-loop-2 0.8s infinite ease-in-out alternate-reverse;
     }
   }
 
   & + .header-info {
-    &:before {
+    &::before {
       top: 112px;
       content: "";
     }
