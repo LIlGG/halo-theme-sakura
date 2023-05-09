@@ -1,0 +1,33 @@
+<th:block th:fragment="mobile-sidebar">
+  <div class="mobile-sidebar">
+    <div class="avatar" th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}">
+      <img th:src="${currentUser.avatar ?: #theme.assets('/images/avatar.jpg')}" />
+    </div>
+
+    <p th:if="${not #strings.isEmpty(theme.config.mainScreen.glitch_text)}" class="glitch-text"
+      th:text="${theme.config.mainScreen.glitch_text}"></p>
+
+    <th:block th:if="${theme.config.mainScreen.focus_infos and not #lists.isEmpty(theme.config.sns.mobile_items)}">
+      <p class="socials">
+        <a class="social-item" th:each="item : ${theme.config.sns.mobile_items}" th:href="${item.url}" target="_blank">
+          <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" width="18" />
+        </a>
+      </p>
+    </th:block>
+
+    <!--/* <div class="search">
+      <form class="search-form" method="get" action="/search" role="search">
+        <input class="m-search-input" type="search" name="keyword" placeholder="搜索..." required />
+      </form>
+    </div> */-->
+
+    <th:block th:replace="module/header/menu"></th:block>
+    <div class="footer">
+      <p>
+        ©
+        <th:block th:text="${#dates.format(new java.util.Date().getTime(), 'yyyy')}" />
+        <th:block th:text="${site.title}"></th:block>
+      </p>
+    </div>
+  </div>
+</th:block>

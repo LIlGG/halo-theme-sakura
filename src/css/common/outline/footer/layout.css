@@ -8,14 +8,14 @@
   animation: blur 0.8s;
   transition: all 0.8s ease;
 
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     content: "";
     display: table;
     table-layout: fixed;
   }
 
-  &:after {
+  &::after {
     clear: both;
   }
 

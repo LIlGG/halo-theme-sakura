@@ -40,7 +40,7 @@
       transition: 0.7s all ease;
       transform: translate3d(0, 50px, 0);
 
-      &:before {
+      &::before {
         content: "";
         position: absolute;
         top: -30px;

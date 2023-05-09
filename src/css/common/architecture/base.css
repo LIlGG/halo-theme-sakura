@@ -213,7 +213,7 @@ blockquote {
   position: relative;
   quotes: "" "";
 
-  &:before {
+  &::before {
     content: "\f10d";
     font-size: 3rem;
     position: absolute;
@@ -223,7 +223,7 @@ blockquote {
     font-family: FontAwesome;
   }
 
-  &:after {
+  &::after {
     content: "\f10e";
     font-size: 3rem;
     position: absolute;

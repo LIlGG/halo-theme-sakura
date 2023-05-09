@@ -93,7 +93,7 @@
       box-shadow: 0 2px 10px #aaa;
       transition: all 200ms;
 
-      &:after {
+      &::after {
         content: "";
         position: absolute;
         left: 50%;

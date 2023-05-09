@@ -15,6 +15,10 @@
   &:hover .header-user-menu {
     display: block;
   }
+
+  @mixin screens-md {
+    display: none;
+  }
 }
 
 .header-user-menu {
@@ -48,7 +52,7 @@
     }
   }
 
-  &:before {
+  &::before {
     content: "";
     position: fixed;
     top: 46px;

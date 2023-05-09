@@ -152,7 +152,7 @@
       box-shadow: 0 5px 10px 5px rgba(110, 110, 110, 0.4);
     }
 
-    &:before {
+    &::before {
       content: "";
       width: 1px;
       height: 100px;

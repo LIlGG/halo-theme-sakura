@@ -5,14 +5,14 @@
   width: 100%;
   z-index: 999 !important;
 
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     content: "";
     display: table;
     table-layout: fixed;
   }
 
-  &:after {
+  &::after {
     clear: both;
   }
 
@@ -35,9 +35,12 @@
     margin: 0 auto;
     position: fixed;
   }
-  
+
   @mixin screens-md {
-    display: none;
+    &,
+    & .header-inner {
+      height: 40px;
+    }
   }
 }
 
@@ -48,5 +51,12 @@
     top: 0;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 1px 40px -8px #00000080;
+  }
+
+  @mixin screens-md {
+    & .header-inner {
+      background: transparent;
+      box-shadow: none;
+    }
   }
 }

@@ -17,7 +17,7 @@
     }
 
     &:not(:last-child) {
-      &:after {
+      &::after {
         content: "·";
         margin: 0 5px;
       }

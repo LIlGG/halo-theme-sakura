@@ -47,7 +47,7 @@
       border-radius: 4px;
       cursor: auto;
 
-      &:before {
+      &::before {
         content: "";
         width: 0;
         height: 0;

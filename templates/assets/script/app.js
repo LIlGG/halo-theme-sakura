@@ -1035,16 +1035,22 @@ var home = location.href,
     // 移动端菜单
     MN: function () {
       $(".iconflat").on("click", function () {
-        $("body").toggleClass("navOpen");
-        $("#main-container,#mo-nav,.openNav").toggleClass("open");
+        $("body").addClass("navOpen");
+        $(".container, .site-nav-toggle, .site-sidebar").addClass("open");
       });
+
+      $(".site-sidebar").on("click", function () {
+        $("body").removeClass("navOpen");
+        $(".container, .site-nav-toggle, .site-sidebar").removeClass("open");
+      });
+      
     },
 
     // 移动端菜单自动隐藏
     MNH: function () {
       if ($("body").hasClass("navOpen")) {
-        $("body").toggleClass("navOpen");
-        $("#main-container,#mo-nav,.openNav").toggleClass("open");
+        $("body").removeClass("navOpen");
+        $(".container, .site-nav-toggle, .site-sidebar").removeClass("open");
       }
     },
 

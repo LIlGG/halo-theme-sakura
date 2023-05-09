@@ -7,11 +7,11 @@
         font-weight: 400;
         color: #676767;
 
-        &:before {
+        &::before {
           content: "";
         }
 
-        &:after {
+        &::after {
           content: "";
           padding-right: 15px;
           border-right: 1px dashed #ddd;

@@ -189,13 +189,6 @@ Tags: LIlGG
 ## header
 --------------------------------------------------------------*/
 /* 菜单 */
-.openNav {
-  display: none;
-}
-
-#mo-nav {
-  display: none;
-}
 
 .m-nav {
   display: none;
@@ -486,56 +479,6 @@ i.iconfont.hotpost {
 }
 
 @media (max-width: 860px) {
-  #mo-nav.open {
-    width: 250px;
-  }
-
-  .openNav {
-    transition-duration: 0.5s;
-    width: 100%;
-    height: 50px;
-    position: absolute;
-    top: 0;
-    z-index: 99999;
-    display: block;
-    background: 0 0;
-  }
-
-  .iconflat {
-    background: 0 0;
-    width: 50px;
-    height: 50px;
-    float: left;
-  }
-
-  .openNav .icon {
-    transition-duration: 0.2s;
-    position: absolute;
-    width: 30px;
-    height: 3px;
-    background-color: #333;
-    top: 24px;
-    left: 10px;
-  }
-
-  .openNav .icon:before,
-  .openNav .icon:after {
-    transition-duration: 0.5s;
-    background-color: #333;
-    position: absolute;
-    content: "";
-    width: 30px;
-    height: 3px;
-    left: 0;
-  }
-
-  .openNav .icon:before {
-    top: -8px;
-  }
-
-  .openNav .icon:after {
-    top: 8px;
-  }
 
   .openNav.open .icon {
     background-color: transparent;
@@ -556,103 +499,6 @@ i.iconfont.hotpost {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     background: #fff;
-  }
-
-  #mo-nav {
-    background-color: #fff;
-    width: 0;
-    max-width: 250px !important;
-    height: 100%;
-    z-index: 999;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    overflow-x: hidden !important;
-    overflow-y: auto;
-  }
-
-  #mo-nav .m-avatar {
-    position: relative;
-    width: 250px;
-    max-width: 250px;
-    height: auto;
-    margin: 0 auto;
-    padding: 30px 0 20px;
-    text-align: center;
-  }
-
-  #mo-nav .m-avatar img {
-    width: 90px;
-    height: 90px;
-    max-width: 90px;
-    border-radius: 100%;
-  }
-
-  #mo-nav .social {
-    margin: 0 10px;
-  }
-
-  #mo-nav .m-search form {
-    position: relative;
-    width: 250px;
-    max-width: 250px;
-    margin: 0 0 20px;
-    padding: 8px 15px;
-    background-color: #fafafa;
-  }
-
-  #mo-nav .m-search input {
-    width: 100%;
-    border: 0;
-    padding: 5px;
-    text-align: center;
-    border-radius: 3px;
-    outline: none;
-  }
-
-  #mo-nav ul {
-    width: 200px;
-    height: auto;
-    margin: 10px 9px;
-  }
-
-  #mo-nav ul:hover li {
-    color: rgba(255, 255, 255, 0.5);
-  }
-
-  #mo-nav ul li {
-    transition-duration: 0.25s;
-    display: block;
-    padding: 6px 40px;
-    color: #fff;
-    letter-spacing: 0.02em;
-    text-align: left;
-  }
-
-  #mo-nav ul li a {
-    color: #333;
-    font-size: 15px;
-  }
-
-  #mo-nav li ul {
-    width: 250px;
-    margin: 10px 0;
-    padding-left: 10px;
-  }
-
-  #mo-nav li ul li {
-    padding: 5px 9px;
-  }
-
-  #mo-nav li ul li a {
-    font-size: 13px;
-    color: #9cacc5;
-  }
-
-  #mo-nav ul li a:hover {
-    cursor: pointer;
-    color: orange;
   }
 
   #mo-nav .m-footer {
@@ -3001,8 +2847,8 @@ em {
   word-break: break-all;
 }
 /** journal end */
+
 /** dark start */
-body.dark #main-container,
 body.dark #mo-nav,
 body.dark .comments,
 body.dark .site-footer,
@@ -3276,7 +3122,6 @@ body.dark #show-nav .line {
 
 /*切换动画*/
 html,
-#main-container,
 #mo-nav,
 .comments,
 .pattern-center-blank,

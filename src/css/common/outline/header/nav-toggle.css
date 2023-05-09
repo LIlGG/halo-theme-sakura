@@ -1,0 +1,51 @@
+.site-nav-toggle {
+  display: none;
+
+  @mixin screens-md {
+    transition-duration: 0.5s;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    z-index: 99999;
+    display: block;
+    background: 0 0;
+
+    &.open {
+      display: none;
+    }
+
+    & .iconflat {
+      background: 0 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & .icon {
+        transition-duration: 0.2s;
+        width: 30px;
+        height: 3px;
+        background-color: #333;
+
+        &::before,
+        &::after {
+          transition-duration: 0.5s;
+          background-color: #333;
+          position: absolute;
+          content: "";
+          width: 30px;
+          height: 3px;
+        }
+
+        &::before {
+          top: 10px;
+        }
+
+        &::after {
+          bottom: 10px;
+        }
+      }
+    }
+  }
+}
