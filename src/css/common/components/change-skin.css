@@ -1,3 +1,4 @@
+/* 按钮 */
 .change-skin-gear {
   position: fixed;
   bottom: -999px;
@@ -28,7 +29,7 @@
   animation: rotating 3s linear infinite;
 }
 
-/* 移动端 */
+/* 移动端按钮 */
 .m-change-skin {
   display: none;
   position: fixed;
@@ -61,6 +62,7 @@
     display: block;
   }
 }
+
 .skin-menu {
   position: fixed;
   bottom: 50px;
@@ -77,9 +79,6 @@
 
   &.show {
     transform: scaleX(1);
-    transition: 0.5s;
-    right: 70px;
-    box-shadow: 0 1px 40px -8px rgba(0, 0, 0, 0.1);
   }
 
   &:after {
