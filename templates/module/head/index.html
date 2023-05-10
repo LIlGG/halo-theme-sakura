@@ -4,24 +4,21 @@
   <meta name="generator" content="Halo 2.0.0">
 
   <!--/* css */-->
+  <link rel="preload" th:href="@{/assets/dist/css/main.min.css?v={version}(version=${theme.spec.version})}" as="style">
   <link rel="stylesheet" th:href="@{/assets/dist/css/main.min.css?v={version}(version=${theme.spec.version})}">
 
   <!--/* variables.html 根据配置设置 css 变量值，全局 css 通过变量值进行处理 */-->
   <th:block th:replace="module/variables" />
 
-  <!--/* 待优化 css */-->
+  <!--/* 字体 */-->
+  <th:block th:replace="module/head/fonts" />
+  
   <link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC&display=swap"
-  media="noexist"
-  onload="this.media='all'"
-/>
-<link
-  rel="stylesheet"
-  href="//at.alicdn.com/t/font_2010950_sh9o0r7ahar.css"
-  media="noexist"
-  onload="this.media='all'"
-/>
+    rel="stylesheet"
+    href="//at.alicdn.com/t/font_2010950_sh9o0r7ahar.css"
+    media="noexist"
+    onload="this.media='all'"
+  />
 <link rel="stylesheet" th:href="@{/assets/css/lib.css}" media="noexist" onload="this.media='all'" />
 <link
   rel="stylesheet"

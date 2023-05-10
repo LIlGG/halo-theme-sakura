@@ -49,7 +49,9 @@
   position: fixed;
   bottom: 15px;
   right: 10px;
-  z-index: 99;
+  width: 46px;
+  height: 46px;
+  z-index: 9;
   opacity: 0;
   border: 0;
   outline: 0;

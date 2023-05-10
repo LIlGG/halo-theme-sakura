@@ -4,7 +4,7 @@
   <th:block th:replace="scripts/libs"></th:block>
 
   <!--/* 基础 JS */-->
-  <script type="module" th:src="@{/assets/dist/js/main.min.js?v={version}(version=${theme.spec.version})}"></script>
+  <script type="module" th:src="@{/assets/dist/main.min.js?v={version}(version=${theme.spec.version})}"></script>
 
   <!--/* PJAX */-->
   <script type="module" th:if="${theme.config.others.poi_pjax}" th:src="@{/assets/dist/libs/pjax.min.js}"></script>
