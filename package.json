@@ -40,6 +40,7 @@
     }
   ],
   "devDependencies": {
+    "@iconify/iconify": "^3.1.0",
     "@iconify/json": "^2.2.63",
     "autoprefixer": "^10.4.13",
     "colorguard": "^1.2.1",
@@ -52,8 +53,5 @@
     "typescript": "^5.0.4",
     "vite": "^4.2.1",
     "vite-plugin-purge-icons": "^0.9.2"
-  },
-  "dependencies": {
-    "@iconify/iconify": "^3.1.0"
   }
 }

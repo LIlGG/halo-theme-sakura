@@ -1,11 +1,9 @@
 lockfileVersion: '6.0'
 
-dependencies:
+devDependencies:
   '@iconify/iconify':
     specifier: ^3.1.0
     version: 3.1.0
-
-devDependencies:
   '@iconify/json':
     specifier: ^2.2.63
     version: 2.2.63
@@ -264,6 +262,7 @@ packages:
     resolution: {integrity: sha512-Xyz+N5NSIiHj7G228CvFUcMKBz3BbpUTAuPnK2ariEUM7891F8ysD6Gh8782f3En1U4Qz70F0tzuyF8BhCfTQg==}
     dependencies:
       '@iconify/types': 2.0.0
+    dev: true
 
   /@iconify/json@2.2.63:
     resolution: {integrity: sha512-IWbwz8LLl2YMKIFKOWzBxzRHwf6PciaGwM4c5J8T2PKBSHUToThBBrfxwX0gHu0O3EZ5z+o9QQp77qCwbCzgYw==}
@@ -274,6 +273,7 @@ packages:
 
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+    dev: true
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
