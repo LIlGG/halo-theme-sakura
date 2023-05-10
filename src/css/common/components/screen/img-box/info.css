@@ -1,23 +1,21 @@
 .header-info {
-  width: 63%;
-  margin: auto;
+  max-width: 25%;
+  position: relative;
+  margin: 0;
   font-size: 16px;
   color: #eaeadf;
   background: rgba(0, 0, 0, 0.5);
   padding: 15px;
-  margin-top: 22px;
   letter-spacing: 0;
   line-height: 30px;
   border-radius: 10px;
   box-sizing: initial;
   white-space: nowrap;
-  transition: color 1s;
-  transition: background 1s;
+  margin-top: 20px;
 
   &::before {
     position: absolute;
-    left: 30%;
-    margin-left: -15px;
+    left: 20%;
     border-width: 15px;
     border-style: solid;
     border-color: transparent transparent rgba(0, 0, 0, 0.5) transparent;
@@ -33,7 +31,6 @@
   }
 
   & .desc {
-    width: 94%;
     overflow: hidden;
     white-space: normal;
     text-overflow: clip;

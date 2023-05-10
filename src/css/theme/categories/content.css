@@ -2,6 +2,10 @@
   & .card-container {
     margin: 36px auto;
 
+    &.category-show {
+      animation: card-show 1s ease-in-out;
+    }
+
     & .categories-title {
       margin-bottom: 10px;
       color: #3c4858;
@@ -22,5 +26,22 @@
         font-size: 0.9rem;
       }
     }
+
+    & .category-echarts {
+      width: 100%;
+      height: 360px;
+    }
+  }
+}
+
+@keyframes card-show {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

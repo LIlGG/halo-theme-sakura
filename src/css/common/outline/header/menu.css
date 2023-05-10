@@ -6,20 +6,18 @@
   height: 100%;
 
   & .lower {
-    -webkit-animation: searchbox 1s;
-    animation: searchbox 1s;
     display: inline-block;
     margin: 15px 0 0 10px;
     font-size: 16px;
     position: relative;
     pointer-events: auto;
+    animation: fadeInRight 1s;
 
     & nav {
       position: relative;
       float: right;
       display: none;
-      -webkit-animation: searchbox 0.2s;
-      animation: searchbox 0.2s;
+      animation: fadeInRight 0.2s;
 
       & ul {
         margin: 0;
@@ -55,8 +53,6 @@
             border-radius: 5px;
             box-shadow: 0 1px 40px -8px rgba(0, 0, 0, 0.5);
             animation: fadeInUp 0.3s 0.1s ease both;
-            -webkit-animation: fadeInUp 0.3s 0.1s ease both;
-            -moz-animation: fadeInUp 0.3s 0.1s ease both;
 
             &::before {
               content: "";
@@ -132,5 +128,29 @@
         display: none;
       }
     }
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
   }
 }

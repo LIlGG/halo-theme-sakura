@@ -3,11 +3,21 @@
     margin-bottom: 8px;
     width: 30px;
     height: 30px;
-    opacity: 0.3;
+    opacity: 0.8;
     margin: 0 auto;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     animation: poi-deg 12s infinite linear;
+  }
+}
+
+@keyframes poi-deg {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }

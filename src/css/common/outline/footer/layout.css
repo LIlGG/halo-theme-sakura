@@ -2,8 +2,8 @@
   background-color: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   margin: auto;
-  animation: blur 0.8s;
   transition: all 0.8s ease;
+  margin-bottom: 2%;
 
   &::before,
   &::after {

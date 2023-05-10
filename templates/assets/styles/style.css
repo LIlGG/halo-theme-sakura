@@ -6824,7 +6824,7 @@ input[type=radio]:checked:before {
 		display: none !important;
 	}
 
-	#m-changskin {
+	#mobile-change-skin {
 		display: block !important;
 	}
 
@@ -6842,7 +6842,7 @@ input[type=radio]:checked:before {
 }
 
 /** 移动端切换主题样式 **/
-#m-changskin {	
+#mobile-change-skin {	
 	display: none;
 	position: fixed;
 	bottom: 15px;
@@ -6861,14 +6861,14 @@ input[type=radio]:checked:before {
 	transition: all 0.8s ease !important;
 }
 
-#m-changskin:hover {
+#mobile-change-skin:hover {
 	color: org;
 	background-color: #fff;
 	opacity: .8;
 	transition: all 0.8s ease !important;
 }
 
-#m-changskin.cd-is-visible {
+#mobile-change-skin.cd-is-visible {
 	opacity: 1;
 }
 
@@ -9392,7 +9392,7 @@ body.dark .site-header:hover {
 }
 
 body.dark #moblieGoTop,
-body.dark #m-changskin {
+body.dark #mobile-change-skin {
 	background-color: #232629;
 }
 
@@ -9425,7 +9425,7 @@ html,
 .site-footer,
 .site-wrapper,
 #moblieGoTop:hover,
-#m-changskin:hover,
+#mobile-change-skin:hover,
 .post-list-show,
 .post-list hr,
 .post-date,

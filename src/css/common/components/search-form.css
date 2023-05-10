@@ -2,8 +2,7 @@
   &.is-visible {
     visibility: visible;
     opacity: 0.99;
-    -webkit-animation: elastic 0.5s;
-    animation: elastic 0.5s;
+    animation: search-visible 0.5s;
     background-repeat: no-repeat;
     background-position: bottom right;
   }
@@ -93,5 +92,23 @@
     & p {
       padding-left: 24px;
     }
+  }
+}
+
+@keyframes search-visible {
+  0% {
+    transform: scale(0);
+  }
+
+  55% {
+    transform: scale(1);
+  }
+
+  70% {
+    transform: scale(0.98);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }

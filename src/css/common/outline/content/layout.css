@@ -3,11 +3,8 @@
 }
 
 .wrapper {
-  -webkit-animation: fade-in;
   animation: fade-in;
-  -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
-  -webkit-animation: fade-in 0.5s;
 
   @mixin screens-md {
     transition-duration: 0.5s;
@@ -38,5 +35,19 @@
     & section .gallery-caption p {
       margin-bottom: 0;
     }
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

@@ -8,7 +8,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    animation: header 1s;
+    animation: header .5s;
 
     &.single-center {
       &::after {
@@ -177,5 +177,15 @@
         }
       }
     }
+  }
+}
+
+@keyframes header {
+  0% {
+    transform: translateY(-50px);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }

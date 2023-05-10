@@ -34,6 +34,8 @@
     display: block;
     margin: 0 auto;
     position: fixed;
+    padding: 0 20px;
+    box-sizing: border-box;
   }
 
   @mixin screens-md {
@@ -41,6 +43,10 @@
     & .header-inner {
       height: 40px;
       position: absolute;
+    }
+
+    & .header-inner {
+      padding: 0;
     }
   }
 }

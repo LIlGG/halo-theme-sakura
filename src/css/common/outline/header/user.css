@@ -3,13 +3,13 @@
   float: right;
   margin-left: 20px;
   margin-top: 22px;
-  -webkit-animation: searchbox 1s;
-  animation: searchbox 1s;
+  animation: fadeInRight 1s;
 
   & img {
     border-radius: 100%;
     cursor: pointer;
     height: 30px;
+    object-fit: cover;
   }
 
   &:hover .header-user-menu {
@@ -30,7 +30,6 @@
   top: 44px;
   display: none;
   overflow: hidden;
-  -webkit-animation: header-user-menu 0.4s;
   animation: header-user-menu 0.4s;
   box-shadow: 0 1px 40px -8px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
@@ -98,5 +97,17 @@
       padding: 0 5px;
       text-decoration: underline;
     }
+  }
+}
+
+@keyframes header-user-menu {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

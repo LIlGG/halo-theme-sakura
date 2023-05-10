@@ -83,7 +83,7 @@ var LIlGGAttachContext = {
       $bg_video_btn.removeClass("videolive");
       $bg_video_btn.removeClass("haslive");
       $(".focusinfo").css({
-        top: "49.3%",
+        top: 0,
       });
     };
 
@@ -109,7 +109,7 @@ var LIlGGAttachContext = {
           })
           .html("已暂停 ...");
         $(".focusinfo").css({
-          top: "49.3%",
+          top: 0,
         });
         $("#banner_wave_1").removeClass("banner_wave_hide");
         $("#banner_wave_2").removeClass("banner_wave_hide");
@@ -269,17 +269,9 @@ var LIlGGAttachContext = {
     if (document.body.clientWidth <= 1200) {
       return;
     }
-    var baseTopPadding = 240,
-      maxToppadding = 134,
-      offset = 100,
-      bottomOffset = 30;
-    if ($("div").hasClass("toc")) {
-      $(".toc-container").css("height", $(".site-content").outerHeight());
-    } else {
-      // 纠正TOC为空时，警告问题
-      return;
-    }
-
+    let entryContentOffset = $(".entry-content").offset().top;
+    let offset = 75;
+    debugger
     $(".entry-content , .links")
       .children("h1,h2,h3,h4,h5")
       .each(function (index) {
@@ -292,57 +284,22 @@ var LIlGGAttachContext = {
       contentSelector: [".entry-content", ".links"],
       headingSelector: "h1, h2, h3, h4, h5",
       collapseDepth: Poi.tocDepth,
-      // TODO: 2.0 无元数据
+      // TODO: 2.0 待适配
       // collapseDepth:
       //   !!PageAttr.metas.tocDepth && [0, 1, 2, 3, 4, 5].includes(Number(PageAttr.metas.tocDepth))
       //     ? Number(PageAttr.metas.tocDepth)
       //     : Poi.tocDepth,
       hasInnerContainers: false,
       disableTocScrollSync: true,
-      headingsOffset: $("#page").find(".pattern-center").length > 0 ? -500 : -230,
-      scrollEndCallback: function (e) {
-        if ($(".is-active-link").length == 0) {
-          return;
-        }
-        if ($(window).scrollTop() == 0) {
-          $(".toc").animate({
-            scrollTop: 0,
-          });
-          return;
-        }
-        var activeLikeOffset = $(".is-active-link").offset().top - $(window).scrollTop();
-        // 当前可视高度小于100，则滚动时toc向上偏移一个li的高度
-        if (activeLikeOffset < offset) {
-          $(".toc").animate({
-            scrollTop: $(".toc").scrollTop() - (offset - activeLikeOffset + $(".is-active-link").height()),
-          });
-        } else if (activeLikeOffset > $(window).height() - bottomOffset) {
-          $(".toc").animate({
-            scrollTop: $(".toc").scrollTop() + (activeLikeOffset - offset),
-          });
-        }
-      },
+      headingsOffset: -(entryContentOffset - 75),
+      scrollSmoothOffset: -75,
     });
 
-    var interval = setInterval(function () {
-      if (document.readyState == "complete") {
-        $(".toc").css("max-height", $(document).scrollTop() + ($(window).height() - baseTopPadding) + "px");
-
-        $(".toc-container").css("height", $(".site-content").outerHeight() - baseTopPadding + "px");
-
-        $(window).scroll(function () {
-          var s = $(document).scrollTop();
-          if (s == 0) {
-            $(".toc").css("max-height", $(document).scrollTop() + ($(window).height() - baseTopPadding) + "px");
-          } else if (s > offset) {
-            $(".toc").css("max-height", $(window).height() - maxToppadding + "px");
-          } else {
-            $(".toc").css("max-height", $(document).scrollTop() + ($(window).height() - baseTopPadding) + "px");
-          }
-        });
-        clearInterval(interval);
-      }
-    }, 2000);
+    $(window).scroll(function () {
+      let $toc = $(".toc-container .toc");
+      let tocClientTop = $toc[0].getBoundingClientRect().top;
+      $toc.css("max-height", `calc(100vh - ${tocClientTop}px - ${offset}px)`)
+    })
   },
   // 文章代码样式
   CHS: function () {
@@ -527,7 +484,7 @@ var LIlGGAttachContext = {
         $(".skin-menu").toggleClass("show");
       });
 
-    $("#m-changskin")
+    $("#mobile-change-skin")
       .off("click")
       .on("click", function () {
         $(".skin-menu").toggleClass("show");
@@ -542,7 +499,7 @@ var LIlGGAttachContext = {
     var offset = 20,
       scroll_top_duration = 700,
       $m_back_to_top = $(".m-cd-top"),
-      $m_changskin = $("#m-changskin");
+      $m_changskin = $("#mobile-change-skin");
     $(window).scroll(function () {
       if ($(this).scrollTop() > offset) {
         $m_back_to_top.addClass("cd-is-visible");

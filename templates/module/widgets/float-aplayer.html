@@ -1,0 +1,14 @@
+<!--/* aplayer */-->
+<th:block th:fragment="float-aplayer">
+  <div th:if="${theme.config.plugin.is_aplayer} and ${theme.config.additional.aplayer_float}" id="aplayer-float"
+    style="z-index: 9" class="aplayer aplayer-float" data-global="true"
+    th:data-id="${theme.config.additional.aplayer_id}" 
+    th:data-server="${theme.config.additional.aplayer_server}"
+    th:data-type="${theme.config.additional.aplayer_type}" 
+    th:data-fixed="true"
+    th:data-preload="${theme.config.additional.aplayer_preload}"
+    th:data-order="${theme.config.additional.aplayer_order}" 
+    th:data-theme="${theme.config.additional.aplayer_theme}"
+    th:data-autoplay="${theme.config.additional.aplayer_autoplay}"
+    th:data-volume="${theme.config.additional.aplayer_volume}"></div>
+</th:block>
