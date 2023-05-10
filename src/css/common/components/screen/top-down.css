@@ -3,7 +3,7 @@
   bottom: 50px;
   left: 50%;
   cursor: pointer;
-  z-index: 5;
+  z-index: 3;
 
   & i {
     font-size: 28px;

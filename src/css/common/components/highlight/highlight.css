@@ -205,3 +205,22 @@
 .code-block-fullscreen-html-scroll {
   overflow: hidden;
 }
+
+
+@keyframes elastic {
+  0% {
+    transform: scale(0);
+  }
+
+  55% {
+    transform: scale(1);
+  }
+
+  70% {
+    transform: scale(0.98);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

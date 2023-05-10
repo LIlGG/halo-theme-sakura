@@ -36,14 +36,4 @@
       }
     }
   }
-
-  & .category-echarts {
-    width: 100%;
-    height: 360px;
-  }
-
-  & .category-show {
-    animation: post-list-show 2s;
-    opacity: 1;
-  }  
 }

@@ -15,3 +15,15 @@
 @import "post-author-profile.css";
 
 @import "post-content-toast.css";
+
+@keyframes main {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
