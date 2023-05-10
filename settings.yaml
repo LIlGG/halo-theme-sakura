@@ -937,49 +937,49 @@ spec:
             - bg_name: white
               bg_url:
               bg_img_strategy: none
-              bg_icon: fa fa-television
+              bg_icon: fa:television
               bg_night: false
               bg_isdefault: true
             - bg_name: sakura
               bg_url: /themes/theme-sakura/assets/images/themes/sakura.png
               bg_img_strategy: none
-              bg_icon: iconfont icon-sakura
+              bg_icon: fluent-emoji-high-contrast:cherry-blossom
               bg_night: false
               bg_isdefault: false
             - bg_name: gribs
               bg_url: /themes/theme-sakura/assets/images/themes/gribs.jpg
               bg_img_strategy: none
-              bg_icon: fa fa-slack
+              bg_icon: fa:slack
               bg_night: false
               bg_isdefault: false
             - bg_name: KAdots
               bg_url: /themes/theme-sakura/assets/images/themes/kyotoanimation.png
               bg_img_strategy: none
-              bg_icon: iconfont icon-dots
+              bg_icon: tabler:chart-grid-dots
               bg_night: false
               bg_isdefault: false
             - bg_name: totem
               bg_url: /themes/theme-sakura/assets/images/themes/little-monster.png
               bg_img_strategy: none
-              bg_icon: fa fa-optin-monster
+              bg_icon: fa:optin-monster
               bg_night: false
               bg_isdefault: false
             - bg_name: pixiv
               bg_url: /themes/theme-sakura/assets/images/themes/star02.png
               bg_img_strategy: none
-              bg_icon: iconfont icon-pixiv
+              bg_icon: simple-icons:pixiv
               bg_night: false
               bg_isdefault: false
             - bg_name: bing
               bg_url: https://api.1314.cool/bingimg/
               bg_img_strategy: cover
-              bg_icon: iconfont icon-bing
+              bg_icon: jam:bing
               bg_night: false
               bg_isdefault: false
             - bg_name: dark
               bg_url: 
               bg_img_strategy: cover
-              bg_icon: fa fa-moon-o
+              bg_icon: fa:moon-o
               bg_night: true
               bg_isdefault: false
           children:

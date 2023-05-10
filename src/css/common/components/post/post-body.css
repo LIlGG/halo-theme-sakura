@@ -27,8 +27,7 @@
       content: "\00B6";
       position: absolute;
       color: #ff6d6d;
-      font-family: "Merriweather Sans", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei",
-        "WenQuanYi Micro Hei", sans-serif;
+      font-family: serif;
       padding-left: 6px;
       font-size: 1.03em;
     }

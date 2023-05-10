@@ -2,8 +2,16 @@ import { globSync } from "glob";
 import { defineConfig } from "vite";
 import { fileURLToPath } from "url";
 import path from "path";
+import PurgeIcons from 'vite-plugin-purge-icons';
 
 export default defineConfig({
+  plugins: [
+    PurgeIcons({
+      content: [
+        './templates/*/*.html',
+      ],
+    })
+  ],
   build: {
     rollupOptions: {
       input: Object.fromEntries(
