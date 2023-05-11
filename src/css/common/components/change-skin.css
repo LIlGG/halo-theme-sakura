@@ -12,7 +12,7 @@
   cursor: pointer;
   border-radius: 10px 10px 0 0;
 
-  & i {
+  & svg {
     display: inline-block;
   }
 
@@ -23,7 +23,7 @@
       content: "";
     }
 
-    & i {
+    & svg {
       font-size: 20px;
     }
   }
@@ -74,7 +74,7 @@
     opacity: 1;
   }
 
-  & i {
+  & svg {
     display: inline-block;
   }
 

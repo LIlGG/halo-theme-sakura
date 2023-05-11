@@ -13,8 +13,7 @@ h1 {
   list-style: none;
 }
 
-i.iconfont.hotpost {
-  font-size: 14px;
+.hotpost {
   color: #ff3b00;
 }
 

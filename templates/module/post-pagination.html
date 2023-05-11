@@ -11,12 +11,12 @@ NEXT / PREVIOUS POSTS
       >
         <a th:href="@{${postCursor.previous.status.permalink}}" rel="prev">
           <div
-            th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.previous.spec.cover)}"
+            th:if="${not #strings.isEmpty(postCursor.previous.spec.cover)}"
             class="background"
             th:style="'background-image:url(\'' + ${postCursor.previous.spec.cover} + '\');'"
           ></div>
           <th:block
-            th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.previous.spec.cover)}"
+            th:unless="${not #strings.isEmpty(postCursor.previous.spec.cover)}"
           >
             <div
               th:if="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
@@ -42,12 +42,12 @@ NEXT / PREVIOUS POSTS
       >
         <a th:href="@{${postCursor.next.status.permalink}}" rel="next">
           <div
-            th:if="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.next.spec.cover)}"
+            th:if="${not #strings.isEmpty(postCursor.next.spec.cover)}"
             class="background"
             th:style="'background-image:url(\'' + ${postCursor.next.spec.cover} + '\');'"
           ></div>
           <th:block
-            th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(postCursor.next.spec.cover)}"
+            th:unless="${not #strings.isEmpty(postCursor.next.spec.cover)}"
           >
             <div
               th:if="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"

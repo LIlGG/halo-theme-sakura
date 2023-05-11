@@ -70,44 +70,25 @@ spec:
     - group: patternimg
       label: 头部装饰图
       formSchema:
-        - $formkit: radio
-          name: patternimg_image
-          id: patternimg_image
-          key: patternimg_image
-          label: 头部装饰图
-          value: true
-          help: 文章与页面的装饰图片
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
         - $formkit: attachment
-          if: "$get(patternimg_image).value == true"
           name: archives_patternimg
           label: 归档页装饰图
         - $formkit: attachment
-          if: "$get(patternimg_image).value == true"
           name: photos_patternimg
           label: 图库页装饰图
         - $formkit: attachment
-          if: "$get(patternimg_image).value == true"
           name: journals_patternimg
           label: 日志页装饰图
         - $formkit: attachment
-          if: "$get(patternimg_image).value == true"
           name: links_patternimg
           label: 友链页装饰图
         - $formkit: attachment
-          if: "$get(patternimg_image).value == true"
           name: searh_patternimg
           label: 搜索页装饰图
         - $formkit: attachment
-          if: "$get(patternimg_image).value == true"
           name: tag_patternimg
           label: 标签页默认装饰图
         - $formkit: attachment
-          if: "$get(patternimg_image).value == true"
           name: category_patternimg
           label: 分类页默认装饰图
     - group: mainScreen

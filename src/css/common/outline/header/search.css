@@ -5,10 +5,10 @@
   margin-left: 20px;
   animation: fadeInRight 1s;
 
-  & i.iconfont.js-toggle-search.iconsearch {
+  & .iconsearch {
     color: #666;
     cursor: pointer;
-    font-size: 26px;
+    font-size: 30px;
     transition: all 0.3s ease-in-out;
   }
 

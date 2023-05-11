@@ -24,7 +24,7 @@
     transition: width, padding 0.5s ease;
   }
 
-  & i {
+  & .hide-minicode {
     line-height: inherit;
     cursor: pointer;
     padding-right: 5px;
@@ -43,7 +43,7 @@
       padding: 0;
     }
 
-    & i {
+    & .hide-minicode {
       display: none;
     }
   }

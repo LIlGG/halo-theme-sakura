@@ -30,9 +30,9 @@
     <th:block th:replace="module/home/focus_tou"></th:block>
     <div class="header-info no-select" th:classappend="${#strings.isEmpty(site.subtitle) ? '' : 'info-desc'}" th:if="${theme.config.mainScreen.focus_infos and (not #strings.isEmpty(site.subtitle) or not #arrays.isEmpty(theme.config.sns.items))}" >
       <p th:if="${not #strings.isEmpty(site.subtitle)}">
-        <i class="fa fa-quote-left"></i>
+        <span class="iconify" data-icon="fa:quote-left"></span>
         <span class="desc" th:text="${site.subtitle}"></span>
-        <i class="fa fa-quote-right"></i>
+        <span class="iconify" data-icon="fa:quote-right"></span>
       </p>
       <div class="top-social" th:if="${not #arrays.isEmpty(theme.config.sns.items)}">
         <th:block th:replace="module/home/top_social"></th:block>

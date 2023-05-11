@@ -11,7 +11,7 @@
     position: relative;
   }
 
-  & i {
+  & svg {
     font-size: 32px;
     font-size: 2rem;
     line-height: 1;

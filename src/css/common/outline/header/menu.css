@@ -114,7 +114,7 @@
     & .lower {
       display: none;
 
-      & nav ul li .animated-hover i {
+      & nav ul li .animated-hover svg {
         display: inline;
       }
     }

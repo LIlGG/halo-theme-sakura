@@ -6,10 +6,11 @@
   * id 可选，每个模型唯一 id，不传入则默认取 extension.metadata.name
   * isRandomImage 可选,是否使用随机图. 不传则默认取 annotations 下的 randomImage 属性
   */-->
-<div class="page-header" th:fragment="page-header(extension, frontCover)" th:with="randomCoverAvailable = ${(isRandomImage == null ? #annotations.getOrDefault(extension, 'randomImage', true) : isRandomImage) and not #strings.isEmpty(theme.config.random_image.rimage_url) and (_templateId == 'post' ? theme.config.random_image.rimage_cover_open : theme.config.random_image.rimage_cover_sheet_open)}" th:classappend="${(not #strings.isEmpty(frontCover) || randomCoverAvailable) ? 'is-decorate' : ''}">
-  <th:block
-    th:if="${theme.config.patternimg.patternimg_image}"
-  >
+<div class="page-header" 
+  th:fragment="page-header(extension, frontCover)" 
+  th:with="randomCoverAvailable = ${(isRandomImage == null ? #annotations.getOrDefault(extension, 'randomImage', true) : isRandomImage) and not #strings.isEmpty(theme.config.random_image.rimage_url) and (_templateId == 'post' ? theme.config.random_image.rimage_cover_open : theme.config.random_image.rimage_cover_sheet_open)}" 
+  th:classappend="${((not #strings.isEmpty(frontCover)) or randomCoverAvailable) ? 'is-decorate' : ''}">
+  <th:block>
     <div
       class="pattern-center single-center no-select"
       th:if="${not #strings.isEmpty(frontCover) || randomCoverAvailable}"

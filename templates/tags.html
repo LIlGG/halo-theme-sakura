@@ -25,10 +25,11 @@
           <div class="card">
             <div class="card-content">
               <div
-                th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+                th:unless="${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
                 class="tag-title"
               >
-                <i class="fa fa-tags"></i>&nbsp;&nbsp;<span class="i18n" data-iname="page.tags.title"></span>
+                <span class="iconify iconify--xxlarge" data-icon="fa:tags"></span>
+                <span class="i18n" data-iname="page.tags.title"></span>
               </div>
               <div class="tag-chips">
                 <a

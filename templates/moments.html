@@ -38,17 +38,16 @@
                   th:if="${pluginFinder.available('PluginCommentWidget') and theme.config.journal.journal_comment}"
                   class="comment-js noselect"
                 >
-                  <i class="iconfont icon-mark">
-                    <span class="noticom" th:text="${moment.stats.totalComment}"></span>
-                  </i>
+                  <span class="iconify" data-icon="solar:chat-dots-outline"></span>
+                  <span class="noticom" th:text="${moment.stats.totalComment}"></span>
                 </span>
                 <span
                   th:if="${theme.config.journal.journal_likes}"
                   class="journal-like noselect"
                   th:data-links="${moment.stats.upvote}"
                 >
-                  <span><i class="iconfont icon-dianzan"></i></span>
-                  <span style="font-size: 16px" th:text="${moment.stats.upvote}"></span>
+                  <span class="iconify" data-icon="solar:like-broken"></span>
+                  <span th:text="${moment.stats.upvote}"></span>
                 </span>
               </p>
               <div
@@ -56,7 +55,9 @@
                 class="comment"
               >
                 <!--/* 评论组件 */-->
-                <th:block th:replace="~{module/comment :: comment(group = 'moment.halo.run', kind = 'Moment', name = ${moment.metadata.name})}" />
+                <th:block
+                  th:replace="~{module/comment :: comment(group = 'moment.halo.run', kind = 'Moment', name = ${moment.metadata.name})}"
+                />
               </div>
             </span>
           </span>

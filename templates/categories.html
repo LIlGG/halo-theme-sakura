@@ -17,9 +17,9 @@
         <div class="card">
           <div class="card-content">
             <div
-              th:unless="${theme.config.patternimg.patternimg_image} and ${not #strings.isEmpty(theme.config.patternimg.category_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
+              th:unless="${not #strings.isEmpty(theme.config.patternimg.category_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
               class="categories-title">
-              <i class="fa fa-bookmark"></i>&nbsp;&nbsp;<span class="i18n" data-iname="page.categories.title"></span>
+              <span class="iconify iconify--xlarge" data-icon="fa:bookmark"></span>&nbsp;&nbsp;<span class="i18n" data-iname="page.categories.title"></span>
             </div>
             <div class="categories-chips">
               <a th:each="category : ${categories}" th:href="@{${category.status.permalink}}"
