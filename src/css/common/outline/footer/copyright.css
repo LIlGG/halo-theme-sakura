@@ -3,7 +3,8 @@
     font-family: "Ubuntu", sans-serif;
 
     & span {
-      & i {
+      & .iconify {
+        font-size: inherit;
         color: #e74c3c;
       }
 

@@ -197,35 +197,15 @@ p {
 dfn,
 cite,
 em,
-i {
+svg {
   font-style: italic;
 }
 
 blockquote {
-  margin: 0;
-  padding: 30px 60px;
-  position: relative;
-  quotes: "" "";
-
-  &::before {
-    content: "\f10d";
-    font-size: 3rem;
-    position: absolute;
-    top: -25px;
-    left: 12px;
-    color: orange;
-    font-family: FontAwesome;
-  }
-
-  &::after {
-    content: "\f10e";
-    font-size: 3rem;
-    position: absolute;
-    bottom: -25px;
-    right: -5px;
-    color: orange;
-    font-family: FontAwesome;
-  }
+  margin: 1em;
+  padding: 0 1em;
+  color: #656d76;
+  border-left: 0.25em solid #d0d7de;
 
   & p {
     margin: 5px 0;

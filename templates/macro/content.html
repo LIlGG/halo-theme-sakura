@@ -18,7 +18,11 @@
 
   <div class="feature">
     <a th:href="@{${post.status.permalink}}">
-      <div class="overlay"><i class="iconfont icon-text"></i></div>
+      <div class="overlay">
+        <div class="overlay-inner">
+          <span class="iconify" data-icon="solar:file-text-outline"></span>
+        </div>
+      </div>
       <img
         th:if="${not #strings.isEmpty(post.spec.cover)}"
         width="150"
@@ -56,13 +60,13 @@
   <footer class="entry-footer">
     <div class="post-more">
       <a th:href="@{${post.status.permalink}}">
-        <i class="iconfont icon-caidan"></i>
+        <span class="iconify" data-icon="akar-icons:more-horizontal-fill"></span>
       </a>
     </div>
     <div class="info-meta">
       <div class="comnum" th:unless="${theme.config.others.keep_record_mode}">
         <span>
-          <i class="iconfont icon-mark"></i>
+          <span class="iconify" data-icon="solar:chat-line-line-duotone"></span>
           <a th:href="@{${post.status.permalink}+'#comments'}">
             <span class="i18n" data-iname="postlist.comments" th:attr="data-ivalue=${post.stats.comment}"> </span>
           </a>
@@ -70,14 +74,14 @@
       </div>
       <div class="views">
         <span>
-          <i class="iconfont icon-attention"></i>
+          <span class="iconify" data-icon="solar:eye-linear"></span>
           <span class="i18n" data-iname="postlist.heat" th:attr="data-ivalue=${post.stats.visit}"> </span>
         </span>
       </div>
     </div>
     <div class="p-time">
-      <i th:if="${post.spec.pinned}" class="iconfont icon-hot hotpost"></i>
-      <i class="iconfont icon-time"> </i>
+      <span th:if="${post.spec.pinned}" class="iconify hotpost" data-icon="solar:fire-outline"></span>
+      <span class="iconify" data-icon="solar:clock-circle-linear"></span>
       <time
         class="i18n"
         data-iname="postlist.time"

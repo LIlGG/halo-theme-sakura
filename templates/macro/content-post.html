@@ -30,7 +30,7 @@
       <div>
         <p>
           Q.E.D.
-          <i class="fa fa-meetup" aria-hidden="true" style="color: #d34836"></i>
+          <span class="iconify" data-icon="fa:meetup" style="color: #d34836"></span>
         </p>
       </div>
 
@@ -58,13 +58,13 @@
       <div class="post-footer-meta">
         <div class="post-license" itemprop="license">
           <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow">
-            <i class="fa fa-creative-commons" aria-hidden="true"></i>
+            <span class="iconify" data-icon="fa:creative-commons"></span>
             <span class="i18n" data-iname="post.creative_commons"></span>
           </a>
         </div>
         <div class="post-tags">
           <th:block th:if="${not #lists.isEmpty(post.tags)}">
-            <i class="iconfont icon-tags"></i>
+            <span class="iconify" data-icon="system-uicons:tags" style="scale: 1.3;"></span>
             <a
               th:each="tag : ${post.tags}"
               th:href="@{${tag.status.permalink}}"

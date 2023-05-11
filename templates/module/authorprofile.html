@@ -17,7 +17,7 @@
     </div>
     <hr />
     <p>
-      <i class="iconfont icon-pencil"></i>
+      <span class="iconify" data-icon="solar:pen-line-duotone"></span>
       <span th:if="${not #strings.isEmpty(post.owner.bio)}" th:text="${post.owner.bio}" itemprop="description" ></span>
       <span th:unless="${not #strings.isEmpty(post.owner.bio)}" class="i18n" data-iname="user.description"></span>
     </p>

@@ -5,7 +5,7 @@
   cursor: pointer;
   z-index: 3;
 
-  & i {
+  & .iconify {
     font-size: 28px;
     color: #fff;
     transform: scale(1.5, 1);

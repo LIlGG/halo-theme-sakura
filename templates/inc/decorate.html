@@ -59,22 +59,20 @@
     background: url([(${theme.config.others.top_back_img ?: #theme.assets("/images/scroll.png")})]) no-repeat center;
   }
 
-  .author-profile i,
+  .author-profile .iconify,
   .post-share .show-share,
   .we-info a,
   span.sitename,
-  .post-more i:hover,
+  .post-more .iconify:hover,
   #pagination a:hover,
   .post-content a:hover,
-  .float-content i:hover {
+  .float-content .iconify:hover {
     color: /*[(${theme.config.general.theme_skin})]*/ ;
   }
 
-  .feature i,
+  .feature .iconify,
   .feature-title span,
-  .navigator i:hover,
   .links ul li:before,
-  .ar-time i,
   span.ar-circle,
   .object,
   .comment .comment-reply-link {
@@ -85,7 +83,6 @@
     background: /*[(${theme.config.general.theme_skin})]*/ ;
   }
 
-  .navigator i:hover,
   .link-title,
   .links ul li:hover,
   #pagination a:hover,
@@ -103,7 +100,7 @@
   .entry-title a:hover,
   #archives-temp h3,
   .site-title a:hover,
-  i.iconfont.js-toggle-search.iconsearch:hover,
+  .iconsearch:hover,
   .comment-respond input[type="submit"]:hover {
     color: /*[(${theme.config.general.theme_skin})]*/ ;
   }
@@ -197,7 +194,6 @@
   }
 
   /*黑夜模式主题色*/
-  body.dark .ar-time i,
   body.dark span.ar-circle,
   body.dark .scrollbar,
   body.dark .butterBar-message,
@@ -225,11 +221,11 @@
   body.dark .ins-section .ins-search-item:hover .ins-slug,
   body.dark .ins-section .ins-search-item:hover .ins-search-preview,
   body.dark .ins-section .ins-search-item:hover .iconfont,
-  body.dark .float-content i:hover,
+  body.dark .float-content svg:hover,
   body.dark .menhera-container .emoji-item:hover,
   body.dark .comment-respond .logged-in-as a:hover,
   body.dark .header-inner ul li a:hover,
-  body.dark i.iconfont.js-toggle-search.iconsearch:hover {
+  body.dark .iconsearch:hover {
     color: /*[(${theme.config.theme.theme_dark})]*/ ;
   }
 
@@ -320,14 +316,14 @@
   </style>
 </th:block>
 
-<th:block th:if="${theme.config.general.list_type == 'square'}">
+<th:block th:if="${theme.config.general.list_type == 'round'}">
   <style>
     .feature img {
-      border-radius: 0 !important;
+      border-radius: 50% !important;
     }
 
-    .feature i {
-      border-radius: 0 !important;
+    .feature .overlay-inner {
+      border-radius: 50% !important;
     }
   </style>
 </th:block>

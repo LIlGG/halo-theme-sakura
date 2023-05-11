@@ -17,13 +17,6 @@
     }
   }
 
-  & i {
-    margin-right: 5px;
-    color: #989898;
-    font-size: 14px;
-    vertical-align: middle;
-  }
-
   & a {
     color: #504e4e;
   }
@@ -92,16 +85,21 @@
         font-size: 14px;
       }
 
-      & i {
-        font-size: 25px;
+      & .iconify {
+        font-size: 30px;
         color: #666;
+        margin-right: 5px;
+
+        &:hover {
+          color: orange;
+        }
       }
 
       & p {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
-        height: 67.5px;
+        height: 70px;
         overflow: hidden;
         text-align: left;
       }
@@ -198,12 +196,6 @@
         & p {
           height: auto;
           display: block;
-        }
-
-        & i {
-          &:hover {
-            transition: background 1s;
-          }
         }
 
         & .post-bottom {

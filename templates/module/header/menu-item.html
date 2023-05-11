@@ -1,7 +1,8 @@
 <li class="menu-item" th:classappend="|menu-item-${menuItem.metadata.name}|" th:fragment="menu-item(menuItem)">
   <a th:href="@{${menuItem.status?.href}}" th:target="${menuItem.spec.target?.value}">
     <span class="faa-parent animated-hover">
-      <i th:if="${#annotations.contains(menuItem, 'icon')}" th:class="${#annotations.get(menuItem, 'icon')}"></i>
+      <!--/* TODO: https://github.com/l-lin/font-awesome-animation 处理动画 */-->
+      <span th:if="${#annotations.contains(menuItem, 'icon')}" class="iconify" th:data-icon="${#annotations.get(menuItem, 'icon')}"></span>
       <th:block th:text="${menuItem.status.displayName}"></th:block>
     </span>
   </a>

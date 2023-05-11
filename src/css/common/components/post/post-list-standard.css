@@ -51,11 +51,12 @@
     position: absolute;
     margin-top: 10px;
 
-    &:hover .overlay i {
+    &:hover .overlay .overlay-inner {
       opacity: 1;
     }
 
-    & i {
+    & .overlay-inner {
+      display: inline-block;
       position: absolute;
       top: 2px;
       left: 2px;
@@ -66,9 +67,14 @@
       line-height: 94px;
       text-align: center;
       background: #bbe2db;
-      border-radius: 50%;
       opacity: 0;
       z-index: 1;
+      transition: opacity 0.4s ease-out;
+
+      & .iconify {
+        font-size: 30px;
+        background: transparent;
+      }
     }
 
     & img {
@@ -81,12 +87,6 @@
       -o-object-fit: cover;
       object-fit: cover;
     }
-
-    & .overlay {
-      & i {
-        transition: opacity 0.4s ease-out;
-      }
-    }
   }
 
   & .entry-footer {
@@ -94,8 +94,8 @@
       margin-top: 10px;
       text-align: right;
 
-      & i {
-        font-size: 25px;
+      & .iconify {
+        font-size: 30px;
         color: #666;
 
         &:hover {
@@ -121,10 +121,8 @@
         vertical-align: bottom;
       }
 
-      & i {
-        margin-top: 3px;
+      & .iconify {
         margin-right: 10px;
-        float: left;
       }
 
       & a {
@@ -145,8 +143,8 @@
       color: #989898;
       letter-spacing: 0;
 
-      & i {
-        font-size: 14px;
+      & .iconify {
+        scale: 1.2;
         margin-right: 5px;
       }
     }
