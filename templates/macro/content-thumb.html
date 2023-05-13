@@ -74,14 +74,14 @@
         <img
           th:if="${not #strings.isEmpty(post.spec.cover)}"
           class="lazyload"
-          th:src="${#theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg')}"
+          th:src="${#theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
           th:data-src="${post.spec.cover}"
           onerror="imgError(this)"
         />
         <img
           th:if="${#strings.isEmpty(post.spec.cover)} and ${theme.config.random_image.rimage_cover_open} and ${#annotations.getOrDefault(post, 'randomImage', true)} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
           th:with="randomUrl = |${theme.config.random_image.rimage_url}?postid=${post.metadata.name}&type=url&itype=${theme.config.random_image.rimage_cover_itype}${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}|"
-          th:src="${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg') : (randomUrl + '&th=150')}"
+          th:src="${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/load/orange.progress-bar-stripe-loader.svg') : (randomUrl + '&th=150')}"
           th:data-srcset="|
           ${randomUrl}&th=640 640w,
           ${randomUrl}&th=960 960w,
@@ -97,8 +97,8 @@
         <img
           th:if="${#strings.isEmpty(post.spec.cover)} and (!${theme.config.random_image.rimage_cover_open} or !${#annotations.getOrDefault(post, 'randomImage', true)} or ${#strings.isEmpty(theme.config.random_image.rimage_url)})"
           class="lazyload"
-          th:src="${#theme.assets('/images/svg/loader/orange.progress-bar-stripe-loader.svg')}"
-          th:data-src="${#theme.assets('/images/temp.jpg')}"
+          th:src="${#theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
+          th:data-src="${#theme.assets('/images/default/temp.jpg')}"
           onerror="imgError(this)"
         />
       </a>

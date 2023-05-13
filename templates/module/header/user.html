@@ -3,7 +3,7 @@
   th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}"
   th:fragment="user"
 >
-  <img th:src="${currentUser.avatar ?: #theme.assets('/images/none.png')}" width="30" height="30" />
+  <img th:src="${currentUser.avatar ?: #theme.assets('/images/default/none.png')}" width="30" height="30" />
   <div class="header-user-menu">
     <th:block sec:authorize="isAnonymous()">
       <div class="herder-user-name no-logged">

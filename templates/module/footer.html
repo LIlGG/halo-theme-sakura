@@ -2,7 +2,7 @@
 <th:block th:fragment="footer">
   <div class="footer-logo">
     <p
-      th:style="'background-image: url(' + ${theme.config.others.footer_logo ?: #theme.assets('/images/sakura.svg')} + ');'">
+      th:style="'background-image: url(' + ${theme.config.others.footer_logo ?: #theme.assets('/images/footer/sakura.svg')} + ');'">
     </p>
     <halo:footer />
   </div>
@@ -37,7 +37,7 @@
         &nbsp;
         <a th:href="@{http://www.beian.gov.cn/portal/registerSystemInfo?recordcode={recordcode}(recordcode=${theme.config.others.footer_ga_select_number})}"
           target="_blank">
-          <img th:src="${#theme.assets('/images/other/gongan.png')}" />
+          <img th:src="${#theme.assets('/images/footer/gongan.png')}" />
           <th:block th:text="${theme.config.others.footer_ga_case_number}"></th:block>
         </a>
       </th:block>
