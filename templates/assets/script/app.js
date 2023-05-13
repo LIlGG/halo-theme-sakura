@@ -928,7 +928,7 @@ var LIlGGAttachContext = {
  * @param {Document} ele 失败的图片do
  */
 var imgError = function (ele) {
-  ele.src = "/themes/theme-sakura/assets/images/avatar.jpg";
+  ele.src = "/themes/theme-sakura/assets/images/default/avatar.jpg";
 };
 
 /**
@@ -1427,7 +1427,7 @@ function headertop_down() {
 }
 
 function imgError() {
-  return (this.src = "/assets/images/temp.jpg");
+  return (this.src = "/assets/images/default/temp.jpg");
 }
 
 /*

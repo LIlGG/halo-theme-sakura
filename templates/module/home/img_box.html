@@ -4,7 +4,7 @@
 	<#if settings.rimage_cover_back_open!false && settings.rimage_url?? && settings.rimage_url!=''>
 		${settings.rimage_url!}?home=home&type=url&itype=${settings.rimage_cover_back_itype!}&id=${(settings.rimage_cover_back_id)!''}&t=<#if settings.rimage_cover_back_num != 0>${randomMethod(1,settings.rimage_cover_back_num + 1)}<#else>${.now?string('yyyyMMddHHmmssSSS')}</#if>
 	<#else>
-	${settings.focus_img_1!'${res_base_url!}/source/images/hd.jpg'}
+	${settings.focus_img_1!'${res_base_url!}/source/images/default/hd.jpg'}
 	</#if>
 	);
 	<#if !(settings.focus_height!true)>
@@ -23,7 +23,7 @@
     />
   </th:block>
   <th:block th:unless="${theme.config.random_image.rimage_cover_back_open and (not #strings.isEmpty(theme.config.random_image.rimage_url))}">
-    <img class="cover-bg" th:src="${theme.config.mainScreen.focus_img_1 ?: #theme.assets('/images/hd.jpg')}" />
+    <img class="cover-bg" th:src="${theme.config.mainScreen.focus_img_1 ?: #theme.assets('/images/default/hd.jpg')}" />
   </th:block>
 
   <div class="focusinfo">

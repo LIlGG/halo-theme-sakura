@@ -41,7 +41,7 @@
       />
       <img
         th:if="${#strings.isEmpty(post.spec.cover)} and (${not theme.config.random_image.rimage_cover_open} or ${#strings.isEmpty(theme.config.random_image.rimage_url)})"
-        th:src="${#theme.assets('/images/random/d-1.jpg')}"
+        th:src="${#theme.assets('/images/default/temp.jpg')}"
         onerror="imgError(this)"
       />
     </a>

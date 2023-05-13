@@ -26,7 +26,7 @@ NEXT / PREVIOUS POSTS
             <div
               th:unless="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
               class="background"
-              th:style="|background-image:url('${#theme.assets('/images/temp.jpg')}')|"
+              th:style="|background-image:url('${#theme.assets('/images/default/temp.jpg')}')|"
             ></div>
           </th:block>
           <span class="label i18n" data-iname="post.prev"></span>
@@ -57,7 +57,7 @@ NEXT / PREVIOUS POSTS
             <div
               th:unless="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
               class="background"
-              th:style="|background-image:url('${#theme.assets('/images/temp.jpg')}')|"
+              th:style="|background-image:url('${#theme.assets('/images/default/temp.jpg')}')|"
             ></div>
           </th:block>
           <span class="label i18n" data-iname="post.next"></span>
