@@ -16,24 +16,15 @@
     color: #adadad;
 
     &:hover {
-      border: 1px solid orange;
-      color: orange;
-      box-shadow: 0 0 4px rgba(255, 165, 0, 0.85);
+      border: 1px solid var(--theme-color);
+      color: var(--theme-color);
+      box-shadow: 0 0 4px var(--theme-color);
     }
   }
 
   & span {
     color: #989898;
     font-size: 15px;
-  }
-
-  & .loading {
-    background-position: center;
-    background-repeat: no-repeat;
-    color: #555;
-    border: none;
-    background-size: auto 100%;
-    box-shadow: none;
   }
 }
 

@@ -3,12 +3,6 @@
 
   & .photos-inner {
     & .loading {
-      background-position: center;
-      background-repeat: no-repeat;
-      color: #555;
-      border: none;
-      background-size: auto 100%;
-      box-shadow: none;
       height: 60px;
 
       & .gallery {

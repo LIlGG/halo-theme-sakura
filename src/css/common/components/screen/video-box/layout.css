@@ -30,6 +30,14 @@
     &:hover {
       opacity: 1;
     }
+
+    &.video-play,
+    &.loadvideo {
+      background-image: var(--video-play-image);
+    }
+    &.video-pause {
+      background-image: var(--video-pause-image);
+    }
   }
 
   & .video-stu {

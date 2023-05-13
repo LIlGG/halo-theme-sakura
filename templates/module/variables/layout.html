@@ -1,0 +1,23 @@
+<style type="text/css" th:inline="css" th:fragment="variables-root">
+  :root {
+    --theme-color: "[(${theme.config.general.theme_skin})]";
+    --loading-image: url("[(${#theme.assets('/images/load/rotating-ball-o.svg')})]");
+  }
+  
+  .cd-top {
+    --cd-top-image: url([(${theme.config.others.top_back_img ?: #theme.assets("/images/scroll.png")})]) no-repeat center;
+  }
+
+  /**
+  * 图片资源
+  */
+  .video-container {
+    /* 背景视频按钮 */
+    --video-play-image: url("[(${#theme.assets('/images/video/play@32x32.png')})]");
+    --video-pause-image: url("[(${#theme.assets('/images/video/pause@32x32.png')})]");
+  }
+
+  .search-form {
+    --search-form-background: url("[(${#theme.assets('/images/search/iloli.gif')})]");
+  }
+</style>

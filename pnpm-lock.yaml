@@ -22,6 +22,9 @@ devDependencies:
   postcss:
     specifier: ^8.4.22
     version: 8.4.22
+  postcss-css-variables:
+    specifier: ^0.19.0
+    version: 0.19.0(postcss@8.4.22)
   postcss-mixins:
     specifier: ^9.0.4
     version: 9.0.4(postcss@8.4.22)
@@ -491,6 +494,10 @@ packages:
     engines: {node: '>=0.8.0'}
     dev: true
 
+  /extend@3.0.2:
+    resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
+    dev: true
+
   /fast-glob@3.2.12:
     resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
     engines: {node: '>=8.6.0'}
@@ -759,6 +766,17 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       irregular-plurals: 1.4.0
+    dev: true
+
+  /postcss-css-variables@0.19.0(postcss@8.4.22):
+    resolution: {integrity: sha512-Hr0WEYKLK9VCrY15anHXOd4RCvJy/xRvCnWdplGBeLInwEj6Z14hgzTb2W/39dYTCnS8hnHUfU4/F1zxX0IZuQ==}
+    peerDependencies:
+      postcss: ^8.2.6
+    dependencies:
+      balanced-match: 1.0.2
+      escape-string-regexp: 1.0.5
+      extend: 3.0.2
+      postcss: 8.4.22
     dev: true
 
   /postcss-js@4.0.1(postcss@8.4.22):

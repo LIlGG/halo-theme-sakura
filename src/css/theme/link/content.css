@@ -4,7 +4,7 @@
 
     & .link-title {
       font-weight: 400;
-      color: #6d6d6d;
+      color: var(--theme-color);
       padding-left: 0;
       border-left: none;
       margin: 50px 0 20px;
@@ -35,7 +35,7 @@
         border-radius: 10px;
 
         &:hover {
-          color: #27323a;
+          color: var(theme-color);
           border: 1px solid orange;
 
           &::before {
@@ -55,7 +55,7 @@
 
         &::before {
           content: "";
-          background-color: orange;
+          background: var(--theme-color);
           transform: skew(45deg);
           width: 0;
           height: 100%;
@@ -82,13 +82,12 @@
           }
 
           & .sitename {
-            color: orange;
+            color: --var(theme-color);
             padding-bottom: 10px;
             display: block;
             transition: all 0.3s;
             overflow: hidden;
             text-overflow: ellipsis;
-            -o-text-overflow: ellipsis;
             white-space: nowrap;
           }
 
@@ -130,7 +129,7 @@
 
           &:hover {
             & .sitename {
-              color: orange;
+              color: --var(theme-color);
             }
 
             & .linkdes {

@@ -25,7 +25,7 @@
       color: #b9b9b9;
 
       &:hover {
-        color: orange;
+        color: var(--theme-color);
       }
     }
   }

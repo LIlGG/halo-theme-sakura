@@ -1,0 +1,17 @@
+:root {
+  --theme-color: orange;
+  --loading-image: none;
+}
+
+.cd-top {
+  --cd-top-image: none no-repeat center;
+}
+
+.video-container {
+  --video-play-image: none;
+  --video-pause-image: none;
+}
+
+.search-form {
+  --search-form-image: none;
+}
