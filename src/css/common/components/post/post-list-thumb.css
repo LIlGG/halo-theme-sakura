@@ -91,7 +91,7 @@
         margin-right: 5px;
 
         &:hover {
-          color: orange;
+          color: var(--theme-color);
         }
       }
 

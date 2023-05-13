@@ -8,7 +8,7 @@
   <link rel="stylesheet" th:href="@{/assets/dist/css/main.min.css?v={version}(version=${theme.spec.version})}">
 
   <!--/* variables.html 根据配置设置 css 变量值，全局 css 通过变量值进行处理 */-->
-  <th:block th:replace="module/variables" />
+  <th:block th:replace="module/variables/index" />
 
   <!--/* 字体 */-->
   <th:block th:replace="module/head/fonts" />

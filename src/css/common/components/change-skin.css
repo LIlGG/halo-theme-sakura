@@ -142,7 +142,7 @@
 
       &:hover {
         background-color: #fc3;
-        color: #fff;
+        color: var(--theme-color);
       }
     }
   }

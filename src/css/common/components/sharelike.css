@@ -59,6 +59,7 @@
     cursor: pointer;
     opacity: 0.6;
     transition: opacity 0.1s ease-out;
+    color: var(--theme-color);
   }
 
   @mixin screens-md {

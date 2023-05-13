@@ -91,7 +91,7 @@
 
           &:hover {
             cursor: pointer;
-            color: orange;
+            color: var(--theme-color);
           }
         }
       }

@@ -1196,17 +1196,6 @@ var home = location.href,
       //   }
       // })
 
-      // 导航菜单
-      $("#show-nav").on("click", function () {
-        if ($("#show-nav").hasClass("showNav")) {
-          $("#show-nav").removeClass("showNav").addClass("hideNav");
-          $(".header-inner .lower nav").addClass("navbar");
-        } else {
-          $("#show-nav").removeClass("hideNav").addClass("showNav");
-          $(".header-inner .lower nav").removeClass("navbar");
-        }
-      });
-
       // 过渡动画
       $("#loading").click(function () {
         $("#loading").fadeOut(500);

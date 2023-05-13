@@ -12,7 +12,7 @@
       font-weight: 400;
 
       &:hover {
-        color: orange;
+        color: var(--theme-color);
       }
     }
 

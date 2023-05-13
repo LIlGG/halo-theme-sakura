@@ -2,19 +2,18 @@
 * Sakura 框架样式
 *
 * 插件参见 postcss.config.js.
-* 使用 vite 自带的 postcss-import 功能。https://github.com/postcss/postcss-import。
+* 使用 vite 自带的 postcss-import 功能。
+* @see https://github.com/postcss/postcss-import。
 */
 
 /* mixins */
 @import "mixins.css";
 
-/* base 变量 */
-@import "variables.css";
+/* 变量 */
+@import "variables";
 
 /* 基础组件样式 */
 @import "common";
 
 /* 主题样式 */
 @import "theme";
-
-/* @import "index.css"; */

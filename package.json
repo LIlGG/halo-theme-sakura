@@ -47,6 +47,7 @@
     "glob": "^10.1.0",
     "pjax": "^0.2.8",
     "postcss": "^8.4.22",
+    "postcss-css-variables": "^0.19.0",
     "postcss-mixins": "^9.0.4",
     "postcss-nesting": "^10.2.0",
     "prettier": "^2.8.7",

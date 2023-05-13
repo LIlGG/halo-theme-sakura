@@ -21,15 +21,6 @@ spec:
             - value: no_cursor
               label: 无样式
         - $formkit: radio
-          name: shownav
-          label: 导航菜单
-          value: true
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: radio
           name: top_search
           label: 搜索功能
           value: true
@@ -627,34 +618,38 @@ spec:
         - $formkit: color
           if: "$get(journal_type).value == color"
           name: journal_color_bg_1
-          label: 日志背景颜色1&按钮颜色1
+          label: 单数-日志背景颜色&按钮颜色
           value: "#E6E6FA"
           help: 日志单数卡片的背景色以及按钮的默认颜色
         - $formkit: color
           if: "$get(journal_type).value == color"
           name: journal_color_font_1
-          label: 日志字体颜色1
+          label: 单数-日志字体颜色
           value: "#000000"
           help: 日志单数卡片的字体颜色
         - $formkit: color
           if: "$get(journal_type).value == color"
           name: journal_color_bg_2
-          label: 日志背景颜色2&按钮颜色2
+          label: 双数-日志背景颜色&按钮颜色
           value: "#F0FFFF"
           help: 日志双数卡片的背景色以及按钮的默认颜色
         - $formkit: color
           if: "$get(journal_type).value == color"
           name: journal_color_font_2
-          label: 日志字体颜色2
+          label: 双数-日志字体颜色
           value: "#000000"
           help: 日志双数卡片的字体颜色
         - $formkit: attachment
           if: "$get(journal_type).value == image"
+          id: journal_bg
+          key: journal_bg
           name: journal_bg
           label: 日志背景图片
           help: 使用图片作为日志背景
         - $formkit: radio
           if: "$get(journal_type).value == image"
+          id: journal_bg_cover
+          key: journal_bg_cover
           name: journal_bg_blur
           label: 日志背景图片虚化
           value: false
