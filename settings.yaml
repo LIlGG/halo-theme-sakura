@@ -1173,7 +1173,6 @@ spec:
           name: top_back_mode
           label: 回到顶部样式
           value: lanyard
-          help: 回到顶部样式，可以通过此选项，将 PC 设置与移动端一样的
           options:
             - value: lanyard
               label: 挂绳

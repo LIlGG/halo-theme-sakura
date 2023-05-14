@@ -34,6 +34,7 @@ body {
   background: #fff;
   background-attachment: fixed;
   margin: 0;
+  cursor: var(--cursor-normal);
   text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1);
 
   &.serif {
@@ -192,6 +193,7 @@ h6 {
 
 p {
   margin-bottom: 1.5em;
+  cursor: var(--cursor-text);
 }
 
 dfn,

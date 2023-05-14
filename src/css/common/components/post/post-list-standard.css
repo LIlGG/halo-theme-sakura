@@ -55,6 +55,7 @@
       background: #bbe2db;
       opacity: 0;
       z-index: 1;
+      border-radius: var(--standard-post-list-border-radius);
       transition: opacity 0.4s ease-out;
 
       & .iconify {
@@ -70,8 +71,8 @@
       padding: 2px;
       border: 1px solid #dadada;
       position: relative;
-      -o-object-fit: cover;
       object-fit: cover;
+      border-radius: var(--standard-post-list-border-radius);
     }
   }
 
