@@ -2,10 +2,28 @@
   :root {
     --theme-color: "[(${theme.config.general.theme_skin})]";
     --loading-image: url("[(${#theme.assets('/images/load/rotating-ball-o.svg')})]");
-  }
-  
-  .cd-top {
+
+    [# th:if="${theme.config.general.cursor_skin == 'sakura'}"]
+      --cursor-link: url("[(${#theme.assets('/cursor/ayuda.cur')})]"), auto;
+      --cursor-link-active: url("[(${#theme.assets('/cursor/work.cur')})]"), alias;
+      --cursor-text: url("[(${#theme.assets('/cursor/texto.cur')})]"), auto;
+      --cursor-normal: url("[(${#theme.assets('/cursor/normal.cur')})]"), auto;
+      --cursor-hover: url("[(${#theme.assets('/cursor/No_Disponible.cur')})]"), auto;
+    [/]
+
     --cd-top-image: url([(${theme.config.others.top_back_img ?: #theme.assets("/images/scroll.png")})]) no-repeat center;
+    [# th:if="${theme.config.others.top_back_mode == 'simplify'}"]
+      --cd-top-display: none;
+      --mobile-cd-top-display: block;
+    [/]
+
+    [# th:if="${theme.config.general.list_type == 'round'}"]
+      --standard-post-list-border-radius: 50%;
+    [/]
+
+    [# th:unless="${theme.config.mainScreen.focus_height}"]
+      --first-screen-height: 50vh;
+    [/]
   }
 
   /**

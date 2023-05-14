@@ -3,6 +3,7 @@ a {
   text-decoration: none;
   color: #e67474;
   outline: none;
+  cursor: var(--cursor-link);
   transition: color 0.2s ease-out, border 0.2s ease-out, opacity 0.2s ease-out;
 
   &:focus,
@@ -10,5 +11,9 @@ a {
   &:hover {
     outline: none;
     color: orange;
+  }
+
+  &:active {
+    cursor: var(--cursor-link-active);
   }
 }

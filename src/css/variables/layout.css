@@ -1,10 +1,34 @@
 :root {
+  /* 主题色 */
   --theme-color: orange;
-  --loading-image: none;
-}
 
-.cd-top {
+  /* layout - content */
+  --site-content-max-width: 780px;
+
+  /* 加载图 */
+  --loading-image: none;
+
+  /* 鼠标样式 */
+  --cursor-link: inherit;
+  --cursor-link-active: inherit;
+  --cursor-text: inherit;
+  --cursor-normal: inherit;
+  --cursor-hover: inherit;
+
+  /* 回到顶部 */
   --cd-top-image: none no-repeat center;
+  --cd-top-display: block;
+  --mobile-cd-top-display: none;
+  --mobile-cd-top-bottom: 70px;
+
+  /* 标准文章列表 */
+  --standard-post-list-border-radius: 0;
+
+  /* 第一屏 */
+  --first-screen-height: 100vh;
+
+  /* header */
+  --yya-header-top: 0;
 }
 
 .video-container {

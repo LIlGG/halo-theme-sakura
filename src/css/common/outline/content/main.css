@@ -1,5 +1,5 @@
 .site-content {
-	max-width: 780px;
+	max-width: var(--site-content-max-width);
 	margin-left: auto;
 	margin-right: auto;
 	background-color: transparent;

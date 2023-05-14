@@ -1,14 +1,16 @@
 .cd-top {
+  display: var(--cd-top-display);
+  z-index: 9;
   position: fixed;
   right: 25px;
   top: -900px;
-  z-index: 9;
   width: 70px;
   height: 900px;
   background-size: contain;
   transition: all 0.5s ease-in-out;
   opacity: 1;
   background: var(--cd-top-image);
+  cursor: var(--cursor-hover);
 
   &.cd-is-visible {
     top: -326px;
@@ -44,10 +46,10 @@
 
 /* TODO: 移动端，外边框会消失不见 */
 .m-cd-top {
-  display: none;
+  display: var(--mobile-cd-top-display);
+  bottom: var(--mobile-cd-top-bottom);
   opacity: 0;
   position: fixed;
-  bottom: 70px;
   font-size: 16px;
   right: 10px;
   z-index: 9;
