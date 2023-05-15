@@ -26,6 +26,7 @@
 
   /* 第一屏 */
   --first-screen-height: 100vh;
+  --first-screen-after: none;
 
   /* header */
   --yya-header-top: 0;

@@ -968,7 +968,6 @@ var pjaxFun = function () {
       Siren.MNH();
     })
     .on("pjax:complete", function () {
-      Siren.AH();
       Siren.PE();
       Siren.CE();
       // 额外加载的pjax
@@ -986,7 +985,6 @@ var pjaxFun = function () {
   window.addEventListener(
     "popstate",
     function (e) {
-      Siren.AH();
       Siren.PE();
       Siren.CE();
     },
@@ -1018,38 +1016,8 @@ var home = location.href,
       }
     },
 
-    // 自适应窗口高度
-    AH: function () {
-      if (Poi.windowheight == "auto") {
-        if (window.outerWidth <= 860) {
-          $("#centerbg").css({ height: 300 });
-          $(".headertop").addClass("headertop-bar");
-          return;
-        }
-        $(".headertop").removeClass("headertop-bar");
-        if ($("h1.main-title").length > 0) {
-          var _height = $(window).height();
-          $("#centerbg").css({ height: _height });
-          $("#bgvideo").css({ "min-height": _height });
-          $(window).resize(function () {
-            Siren.AH();
-          });
-        }
-      } else {
-        $(".headertop").addClass("headertop-bar");
-      }
-    },
-
     // 进程
     PE: function () {
-      if ($(".headertop").length > 0) {
-        if ($("h1.main-title").length > 0) {
-          $(".headertop").css({ height: "auto" }).show();
-        } else {
-          $(".headertop").css({ height: "0px" }).hide();
-        }
-      }
-
       // table
       if ($(".entry-content").children("table").length > 0) {
         $(".entry-content").children("table").wrap("<div class='table-wrapper'></div>");
@@ -1338,7 +1306,6 @@ var toast = null;
  * 独立功能，可拔插
  */
 $(function () {
-  Siren.AH(); // 自适应窗口高度
   Siren.PE(); // 进程
   Siren.NH(); // 显示&隐藏导航栏
   Siren.GT(); // 返回顶部
