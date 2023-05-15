@@ -15,18 +15,23 @@
     background-attachment: fixed;
   }
 
-  &.headertop-bar {
+  &::after {
+    content: "";
+    display: var(--first-screen-after);
+    width: 150%;
+    height: 4.375rem;
+    background: #fff;
+    left: -25%;
+    bottom: -2.875rem;
+    border-radius: 100%;
+    position: absolute;
+    z-index: 1;
+    transition: background 1s;
+  }
+
+  @mixin screens-md {
     &::after {
-      content: "";
-      width: 150%;
-      height: 4.375rem;
-      background: #fff;
-      left: -25%;
-      bottom: -2.875rem;
-      border-radius: 100%;
-      position: absolute;
-      z-index: 1;
-      transition: background 1s;
+      display: block;
     }
   }
 }

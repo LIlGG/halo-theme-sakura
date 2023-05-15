@@ -1,26 +1,30 @@
 import "@/module/index";
 import "@/css/main.css";
-import '@purge-icons/generated';
+import "@purge-icons/generated";
+import "reflect-metadata";
 
 /* 核心启动，通常不建议也不应当由用户调用，只能由启动代码使用  */
 interface Sakura {
-  getThemeConfig(group: String): ThemeConfig
+  getThemeConfig(group: String): ThemeConfig;
   refresh(): void;
+  registerDocumentFunction(name: String, method: Function): void;
 }
 
 declare var Sakura: {
   prototype: Sakura;
-  new(config?: String): Sakura;
-}
+  new (config?: String): Sakura;
+};
 
 interface ThemeConfig {
   isEmpty(): Boolean;
-  getValue<T extends Number | String | Boolean | ThemeConfig[]>(key: String, type: new(...args: any) => T): T | undefined;
+  getValue<T extends Number | String | Boolean | ThemeConfig[]>(
+    key: String,
+    type: new (...args: any) => T
+  ): T | undefined;
 }
 
 class ThemeConfigImpl implements ThemeConfig {
-
-  private schemas?: any
+  private schemas?: any;
 
   constructor(schemas?: any) {
     this.schemas = schemas;
@@ -30,7 +34,10 @@ class ThemeConfigImpl implements ThemeConfig {
     return !this.schemas;
   }
 
-  getValue<T extends Number | String | Boolean | ThemeConfig[]>(key: String, type: new(...args: any) => T): T | undefined {
+  getValue<T extends Number | String | Boolean | ThemeConfig[]>(
+    key: String,
+    type: new (...args: any) => T
+  ): T | undefined {
     if (this.isEmpty()) {
       return undefined;
     }
@@ -54,7 +61,6 @@ interface DocumentFunctionFactory {
 }
 
 class SakuraDocumentFunctionFactory implements DocumentFunctionFactory {
-
   private documentFunctions: Map<String, Function>;
 
   constructor() {
@@ -79,7 +85,7 @@ class SakuraDocumentFunctionFactory implements DocumentFunctionFactory {
   registerDocumentFunction(methodName: String, methodFunction: Function): void {
     this.documentFunctions.set(methodName, methodFunction);
   }
-  
+
   getDocumentFunction(name: String): Function | undefined {
     if (!this.documentFunctions.has(name)) {
       return undefined;
@@ -89,47 +95,26 @@ class SakuraDocumentFunctionFactory implements DocumentFunctionFactory {
 }
 
 export class SakuraApp implements Sakura {
-
   private readonly config?: String;
 
   private themeconfigs: Map<String, ThemeConfig>;
-  
+
   private startupDate: Date = new Date();
 
   private documentFunctionFactory: DocumentFunctionFactory = new SakuraDocumentFunctionFactory();
 
   private events: Map<String, Event> = new Map();
 
-  public readonly REFRESH_EVENT_NAME: String = "sakura:refresh"
+  public readonly REFRESH_EVENT_NAME: String = "sakura:refresh";
 
   constructor(config?: String) {
     this.config = config;
     this.themeconfigs = new Map();
-    this.createThemeConfig();
-  }
-
-  private createThemeConfig() {
-    if (!this.config) {
-      return;
-    }
-    let groupMap = JSON.parse(this.config.toString());
-    Object.keys(groupMap).forEach(key => {
-      let themeConfig = new ThemeConfigImpl(groupMap[key]); 
-      this.themeconfigs.set(key, themeConfig);
-    })
-  }
-
-  getThemeConfig(group: String): ThemeConfig {
-    let themeConfig = this.themeconfigs.get(group)
-    if (!themeConfig) {
-      return new ThemeConfigImpl();
-    }
-    return themeConfig;
   }
 
   /**
    * 页面变化时，刷新 Sakura 所需更新的公共状态。
-   * 
+   *
    * <P>
    * 特别的，为了减少公共 JS 的大小，不建议在此方法内调用状态可变的功能刷新方法。例如可由用户开启或关闭的功能。
    * 此类开放功能可由内联代码使用 window 监听事件 "sakura:refresh" 来进行刷新,也可以放在 `lib` 目录下，之后
@@ -139,25 +124,49 @@ export class SakuraApp implements Sakura {
   public refresh(): void {
     // 初始化刷新前置
     this.prepareRefresh();
+    // 注册路由
+    this.registerRoute();
     // 获取 Dom 函数工厂
-    let functionFactory = this.obtainFunctionFactory();
-    // 注册 DOM 处理器
-    this.registerDomProcessors(functionFactory);
+    this.obtainFunctionFactory();
+    // 注册预设 Dom 函数
+    this.registerDomProcessors();
     // 初始化事件广播器
     this.initEventMulticaster();
     // 处理所有 DocumentFunction
-    this.finishDocumentFunction(functionFactory);
+    this.finishDocumentFunction();
     // 结束刷新
     this.finishRefresh();
   }
 
-  protected finishDocumentFunction(factory: DocumentFunctionFactory): void {
-    let functions = factory.getDocumentFunctions();
+  /**
+   * 注册 documentFunction 函数，该类函数通常为动态加载。
+   * 
+   * @param name 函数名
+   * @param method 函数
+   */
+  public registerDocumentFunction(name: String, method: Function): void {
+    this.obtainFunctionFactory();
+    this.documentFunctionFactory.registerDocumentFunction(name, method);
+    this.finishDocumentFunction();
+  }
+
+  protected finishDocumentFunction(): void {
+    let functions = this.documentFunctionFactory.getDocumentFunctions();
     for (let [key, value] of functions) {
       value();
     }
   }
-  
+
+  protected registerDomProcessors(): void {
+    let functions = getDocumentFunctions();
+    functions.forEach((value, key) => {
+      this.documentFunctionFactory.registerDocumentFunction(key, value);
+    })
+    if (this.getThemeConfig("advanced").getValue("log", Boolean)) {
+      console.log("共获取预设 documentFunction " + functions.size + " 个");
+    }
+  }
+
   protected obtainFunctionFactory(): DocumentFunctionFactory {
     if (!this.documentFunctionFactory) {
       this.documentFunctionFactory = new SakuraDocumentFunctionFactory();
@@ -165,26 +174,41 @@ export class SakuraApp implements Sakura {
     return this.documentFunctionFactory;
   }
 
+  private refreshThemeConfig() {
+    if (!this.config) {
+      return;
+    }
+    let groupMap = JSON.parse(this.config.toString());
+    Object.keys(groupMap).forEach((key) => {
+      let themeConfig = new ThemeConfigImpl(groupMap[key]);
+      this.themeconfigs.set(key, themeConfig);
+    });
+  }
+
+  getThemeConfig(group: String): ThemeConfig {
+    let themeConfig = this.themeconfigs.get(group);
+    if (!themeConfig) {
+      return new ThemeConfigImpl();
+    }
+    return themeConfig;
+  }
+
   protected prepareRefresh(): void {
     this.startupDate = new Date();
-    if (this.getThemeConfig("advanced").getValue("log", Boolean)) {
-      console.log("Sakura Refreshing")
-    }
+    // 刷新全局配置
+    this.refreshThemeConfig();
     //TODO: 刷新每一页可变属性
     this.refreshMetadata();
-  }
 
-  protected refreshMetadata() {
-  }
-
-  protected registerDomProcessors(factory: DocumentFunctionFactory): void {
-    let functions = getDocumentFunctions();
-    functions.forEach((value, key) => {
-      factory.registerDocumentFunction(key, value);
-    })
     if (this.getThemeConfig("advanced").getValue("log", Boolean)) {
-      console.log("共获取预设 documentFunction " + factory.geDocumentFunctionCount() + " 个");
+      console.log("Sakura Refreshing");
     }
+  }
+
+  protected refreshMetadata() {}
+
+  protected registerRoute() {
+    import("./page/index");
   }
 
   protected initEventMulticaster(): void {
@@ -200,35 +224,32 @@ export class SakuraApp implements Sakura {
     let refreshEvent = this.events.get(this.REFRESH_EVENT_NAME) as Event;
     window.dispatchEvent(refreshEvent);
     if (this.getThemeConfig("advanced").getValue("log", Boolean)) {
-      console.log("finish Refreshing")
+      console.log("finish Refreshing");
     }
   }
 }
 
 // 全局配置文件变量，由主题提供
-declare const config: any
-export let sakura: Sakura;
+declare const config: any;
+export var sakura: Sakura = new SakuraApp();
 
-document.addEventListener('DOMContentLoaded', () => {
-  sakura = new SakuraApp(config);
+document.addEventListener("DOMContentLoaded", () => {
   sakura.refresh();
-})
+});
 
 var functions: Map<String, Function>;
 
 function getDocumentFunctions(): Map<String, Function> {
   return functions;
 }
-    
+
 export function documentFunction() {
   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-    if (!functions) {
+    if (!sakura) {
       functions = new Map();
+      functions.set(propertyKey, descriptor.value);
+      return;
     }
-    functions.set(propertyKey, target[propertyKey])
+    sakura.registerDocumentFunction(propertyKey, descriptor.value);
   };
 }
-
-window.addEventListener("sakura:refresh", () => {
-  console.log("event -> refresh");
-})

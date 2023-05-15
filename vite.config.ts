@@ -15,7 +15,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: Object.fromEntries(
-        globSync(["src/main.ts", "src/libs/**/*.*"]).map((file) => [
+        globSync(["src/main.ts", "src/libs/**/*.*", "src/page/**/*.*"]).map((file) => [
           path.relative("src", file.slice(0, file.length - path.extname(file).length)),
           fileURLToPath(new URL(file, import.meta.url)),
         ])
