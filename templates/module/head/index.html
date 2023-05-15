@@ -60,4 +60,11 @@
   <script th:inline="javascript">
     const config = '[(${theme.config})]'
   </script>
+
+  <!--/* 每页可变属性 */-->
+  <script data-pjax th:inline="javascript" >
+    const pageData = {
+      '_templateId': '[(${_templateId})]',
+    }
+  </script>
 </th:block>
