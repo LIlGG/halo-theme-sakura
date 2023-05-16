@@ -995,18 +995,18 @@ var pjaxFun = function () {
 var home = location.href,
   Siren = {
     // 移动端菜单
-    MN: function () {
-      $(".iconflat").on("click", function () {
-        $("body").addClass("navOpen");
-        $(".container, .site-nav-toggle, .site-sidebar").addClass("open");
-      });
+    // MN: function () {
+    //   $(".nav-toggle").on("click", function () {
+    //     $("body").addClass("navOpen");
+    //     $(".container, .site-nav-toggle, .site-sidebar").addClass("open");
+    //   });
 
-      $(".site-sidebar").on("click", function () {
-        $("body").removeClass("navOpen");
-        $(".container, .site-nav-toggle, .site-sidebar").removeClass("open");
-      });
+    //   $(".site-sidebar").on("click", function () {
+    //     $("body").removeClass("navOpen");
+    //     $(".container, .site-nav-toggle, .site-sidebar").removeClass("open");
+    //   });
       
-    },
+    // },
 
     // 移动端菜单自动隐藏
     MNH: function () {
@@ -1019,9 +1019,9 @@ var home = location.href,
     // 进程
     PE: function () {
       // table
-      if ($(".entry-content").children("table").length > 0) {
-        $(".entry-content").children("table").wrap("<div class='table-wrapper'></div>");
-      }
+      // if ($(".entry-content").children("table").length > 0) {
+      //   $(".entry-content").children("table").wrap("<div class='table-wrapper'></div>");
+      // }
 
       // 为文章中的图片增加灯箱设置，并在图片加载完成之后，重新计算菜单高度
       if ($(".entry-content").length > 0 && $(".entry-content").find("img").length > 0) {
@@ -1311,7 +1311,7 @@ $(function () {
   Siren.GT(); // 返回顶部
   Siren.XLS(); // Ajax文章列表
   Siren.CE(); // 点击事件
-  Siren.MN(); // 移动端菜单
+  // Siren.MN(); // 移动端菜单
 
   // 新增功能
   // 背景视频点击切换
