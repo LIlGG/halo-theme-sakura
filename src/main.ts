@@ -7,7 +7,7 @@ import "@purge-icons/generated";
 interface Sakura {
   getThemeConfig(group: String): ThemeConfig;
   refresh(): void;
-  registerDocumentFunction(name: String, method: Function): void;
+  registerDocumentFunction(documentFunction: DocumentFunction): void;
 }
 
 declare var Sakura: {
@@ -48,49 +48,81 @@ class ThemeConfigImpl implements ThemeConfig {
   }
 }
 
+interface DocumentFunction {
+  isRefresh: Boolean;
+
+  name: String;
+
+  method: Function;
+
+  execute(): void;
+}
+
+class SakuraDocumentFunctionImpl implements DocumentFunction {
+  isRefresh: Boolean;
+
+  name: String;
+
+  method: Function;
+
+  execCount: Number = 0;
+
+  constructor(name: String, method: Function, isRefresh?: Boolean) {
+    this.name = name;
+    this.method = method;
+    this.isRefresh = isRefresh || true;
+  }
+
+  execute(): void {
+    if (!this.isRefresh) {
+      if (this.execCount.valueOf() > 0) {
+        return;
+      }
+    }
+    this.method();
+    this.execCount = this.execCount.valueOf() + 1;
+  }
+}
+
 interface DocumentFunctionFactory {
-  registerDocumentFunction(name: String, method: Function): void;
+  registerDocumentFunction(documentFunction: DocumentFunction): void;
 
-  getDocumentFunction(name: String): Function | undefined;
+  getDocumentFunction(name: String): DocumentFunction | undefined;
 
-  getDocumentFunctions(): Map<String, Function>;
-
-  getDocumentFunctionNames(): Iterable<String>;
+  getDocumentFunctions(): Set<DocumentFunction>;
 
   geDocumentFunctionCount(): Number;
 }
 
 class SakuraDocumentFunctionFactory implements DocumentFunctionFactory {
-  private documentFunctions: Map<String, Function>;
+  private documentFunctions: Set<DocumentFunction>;
 
   constructor() {
-    this.documentFunctions = new Map();
+    this.documentFunctions = new Set();
   }
 
   geDocumentFunctionCount(): Number {
     return this.documentFunctions.size;
   }
 
-  getDocumentFunctions(): Map<String, Function> {
+  getDocumentFunctions(): Set<DocumentFunction> {
     return this.documentFunctions;
   }
 
-  getDocumentFunctionNames(): Iterable<String> {
-    if (this.documentFunctions.size === 0) {
-      return new Set();
-    }
-    return this.documentFunctions.keys();
+  registerDocumentFunction(documentFunction: DocumentFunction): void {
+    this.documentFunctions.add(documentFunction);
   }
 
-  registerDocumentFunction(methodName: String, methodFunction: Function): void {
-    this.documentFunctions.set(methodName, methodFunction);
-  }
-
-  getDocumentFunction(name: String): Function | undefined {
-    if (!this.documentFunctions.has(name)) {
+  getDocumentFunction(name: String): DocumentFunction | undefined {
+    if (!name || !this.documentFunctions) {
       return undefined;
     }
-    return this.documentFunctions.get(name);
+    for (const documentFunction of this.documentFunctions) {
+      if (documentFunction.name === name) {
+        return documentFunction;
+      }
+    }
+    return undefined;
   }
 }
 
@@ -99,7 +131,7 @@ export class SakuraApp implements Sakura {
 
   private themeconfigs: Map<String, ThemeConfig>;
 
-  private currPageData: Map<String, any>  = new Map();
+  private currPageData: Map<String, any> = new Map();
 
   private startupDate: Date = new Date();
 
@@ -162,28 +194,36 @@ export class SakuraApp implements Sakura {
 
   /**
    * 注册 documentFunction 函数，该类函数通常为动态加载。
-   * 
+   *
    * @param name 函数名
    * @param method 函数
    */
-  public registerDocumentFunction(name: String, method: Function): void {
+  public registerDocumentFunction(documentFunction: DocumentFunction): void {
     this.obtainFunctionFactory();
-    this.documentFunctionFactory.registerDocumentFunction(name, method);
+    this.documentFunctionFactory.registerDocumentFunction(documentFunction);
     this.finishDocumentFunction();
   }
 
   protected finishDocumentFunction(): void {
-    let functions = this.documentFunctionFactory.getDocumentFunctions();
-    for (let [key, value] of functions) {
-      value();
+    const functions = this.documentFunctionFactory.getDocumentFunctions();
+    for (const documentFunction of functions) {
+      documentFunction.execute();
     }
   }
 
   protected registerDomProcessors(): void {
-    let functions = getDocumentFunctions();
-    functions.forEach((value, key) => {
-      this.documentFunctionFactory.registerDocumentFunction(key, value);
-    })
+    let initFuncitons = getInitDocumentFunctions();
+    for (const documentFunction of initFuncitons) {
+      const personObj = documentFunction as {
+        propertyKey: string;
+        method: Function;
+        isRefresh: Boolean;
+      };
+      this.documentFunctionFactory.registerDocumentFunction(
+        new SakuraDocumentFunctionImpl(personObj.propertyKey, personObj.method, personObj.isRefresh)
+      );
+    }
+    initFuncitons.clear();
     if (this.getThemeConfig("advanced").getValue("log", Boolean)) {
       console.log("共获取预设 documentFunction " + functions.size + " 个");
     }
@@ -246,25 +286,33 @@ declare const config: any;
 // 当前可变属性变量，由主题提供
 declare const pageData: any;
 
-export var sakura: Sakura = new SakuraApp(config);;
+export var sakura: Sakura = new SakuraApp(config);
 
 document.addEventListener("DOMContentLoaded", () => {
   sakura.refresh();
 });
 
-var functions: Map<String, Function>;
+var functions: Set<object>;
 
-function getDocumentFunctions(): Map<String, Function> {
+function getInitDocumentFunctions(): Set<object> {
   return functions;
 }
 
-export function documentFunction() {
+export function documentFunction(isRefresh: Boolean = true) {
   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     if (!sakura) {
-      functions = new Map();
-      functions.set(propertyKey, descriptor.value);
+      // 初始化阶段下将函数缓存起来，在刷新阶段再次运行。
+      if (!functions) {
+        functions = new Set();
+      }
+      const jsonObj: object = {
+        propertyKey: propertyKey,
+        method: descriptor.value,
+        isRefresh: isRefresh,
+      };
+      functions.add(jsonObj);
       return;
     }
-    sakura.registerDocumentFunction(propertyKey, descriptor.value);
+    sakura.registerDocumentFunction(new SakuraDocumentFunctionImpl(propertyKey, descriptor.value, isRefresh));
   };
 }
