@@ -1,6 +1,6 @@
 <style type="text/css" th:inline="css" th:fragment="variables-root">
   :root {
-    --theme-color: "[(${theme.config.general.theme_skin})]";
+    --theme-color: [(${theme.config.general.theme_skin})];
     --loading-image: url("[(${#theme.assets('/images/load/rotating-ball-o.svg')})]");
 
     [# th:if="${theme.config.general.cursor_skin == 'sakura'}"]

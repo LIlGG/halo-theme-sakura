@@ -108,7 +108,7 @@
     <script th:src="@{/assets/plugins/aplayer/js/index.js}" defer></script>
   </th:block>
   <script th:if="${theme.config.post.post_toc}" th:src="@{/assets/lib/tocbot/dist/tocbot.min.js}" defer></script>
-  <th:block th:if="${theme.config.tagAndCategory.tag_cloud}">
+  <!-- <th:block th:if="${theme.config.tagAndCategory.tag_cloud}">
     <script th:src="@{/assets/lib/jqcloud2/jqcloud.min.js}" defer></script>
     <script type="text/javascript" th:inline="javascript">
       const tags = /*[[${tagFinder.listAll()}]]*/
@@ -120,7 +120,7 @@
           }
       })
     </script>
-  </th:block>
+  </th:block> -->
   <th:block th:if="${theme.config.tagAndCategory.category_radar}">
     <script th:src="@{/assets/js/echarts/echarts.min.js}" defer></script>
     <script type="text/javascript" th:inline="javascript">
