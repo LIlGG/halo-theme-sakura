@@ -8,7 +8,7 @@
       th:replace="~{macro/page-header :: page-header(extension=${tags}, frontCover=${theme.config.patternimg.tag_patternimg}, headerTitle = ~{::headerTitle}, id='tags')}"
     />
   </th:block>
-  
+
   <th:block th:fragment="headerTitle">
     <h1 class="i18n" data-iname="page.tags.title"></h1>
   </th:block>
@@ -17,7 +17,18 @@
     <div class="tags-container">
       <th:block th:if="${theme.config.tagAndCategory.tag_cloud}">
         <div class="tag-wordcloud-container">
-          <div id="tag-wordcloud" class="jqcloud"></div>
+          <script type="text/javascript" th:inline="javascript">
+            const tags = /*[[${tagFinder.listAll()}]]*/
+
+            const wordClouds = tags.map(tag => {
+                return {
+                    text: tag.spec.displayName,
+                    size: Number(tag.postCount),
+                    link: tag.status.permalink
+                }
+            })
+          </script>
+          <div id="tag-wordcloud" class="wordcloud"></div>
         </div>
       </th:block>
       <div class="card-container tags-content">
@@ -37,10 +48,7 @@
                   th:href="@{${tag.status.permalink}}"
                   th:title="${tag.spec.displayName}+': '+${tag.postCount}"
                 >
-                  <span
-                    class="chip chip-default"
-                    th:attr="data-tagname=${tag.spec.displayName}"
-                  >
+                  <span class="chip chip-default" th:attr="data-tagname=${tag.spec.displayName}">
                     <th:block th:text="${tag.spec.displayName}"></th:block>
                     <span class="tag-length" th:text="${tag.postCount}"> </span>
                   </span>

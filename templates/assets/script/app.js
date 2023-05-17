@@ -1024,23 +1024,23 @@ var home = location.href,
       // }
 
       // 为文章中的图片增加灯箱设置，并在图片加载完成之后，重新计算菜单高度
-      if ($(".entry-content").length > 0 && $(".entry-content").find("img").length > 0) {
-        var $imgs = $(".entry-content").find("img");
-        $imgs.each(function () {
-          if (!$(this).hasClass("gallery-img")) {
-            $(this)
-              .addClass("gallery-img")
-              .wrap('<a data-fancybox="gallery" href="' + $(this).attr("src") + '"></a>');
-          }
-        });
-      }
+      // if ($(".entry-content").length > 0 && $(".entry-content").find("img").length > 0) {
+      //   var $imgs = $(".entry-content").find("img");
+      //   $imgs.each(function () {
+      //     if (!$(this).hasClass("gallery-img")) {
+      //       $(this)
+      //         .addClass("gallery-img")
+      //         .wrap('<a data-fancybox="gallery" href="' + $(this).attr("src") + '"></a>');
+      //     }
+      //   });
+      // }
       // 标签云
-      if ($("#tag-wordcloud").length > 0 && $("#tag-wordcloud").children().length == 0) {
-        $("#tag-wordcloud").jQCloud(wordcloud, {
-          autoResize: true,
-          delayedMode: true,
-        });
-      }
+      // if ($("#tag-wordcloud").length > 0 && $("#tag-wordcloud").children().length == 0) {
+      //   $("#tag-wordcloud").jQCloud(wordcloud, {
+      //     autoResize: true,
+      //     delayedMode: true,
+      //   });
+      // }
       // 标签
       if ($(".chip").length > 0) {
         $(".chip").each(function () {
