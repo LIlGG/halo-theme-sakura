@@ -2,22 +2,6 @@ import { documentFunction } from "../main";
 import { generateColor } from "../utils/util";
 declare const categoryRadar: Map<string, number>;
 
-import * as echarts from "echarts/core";
-import { RadarChart } from "echarts/charts";
-import {
-  TitleComponent,
-  TooltipComponent,
-  // 数据集组件
-} from "echarts/components";
-import { CanvasRenderer } from "echarts/renderers";
-// 注册必须的组件
-echarts.use([
-  TitleComponent,
-  TooltipComponent,
-  RadarChart,
-  CanvasRenderer,
-]);
-
 export default class Categories {
   @documentFunction(false)
   public registerCategories() {
@@ -30,12 +14,25 @@ export default class Categories {
   }
 
   @documentFunction(false)
-  public registerCategoryRadarChart() {
+  public async registerCategoryRadarChart() {
     const echartElement = document.getElementById("category-echarts");
     if (!echartElement) {
       return;
     }
 
+    const echarts = await import("echarts/core");
+    await import("echarts/charts").then((module) => {
+      echarts.use([module.RadarChart]);
+    });
+    await import("echarts/components").then((module) => {
+      echarts.use([
+        module.TitleComponent,
+        module.TooltipComponent,
+      ]);
+    });
+    await import("echarts/renderers").then((module) => {
+      echarts.use([module.CanvasRenderer]);
+    });
     const values = Object.values(categoryRadar) as number[];
     const keys = Object.keys(categoryRadar) as string[];
     if (keys.length < 3) {
