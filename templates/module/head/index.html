@@ -28,13 +28,6 @@
   media="all"
 />
 <link
-  th:if="${theme.config.tagAndCategory.tag_cloud}"
-  rel="stylesheet"
-  th:href="@{/assets/lib/jqcloud2/jqcloud.min.css}"
-  media="noexist"
-  onload="this.media='all'"
-/>
-<link
   th:if="${theme.config.photos.photos_style == 'justify'}"
   rel="stylesheet"
   th:href="@{/assets/lib/justifiedGallery/justifiedGallery.min.css}"

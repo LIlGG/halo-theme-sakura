@@ -574,16 +574,6 @@ spec:
     - group: tagAndCategory
       label: 标签及分类页
       formSchema:
-        - $formkit: text
-          name: tag_randomColorMin
-          label: 标签页及分类页颜色最小值
-          value: 0.999
-          help: 标签随机颜色最低值,值越低越偏冷色调，取值范围在 0-1 之间，需要小于最大值
-        - $formkit: text
-          name: tag_randomColorMax
-          label: 标签页及分类页颜色最大值
-          value: 1
-          help: 标签随机颜色最大值,值越高越偏暖色调，取值范围在 0-1 之间，需要大于最小值
         - $formkit: radio
           name: tag_cloud
           label: 开启标签云
