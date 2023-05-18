@@ -1,4 +1,5 @@
 import { documentFunction } from "../main";
+import { WindowEventProxy } from "../utils/WindowEventProxy";
 
 export class Events {
   @documentFunction(false)
@@ -16,4 +17,12 @@ export class Events {
       });
     });
   }
+
+  @documentFunction(false)
+  public registerScrollEvent() {
+    WindowEventProxy.addEventListener("scroll", () => {
+      //TODO 考虑是否使用注解来获取所有需要在滚动时执行的函数
+    }, 200);
+  }
 }
+
