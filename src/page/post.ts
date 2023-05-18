@@ -1,6 +1,6 @@
 import { documentFunction } from "../main";
 
-export default class Index {
+export default class Post {
   @documentFunction(false)
   public async registerShareWechat() {
     const shareWechatElement = document.getElementById("qrcode");

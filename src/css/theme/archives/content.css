@@ -23,6 +23,13 @@
   }
 
   & .archive-item {
+    &.active {
+      & .archive-posts {
+        max-height: max-content;
+        transition-timing-function: cubic-bezier(.5, 0, .3, 1);
+      }
+    }
+
     margin-top: 35px;
     position: relative;
     z-index: 1;
@@ -56,6 +63,10 @@
     }
 
     & .archive-posts {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out; 
+
       & .archive-post-item {
         position: relative;
 
