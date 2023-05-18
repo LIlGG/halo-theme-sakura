@@ -1016,12 +1016,6 @@ var home = location.href,
 
     // 点击事件
     CE: function () {
-      // 归档页
-      // $("#archives-temp h3").click(function () {
-      //   $(this).parent().next().slideToggle("fast");
-      //   return false;
-      // });
-
       // 搜索框 TODO 后续再进行完善
       // $(".js-toggle-search").on("click", function () {
       //   $(".js-toggle-search").toggleClass("is-active");
