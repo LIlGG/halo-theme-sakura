@@ -968,7 +968,6 @@ var pjaxFun = function () {
       Siren.MNH();
     })
     .on("pjax:complete", function () {
-      Siren.PE();
       Siren.CE();
       // 额外加载的pjax
       LIlGGAttachContext.PJAX();
@@ -985,7 +984,6 @@ var pjaxFun = function () {
   window.addEventListener(
     "popstate",
     function (e) {
-      Siren.PE();
       Siren.CE();
     },
     false
@@ -1016,35 +1014,13 @@ var home = location.href,
       }
     },
 
-    // 进程
-    PE: function () {
-      // table
-      // if ($(".entry-content").children("table").length > 0) {
-      //   $(".entry-content").children("table").wrap("<div class='table-wrapper'></div>");
-      // }
-
-      // 为文章中的图片增加灯箱设置，并在图片加载完成之后，重新计算菜单高度
-      // if ($(".entry-content").length > 0 && $(".entry-content").find("img").length > 0) {
-      //   var $imgs = $(".entry-content").find("img");
-      //   $imgs.each(function () {
-      //     if (!$(this).hasClass("gallery-img")) {
-      //       $(this)
-      //         .addClass("gallery-img")
-      //         .wrap('<a data-fancybox="gallery" href="' + $(this).attr("src") + '"></a>');
-      //     }
-      //   });
-      // }
-    },
-
     // 点击事件
     CE: function () {
       // 归档页
-      $(".archive-item .archive-posts").hide();
-      $(".archive-item .archive-posts:first").show();
-      $("#archives-temp h3").click(function () {
-        $(this).parent().next().slideToggle("fast");
-        return false;
-      });
+      // $("#archives-temp h3").click(function () {
+      //   $(this).parent().next().slideToggle("fast");
+      //   return false;
+      // });
 
       // 搜索框 TODO 后续再进行完善
       // $(".js-toggle-search").on("click", function () {
@@ -1215,7 +1191,6 @@ var toast = null;
  * 独立功能，可拔插
  */
 $(function () {
-  Siren.PE(); // 进程
   Siren.NH(); // 显示&隐藏导航栏
   Siren.GT(); // 返回顶部
   Siren.XLS(); // Ajax文章列表
