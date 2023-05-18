@@ -38,6 +38,10 @@
       <div class="card-container category-show">
         <div class="card">
           <div id="category-echarts" class="category-echarts"></div>
+          <script type="text/javascript" th:inline="javascript">
+            const categories = /*[[${categoryFinder.listAll()}]]*/
+            const categoryRadar = categories.reduce((acc,curr)=> (acc[curr.spec.displayName]=curr.postCount,acc),{});
+          </script>
         </div>
       </div>
     </th:block>

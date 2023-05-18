@@ -23,8 +23,9 @@
             const wordClouds = tags.map(tag => {
                 return {
                     text: tag.spec.displayName,
-                    size: Number(tag.postCount),
-                    link: tag.status.permalink
+                    size: tag.postCount,
+                    link: tag.status.permalink,
+                    color: tag.spec.color
                 }
             })
           </script>
@@ -46,9 +47,9 @@
                 <a
                   th:each="tag : ${tags}"
                   th:href="@{${tag.status.permalink}}"
-                  th:title="${tag.spec.displayName}+': '+${tag.postCount}"
+                  th:title="|${tag.spec.displayName}: ${tag.postCount}|"
                 >
-                  <span class="chip chip-default" th:attr="data-tagname=${tag.spec.displayName}">
+                  <span class="chip chip-default" th:style="|background-color: ${tag.spec.color}|" th:attr="data-tagname=${tag.spec.displayName}">
                     <th:block th:text="${tag.spec.displayName}"></th:block>
                     <span class="tag-length" th:text="${tag.postCount}"> </span>
                   </span>
