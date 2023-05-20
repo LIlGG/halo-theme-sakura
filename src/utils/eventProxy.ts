@@ -1,6 +1,6 @@
 /**
  * WindowEventProxy
- * 
+ *
  * @description 代理 window 事件。使用节流处理事件，防止事件频繁触发
  */
 export class WindowEventProxy {

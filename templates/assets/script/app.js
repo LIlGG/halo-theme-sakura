@@ -244,25 +244,6 @@ var LIlGGAttachContext = {
   },
   // 文章列表动画
   PLSA: function () {
-    // 首次加载时判断图片是否足够显示完整
-    $("article.post-list-thumb:not(.post-list-show)").each(function (index, item) {
-      var pTop = item.getBoundingClientRect().top;
-      var window_height = $(window).height();
-      if (pTop <= window_height) {
-        $(item).addClass("post-list-show");
-      } else {
-        return false;
-      }
-    });
-
-    $(window).scroll(function () {
-      var window_height = $(window).height();
-      var hide_post_thumb_first = $("article.post-list-thumb:not(.post-list-show):first");
-      if (hide_post_thumb_first.length > 0) {
-        var pTop = hide_post_thumb_first[0].getBoundingClientRect().top;
-        if (pTop <= window_height) hide_post_thumb_first.addClass("post-list-show");
-      }
-    });
   },
   // 文章目录
   TOC: function () {
@@ -678,24 +659,8 @@ var LIlGGAttachContext = {
   // 日志
   SS: function () {
     if ($(".journal").length > 0) {
-      var journalIds = Util.getLocalStorage("journalIds") || [];
       $(".journal").each(function () {
         let that = $(this);
-        // 为日志设置时间图标
-        var $firstSpan = that.find(".journal-time>span").first();
-        if ($firstSpan.find("span").length == 0) {
-          $firstSpan.prepend(`<span class="iconify" data-icon="${getTimeIcon($firstSpan.text())}"></span> `);
-        }
-
-        // 为所有图片增加box
-        var $imgs = that.find(".moment-content img:not('.avatar')");
-        $imgs.each(function () {
-          if (!$(this).hasClass("journal-img")) {
-            $(this)
-              .addClass("journal-img")
-              .wrap('<a data-fancybox="gallery" href="' + $(this).attr("src") + '">');
-          }
-        });
 
         // 为说说评论增加额外 class
         if (Poi.journalComment) {
@@ -711,63 +676,56 @@ var LIlGGAttachContext = {
               $comment.addClass("dark");
             }
           }
-          // 说说评论展开/收起
-          that
-            .find(".moment-content .comment-js")
-            .off("click")
-            .on("click", function () {
-              that.find(".moment-content .comment").toggle();
-            });
         }
 
-        if (Poi.journalLikes) {
-          // 说说是否已经点赞
-          var $like = that.find(".moment-content .journal-like");
-          if ($like.length > 0) {
-            let jid = that.data("name");
-            if (!jid) {
-              return;
-            }
-            journalIds.includes(jid) ? $like.addClass("on") : "";
-            // 说说点赞
-            that
-              .find(".moment-content .journal-like")
-              .off("click")
-              .on("click", function () {
-                // 目前仅能前端控制是否已经点赞
-                var $dom = $(this);
-                var links = $dom.data("links");
-                journalIds = Util.getLocalStorage("journalIds") || [];
-                var flag = journalIds.includes(jid);
-                if (flag) {
-                  return;
-                }
-                $.ajax({
-                  url: "/apis/api.halo.run/v1alpha1/trackers/upvote",
-                  type: "post",
-                  dataType: "json",
-                  contentType: "application/json",
-                  data: JSON.stringify({
-                    group: "moment.halo.run",
-                    plural: "moments",
-                    name: jid,
-                  }),
-                  complete(res) {
-                    if (res.status != 200) {
-                      Log.e("点赞失败，请求异常");
-                      return;
-                    }
-                    links++;
-                    journalIds.push(jid);
-                    $dom.addClass("on");
-                    Util.setLocalStorage("journalIds", journalIds, 60 * 60 * 24);
-                    $dom.children(":last-child").text(links);
-                    $dom.data("links", links);
-                  },
-                });
-              });
-          }
-        }
+        // if (Poi.journalLikes) {
+        //   // 说说是否已经点赞
+        //   var $like = that.find(".moment-content .moment-like");
+        //   if ($like.length > 0) {
+        //     let jid = that.data("name");
+        //     if (!jid) {
+        //       return;
+        //     }
+        //     journalIds.includes(jid) ? $like.addClass("on") : "";
+        //     // 说说点赞
+        //     that
+        //       .find(".moment-content .moment-like")
+        //       .off("click")
+        //       .on("click", function () {
+        //         // 目前仅能前端控制是否已经点赞
+        //         var $dom = $(this);
+        //         var links = $dom.data("links");
+        //         journalIds = Util.getLocalStorage("journalIds") || [];
+        //         var flag = journalIds.includes(jid);
+        //         if (flag) {
+        //           return;
+        //         }
+        //         $.ajax({
+        //           url: "/apis/api.halo.run/v1alpha1/trackers/upvote",
+        //           type: "post",
+        //           dataType: "json",
+        //           contentType: "application/json",
+        //           data: JSON.stringify({
+        //             group: "moment.halo.run",
+        //             plural: "moments",
+        //             name: jid,
+        //           }),
+        //           complete(res) {
+        //             if (res.status != 200) {
+        //               Log.e("点赞失败，请求异常");
+        //               return;
+        //             }
+        //             links++;
+        //             journalIds.push(jid);
+        //             $dom.addClass("on");
+        //             Util.setLocalStorage("journalIds", journalIds, 60 * 60 * 24);
+        //             $dom.children(":last-child").text(links);
+        //             $dom.data("links", links);
+        //           },
+        //         });
+        //       });
+        //   }
+        // }
       });
     }
   },
@@ -932,29 +890,6 @@ var imgError = function (ele) {
 };
 
 /**
- * 根据日期时间，获取对应的图标
- * @param {*} time
- */
-var getTimeIcon = function (time) {
-  var ICON_DAY = "solar:sun-outline",
-    ICON_MORN = "solar:sun-fog-broken",
-    ICON_NIGHT = "solar:moon-fog-broken";
-  var date = new Date(time);
-  var hours = date.getHours();
-  if (isNaN(hours)) {
-    return ICON_DAY;
-  }
-
-  if (5 <= hours && hours < 12) {
-    return ICON_MORN;
-  } else if (12 <= hours && hours < 18) {
-    return ICON_DAY;
-  } else {
-    return ICON_NIGHT;
-  }
-};
-
-/**
  * pjax功能
  */
 var pjaxFun = function () {
@@ -1049,96 +984,38 @@ var home = location.href,
       });
     },
 
-    // 显示&隐藏导航栏
-    NH: function () {
-      var h1 = 0,
-        h2 = 50,
-        ss = $(document).scrollTop();
-      $(window).scroll(function () {
-        var s = $(document).scrollTop();
-        // 屏幕剩余的高度
-        var surplus = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        // 当前位置小数
-        var coorY = s / surplus;
-        NProgress.set(coorY);
-        if (s == h1) {
-          $(".site-header").removeClass("yya");
-        }
-        if (s > h1) {
-          $(".site-header").addClass("yya");
-        }
-        if (s > h2) {
-          $(".site-header").addClass("gizle");
-          if (s > ss) {
-            $(".site-header").removeClass("sabit");
-          } else {
-            $(".site-header").addClass("sabit");
-          }
-          ss = s;
-        }
-      });
-    },
-
     // Ajax加载文章/说说
     XLS: function () {
       var $body = window.opera ? (document.compatMode == "CSS1Compat" ? $("html") : $("body")) : $("html,body");
-      $body.on("click", "#pagination a", function (e) {
-        var tempScrollTop = $(window).scrollTop();
-        $(this).addClass("loading").text("");
-        $.ajax({
-          type: "GET",
-          url: $(this).attr("href") + "#main",
-          success: function (data) {
-            var result = $(data).find("#main .post");
-            var nextHref = $(data).find("#pagination a").attr("href");
-            // 添加新的内容
-            $("#main").append(result);
-            $("#pagination a").removeClass("loading").text("下一页");
-            // 加载完成不改变位置
-            $(window).scrollTop(tempScrollTop);
-            LIlGGAttachContext.PLSA();
-            if (nextHref != undefined) {
-              $("#pagination a").attr("href", nextHref);
-            } else {
-              $("#pagination").html("<span>没有更多文章了</span>");
-            }
-
-            I18N.init();
-          },
-        });
-        e.stopPropagation();
-        e.preventDefault();
-        return false;
-      });
       /**
        * 说说
        */
-      $body.on("click", "#journals-pagination a", function (e) {
-        var tempScrollTop = $(window).scrollTop();
-        $(this).addClass("loading").text("");
-        $.ajax({
-          type: "GET",
-          url: $(this).attr("href"),
-          success: function (data) {
-            var result = $(data).find(".moments-container .moments-item");
-            var nextHref = $(data).find("#journals-pagination a").attr("href");
-            // 添加新的内容
-            $(".moments-inner").append(result.fadeIn(500));
-            $("#journals-pagination a").removeClass("loading").text("加载更多...");
-            // 加载完成不改变位置
-            $(window).scrollTop(tempScrollTop);
+      // $body.on("click", "#moment-list-pagination a", function (e) {
+      //   var tempScrollTop = $(window).scrollTop();
+      //   $(this).addClass("loading").text("");
+      //   $.ajax({
+      //     type: "GET",
+      //     url: $(this).attr("href"),
+      //     success: function (data) {
+      //       var result = $(data).find(".moments-container .moments-item");
+      //       var nextHref = $(data).find("#moment-list-pagination a").attr("href");
+      //       // 添加新的内容
+      //       $(".moments-inner").append(result.fadeIn(500));
+      //       $("#moment-list-pagination a").removeClass("loading").text("加载更多...");
+      //       // 加载完成不改变位置
+      //       $(window).scrollTop(tempScrollTop);
             LIlGGAttachContext.SS();
-            if (nextHref != undefined) {
-              $("#journals-pagination a").attr("href", nextHref);
-            } else {
-              $("#journals-pagination a").remove();
-            }
-          },
-        });
-        e.stopPropagation();
-        e.preventDefault();
-        return false;
-      });
+      //       if (nextHref != undefined) {
+      //         $("#moment-list-pagination a").attr("href", nextHref);
+      //       } else {
+      //         $("#moment-list-pagination a").remove();
+      //       }
+      //     },
+      //   });
+      //   e.stopPropagation();
+      //   e.preventDefault();
+      //   return false;
+      // });
     },
 
     // 返回顶部
@@ -1185,7 +1062,6 @@ var toast = null;
  * 独立功能，可拔插
  */
 $(function () {
-  Siren.NH(); // 显示&隐藏导航栏
   Siren.GT(); // 返回顶部
   Siren.XLS(); // Ajax文章列表
   Siren.CE(); // 点击事件

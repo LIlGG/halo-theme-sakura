@@ -18,8 +18,8 @@ export class Utils {
 
   @documentFunction()
   public wrapImageWithBox() {
-    const contentElement = document.querySelector(".entry-content");
-    const imageElements = contentElement?.querySelectorAll("img");
+    const contentElement = document.querySelector(".site-content");
+    const imageElements = contentElement?.querySelectorAll("img:not(.avatar)");
     imageElements?.forEach((imageElement) => {
       if (imageElement.classList.contains("gallery-img")) {
         return;

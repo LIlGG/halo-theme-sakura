@@ -6,10 +6,12 @@ root = true
 [*]
 indent_style = space
 indent_size = 2
+tab_width = 2
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = false
 insert_final_newline = false
+max_line_length = 120
 
 [{*.htm, *.html, *.sht, *.shtm, *.shtml}]
 ij_html_add_new_line_before_tags = body, div, p, form, h1, h2, h3

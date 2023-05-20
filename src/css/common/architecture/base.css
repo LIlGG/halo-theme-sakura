@@ -342,7 +342,7 @@ object {
 }
 
 .is-show {
-  display: block;
+  display: block !important;
 }
 
 .is-hide {

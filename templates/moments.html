@@ -29,42 +29,62 @@
               onerror="imgError(this)"
               th:src="${#theme.assets('/images/load/trans.ajax-spinner-preloader.svg')}"
             />
-            <span class="moment-content">
-              <th:block th:utext="${moment.spec.content.html}"></th:block>
-              <p class="journal-time">
-                <span th:text="${#dates.format(moment.spec.releaseTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+            <div class="moment-inner">
+              <span class="moment-content">
+                <th:block th:utext="${moment.spec.content.html}"></th:block>
+              </span>
+              <div class="moment-footer">
+                <div class="moment-time">
+                  <th:block th:with="momentHour=${#dates.hour(moment.spec.releaseTime)}">
+                    <th:block th:if="${momentHour >= 5 and momentHour < 8}">
+                      <span class="iconify moment-time-icon" data-icon="mdi:weather-sunset-up"></span>
+                    </th:block>
+                    <th:block th:if="${momentHour >= 8 and momentHour < 18}">
+                      <span class="iconify moment-time-icon" data-icon="mdi:weather-sunny"></span>
+                    </th:block>
+                    <th:block th:if="${momentHour >= 18 and momentHour < 20}">
+                      <span class="iconify moment-time-icon" data-icon="mdi:weather-sunset-down"></span>
+                    </th:block>
+                    <th:block th:if="${momentHour >= 20 or momentHour < 5}">
+                      <span class="iconify moment-time-icon" data-icon="mdi:weather-night"></span>
+                    </th:block>
+                  </th:block>
+                  <span th:text="${#dates.format(moment.spec.releaseTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                </div>
                 <!-- 评论内容 -->
-                <span
-                  th:if="${pluginFinder.available('PluginCommentWidget') and theme.config.journal.journal_comment}"
-                  class="comment-js noselect"
-                >
-                  <span class="iconify" data-icon="solar:chat-dots-outline"></span>
-                  <span class="noticom" th:text="${moment.stats.totalComment}"></span>
-                </span>
-                <span
-                  th:if="${theme.config.journal.journal_likes}"
-                  class="journal-like noselect"
-                  th:data-links="${moment.stats.upvote}"
-                >
-                  <span class="iconify" data-icon="solar:like-broken"></span>
-                  <span th:text="${moment.stats.upvote}"></span>
-                </span>
-              </p>
+                <div class="moment-tools">
+                  <span
+                    th:if="${pluginFinder.available('PluginCommentWidget') and theme.config.journal.journal_comment}"
+                    class="comment-js noselect"
+                  >
+                    <span class="iconify" data-icon="solar:chat-dots-outline"></span>
+                    <span class="noticom" th:text="${moment.stats.totalComment}"></span>
+                  </span>
+                  <span
+                    th:if="${theme.config.journal.journal_likes}"
+                    class="moment-like noselect"
+                    th:data-links="${moment.stats.upvote}"
+                  >
+                    <span class="iconify" data-icon="solar:like-broken"></span>
+                    <span class="moment-like-text" th:text="${moment.stats.upvote}"></span>
+                  </span>
+                </div>
+              </div>
               <div
                 th:if="${pluginFinder.available('PluginCommentWidget') and theme.config.journal.journal_comment}"
-                class="comment"
+                class="comment-box"
               >
                 <!--/* 评论组件 */-->
                 <th:block
                   th:replace="~{module/comment :: comment(group = 'moment.halo.run', kind = 'Moment', name = ${moment.metadata.name})}"
                 />
               </div>
-            </span>
+            </div>
           </span>
         </li>
       </ul>
       <th:block th:if="${moments.totalPages gt 1}">
-        <div th:if="${moments.hasNext}" id="journals-pagination" class="pagination">
+        <div th:if="${moments.hasNext}" id="moment-list-pagination" class="pagination">
           <a th:href="@{${moments.nextUrl}}" class="at_button i18n" data-iname="page.journal.loadmore"></a>
         </div>
       </th:block>
