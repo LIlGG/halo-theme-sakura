@@ -677,55 +677,6 @@ var LIlGGAttachContext = {
             }
           }
         }
-
-        // if (Poi.journalLikes) {
-        //   // 说说是否已经点赞
-        //   var $like = that.find(".moment-content .moment-like");
-        //   if ($like.length > 0) {
-        //     let jid = that.data("name");
-        //     if (!jid) {
-        //       return;
-        //     }
-        //     journalIds.includes(jid) ? $like.addClass("on") : "";
-        //     // 说说点赞
-        //     that
-        //       .find(".moment-content .moment-like")
-        //       .off("click")
-        //       .on("click", function () {
-        //         // 目前仅能前端控制是否已经点赞
-        //         var $dom = $(this);
-        //         var links = $dom.data("links");
-        //         journalIds = Util.getLocalStorage("journalIds") || [];
-        //         var flag = journalIds.includes(jid);
-        //         if (flag) {
-        //           return;
-        //         }
-        //         $.ajax({
-        //           url: "/apis/api.halo.run/v1alpha1/trackers/upvote",
-        //           type: "post",
-        //           dataType: "json",
-        //           contentType: "application/json",
-        //           data: JSON.stringify({
-        //             group: "moment.halo.run",
-        //             plural: "moments",
-        //             name: jid,
-        //           }),
-        //           complete(res) {
-        //             if (res.status != 200) {
-        //               Log.e("点赞失败，请求异常");
-        //               return;
-        //             }
-        //             links++;
-        //             journalIds.push(jid);
-        //             $dom.addClass("on");
-        //             Util.setLocalStorage("journalIds", journalIds, 60 * 60 * 24);
-        //             $dom.children(":last-child").text(links);
-        //             $dom.data("links", links);
-        //           },
-        //         });
-        //       });
-        //   }
-        // }
       });
     }
   },
