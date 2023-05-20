@@ -1,5 +1,5 @@
 import { documentFunction } from "../main";
-import { generateColor } from "../utils/util";
+import { Util } from "../utils/util";
 declare const categoryRadar: Map<string, number>;
 
 export default class Categories {
@@ -8,7 +8,7 @@ export default class Categories {
     const categoryChips = document.querySelectorAll(".categories-container .chip") as NodeListOf<HTMLElement>;
     categoryChips.forEach((chip) => {
       if (!chip.style.backgroundColor) {
-        chip.style.backgroundColor = generateColor();
+        chip.style.backgroundColor = Util.generateColor();
       }
     });
   }

@@ -1,7 +1,7 @@
 import { documentFunction } from "../main";
 import cloneDeep from "lodash.clonedeep";
 import cloud from "d3-cloud";
-import { generateColor } from "../utils/util";
+import { Util } from "../utils/util";
 declare const wordClouds: object[];
 
 export default class Tags {
@@ -10,7 +10,7 @@ export default class Tags {
     const tagChips = document.querySelectorAll(".tags-container .chip") as NodeListOf<HTMLElement>;
     tagChips.forEach((tagChip) => {
       if (!tagChip.style.backgroundColor) {
-        tagChip.style.backgroundColor = generateColor();
+        tagChip.style.backgroundColor = Util.generateColor();
       }
     });
   }
@@ -55,7 +55,7 @@ export default class Tags {
           .style("cursor", "pointer")
           .style("font-weight", 500)
           .style("fill", (d: any) => {
-            return d.color || generateColor();
+            return d.color || Util.generateColor();
           })
           .attr("text-anchor", "middle")
           .attr("transform", function (d: any) {
