@@ -43,6 +43,20 @@ export default class Moments {
             if (momentListNewElements && momentListNewElements.length > 0) {
               momentListNewElements.forEach((element) => {
                 momentContainerElement.appendChild(element);
+                // 重新执行 Halo 评论组件初始化
+                const commentScriptElement = element.querySelector(".comment-box .comment script:last-of-type") as HTMLScriptElement;
+                console.log(commentScriptElement)
+                const code: string =
+                  commentScriptElement?.text ||
+                  commentScriptElement?.textContent ||
+                  commentScriptElement?.innerHTML ||
+                  "";
+                const parent: ParentNode | null = commentScriptElement.parentNode;
+                parent?.removeChild(commentScriptElement);
+                const script: HTMLElementTagNameMap["script"] = document.createElement("script");
+                script.type = "text/javascript";
+                script.appendChild(document.createTextNode(code));
+                parent?.appendChild(script);
               });
             }
           }
