@@ -5,42 +5,45 @@
   margin: 0;
   padding: 0;
   width: 100%;
+  height: 100vh;
 
-  & .video {
-    width: 100%;
+  & video {
     z-index: 0;
     /** 使视频全屏。并保证填满屏幕 */
     height: 100vh;
     object-fit: fill;
   }
 
-  & .video-btn {
+  & .controls {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    width: 32px;
-    height: 32px;
-    background-position: center;
-    background-size: cover;
-    cursor: pointer;
-    opacity: 0.8;
-    animation: poi-face 10s linear infinite alternate;
     z-index: 3;
+    & .video-btn {
+      background-position: center;
+      background-size: cover;
+      cursor: pointer;
+      opacity: 0.8;
+      animation: poi-face 10s linear infinite alternate;
+      width: 32px;
+      height: 32px;
 
-    &:hover {
-      opacity: 1;
-    }
+      &:hover {
+        opacity: 1;
+      }
 
-    &.video-play,
-    &.loadvideo {
-      background-image: var(--video-play-image);
-    }
-    &.video-pause {
-      background-image: var(--video-pause-image);
+      &.video-play {
+        background-image: var(--video-play-image);
+      }
+
+      &.video-pause {
+        background-image: var(--video-pause-image);
+        display: none;
+      }
     }
   }
 
-  & .video-stu {
+  & .video-status {
     position: absolute;
     bottom: -100px;
     left: 0;

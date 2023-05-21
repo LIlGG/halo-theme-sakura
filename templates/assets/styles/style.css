@@ -788,7 +788,7 @@ a:active {
 	object-fit: fill;
 }
 
-#video-btn,
+#video-play,
 #video-add {
 	position: absolute;
 	bottom: 3px;
@@ -804,7 +804,7 @@ a:active {
 	animation: poi-face 10s linear infinite alternate
 }
 
-#video-btn:hover,
+#video-play:hover,
 #video-add:hover {
 	opacity: 1
 }
@@ -814,7 +814,7 @@ a:active {
 	display: none
 }
 
-.video-stu {
+.video-pause {
 	position: absolute;
 	bottom: -100px;
 	left: 0;
