@@ -16,7 +16,6 @@ var LIlGGAttachContext = {
       });
     } catch (e) {}
 
-    Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
     Poi._templateId === "post" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
     LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.PHO(); // 图库功能
@@ -25,46 +24,6 @@ var LIlGGAttachContext = {
     LIlGGAttachContext.CPY();
     // i18n
     I18N.init();
-  },
-  // 文章目录
-  TOC: function () {
-    if (document.body.clientWidth <= 1200) {
-      return;
-    }
-    let $content = $(".entry-content");
-    if ($content.length <= 0) {
-      return;
-    }
-    let entryContentOffset = $content.offset().top;
-    let offset = 75;
-    $(".entry-content , .links")
-      .children("h1,h2,h3,h4,h5")
-      .each(function (index) {
-        var hyphenated = "toc-head-" + index;
-        $(this).attr("id", hyphenated);
-      });
-
-    tocbot.init({
-      tocSelector: ".toc",
-      contentSelector: [".entry-content", ".links"],
-      headingSelector: "h1, h2, h3, h4, h5",
-      collapseDepth: Poi.tocDepth,
-      // TODO: 2.0 待适配
-      // collapseDepth:
-      //   !!PageAttr.metas.tocDepth && [0, 1, 2, 3, 4, 5].includes(Number(PageAttr.metas.tocDepth))
-      //     ? Number(PageAttr.metas.tocDepth)
-      //     : Poi.tocDepth,
-      hasInnerContainers: false,
-      disableTocScrollSync: true,
-      headingsOffset: -(entryContentOffset - 75),
-      scrollSmoothOffset: -75,
-    });
-
-    $(window).scroll(function () {
-      let $toc = $(".toc-container .toc");
-      let tocClientTop = $toc[0].getBoundingClientRect().top;
-      $toc.css("max-height", `calc(100vh - ${tocClientTop}px - ${offset}px)`)
-    })
   },
   // 文章代码样式
   CHS: function () {
@@ -631,7 +590,6 @@ $(function () {
   // Siren.MN(); // 移动端菜单
 
   // 新增功能
-  Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
   Poi._templateId === "post" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部
