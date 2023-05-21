@@ -65,6 +65,8 @@ export default class Index {
     const videoPauseButtonElement = videoContainerElement.querySelector(".video-pause") as HTMLDivElement;
 
     videoPlayButtonElement?.addEventListener("click", async () => {
+      videoStatusElement.innerHTML = "正在载入视频 ...";
+      videoStatusElement.style.bottom = "0";
       if (!this.videoPlayer) {
         import("video.js").then((module: any) => {
           this.videoPlayer = module.default(
@@ -86,10 +88,6 @@ export default class Index {
               ],
             }
           );
-          this.videoPlayer.ready(() => {
-            videoStatusElement.innerHTML = "正在载入视频 ...";
-            videoStatusElement.style.bottom = "0";
-          });
 
           this.videoPlayer.on("loadeddata", () => {
             videoStatusElement.style.bottom = "-100px";
@@ -114,6 +112,25 @@ export default class Index {
             videoPauseButtonElement.style.display = "none";
           });
 
+          this.videoPlayer.on("waiting", () => {
+            videoStatusElement.innerHTML = "加载中 ...";
+            videoStatusElement.style.bottom = "0";
+          });
+
+          this.videoPlayer.on('canplay',() => {
+            videoStatusElement.style.bottom = "-100px";
+          });
+          
+          this.videoPlayer.on('error',() => {
+            focusInfoElement.style.top = "0";
+            videoStatusElement.style.bottom = "-100px";
+            videoPlayButtonElement.style.display = "block";
+            videoPauseButtonElement.style.display = "none";
+            this.videoPlayer.dispose();
+            videoContainerElement.insertAdjacentElement("afterbegin", document.createElement("video"));
+            this.videoPlayer = undefined;
+          });
+
           this.videoPlayer.on("ended", () => {
             focusInfoElement.style.top = "0";
             videoStatusElement.style.bottom = "-100px";
@@ -123,6 +140,15 @@ export default class Index {
             videoContainerElement.insertAdjacentElement("afterbegin", document.createElement("video"));
             this.videoPlayer = undefined;
           });
+        })
+        .catch((error) => {
+          console.error(error);
+          videoStatusElement.innerHTML = "视频加载失败";
+          videoStatusElement.style.bottom = "0";
+
+          setTimeout(() => {
+            videoStatusElement.style.bottom = "-100px";
+          }, 2000)
         });
       } else {
         this.videoPlayer.play();

@@ -2,17 +2,6 @@
   th:if="${theme.config.mainScreen.focus_height} and (${not #strings.isEmpty(theme.config.mainScreen.bgvideo_url)} or ${not #strings.isEmpty(theme.config.mainScreen.bgvideo_id)})"
 >
   <div class="video-container">
-    <!--/* <video
-      id="bgvideo"
-      class="video"
-      th:data-id="${theme.config.mainScreen.bgvideo_id}"
-      th:data-server="${theme.config.mainScreen.bgvideo_server}"
-      th:data-url="${theme.config.mainScreen.bgvideo_url}"
-      width="auto"
-      th:data-cid="${theme.config.mainScreen.bilibili_video_cid}"
-      th:data-qn="${theme.config.mainScreen.bilibili_video_qn}"
-      th:data-vtype="${theme.config.mainScreen.bilibili_video_vtype}"
-    ></video> */-->
     <div class="controls">
       <div class="video-btn video-play"></div>
       <div class="video-btn video-pause"></div>
