@@ -10,7 +10,6 @@ var LIlGGAttachContext = {
   // 补充功能的PJAX
   PJAX: function () {
     // 渲染主题
-    LIlGGAttachContext.CBG().changeSkinSecter();
     try {
       $("#to-load-aplayer").on("click", function () {
         reloadAplayer();
@@ -30,9 +29,6 @@ var LIlGGAttachContext = {
     LIlGGAttachContext.CPY();
     // i18n
     I18N.init();
-  },
-  // 文章列表动画
-  PLSA: function () {
   },
   // 文章目录
   TOC: function () {
@@ -144,130 +140,6 @@ var LIlGGAttachContext = {
       $(this).after(copyCode);
       new ClipboardJS(".copy-code");
     });
-  },
-  // 主题切换
-  CBG: function () {
-    var themeConfig = {};
-    /**
-     * 检查并回显主题
-     */
-    var checkBgImgEcho = function () {
-      var configTag = Util.getLocalStorage("bgTagClass");
-      var bgConfigTags = Object.keys(bgConfig);
-      // 默认为bg_0
-      configTag = bgConfigTags.includes(configTag) ? configTag : defaultTheme();
-      // 切换主题
-      changeBg(configTag);
-    };
-    var defaultTheme = function () {
-      for (let key of Object.keys(bgConfig)) {
-        if (bgConfig[key]["isDefault"]) {
-          return key;
-        }
-      }
-      return Object.keys(bgConfig)[0];
-    };
-
-    /**
-     * 切换主题开关
-     */
-    var changeSkinGear = function () {
-      //绑定主题子项点击事件
-      Object.keys(bgConfig).forEach(function (currBg) {
-        $(".skin-menu " + "#" + currBg).on("click", function () {
-          changeBg(currBg, function () {
-            // 保存tagClass, 方便下次查询
-            Util.setLocalStorage("bgTagClass", currBg, 30 * 24 * 60 * 60);
-            // 绑定完之后隐藏主题开关
-            $(".skin-menu").removeClass("show");
-            setTimeout(function () {
-              $(".change-skin-gear").css("visibility", "visible");
-            }, 300);
-          });
-        });
-      });
-      // 显示切换主题功能
-      $(".change-skin-gear").css("visibility", "visible");
-    };
-
-    /**
-     * 根据tagClass切换主题
-     * @param {*} tagClass
-     */
-    var changeBg = function (tagClass, callback) {
-      var bgAttr = bgConfig[tagClass];
-      if (!bgAttr) return;
-      themeConfig.bgAttr = bgAttr;
-
-      $("body").removeAttr("style");
-      $("body").css("background-image", bgAttr["url"] == "" ? "none" : "url(" + bgAttr["url"] + ")");
-      changeSkinSecter();
-      // 回调切换主题方法
-      !callback || typeof callback == "undefined" || callback == undefined ? false : callback(bgAttr["isNight"]);
-    };
-
-    /**
-     * 主题部分渲染
-     */
-    var changeSkinSecter = function () {
-      // 渲染主题，如果配置不存在则直接返回
-      if (Object.getOwnPropertyNames(themeConfig).length == 0) {
-        return;
-      }
-      var bgAttr = themeConfig.bgAttr;
-      // 删除以 theme_ 开头的 class
-      Util.removeClassByPrefix($("body")[0], "theme_");
-      // 增加 class
-      $("body").remove("theme_" + bgAttr["id"]);
-      $("body").addClass("theme_" + bgAttr["id"]);
-      // 黑夜模式下
-      if (bgAttr["isNight"]) {
-        $("html").css("background", "#31363b");
-        $(".site-content").css("background-color", "#fff");
-        $("body").addClass("dark");
-      } else {
-        $("html").css("background", "unset");
-        $("body").removeClass("dark");
-        $(".site-content").css("background-color", "rgba(255, 255, 255, .8)");
-      }
-
-      switch (bgAttr["strategy"]) {
-        case "no-repeat":
-          $("body").css("background-repeat", "no-repeat");
-          break;
-        case "repeat":
-          $("body").css("background-repeat", "repeat");
-          break;
-        case "cover":
-          $("body").css("background-size", "cover");
-          break;
-        default:
-          break;
-      }
-    };
-
-    // 检查 localstore 并回显
-    if (document.body.clientWidth > 860) {
-      checkBgImgEcho();
-      // 切换主题开关
-      changeSkinGear();
-    }
-
-    $(".change-skin-gear")
-      .off("click")
-      .on("click", function () {
-        $(".skin-menu").toggleClass("show");
-      });
-
-    $("#mobile-change-skin")
-      .off("click")
-      .on("click", function () {
-        $(".skin-menu").toggleClass("show");
-      });
-
-    return {
-      changeSkinSecter: changeSkinSecter,
-    };
   },
   // 移动端回到顶部
   MGT: function () {
@@ -737,7 +609,6 @@ var home = location.href,
         if ($(this).scrollTop() > offset_opacity) {
           $back_to_top.addClass("cd-fade-out");
         }
-        $(".skin-menu").removeClass("show"); // 有滚动就隐藏主题选择
       });
       //smooth scroll to top
       $back_to_top.on("click", function (event) {
@@ -764,8 +635,6 @@ $(function () {
   // Siren.MN(); // 移动端菜单
 
   // 新增功能
-  Poi.themeChange && LIlGGAttachContext.CBG(); // 主题切换
-  LIlGGAttachContext.PLSA(); // 文章列表动画
   Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
   Poi._templateId === "post" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
