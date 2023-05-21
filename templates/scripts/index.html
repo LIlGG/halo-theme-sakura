@@ -1,8 +1,5 @@
 <!--/* TODO：主题 js */-->
 <th:block th:fragment="scripts">
-  <!--/* TODO：依赖 JS, 需要求在自定义 JS 前加载的 JS，不包括可选功能 JS。（但通常通过 webpack 也可内联，待定）  */-->
-  <th:block th:replace="scripts/libs"></th:block>
-
   <!--/* 基础 JS */-->
   <script type="module" th:src="@{/assets/dist/main.min.js?v={version}(version=${theme.spec.version})}"></script>
 
@@ -108,7 +105,6 @@
     <script th:src="@{/assets/plugins/aplayer/js/index.js}" defer></script>
   </th:block>
   <script th:if="${theme.config.post.post_toc}" th:src="@{/assets/lib/tocbot/dist/tocbot.min.js}" defer></script>
-  <script type="text/javascript" th:src="@{/assets/lib/flv.min/index.js}" defer></script>
   <script
     type="text/javascript"
     th:src="@{/assets/script/i18n.min.js?v={version}(version=${theme.spec.version})}"
