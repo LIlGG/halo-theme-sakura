@@ -12,12 +12,8 @@ var LIlGGAttachContext = {
     // 渲染主题
     try {
       $("#to-load-aplayer").on("click", function () {
-        reloadAplayer();
         $("div").remove(".load-aplayer");
       });
-      if ($("div").hasClass("aplayer")) {
-        reloadAplayer();
-      }
     } catch (e) {}
 
     Poi.toc && LIlGGAttachContext.TOC(); // 文章目录
