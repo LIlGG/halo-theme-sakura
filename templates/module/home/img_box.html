@@ -1,24 +1,16 @@
-<!--/* 首页随机图使用 style 实现，详见 decorate.html。 另外由于 Thymeleaf 不支持随机数，因此 rimage_cover_back_num 暂时无效。*/-->
-<!--/*--> 
-<figure id="centerbg" class="centerbg" style="background-image: url(
-	<#if settings.rimage_cover_back_open!false && settings.rimage_url?? && settings.rimage_url!=''>
-		${settings.rimage_url!}?home=home&type=url&itype=${settings.rimage_cover_back_itype!}&id=${(settings.rimage_cover_back_id)!''}&t=<#if settings.rimage_cover_back_num != 0>${randomMethod(1,settings.rimage_cover_back_num + 1)}<#else>${.now?string('yyyyMMddHHmmssSSS')}</#if>
-	<#else>
-	${settings.focus_img_1!'${res_base_url!}/source/images/default/hd.jpg'}
-	</#if>
-	);
-	<#if !(settings.focus_height!true)>
-		background-position: center center;background-attachment: inherit;
-	</#if>
-">
-<!--*/-->
+<!--/* 首页随机图使用 style 实现，详见 decorate.html*/-->
 <figure id="centerbg" class="centerbg" th:fragment="imgbox">
   <th:block th:if="${theme.config.random_image.rimage_cover_back_open and (not #strings.isEmpty(theme.config.random_image.rimage_url))}">
-    <img
-      th:with="imageUrl = |${theme.config.random_image.rimage_url}?home=home&type=url&itype=${theme.config.random_image.rimage_cover_back_itype}${theme.config.random_image.rimage_cover_back_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_back_id : ''}&t=${#strings.randomAlphanumeric(1)}|"
-      th:src="|${imageUrl}&th=150|"
-      th:data-src="${imageUrl}"
-      class="cover-bg lazyload blur-up"
+  <img
+      th:with="
+      imageUrl = |${theme.config.random_image.rimage_url}?home=home&type=url&itype=${theme.config.random_image.rimage_cover_back_itype}${theme.config.random_image.rimage_cover_back_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_back_id : ''}|,
+      randomNum = |${theme.config.random_image.rimage_cover_back_num != 0 ? ((T(java.lang.Math).random() * 10) % theme.config.random_image.rimage_cover_back_num).intValue() : #strings.randomAlphanumeric(1)}|
+      "
+      th:src="|${imageUrl}&th=150&t=${randomNum}|"
+      th:data-src="|${imageUrl}&t=${randomNum}|"
+      th:data-url="${imageUrl}"
+      th:data-currIndex="${randomNum}"
+      class="cover-bg lazyload blur-up bg-change-js"
       onerror="imgError(this)"
     />
   </th:block>
@@ -35,7 +27,13 @@
         <span class="iconify" data-icon="fa:quote-right"></span>
       </p>
       <div class="top-social" th:if="${not #arrays.isEmpty(theme.config.sns.items)}">
+        <li id="bg-prev">
+          <img class="flipx" th:src="@{/assets/images/next-b.svg}" />
+        </li>
         <th:block th:replace="module/home/top_social"></th:block>
+        <li id="bg-next">
+          <img th:src="@{/assets/images/next-b.svg}" />
+        </li>
       </div>
     </div>
   </div>
