@@ -9,10 +9,6 @@
 var LIlGGAttachContext = {
   // 补充功能的PJAX
   PJAX: function () {
-    // 加载动态属性
-    LIlGGAttachContext.LA();
-    // 背景图片点击
-    LIlGGAttachContext.BGEVEN();
     // 暂停背景视频
     if (Poi.headFocus && Poi.bgvideo) LIlGGAttachContext.BGV().bgPause();
     // 渲染主题
@@ -680,48 +676,6 @@ var LIlGGAttachContext = {
       });
     }
   },
-  // 背景视频点击切换
-  BGEVEN: function () {
-    function nextBG() {
-      if (Poi.coverOpen == "true" && Poi.rimageUrl != "") {
-        var url = new URL($(".centerbg").css("background-image").split('"')[1]);
-        if (!url) {
-          return;
-        }
-        if (Poi.coverNum == 0) {
-          url.searchParams.set("t", new Date().getTime());
-        } else {
-          url.searchParams.set("t", (url.searchParams.get("t") % Poi.coverNum) + 1);
-        }
-        $(".centerbg").css("background-image", "url(" + url.href + ")");
-      }
-    }
-
-    function preBG() {
-      if (Poi.coverOpen == "true" && Poi.rimageUrl != "") {
-        var url = new URL($(".centerbg").css("background-image").split('"')[1]);
-        if (!url) {
-          return;
-        }
-        if (Poi.coverNum == 0) {
-          url.searchParams.set("t", new Date().getTime());
-        } else {
-          var t = url.searchParams.get("t");
-          t = t - 1 || Poi.coverNum;
-          url.searchParams.set("t", t);
-        }
-        $(".centerbg").css("background-image", "url(" + url.href + ")");
-      }
-    }
-
-    $("#bg-next").on("click", function () {
-      nextBG();
-    });
-
-    $("#bg-pre").on("click", function () {
-      preBG();
-    });
-  },
   /**
    * 发送 Email
    */
@@ -733,8 +687,6 @@ var LIlGGAttachContext = {
     var mail = "mailto:" + Poi.meEmail;
     window.open(mail);
   },
-
-  LA: function () {},
 
   // 内容处理
   POST_CONTEXT: function () {
@@ -1019,8 +971,6 @@ $(function () {
   // Siren.MN(); // 移动端菜单
 
   // 新增功能
-  // 背景视频点击切换
-  LIlGGAttachContext.BGEVEN();
   Poi.themeChange && LIlGGAttachContext.CBG(); // 主题切换
   LIlGGAttachContext.PLSA(); // 文章列表动画
   Poi.headFocus && Poi.bgvideo && LIlGGAttachContext.BGV(); // 背景视频

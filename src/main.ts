@@ -44,7 +44,7 @@ class ThemeConfigImpl implements ThemeConfig {
     if (!(key.toString() in this.schemas)) {
       return undefined;
     }
-    return new type(this.schemas.key);
+    return new type(this.schemas[key.toString()]);
   }
 }
 

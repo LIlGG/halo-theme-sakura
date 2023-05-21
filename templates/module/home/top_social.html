@@ -1,7 +1,4 @@
 <th:block th:fragment="top_social">
-  <li id="bg-pre">
-    <img class="flipx" th:src="@{/assets/images/next-b.svg}" />
-  </li>
   <th:block th:each="item : ${theme.config.sns.items}">
     <th:block th:if="${item.url_type == 'normal'}">
       <li>
@@ -24,7 +21,4 @@
       </li>
     </th:block>
   </th:block>
-  <li id="bg-next">
-    <img th:src="@{/assets/images/next-b.svg}" />
-  </li>
 </th:block>
