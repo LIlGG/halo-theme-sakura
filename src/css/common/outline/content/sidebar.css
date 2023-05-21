@@ -18,6 +18,7 @@
         overflow-y: auto;
         position: sticky;
         top: 100px;
+        max-height: 80vh;
         transition: background 1s;
 
         & > .toc-list {

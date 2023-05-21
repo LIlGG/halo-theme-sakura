@@ -16,6 +16,9 @@ dependencies:
   qrcode:
     specifier: ^1.5.3
     version: 1.5.3
+  tocbot:
+    specifier: ^4.21.0
+    version: 4.21.0
   video.js:
     specifier: ^8.3.0
     version: 8.3.0
@@ -1662,6 +1665,10 @@ packages:
     dependencies:
       is-number: 7.0.0
     dev: true
+
+  /tocbot@4.21.0:
+    resolution: {integrity: sha512-vXk8htr8mIl3hc2s2mDkaPTBfqmqZA2o0x7eXbxUibdrpEIPdpM0L9hH/RvEvlgSM+ZTgS34sGipk5+VrLJCLA==}
+    dev: false
 
   /tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}

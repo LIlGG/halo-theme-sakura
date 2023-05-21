@@ -63,6 +63,7 @@
     "echarts": "^5.4.2",
     "lodash.clonedeep": "^4.5.0",
     "qrcode": "^1.5.3",
+    "tocbot": "^4.21.0",
     "video.js": "^8.3.0"
   }
 }
