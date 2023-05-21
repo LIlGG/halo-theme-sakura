@@ -10,6 +10,7 @@
   & video {
     z-index: 0;
     /** 使视频全屏。并保证填满屏幕 */
+    width: 100vw;
     height: 100vh;
     object-fit: fill;
   }
