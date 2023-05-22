@@ -5,6 +5,32 @@ import { WindowEventProxy } from "../utils/eventProxy";
  * 全局事件模块
  */
 export class Events {
+
+  /**
+   * 注册 hashchange 事件
+   */
+  @documentFunction(false)
+  public registerNavigationChangeEvent() {
+    window.addEventListener("hashchange", (event: Event) => {
+      const hashchangeEvent = event as HashChangeEvent;
+      if (hashchangeEvent.oldURL.includes("#gallery-")) {
+        return;
+      }
+      const id = location.hash.substring(1);
+      if (!id.match(/^[A-z0-9_-]+$/)) {
+        return;
+      }
+      const targetElement = document.getElementById(id);
+      if (!targetElement) {
+        return;
+      }
+      if (!targetElement.tagName.match(/^(?:a|select|input|button|textarea)$/i)) {
+        targetElement.tabIndex = -1;
+      }
+      targetElement.focus();
+    }, false);
+  }
+
   /**
    * 注册移动端导航栏事件
    *

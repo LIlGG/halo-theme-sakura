@@ -17,7 +17,7 @@ var LIlGGAttachContext = {
     } catch (e) {}
 
     LIlGGAttachContext.CHS(); // 代码样式
-    LIlGGAttachContext.PHO(); // 图库功能
+    // LIlGGAttachContext.PHO(); // 图库功能
     LIlGGAttachContext.SS(); // 日志功能
     // 复制提示
     LIlGGAttachContext.CPY();
@@ -156,121 +156,121 @@ var LIlGGAttachContext = {
     };
   },
   // 图库功能
-  PHO: function () {
-    var $photoPage = $(".photos-container");
-    // 判断当前是否为图库界面
-    if ($photoPage.length == 0) {
-      return;
-    }
-    // 渲染图库信息
-    var $gallerys = $(".photos-content .gallery");
+  // PHO: function () {
+  //   var $photoPage = $(".photos-container");
+  //   // 判断当前是否为图库界面
+  //   if ($photoPage.length == 0) {
+  //     return;
+  //   }
+  //   // 渲染图库信息
+  //   var $gallerys = $(".photos-content .gallery");
 
-    var justify = function () {
-      // http://miromannino.github.io/Justified-Gallery/options-and-events/
-      $gallerys.justifiedGallery({
-        margins: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter),
-        rowHeight: 200,
-        captions: false,
-      });
+  //   var justify = function () {
+  //     // http://miromannino.github.io/Justified-Gallery/options-and-events/
+  //     $gallerys.justifiedGallery({
+  //       margins: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter),
+  //       rowHeight: 200,
+  //       captions: false,
+  //     });
       
-      // 默认过滤
-      if (Poi.defaultGroup) {
-        var filter = "." + Poi.defaultGroup;
-        $("#gallery-filter li a").removeClass("active");
-        $("#gallery-filter li a").each(function () {
-          if ($(this).data("filter") == filter) {
-            $(this).addClass("active");
-            return false;
-          }
-        });
-      }
+  //     // 默认过滤
+  //     if (Poi.defaultGroup) {
+  //       var filter = "." + Poi.defaultGroup;
+  //       $("#gallery-filter li a").removeClass("active");
+  //       $("#gallery-filter li a").each(function () {
+  //         if ($(this).data("filter") == filter) {
+  //           $(this).addClass("active");
+  //           return false;
+  //         }
+  //       });
+  //     }
 
-      // 过滤
-      $("#gallery-filter li a").on("click", function () {
-        if ($(this).hasClass("active")) {
-          return false;
-        }
-        $photoPage.find(".photos-content").addClass("loading");
-        $("#gallery-filter li a").removeClass("active");
-        $(this).addClass("active");
-        var dataFilter = $(this).data("filter");
-        $gallerys.justifiedGallery({
-          filter: dataFilter,
-        });
-        return false;
-      });
+  //     // 过滤
+  //     $("#gallery-filter li a").on("click", function () {
+  //       if ($(this).hasClass("active")) {
+  //         return false;
+  //       }
+  //       $photoPage.find(".photos-content").addClass("loading");
+  //       $("#gallery-filter li a").removeClass("active");
+  //       $(this).addClass("active");
+  //       var dataFilter = $(this).data("filter");
+  //       $gallerys.justifiedGallery({
+  //         filter: dataFilter,
+  //       });
+  //       return false;
+  //     });
 
-      $gallerys.justifiedGallery().on("jg.complete", function (e) {
-        $photoPage.find(".photos-content").removeClass("loading");
-      });
-    };
+  //     $gallerys.justifiedGallery().on("jg.complete", function (e) {
+  //       $photoPage.find(".photos-content").removeClass("loading");
+  //     });
+  //   };
 
-    var masonry = function () {
-      $gallerys.isotope({
-        masonry: {
-          gutter: 10,
-        },
-        percentPosition: true,
-        itemSelector: ".gallery-item",
-      });
+  //   var masonry = function () {
+  //     $gallerys.isotope({
+  //       masonry: {
+  //         gutter: 10,
+  //       },
+  //       percentPosition: true,
+  //       itemSelector: ".gallery-item",
+  //     });
 
-      // 默认过滤
-      if (Poi.defaultGroup) {
-        var filter = "." + Poi.defaultGroup;
-        $("#gallery-filter li a").each(function () {
-          $("#gallery-filter li a").removeClass("active");
-          if ($(this).data("filter") == filter) {
-            $(this).addClass("active");
-            var dataFilter = $(this).data("filter");
-            $gallerys.isotope({
-              filter: dataFilter,
-            });
-            return false;
-          }
-        });
-      }
+  //     // 默认过滤
+  //     if (Poi.defaultGroup) {
+  //       var filter = "." + Poi.defaultGroup;
+  //       $("#gallery-filter li a").each(function () {
+  //         $("#gallery-filter li a").removeClass("active");
+  //         if ($(this).data("filter") == filter) {
+  //           $(this).addClass("active");
+  //           var dataFilter = $(this).data("filter");
+  //           $gallerys.isotope({
+  //             filter: dataFilter,
+  //           });
+  //           return false;
+  //         }
+  //       });
+  //     }
 
-      $gallerys.find("img.lazyload").on("load", function () {
-        $gallerys.isotope("layout");
-        $photoPage.find(".photos-content").removeClass("loading");
-      });
+  //     $gallerys.find("img.lazyload").on("load", function () {
+  //       $gallerys.isotope("layout");
+  //       $photoPage.find(".photos-content").removeClass("loading");
+  //     });
       
-      // 过滤
-      $("#gallery-filter li a").on("click", function () {
-        if ($(this).hasClass("active")) {
-          return false;
-        }
-        $("#gallery-filter li a").removeClass("active");
-        $(this).addClass("active");
-        var dataFilter = $(this).data("filter");
-        $gallerys.isotope({
-          filter: dataFilter,
-        });
-        return false;
-      });
+  //     // 过滤
+  //     $("#gallery-filter li a").on("click", function () {
+  //       if ($(this).hasClass("active")) {
+  //         return false;
+  //       }
+  //       $("#gallery-filter li a").removeClass("active");
+  //       $(this).addClass("active");
+  //       var dataFilter = $(this).data("filter");
+  //       $gallerys.isotope({
+  //         filter: dataFilter,
+  //       });
+  //       return false;
+  //     });
 
-      if (Poi.photosStyle == "masonry") {
-        // 切换风格
-        $("#grid-changer a").on("click", function () {
-          $("#grid-changer a").removeClass("active");
-          $(this).toggleClass("active");
-          for (var i = 2; i < 9; i++) {
-            $gallerys.find(".gallery-item").removeClass("col-" + i);
-          }
-          $gallerys.find(".gallery-item").toggleClass($(this).closest("li").attr("class"));
-          $gallerys.isotope("layout");
-        });
-      }
-    };
+  //     if (Poi.photosStyle == "masonry") {
+  //       // 切换风格
+  //       $("#grid-changer a").on("click", function () {
+  //         $("#grid-changer a").removeClass("active");
+  //         $(this).toggleClass("active");
+  //         for (var i = 2; i < 9; i++) {
+  //           $gallerys.find(".gallery-item").removeClass("col-" + i);
+  //         }
+  //         $gallerys.find(".gallery-item").toggleClass($(this).closest("li").attr("class"));
+  //         $gallerys.isotope("layout");
+  //       });
+  //     }
+  //   };
 
-    if ($gallerys.length > 0) {
-      if (Poi.photosStyle == "masonry") {
-        masonry();
-      } else {
-        justify();
-      }
-    }
-  },
+  //   if ($gallerys.length > 0) {
+  //     if (Poi.photosStyle == "masonry") {
+  //       masonry();
+  //     } else {
+  //       justify();
+  //     }
+  //   }
+  // },
   // 日志
   SS: function () {
     if ($(".journal").length > 0) {
@@ -497,7 +497,7 @@ $(function () {
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部
   Poi.photosStyle == "packery" && supplement();
-  LIlGGAttachContext.PHO(); // 图库功能
+  // LIlGGAttachContext.PHO(); // 图库功能
   LIlGGAttachContext.SS(); // 日志功能
   // 复制提示
   LIlGGAttachContext.CPY();
@@ -516,31 +516,6 @@ $(function () {
       "font-size": Poi.toastFontSize,
     });
   }
-  // 点赞
-  $.fn.postLike = function () {
-    if ($(this).hasClass("done")) {
-      return false;
-    } else {
-      $(this).addClass("done");
-      var id = $(this).data("id"),
-        action = $(this).data("action"),
-        rateHolder = $(this).children(".count");
-      var ajax_data = {
-        action: "specs_zan",
-        um_id: id,
-        um_action: action,
-      };
-      $.post(Poi.ajaxurl, ajax_data, function (data) {
-        $(rateHolder).html(data);
-      });
-      return false;
-    }
-  };
-
-  $(document).on("click", ".specsZan", function () {
-    $(this).postLike();
-  });
-
   console.log("%c Github %c", "background:#24272A; color:#ffffff", "", "https://github.com/LIlGG/halo-theme-Sakura");
 });
 
@@ -557,45 +532,6 @@ function headertop_down() {
 
 function imgError() {
   return (this.src = "/assets/images/default/temp.jpg");
-}
-
-/*
- * File skip-link-focus-fix.js.
- * Helps with accessibility for keyboard only users.
- * Learn more: https://git.io/vWdr2
- */
-var isWebkit = navigator.userAgent.toLowerCase().indexOf("webkit") > -1,
-  isOpera = navigator.userAgent.toLowerCase().indexOf("opera") > -1,
-  isIe = navigator.userAgent.toLowerCase().indexOf("msie") > -1;
-
-if ((isWebkit || isOpera || isIe) && document.getElementById && window.addEventListener) {
-  window.addEventListener(
-    "hashchange",
-    function (e) {
-      var id = location.hash.substring(1),
-        element;
-
-      // fix #221 图库展示结束后禁止重新跳转
-      if (e.oldURL.indexOf("#gallery-") !== -1) {
-        return;
-      }
-
-      if (!/^[A-z0-9_-]+$/.test(id)) {
-        return;
-      }
-
-      element = document.getElementById(id);
-
-      if (element) {
-        if (!/^(?:a|select|input|button|textarea)$/i.test(element.tagName)) {
-          element.tabIndex = -1;
-        }
-
-        element.focus();
-      }
-    },
-    false
-  );
 }
 
 var IllegalStateException = function (message) {
