@@ -58,6 +58,9 @@
   <script data-pjax th:inline="javascript" >
     const pageData = {
       '_templateId': '[(${_templateId})]',
+      [# th:if="${_templateId == 'post'}"]
+      "postLastModifyTime": "[(${#dates.format(post.status.lastModifyTime, 'yyyy-MM-dd HH:mm:ss')})]"
+      [/]
     }
   </script>
 </th:block>
