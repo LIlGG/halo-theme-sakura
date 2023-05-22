@@ -16,7 +16,6 @@ var LIlGGAttachContext = {
       });
     } catch (e) {}
 
-    Poi._templateId === "post" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
     LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.PHO(); // 图库功能
     LIlGGAttachContext.SS(); // 日志功能
@@ -307,101 +306,6 @@ var LIlGGAttachContext = {
     var mail = "mailto:" + Poi.meEmail;
     window.open(mail);
   },
-
-  // 内容处理
-  POST_CONTEXT: function () {
-    const normal = "rgba(167, 210, 226, 1)";
-    const medium = "rgba(255, 197, 160, 1)";
-    const difficulty = "rgba(239, 206, 201, 1)";
-
-    var msg, div, remind;
-    var contentDom = document.getElementsByClassName("entry-content")[0];
-
-    if (Poi.isPostWordCountToast) {
-      var coefficient = 3;
-      // TODO 后续补充元数据
-      // if (!!PageAttr.metas.level) {
-      //   coefficient = Number(PageAttr.metas.level);
-      // }
-
-      // TODO Halo2 不存在字数统计，进行前端统计
-      var postWordCount = Util.getWordCount(document.querySelector(".entry-content"));
-      if (!!postWordCount) {
-        var color = "";
-        var seconds = Util.caclEstimateReadTime(postWordCount, coefficient);
-        var timeStr = Util.minuteToTimeString(seconds);
-        // 时间段为 x 0<=10<=30<=+∞ 分钟
-        if (seconds <= 60 * 10) {
-          remind = Poi.postWordCountToastNormal || "文章篇幅适中，可以放心阅读。";
-          color = normal;
-        } else if (seconds <= 60 * 30 && seconds > 60 * 10) {
-          remind = Poi.postWordCountToastMedium || "文章比较长，建议分段阅读。";
-          color = medium;
-        } else {
-          remind = Poi.postWordCountToastDifficulty || "文章内容很长，提前准备好咖啡!!!";
-          color = difficulty;
-        }
-
-        msg = `文章共 <b>${postWordCount}</b> 字，阅读完预计需要 <b>${timeStr}</b>。`;
-        msg = mobileMsgProcess(msg, remind);
-        div = buildToastDiv("word_count", color, msg);
-
-        contentDom.insertAdjacentHTML("afterbegin", div);
-      }
-    }
-
-    if (Poi.isPostEditTimeToast) {
-      // 获取上次至今的时间差
-      var editTime = new Date(PageAttr.postEditTime);
-      if (!isNaN(editTime.getTime())) {
-        var time = new Date().getTime() - editTime.getTime();
-        var sinceLastTime = Util.timeAgo(editTime.getTime());
-        // 时间段为 x 0<=1<=3<=+∞ 月
-        if (time <= 1000 * 60 * 60 * 24 * 30) {
-          remind = Poi.postEditTimeToastNormal || "近期有所更新，请放心阅读！";
-          color = normal;
-        } else if (time > 1000 * 60 * 60 * 24 * 30 && time <= 1000 * 60 * 60 * 24 * 90) {
-          remind = Poi.postEditTimeToastMedium || "文章距上次编辑时间较远，部分内容可能已经过时！";
-          color = medium;
-        } else {
-          remind = Poi.postEditTimeToastDifficulty || "文章内容已经很陈旧了，也许不再适用！";
-          color = difficulty;
-        }
-
-        msg = `文章内容上次编辑时间于 <b>${sinceLastTime}</b>。`;
-        msg = mobileMsgProcess(msg, remind);
-        div = buildToastDiv("last_time", color, msg);
-
-        contentDom.insertAdjacentHTML("afterbegin", div);
-      }
-    }
-
-    var minicode = contentDom.getElementsByClassName("minicode");
-    Array.prototype.forEach.call(minicode, (content) => {
-      var hideMiniCode = content.getElementsByClassName("hide-minicode")[0];
-      hideMiniCode.onclick = function () {
-        content.classList.toggle("hide");
-      };
-    });
-
-    function buildToastDiv(type, color, msg) {
-      return `<div class="${type} minicode" style="background-color: ${color}">
-                <span class="content-toast">
-                  ${msg}
-                </span>
-                <div class="hide-minicode">
-                  <span class="iconify iconify--small" data-icon="fa:times"></span>
-                </div>
-              </div>`;
-    }
-
-    function mobileMsgProcess(msg, remind) {
-      if (window.innerWidth <= 860) {
-        return msg;
-      }
-      return msg + `${remind}`;
-    }
-  },
 };
 
 /**
@@ -590,7 +494,6 @@ $(function () {
   // Siren.MN(); // 移动端菜单
 
   // 新增功能
-  Poi._templateId === "post" && LIlGGAttachContext.POST_CONTEXT(); // 文章内容处理
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部
   Poi.photosStyle == "packery" && supplement();
