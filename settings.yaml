@@ -669,32 +669,12 @@ spec:
     - group: photos
       label: 相册页
       formSchema:
-        - $formkit: select
-          name: photos_style
-          id: photos_style
-          key: photos_style
-          label: 相册布局风格
-          value: justify
-          options:
-            - value: justify
-              label: 合理布局
-            - value: masonry
-              label: 瀑布流布局
         - $formkit: text
           name: default_group
           label: 默认展示分组
           placeholder: 请填写分组名称
           value: ""
-        - $formkit: number
-          if: "$get(photos_style).value == justify"
-          name: photos_gutter
-          id: photos_gutter
-          key: photos_gutter
-          label: 图像之间的间距
-          min: 1
-          value: 10
         - $formkit: select
-          if: "$get(photos_style).value == masonry"
           name: masonry_column
           label: 瀑布流列数(移动端始终为1)
           value: 3
@@ -714,7 +694,6 @@ spec:
             - value: 8
               label: 8
         - $formkit: select
-          if: "$get(photos_style).value == masonry"
           name: masonry_changer_min
           label: 瀑布流切换功能最小列数
           value: 3
@@ -734,7 +713,6 @@ spec:
             - value: 8
               label: 8
         - $formkit: select
-          if: "$get(photos_style).value == masonry"
           name: masonry_changer_max
           label: 瀑布流切换功能最大列数
           value: 5

@@ -3,7 +3,7 @@
     <div class="masonry-tools">
       <th:block th:replace="~{module/photo/group :: group(${photoFinder.groupBy()})}" />
       <!-- 工具栏 -->
-      <nav th:if="${theme.config.photos.photos_style == 'masonry'}" id="grid-changer" class="grid-changer">
+      <nav id="grid-changer" class="grid-changer">
         <ul>
           <li>
             <a href="javascript:void(0)" class="active" th:data-col="|${theme.config.photos.masonry_changer_min}|">
@@ -31,7 +31,7 @@
         <th:block th:each="photo : ${photoFinder.listAll()}">
           <figure
             class="gallery-item"
-            th:classappend="${photo.spec.groupName} + ' ' + ${theme.config.photos.photos_style == 'masonry' ? 'col-' + theme.config.photos.masonry_column : '' }"
+            th:classappend="|${photo.spec.groupName} col-${theme.config.photos.masonry_column}|"
           >
             <header class="gallery-icon">
               <a data-fancybox="gallery" th:href="${photo.spec.url}">

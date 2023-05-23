@@ -29,14 +29,7 @@
     </style>
     <div class="photos-container">
       <section class="photos-inner">
-        <th:block
-          th:if="${theme.config.photos.photos_style == 'masonry'}"
-          th:insert="~{macro/content-masonry-photos}"
-        ></th:block>
-        <th:block
-          th:if="${theme.config.photos.photos_style == 'justify'}"
-          th:insert="~{macro/content-justify-photos}"
-        ></th:block>
+        <th:block th:insert="~{macro/content-masonry-photos}"></th:block>
       </section>
     </div>
   </th:block>
