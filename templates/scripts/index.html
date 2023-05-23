@@ -36,7 +36,6 @@
         "toastColor": "[(${theme.config.toast.toast_color})]",
         "toastFontSize": /*[(${theme.config.toast.toast_font_size})]*/,
         "copyrightNotice": /*[(${theme.config.toast.copyright_notice})]*/,
-        "photosStyle": "[(${theme.config.photos.photos_style})]",
         "photosGutter": /*[(${theme.config.photos.photos_gutter})]*/,
         "tocDepth": /*[(${theme.config.post.toc_depth})]*/,
         "i18n": "[(${theme.config.others.i18n})]",
@@ -77,22 +76,6 @@
   ></script>
   <script type="text/javascript" th:src="@{/assets/lib/lazysizes/lazysizes.min.js}" async></script>
   <script type="text/javascript" th:src="@{/assets/js/lib.js}"></script>
-  <!--/* 相册 */-->
-  <script
-    th:if="${theme.config.photos.photos_style == 'justify'}"
-    th:src="@{/assets/lib/justifiedGallery/jquery.justifiedGallery.min.js}"
-    async
-  ></script>
-  <script
-    th:if="${theme.config.photos.photos_style == 'masonry'}"
-    th:src="@{/assets/lib/isotope.pkgd.min/index.js}"
-    async
-  ></script>
-  <script
-    th:if="${theme.config.photos.photos_style == 'masonry'}"
-    th:src="@{/assets/lib/imagesloaded/imagesloaded.pkgd.min.js}"
-    defer
-  ></script>
   <script type="text/javascript" th:src="@{/assets/js/highlight/highlight.pack.js}" defer></script>
   <script
     th:if="${theme.config.post.code_line}"
