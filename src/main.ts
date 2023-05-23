@@ -1,6 +1,6 @@
 import { Util } from "./utils/util";
 import "./module/index";
-import "@/css/main.css";
+import "./css/main.css";
 import "@purge-icons/generated";
 
 /* 核心启动，通常不建议也不应当由用户调用，只能由启动代码使用  */

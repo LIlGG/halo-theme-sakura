@@ -17,7 +17,6 @@ var LIlGGAttachContext = {
     } catch (e) {}
 
     LIlGGAttachContext.CHS(); // 代码样式
-    // LIlGGAttachContext.PHO(); // 图库功能
     LIlGGAttachContext.SS(); // 日志功能
     // 复制提示
     LIlGGAttachContext.CPY();
@@ -35,42 +34,49 @@ var LIlGGAttachContext = {
       design: "by LIlGG",
     };
 
-    $("pre").each(function (i, item) {
-      var $code = $(this).children("code");
-      var classNameStr = $code[0].className;
-      var classNameArr = classNameStr.split(" ");
+    // $("pre").each(function (i, item) {
+    //   var $code = $(this).children("code");
+    //   var classNameStr = $code[0].className;
+    //   var classNameArr = classNameStr.split(" ");
 
-      var lang = "";
-      classNameArr.some(function (className) {
-        if (className.indexOf("language-") > -1) {
-          lang = className.substring(className.indexOf("-") + 1, className.length);
-          return true;
-        }
-      });
+    //   var lang = "";
+    //   classNameArr.some(function (className) {
+    //     if (className.indexOf("language-") > -1) {
+    //       lang = className.substring(className.indexOf("-") + 1, className.length);
+    //       return true;
+    //     }
+    //   });
 
-      // 检测语言是否存在，不存在则自动检测
-      var language = hljs.getLanguage(lang.toLowerCase());
-      if (language == undefined) {
-        // 启用自动检测
-        var autolanguage = hljs.highlightAuto($code.text());
-        $code.removeClass("language-" + lang);
-        lang = autolanguage.language;
-        if (lang == undefined) {
-          lang = "text";
-        }
-        $code.addClass("language-" + lang);
-      } else {
-        lang = language.name;
-      }
+    //   // 检测语言是否存在，不存在则自动检测
+    //   var language = hljs.getLanguage(lang.toLowerCase());
+    //   if (language == undefined) {
+    //     // 启用自动检测
+    //     var autolanguage = hljs.highlightAuto($code.text());
+    //     $code.removeClass("language-" + lang);
+    //     lang = autolanguage.language;
+    //     if (lang == undefined) {
+    //       lang = "text";
+    //     }
+    //     $code.addClass("language-" + lang);
+    //   } else {
+    //     lang = language.name;
+    //   }
 
-      $(this).addClass("highlight-wrap");
-      $(this).attr(attributes);
-      $code.attr("data-rel", lang.toUpperCase()).addClass(lang.toLowerCase());
-      // 启用代码高亮
-      hljs.highlightBlock($code[0]);
-      // 启用代码行号
-      if (Poi.codeLine) hljs.lineNumbersBlock($code[0]);
-    });
+    //   $(this).addClass("highlight-wrap");
+    //   $(this).attr({
+    //     autocomplete: "off",
+    //     autocorrect: "off",
+    //     autocapitalize: "off",
+    //     spellcheck: "false",
+    //     contenteditable: "false",
+    //     design: "by LIlGG",
+    //   });
+    //   $code.attr("data-rel", lang.toUpperCase()).addClass(lang.toLowerCase());
+    //   // 启用代码高亮
+    //   hljs.highlightBlock($code[0]);
+    //   // 启用代码行号
+    //   if (Poi.codeLine) hljs.lineNumbersBlock($code[0]);
+    // });
     /**
      * [#23](https://github.com/LIlGG/halo-theme-sakura/issues/23) 减少失误，将单击改为双击
      */
@@ -155,122 +161,7 @@ var LIlGGAttachContext = {
       }
     };
   },
-  // 图库功能
-  // PHO: function () {
-  //   var $photoPage = $(".photos-container");
-  //   // 判断当前是否为图库界面
-  //   if ($photoPage.length == 0) {
-  //     return;
-  //   }
-  //   // 渲染图库信息
-  //   var $gallerys = $(".photos-content .gallery");
 
-  //   var justify = function () {
-  //     // http://miromannino.github.io/Justified-Gallery/options-and-events/
-  //     $gallerys.justifiedGallery({
-  //       margins: isNaN(Poi.photosGutter) ? 10 : Number(Poi.photosGutter),
-  //       rowHeight: 200,
-  //       captions: false,
-  //     });
-      
-  //     // 默认过滤
-  //     if (Poi.defaultGroup) {
-  //       var filter = "." + Poi.defaultGroup;
-  //       $("#gallery-filter li a").removeClass("active");
-  //       $("#gallery-filter li a").each(function () {
-  //         if ($(this).data("filter") == filter) {
-  //           $(this).addClass("active");
-  //           return false;
-  //         }
-  //       });
-  //     }
-
-  //     // 过滤
-  //     $("#gallery-filter li a").on("click", function () {
-  //       if ($(this).hasClass("active")) {
-  //         return false;
-  //       }
-  //       $photoPage.find(".photos-content").addClass("loading");
-  //       $("#gallery-filter li a").removeClass("active");
-  //       $(this).addClass("active");
-  //       var dataFilter = $(this).data("filter");
-  //       $gallerys.justifiedGallery({
-  //         filter: dataFilter,
-  //       });
-  //       return false;
-  //     });
-
-  //     $gallerys.justifiedGallery().on("jg.complete", function (e) {
-  //       $photoPage.find(".photos-content").removeClass("loading");
-  //     });
-  //   };
-
-  //   var masonry = function () {
-  //     $gallerys.isotope({
-  //       masonry: {
-  //         gutter: 10,
-  //       },
-  //       percentPosition: true,
-  //       itemSelector: ".gallery-item",
-  //     });
-
-  //     // 默认过滤
-  //     if (Poi.defaultGroup) {
-  //       var filter = "." + Poi.defaultGroup;
-  //       $("#gallery-filter li a").each(function () {
-  //         $("#gallery-filter li a").removeClass("active");
-  //         if ($(this).data("filter") == filter) {
-  //           $(this).addClass("active");
-  //           var dataFilter = $(this).data("filter");
-  //           $gallerys.isotope({
-  //             filter: dataFilter,
-  //           });
-  //           return false;
-  //         }
-  //       });
-  //     }
-
-  //     $gallerys.find("img.lazyload").on("load", function () {
-  //       $gallerys.isotope("layout");
-  //       $photoPage.find(".photos-content").removeClass("loading");
-  //     });
-      
-  //     // 过滤
-  //     $("#gallery-filter li a").on("click", function () {
-  //       if ($(this).hasClass("active")) {
-  //         return false;
-  //       }
-  //       $("#gallery-filter li a").removeClass("active");
-  //       $(this).addClass("active");
-  //       var dataFilter = $(this).data("filter");
-  //       $gallerys.isotope({
-  //         filter: dataFilter,
-  //       });
-  //       return false;
-  //     });
-
-  //     if (Poi.photosStyle == "masonry") {
-  //       // 切换风格
-  //       $("#grid-changer a").on("click", function () {
-  //         $("#grid-changer a").removeClass("active");
-  //         $(this).toggleClass("active");
-  //         for (var i = 2; i < 9; i++) {
-  //           $gallerys.find(".gallery-item").removeClass("col-" + i);
-  //         }
-  //         $gallerys.find(".gallery-item").toggleClass($(this).closest("li").attr("class"));
-  //         $gallerys.isotope("layout");
-  //       });
-  //     }
-  //   };
-
-  //   if ($gallerys.length > 0) {
-  //     if (Poi.photosStyle == "masonry") {
-  //       masonry();
-  //     } else {
-  //       justify();
-  //     }
-  //   }
-  // },
   // 日志
   SS: function () {
     if ($(".journal").length > 0) {
@@ -497,7 +388,6 @@ $(function () {
   LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部
   Poi.photosStyle == "packery" && supplement();
-  // LIlGGAttachContext.PHO(); // 图库功能
   LIlGGAttachContext.SS(); // 日志功能
   // 复制提示
   LIlGGAttachContext.CPY();
