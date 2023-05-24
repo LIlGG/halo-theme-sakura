@@ -43,7 +43,7 @@ export default class Photos {
       // 过滤
       const galleryFilterbarElement = masonryContainerElement?.querySelector("#gallery-filter");
       const galleryFilterbarItemsElement = galleryFilterbarElement?.querySelectorAll("li a");
-      const defaultGroup = sakura.getThemeConfig("photos").getValue("default_group", String)?.valueOf();
+      const defaultGroup = sakura.getThemeConfig("photos", "default_group", String)?.valueOf();
       galleryFilterbarItemsElement?.forEach((hrefElement) => {
         const filter = hrefElement.getAttribute("data-filter");
 

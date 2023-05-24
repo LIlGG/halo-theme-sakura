@@ -19,9 +19,7 @@ export default class Index {
     }
     const backgroundNextBotton = document.getElementById("bg-next");
     const backgroundPrevBotton = document.getElementById("bg-prev");
-    const backgroundLoopSize = (
-      sakura.getThemeConfig("random_image").getValue("rimage_cover_back_num", Number) || 0
-    ).valueOf();
+    const backgroundLoopSize = (sakura.getThemeConfig("random_image", "rimage_cover_back_num", Number) || 0).valueOf();
     backgroundNextBotton?.addEventListener("click", () => {
       let currIndex = Number(backgorundElement.getAttribute("data-currIndex"));
       if (backgroundLoopSize === 0) {
@@ -80,7 +78,7 @@ export default class Index {
               loop: false,
               sources: [
                 {
-                  src: sakura.getThemeConfig("mainScreen").getValue("bgvideo_url", String)?.toString(),
+                  src: sakura.getThemeConfig("mainScreen", "bgvideo_url", String)?.toString(),
                 },
               ],
             });

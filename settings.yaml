@@ -439,6 +439,16 @@ spec:
             - value: false
               label: 关闭
         - $formkit: radio
+          name: post_original_copy
+          label: 原创内容增加版权声明
+          help: 需要在发布文章时的元数据上选中原创才可以生效
+          value: false
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+        - $formkit: radio
           name: post_word_count_toast
           id: post_word_count_toast
           label: 文章字数统计及阅读时间提示
@@ -1056,15 +1066,6 @@ spec:
           id: open_toast
           label: 开启全局提示功能
           value: true
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: radio
-          name: copyright_notice
-          label: 复制内容增加版权声明
-          value: false
           options:
             - value: true
               label: 开启

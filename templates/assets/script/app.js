@@ -16,90 +16,9 @@ var LIlGGAttachContext = {
       });
     } catch (e) {}
 
-    LIlGGAttachContext.CHS(); // 代码样式
     LIlGGAttachContext.SS(); // 日志功能
-    // 复制提示
-    LIlGGAttachContext.CPY();
     // i18n
     I18N.init();
-  },
-  // 文章代码样式
-  CHS: function () {
-    var attributes = {
-      autocomplete: "off",
-      autocorrect: "off",
-      autocapitalize: "off",
-      spellcheck: "false",
-      contenteditable: "false",
-      design: "by LIlGG",
-    };
-
-    // $("pre").each(function (i, item) {
-    //   var $code = $(this).children("code");
-    //   var classNameStr = $code[0].className;
-    //   var classNameArr = classNameStr.split(" ");
-
-    //   var lang = "";
-    //   classNameArr.some(function (className) {
-    //     if (className.indexOf("language-") > -1) {
-    //       lang = className.substring(className.indexOf("-") + 1, className.length);
-    //       return true;
-    //     }
-    //   });
-
-    //   // 检测语言是否存在，不存在则自动检测
-    //   var language = hljs.getLanguage(lang.toLowerCase());
-    //   if (language == undefined) {
-    //     // 启用自动检测
-    //     var autolanguage = hljs.highlightAuto($code.text());
-    //     $code.removeClass("language-" + lang);
-    //     lang = autolanguage.language;
-    //     if (lang == undefined) {
-    //       lang = "text";
-    //     }
-    //     $code.addClass("language-" + lang);
-    //   } else {
-    //     lang = language.name;
-    //   }
-
-    //   $(this).addClass("highlight-wrap");
-    //   $(this).attr({
-    //     autocomplete: "off",
-    //     autocorrect: "off",
-    //     autocapitalize: "off",
-    //     spellcheck: "false",
-    //     contenteditable: "false",
-    //     design: "by LIlGG",
-    //   });
-    //   $code.attr("data-rel", lang.toUpperCase()).addClass(lang.toLowerCase());
-    //   // 启用代码高亮
-    //   hljs.highlightBlock($code[0]);
-    //   // 启用代码行号
-    //   if (Poi.codeLine) hljs.lineNumbersBlock($code[0]);
-    // });
-    /**
-     * [#23](https://github.com/LIlGG/halo-theme-sakura/issues/23) 减少失误，将单击改为双击
-     */
-    $("pre").on("dblclick", function (e) {
-      if (e.target !== this) return;
-      $(this).toggleClass("code-block-fullscreen");
-      $("html").toggleClass("code-block-fullscreen-html-scroll");
-    });
-
-    $("pre code").each(function (i, block) {
-      $(block).attr({
-        id: "hljs-" + i,
-      });
-
-      let copyCode = 
-      `
-      <a class="copy-code" href="javascript:" data-clipboard-target="#hljs-${i}" title="拷贝代码">
-        <span class="iconify" data-icon="fa:clipboard"></span>
-      </a>
-      `;
-      $(this).after(copyCode);
-      new ClipboardJS(".copy-code");
-    });
   },
   // 移动端回到顶部
   MGT: function () {
@@ -125,41 +44,6 @@ var LIlGGAttachContext = {
         scroll_top_duration
       );
     });
-  },
-  // 复制提示
-  CPY: function () {
-    let postDom = document.getElementsByClassName("post-article");
-    Array.prototype.forEach.call(postDom, (item) => {
-      item.addEventListener("copy", function (e) {
-        if (Poi.copyrightNotice && window.getSelection().toString().length > 30) {
-          setClipboardText(e, $(this).data());
-        }
-
-        if (toast) {
-          toast.create("复制成功！<br>Copied to clipboard successfully!", 2000);
-        }
-      });
-    });
-
-    var setClipboardText = function (event, post) {
-      event.preventDefault();
-      let templateStr = `
-      # 商业转载请联系作者获得授权，非商业转载请注明出处。<br>
-      # For commercial use, please contact the author for authorization. For non-commercial use, please indicate the source.<br>
-      # 协议(License): 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)<br>
-      # 作者(Author): ${post.owner} <br>
-      # 链接(URL): ${post.url} <br>
-      # 来源(Source): ${Poi.sitename} <br><br>
-      `;
-      let htmlStr = templateStr + window.getSelection().toString().replace(/\r\n/g, "<br>");
-      let textStr = templateStr.replace(/<br>/g, "\n") + window.getSelection().toString().replace(/\r\n/g, "\n");
-      if (event.clipboardData) {
-        event.clipboardData.setData("text/html", htmlStr);
-        event.clipboardData.setData("text/plain", textStr);
-      } else if (window.clipboardData) {
-        return window.clipboardData.setData("text", textStr);
-      }
-    };
   },
 
   // 日志
@@ -373,8 +257,6 @@ var home = location.href,
     },
   };
 
-var toast = null;
-
 /**
  * 独立功能，可拔插
  */
@@ -385,28 +267,12 @@ $(function () {
   // Siren.MN(); // 移动端菜单
 
   // 新增功能
-  LIlGGAttachContext.CHS(); // 代码类Mac样式、高亮
   LIlGGAttachContext.MGT(); // 移动端回到顶部
   Poi.photosStyle == "packery" && supplement();
   LIlGGAttachContext.SS(); // 日志功能
-  // 复制提示
-  LIlGGAttachContext.CPY();
   // PJAX
   Poi.pjax && pjaxFun();
   I18N.init();
-  // 全局提示组件
-  if (Poi.openToast && window.outerWidth > 860) {
-    toast = new Toast();
-    toast.init({
-      width: Poi.toastWidth,
-      height: Poi.toastHeight,
-      top: Poi.toastTop,
-      background: Poi.toastBackground,
-      color: Poi.toastColor,
-      "font-size": Poi.toastFontSize,
-    });
-  }
-  console.log("%c Github %c", "background:#24272A; color:#ffffff", "", "https://github.com/LIlGG/halo-theme-Sakura");
 });
 
 /* 首页下拉箭头 */

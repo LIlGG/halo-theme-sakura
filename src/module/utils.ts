@@ -61,7 +61,7 @@ export class Utils {
 
         let language = highlight.default.getLanguage(lang);
         // 如果没有指定语言，则启用自动检测
-        if (!language || !language.name) {
+        if (!language || !language.aliases || language.aliases.length === 0) {
           codeElement.classList.remove(`language-${lang}`);
           const autoLanguage = highlight.default.highlightAuto(codeElement.textContent || "");
           // 自定检测失败，则使用默认的 plain text
@@ -73,15 +73,34 @@ export class Utils {
           // 重新为 highlightElement 设置语言
           codeElement.classList.add(`language-${lang}`);
         } else {
-          lang = language.name;
+          lang = language.aliases[0];
         }
-
         codeElement.setAttribute("data-rel", lang.toUpperCase());
-        codeElement.classList.add(lang.split(",")[0].toLowerCase());
+        codeElement.classList.add(lang.toLowerCase());
         highlight.default.highlightElement(codeElement);
         const highlightLineNumber = await import("../libs/highlightjs-line-numbers")
         highlightLineNumber.registerHljsLineNumbers(highlight.default);
         highlight.default.lineNumbersBlock(codeElement);
+      });
+    });
+  }
+
+  /**
+   * 注册代码块 copy 功能
+   */
+  @documentFunction()
+  public registerCopyCode() {
+    const codeElements = document.querySelectorAll("pre code");
+    codeElements.forEach((codeElement) => {
+      const copyElement = document.createElement("a");
+      copyElement.classList.add("copy-code");
+      copyElement.setAttribute("title", "复制代码");
+      copyElement.innerHTML = `<span class="iconify" data-icon="fa:clipboard"></span>`;
+      codeElement.after(copyElement);
+      import("clipboard").then((module) => {
+        new module.default(copyElement, {
+          target: () => codeElement,
+        });
       });
     });
   }
@@ -97,7 +116,7 @@ export class Utils {
       import("tocbot").then((tocbot) => {
         const tocElement = tocContainerElement.querySelector(".toc");
         const offset = tocContainerElement.getBoundingClientRect().top + window.pageYOffset;
-        const collapseDepth = sakura.getThemeConfig("post").getValue("toc_depth", Number)?.valueOf();
+        const collapseDepth = sakura.getThemeConfig("post", "toc_depth", Number)?.valueOf();
         if (!tocElement) {
           return;
         }

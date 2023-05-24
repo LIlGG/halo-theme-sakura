@@ -1,10 +1,40 @@
-import { documentFunction } from "../main";
+import { documentFunction, sakura } from "../main";
 import { WindowEventProxy } from "../utils/eventProxy";
 
 /**
  * 全局事件模块
  */
 export class Events {
+
+  /**
+   * 注册监听复制事件
+   */
+  @documentFunction(false)
+  public registerCopyEvent() {
+    WindowEventProxy.addEventListener("copy", () => {
+      if (sakura.$toast) {
+        sakura.$toast.create("复制成功！<br>Copied to clipboard successfully!", 2000);
+      }
+    }, 2000);
+  }
+
+  /**
+   * 注册代码块双击放大事件
+   */
+  @documentFunction()
+  public registerCodeBlockZoomEvent() {
+    const preElements = document.querySelectorAll("pre") as NodeListOf<HTMLElement>;
+    preElements.forEach((preElement) => {
+      // TODO 需保证每个元素只注册一次事件，等待 pjax 功能完成后验证
+      preElement.addEventListener("dblclick", (event) => {
+        if (event.target !== preElement) {
+          return;
+        }
+        preElement.classList.toggle("code-block-fullscreen");
+        document.querySelector("html")?.classList.toggle("code-block-fullscreen-html-scroll");
+      });
+    });
+  }
 
   /**
    * 注册 hashchange 事件

@@ -13,28 +13,29 @@
   <!--/* 字体 */-->
   <th:block th:replace="module/head/fonts" />
   
-<link rel="stylesheet" th:href="@{/assets/css/lib.css}" media="noexist" onload="this.media='all'" />
-<link
-  rel="stylesheet"
-  th:href="@{/assets/css/highlight/highlight-{code_pretty}.css(code_pretty=${theme.config.post.code_pretty})}"
-  type="text/css"
-  media="noexist"
-  onload="this.media='all'"
-/>
-<link
-  th:if="${theme.config.plugin.is_aplayer}"
-  rel="stylesheet"
-  th:href="@{/assets/lib/APlayer/APlayer.min.css}"
-  media="all"
-/>
-<link
-  th:if="${theme.config.plugin.katex}"
-  rel="stylesheet"
-  href="https://unpkg.com/katex@0.12.0/dist/katex.min.css"
-  media="noexist"
-  onload="this.media='all'"
-/>
-<th:block th:replace="~{inc/decorate}" />
+  <link rel="stylesheet" th:href="@{/assets/css/lib.css}" media="noexist" onload="this.media='all'" />
+  <!--/* 高亮代码样式 */-->
+  <link
+    rel="stylesheet"
+    th:href="@{/assets/dist/css/highlight-{code_pretty}.min.css(code_pretty=${theme.config.post.code_pretty})}"
+    type="text/css"
+    media="noexist"
+    onload="this.media='all'"
+  />
+  <link
+    th:if="${theme.config.plugin.is_aplayer}"
+    rel="stylesheet"
+    th:href="@{/assets/lib/APlayer/APlayer.min.css}"
+    media="all"
+  />
+  <link
+    th:if="${theme.config.plugin.katex}"
+    rel="stylesheet"
+    href="https://unpkg.com/katex@0.12.0/dist/katex.min.css"
+    media="noexist"
+    onload="this.media='all'"
+  />
+  <th:block th:replace="~{inc/decorate}" />
 
   <!--/* TODO：头部加载进度条 */-->
   <!-- <th:block th:if="${theme.config.global.pace}">

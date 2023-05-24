@@ -21,8 +21,8 @@ export class WindowEventProxy {
     let timer: number | null = null;
     return (...args: any[]) => {
       if (!timer) {
+        fn.apply(this, args);
         timer = window.setTimeout(() => {
-          fn.apply(this, args);
           timer = null;
         }, delay);
       }
