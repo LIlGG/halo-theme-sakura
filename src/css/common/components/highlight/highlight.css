@@ -33,7 +33,6 @@
     border-radius: 0 0 5px 5px;
     width: 100%;
     cursor: var(--cursor-text);
-    overflow-y: hidden;
 
     &::-webkit-scrollbar {
       height: 10x;
@@ -160,36 +159,26 @@
     & .hljs-ln {
       margin: 6px 0 0;
 
-      & tr {
-        position: relative;
-        height: 25px;
-        display: flex;
-      }
-    }
-
-    & .hljs-ln-line {
-      line-height: 8px;
-
-      &.hljs-ln-numbers {
-        user-select: none;
-        text-align: center;
-        color: #888f96;
-        font-family: "Source Code Pro", monospace, Helvetica, Tahoma, Arial, STXihei, "STHeiti Light", "Microsoft YaHei",
-          sans-serif;
-        vertical-align: top;
-        position: absolute;
-        left: 0;
-        width: 30px;
-        margin-top: -6px;
-        margin-left: -7px;
-      }
-
-      &.hljs-ln-code {
-        margin-left: -45px;
-        width: 100%;
-
-        &:hover {
-          background-color: rgba(255, 255, 255, 0.1);
+      & .hljs-ln-line {
+        &.hljs-ln-numbers {
+          user-select: none;
+          text-align: center;
+          color: #888f96;
+          font-family: "Source Code Pro", monospace, Helvetica, Tahoma, Arial, STXihei, "STHeiti Light", "Microsoft YaHei",
+            sans-serif;
+          vertical-align: top;
+          position: absolute;
+          left: 0;
+          width: 30px;
+        }
+  
+        &.hljs-ln-code {
+          width: 100vw;
+          padding-left: 25px;
+  
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+          }
         }
       }
     }
@@ -203,7 +192,7 @@
   width: 100%;
   height: 100%;
   min-width: 100%;
-  z-index: 9;
+  z-index: 10;
   margin: 0;
   animation: elastic 1s;
 

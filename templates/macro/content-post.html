@@ -4,6 +4,7 @@
     class="post-article"
     th:data-owner="${post.owner.displayName}"
     th:data-url="${post.status.permalink}"
+    th:data-siteName="${site.title}"
   >
     <link itemprop="mainEntityOfPage" th:href="@{${post.status.permalink}}" />
 

@@ -2,10 +2,15 @@ import { Util } from "./utils/util";
 import "./module/index";
 import "./css/main.css";
 import "@purge-icons/generated";
+import Toast from "./utils/toast";
 
 /* 核心启动，通常不建议也不应当由用户调用，只能由启动代码使用  */
 interface Sakura {
-  getThemeConfig(group: String): ThemeConfig;
+  getThemeConfig<T extends Number | String | Boolean | ThemeConfig[]>(
+    group: String,
+    key: String,
+    type?: new (...args: any) => T
+  ): T | undefined;
   refresh(): void;
   registerDocumentFunction(documentFunction: DocumentFunction): void;
 }
@@ -166,12 +171,17 @@ export class SakuraApp implements Sakura {
     });
   }
 
-  getThemeConfig(group: String): ThemeConfig {
+  getThemeConfig<T extends Number | String | Boolean | ThemeConfig[]>(
+    group: String,
+    key: String,
+    type: new (...args: any) => T
+  ): T | undefined {
     let themeConfig = this.themeconfigs.get(group);
     if (!themeConfig) {
-      return new ThemeConfigImpl();
+      return undefined;
     }
-    return themeConfig;
+
+    return themeConfig.getValue(key, type);
   }
 
   getPageConfig(): Map<String, any> {
@@ -190,18 +200,41 @@ export class SakuraApp implements Sakura {
   public refresh(): void {
     // 初始化刷新前置
     this.prepareRefresh();
+    // 初始化事件广播器
+    this.initEventMulticaster();
+    // 挂载全局方法
+    this.mountGlobalFunction();
     // 注册路由
     this.registerRoute();
     // 获取 Dom 函数工厂
     this.obtainFunctionFactory();
     // 注册预设 Dom 函数
     this.registerDomProcessors();
-    // 初始化事件广播器
-    this.initEventMulticaster();
     // 处理所有 DocumentFunction
     this.finishDocumentFunction();
     // 结束刷新
     this.finishRefresh();
+  }
+
+  protected mountGlobalFunction() {
+    // 注册sakura toast 组件
+    const isToast = sakura.getThemeConfig("toast", "open_toast", Boolean);
+    if (isToast && !Object.getOwnPropertyDescriptor(sakura, "$toast")) {
+      Object.defineProperty(sakura, "$toast", {
+        value: new Toast({
+          width: sakura.getThemeConfig("toast", "toast_width", Number)?.valueOf(),
+          height: sakura.getThemeConfig("toast", "toast_height", Number)?.valueOf(),
+          top: sakura.getThemeConfig("toast", "toast_top", String)?.valueOf(),
+          background: sakura.getThemeConfig("general", "theme_skin", String)?.valueOf(),
+          color: sakura.getThemeConfig("toast", "toast_color", String)?.valueOf(),
+          fontSize: sakura.getThemeConfig("toast", "toast_font_size", Number)?.valueOf(),
+        }),
+        writable: true,
+        configurable: true,
+        enumerable: false,
+      });
+    }
+    // TODO 注册事件，提供 sakura 实例方便其他位置进行原型扩展
   }
 
   /**
@@ -237,7 +270,7 @@ export class SakuraApp implements Sakura {
       );
     }
     initFuncitons.clear();
-    if (this.getThemeConfig("advanced").getValue("log", Boolean)) {
+    if (this.getThemeConfig("advanced", "log", Boolean)) {
       console.log("共获取预设 documentFunction " + functions.size + " 个");
     }
   }
@@ -253,7 +286,7 @@ export class SakuraApp implements Sakura {
     this.startupDate = new Date();
     this.refreshMetadata();
 
-    if (this.getThemeConfig("advanced").getValue("log", Boolean)) {
+    if (this.getThemeConfig("advanced", "log", Boolean)) {
       console.log("Sakura Refreshing");
     }
   }
@@ -288,9 +321,10 @@ export class SakuraApp implements Sakura {
   protected finishRefresh(): void {
     let refreshEvent = this.events.get(this.REFRESH_EVENT_NAME) as Event;
     window.dispatchEvent(refreshEvent);
-    if (this.getThemeConfig("advanced").getValue("log", Boolean)) {
+    if (this.getThemeConfig("advanced", "log", Boolean)) {
       console.log("finish Refreshing");
     }
+    console.log("%c Github %c", "background:#24272A; color:#ffffff", "", "https://github.com/LIlGG/halo-theme-Sakura");
   }
 }
 

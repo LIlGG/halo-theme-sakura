@@ -58,6 +58,7 @@
     "vite-plugin-purge-icons": "^0.9.2"
   },
   "dependencies": {
+    "clipboard": "^2.0.11",
     "d3": "^7.8.4",
     "d3-cloud": "^1.2.5",
     "echarts": "^5.4.2",

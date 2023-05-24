@@ -76,13 +76,6 @@
   ></script>
   <script type="text/javascript" th:src="@{/assets/lib/lazysizes/lazysizes.min.js}" async></script>
   <script type="text/javascript" th:src="@{/assets/js/lib.js}"></script>
-  <script type="text/javascript" th:src="@{/assets/js/highlight/highlight.pack.js}" defer></script>
-  <script
-    th:if="${theme.config.post.code_line}"
-    type="text/javascript"
-    th:src="@{/assets/js/highlight/highlightjs-line-numbers.min.js}"
-    defer
-  ></script>
   <th:block th:if="${theme.config.plugin.is_aplayer}">
     <script th:src="@{/assets/lib/APlayer/APlayer.min.js}" defer></script>
     <script th:src="@{/assets/plugins/aplayer/js/index.js}" defer></script>
