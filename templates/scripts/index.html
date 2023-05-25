@@ -1,10 +1,13 @@
 <!--/* TODO：主题 js */-->
 <th:block th:fragment="scripts">
+  <!--/* i18n 尽可能早的加载 */-->
+  <script type="module" defer th:src="@{/assets/dist/libs/i18n.min.js}"></script>
+  
   <!--/* 基础 JS */-->
-  <script type="module" th:src="@{/assets/dist/main.min.js?v={version}(version=${theme.spec.version})}"></script>
+  <script type="module" defer th:src="@{/assets/dist/main.min.js}"></script>
 
   <!--/* PJAX */-->
-  <script type="module" th:if="${theme.config.others.poi_pjax}" th:src="@{/assets/dist/libs/pjax.min.js}"></script>
+  <script type="module" defer th:if="${theme.config.others.poi_pjax}" th:src="@{/assets/dist/libs/pjax.min.js}"></script>
 
   <!--/* 可选功能 JS，例如用户可以开关的其余功能（lazyload 等） */-->
 
