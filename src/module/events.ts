@@ -5,17 +5,77 @@ import { WindowEventProxy } from "../utils/eventProxy";
  * 全局事件模块
  */
 export class Events {
+  /**
+   * 注册滚动事件
+   *
+   */
+  @documentFunction(false)
+  public registerScrollEvent() {
+    // TODO 导航栏高度，可统一处理
+    const offset = 75;
+    const backToTopElement = document.querySelector(".cd-top") as HTMLElement;
+    const mobileBackToTopElement = document.querySelector(".m-cd-top") as HTMLElement;
+    const changeSkinElement = document.querySelector(".change-skin-gear") as HTMLDivElement;
+    const mobileChangeSkinElement = document.querySelector(".mobile-change-skin") as HTMLDivElement;
+    window.addEventListener("scroll", () => {
+      if (document.documentElement.scrollTop > offset) {
+        backToTopElement?.classList.add("cd-is-visible");
+        changeSkinElement.style.bottom = "0";
+        if (backToTopElement.offsetHeight > window.innerHeight) {
+          backToTopElement.style.top = `${window.innerHeight - backToTopElement.offsetHeight - offset}px`;
+        } else {
+          backToTopElement.style.top = "0";
+        }
+      } else {
+        backToTopElement.style.top = "-900px";
+        backToTopElement?.classList.remove("cd-is-visible");
+        changeSkinElement.style.bottom = "-100px";
+      }
+
+      if (document.documentElement.scrollTop > 0) {
+        mobileBackToTopElement.classList.add("cd-is-visible");
+        mobileChangeSkinElement.classList.add("cd-is-visible");
+      } else {
+        mobileBackToTopElement.classList.remove("cd-is-visible");
+        mobileChangeSkinElement.classList.remove("cd-is-visible");
+      }
+    });
+  }
+
+  /**
+   * 注册回到顶部点击事件
+   */
+
+  @documentFunction(false)
+  public registerBackToTopEvent() {
+    const backToTopElements = document.querySelectorAll(".cd-top, .m-cd-top");
+    backToTopElements.forEach((backToTopElement) => {
+      backToTopElement.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (window.pageYOffset > 0) {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+  }
 
   /**
    * 注册监听复制事件
    */
   @documentFunction(false)
   public registerCopyEvent() {
-    WindowEventProxy.addEventListener("copy", () => {
-      if (sakura.$toast) {
-        sakura.$toast.create("复制成功！<br>Copied to clipboard successfully!", 2000);
-      }
-    }, 2000);
+    WindowEventProxy.addEventListener(
+      "copy",
+      () => {
+        if (sakura.$toast) {
+          sakura.$toast.create("复制成功！<br>Copied to clipboard successfully!", 2000);
+        }
+      },
+      2000
+    );
   }
 
   /**
@@ -41,24 +101,28 @@ export class Events {
    */
   @documentFunction(false)
   public registerNavigationChangeEvent() {
-    window.addEventListener("hashchange", (event: Event) => {
-      const hashchangeEvent = event as HashChangeEvent;
-      if (hashchangeEvent.oldURL.includes("#gallery-")) {
-        return;
-      }
-      const id = location.hash.substring(1);
-      if (!id.match(/^[A-z0-9_-]+$/)) {
-        return;
-      }
-      const targetElement = document.getElementById(id);
-      if (!targetElement) {
-        return;
-      }
-      if (!targetElement.tagName.match(/^(?:a|select|input|button|textarea)$/i)) {
-        targetElement.tabIndex = -1;
-      }
-      targetElement.focus();
-    }, false);
+    window.addEventListener(
+      "hashchange",
+      (event: Event) => {
+        const hashchangeEvent = event as HashChangeEvent;
+        if (hashchangeEvent.oldURL.includes("#gallery-")) {
+          return;
+        }
+        const id = location.hash.substring(1);
+        if (!id.match(/^[A-z0-9_-]+$/)) {
+          return;
+        }
+        const targetElement = document.getElementById(id);
+        if (!targetElement) {
+          return;
+        }
+        if (!targetElement.tagName.match(/^(?:a|select|input|button|textarea)$/i)) {
+          targetElement.tabIndex = -1;
+        }
+        targetElement.focus();
+      },
+      false
+    );
   }
 
   /**
@@ -184,7 +248,7 @@ export class Events {
     themeChangeButtonElements.forEach((element) => {
       element.addEventListener("click", () => {
         document.querySelector(".skin-menu")?.classList.toggle("show");
-      })
+      });
     });
   }
 

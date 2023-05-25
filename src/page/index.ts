@@ -3,9 +3,19 @@ import { documentFunction, sakura } from "../main";
 export default class Index {
   videoPlayer: any = undefined;
 
+  /**
+   * 注册下拉箭头功能
+   */
   @documentFunction(false)
-  public registerIndex() {
-    console.log("123");
+  public registerArrowDown() {
+    const arrowDownElement = document.querySelector(".headertop-down");
+    arrowDownElement?.addEventListener("click", () => {
+      const contentOffset = document.querySelector(".site-content")?.getBoundingClientRect().top || 0;
+      window.scrollTo({
+        top: contentOffset + + window.pageYOffset,
+        behavior: "smooth",
+      })
+    })
   }
 
   /**

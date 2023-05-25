@@ -464,7 +464,8 @@ template {
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+          text-size-adjust: 100%;
   overflow-x: hidden;
   word-break: break-all;
   box-sizing: border-box;
@@ -2275,10 +2276,10 @@ table {
   color: #404040;
   cursor: pointer;
   padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
+  border-radius: 8px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24) !important;
   overflow: hidden;
-  transition: box-shadow 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .m-cd-top.cd-is-visible {
@@ -2458,21 +2459,15 @@ table {
   z-index: 9;
   border: 0;
   outline: 0;
+  opacity: 0;
   background-color: #fff;
   color: #404040;
   cursor: pointer;
   padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
-  transition: all 0.8s ease;
+  border-radius: 8px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24) !important;
+  transition: all 0.3s ease;
 }
-
-.mobile-change-skin:hover {
-    color: org;
-    background-color: #fff;
-    opacity: 0.8;
-    transition: all 0.8s ease;
-  }
 
 .mobile-change-skin.cd-is-visible {
     opacity: 1;

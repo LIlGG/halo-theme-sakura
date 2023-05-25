@@ -59,10 +59,10 @@
   color: #404040;
   cursor: pointer;
   padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
+  border-radius: 8px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24) !important;
   overflow: hidden;
-  transition: box-shadow 0.5s ease;
+  transition: all 0.3s ease;
 
   &.cd-is-visible {
     opacity: 1;
