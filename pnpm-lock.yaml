@@ -16,6 +16,21 @@ dependencies:
   highlight.js:
     specifier: ^11.8.0
     version: 11.8.0
+  i18next:
+    specifier: ^22.5.0
+    version: 22.5.0
+  i18next-browser-languagedetector:
+    specifier: ^7.0.1
+    version: 7.0.1
+  i18next-chained-backend:
+    specifier: ^4.2.0
+    version: 4.2.0
+  i18next-localstorage-backend:
+    specifier: ^4.1.1
+    version: 4.1.1
+  i18next-resources-to-backend:
+    specifier: ^1.1.4
+    version: 1.1.4
   isotope-layout:
     specifier: ^3.0.6
     version: 3.0.6
@@ -1140,6 +1155,36 @@ packages:
   /highlight.js@11.8.0:
     resolution: {integrity: sha512-MedQhoqVdr0U6SSnWPzfiadUcDHfN/Wzq25AkXiQv9oiOO/sG0S7XkvpFIqWBl9Yq1UYyYOOVORs5UW2XlPyzg==}
     engines: {node: '>=12.0.0'}
+    dev: false
+
+  /i18next-browser-languagedetector@7.0.1:
+    resolution: {integrity: sha512-Pa5kFwaczXJAeHE56CHG2aWzFBMJNUNghf0Pm4SwSrEMps/PTKqW90EYWlIvhuYStf3Sn1K0vw+gH3+TLdkH1g==}
+    dependencies:
+      '@babel/runtime': 7.21.5
+    dev: false
+
+  /i18next-chained-backend@4.2.0:
+    resolution: {integrity: sha512-p3qhv6GMouhpcFPnOBqSDsQyVrwZu+PKr+kXaEAGE+w9O39t4pbpBsFYjxh4Nvhn8MUEXstaDx4ZuQvsNlI5fg==}
+    dependencies:
+      '@babel/runtime': 7.21.5
+    dev: false
+
+  /i18next-localstorage-backend@4.1.1:
+    resolution: {integrity: sha512-gz3OP6m0jygF2SAzarDSFpaziYzF8mS8DP/pEUze+kDquzHTz2sy/eshcSkmFEYyGXMC037xUtlT97bNGlpZPA==}
+    dependencies:
+      '@babel/runtime': 7.21.5
+    dev: false
+
+  /i18next-resources-to-backend@1.1.4:
+    resolution: {integrity: sha512-hMyr9AOmIea17AOaVe1srNxK/l3mbk81P7Uf3fdcjlw3ehZy3UNTd0OP3EEi6yu4J02kf9jzhCcjokz6AFlEOg==}
+    dependencies:
+      '@babel/runtime': 7.21.5
+    dev: false
+
+  /i18next@22.5.0:
+    resolution: {integrity: sha512-sqWuJFj+wJAKQP2qBQ+b7STzxZNUmnSxrehBCCj9vDOW9RDYPfqCaK1Hbh2frNYQuPziz6O2CGoJPwtzY3vAYA==}
+    dependencies:
+      '@babel/runtime': 7.21.5
     dev: false
 
   /iconv-lite@0.6.3:
