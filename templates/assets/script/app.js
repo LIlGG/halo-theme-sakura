@@ -20,31 +20,6 @@ var LIlGGAttachContext = {
     // i18n
     I18N.init();
   },
-  // 移动端回到顶部
-  MGT: function () {
-    var offset = 20,
-      scroll_top_duration = 700,
-      $m_back_to_top = $(".m-cd-top"),
-      $m_changskin = $("#mobile-change-skin");
-    $(window).scroll(function () {
-      if ($(this).scrollTop() > offset) {
-        $m_back_to_top.addClass("cd-is-visible");
-        $m_changskin.addClass("cd-is-visible");
-      } else {
-        $m_back_to_top.removeClass("cd-is-visible");
-        $m_changskin.removeClass("cd-is-visible");
-      }
-    });
-    $m_back_to_top.on("click", function (event) {
-      event.preventDefault();
-      $("body,html").animate(
-        {
-          scrollTop: 0,
-        },
-        scroll_top_duration
-      );
-    });
-  },
 
   // 日志
   SS: function () {
@@ -129,20 +104,6 @@ var pjaxFun = function () {
 
 var home = location.href,
   Siren = {
-    // 移动端菜单
-    // MN: function () {
-    //   $(".nav-toggle").on("click", function () {
-    //     $("body").addClass("navOpen");
-    //     $(".container, .site-nav-toggle, .site-sidebar").addClass("open");
-    //   });
-
-    //   $(".site-sidebar").on("click", function () {
-    //     $("body").removeClass("navOpen");
-    //     $(".container, .site-nav-toggle, .site-sidebar").removeClass("open");
-    //   });
-      
-    // },
-
     // 移动端菜单自动隐藏
     MNH: function () {
       if ($("body").hasClass("navOpen")) {
@@ -188,7 +149,6 @@ var home = location.href,
 
     // Ajax加载文章/说说
     XLS: function () {
-      var $body = window.opera ? (document.compatMode == "CSS1Compat" ? $("html") : $("body")) : $("html,body");
       /**
        * 说说
        */
@@ -219,72 +179,22 @@ var home = location.href,
       //   return false;
       // });
     },
-
-    // 返回顶部
-    GT: function () {
-      var offset = 100,
-        offset_opacity = 1200,
-        scroll_top_duration = 700,
-        $back_to_top = $(".cd-top");
-      $(window).scroll(function () {
-        if ($(this).scrollTop() > offset) {
-          $back_to_top.addClass("cd-is-visible");
-          $(".change-skin-gear").css("bottom", "0"); // 显示主题
-          if ($(window).height() > 950) {
-            $(".cd-top.cd-is-visible").css("top", "0");
-          } else {
-            $(".cd-top.cd-is-visible").css("top", $(window).height() - 950 + "px");
-          }
-        } else {
-          $(".change-skin-gear").css("bottom", "-999px"); // 隐藏主题
-          $(".cd-top.cd-is-visible").css("top", "-900px");
-          $back_to_top.removeClass("cd-is-visible cd-fade-out");
-        }
-        if ($(this).scrollTop() > offset_opacity) {
-          $back_to_top.addClass("cd-fade-out");
-        }
-      });
-      //smooth scroll to top
-      $back_to_top.on("click", function (event) {
-        event.preventDefault();
-        $("body,html").animate(
-          {
-            scrollTop: 0,
-          },
-          scroll_top_duration
-        );
-      });
-    },
   };
 
 /**
  * 独立功能，可拔插
  */
 $(function () {
-  Siren.GT(); // 返回顶部
   Siren.XLS(); // Ajax文章列表
   Siren.CE(); // 点击事件
-  // Siren.MN(); // 移动端菜单
 
   // 新增功能
-  LIlGGAttachContext.MGT(); // 移动端回到顶部
   Poi.photosStyle == "packery" && supplement();
   LIlGGAttachContext.SS(); // 日志功能
   // PJAX
   Poi.pjax && pjaxFun();
   I18N.init();
 });
-
-/* 首页下拉箭头 */
-function headertop_down() {
-  var coverOffset = $("#content").offset().top;
-  $("html,body").animate(
-    {
-      scrollTop: coverOffset,
-    },
-    600
-  );
-}
 
 function imgError() {
   return (this.src = "/assets/images/default/temp.jpg");
