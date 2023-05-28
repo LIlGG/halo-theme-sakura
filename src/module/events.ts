@@ -71,7 +71,7 @@ export class Events {
       "copy",
       () => {
         if (sakura.$toast) {
-          sakura.$toast.create("复制成功！<br>Copied to clipboard successfully!", 2000);
+          sakura.$toast.create(sakura.translate("common.events.copy", "复制成功！<br>Copied to clipboard successfully!"), 2000);
         }
       },
       2000
@@ -224,7 +224,7 @@ export class Events {
           if (nextPaginationElement) {
             targetElement.href = nextPaginationElement.href;
           } else {
-            paginationElement.innerHTML = "<span>没有更多文章了</span>";
+            paginationElement.innerHTML = `<span>${sakura.translate("page.theend", "没有更多文章了")}</span>`;
           }
         })
         .catch((error) => {
@@ -232,9 +232,10 @@ export class Events {
         })
         .finally(() => {
           targetElement.classList.remove("loading");
-          targetElement.textContent = "下一页";
-          //TODO 还需处理加载后文章的国际化问题
-          I18N.init();
+          targetElement.textContent = sakura.translate("page.next", "下一页");
+          if (sakura.$localize) {
+            sakura.$localize(".post");
+          }
         });
     });
   }

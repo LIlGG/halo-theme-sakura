@@ -1,4 +1,5 @@
 import { documentFunction, sakura } from "../main";
+import { I18nFormat } from "../utils/i18nFormat";
 import { Util } from "../utils/util";
 
 export default class Post {
@@ -29,13 +30,23 @@ export default class Post {
       if (!postArticleElement) {
         return;
       }
+      const owner = postArticleElement.getAttribute("data-owner");
+      const url = postArticleElement.getAttribute("data-url");
+      const siteName = postArticleElement.getAttribute("data-siteName");
       let copyrightTemplateHtml = `
-      # 商业转载请联系作者获得授权，非商业转载请注明出处。<br>
-      # For commercial use, please contact the author for authorization. For non-commercial use, please indicate the source.<br>
-      # 协议(License): 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)<br>
-      # 作者(Author): ${postArticleElement.getAttribute("data-owner")} <br>
-      # 链接(URL): ${postArticleElement.getAttribute("data-url")}  <br>
-      # 来源(Source): ${postArticleElement.getAttribute("data-siteName")} <br>
+      ${sakura.translate(
+        "post.copyright_template_html.info",
+        `# 商业转载请联系作者获得授权，非商业转载请注明出处。<br>`
+      )}
+      ${sakura.translate(
+        "post.copyright_template_html.license",
+        `# 协议(License): 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)<br>`
+      )}
+      ${sakura.translate("post.copyright_template_html.author", `# 作者(Author): ${owner} <br>`, { postAuthor: owner })}
+      ${sakura.translate("post.copyright_template_html.url", `# 链接(URL): ${url} <br>`, { postUrl: url })}
+      ${sakura.translate("post.copyright_template_html.url", `# 来源(Source): ${siteName} <br>`, {
+        siteName: siteName,
+      })}
       <br>
       `;
       const copyText = selection.toString();
@@ -84,32 +95,39 @@ export default class Post {
     const postWordCount = Util.getWordCount(contentElement);
     if (postWordCount > 0) {
       const seconds = Util.caclEstimateReadTime(postWordCount);
-      let remind = "";
       let type = "NORMAL" as "NORMAL" | "MEDIUM" | "DIFFICULTY";
       if (seconds <= 60 * 10) {
-        remind = (
-          sakura.getThemeConfig("post", "post_word_count_toast_normal", String) || "文章篇幅适中，可以放心阅读。"
-        ).toString();
         type = "NORMAL";
       } else if (seconds > 60 * 10 && seconds <= 60 * 30) {
-        remind = (
-          sakura.getThemeConfig("post", "post_word_count_toast_medium", String) || "文章比较长，建议分段阅读。"
-        ).toString();
         type = "MEDIUM";
       } else {
-        remind = (
-          sakura.getThemeConfig("post", "post_word_count_toast_difficulty", String) ||
-          "文章内容已经很陈旧了，也许不再适用！"
-        ).toString();
         type = "DIFFICULTY";
       }
-      const timeString = Util.minuteToTimeString(seconds);
-      if (window.innerWidth <= 860) {
-        remind = "";
+      let remind = "";
+      const timeString = I18nFormat.secondToTimeString(seconds);
+      if (window.innerWidth > 860) {
+        const defaultRemind = {
+          normal: "文章篇幅适中，可以放心阅读。",
+          medium: "文章比较长，建议分段阅读。",
+          difficulty: "文章内容已经很陈旧了，也许不再适用！",
+        } as { [key: string]: string };
+        remind =
+          sakura.getThemeConfig("post", `post_word_count_toast_${type.toLowerCase()}`, String)?.valueOf() ||
+          sakura.translate("post.word_count_toast.remind", defaultRemind[type.toLowerCase()], {
+            context: type.toLowerCase(),
+          });
       }
       this.createPostToast(
         contentElement,
-        `文章共 <b>${postWordCount}</b> 字，阅读完预计需要 <b>${timeString}</b>。${remind}`,
+        sakura.translate(
+          "post.word_count_toast.content",
+          `文章共 <b>${postWordCount}</b> 字，阅读完预计需要 <b>${timeString}</b>。${remind}`,
+          {
+            postWordCount: postWordCount,
+            timeString: timeString,
+            remind: remind,
+          }
+        ),
         type,
         "word_count"
       );
@@ -120,7 +138,7 @@ export default class Post {
    * 注册文章最近更新时间提醒功能
    */
   @documentFunction()
-  public registerEditTimeToast(pageConfig: Map<String, any>) {
+  public registerEditTimeToast() {
     const contentElement = document.querySelector(".entry-content") as HTMLElement;
     if (!contentElement) {
       return;
@@ -130,39 +148,41 @@ export default class Post {
       return;
     }
 
-    if (!pageConfig.has("postLastModifyTime")) {
+    if (!sakura.getPageConfig("postLastModifyTime")) {
       return;
     }
-    const postLastModifyTime = pageConfig.get("postLastModifyTime");
+    
+    const postLastModifyTime = sakura.getPageConfig("postLastModifyTime");
     const editTime = new Date(postLastModifyTime);
     const time = new Date().getTime() - editTime.getTime();
-    let remind = "";
     let type = "NORMAL" as "NORMAL" | "MEDIUM" | "DIFFICULTY";
     if (time <= 1000 * 60 * 60 * 24 * 30) {
-      remind = (
-        sakura.getThemeConfig("post", "post_edit_time_toast_normal", String) || "近期有所更新，请放心阅读！"
-      ).toString();
       type = "NORMAL";
     } else if (time > 1000 * 60 * 60 * 24 * 30 && time <= 1000 * 60 * 60 * 24 * 90) {
-      remind = (
-        sakura.getThemeConfig("post", "post_edit_time_toast_medium", String) ||
-        "文章内容已经有一段时间没有更新了，也许不再适用！"
-      ).toString();
       type = "MEDIUM";
     } else {
-      remind = (
-        sakura.getThemeConfig("post", "post_edit_time_toast_difficulty", String) ||
-        "文章内容已经很陈旧了，也许不再适用！"
-      ).toString();
       type = "DIFFICULTY";
     }
-    if (window.innerWidth <= 860) {
-      remind = "";
+    let remind = "";
+    if (window.innerWidth > 860) {
+      const defaultRemind = {
+        normal: "近期有所更新，请放心阅读！",
+        medium: "文章内容已经有一段时间没有更新了，也许不再适用！",
+        difficulty: "文章内容已经很陈旧了，也许不再适用！",
+      } as { [key: string]: string };
+      remind =
+        sakura.getThemeConfig("post", `post_edit_time_toast_${type.toLowerCase()}`, String)?.valueOf() ||
+        sakura.translate("post.edit_time_toast.remind", defaultRemind[type.toLowerCase()], {
+          context: type.toLowerCase(),
+        });
     }
-    const sinceLastTime = Util.timeAgo(time);
+    const sinceLastTime = I18nFormat.RelativeTimeFormat(editTime.getTime());
     this.createPostToast(
       contentElement,
-      `文章内容上次编辑时间于 <b>${sinceLastTime}</b>。${remind}`,
+      sakura.translate("post.edit_time_toast.content", `文章内容上次编辑时间于 <b>${sinceLastTime}</b>。${remind}`, {
+        sinceLastTime: sinceLastTime,
+        remind: remind,
+      }),
       type,
       "last_time"
     );

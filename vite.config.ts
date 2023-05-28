@@ -13,7 +13,7 @@ export default defineConfig({
     })
   ],
   build: {
-    minify: false,
+    minify: true,
     rollupOptions: {
       input: Object.fromEntries(
         globSync(["src/main.ts", "src/libs/**/*.*", "src/page/**/*.*"]).map((file) => [

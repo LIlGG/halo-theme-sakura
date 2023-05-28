@@ -17,9 +17,8 @@
       th:with="createTime = ${#dates.format(post.spec.publishTime,theme.config.post.post_time_display_type ?: 'yyyy-MM-dd')}"
     >
       <time
-        class="i18n"
-        data-iname="post.time"
-        th:data-ivalue="${createTime}"
+        data-i18n="post.time"
+        th:i18n-options="|{'time': '${createTime}', 'params': { 'separator': '-', 'options': { 'year': 'numeric', 'month': '2-digit', 'day': '2-digit' } } }|"
         th:data-datetime="${createTime}"
         itemprop="dateCreated datePublished"
       >
@@ -31,16 +30,15 @@
       th:with="editTime = ${#dates.format(post.status.lastModifyTime,theme.config.post.post_time_display_type ?: 'yyyy-MM-dd')}"
     >
       <time
-        class="i18n"
-        data-iname="post.edit_time"
-        th:data-ivalue="${editTime}"
+        data-i18n="post.edit_time"
+        th:i18n-options="|{'editTime': '${editTime}', 'params': { 'separator': '-', 'options': { 'year': 'numeric', 'month': '2-digit', 'day': '2-digit' } } }|"
         th:data-datetime="${editTime}"
         itemprop="dateModified"
       ></time>
     </div>
 
     <div class="post-meta-item">
-      <span class="i18n" data-iname="post.visits" th:attr="data-ivalue=${post.stats.visit}"></span>
+      <span data-i18n="post.visits" th:i18n-options="|{ visit: '${post.stats.visit}'}|"></span>
     </div>
   </div>
 </th:block>

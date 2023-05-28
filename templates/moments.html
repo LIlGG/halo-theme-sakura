@@ -49,7 +49,17 @@
                       <span class="iconify moment-time-icon" data-icon="mdi:weather-night"></span>
                     </th:block>
                   </th:block>
-                  <span th:text="${#dates.format(moment.spec.releaseTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                  <time
+                    data-i18n="page.moments.time"
+                    th:i18n-options="|{
+                    'time': '${moment.spec.releaseTime}',
+                    'params': { 'separator': '-', 'options': { 'year': 'numeric', 'month': '2-digit', 'day': '2-digit', 'hour': 'numeric', 'minute': 'numeric', 'second': 'numeric' } } 
+                    }|"
+                    th:data-datetime="${createTime}"
+                    itemprop="dateCreated datePublished"
+                  >
+                  </time>
+                  <!-- <span th:text="${#dates.format(moment.spec.releaseTime, 'yyyy-MM-dd HH:mm:ss')}"></span> -->
                 </div>
                 <!-- 评论内容 -->
                 <div class="moment-tools">
@@ -85,11 +95,11 @@
       </ul>
       <th:block th:if="${moments.totalPages gt 1}">
         <div th:if="${moments.hasNext}" id="moment-list-pagination" class="pagination">
-          <a th:href="@{${moments.nextUrl}}" class="at_button i18n" data-iname="page.journal.loadmore"></a>
+          <a th:href="@{${moments.nextUrl}}" class="at_button" data-i18n="page.moments.loadmore"></a>
         </div>
       </th:block>
       <th:block th:unless="${moments.total gt 0}">
-        <span class="i18n" data-iname="page.journal.empty"></span>
+        <span data-i18n="page.moments.empty"></span>
       </th:block>
     </div>
   </th:block>

@@ -15,7 +15,8 @@
   </th:block>
 
   <th:block th:fragment="headerTitle">
-    <h1 th:text="${category.spec.displayName}"></h1>
+    <!--/* 具有背景图的情况下，分类和标签的标题样式问题 */-->
+    <h1 class="cat-title" data-i18n="page.categories.item_title" th:i18n-options="|{ title: '${category.spec.displayName}' }|"></h1>
     <span class="cat-des" th:text="${category.spec.description}"></span>
   </th:block>
 
