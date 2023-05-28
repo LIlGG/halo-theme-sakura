@@ -2776,7 +2776,7 @@ table {
   border: 0;
   outline: 0;
   background-color: #fff;
-  background-color: var(--widget-background-color);
+  background-color: var(--background-color);
   color: #404040;
   cursor: pointer;
   padding: 15px;
@@ -2800,8 +2800,8 @@ table {
 @media (prefers-color-scheme: dark) {
 
   .m-cd-top {
-  background-color: rgba(0,0,0,0.7);
-  background-color: var(--widget-background-color);
+  background-color: #31363b;
+  background-color: var(--background-color);
   }
 }
 

@@ -6,6 +6,13 @@
   <!--/* PJAX */-->
   <script type="module" defer th:if="${theme.config.others.poi_pjax}" th:src="@{/assets/dist/libs/pjax.min.js}"></script>
 
+  <script type="text/javascript" th:inline="javascript">
+    function imgError(dom) {
+      dom.src = "[(${#theme.assets('/images/default/temp.jpg')})]"
+      dom.onerror = null;
+    }
+  </script>
+
   <!--/* 可选功能 JS，例如用户可以开关的其余功能（lazyload 等） */-->
 
   <!--/* 待优化 js */-->

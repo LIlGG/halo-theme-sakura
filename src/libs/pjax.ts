@@ -36,7 +36,7 @@ new Pjax({
   cacheBust: false,
 });
 
-window.addEventListener('pjax:success', () => {
+window.addEventListener('pjax:success', (event) => {
   // 第二种脚本处理。对添加了 id=pjax 或者 data-pjax 的 script，重新添加到文档树
   let pjaxDoms = document.querySelectorAll('script[data-pjax], #pjax script') as NodeListOf<HTMLScriptElement>;
   pjaxDoms.forEach(element => {
