@@ -101,44 +101,4 @@ export class Util {
     // 将分钟转化为对应的时间
     return Math.ceil((wordCount / speed) * 60);
   }
-
-  /**
-   * 将时间转化为距目前多长时间的格式
-   *
-   * @param time 时间字符戳
-   * @returns {string|*} 距离时间格式的字符串形式
-   */
-  public static timeAgo(time: number) {
-    const currentTime = new Date().getTime();
-    const betweenTime = currentTime - time;
-    const days = Math.floor(betweenTime / (24 * 3600 * 1000));
-    if (days === 0) {
-      const leave1 = betweenTime % (24 * 3600 * 1000);
-      const hours = Math.floor(leave1 / (3600 * 1000));
-      if (hours === 0) {
-        const leave2 = leave1 % (3600 * 1000);
-        const minutes = Math.floor(leave2 / (60 * 1000));
-        if (minutes === 0) {
-          const leave3 = leave2 % (60 * 1000);
-          const seconds = Math.round(leave3 / 1000);
-          return seconds + " 秒前";
-        }
-        return minutes + " 分钟前";
-      }
-      return hours + " 小时前";
-    }
-    if (days < 0) {
-      return "刚刚";
-    }
-    if (days < 30) {
-      return days + " 天前";
-    }
-    const years = Math.floor(days / (30 * 12));
-    if (years === 0) {
-      const months = Math.floor(days / 30);
-      return months + " 月前";
-    }
-
-    return years + " 年前";
-  }
 }
