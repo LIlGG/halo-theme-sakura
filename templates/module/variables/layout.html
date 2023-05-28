@@ -25,6 +25,21 @@
       --first-screen-height: 50vh;
       --first-screen-after: block;
     [/]
+
+    [# th:switch="${theme.config.mainScreen.focus_img_filter}"]
+      [# th:case="filter-nothing"]
+      --first-screen-filter-images: none;
+      [/]
+      [# th:case="filter-undertint"]
+      --first-screen-filter-images: rgba(255, 255, 255, .3);
+      [/]
+      [# th:case="filter-dim"]
+      --first-screen-filter-images: rgba(0, 0, 0, .3);
+      [/]
+      [# th:case="filter-grid"]
+      --first-screen-filter-images: url("[(${#theme.assets('/images/themes/grid.png')})]");
+      [/]
+    [/]
   }
 
   /**

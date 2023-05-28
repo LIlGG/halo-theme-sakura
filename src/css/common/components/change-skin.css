@@ -55,7 +55,7 @@
   border: 0;
   outline: 0;
   opacity: 0;
-  background-color: #fff;
+  background-color: var(--background-color);
   color: #404040;
   cursor: pointer;
   padding: 15px;
@@ -83,7 +83,7 @@
   height: auto;
   width: 220px;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: var(--widget-background-color);
   box-shadow: 0 1px 40px -8px rgba(0, 0, 0, 0.5);
   z-index: 9;
   font-family: "Ubuntu", sans-serif;
@@ -103,6 +103,7 @@
     border-width: 10px;
     border-style: solid;
     border-color: #fff transparent transparent;
+    border-top-color: var(--widget-background-color);
   }
 
   & .row-container {
@@ -129,7 +130,7 @@
       margin: 6px;
       line-height: 36px;
       width: 36px;
-      background-color: #f5f5f5;
+      background-color: var( --theme-item-background-color);
       border-radius: 50%;
       cursor: pointer;
 

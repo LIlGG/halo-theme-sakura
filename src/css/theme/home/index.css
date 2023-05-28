@@ -28,7 +28,7 @@
       & .header-inner {
         position: fixed;
         top: 0;
-        background: rgba(255, 255, 255, 0.95);
+        background: var(--header-background);
 
         & .lower-cantiner {
           display: block;

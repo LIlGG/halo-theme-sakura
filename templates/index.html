@@ -6,7 +6,7 @@
   <!--/* TODO：头部会有抖动 */-->
   <th:block th:fragment="header">
     <th:block th:if="${theme.config.mainScreen.head_focus}">
-      <div class="headertop" th:classappend="${theme.config.mainScreen.focus_img_filter}">
+      <div class="headertop">
         <div th:replace="module/home/index"></div>
       </div>
     </th:block>

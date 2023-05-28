@@ -41,7 +41,7 @@
             display: none;
             opacity: 1;
             position: absolute;
-            background: #fff;
+            background: var(--background-color);
             padding: 10px;
             top: 46px;
             right: -50%;
@@ -60,7 +60,8 @@
               margin-left: -10px;
               border-width: 10px;
               border-style: solid;
-              border-color: transparent transparent #fff;
+              border-color: transparent transparent;
+              border-bottom-color: var(--background-color);
             }
 
             & li {
@@ -79,7 +80,7 @@
           & a {
             padding: 10px 0;
             display: inline-block;
-            color: #666;
+            color: var(--color);
             width: auto;
             white-space: nowrap;
 

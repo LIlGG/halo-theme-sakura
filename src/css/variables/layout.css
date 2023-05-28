@@ -27,9 +27,66 @@
   /* 第一屏 */
   --first-screen-height: 100vh;
   --first-screen-after: none;
+  --first-screen-filter-images: none;
+  --first-screen-background-blend-overlay: none;
 
   /* header */
   --yya-header-top: 0;
+  --header-background: rgba(255, 255, 255, 0.95);
+
+  --body-color: #404040;
+  --color: #666;
+  --background-color: #fff;
+
+  /* 公告通知 */
+  --notice-background-color: #fbfbfb50;
+
+  /* 首页分割线 */
+  --home-divider-border: 1px dashed #ececec;
+
+  /* 文章列表 */
+  --post-list-thumb-box-shadow: 0 1px 20px -6px rgba(0, 0, 0, 0.5);
+  --post-list-thumb-title-color: #504e4e;
+  --post-list-thumb-abstract-color: rgba(0, 0, 0, 0.66);
+  --post-list-thumb-more-color: #666;
+
+  /* 小工具控件 */
+  --widget-background-color: #fff;
+  --theme-item-background-color: #f5f5f5;
+}
+
+.dark {
+  --body-color: #eee;
+  --header-background: rgba(49, 54, 59, 0.85);
+  --color: #eee;
+  --background-color: #31363b;
+  --first-screen-background-blend-overlay: var(--background-color);
+  --notice-background-color: #232629;
+  --home-divider-border: 6px dotted #535a63;
+  --post-list-thumb-box-shadow: 0 1px 35px -8px rgba(0, 0, 0, 0.8);
+  --post-list-thumb-title-color: #bebebe;
+  --post-list-thumb-abstract-color: #bebebe;
+  --post-list-thumb-more-color: #888;
+  --widget-background-color: rgba(0,0,0,0.7);
+  --theme-item-background-color: #31363b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-color: #eee;
+    --header-background: rgba(49, 54, 59, 0.85);
+    --color: #eee;
+    --background-color: #31363b;
+    --first-screen-background-blend-overlay: var(--background-color);
+    --notice-background-color: #232629;
+    --home-divider-border: 6px dotted #535a63;
+    --post-list-thumb-box-shadow: 0 1px 35px -8px rgba(0, 0, 0, 0.8);
+    --post-list-thumb-title-color: #bebebe;
+    --post-list-thumb-abstract-color: #bebebe;
+    --post-list-thumb-more-color: #888;
+    --widget-background-color: rgba(0,0,0,0.7);
+    --theme-item-background-color: #31363b;
+  }
 }
 
 .video-container {

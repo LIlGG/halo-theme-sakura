@@ -3,6 +3,7 @@
   height: var(--first-screen-height);
   margin: 0;
   padding: 0;
+  position: relative;
 
   @mixin screens-md {
     height: 300px;
@@ -14,6 +15,17 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  & .blend-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.3;
+    mix-blend-mode: hard-light;
+    background: var(--first-screen-background-blend-overlay);
   }
 }
 

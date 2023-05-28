@@ -103,7 +103,7 @@
 
       & .iconify {
         font-size: 30px;
-        color: #666;
+        color: var(--color);
 
         &:hover {
           color: var(--theme-color);
