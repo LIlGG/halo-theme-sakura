@@ -12,13 +12,12 @@
   }
 
   & .fes-title {
-    color: #666;
+    color: var(--color);
     font-size: 16px;
     font-weight: 400;
     padding-bottom: 5px;
     margin-bottom: 30px;
-    border-bottom: 1px dashed #ececec;
-    transition: color 1s;
+    border-bottom: var(--home-divider-border);
     transition: border 1s;
   }
 

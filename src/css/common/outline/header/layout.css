@@ -58,7 +58,7 @@
   & .header-inner {
     position: fixed;
     top: var(--yya-header-top);
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--header-background);
     box-shadow: 0 1px 40px -8px #00000080;
   }
 

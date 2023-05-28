@@ -28,9 +28,5 @@
       }
     }
   }
-
-  @mixin dark {
-    background: #31363b;
-  }
 }
 

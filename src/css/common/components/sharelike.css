@@ -86,10 +86,10 @@
       left: -95px;
       width: 200px;
       height: 192px;
-      color: #666;
+      color: var(--color);
       font-size: 12px;
       text-align: center;
-      background-color: #fff;
+      background-color: var(--background-color);
       box-shadow: 0 2px 10px #aaa;
       transition: all 200ms;
 

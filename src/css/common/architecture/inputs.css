@@ -30,7 +30,8 @@ input[type="submit"] {
     box-shadow: none;
   }
 
-  &:focus, &:active {
+  &:focus,
+  &:active {
     border-color: #aaa #bbb #bbb;
     box-shadow: none;
   }
@@ -76,7 +77,7 @@ input[type="time"],
 input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"] {
-  color: #666;
+  color: var(--color);
   border: 1px solid #ccc;
   border-radius: 3px;
   padding: 3px;

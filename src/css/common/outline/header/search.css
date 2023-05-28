@@ -6,7 +6,7 @@
   animation: fadeInRight 1s;
 
   & .iconsearch {
-    color: #666;
+    color: var(--color);
     cursor: pointer;
     font-size: 30px;
     transition: all 0.3s ease-in-out;

@@ -1,11 +1,11 @@
 .notice {
   padding: 20px;
   border: 1px dashed #e6e6e6;
-  color: #969696;
+  color: var(--color);
   position: relative;
   display: inline-block;
   width: 100%;
-  background: #fbfbfb50;
+  background: var(--notice-background-color);
   border-radius: 10px;
   animation: main 0.6s;
 
