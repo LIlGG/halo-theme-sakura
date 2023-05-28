@@ -102,31 +102,6 @@ export class Util {
     return Math.ceil((wordCount / speed) * 60);
   }
 
-  public static minuteToTimeString(minutes: number) {
-    let timeStr: string = "";
-    const day = Math.floor(minutes / 3600 / 24);
-    if (day !== 0) {
-      timeStr = timeStr + day + " 天 ";
-    }
-
-    const hours = Math.floor((minutes / 3600) % 24);
-    if (day !== 0 || hours !== 0) {
-      timeStr = timeStr + hours + " 小时 ";
-    }
-
-    const points = Math.floor((minutes / 60) % 60);
-    if (hours !== 0 || points !== 0) {
-      timeStr = timeStr + points + " 分钟 ";
-    }
-
-    const seconds = Math.floor(minutes % 60);
-    if (points !== 0 || seconds !== 0) {
-      timeStr = timeStr + seconds + " 秒";
-    }
-
-    return timeStr;
-  }
-
   /**
    * 将时间转化为距目前多长时间的格式
    *

@@ -10,21 +10,20 @@
         <a
           href="/console"
           style="font-weight: bold; text-decoration: none; color: #333"
-          class="i18n"
-          data-iname="user.login"
+          data-i18n="user.login"
         ></a>
       </div>
     </th:block>
     <th:block sec:authorize="isAuthenticated()">
       <div class="herder-user-name">
-        <div class="i18n" data-iname="user.has_logged"></div>
+        <div data-i18n="user.has_logged"></div>
         <div class="herder-user-name-u" th:text="${currentUser.displayName}"></div>
       </div>
       <div class="user-menu-option">
         <!-- 个人资料 -->
-        <a href="/console#/users/admin/detail" target="_blank" class="i18n" data-iname="user.info"></a>
+        <a href="/console#/users/admin/detail" target="_blank" data-i18n="user.info"></a>
         <!-- 退出登录 -->
-        <a href="/logout" target="_top" class="i18n" data-iname="user.logout"></a>
+        <a href="/logout" target="_top" data-i18n="user.logout"></a>
       </div>
     </th:block>
   </div>

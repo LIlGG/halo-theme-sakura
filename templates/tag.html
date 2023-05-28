@@ -10,14 +10,14 @@
 
   <th:block th:fragment="header">
     <div class="tag-header">
-      <th:block th:replace="~{macro/page-header :: page-header(extension = ${tag}, frontCover = ${tag.spec.cover}, headerTitle = ~{::headerTitle})}" />
+      <th:block
+        th:replace="~{macro/page-header :: page-header(extension = ${tag}, frontCover = ${tag.spec.cover}, headerTitle = ~{::headerTitle})}"
+      />
     </div>
   </th:block>
 
   <th:block th:fragment="headerTitle">
-    <h1 class="i18n" data-iname="page.tags.item.title"
-    th:attr="data-ivalue=${tag.spec.displayName}"
-  ></h1>
+    <h1 data-i18n="page.tags.item.title" th:i18n-options="|{title: '${tag.spec.displayName}'}|"></h1>
   </th:block>
 
   <th:block th:fragment="content">

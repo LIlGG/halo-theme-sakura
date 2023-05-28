@@ -1,21 +1,18 @@
 <div class="top-feature" th:if="${not #arrays.isEmpty(theme.config.focus.features)}" th:fragment="feature">
   <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif">
-    <i
+    <span
       th:if="${not #strings.isEmpty(theme.config.focus.feature_icon)}"
-      th:class="${theme.config.focus.feature_icon}"
-      aria-hidden="true"
-    ></i>
+      class="iconify"
+      th:data-icon="${theme.config.focus.feature_icon}"
+    ></span>
     <span
       th:if="${not #strings.isEmpty(theme.config.focus.feature_title)}"
       th:text="${theme.config.focus.feature_title}"
     ></span>
-    <span
-      th:if="${#strings.isEmpty(theme.config.focus.feature_title)}"
-      class="i18n"
-      data-iname="home.feature.title"
-    ></span>
+    <span th:if="${#strings.isEmpty(theme.config.focus.feature_title)}" data-i18n="home.feature.title"></span>
   </h1>
 
+  <!--/* TODO: 聚焦图只有一个的时候，样式问题 */-->
   <div class="top-feature-inner">
     <div class="top-feature-v2" th:each="feature : ${theme.config.focus.features}">
       <div class="the-feature square from_left_and_right">
@@ -35,5 +32,4 @@
       </div>
     </div>
   </div>
-
 </div>

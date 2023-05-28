@@ -94,7 +94,7 @@ export class Utils {
     codeElements.forEach((codeElement) => {
       const copyElement = document.createElement("a");
       copyElement.classList.add("copy-code");
-      copyElement.setAttribute("title", "复制代码");
+      copyElement.setAttribute("title", sakura.translate("common.copy_code", "复制代码"));
       copyElement.innerHTML = `<span class="iconify" data-icon="fa:clipboard"></span>`;
       codeElement.after(copyElement);
       import("clipboard").then((module) => {

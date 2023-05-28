@@ -9,9 +9,8 @@
           <a
             th:href="@{http://service.weibo.com/share/share.php?url={url}&appkey=&title={title}|{author}&pic={pic}(url=${post.status.permalink},title=${post.spec.title},author=${post.owner.displayName},pic=${post.spec.cover})}"
             onclick="window.open(this.href, 'weibo-share', 'width=490,height=700');return false;"
-            class="s-weibo i18n"
-            data-iname="share.weibo"
-            data-iattr="title"
+            class="s-weibo"
+            data-i18n="[title]share.weibo"
           >
             <img th:src="${#theme.assets('/images/sns/weibo.png')}" />
           </a>
@@ -20,9 +19,8 @@
           <a
             th:href="@{http://connect.qq.com/widget/shareqq/index.html?url={url}&title={title}|{author}&source={title}|{author}&desc={desc}&pics={pics}&summary={summary}(url=${post.status.permalink},title=${post.spec.title},author=${post.owner.displayName},desc=${post.status.excerpt},pics=${post.spec.cover},summary=${post.status.excerpt})}"
             onclick="window.open(this.href, 'qq-share', 'width=730,height=500');return false;"
-            class="s-qq i18n"
-            data-iname="share.qq"
-            data-iattr="title"
+            class="s-qq"
+            data-i18n="[title]share.qq"
           >
             <img th:src="${#theme.assets('/images/sns/qq.png')}" />
           </a>
@@ -30,7 +28,7 @@
         <li>
           <a href="javascript:" class="s-wechat">
             <div class="wechat-qrcode">
-              <h4 class="i18n" data-iname="share.wechat.qcode_title"></h4>
+              <h4 data-i18n="share.wechat.qcode_title"></h4>
               <canvas
                 id="qrcode"
                 class="qrcode"
@@ -38,8 +36,8 @@
                 th:attr="data-url=${post.status.permalink}"
               ></canvas>
               <div class="help">
-                <p class="i18n" data-iname="share.wechat.help_1"></p>
-                <p class="i18n" data-iname="share.wechat.help_2"></p>
+                <p data-i18n="share.wechat.help_1"></p>
+                <p data-i18n="share.wechat.help_2"></p>
               </div>
             </div>
             <img th:src="${#theme.assets('/images/sns/wechat.png')}" />
@@ -49,9 +47,8 @@
           <a
             th:href="@{http://shuo.douban.com/!service/share?href={href}&name={name}|{author}&text={text}&image={image}&starid=0&aid=0&style=11(href=${post.status.permalink},name=${post.spec.title},author=${post.owner.displayName},text=${post.status.excerpt},image=${post.spec.cover})}"
             onclick="window.open(this.href, 'douban-share', 'width=490,height=600');return false;"
-            class="s-douban i18n"
-            data-iname="share.douban"
-            data-iattr="title"
+            class="s-douban"
+            data-i18n="[title]share.douban"
           >
             <img th:src="${#theme.assets('/images/sns/douban.png')}" />
           </a>
@@ -60,9 +57,8 @@
           <a
             th:href="@{http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={url}&title={title}|{author}&desc={desc}&summary={summary}&site={site}(url=${post.status.permalink},title=${post.spec.title},author=${post.owner.displayName},desc=${post.status.excerpt},summary=${post.status.excerpt},site=${site.title})}"
             onclick="window.open(this.href, 'qzone-share', 'width=490,height=600');return false;"
-            class="s-qzone i18n"
-            data-iname="share.qzone"
-            data-iattr="title"
+            class="s-qzone"
+            data-i18n="[title]share.qzone"
           >
             <img th:src="${#theme.assets('/images/sns/qzone.png')}" />
           </a>
@@ -71,9 +67,8 @@
           <a
             th:href="@{http://www.linkedin.com/shareArticle?mini=true&ro=true&title={title}|{author}&url={url}&summary={summary}&source={source}&armin=armin(title=${post.spec.title},author=${post.owner.displayName},url=${post.status.permalink},summary=${post.status.excerpt},source=${site.title})}"
             onclick="window.open(this.href, 'linkedin-share', 'width=490,height=600');return false;"
-            class="s-linkedin i18n"
-            data-iname="share.linkedin"
-            data-iattr="title"
+            class="s-linkedin"
+            data-i18n="[title]share.linkedin"
           >
             <img th:src="${#theme.assets('/images/sns/linkedin.png')}" />
           </a>

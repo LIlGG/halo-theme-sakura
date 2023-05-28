@@ -27,14 +27,15 @@
       <div class="post-date">
         <span class="iconify" data-icon="solar:clock-circle-linear"></span>
         <time
-          class="i18n"
-          data-iname="postlist.time"
+          class="publish-time"
+          data-i18n="postlist.time"
+          th:i18n-options="|{'time': '${post.spec.publishTime}', 'params': { 'separator': '-', 'options': { 'year': 'numeric', 'month': '2-digit', 'day': '2-digit' } } }|"
           th:datetime="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
-          th:attr="data-ivalue=${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
           itemprop="dateCreated datePublished"
         >
         </time>
-        <th:block th:if="${post.spec.pinned}"> &nbsp;
+        <th:block th:if="${post.spec.pinned}">
+          &nbsp;
           <span class="iconify hotpost" data-icon="solar:fire-outline"></span>
         </th:block>
       </div>
@@ -44,12 +45,12 @@
       <div class="post-meta">
         <span>
           <span class="iconify" data-icon="solar:eye-linear"></span>
-          <spa class="i18n" data-iname="postlist.heat" th:attr="data-ivalue=${post.stats.visit}"></spa
-        ></span>
+          <span data-i18n="postlist.heat" th:i18n-options="|{visit: '${post.stats.visit}'}|"></span>
+        </span>
         <span class="comments-number">
           <th:block th:unless="${theme.config.others.keep_record_mode}">
             <span class="iconify" data-icon="solar:chat-line-line-duotone"></span>
-            <span class="i18n" data-iname="postlist.comments" th:attr="data-ivalue=${post.stats.comment}"> </span>
+            <span data-i18n="postlist.comments" th:i18n-options="|{comment: '${post.stats.comment}'}|"> </span>
           </th:block>
         </span>
         <th:block th:if="${#lists.size(post.categories)} gt 0">

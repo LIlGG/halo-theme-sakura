@@ -3,7 +3,7 @@
   th:replace="~{layout :: layout(_title = ~{::title}, _header = ~{::header}, _content = ~{::content})}">
 
 <th:block th:fragment="title">
-  <th:block class="i18n" data-iname="notfound.title" th:data-ivalue="${site.title}"></th:block>
+  <th:block data-i18="notfound.title" th:i18n-options="|{title: '${site.title}'}|"></th:block>
 </th:block>
 
 <th:block th:fragment="content">
@@ -13,8 +13,8 @@
         <div class="anim-icon" id="404"></div>
       </div>
       <div class="err-button back">
-        <a id="golast" href="javascript:history.go(-1);" class="i18n" data-iname="notfound.golast"></a>
-        <a id="gohome" th:href="@{/}" class="i18n gohome" data-iname="notfound.gohome"></a>
+        <a id="golast" href="javascript:history.go(-1);" data-i18n="notfound.golast"></a>
+        <a id="gohome" th:href="@{/}" class="gohome" data-i18n="notfound.gohome"></a>
       </div>
       <!-- TODO: 等待基于路由的搜索功能完成之后再进行补充 -->
       <!-- <p
@@ -49,10 +49,6 @@
     <script>
       var Poi = {
         themeBase: "[(${#theme.assets('')})]",
-        i18n: "[(${theme.config.others.i18n ?: 'auto'})]",
-      };
-      window.onload = function () {
-        I18N.init();
       };
     </script>
   </div>

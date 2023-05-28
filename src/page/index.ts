@@ -73,7 +73,7 @@ export default class Index {
     const videoPauseButtonElement = videoContainerElement.querySelector(".video-pause") as HTMLDivElement;
 
     videoPlayButtonElement?.addEventListener("click", async () => {
-      videoStatusElement.innerHTML = "正在载入视频 ...";
+      videoStatusElement.innerHTML = sakura.translate("home.video.loading", "正在载入视频 ...");
       videoStatusElement.style.bottom = "0";
       if (!this.videoPlayer) {
         import("video.js")
@@ -109,7 +109,7 @@ export default class Index {
             });
 
             this.videoPlayer.on("pause", () => {
-              videoStatusElement.innerHTML = "已暂停 ...";
+              videoStatusElement.innerHTML = sakura.translate("home.video.statu_pause", "已暂停 ...");
               videoStatusElement.style.bottom = "0";
               focusInfoElement.style.top = "0";
               videoPlayButtonElement.style.display = "block";
@@ -117,16 +117,16 @@ export default class Index {
             });
 
             this.videoPlayer.on("waiting", () => {
-              videoStatusElement.innerHTML = "加载中 ...";
+              videoStatusElement.innerHTML = sakura.translate("home.video.statu_waiting", "加载中 ...");
               videoStatusElement.style.bottom = "0";
             });
 
             this.videoPlayer.on("canplay", () => {
               videoStatusElement.style.bottom = "-100px";
             });
-
+            
             this.videoPlayer.on("error", () => {
-              videoStatusElement.innerHTML = "视频播放错误";
+              videoStatusElement.innerHTML = sakura.translate("home.video.statu_error", "视频播放错误");
               setTimeout(() => {
                 focusInfoElement.style.top = "0";
                 videoStatusElement.style.bottom = "-100px";
@@ -150,7 +150,7 @@ export default class Index {
           })
           .catch((error) => {
             console.error(error);
-            videoStatusElement.innerHTML = "视频加载失败";
+            videoStatusElement.innerHTML = sakura.translate("home.video.statu_error", "视频加载失败");
             videoStatusElement.style.bottom = "0";
 
             setTimeout(() => {

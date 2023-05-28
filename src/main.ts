@@ -3,10 +3,16 @@ import "./module/index";
 import "./css/main.css";
 import "@purge-icons/generated";
 import Toast from "./utils/toast";
-import i18next from "i18next";
+import i18next, { type TOptions } from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import Backend from "i18next-chained-backend";
+import LocalStorageBackend from "i18next-localstorage-backend";
+import locI18next from "loc-i18next";
+import { I18nFormat } from "./utils/i18nFormat";
 
 /* 核心启动，通常不建议也不应当由用户调用，只能由启动代码使用  */
 interface Sakura {
+  [key: string]: any;
   getThemeConfig<T extends Number | String | Boolean | ThemeConfig[]>(
     group: String,
     key: String,
@@ -14,6 +20,8 @@ interface Sakura {
   ): T | undefined;
   refresh(): void;
   registerDocumentFunction(documentFunction: DocumentFunction): void;
+  translate(key: String, defaultValue: string, options?: TOptions): string;
+  getPageConfig(key: string): any | undefined;
 }
 
 declare var Sakura: {
@@ -77,14 +85,11 @@ class SakuraDocumentFunctionImpl implements DocumentFunction {
 
   execCount: Number = 0;
 
-  pageData: Map<String, any> = new Map();
-
   constructor(target: any, name: String, method: Function, isRefresh: Boolean) {
     this.target = target;
     this.name = name;
     this.method = method;
     this.isRefresh = isRefresh;
-    this.pageData = Util.jsonToMap<string, any>(pageData);
   }
 
   execute(): void {
@@ -93,7 +98,7 @@ class SakuraDocumentFunctionImpl implements DocumentFunction {
         return;
       }
     }
-    this.method.call(this.target, this.pageData);
+    this.method.call(this.target);
     this.execCount = this.execCount.valueOf() + 1;
   }
 }
@@ -161,6 +166,13 @@ export class SakuraApp implements Sakura {
     this.refreshThemeConfig();
   }
 
+  translate(key: String, defaultValue: string, options?: TOptions): string {
+    if (sakura.$t) {
+      return sakura.$t(key, { defaultValue: defaultValue, ...options });
+    }
+    return defaultValue;
+  }
+
   private refreshThemeConfig() {
     if (!this.config) {
       return;
@@ -185,8 +197,11 @@ export class SakuraApp implements Sakura {
     return themeConfig.getValue(key, type);
   }
 
-  getPageConfig(): Map<String, any> {
-    return this.currPageData;
+  getPageConfig(string: string): any | undefined {
+    if (this.currPageData.has(string)) {
+      return this.currPageData.get(string);
+    }
+    return undefined;
   }
 
   /**
@@ -235,6 +250,90 @@ export class SakuraApp implements Sakura {
         enumerable: false,
       });
     }
+
+    // 挂载 i18n
+    if (!Object.getOwnPropertyDescriptor(sakura, "$i18n")) {
+      i18next
+        .use(LanguageDetector)
+        .use(Backend)
+        .init({
+          backend: {
+            backends: [
+              LocalStorageBackend,
+              {
+                type: "backend",
+                read<Namespace extends keyof typeof cn>(
+                  language: LocaleCode,
+                  namespace: Namespace,
+                  callback: (errorValue: unknown, translations: null | (typeof cn)[Namespace]) => void
+                ) {
+                  import(`./languages/${language}.json`)
+                    .then((resources) => {
+                      callback(null, resources.default);
+                    })
+                    .catch((error) => {
+                      callback(error, null);
+                    });
+                },
+                init: () => {},
+              },
+            ],
+            backendOptions: [
+              {
+                prefix: "i18next_sakura_",
+                defaultVersion: sakura.getPageConfig("version"),
+              },
+            ],
+          },
+          debug: true,
+          lowerCaseLng: true,
+          cleanCode: true,
+          interpolation: {
+            format: function (value, format, lng, edit) {
+              const params = edit?.params;
+              switch (format) {
+                case "datetimeFormat":
+                  return I18nFormat.DateTimeFormat(value, lng, params?.options, params?.separator);
+                case "relativeTimeFormat":
+                  return I18nFormat.RelativeTimeFormat(value, lng);
+                default:
+                  return value;
+              }
+            },
+            escapeValue: false,
+          },
+        })
+        .then((t) => {
+          let i18nReadyEvent = this.events.get("sakura:i18n");
+          if (!i18nReadyEvent) {
+            i18nReadyEvent = new CustomEvent("sakura:i18n");
+            this.events.set("sakura:i18n", i18nReadyEvent);
+          }
+          window.dispatchEvent(i18nReadyEvent);
+          Object.defineProperty(sakura, "$t", {
+            value: t,
+            writable: false,
+            configurable: false,
+            enumerable: false,
+          });
+          const localize = locI18next.init(i18next, {
+            selectorAttr: "data-i18n",
+            targetAttr: "i18n-target",
+            optionsAttr: "i18n-options",
+            useOptionsAttr: true,
+            parseDefaultValueFromContent: true,
+            document: window.document,
+          });
+          localize("[data-i18n]");
+          Object.defineProperty(sakura, "$localize", {
+            value: localize,
+            writable: false,
+            configurable: false,
+            enumerable: false,
+          });
+        });
+    }
+
     // TODO 注册事件，提供 sakura 实例方便其他位置进行原型扩展
   }
 
@@ -337,7 +436,6 @@ declare const pageData: any;
 export var sakura: Sakura = new SakuraApp(config);
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log(i18next.t("name"));
   sakura.refresh();
 });
 

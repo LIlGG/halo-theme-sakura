@@ -1,4 +1,4 @@
-import { documentFunction } from "../main";
+import { documentFunction, sakura } from "../main";
 import { Util } from "../utils/util";
 declare const categoryRadar: Map<string, number>;
 
@@ -42,7 +42,7 @@ export default class Categories {
     const categoryChart = echarts.init(echartElement);
     categoryChart.setOption({
       title: {
-        text: "文章分类雷达图",
+        text: sakura.translate("page.categories.radar_title", "文章分类雷达图"),
         left: "center",
         top: "25px",
         textStyle: {
@@ -90,7 +90,7 @@ export default class Categories {
           data: [
             {
               value: values,
-              name: "文章分类数量",
+              name: sakura.translate("page.categories.radar_series_title", "文章分类数量"),
             },
           ],
         },

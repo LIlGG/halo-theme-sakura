@@ -28,12 +28,12 @@ dependencies:
   i18next-localstorage-backend:
     specifier: ^4.1.1
     version: 4.1.1
-  i18next-resources-to-backend:
-    specifier: ^1.1.4
-    version: 1.1.4
   isotope-layout:
     specifier: ^3.0.6
     version: 3.0.6
+  loc-i18next:
+    specifier: ^0.1.5
+    version: 0.1.5
   lodash.clonedeep:
     specifier: ^4.5.0
     version: 4.5.0
@@ -1175,12 +1175,6 @@ packages:
       '@babel/runtime': 7.21.5
     dev: false
 
-  /i18next-resources-to-backend@1.1.4:
-    resolution: {integrity: sha512-hMyr9AOmIea17AOaVe1srNxK/l3mbk81P7Uf3fdcjlw3ehZy3UNTd0OP3EEi6yu4J02kf9jzhCcjokz6AFlEOg==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-    dev: false
-
   /i18next@22.5.0:
     resolution: {integrity: sha512-sqWuJFj+wJAKQP2qBQ+b7STzxZNUmnSxrehBCCj9vDOW9RDYPfqCaK1Hbh2frNYQuPziz6O2CGoJPwtzY3vAYA==}
     dependencies:
@@ -1270,6 +1264,10 @@ packages:
 
   /keycode@2.2.0:
     resolution: {integrity: sha512-ps3I9jAdNtRpJrbBvQjpzyFbss/skHqzS+eu4RxKLaEAtFqkjZaB6TZMSivPbLxf4K7VI4SjR0P5mRCX5+Q25A==}
+    dev: false
+
+  /loc-i18next@0.1.5:
+    resolution: {integrity: sha512-OYR+YzkjXzs2Mldyp63lDoh6wTa3qJO3tiT6b/ii9qD/nAY4McESU6YK9RKz6gBVT0VUTYYsRALqbJSVxI8Blw==}
     dev: false
 
   /locate-path@5.0.0:

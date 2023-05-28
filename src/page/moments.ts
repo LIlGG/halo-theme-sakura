@@ -1,4 +1,4 @@
-import { documentFunction } from "../main";
+import { documentFunction, sakura } from "../main";
 import { HaloApi } from "../utils/HaloApi";
 
 export default class Moments {
@@ -45,7 +45,6 @@ export default class Moments {
                 momentContainerElement.appendChild(element);
                 // 重新执行 Halo 评论组件初始化
                 const commentScriptElement = element.querySelector(".comment-box .comment script:last-of-type") as HTMLScriptElement;
-                console.log(commentScriptElement)
                 const code: string =
                   commentScriptElement?.text ||
                   commentScriptElement?.textContent ||
@@ -72,7 +71,10 @@ export default class Moments {
         })
         .finally(() => {
           targetElement.classList.remove("loading");
-          targetElement.textContent = "加载更多...";
+          targetElement.textContent = sakura.translate("page.moments.loadmore", "加载更多...");
+          if (sakura.$localize) {
+            sakura.$localize(".moments-inner");
+          }
         });
     });
   }
@@ -91,7 +93,7 @@ export default class Moments {
     if (!momentContainerElement) {
       return;
     }
-    const momentItemElements = momentContainerElement.querySelectorAll(".moments-item") as NodeListOf<HTMLElement>;
+    const momentItemElements = momentContainerElement?.querySelectorAll(".moments-item") as NodeListOf<HTMLElement>;
     if (!momentItemElements || momentItemElements.length <= 0) {
       return;
     }

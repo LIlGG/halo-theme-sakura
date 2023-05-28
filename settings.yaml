@@ -374,7 +374,7 @@ spec:
           name: feature_icon
           label: 聚焦图标
           placeholder: 聚焦前的小图标，不填写就不显示！
-          value: fa fa-anchor
+          value: fa:anchor
         - $formkit: text
           if: "$get(top_feature).value == true"
           name: feature_title
@@ -1121,19 +1121,6 @@ spec:
               label: 开启
             - value: false
               label: 关闭
-        - $formkit: select
-          name: i18n
-          label: 主题语言
-          value: auto
-          options:
-            - value: auto
-              label: 自动
-            - value: zh
-              label: 中文（简体）
-            - value: ja
-              label: 日本語
-            - value: en
-              label: 英文
         - $formkit: text
           name: reply_mail_img
           label: 邮件回复模块图片
