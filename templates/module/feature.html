@@ -16,7 +16,7 @@
   <div class="top-feature-inner">
     <div class="top-feature-v2" th:each="feature : ${theme.config.focus.features}">
       <div class="the-feature square from_left_and_right">
-        <a th:href="${feature.link}" target="_blank">
+        <a data-pjax th:href="${feature.link}" target="_blank">
           <div class="img">
             <img th:src="${feature.image}" />
           </div>

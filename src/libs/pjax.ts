@@ -23,22 +23,23 @@ import Pjax from 'pjax';
 import { sakura } from "../main";
 
 new Pjax({
+  elements: 'a[data-pjax]',
   selectors: [
     'head title',
-    'content-wrap',
-    'post-toc-wrap',
-    '#pjax'
+    '.wrapper',
+    '.pjax'
   ],
   switches: {
-    '.post-toc-wrap': Pjax.switches.innerHTML
+    '.wrapper': Pjax.switches.innerHTML
   },
   analytics: false,
   cacheBust: false,
+  debug: import.meta.env === 'development' ? true : false,
 });
 
-window.addEventListener('pjax:success', (event) => {
+window.addEventListener('pjax:success', () => {
   // 第二种脚本处理。对添加了 id=pjax 或者 data-pjax 的 script，重新添加到文档树
-  let pjaxDoms = document.querySelectorAll('script[data-pjax], #pjax script') as NodeListOf<HTMLScriptElement>;
+  let pjaxDoms = document.querySelectorAll('script[data-pjax]') as NodeListOf<HTMLScriptElement>;
   pjaxDoms.forEach(element => {
     let code: string = element.text || element.textContent || element.innerHTML || '';
     let parent: ParentNode | null = element.parentNode;

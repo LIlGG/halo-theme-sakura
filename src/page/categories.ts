@@ -3,7 +3,7 @@ import { Util } from "../utils/util";
 declare const categoryRadar: Map<string, number>;
 
 export default class Categories {
-  @documentFunction(false)
+  @documentFunction()
   public registerCategories() {
     const categoryChips = document.querySelectorAll(".categories-container .chip") as NodeListOf<HTMLElement>;
     categoryChips.forEach((chip) => {
@@ -13,7 +13,7 @@ export default class Categories {
     });
   }
 
-  @documentFunction(false)
+  @documentFunction()
   public async registerCategoryRadarChart() {
     const echartElement = document.getElementById("category-echarts");
     if (!echartElement) {

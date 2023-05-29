@@ -62,7 +62,7 @@ export default class Post {
   /**
    * 文章分享页，微信二维码生成
    */
-  @documentFunction(false)
+  @documentFunction()
   public async registerShareWechat() {
     const shareWechatElement = document.getElementById("qrcode");
     if (!shareWechatElement) {
