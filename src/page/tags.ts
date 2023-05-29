@@ -5,7 +5,7 @@ import { Util } from "../utils/util";
 declare const wordClouds: object[];
 
 export default class Tags {
-  @documentFunction(false)
+  @documentFunction()
   public registerTags() {
     const tagChips = document.querySelectorAll(".tags-container .chip") as NodeListOf<HTMLElement>;
     tagChips.forEach((tagChip) => {
@@ -15,7 +15,7 @@ export default class Tags {
     });
   }
 
-  @documentFunction(false)
+  @documentFunction()
   public async registerTagsWordCloud() {
     const wordCloudElement = document.getElementById("tag-wordcloud");
     if (!wordCloudElement) {

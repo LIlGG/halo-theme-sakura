@@ -49,8 +49,8 @@
   </script>
 
   <!--/* 每页可变属性 */-->
-  <script data-pjax th:inline="javascript" >
-    const pageData = {
+  <script class="pjax" th:inline="javascript" >
+    var pageData = {
       '_templateId': '[(${_templateId})]',
       [# th:if="${_templateId == 'post'}"]
       "postLastModifyTime": "[(${#dates.format(post.status.lastModifyTime, 'yyyy-MM-dd HH:mm:ss')})]",

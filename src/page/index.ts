@@ -1,27 +1,25 @@
 import { documentFunction, sakura } from "../main";
 
 export default class Index {
-  videoPlayer: any = undefined;
-
   /**
    * 注册下拉箭头功能
    */
-  @documentFunction(false)
+  @documentFunction()
   public registerArrowDown() {
     const arrowDownElement = document.querySelector(".headertop-down");
     arrowDownElement?.addEventListener("click", () => {
       const contentOffset = document.querySelector(".site-content")?.getBoundingClientRect().top || 0;
       window.scrollTo({
-        top: contentOffset + + window.pageYOffset,
+        top: contentOffset + +window.pageYOffset,
         behavior: "smooth",
-      })
-    })
+      });
+    });
   }
 
   /**
    * 注册背景切换事件
    */
-  @documentFunction(false)
+  @documentFunction()
   public registerBackgroundChangeEvent() {
     const backgorundElement = document.querySelector(".bg-change-js") as HTMLImageElement;
     if (!backgorundElement) {
@@ -55,116 +53,109 @@ export default class Index {
       backgorundElement.setAttribute("data-currIndex", `${backageImageIndex}`);
     };
   }
-
   /**
    * 注册背景视频功能
    */
-  @documentFunction(false)
+  @documentFunction()
   public registerBackgroundVideo() {
     const videoContainerElement = document.querySelector(".video-container");
     if (!videoContainerElement) {
       return;
     }
-
     videoContainerElement.insertAdjacentElement("afterbegin", document.createElement("video"));
     const videoStatusElement = videoContainerElement.querySelector(".video-status") as HTMLDivElement;
     const focusInfoElement = document.querySelector(".focusinfo") as HTMLDivElement;
     const videoPlayButtonElement = videoContainerElement.querySelector(".video-play") as HTMLDivElement;
     const videoPauseButtonElement = videoContainerElement.querySelector(".video-pause") as HTMLDivElement;
 
+    let videoPlayer: any = undefined;
     videoPlayButtonElement?.addEventListener("click", async () => {
       videoStatusElement.innerHTML = sakura.translate("home.video.loading", "正在载入视频 ...");
       videoStatusElement.style.bottom = "0";
-      if (!this.videoPlayer) {
-        import("video.js")
-          .then((module: any) => {
-            this.videoPlayer = module.default(videoContainerElement.querySelector("video"), {
-              controls: false,
-              controlsBar: false,
-              children: ["MediaLoader"],
-              autoplay: false,
-              preload: "auto",
-              muted: false,
-              loop: false,
-              sources: [
-                {
-                  src: sakura.getThemeConfig("mainScreen", "bgvideo_url", String)?.toString(),
-                },
-              ],
-            });
+      import("video.js")
+        .then((module: any) => {
+          videoPlayer = module.default(videoContainerElement.querySelector("video"), {
+            controls: false,
+            controlsBar: false,
+            children: ["MediaLoader"],
+            autoplay: false,
+            preload: "auto",
+            muted: false,
+            loop: false,
+            sources: [
+              {
+                src: sakura.getThemeConfig("mainScreen", "bgvideo_url", String)?.toString(),
+              },
+            ],
+          });
 
-            this.videoPlayer.on("loadeddata", () => {
-              videoStatusElement.style.bottom = "-100px";
-              focusInfoElement.style.top = "-999px";
-              videoPlayButtonElement.style.display = "none";
-              videoPauseButtonElement.style.display = "block";
-              this.videoPlayer.play();
-            });
+          videoPlayer.on("loadeddata", () => {
+            videoStatusElement.style.bottom = "-100px";
+            focusInfoElement.style.top = "-999px";
+            videoPlayButtonElement.style.display = "none";
+            videoPauseButtonElement.style.display = "block";
+            videoPlayer.play();
+          });
 
-            this.videoPlayer.on("play", () => {
-              videoStatusElement.style.bottom = "-100px";
-              focusInfoElement.style.top = "-999px";
-              videoPlayButtonElement.style.display = "none";
-              videoPauseButtonElement.style.display = "block";
-            });
+          videoPlayer.on("play", () => {
+            videoStatusElement.style.bottom = "-100px";
+            focusInfoElement.style.top = "-999px";
+            videoPlayButtonElement.style.display = "none";
+            videoPauseButtonElement.style.display = "block";
+          });
 
-            this.videoPlayer.on("pause", () => {
-              videoStatusElement.innerHTML = sakura.translate("home.video.statu_pause", "已暂停 ...");
-              videoStatusElement.style.bottom = "0";
-              focusInfoElement.style.top = "0";
-              videoPlayButtonElement.style.display = "block";
-              videoPauseButtonElement.style.display = "none";
-            });
-
-            this.videoPlayer.on("waiting", () => {
-              videoStatusElement.innerHTML = sakura.translate("home.video.statu_waiting", "加载中 ...");
-              videoStatusElement.style.bottom = "0";
-            });
-
-            this.videoPlayer.on("canplay", () => {
-              videoStatusElement.style.bottom = "-100px";
-            });
-            
-            this.videoPlayer.on("error", () => {
-              videoStatusElement.innerHTML = sakura.translate("home.video.statu_error", "视频播放错误");
-              setTimeout(() => {
-                focusInfoElement.style.top = "0";
-                videoStatusElement.style.bottom = "-100px";
-                videoPlayButtonElement.style.display = "block";
-                videoPauseButtonElement.style.display = "none";
-                this.videoPlayer.dispose();
-                videoContainerElement.insertAdjacentElement("afterbegin", document.createElement("video"));
-                this.videoPlayer = undefined;
-              }, 2000);
-            });
-
-            this.videoPlayer.on("ended", () => {
-              focusInfoElement.style.top = "0";
-              videoStatusElement.style.bottom = "-100px";
-              videoPlayButtonElement.style.display = "block";
-              videoPauseButtonElement.style.display = "none";
-              this.videoPlayer.dispose();
-              videoContainerElement.insertAdjacentElement("afterbegin", document.createElement("video"));
-              this.videoPlayer = undefined;
-            });
-          })
-          .catch((error) => {
-            console.error(error);
-            videoStatusElement.innerHTML = sakura.translate("home.video.statu_error", "视频加载失败");
+          videoPlayer.on("pause", () => {
+            videoStatusElement.innerHTML = sakura.translate("home.video.statu_pause", "已暂停 ...");
             videoStatusElement.style.bottom = "0";
+            focusInfoElement.style.top = "0";
+            videoPlayButtonElement.style.display = "block";
+            videoPauseButtonElement.style.display = "none";
+          });
 
+          videoPlayer.on("waiting", () => {
+            videoStatusElement.innerHTML = sakura.translate("home.video.statu_waiting", "加载中 ...");
+            videoStatusElement.style.bottom = "0";
+          });
+
+          videoPlayer.on("canplay", () => {
+            videoStatusElement.style.bottom = "-100px";
+          });
+
+          videoPlayer.on("error", () => {
+            videoStatusElement.innerHTML = sakura.translate("home.video.statu_error", "视频播放错误");
             setTimeout(() => {
+              focusInfoElement.style.top = "0";
               videoStatusElement.style.bottom = "-100px";
+              videoPlayButtonElement.style.display = "block";
+              videoPauseButtonElement.style.display = "none";
+              videoPlayer.dispose();
+              videoContainerElement.insertAdjacentElement("afterbegin", document.createElement("video"));
             }, 2000);
           });
-      } else {
-        this.videoPlayer.play();
-      }
+
+          videoPlayer.on("ended", () => {
+            focusInfoElement.style.top = "0";
+            videoStatusElement.style.bottom = "-100px";
+            videoPlayButtonElement.style.display = "block";
+            videoPauseButtonElement.style.display = "none";
+            videoPlayer.dispose();
+            videoContainerElement.insertAdjacentElement("afterbegin", document.createElement("video"));
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          videoStatusElement.innerHTML = sakura.translate("home.video.statu_error", "视频加载失败");
+          videoStatusElement.style.bottom = "0";
+
+          setTimeout(() => {
+            videoStatusElement.style.bottom = "-100px";
+          }, 2000);
+        });
     });
 
     videoPauseButtonElement?.addEventListener("click", () => {
-      if (this.videoPlayer) {
-        this.videoPlayer.pause();
+      if (videoPlayer) {
+        videoPlayer.pause();
       }
     });
   }

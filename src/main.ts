@@ -332,6 +332,8 @@ export class SakuraApp implements Sakura {
             enumerable: false,
           });
         });
+    } else {
+      sakura.$localize("[data-i18n]");
     }
 
     // TODO 注册事件，提供 sakura 实例方便其他位置进行原型扩展

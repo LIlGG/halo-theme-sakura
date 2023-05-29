@@ -9,15 +9,13 @@ NEXT / PREVIOUS POSTS
         class="post-nepre previous"
         th:classappend="${postCursor.hasNext() ? 'half' : 'full'}"
       >
-        <a th:href="@{${postCursor.previous.status.permalink}}" rel="prev">
+        <a data-pjax th:href="@{${postCursor.previous.status.permalink}}" rel="prev">
           <div
             th:if="${not #strings.isEmpty(postCursor.previous.spec.cover)}"
             class="background"
             th:style="'background-image:url(\'' + ${postCursor.previous.spec.cover} + '\');'"
           ></div>
-          <th:block
-            th:unless="${not #strings.isEmpty(postCursor.previous.spec.cover)}"
-          >
+          <th:block th:unless="${not #strings.isEmpty(postCursor.previous.spec.cover)}">
             <div
               th:if="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
               class="background"
@@ -40,15 +38,13 @@ NEXT / PREVIOUS POSTS
         th:if="${postCursor.hasNext()}"
         th:class="'post-nepre '+${postCursor.hasPrevious() ? 'half' : 'full'}+' next'"
       >
-        <a th:href="@{${postCursor.next.status.permalink}}" rel="next">
+        <a data-pjax th:href="@{${postCursor.next.status.permalink}}" rel="next">
           <div
             th:if="${not #strings.isEmpty(postCursor.next.spec.cover)}"
             class="background"
             th:style="'background-image:url(\'' + ${postCursor.next.spec.cover} + '\');'"
           ></div>
-          <th:block
-            th:unless="${not #strings.isEmpty(postCursor.next.spec.cover)}"
-          >
+          <th:block th:unless="${not #strings.isEmpty(postCursor.next.spec.cover)}">
             <div
               th:if="${theme.config.random_image.rimage_cover_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
               class="background"

@@ -39,7 +39,7 @@
           <span class="iconify hotpost" data-icon="solar:fire-outline"></span>
         </th:block>
       </div>
-      <a th:href="@{${post.status.permalink}}" class="post-title">
+      <a th:href="@{${post.status.permalink}}" class="post-title" data-pjax>
         <h3 th:text="${post.spec.title}"></h3>
       </a>
       <div class="post-meta">

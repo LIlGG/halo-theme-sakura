@@ -9,7 +9,7 @@ export default class Moments {
    * @param {*}
    * @return {*}
    */
-  @documentFunction(false)
+  @documentFunction()
   public registerMomentListPagination() {
     const paginationElement = document.getElementById("moment-list-pagination");
     if (!paginationElement) {
@@ -87,7 +87,7 @@ export default class Moments {
    * @return {*}
    * @param {*}
    */
-  @documentFunction(false)
+  @documentFunction()
   public registerMomentItem(containerElement?: HTMLElement) {
     const momentContainerElement = containerElement || document.querySelector(".moments-container .moments-inner");
     if (!momentContainerElement) {

@@ -14,7 +14,7 @@ export default class Photos {
    *
    * @see https://isotope.metafizzy.co/
    */
-  @documentFunction(false)
+  @documentFunction()
   public registerMasonryLayout() {
     const masonryContainerElement = document.querySelector(".masonry-container");
     if (!masonryContainerElement) {

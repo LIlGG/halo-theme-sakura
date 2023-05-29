@@ -71,7 +71,10 @@ export class Events {
       "copy",
       () => {
         if (sakura.$toast) {
-          sakura.$toast.create(sakura.translate("common.events.copy", "复制成功！<br>Copied to clipboard successfully!"), 2000);
+          sakura.$toast.create(
+            sakura.translate("common.events.copy", "复制成功！<br>Copied to clipboard successfully!"),
+            2000
+          );
         }
       },
       2000
@@ -187,7 +190,7 @@ export class Events {
    * @param {*}
    * @return {*}
    */
-  @documentFunction(false)
+  @documentFunction()
   public registerPostListPaginationEvent() {
     const paginationElement = document.getElementById("pagination");
     if (!paginationElement) {
@@ -237,6 +240,7 @@ export class Events {
             sakura.$localize(".post");
           }
         });
+      return false;
     });
   }
 
