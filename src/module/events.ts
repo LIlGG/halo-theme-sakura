@@ -162,25 +162,33 @@ export class Events {
   public registerHeaderEvent() {
     const topmostCoordinate = 0;
     let currentTopCoordinate = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-    WindowEventProxy.addEventListener(
-      "scroll",
-      () => {
-        const scrollTopCoordinate = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-        const siteHeaderElement = document.querySelector(".site-header");
-        if (scrollTopCoordinate === topmostCoordinate) {
-          siteHeaderElement?.classList.remove("yya");
-        } else {
-          siteHeaderElement?.classList.add("yya");
-        }
-        if (scrollTopCoordinate > currentTopCoordinate) {
-          siteHeaderElement?.classList.remove("sabit");
-        } else {
-          siteHeaderElement?.classList.add("sabit");
-        }
-        currentTopCoordinate = scrollTopCoordinate;
-      },
-      200
-    );
+    window.addEventListener("scroll", () => {
+      const scrollTopCoordinate = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      const siteHeaderElement = document.querySelector(".site-header");
+      if (scrollTopCoordinate === topmostCoordinate) {
+        siteHeaderElement?.classList.remove("yya");
+      } else {
+        siteHeaderElement?.classList.add("yya");
+      }
+      if (scrollTopCoordinate > currentTopCoordinate) {
+        siteHeaderElement?.classList.remove("sabit");
+      } else {
+        siteHeaderElement?.classList.add("sabit");
+      }
+      currentTopCoordinate = scrollTopCoordinate;
+      import("nprogress").then((module) => {
+        module.default.configure({
+          minimum: 0,
+          template: `
+          <div class="bar" role="bar">
+            <div class="peg"></div>
+          </div>`,
+        });
+        const surPlus = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const coorY = scrollTopCoordinate / surPlus;
+        module.default.set(coorY);
+      });
+    });
   }
 
   /**

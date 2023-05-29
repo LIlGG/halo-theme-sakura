@@ -37,12 +37,6 @@
   />
   <th:block th:replace="~{inc/decorate}" />
 
-  <!--/* TODO：头部加载进度条 */-->
-  <!-- <th:block th:if="${theme.config.global.pace}">
-    <link rel="stylesheet" th:href="@{/assets/lib/pace/css/pace-theme-{theme}.min.css(theme=${theme.config.global.pace_theme})}">
-    <script th:src="@{/assets/lib/pace/pace.min.js}"></script>
-  </th:block> -->
-
   <!--/* 获取主题设置中的所有属性保存在 JS 变量中 */-->
   <script th:inline="javascript">
     const config = '[(${theme.config})]'

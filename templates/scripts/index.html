@@ -1,10 +1,13 @@
 <!--/* TODO：主题 js */-->
 <th:block th:fragment="scripts">
   <!--/* 基础 JS */-->
-  <script type="module" defer th:src="@{/assets/dist/main.min.js}"></script>
+  <script type="module" async th:src="@{/assets/dist/main.min.js}"></script>
 
   <!--/* PJAX */-->
-  <script type="module" defer th:if="${theme.config.others.poi_pjax}" th:src="@{/assets/dist/libs/pjax.min.js}"></script>
+  <script type="module" async th:if="${theme.config.others.poi_pjax}" th:src="@{/assets/dist/libs/pjax.min.js}"></script>
+
+  <script type="module" async th:src="@{/assets/dist/libs/lazysizes.min.js}"></script>
+
 
   <script type="text/javascript" th:inline="javascript">
     function imgError(dom) {
@@ -13,82 +16,9 @@
     }
   </script>
 
-  <!--/* 可选功能 JS，例如用户可以开关的其余功能（lazyload 等） */-->
-
-  <!--/* 待优化 js */-->
-  <script type="text/javascript" th:inline="javascript">
-    /* <![CDATA[ */
-    var Poi = {
-        "pjax": /*[(${theme.config.others.poi_pjax})]*/,
-        "_templateId": "[(${_templateId})]",
-        "windowheight":"[(${theme.config.mainScreen.focus_height ? 'auto' : 'fixed'})]",
-        "ajaxurl":"[(${site.url})]",
-        "resBaseUrl": "[(${#theme.assets('')})]",
-        "formpostion":"bottom",
-        "toc": /*[(${theme.config.post.post_toc})]*/,
-        "codeLine": /*[(${theme.config.post.code_line})]*/,
-        "themeChange": /*[(${theme.config.theme.theme_change})]*/,
-        "headFocus": /*[(${theme.config.mainScreen.focus_height})]*/,
-        "bgvideo": /*[(${theme.config.mainScreen.bgvideo})]*/,
-        "tagRandomColorMin": "[(${theme.config.tagAndCategory.tag_randomColorMin})]",
-        "tagRandomColorMax": "[(${theme.config.tagAndCategory.tag_randomColorMax})]",
-        "nickname": "Ryan Wang",
-        "sitename": "[(${site.title})]",
-        "themeBase": "[(${#theme.assets('')})]",
-        "openToast": /*[(${theme.config.toast.open_toast})]*/,
-        "toastWidth": /*[(${theme.config.toast.toast_width})]*/,
-        "toastHeight": /*[(${theme.config.toast.toast_height})]*/,
-        "toastTop": "[(${theme.config.toast.toast_top})]",
-        "toastBackground": "[(${theme.config.general.theme_skin})]",
-        "toastColor": "[(${theme.config.toast.toast_color})]",
-        "toastFontSize": /*[(${theme.config.toast.toast_font_size})]*/,
-        "copyrightNotice": /*[(${theme.config.toast.copyright_notice})]*/,
-        "photosGutter": /*[(${theme.config.photos.photos_gutter})]*/,
-        "tocDepth": /*[(${theme.config.post.toc_depth})]*/,
-        "i18n": "[(${theme.config.others.i18n})]",
-        "coverNum": "[(${theme.config.random_image.rimage_cover_back_num})]",
-        "rimageUrl": "[(${theme.config.random_image.rimage_url})]",
-        "coverOpen": /*[(${theme.config.random_image.rimage_cover_back_open})]*/,
-        "meEmail": "i@example.com", // TODO:
-        "defaultTheme": "[(${theme.config.theme.default_theme})]",
-        "defaultGroup": "[(${theme.config.photos.default_group})]",
-        "isPostWordCountToast": /*[(${theme.config.post.post_word_count_toast})]*/,
-        "isPostEditTimeToast": /*[(${theme.config.post.post_edit_time_toast})]*/,
-        "postWordCountToastNormal": "[(${theme.config.post.post_word_count_toast_normal})]",
-        "postWordCountToastMedium": "[(${theme.config.post.post_word_count_toast_medium})]",
-        "postWordCountToastDifficulty": "[(${theme.config.post.post_word_count_toast_difficulty})]",
-        "postEditTimeToastNormal": "[(${theme.config.post.post_edit_time_toast_normal})]",
-        "postEditTimeToastMedium": "[(${theme.config.post.post_edit_time_toast_medium})]",
-        "postEditTimeToastDifficulty": "[(${theme.config.post.post_edit_time_toast_difficulty})]",
-        "journalLikes": /*[(${theme.config.journal.journal_likes})]*/,
-        "journalComment": /*[(${theme.config.journal.journal_comment})]*/,
-    };
-    var bgConfig = {
-        /*[# th:each="themeItem, status : ${theme.config.theme.bg_themes}"]*/
-            "bg_[(${status.index})]": {
-                "id": "[(${status.index})]",
-                "name": "[(${themeItem.bg_name})]",
-                "url": "[(${themeItem.bg_url})]",
-                "strategy": "[(${themeItem.bg_img_strategy})]",
-                "isNight": [(${themeItem.bg_night})],
-                "isDefault": [(${themeItem.bg_isdefault})]
-            },
-        /*[/]*/
-    }
-    /* ]]> */
-  </script>
-  <script
-    type="text/javascript"
-    th:src="@{/assets/script/utils.js?v={version}(version=${theme.spec.version})}"
-  ></script>
-  <script type="text/javascript" th:src="@{/assets/lib/lazysizes/lazysizes.min.js}" async></script>
   <script type="text/javascript" th:src="@{/assets/js/lib.js}"></script>
   <th:block th:if="${theme.config.plugin.is_aplayer}">
     <script th:src="@{/assets/lib/APlayer/APlayer.min.js}" defer></script>
     <script th:src="@{/assets/plugins/aplayer/js/index.js}" defer></script>
   </th:block>
-  <script
-    type="text/javascript"
-    th:src="@{/assets/script/app.js?v={version}(version=${theme.spec.version})}"
-  ></script>
 </th:block>
