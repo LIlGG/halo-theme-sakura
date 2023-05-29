@@ -1,4 +1,4 @@
-import { g as getDefaultExportFromCjs } from "../main.min.js";
+import { g as getDefaultExportFromCjs } from "./_commonjsHelpers-7a7fcd32.js";
 function deepFreeze(obj) {
   if (obj instanceof Map) {
     obj.clear = obj.delete = obj.set = function() {

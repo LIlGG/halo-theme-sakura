@@ -1,4 +1,4 @@
-import { g as getDefaultExportFromCjs, c as commonjsGlobal, a as getAugmentedNamespace } from "../main.min.js";
+import { g as getDefaultExportFromCjs, c as commonjsGlobal, a as getAugmentedNamespace } from "./_commonjsHelpers-7a7fcd32.js";
 var win;
 if (typeof window !== "undefined") {
   win = window;
@@ -2126,7 +2126,7 @@ function decodeB64ToUint8Array(b64Text) {
   }
   return array;
 }
-/*! @name m3u8-parser @version 6.1.0 @license Apache-2.0 */
+/*! @name m3u8-parser @version 6.2.0 @license Apache-2.0 */
 class LineStream extends Stream {
   constructor() {
     super();
@@ -2655,6 +2655,14 @@ class ParseStream extends Stream {
           event.attributes[key] = isHexaDecimal ? event.attributes[key].toString(16) : isDecimalFloating ? parseFloat(event.attributes[key]) : String(event.attributes[key]);
         }
         this.trigger("data", event);
+        return;
+      }
+      match = /^#EXT-X-INDEPENDENT-SEGMENTS/.exec(newLine);
+      if (match) {
+        this.trigger("data", {
+          type: "tag",
+          tagType: "independent-segments"
+        });
         return;
       }
       this.trigger("data", {
@@ -3230,6 +3238,9 @@ class Parser extends Stream {
                   }
                 }
               }
+            },
+            "independent-segments"() {
+              this.manifest.independentSegments = true;
             }
           }[entry.tagType] || noop2).call(self2);
         },

@@ -1,4 +1,7 @@
 import { documentFunction, sakura } from "../main";
+// TODO 待优化 Fancybox
+// import { Fancybox } from "@fancyapps/ui";
+// import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 export class Utils {
   @documentFunction()
@@ -18,7 +21,7 @@ export class Utils {
 
   @documentFunction()
   public wrapImageWithBox() {
-    const contentElement = document.querySelector(".site-content");
+    const contentElement = document.querySelector(".site-content") as HTMLElement;
     const imageElements = contentElement?.querySelectorAll("img:not(.avatar)");
     imageElements?.forEach((imageElement) => {
       if (imageElement.classList.contains("gallery-img")) {
