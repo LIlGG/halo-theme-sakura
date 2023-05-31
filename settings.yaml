@@ -993,34 +993,56 @@ spec:
         - $formkit: radio
           name: aplayer_float
           id: aplayer_float
-          label: 开启左下方音乐浮动窗口（需要同时开启Aplayer插件）
+          label: 开启左下方音乐浮动窗口
           value: false
           options:
             - value: true
               label: 开启
             - value: false
               label: 关闭
+        - $formkit: text
+          if: "$get(aplayer_float).value == true"
+          name: aplayer_host
+          label: Meting API 地址
+          value: https://api.i-meto.com/meting/api
+          help: 支持 Meting 类型格式的 API。 https://github.com/metowolf/Meting
         - $formkit: select
           if: "$get(aplayer_float).value == true"
           name: aplayer_server
-          label: 音乐类别
+          label: 音乐服务商
           value: netease
           options:
             - value: netease
               label: 网易云音乐
-        - $formkit: text
-          if: "$get(aplayer_float).value == true"
-          name: aplayer_id
-          label: 音乐id/歌单id
-          value: 2345868969
+            - value: tencent
+              label: QQ 音乐
+            - value: xiami
+              label: 虾米音乐
+            - value: kugou
+              label: 酷狗音乐
+            - value: baidu
+              label: 百度音乐
         - $formkit: select
           if: "$get(aplayer_float).value == true"
           name: aplayer_type
           label: 类别
           value: playlist
           options:
+            - value: song
+              label: 单曲
             - value: playlist
               label: 歌单
+            - value: album
+              label: 专辑
+            - value: artist
+              label: 歌手
+            - value: search
+              label: 搜索
+        - $formkit: text
+          if: "$get(aplayer_float).value == true"
+          name: aplayer_id
+          label: id
+          value: 
         - $formkit: select
           if: "$get(aplayer_float).value == true"
           name: aplayer_preload
@@ -1028,11 +1050,11 @@ spec:
           value: none
           options:
             - value: none
-              label: none
+              label: 无
             - value: metadata
-              label: metadata
+              label: 仅元数据
             - value: auto
-              label: auto
+              label: 自动
         - $formkit: number
           if: "$get(aplayer_float).value == true"
           name: aplayer_volume
@@ -1185,18 +1207,6 @@ spec:
           label: 备案模式
           value: false
           help: 备案模式，开启之后将隐藏所有留言、评论功能
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-    - group: plugin
-      label: 插件功能
-      formSchema:
-        - $formkit: radio
-          name: is_aplayer
-          label: 开启 Aplayer 插件
-          value: false
           options:
             - value: true
               label: 开启

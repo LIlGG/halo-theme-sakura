@@ -16,7 +16,7 @@ interface Sakura {
   getThemeConfig<T extends Number | String | Boolean | ThemeConfig[]>(
     group: String,
     key: String,
-    type?: new (...args: any) => T
+    type: new (...args: any) => T
   ): T | undefined;
   refresh(): void;
   registerDocumentFunction(documentFunction: DocumentFunction): void;

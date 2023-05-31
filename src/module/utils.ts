@@ -1,9 +1,78 @@
 import { documentFunction, sakura } from "../main";
+import "APlayer/dist/APlayer.min.css";
 // TODO 待优化 Fancybox
 // import { Fancybox } from "@fancyapps/ui";
 // import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 export class Utils {
+  /**
+   * 注册吸底模式 APlayer (Fixed APlayer)
+   */
+  @documentFunction(false)
+  public registerFixedAPlayer() {
+    const aplayerFloat = sakura.getThemeConfig("additional", "aplayer_float", Boolean)?.valueOf();
+    if (!aplayerFloat) {
+      return;
+    }
+
+    const musicHost = sakura.getThemeConfig("additional", "aplayer_host", String)?.valueOf();
+    const musicServer = sakura.getThemeConfig("additional", "aplayer_server", String)?.valueOf();
+    const musicType = sakura.getThemeConfig("additional", "aplayer_type", String)?.valueOf();
+    const musicId = sakura.getThemeConfig("additional", "aplayer_id", String)?.valueOf();
+
+    // http://example.com/api.php?server=:server&type=:type&id=:id&r=:r
+    const musicAPI = `${musicHost}?server=${musicServer}&type=${musicType}&id=${musicId}&r=${Math.random()}`;
+
+    fetch(musicAPI)
+      .then((response) => response.json())
+      .then((data) => {
+        import("APlayer").then(async (module) => {
+          const APlayer = module.default;
+          const aplayerElement = createFixedAPlayerElement();
+          const flxedAplayerOptions = {
+            container: aplayerElement,
+            mini: true,
+            fixed: true,
+            autoplay: sakura.getThemeConfig("additional", "aplayer_autoplay", Boolean)?.valueOf() || false,
+            mutex: true,
+            lrcType: 3,
+            preload: sakura.getThemeConfig("additional", "aplayer_preload", String)?.valueOf() || "auto",
+            theme: sakura.getThemeConfig("additional", "aplayer_theme", String)?.valueOf() || "#2980b9",
+            loop: "all",
+            order: sakura.getThemeConfig("additional", "aplayer_order", String)?.valueOf() || "list",
+            volume: sakura.getThemeConfig("additional", "aplayer_volume", Number)?.valueOf() || null,
+            listFolded: false,
+            listMaxHeight: "250px",
+            customAudioType: null,
+            storageName: "sakura",
+            audio: {},
+          };
+
+          flxedAplayerOptions.audio = data;
+          console.log(flxedAplayerOptions);
+          new APlayer(flxedAplayerOptions);
+          // 为按钮增加 hover
+          aplayerElement.querySelector(".aplayer-body")?.classList.add("ap-hover");
+        });
+      })
+      .catch((error) => {
+        console.error("APlayer API Error: ", error);
+      });
+
+    const createFixedAPlayerElement = () => {
+      if (document.querySelector("#aplayer-float")) {
+        return document.querySelector("#aplayer-float") as HTMLElement;
+      }
+      const fixedAPlayerElement = document.createElement("div") as HTMLElement;
+      fixedAPlayerElement.id = "aplayer-float";
+      fixedAPlayerElement.classList.add("aplayer");
+      fixedAPlayerElement.classList.add("aplayer-float");
+
+      document.body.appendChild(fixedAPlayerElement);
+      return fixedAPlayerElement;
+    };
+  }
+
   @documentFunction()
   public registerHeaderClass() {
     const containerElement = document.querySelector(".container") as HTMLElement;
@@ -91,7 +160,7 @@ export class Utils {
         codeElement.setAttribute("data-rel", lang.toUpperCase());
         codeElement.classList.add(lang.toLowerCase());
         highlight.default.highlightElement(codeElement);
-        const highlightLineNumber = await import("../libs/highlightjs-line-numbers")
+        const highlightLineNumber = await import("../libs/highlightjs-line-numbers");
         highlightLineNumber.registerHljsLineNumbers(highlight.default);
         highlight.default.lineNumbersBlock(codeElement);
       });
@@ -118,7 +187,6 @@ export class Utils {
     });
   }
 
-  
   /**
    * 注册 Toc (目录)
    */
@@ -127,7 +195,6 @@ export class Utils {
     const tocContainerElements = document.querySelectorAll(".toc-container");
     const headerOffset = 75;
     tocContainerElements?.forEach((tocContainerElement) => {
-      console.log("tocbot")
       import("tocbot").then((tocbot) => {
         const tocElement = tocContainerElement.querySelector(".toc");
         const offset = tocContainerElement.getBoundingClientRect().top + window.pageYOffset;

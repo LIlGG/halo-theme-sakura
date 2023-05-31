@@ -15,10 +15,4 @@
       dom.onerror = null;
     }
   </script>
-
-  <script type="text/javascript" th:src="@{/assets/js/lib.js}"></script>
-  <th:block th:if="${theme.config.plugin.is_aplayer}">
-    <script th:src="@{/assets/lib/APlayer/APlayer.min.js}" defer></script>
-    <script th:src="@{/assets/plugins/aplayer/js/index.js}" defer></script>
-  </th:block>
 </th:block>

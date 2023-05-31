@@ -870,16 +870,18 @@ function quantileSorted(values, p, valueof = number$3) {
   var n, i = (n - 1) * p, i0 = Math.floor(i), value0 = +valueof(values[i0], i0, values), value1 = +valueof(values[i0 + 1], i0 + 1, values);
   return value0 + (value1 - value0) * (i - i0);
 }
-function quantileIndex(values, p, valueof) {
-  values = Float64Array.from(numbers(values, valueof));
-  if (!(n = values.length) || isNaN(p = +p))
+function quantileIndex(values, p, valueof = number$3) {
+  if (isNaN(p = +p))
     return;
-  if (p <= 0 || n < 2)
-    return minIndex(values);
+  numbers2 = Float64Array.from(values, (_, i2) => number$3(valueof(values[i2], i2, values)));
+  if (p <= 0)
+    return minIndex(numbers2);
   if (p >= 1)
-    return maxIndex(values);
-  var n, i = Math.floor((n - 1) * p), order = (i2, j) => ascendingDefined(values[i2], values[j]), index2 = quickselect(Uint32Array.from(values, (_, i2) => i2), i, 0, n - 1, order);
-  return greatest(index2.subarray(0, i + 1), (i2) => values[i2]);
+    return maxIndex(numbers2);
+  var numbers2, index2 = Uint32Array.from(values, (_, i2) => i2), j = numbers2.length - 1, i = Math.floor(j * p);
+  quickselect(index2, i, 0, j, (i2, j2) => ascendingDefined(numbers2[i2], numbers2[j2]));
+  i = greatest(index2.subarray(0, i + 1), (i2) => numbers2[i2]);
+  return i >= 0 ? i : -1;
 }
 function thresholdFreedmanDiaconis(values, min2, max2) {
   const c2 = count$1(values), d = quantile$1(values, 0.75) - quantile$1(values, 0.25);
