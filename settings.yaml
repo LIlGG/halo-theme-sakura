@@ -458,21 +458,6 @@ spec:
               label: 开启
             - value: false
               label: 关闭
-        - $formkit: text
-          if: "$get(post_word_count_toast).value == true"
-          name: post_word_count_toast_normal
-          label: 阅读时间正常提示语
-          value: 文章篇幅适中，可以放心阅读。
-        - $formkit: text
-          if: "$get(post_word_count_toast).value == true"
-          name: post_word_count_toast_medium
-          label: 阅读时间略长提示语
-          value: 文章内容较长，请提前准备好咖啡!!!
-        - $formkit: text
-          if: "$get(post_word_count_toast).value == true"
-          name: post_word_count_toast_difficulty
-          label: 阅读时间超长提示语
-          value: 文章内容很长，建议分段阅读。
         - $formkit: radio
           name: post_edit_time_toast
           id: post_edit_time_toast
@@ -484,21 +469,42 @@ spec:
               label: 开启
             - value: false
               label: 关闭
+        - $formkit: radio
+          name: custom_toast
+          id: custom_toast
+          key: custom_toast
+          label: 自定义提示语
+          value: false
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+          help: 默认提示语会采用国际化方案，如果你想自定义提示语，可以开启此选项
         - $formkit: text
-          if: "$get(post_edit_time_toast).value == true"
+          if: "$get(post_word_count_toast).value == true && $get(custom_toast).value == true"
+          name: post_word_count_toast_normal
+          label: 阅读时间正常提示语
+        - $formkit: text
+          if: "$get(post_word_count_toast).value == true && $get(custom_toast).value == true"
+          name: post_word_count_toast_medium
+          label: 阅读时间略长提示语
+        - $formkit: text
+          if: "$get(post_word_count_toast).value == true && $get(custom_toast).value == true"
+          name: post_word_count_toast_difficulty
+          label: 阅读时间超长提示语
+        - $formkit: text
+          if: "$get(post_edit_time_toast).value == true && $get(custom_toast).value == true"
           name: post_edit_time_toast_normal
           label: 近期更新过文章提示语
-          value: 近期有所更新，请放心阅读！
         - $formkit: text
-          if: "$get(post_edit_time_toast).value == true"
+          if: "$get(post_edit_time_toast).value == true && $get(custom_toast).value == true"
           name: post_edit_time_toast_medium
           label: 一段时间未更新文章提示语
-          value: 文章距上次编辑时间较远，部分内容可能已经过时！
         - $formkit: text
-          if: "$get(post_edit_time_toast).value == true"
+          if: "$get(post_edit_time_toast).value == true && $get(custom_toast).value == true"
           name: post_edit_time_toast_difficulty
           label: 很长时间未更新文章提示语
-          value: 文章内容已经很陈旧了，也许不再适用！
         - $formkit: select
           name: post_time_display_type
           label: 文章时间显示类别
@@ -1190,15 +1196,6 @@ spec:
         - $formkit: radio
           name: is_aplayer
           label: 开启 Aplayer 插件
-          value: false
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: radio
-          name: katex
-          label: 开启 Katex 公式渲染
           value: false
           options:
             - value: true

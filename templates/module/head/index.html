@@ -7,9 +7,6 @@
   <link rel="preload" th:href="@{/assets/dist/css/main.min.css?v={version}(version=${theme.spec.version})}" as="style">
   <link rel="stylesheet" th:href="@{/assets/dist/css/main.min.css?v={version}(version=${theme.spec.version})}">
 
-  <!--/* variables.html 根据配置设置 css 变量值，全局 css 通过变量值进行处理 */-->
-  <th:block th:replace="module/variables/index" />
-
   <!--/* 字体 */-->
   <th:block th:replace="module/head/fonts" />
   
@@ -27,13 +24,6 @@
     rel="stylesheet"
     th:href="@{/assets/lib/APlayer/APlayer.min.css}"
     media="all"
-  />
-  <link
-    th:if="${theme.config.plugin.katex}"
-    rel="stylesheet"
-    href="https://unpkg.com/katex@0.12.0/dist/katex.min.css"
-    media="noexist"
-    onload="this.media='all'"
   />
   <th:block th:replace="~{inc/decorate}" />
 

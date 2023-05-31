@@ -28,7 +28,7 @@ new Pjax({
   selectors: [
     'head title',
     '.wrapper',
-    '.pjax'
+    '.pjax',
   ],
   switches: {
     '.wrapper': Pjax.switches.innerHTML
