@@ -15,7 +15,12 @@
     <th:block th:replace="scripts/noscript" />
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" class="serif">
-    <section id="main-container" class="container" th:classappend="${_templateId == 'index' ? 'is-homepage' : ''}">
+    <div class="pjax">
+       <!--/* variables.html 根据配置设置 css 变量值，全局 css 通过变量值进行处理 */-->
+      <th:block th:replace="module/variables/index"></th:block>
+    </div>
+
+    <section id="main-container" class="container">
       <!--/* 导航栏 */-->
       <header class="site-header" itemscope itemtype="http://schema.org/WPHeader">
         <div class="header-inner" th:insert="module/header/index"></div>
@@ -40,30 +45,6 @@
             <th:block th:replace="${_sidebar}" />
           </th:block>
         </div>
-
-        <!--/* 定义可变属性，会根据页面的改变而变化 */-->
-        <script type="text/javascript" th:inline="javascript">
-          // TODO:
-          var PageAttr = {
-            [# th:if="${_templateId == 'post'}"]
-            "postEditTime": "[(${#dates.format(post.status.lastModifyTime, 'yyyy-MM-dd HH:mm:ss')})]"
-            [/]
-          };
-          // var PageAttr = {
-          //     "metas": {
-          //         // <#if metas??>
-          //         //     <#list metas?keys as key>
-          //         //         "${key}": "${metas['${key}']}",
-          //         //     </#list>
-          //         // </#if>
-          //     },
-          //     "isPost": "${(is_post!false)?string('true','false')}",
-          //     <#if is_post??>
-          //     "postWordCount": "${post.wordCount!0}",
-          //     "postEditTime": "${post.editTime?string('yyyy-MM-dd HH:mm:ss')}"
-          //     </#if>
-          // }
-        </script>
       </main>
     </section>
 

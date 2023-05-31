@@ -5,6 +5,16 @@ import { documentFunction, sakura } from "../main";
 
 export class Utils {
   @documentFunction()
+  public registerHeaderClass() {
+    const containerElement = document.querySelector(".container") as HTMLElement;
+    if (sakura.getPageConfig("_templateId") === "index") {
+      containerElement.classList.add("is-homepage");
+    } else {
+      containerElement.classList.remove("is-homepage");
+    }
+  }
+
+  @documentFunction()
   public wrapTableWithBox() {
     const contentElement = document.querySelector(".entry-content");
     const tableElements = contentElement?.querySelectorAll("table");
