@@ -19,12 +19,6 @@
     media="noexist"
     onload="this.media='all'"
   />
-  <link
-    th:if="${theme.config.plugin.is_aplayer}"
-    rel="stylesheet"
-    th:href="@{/assets/lib/APlayer/APlayer.min.css}"
-    media="all"
-  />
   <th:block th:replace="~{inc/decorate}" />
 
   <!--/* 获取主题设置中的所有属性保存在 JS 变量中 */-->
