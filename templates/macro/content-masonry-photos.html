@@ -26,7 +26,7 @@
       </nav>
     </div>
 
-    <div class="photos-content loading">
+    <div class="photos-content fancybox-content loading">
       <div class="gallery masonry-gallery">
         <th:block th:each="photo : ${photoFinder.listAll()}">
           <figure
@@ -34,14 +34,12 @@
             th:classappend="|${photo.spec.groupName} col-${theme.config.photos.masonry_column}|"
           >
             <header class="gallery-icon">
-              <a data-fancybox="gallery" th:href="${photo.spec.url}">
-                <img
-                  class="lazyload"
-                  th:src="${#theme.assets('/images/load/load.gif')}"
-                  th:alt="${photo.spec.displayName}"
-                  th:data-src="${#strings.isEmpty(photo.spec.cover) ? photo.spec.url : photo.spec.cover}"
-                  />
-              </a>
+              <img
+                class="lazyload"
+                th:src="${#strings.isEmpty(photo.spec.cover) ? #theme.assets('/images/load/load.gif') : photo.spec.cover}"
+                th:alt="${photo.spec.displayName}"
+                th:data-src="${photo.spec.url}"
+              />
             </header>
             <figcaption class="gallery-caption">
               <div class="entry-summary">

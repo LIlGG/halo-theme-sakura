@@ -1,8 +1,7 @@
 import { documentFunction, sakura } from "../main";
 import "APlayer/dist/APlayer.min.css";
 // TODO 待优化 Fancybox
-// import { Fancybox } from "@fancyapps/ui";
-// import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 export class Utils {
   /**
@@ -100,19 +99,29 @@ export class Utils {
 
   @documentFunction()
   public wrapImageWithBox() {
-    const contentElement = document.querySelector(".site-content") as HTMLElement;
-    const imageElements = contentElement?.querySelectorAll("img:not(.avatar)");
-    imageElements?.forEach((imageElement) => {
+    const contentElement = document.querySelector(".fancybox-content") as HTMLElement;
+    const imageElements = contentElement?.querySelectorAll("img:not(.avatar)") as NodeListOf<HTMLElement>;
+    if (!imageElements) {
+      return;
+    }
+    imageElements.forEach((imageElement) => {
       if (imageElement.classList.contains("gallery-img")) {
         return;
       }
       imageElement.classList.add("gallery-img");
       const imageWrapper = document.createElement("a");
       imageWrapper.setAttribute("data-fancybox", "gallery");
-      imageWrapper.setAttribute("href", imageElement.getAttribute("src") || "");
+      if (imageElement.getAttribute("data-src")) {
+        imageWrapper.setAttribute("href", imageElement.getAttribute("data-src") || "");
+      } else {
+        imageWrapper.setAttribute("href", imageElement.getAttribute("src") || "");
+      }
       imageWrapper.classList.add("image-wrapper");
       imageElement.parentNode?.insertBefore(imageWrapper, imageElement);
       imageWrapper.appendChild(imageElement);
+    });
+    import("@fancyapps/ui").then((module) => {
+      module.Fancybox.bind(contentElement, '[data-fancybox="gallery"]');
     });
   }
 
