@@ -8,7 +8,7 @@
 
     & .categories-title {
       margin-bottom: 10px;
-      color: #3c4858;
+      color: var(--card-container-title-color);
       font-size: 1.75rem;
       font-weight: 400;
     }

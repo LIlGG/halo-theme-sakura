@@ -22,6 +22,7 @@
 import Pjax from 'pjax';
 import { sakura } from "../main";
 import NProgress from 'nprogress';
+/** TODO pjax 之后，404 页面无法跳转 */
 
 new Pjax({
   elements: 'a[data-pjax]',

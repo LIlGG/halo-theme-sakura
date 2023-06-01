@@ -8,6 +8,7 @@
   margin: 10px 0;
   display: flex;
   align-items: center;
+  color: var(--minicode-color);
 
   & a {
     padding: 5px;

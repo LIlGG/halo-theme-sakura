@@ -11,6 +11,7 @@
   color: #000;
   padding-top: 30px;
   box-shadow: 0 10px 30px 0px rgba(0, 0, 0, 0.4);
+  filter: brightness(var(--theme-brightness));
 
   &::before {
     content: " ";

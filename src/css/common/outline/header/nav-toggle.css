@@ -26,12 +26,12 @@
         transition-duration: 0.2s;
         width: 30px;
         height: 3px;
-        background-color: #333;
+        background-color: var(--mobile-nav-toggle-background-color);
 
         &::before,
         &::after {
           transition-duration: 0.5s;
-          background-color: #333;
+          background-color: var(--mobile-nav-toggle-background-color);
           position: absolute;
           content: "";
           width: 30px;

@@ -54,7 +54,6 @@
             right: 0;
             text-align: center;
             backface-visibility: hidden;
-            background: #333;
             background: rgba(0, 0, 0, 0.6);
             visibility: hidden;
             opacity: 0;

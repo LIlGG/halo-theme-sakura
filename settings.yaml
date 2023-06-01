@@ -180,75 +180,11 @@ spec:
               label: 开启
             - value: false
               label: 关闭
-        # - $formkit: select
-        #   if: "$get(bgvideo).value == true"
-        #   name: bgvideo_server
-        #   id: bgvideo_server
-        #   key: bgvideo_server
-        #   label: 视频服务者
-        #   value: local
-        #   options:
-        #     - value: local
-        #       label: 本地视频
-        #     - value: bilibili
-        #       label: 哔哩哔哩
         - $formkit: attachment
-          # if: "$get(bgvideo_server).value == 'local'"
           id: bgvideo_url
           name: bgvideo_url
           key: bgvideo_url
           label: 视频/视频链接
-        # - $formkit: text
-        #   if: "$get(bgvideo_server).value == 'bilibili'"
-        #   name: bgvideo_id
-        #   key: bgvideo_id
-        #   id: bgvideo_id
-        #   label: AV/BV号
-        # - $formkit: text
-        #   if: "$get(bgvideo_server).value == 'bilibili'"
-        #   name: bilibili_video_cid
-        #   key: bilibili_video_cid
-        #   id: bilibili_video_cid
-        #   label: B站视频分P id
-        #   help: 分P ID不设置则默认为 1P
-        # - $formkit: select
-        #   if: "$get(bgvideo_server).value == 'bilibili'"
-        #   name: bilibili_video_qn
-        #   key: bilibili_video_qn
-        #   id: bilibili_video_qn
-        #   label: B站视频清晰度
-        #   value: 6
-        #   help: 这里展示的是除了 4K 之外的所有清晰度，并不代表目标视频的清晰度，请确定好目标视频所支持的清晰度，否则将报错
-        #   options:
-        #     - value: 6
-        #       label: 极速
-        #     - value: 16
-        #       label: 流畅
-        #     - value: 32
-        #       label: 清晰
-        #     - value: 64
-        #       label: 720P
-        #     - value: 74
-        #       label: 720P60
-        #     - value: 80
-        #       label: 高清
-        #     - value: 112
-        #       label: 1080P+
-        #     - value: 116
-        #       label: 1080P60
-        # - $formkit: select
-        #   if: "$get(bgvideo_server).value == 'bilibili'"
-        #   name: bilibili_video_vtype
-        #   key: bilibili_video_vtype
-        #   id: bilibili_video_vtype
-        #   label: B站视频格式
-        #   value: 0
-        #   help: MP4 只有流畅或清晰
-        #   options:
-        #     - value: 0
-        #       label: FLV
-        #     - value: 1
-        #       label: MP4
     - group: sns
       label: 社交网络
       formSchema:
@@ -875,18 +811,6 @@ spec:
               label: 开启
             - value: false
               label: 关闭
-        - $formkit: color
-          name: theme_dark
-          label: 黑夜模式主题色
-          value: "#FE9600"
-        - $formkit: number
-          name: dark_imgbri
-          label: 黑夜模式图像亮度
-          value: 0.7
-        - $formkit: number
-          name: dark_widget_tmd
-          label: 黑夜模式控件透明度
-          value: 0.7
         - $formkit: repeater
           if: "$get(theme_change).value == true"
           name: bg_themes
