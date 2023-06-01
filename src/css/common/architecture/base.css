@@ -123,6 +123,7 @@ sub {
 
 img {
   border: 0;
+  filter: brightness(var(--theme-brightness));
 }
 
 svg:not(:root) {
@@ -331,6 +332,10 @@ embed,
 iframe,
 object {
   max-width: 100%;
+}
+
+iframe {
+  filter: brightness(var(--theme-brightness));
 }
 
 .noselect {

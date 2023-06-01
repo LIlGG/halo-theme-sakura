@@ -13,7 +13,7 @@
   &::after,
   &::before {
     transition: left .5s;
-    background: var(--background-color);
+    background: var(--theme-color);
     position: fixed;
     content: "";
     width: 30px;

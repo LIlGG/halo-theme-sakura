@@ -18,7 +18,7 @@
 
   & .glitch-text {
     text-align: center;
-    color: #333;
+    color: var(--mobile-menu-text-color);
     font-weight: 900;
     font-family: "Ubuntu", sans-serif;
     letter-spacing: 1.5px;
@@ -54,6 +54,7 @@
   }
 
   & .navbar {
+    overflow-x: hidden;
     overflow-y: auto;
     width: 100%;
     height: 100%;
@@ -67,11 +68,6 @@
     }
 
     & ul {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 0;
-
       &:hover {
         & li {
           color: rgba(255, 255, 255, 0.5);
@@ -80,12 +76,12 @@
 
       & li {
         transition-duration: 0.25s;
-        padding: 6px 0;
+        padding: 8px 0;
         color: #fff;
         letter-spacing: 0.02em;
 
         & a {
-          color: #333;
+          color: var(--mobile-menu-text-color);
           font-size: 15px;
           width: 70px;
 
@@ -106,7 +102,6 @@
 
           & a {
             font-size: 13px;
-            color: #9cacc5;
           }
         }
       }

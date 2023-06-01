@@ -3,8 +3,8 @@
   position: relative;
   margin: 0;
   font-size: 16px;
-  color: #eaeadf;
-  background: rgba(0, 0, 0, 0.5);
+  color: var(--first-screen-header-info-text-color);
+  background: var(--first-screen-header-info-background-color);
   padding: 15px;
   letter-spacing: 0;
   line-height: 30px;
@@ -18,7 +18,8 @@
     left: 20%;
     border-width: 15px;
     border-style: solid;
-    border-color: transparent transparent rgba(0, 0, 0, 0.5) transparent;
+    border-color: transparent;
+    border-bottom-color: var(--first-screen-header-info-background-color);
   }
 
   & p {

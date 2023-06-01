@@ -55,12 +55,12 @@
   border: 0;
   outline: 0;
   opacity: 0;
-  background-color: var(--background-color);
-  color: #404040;
+  background-color: var(--widget-background-color);
+  color: var(--theme-color);
   cursor: pointer;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24) !important;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
   transition: all 0.3s ease;
 
   &.cd-is-visible {
