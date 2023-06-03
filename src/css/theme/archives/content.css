@@ -7,7 +7,7 @@
     &::before {
       content: "";
       position: absolute;
-      height: 90%;
+      height: 75%;
       border-left: 1px dashed #f5f5f5;
       left: 17px;
       top: 30px;
@@ -42,7 +42,7 @@
         & svg {
           padding: 10px;
           border-radius: 100px;
-          background: orange;
+          background: var(--theme-color);
           color: #fff;
         }
       }
@@ -73,7 +73,7 @@
         & .archive-post-circle {
           height: 11px;
           width: 11px;
-          background: orange;
+          background: var(--theme-color);
           display: inline-block;
           position: absolute;
           margin-top: 22px;
