@@ -11,10 +11,6 @@
     }
   }
   & + .header-info {
-    &::before {
-      bottom: 60px;
-      content: "";
-    }
 
     &..info-desc {
       &::before {

@@ -3057,11 +3057,6 @@ table {
       transform: rotate(360deg);
     }
 
-.header-tou + .header-info::before {
-      bottom: 60px;
-      content: "";
-    }
-
 .header-tou + .header-info..info-desc::before {
         bottom: 89.5px;
         content: "";
