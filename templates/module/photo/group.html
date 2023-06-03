@@ -9,7 +9,7 @@
           <li>
             <a
               href="javascript:void(0);"
-              th:data-filter="'.' + ${group.metadata.name}"
+              th:data-filter="|.group-${#strings.trim(group.metadata.name)}|"
               th:text="${group.spec.displayName}"
             ></a>
           </li>
