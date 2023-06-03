@@ -803,7 +803,7 @@ spec:
             - value: 0
               label: 无限
     - group: theme
-      label: 主题切换
+      label: 主题风格
       formSchema:
         - $formkit: radio
           name: theme_change

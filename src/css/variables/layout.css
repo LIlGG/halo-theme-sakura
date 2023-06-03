@@ -114,38 +114,6 @@
   --links-description-color: #bebebe;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --theme-brightness: 0.7;
-    --body-color: #eee;
-    --header-background: rgba(49, 54, 59, 0.85);
-    --header-user-option-hover-background-color: #31363b;
-    --color: #eee;
-    --background-color: #31363b;
-    --first-screen-background-blend-overlay: var(--background-color);
-    --first-screen-header-info-text-color: #fff;
-    --first-screen-header-info-background-color: rgba(0, 0, 0, 0.7);
-    --notice-background-color: #232629;
-    --home-divider-border: 6px dotted #535a63;
-    --post-list-thumb-box-shadow: 0 1px 35px -8px rgba(0, 0, 0, 0.8);
-    --post-list-thumb-title-color: #bebebe;
-    --post-list-thumb-abstract-color: #bebebe;
-    --post-list-thumb-more-color: #888;
-    --widget-background-color: rgba(38, 38, 38, 0.8);
-    --theme-item-background-color: #31363b;
-    --mobile-menu-text-color: #eee;
-    --minicode-color: #000;
-    --entry-content-text-color: #999;
-    --entry-content-list-color: #999;
-    --entry-content-table-color: #999;
-    --card-container-box-shadow: 0 1px 35px -8px rgba(0, 0, 0, 0.8);
-    --card-container-title-color: #ccc;
-    --photo-group-change-color: #222;
-    --photo-group-change-active-color: #ccc;
-    --links-description-color: #bebebe;
-  }
-}
-
 .video-container {
   --video-play-image: none;
   --video-pause-image: none;
