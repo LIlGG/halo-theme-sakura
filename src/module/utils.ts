@@ -1,6 +1,5 @@
 import { documentFunction, sakura } from "../main";
 import "APlayer/dist/APlayer.min.css";
-// TODO 待优化 Fancybox
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 export class Utils {

@@ -44,7 +44,6 @@
   }
 }
 
-/* TODO: 移动端，外边框会消失不见 */
 .m-cd-top {
   display: var(--mobile-cd-top-display);
   bottom: var(--mobile-cd-top-bottom);

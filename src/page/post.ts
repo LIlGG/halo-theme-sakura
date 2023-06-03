@@ -12,8 +12,7 @@ export default class Post {
     if (!contentElement) {
       return;
     }
-    // TODO 校验是否为原创文章
-    if (!sakura.getThemeConfig("post", "post_original_copy", Boolean)) {
+    if (sakura.getPageConfig("isOriginal") == "false" || !sakura.getThemeConfig("post", "post_original_copy", Boolean)) {
       return;
     }
     contentElement.addEventListener("copy", (event) => {
