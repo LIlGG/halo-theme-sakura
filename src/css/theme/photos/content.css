@@ -71,8 +71,9 @@
   clear: both;
   width: 100%;
   margin: 0;
+  opacity: 1;
   transform: translate3d(0, 0, 0);
-  transition: transform 0.35s;
+  transition: transform, opacity 0.35s;
 
   & .gallery-item {
     & .gallery-caption {

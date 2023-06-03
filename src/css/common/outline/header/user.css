@@ -32,6 +32,7 @@
   border-radius: 5px;
   text-align: center;
   background: var(--widget-background-color);
+  width: max-content;
 
   & .herder-user-name {
     font-size: 12px;
@@ -86,7 +87,6 @@
       display: initial;
       font-size: 14px;
       padding: 0 5px;
-      text-decoration: underline;
       font-weight: bold;
       text-decoration: none;
     }

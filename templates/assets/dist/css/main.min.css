@@ -1523,6 +1523,8 @@ table {
   text-align: center;
   background: #fff;
   background: var(--widget-background-color);
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .header-user-menu .herder-user-name {
@@ -1582,7 +1584,6 @@ table {
       display: initial;
       font-size: 14px;
       padding: 0 5px;
-      text-decoration: underline;
       font-weight: bold;
       text-decoration: none;
     }
@@ -6294,8 +6295,9 @@ section:not(.is-homepage) .site-header .header-inner {
   clear: both;
   width: 100%;
   margin: 0;
+  opacity: 1;
   transform: translate3d(0, 0, 0);
-  transition: transform 0.35s;
+  transition: transform, opacity 0.35s;
 }
 
 .gallery .gallery-item .gallery-caption {

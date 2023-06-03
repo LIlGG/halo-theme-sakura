@@ -348,7 +348,7 @@ export class Events {
     const systemMode = localStorage.getItem("systemMode");
     const systemDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
 
-    if (!systemMode || systemMode === "false") {
+    if (!systemMode || systemMode === "true") {
       if (systemDarkMode.matches) {
         bodyElement.classList.add("dark");
       } else {
