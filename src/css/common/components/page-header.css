@@ -92,7 +92,7 @@
 
       &::before,
       &::after {
-        color: #f8ba0b;
+        color: var(--theme-color);
         font-size: 1.5em;
         vertical-align: sub;
       }
