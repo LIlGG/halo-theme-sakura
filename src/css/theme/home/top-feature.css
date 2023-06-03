@@ -4,13 +4,6 @@
   margin-top: 55px;
   animation: main 0.6s;
 
-  & img {
-    height: 160px;
-    width: 256px;
-    display: block;
-    border-radius: 10px;
-  }
-
   & .fes-title {
     color: var(--color);
     font-size: 16px;
@@ -23,83 +16,83 @@
 
   & .top-feature-inner {
     display: flex;
-    justify-content: space-around;
 
-    & .top-feature-v2 {
+    & .top-feature-item {
       display: inline-block;
-
-      & .the-feature {
+      height: 160px;
+      width: 100%;
+      margin: 0px 2px;
+      
+      & .feature-container {
         position: relative;
+        height: 100%;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        border-radius: 10px;
         transition: all 0.35s ease-in-out;
 
-        &.from_left_and_right {
-          position: relative;
-          height: 160px;
-          /** 解决mac本上第三个聚焦图换行的BUG issues #7 */
+        & img {
+          height: 100%;
           width: 100%;
-          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-          overflow: hidden;
-          border-radius: 10px;
+          display: block;
+          object-fit: cover;
+          transition: all 0.35s ease-in-out;
+          transform: scale(1);
+        }
 
-          & .img {
-            transition: all 0.35s ease-in-out;
-            transform: scale(1);
-          }
+        & .info {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          text-align: center;
+          backface-visibility: hidden;
+          background: rgba(0, 0, 0, 0.6);
+          visibility: hidden;
+          opacity: 0;
+          transition: all 0.35s ease-in-out;
 
-          & .info {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
+          & h3 {
+            text-transform: uppercase;
+            color: #fff;
+            font-size: 17px;
+            padding: 10px;
+            background: #111;
+            margin: 30px 0 0;
             text-align: center;
-            backface-visibility: hidden;
-            background: rgba(0, 0, 0, 0.6);
-            visibility: hidden;
-            opacity: 0;
             transition: all 0.35s ease-in-out;
-
-            & h3 {
-              text-transform: uppercase;
-              color: #fff;
-              font-size: 17px;
-              padding: 10px;
-              background: #111;
-              margin: 30px 0 0;
-              text-align: center;
-              transition: all 0.35s ease-in-out;
-              transform: translateX(-100%);
-            }
-
-            & p {
-              font-style: italic;
-              font-size: 12px;
-              position: relative;
-              color: #bbb;
-              padding: 20px;
-              text-align: center;
-              transition: all 0.35s 0.1s linear;
-              transform: translateX(100%);
-            }
+            transform: translateX(-100%);
           }
 
-          & a {
-            &:hover {
-              & .img {
-                transform: scale(1.2);
+          & p {
+            font-style: italic;
+            font-size: 12px;
+            position: relative;
+            color: #bbb;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.35s 0.1s linear;
+            transform: translateX(100%);
+          }
+        }
+
+        & a {
+          &:hover {
+            & .img {
+              transform: scale(1.2);
+            }
+
+            & .info {
+              visibility: visible;
+              opacity: 1;
+
+              & h3 {
+                transform: translateX(0);
               }
 
-              & .info {
-                visibility: visible;
-                opacity: 1;
-
-                & h3 {
-                  transform: translateX(0);
-                }
-
-                & p {
-                  transform: translateX(0);
-                }
+              & p {
+                transform: translateX(0);
               }
             }
           }

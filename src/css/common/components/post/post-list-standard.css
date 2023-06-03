@@ -5,12 +5,15 @@
 
   & p {
     min-height: 60px;
-    margin: 0 0 0 17%;
     font-size: 15px;
-    color: rgba(0, 0, 0, 0.66);
+    color: var(--post-list-thumb-abstract-color);
     letter-spacing: 0;
     line-height: 30px;
     transition: color 1s;
+    margin: 0;
+    padding: 0;
+    padding-left: 20px;
+    display: -webkit-box;
   }
 
   & hr {
@@ -26,7 +29,7 @@
   &:hover {
     & .entry-footer {
       & .info-meta {
-        transform: translate3d(-230px, 0, 0);
+        transform: translate3d(-130px, 0, 0);
         opacity: 1;
         visibility: visible;
       }
@@ -34,8 +37,8 @@
   }
 
   & .feature {
-    position: absolute;
     margin-top: 10px;
+    float: left;
 
     &:hover .overlay .overlay-inner {
       opacity: 1;
@@ -44,13 +47,11 @@
     & .overlay-inner {
       display: inline-block;
       position: absolute;
-      top: 2px;
-      left: 2px;
       font-size: 25px;
       color: #fff;
-      width: 102px;
-      height: 102px;
-      line-height: 94px;
+      width: 106px;
+      height: 106px;
+      line-height: 106px;
       text-align: center;
       background: #bbe2db;
       opacity: 0;
@@ -70,6 +71,7 @@
       height: 100px;
       padding: 2px;
       border: 1px solid #dadada;
+      box-sizing: content-box;
       position: relative;
       object-fit: cover;
       border-radius: var(--standard-post-list-border-radius);
@@ -81,18 +83,22 @@
       font-size: 20px;
       font-weight: 400;
       line-height: 50px;
-      margin: 0 0 0 17%;
       position: relative;
       z-index: 1;
       display: inline-block;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      width: 64%;
+      max-width: 65%;
+      margin-left: 20px;
 
       &:hover {
         color: var(--theme-color);
       }
+    }
+
+    & a {
+      color: var(--post-list-thumb-title-color);
     }
   }
 
@@ -103,7 +109,7 @@
 
       & .iconify {
         font-size: 30px;
-        color: var(--color);
+        color: var(--post-list-thumb-more-color);
 
         &:hover {
           color: var(--theme-color);
@@ -118,12 +124,11 @@
       opacity: 0;
       padding-top: 8px;
       border-top: 1px solid #ddd;
-      transform: translate3d(-150px, 0, 0);
       visibility: hidden;
       transition: 0.6s all ease;
 
       & span {
-        color: #000;
+        color: #989898;
         font-size: 13px;
         vertical-align: bottom;
       }
@@ -133,7 +138,7 @@
       }
 
       & a {
-        color: #000;
+        color: #989898;
       }
 
       & .comnum {

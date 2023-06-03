@@ -50,8 +50,8 @@
 
     &:hover {
       color: #fff;
-      background: orange;
-      border: 2px solid orange;
+      background: var(--theme-color);
+      border: 2px solid var(--theme-color);
       transition: all 0.2s ease-in-out;
     }
   }

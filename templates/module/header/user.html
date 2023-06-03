@@ -7,11 +7,7 @@
   <div class="header-user-menu">
     <th:block sec:authorize="isAnonymous()">
       <div class="herder-user-name no-logged">
-        <a
-          href="/console"
-          style="font-weight: bold; text-decoration: none; color: #333"
-          data-i18n="user.login"
-        ></a>
+        <a href="/console" data-i18n="user.login"></a>
       </div>
     </th:block>
     <th:block sec:authorize="isAuthenticated()">
