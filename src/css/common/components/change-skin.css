@@ -135,7 +135,7 @@
       cursor: pointer;
 
       &:hover {
-        background-color: #fc3;
+        background-color: var(--theme-color);
         color: var(--theme-color);
 
         & svg {

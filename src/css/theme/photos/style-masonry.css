@@ -77,26 +77,26 @@
           width: 30px;
           height: 30px;
           text-align: center;
-          color: #ccc;
+          color: var(--photo-group-change-color);
           position: relative;
-          border: 2px solid #999;
+          border: 2px solid var(--photo-group-change-color);
           transition: all 0.2s ease;
 
           &:hover {
-            border-color: #ea8e00;
-            color: #ea8e00;
+            border-color: var(--theme-color);
+            color: var(--theme-color);
           }
 
           &.active {
             &,
             &:hover {
-              border-color: #222;
-              color: #222;
+              border-color: var(--photo-group-change-active-color);
+              color: var(--photo-group-change-active-color);;
             }
           }
 
           & svg {
-            fill: #222;
+            fill: var(--photo-group-change-active-color);;
           }
         }
       }

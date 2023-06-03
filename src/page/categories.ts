@@ -40,6 +40,7 @@ export default class Categories {
     }
     const maxNum = Math.ceil(values.reduce((prev, current) => (prev > current ? prev : current)) / 5) * 5;
     const categoryChart = echarts.init(echartElement);
+    const color = document.querySelectorAll(".dark").length > 0 ? "#ccc" : "black";
     categoryChart.setOption({
       title: {
         text: sakura.translate("page.categories.radar_title", "文章分类雷达图"),
@@ -48,6 +49,7 @@ export default class Categories {
         textStyle: {
           fontSize: 22,
           fontWeight: "normal",
+          color: color,
         },
       },
       tooltip: {
@@ -67,8 +69,7 @@ export default class Categories {
           })(),
           name: {
             textStyle: {
-              // color: $(".dark").length > 0 ? "#bebebe" : "black",
-              color: "black",
+              color: color,
             },
           },
           center: ["50%", "60%"],

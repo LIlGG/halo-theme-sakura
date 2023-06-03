@@ -23,10 +23,7 @@
 
 .header-user-menu {
   position: absolute;
-  width: 110px;
   right: -11px;
-  text-align: left;
-  background: 0 0;
   top: 44px;
   display: none;
   overflow: hidden;
@@ -34,10 +31,10 @@
   box-shadow: 0 1px 40px -8px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   text-align: center;
+  background: var(--widget-background-color);
 
   & .herder-user-name {
     font-size: 12px;
-    background: var(--background-color);
     padding: 10px;
     border-radius: 4px 4px 0 0;
 
@@ -46,7 +43,6 @@
       font-size: 14px;
       overflow: hidden;
       text-overflow: ellipsis;
-      -o-text-overflow: ellipsis;
       white-space: nowrap;
     }
   }
@@ -59,17 +55,15 @@
     margin-left: -10px;
     border-width: 10px;
     border-style: solid;
-    border-color: transparent transparent #fff;
+    border-color: transparent transparent var(--widget-background-color);
   }
 
   & .user-menu-option {
     padding: 5px 0;
-    background: var(--background-color);
     border-radius: 0 0 4px 4px;
-    width: 130px;
 
     & a:hover {
-      background-color: #f1f1f1;
+      background-color: var(--header-user-option-hover-background-color);
     }
   }
 
@@ -78,10 +72,8 @@
     padding: 6px 10px;
     margin: 2px 0;
     width: 110px;
-    text-align: left;
-    color: #333;
+    color: var(--color);
     font-size: 13px;
-    text-align: center;
   }
 
   & .no-logged {
@@ -92,10 +84,11 @@
 
     & a {
       display: initial;
-      color: #69d2e7;
       font-size: 14px;
       padding: 0 5px;
       text-decoration: underline;
+      font-weight: bold;
+      text-decoration: none;
     }
   }
 }

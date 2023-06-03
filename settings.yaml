@@ -131,6 +131,8 @@ spec:
               label: 关闭
         - $formkit: radio
           name: focus_height
+          id: focus_height
+          key: focus_height
           if: "$get(head_focus).value == true"
           label: 全屏显示
           help: 全屏显示则第一屏独占全屏，非全屏则只会占一半页面
@@ -142,6 +144,8 @@ spec:
               label: 关闭
         - $formkit: radio
           name: focus_godown
+          id: focus_godown
+          key: focus_godown
           if: "$get(head_focus).value == true"
           label: 下拉箭头
           value: true
@@ -169,7 +173,7 @@ spec:
             - value: filter-grid
               label: 网格
         - $formkit: radio
-          if: "$get(head_focus).value == true"
+          if: "$get(head_focus).value == true && $get(focus_height).value == true"
           name: bgvideo
           id: bgvideo
           key: bgvideo
@@ -181,6 +185,7 @@ spec:
             - value: false
               label: 关闭
         - $formkit: attachment
+          if: "$get(bgvideo).value == true"
           id: bgvideo_url
           name: bgvideo_url
           key: bgvideo_url
