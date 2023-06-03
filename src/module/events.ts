@@ -282,6 +282,7 @@ export class Events {
         localStorage.setItem("sakuraTheme", JSON.stringify(themeData));
         // 隐藏主题开关
         themeModelElement?.classList.remove("show");
+        localStorage.setItem("systemMode", "false");
       });
     });
 
@@ -331,6 +332,38 @@ export class Events {
         bodyElement.style.backgroundRepeat = "auto";
         break;
     }
+  }
+
+  /**
+   * 监听系统暗色模式切换事件
+   *
+   * 切换为跟随系统的暗色模式有以下几种情况：
+   * 1、用户首次安装，还未具有 systemMode 本地存储，此时如果监听到系统暗色模式切换事件，则跟随系统暗色模式。并将 systemMode 设置为 true
+   * 2、切换为暗色模式后，用户手动切换为浅色模式，将 systemMode 设置为 false
+   * 3、再次监听到系统暗色模式切换事件，将 systemMode 设置为 true
+   */
+  @documentFunction(false)
+  public registerSystemDarkModeChangeEvent() {
+    const bodyElement = document.querySelector("body") as HTMLBodyElement;
+    const systemMode = localStorage.getItem("systemMode");
+    const systemDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+
+    if (!systemMode || systemMode === "false") {
+      if (systemDarkMode.matches) {
+        bodyElement.classList.add("dark");
+      } else {
+        bodyElement.classList.remove("dark");
+      }
+    }
+
+    window.matchMedia("(prefers-color-scheme: dark)").onchange = (event) => {
+      if (event.matches) {
+        bodyElement.classList.add("dark");
+      } else {
+        bodyElement.classList.remove("dark");
+      }
+      localStorage.setItem("systemMode", "true");
+    };
   }
 }
 
