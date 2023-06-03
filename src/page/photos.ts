@@ -2,7 +2,7 @@ import { documentFunction, sakura } from "../main";
 
 export default class Photos {
   /**
-   * TODO 注册经典布局相册，暂时未找到 vanilla js 的版本，暂不实现。
+   * 注册经典布局相册，暂时未找到 vanilla js 的版本，暂不实现。
    *
    * @see http://miromannino.github.io/Justified-Gallery
    */
@@ -73,7 +73,6 @@ export default class Photos {
         });
       });
 
-      // TODO 尝试优化
       const gridChangeElements = masonryContainerElement?.querySelectorAll("#grid-changer a");
       gridChangeElements?.forEach((gridChangeElement) => {
         gridChangeElement?.addEventListener("click", () => {

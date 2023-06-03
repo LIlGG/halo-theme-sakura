@@ -31,6 +31,7 @@
       '_templateId': '[(${_templateId})]',
       [# th:if="${_templateId == 'post'}"]
       "postLastModifyTime": "[(${#dates.format(post.status.lastModifyTime, 'yyyy-MM-dd HH:mm:ss')})]",
+      "isOriginal": "[(${#annotations.getOrDefault(post, 'original', false) })]",
       [/]
       'version': '[(${theme.spec.version})]',
     }

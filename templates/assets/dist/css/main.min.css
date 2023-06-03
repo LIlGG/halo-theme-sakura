@@ -1162,11 +1162,22 @@ a {
   transition: color 0.2s ease-out, border 0.2s ease-out, opacity 0.2s ease-out;
 }
 
-a:focus,
-  a:active,
-  a:hover {
+a:focus {
     outline: none;
     color: orange;
+    color: var(--theme-color);
+  }
+
+a:active {
+    outline: none;
+    color: orange;
+    color: var(--theme-color);
+  }
+
+a:hover {
+    outline: none;
+    color: orange;
+    color: var(--theme-color);
   }
 
 a:active {
@@ -2545,8 +2556,6 @@ table {
       width: 50px;
     }
   }
-
-/* TODO: 移动端，外边框会消失不见 */
 
 .m-cd-top {
   display: none;
