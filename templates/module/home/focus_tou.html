@@ -1,9 +1,9 @@
 <th:block th:fragment="focus_tou">
   <th:block th:if="${theme.config.mainScreen.focus_tou == 'avatar'}">
     <div class="header-tou no-select">
-      <a th:href="${site.url}">
-        <img th:if="${#strings.isEmpty(site.logo)}" th:src="@{/assets/images/default/avatar.jpg}" />
-        <img th:unless="${#strings.isEmpty(site.logo)}" th:src="${site.logo}" />
+      <a th:href="${site.url}" aria-label="access the homepage of this website.">
+        <img th:if="${#strings.isEmpty(site.logo)}" th:src="@{/assets/images/default/avatar.jpg}" alt="" />
+        <img th:unless="${#strings.isEmpty(site.logo)}" th:src="${site.logo}" alt="" />
       </a>
     </div>
   </th:block>

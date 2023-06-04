@@ -17,7 +17,7 @@
   </span>
 
   <div class="feature">
-    <a th:href="@{${post.status.permalink}}">
+    <a th:href="@{${post.status.permalink}}" aria-label="viewing the article details">
       <div class="overlay">
         <div class="overlay-inner">
           <span class="iconify" data-icon="solar:file-text-outline"></span>
@@ -29,6 +29,7 @@
         height="150"
         th:src="${post.spec.cover}"
         class="attachment-post-thumbnail size-post-thumbnail"
+        alt=""
         onerror="imgError(this)"
       />
       <img
@@ -37,11 +38,13 @@
         height="150"
         th:src="${theme.config.random_image.rimage_url}+'?postid='+${post.metadata.name}+'&type=url&itype='+${theme.config.random_image.rimage_cover_itype}+${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '' }+'&th=150'"
         class="attachment-post-thumbnail size-post-thumbnail"
+        alt=""
         onerror="imgError(this)"
       />
       <img
         th:if="${#strings.isEmpty(post.spec.cover)} and (${not theme.config.random_image.rimage_cover_open} or ${#strings.isEmpty(theme.config.random_image.rimage_url)})"
         th:src="${#theme.assets('/images/default/temp.jpg')}"
+        alt=""
         onerror="imgError(this)"
       />
     </a>
@@ -49,7 +52,7 @@
   
   <header>
     <h1 class="entry-title">
-      <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"></a>
+      <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}" aria-label="viewing the article details"></a>
     </h1>
   </header>
 
@@ -59,7 +62,7 @@
 
   <footer class="entry-footer">
     <div class="post-more">
-      <a th:href="@{${post.status.permalink}}">
+      <a th:href="@{${post.status.permalink}}" aria-label="viewing the article details">
         <span class="iconify" data-icon="akar-icons:more-horizontal-fill"></span>
       </a>
     </div>
@@ -67,7 +70,7 @@
       <div class="comnum" th:unless="${theme.config.others.keep_record_mode}">
         <span>
           <span class="iconify" data-icon="solar:chat-line-line-duotone"></span>
-          <a th:href="@{${post.status.permalink}+'#comments'}">
+          <a th:href="@{${post.status.permalink}+'#comments'}" aria-label="jumping to the comments section of the current article">
             <span data-i18n="postlist.comments" th:i18n-options="|{comment: '${post.stats.comment}'}|"> </span>
           </a>
         </span>

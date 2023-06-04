@@ -1,7 +1,7 @@
 <th:block th:fragment="mobile-sidebar">
   <div class="mobile-sidebar">
     <div class="avatar" th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}">
-      <img th:src="${currentUser.avatar ?: #theme.assets('/images/default/avatar.jpg')}" />
+      <img th:src="${currentUser.avatar ?: #theme.assets('/images/default/avatar.jpg')}" alt=""/>
     </div>
 
     <p th:if="${not #strings.isEmpty(theme.config.mainScreen.glitch_text)}" class="glitch-text"
@@ -9,8 +9,9 @@
 
     <th:block th:if="${theme.config.mainScreen.focus_infos and not #lists.isEmpty(theme.config.sns.mobile_items)}">
       <p class="socials">
-        <a class="social-item" th:each="item : ${theme.config.sns.mobile_items}" th:href="${item.url}" target="_blank">
-          <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" width="18" />
+        <a class="social-item" th:each="item : ${theme.config.sns.mobile_items}" th:href="${item.url}" target="_blank" 
+          aria-label="access the webmaster's social media accounts">
+          <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" width="18" alt=""/>
         </a>
       </p>
     </th:block>

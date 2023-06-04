@@ -12,13 +12,13 @@
       <span>Powered
         <span class="iconify animated" data-icon="fa:vimeo"></span>
         by
-        <a rel="me" target="_blank" href="http://halo.run" title="一款现代化的开源建站 / CMS 系统。">Halo</a>
+        <a rel="me" target="_blank" href="http://halo.run" title="一款现代化的开源建站 / CMS 系统。" aria-label="engines are supported on this website">Halo</a>
       </span>
       •
       <span>Crafted with
         <span class="iconify" data-icon="fa-heart"></span>
         by
-        <a rel="me" target="_blank" href="https://github.com/LIlGG/halo-theme-sakura">LIlGG</a>
+        <a rel="me" target="_blank" href="https://github.com/LIlGG/halo-theme-sakura" aria-label="the theme used by this website">LIlGG</a>
       </span>
     </p>
   </div>
@@ -31,13 +31,13 @@
     <p class="footer-beian">
       <th:block th:if="${not #strings.isEmpty(theme.config.others.footer_case_number)}">
         &nbsp;
-        <a href="https://beian.miit.gov.cn/" target="_blank" th:text="${theme.config.others.footer_case_number}"></a>
+        <a href="https://beian.miit.gov.cn/" target="_blank" th:text="${theme.config.others.footer_case_number}" aria-label="gongan filing address"></a>
       </th:block>
       <th:block th:if="${not #strings.isEmpty(theme.config.others.footer_ga_case_number)}">
         &nbsp;
         <a th:href="@{http://www.beian.gov.cn/portal/registerSystemInfo?recordcode={recordcode}(recordcode=${theme.config.others.footer_ga_select_number})}"
-          target="_blank">
-          <img th:src="${#theme.assets('/images/footer/gongan.png')}" />
+          target="_blank" aria-label="gongan filing address">
+          <img th:src="${#theme.assets('/images/footer/gongan.png')}" alt="" />
           <th:block th:text="${theme.config.others.footer_ga_case_number}"></th:block>
         </a>
       </th:block>

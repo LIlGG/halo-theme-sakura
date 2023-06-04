@@ -95,7 +95,7 @@
       </ul>
       <th:block th:if="${moments.totalPages gt 1}">
         <div th:if="${moments.hasNext}" id="moment-list-pagination" class="pagination">
-          <a th:href="@{${moments.nextUrl}}" class="at_button" data-i18n="page.moments.loadmore"></a>
+          <a th:href="@{${moments.nextUrl}}" class="at_button" data-i18n="page.moments.loadmore" aria-label="get the next moment"></a>
         </div>
       </th:block>
       <th:block th:unless="${moments.total gt 0}">
