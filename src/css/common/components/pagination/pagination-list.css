@@ -11,9 +11,9 @@
 
   & a {
     padding: 13px 35px;
-    border: 1px solid #d6d6d6;
+    border: 1px solid #ccc;
     border-radius: 50px;
-    color: #adadad;
+    color: #b0b0b0;
 
     &:hover {
       border: 1px solid var(--theme-color);
@@ -23,7 +23,7 @@
   }
 
   & span {
-    color: #989898;
+    color: #999;
     font-size: 15px;
   }
 }
@@ -42,7 +42,7 @@
 
   & .iconify {
     font-size: 15px;
-    color: #d8d8d8;
+    color: #ccc;
     padding: 10px;
     border: 2px solid #ddd;
     border-radius: 50%;

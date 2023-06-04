@@ -1,15 +1,15 @@
 ::-moz-selection {
-  background: #444444;
+  background: #464646;
   color: #fff;
 }
 
 ::selection {
-  background: #444444;
+  background: #464646;
   color: #fff;
 }
 
 ::-moz-selection {
-  background: #444;
+  background: #464646;
   color: #fff;
 }
 
@@ -160,7 +160,7 @@ select {
 }
 
 fieldset {
-  border: 1px solid silver;
+  border: 1px solid #b0b0b0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
@@ -208,7 +208,7 @@ blockquote {
   margin: 1em;
   padding: 0 1em;
   color: #656d76;
-  border-left: 0.25em solid #d0d7de;
+  border-left: 0.25em solid #c6cbd1;
 
   & p {
     margin: 5px 0;
@@ -226,7 +226,7 @@ kbd {
   line-height: 10px;
   color: #444d56;
   vertical-align: middle;
-  background-color: #fafbfc;
+  background-color: #fff;
   border: solid 1px #c6cbd1;
   border-bottom-color: #959da5;
   border-radius: 3px;
@@ -251,17 +251,12 @@ acronym {
 
 mark,
 ins {
-  background: #fff9c0;
+  background: #fefac7;
   text-decoration: none;
 }
 
 big {
   font-size: 125%;
-}
-
-//
-* {
-  box-sizing: border-box;
 }
 
 *:before,
@@ -324,7 +319,7 @@ textarea {
   border-radius: 3px;
 
   &:focus {
-    color: #111;
+    color: #000000;
   }
 }
 

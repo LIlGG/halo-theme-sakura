@@ -27,7 +27,7 @@
 
     & p {
       &.aplayer-lrc-current {
-        color: orange;
+        color: var(--theme-color);
         font-size: 15px;
         font-weight: bold;
       }
@@ -84,7 +84,7 @@
         border-top: 0;
 
         &.aplayer-list-light {
-          background: #f8f8f8;
+          background: #fff;
         }
       }
     }

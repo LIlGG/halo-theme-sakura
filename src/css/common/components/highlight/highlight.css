@@ -38,7 +38,7 @@
     &::-webkit-scrollbar {
       height: 10x;
       width: 10x;
-      background-color: #1d1f21;
+      background-color: #222;
     }
 
     &::-webkit-scrollbar-track {

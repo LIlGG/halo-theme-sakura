@@ -13,17 +13,17 @@
       & a {
         padding: 10px 30px;
         margin: 0 10px;
-        border: 1px solid orange;
-        color: orange;
+        border: 1px solid var(--theme-color);
+        color: var(--theme-color);
         border-radius: 50px;
 
         &:hover {
-          box-shadow: 0 0 4px rgba(255, 165, 0, 0.85);
+          box-shadow: 0 0 4px var(--theme-color);
         }
       }
 
       & .gohome {
-        background: orange;
+        background: var(--theme-color);
         color: #fff;
       }
     }

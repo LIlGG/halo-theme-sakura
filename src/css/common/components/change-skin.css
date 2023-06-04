@@ -139,7 +139,7 @@
         color: var(--theme-color);
 
         & svg {
-          color: #f5f5f5;
+          color: #fff;
         }
       }
     }

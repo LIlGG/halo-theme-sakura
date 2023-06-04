@@ -4,6 +4,9 @@ dependencies:
   '@fancyapps/ui':
     specifier: ^5.0.19
     version: 5.0.19
+  '@types/nprogress':
+    specifier: ^0.2.0
+    version: 0.2.0
   aplayer:
     specifier: ^1.10.1
     version: 1.10.1
@@ -416,6 +419,10 @@ packages:
   /@types/node@20.2.5:
     resolution: {integrity: sha512-JJulVEQXmiY9Px5axXHeYGLSjhkZEnD+MDPDGbCbIAbMslkKwmygtZFy1X6s/075Yo94sf8GuSlFfPzysQrWZQ==}
     dev: true
+
+  /@types/nprogress@0.2.0:
+    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
+    dev: false
 
   /@types/video.js@7.3.52:
     resolution: {integrity: sha512-WFj/HkNVCfkchXDeDU0QbimC356FB5vva3g5mgsjk8n3UMKqP9S522rQAmu9LGPiCmShZRPuAlkXmbp5WId6ow==}

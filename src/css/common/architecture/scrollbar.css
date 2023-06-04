@@ -8,7 +8,6 @@
   background-color: #eee;
 }
 
-/* todo: 似乎无法使用 css 变量 */
 ::-webkit-scrollbar-thumb {
-  background-color: orange;
+  background-color: var(--theme-color);
 }
