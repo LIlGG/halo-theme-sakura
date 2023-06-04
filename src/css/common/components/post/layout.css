@@ -3,7 +3,7 @@ h1 {
     color: #504e4e;
 
     &:hover {
-      color: orange;
+      color: var(--theme-color);
     }
   }
 }
@@ -20,5 +20,5 @@ header.page-header {
 	position: relative;
 	text-align: center;
 	margin-bottom: 50px;
-	color: #9c9c9c
+	color: #999
 }

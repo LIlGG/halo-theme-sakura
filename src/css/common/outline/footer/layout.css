@@ -20,10 +20,10 @@
   & .site-info {
     text-align: center;
     font-size: 13px;
-    color: #b9b9b9;
+    color: #b0b0b0;
 
     & a {
-      color: #b9b9b9;
+      color: #b0b0b0;
 
       &:hover {
         color: var(--theme-color);

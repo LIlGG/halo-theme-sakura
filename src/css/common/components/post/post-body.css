@@ -36,7 +36,7 @@
   & h3 {
     padding-bottom: 8px;
     border-bottom: 1px dashed #ddd;
-    color: #737373;
+    color: #7d7d7d;
 
     &::after {
       content: "#";
@@ -150,7 +150,7 @@
   & ol,
   & ul {
     list-style: disc;
-    border: 1px dashed #e4e4e4;
+    border: 1px dashed #ddd;
     padding: 15px 10px 15px 50px;
     color: var(--entry-content-list-color);
     margin-left: 0;
@@ -223,7 +223,7 @@
       & td,
       & th {
         padding: 8px 16px;
-        border: 1px solid #dfe2e5;
+        border: 1px solid #ddd;
         line-height: 1.5;
         font-size: 90%;
       }

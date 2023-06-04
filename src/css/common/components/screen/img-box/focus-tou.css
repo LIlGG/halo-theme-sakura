@@ -10,15 +10,6 @@
       transform: rotate(360deg);
     }
   }
-  & + .header-info {
-
-    &..info-desc {
-      &::before {
-        bottom: 89.5px;
-        content: "";
-      }
-    }
-  }
 }
 
 .center-text {
@@ -47,22 +38,22 @@
 
   &::before {
     left: -1px;
-    text-shadow: 1px 0 #ff3f1a;
+    text-shadow: 1px 0 #ff3b00;
   }
 
   &::after {
     left: 1px;
-    text-shadow: -1px 0 #00a7e0;
+    text-shadow: -1px 0 #00a1d6;
   }
 
   &:hover {
     &::before {
-      text-shadow: 4px 0 #ff3f1a;
+      text-shadow: 4px 0 #ff3b00;
       animation: glitch-loop-1 0.8s infinite ease-in-out alternate-reverse;
     }
 
     &::after {
-      text-shadow: -5px 0 #00a7e0;
+      text-shadow: -5px 0 #00a1d6;
       animation: glitch-loop-2 0.8s infinite ease-in-out alternate-reverse;
     }
   }

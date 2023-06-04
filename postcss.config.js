@@ -14,6 +14,7 @@ module.exports = {
     require('postcss-css-variables')({
       preserve: true,
     }),
+    // colorguard 对于透明度无法识别，所以在处理时需要注意。
     require('colorguard'),
     require('autoprefixer')
   ]

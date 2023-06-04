@@ -21,7 +21,6 @@
  */
 import Pjax from 'pjax';
 import { sakura } from "../main";
-// @ts-ignore
 import NProgress from 'nprogress';
 
 new Pjax({
@@ -36,8 +35,7 @@ new Pjax({
   },
   analytics: false,
   cacheBust: false,
-  // @ts-ignore
-  debug: import.meta.env === 'development' ? true : false,
+  debug: import.meta.env.MODE === 'development' ? true : false,
 });
 
 window.addEventListener('pjax:send', () => {

@@ -16,8 +16,8 @@
     letter-spacing: 0;
     display: inline-block;
     padding: 10px 20px;
-    border-top: 1px solid #efefef;
-    border-bottom: 1px solid #efefef;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
   }
 
   & .iconify {
@@ -56,7 +56,7 @@
         font-weight: 400;
         line-height: normal;
         letter-spacing: 1px;
-        color: #ababab;
+        color: #b0b0b0;
       }
     }
 

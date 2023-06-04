@@ -18,5 +18,5 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["src", "./env.d.ts"]
+  "include": ["src", "src/env.d.ts"]
 }

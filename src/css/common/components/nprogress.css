@@ -40,8 +40,8 @@
       height: 20px;
       box-sizing: border-box;
       border: solid 3px transparent;
-      border-top-color: orange;
-      border-left-color: orange;
+      border-top-color: var(--theme-color);
+      border-left-color: var(--theme-color);
       border-radius: 50%;
       animation: nprogress-spinner 0.4s linear infinite;
     }

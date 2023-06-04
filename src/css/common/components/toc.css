@@ -16,6 +16,6 @@
   font-weight: 700;
 
   &::before {
-    background-color: orange !important
+    background-color: var(--theme-color) !important;
   }
 }

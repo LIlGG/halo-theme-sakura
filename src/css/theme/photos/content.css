@@ -121,7 +121,7 @@
         bottom: 0;
         padding-bottom: 1em;
         font-size: 0.8em;
-        color: #f7f6f5;
+        color: #fff;
 
         & h3,
         & p {
@@ -135,7 +135,7 @@
           font-style: italic;
           font-size: 0.9em;
           opacity: 0.8;
-          transform: translate3d(0,20px,0);
+          transform: translate3d(0, 20px, 0);
         }
 
         & h3 {
@@ -143,23 +143,26 @@
           text-transform: uppercase;
           font-size: 0.9em;
           letter-spacing: 0.05em;
-          transform: translate3d(0,-20px,0);
+          transform: translate3d(0, -20px, 0);
           margin-bottom: 0.5em;
         }
       }
     }
   }
-  
+
   @mixin screens-md {
-    .gallery-item {
+    & .gallery-item {
       & .gallery-caption {
-        & h3,
-        & p {
-          transform: none;
-        }
+        background: #22222255;
+        opacity: 1;
 
         & .entry-summary {
           opacity: 1;
+
+          & h3,
+          & p {
+            transform: none;
+          }
         }
       }
     }
