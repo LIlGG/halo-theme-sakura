@@ -6,17 +6,18 @@
           th:href="${item.url}"
           target="_blank"
           class="social-sina"
+          aria-label="access the webmaster's social media networks"
         >
-          <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" />
+          <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" alt="sns" />
         </a>
       </li>
     </th:block>
     <th:block th:if="${item.url_type == 'image'}">
       <li class="wechat">
-        <a href="#"></a>
-        <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" />
+        <a href="#" aria-label="display the WeChat QR code"></a>
+        <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" alt="wechat" />
         <div class="wechatInner">
-          <img th:src="${item.url}"/>
+          <img th:src="${item.url}" alt=""/>
         </div>
       </li>
     </th:block>

@@ -48,6 +48,7 @@
                   th:each="tag : ${tags}"
                   th:href="@{${tag.status.permalink}}"
                   th:title="|${tag.spec.displayName}: ${tag.postCount}|"
+                  aria-label="get the next tag"
                 >
                   <span class="chip chip-default" th:style="|background-color: ${tag.spec.color}|" th:attr="data-tagname=${tag.spec.displayName}">
                     <th:block th:text="${tag.spec.displayName}"></th:block>

@@ -13,6 +13,7 @@
       th:data-url="${imageUrl}"
       th:data-currIndex="${randomNum}"
       class="cover-bg lazyload blur-up bg-change-js"
+      alt=""
       onerror="imgError(this)"
     />
     <div class="blend-overlay"></div>
@@ -20,7 +21,11 @@
   <th:block
     th:unless="${theme.config.random_image.rimage_cover_back_open and (not #strings.isEmpty(theme.config.random_image.rimage_url))}"
   >
-    <img class="cover-bg" th:src="${theme.config.mainScreen.focus_img_1 ?: #theme.assets('/images/default/hd.jpg')}" />
+    <img
+      class="cover-bg"
+      th:src="${theme.config.mainScreen.focus_img_1 ?: #theme.assets('/images/default/hd.jpg')}"
+      alt=""
+    />
   </th:block>
 
   <div class="focusinfo">
@@ -36,13 +41,15 @@
         <span class="iconify" data-icon="fa:quote-right"></span>
       </p>
       <div class="top-social" th:if="${not #arrays.isEmpty(theme.config.sns.items)}">
-        <li id="bg-prev">
-          <img class="flipx" th:src="@{/assets/images/next-b.svg}" />
-        </li>
-        <th:block th:replace="module/home/top_social"></th:block>
-        <li id="bg-next">
-          <img th:src="@{/assets/images/next-b.svg}" />
-        </li>
+        <ul>
+          <li id="bg-prev">
+            <img class="flipx" th:src="@{/assets/images/next-b.svg}" alt="prev" />
+          </li>
+          <th:block th:replace="module/home/top_social"></th:block>
+          <li id="bg-next">
+            <img th:src="@{/assets/images/next-b.svg}" alt="next" />
+          </li>
+        </ul>
       </div>
     </div>
   </div>

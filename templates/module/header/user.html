@@ -3,11 +3,11 @@
   th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}"
   th:fragment="user"
 >
-  <img th:src="${currentUser.avatar ?: #theme.assets('/images/default/none.png')}" width="30" height="30" />
+  <img th:src="${currentUser.avatar ?: #theme.assets('/images/default/none.png')}" width="30" height="30" alt="" />
   <div class="header-user-menu">
     <th:block sec:authorize="isAnonymous()">
       <div class="herder-user-name no-logged">
-        <a href="/console" data-i18n="user.login"></a>
+        <a href="/console" data-i18n="user.login" aria-label="access the console command line interface"></a>
       </div>
     </th:block>
     <th:block sec:authorize="isAuthenticated()">
@@ -17,9 +17,9 @@
       </div>
       <div class="user-menu-option">
         <!-- 个人资料 -->
-        <a href="/console#/users/admin/detail" target="_blank" data-i18n="user.info"></a>
+        <a href="/console#/users/admin/detail" target="_blank" data-i18n="user.info" aria-label="access the personal profile page"></a>
         <!-- 退出登录 -->
-        <a href="/logout" target="_top" data-i18n="user.logout"></a>
+        <a href="/logout" target="_top" data-i18n="user.logout" aria-label="log out of the account"></a>
       </div>
     </th:block>
   </div>

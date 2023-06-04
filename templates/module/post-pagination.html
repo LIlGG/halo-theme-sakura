@@ -9,7 +9,7 @@ NEXT / PREVIOUS POSTS
         class="post-nepre previous"
         th:classappend="${postCursor.hasNext() ? 'half' : 'full'}"
       >
-        <a data-pjax th:href="@{${postCursor.previous.status.permalink}}" rel="prev">
+        <a data-pjax th:href="@{${postCursor.previous.status.permalink}}" rel="prev" aria-label="request for the previous page of the article">
           <div
             th:if="${not #strings.isEmpty(postCursor.previous.spec.cover)}"
             class="background"
@@ -38,7 +38,7 @@ NEXT / PREVIOUS POSTS
         th:if="${postCursor.hasNext()}"
         th:class="'post-nepre '+${postCursor.hasPrevious() ? 'half' : 'full'}+' next'"
       >
-        <a data-pjax th:href="@{${postCursor.next.status.permalink}}" rel="next">
+        <a data-pjax th:href="@{${postCursor.next.status.permalink}}" rel="next" aria-label="request for the next page of the article">
           <div
             th:if="${not #strings.isEmpty(postCursor.next.spec.cover)}"
             class="background"

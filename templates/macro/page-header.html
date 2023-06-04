@@ -23,6 +23,7 @@
             th:attr="data-src=${frontCover}"
             th:src="${#theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
             itemprop="contentUrl"
+            alt=""
           />
         </th:block>
 
@@ -44,6 +45,7 @@
             th:classappend="${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
             onerror="imgError(this)"
             itemprop="contentUrl"
+            alt=""
           />
         </th:block>
       </div>

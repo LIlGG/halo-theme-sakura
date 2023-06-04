@@ -13,11 +13,13 @@
           <li 
             class="link-item" th:each="link : ${group.links}">
             <a 
-              class="link-item-inner" th:href="${link.spec.url}" th:title="${link.spec.displayName}" target="_blank">
+              class="link-item-inner" th:href="${link.spec.url}" th:title="${link.spec.displayName}" target="_blank"
+              aria-label="will visit the URL pointed to by the friend link">
                 <img 
                   class="lazyload" 
                   th:attr="data-src=${link.spec.logo}"
                   th:src="${#theme.assets('/images/load/trans.ajax-spinner-preloader.svg')}" 
+                  th:alt="${link.spec.displayName}"
                   onerror="imgError(this)">
                 <span class="sitename" th:text="${link.spec.displayName}"></span>
                 <div class="linkdes" th:text="${link.spec.description}"></div>

@@ -2,13 +2,13 @@
   <div class="meta-container">
     <div class="post-meta-item">
       <span class="post-meta-item-avatar" itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a th:href="${site.url}" itemprop="url" rel="index">
-          <img th:src="${post.owner.avatar ?: #theme.assets('/images/default/avatar.jpg')}" />
+        <a th:href="${site.url}" itemprop="url" rel="index" aria-label="website URL">
+          <img th:src="${post.owner.avatar ?: #theme.assets('/images/default/avatar.jpg')}" alt="" />
         </a>
       </span>
 
       <span class="post-authore-item-name" data-pjax itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a th:href="${site.url}" th:text="${post.owner.displayName}" itemprop="url" rel="index"></a>
+        <a th:href="${site.url}" th:text="${post.owner.displayName}" itemprop="url" rel="index" aria-label="website URL"></a>
       </span>
     </div>
 
