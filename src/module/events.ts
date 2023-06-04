@@ -174,6 +174,7 @@ export class Events {
         siteHeaderElement?.classList.add("sabit");
       }
       currentTopCoordinate = scrollTopCoordinate;
+      // @ts-ignore
       import("nprogress").then((module) => {
         module.default.configure({
           minimum: 0,

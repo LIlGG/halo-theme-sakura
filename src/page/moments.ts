@@ -1,5 +1,5 @@
 import { documentFunction, sakura } from "../main";
-import { HaloApi } from "../utils/HaloApi";
+import { HaloApi } from "../utils/haloApi";
 
 export default class Moments {
   /**

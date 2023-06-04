@@ -1,16 +1,21 @@
 import { documentFunction, sakura } from "../main";
 import "APlayer/dist/APlayer.min.css";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
+// @ts-ignore
 import commentStyle from "../css/injection/comment.css";
 
 export class Utils {
   /**
    * 注入评论样式
-   * 
+   *
    * TODO 自定义评论之前，暂时使用这种方式注入样式
    */
   @documentFunction()
   public injectCommentStyle() {
+    // moments 页面不需要注入
+    if (sakura.getPageConfig("_templateId") === "moments") {
+      return;
+    }
     const commentElement = document.querySelector(".comment") as HTMLElement;
     if (!commentElement) {
       return;
@@ -18,9 +23,9 @@ export class Utils {
     commentElement.querySelectorAll("div").forEach((divElement) => {
       if (divElement.shadowRoot) {
         const commentShadowElement = divElement.shadowRoot;
-          const styleSheet = new CSSStyleSheet();
-          styleSheet.replaceSync(commentStyle);
-          commentShadowElement.adoptedStyleSheets = [styleSheet];
+        const styleSheet = new CSSStyleSheet();
+        styleSheet.replaceSync(commentStyle);
+        commentShadowElement.adoptedStyleSheets = [styleSheet];
       }
     });
   }
@@ -46,6 +51,7 @@ export class Utils {
     fetch(musicAPI)
       .then((response) => response.json())
       .then((data) => {
+        // @ts-ignore
         import("APlayer").then(async (module) => {
           const APlayer = module.default;
           const aplayerElement = createFixedAPlayerElement();
@@ -190,8 +196,10 @@ export class Utils {
         codeElement.setAttribute("data-rel", lang.toUpperCase());
         codeElement.classList.add(lang.toLowerCase());
         highlight.default.highlightElement(codeElement);
+        // @ts-ignore
         const highlightLineNumber = await import("../libs/highlightjs-line-numbers");
         highlightLineNumber.registerHljsLineNumbers(highlight.default);
+        // @ts-ignore
         highlight.default.lineNumbersBlock(codeElement);
       });
     });
@@ -234,6 +242,7 @@ export class Utils {
         }
         tocbot.default.init({
           tocElement: tocElement,
+          // @ts-ignore
           contentSelector: [".entry-content", ".links"],
           headingSelector: "h1, h2, h3, h4, h5",
           collapseDepth: collapseDepth,
