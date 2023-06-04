@@ -3,7 +3,6 @@
   xmlns:th="https://www.thymeleaf.org"
   th:replace="~{layout :: layout(_title = ~{::title}, _header = ~{::header}, _content = ~{::content})}"
 >
-  <!--/* TODO：头部会有抖动 */-->
   <th:block th:fragment="header">
     <th:block th:if="${theme.config.mainScreen.head_focus}">
       <div class="headertop">

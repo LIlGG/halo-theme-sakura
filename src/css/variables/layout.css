@@ -64,11 +64,11 @@
   --mobile-menu-text-color: #333;
 
   /* minicode */
-  --minicode-color: #fff;
+  --minicode-color: #000;
 
   /* 内容主体 */
   --entry-content-text-color: #797979;
-  --entry-content-heading-color: #ccc;
+  --entry-content-heading-color: #000;
   --entry-content-list-color: #616161;
   --entry-content-table-color: #fff;
 
@@ -103,7 +103,7 @@
   --widget-background-color: rgba(38, 38, 38, 0.8);
   --theme-item-background-color: #31363b;
   --mobile-menu-text-color: #eee;
-  --minicode-color: #000;
+  --entry-content-heading-color: #ccc;
   --entry-content-text-color: #999;
   --entry-content-list-color: #999;
   --entry-content-table-color: #999;
