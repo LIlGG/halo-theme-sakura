@@ -67,6 +67,7 @@ export default class Post {
     if (!shareWechatElement) {
       return;
     }
+    // @ts-ignore
     const QRCode = await import("qrcode");
     QRCode.toCanvas(shareWechatElement, shareWechatElement.getAttribute("data-url"), {
       width: 120,

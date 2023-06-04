@@ -7,6 +7,7 @@ import i18next, { type TOptions } from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import Backend from "i18next-chained-backend";
 import LocalStorageBackend from "i18next-localstorage-backend";
+// @ts-ignore
 import locI18next from "loc-i18next";
 import { I18nFormat } from "./utils/i18nFormat";
 
@@ -152,8 +153,6 @@ export class SakuraApp implements Sakura {
 
   private currPageData: Map<String, any> = new Map();
 
-  private startupDate: Date = new Date();
-
   private documentFunctionFactory: DocumentFunctionFactory = new SakuraDocumentFunctionFactory();
 
   private events: Map<String, Event> = new Map();
@@ -262,10 +261,10 @@ export class SakuraApp implements Sakura {
               LocalStorageBackend,
               {
                 type: "backend",
-                read<Namespace extends keyof typeof cn>(
+                read<Namespace>(
+                  // @ts-ignore
                   language: LocaleCode,
-                  namespace: Namespace,
-                  callback: (errorValue: unknown, translations: null | (typeof cn)[Namespace]) => void
+                  callback: (errorValue: unknown, translations: null | [Namespace]) => void
                 ) {
                   import(`./languages/${language}.json`)
                     .then((resources) => {
@@ -285,6 +284,7 @@ export class SakuraApp implements Sakura {
               },
             ],
           },
+          // @ts-ignore
           debug: import.meta.env.MODE === "development" ? true : false,
           lowerCaseLng: true,
           cleanCode: true,
@@ -383,7 +383,6 @@ export class SakuraApp implements Sakura {
   }
 
   protected prepareRefresh(): void {
-    this.startupDate = new Date();
     this.refreshMetadata();
 
     if (this.getThemeConfig("advanced", "log", Boolean)) {

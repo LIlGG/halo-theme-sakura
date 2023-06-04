@@ -6221,6 +6221,8 @@ section:not(.is-homepage) .site-header .header-inner {
 
 .moments-container {
   margin: 20px 0;
+  filter: brightness(1);
+  filter: brightness(var(--theme-brightness));
 }
 
 .moments-container .moments-inner {
