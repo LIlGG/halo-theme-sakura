@@ -1,5 +1,7 @@
 .photos-container {
   margin: 50px 0;
+  position: relative;
+  z-index: 1;
 
   & .photos-inner {
     & .loading {

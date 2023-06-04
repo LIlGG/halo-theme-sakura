@@ -23,6 +23,7 @@
     overflow: hidden;
     width: 95%;
     transition: width, padding 0.5s ease;
+    overflow-x: auto;
   }
 
   & .hide-minicode {

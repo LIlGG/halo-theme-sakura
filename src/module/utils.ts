@@ -1,8 +1,30 @@
 import { documentFunction, sakura } from "../main";
 import "APlayer/dist/APlayer.min.css";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import commentStyle from "../css/injection/comment.css";
 
 export class Utils {
+  /**
+   * 注入评论样式
+   * 
+   * TODO 自定义评论之前，暂时使用这种方式注入样式
+   */
+  @documentFunction()
+  public injectCommentStyle() {
+    const commentElement = document.querySelector(".comment") as HTMLElement;
+    if (!commentElement) {
+      return;
+    }
+    commentElement.querySelectorAll("div").forEach((divElement) => {
+      if (divElement.shadowRoot) {
+        const commentShadowElement = divElement.shadowRoot;
+          const styleSheet = new CSSStyleSheet();
+          styleSheet.replaceSync(commentStyle);
+          commentShadowElement.adoptedStyleSheets = [styleSheet];
+      }
+    });
+  }
+
   /**
    * 注册吸底模式 APlayer (Fixed APlayer)
    */

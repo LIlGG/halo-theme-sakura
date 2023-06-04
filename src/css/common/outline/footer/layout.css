@@ -4,6 +4,7 @@
   margin: auto;
   transition: all 0.8s ease;
   margin-bottom: 2%;
+  position: relative;
 
   &::before,
   &::after {

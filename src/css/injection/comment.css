@@ -1,0 +1,55 @@
+/* 注入 comment shadow 内部的 css 样式，不参与主题内部其他样式，但会受到主题样式控制
+*  临时解决方案，后续考虑自定义评论组件
+*/
+
+/* mixins */
+@import "../mixins.css";
+
+@import "../variables/layout.css";
+
+:root {
+  --textarea-caret-color: #000;
+}
+
+.dark {
+  --textarea-caret-color: #fff;
+}
+
+
+.comment-form {
+  & textarea {
+    background-color: var(--background-color);
+    caret-color: var(--textarea-caret-color);
+  }
+
+  & div:first-of-type {
+    & > div {
+      color: var(--post-list-thumb-abstract-color);
+    }
+
+    & input {
+      background-color: var(--background-color);
+      caret-color: var(--textarea-caret-color);
+    }    
+
+    & .emoji-mart-anchors {
+      & svg {
+        color: #000;
+      }
+    }
+  }
+}
+
+.comment-timeline {
+  & div:first-of-type {
+    & span {
+      color: var(--post-list-thumb-abstract-color);
+    }
+  }
+
+  & .comment-content {
+    & > p {
+      color: var(--post-list-thumb-abstract-color);
+    }
+  }
+}
