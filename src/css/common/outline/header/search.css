@@ -1,14 +1,14 @@
 .searchbox {
   float: right;
-  height: 75px;
-  line-height: 75px;
-  margin-left: 20px;
+  height: 4.75rem;
+  line-height: 4.75rem;
+  margin-left: 1.25rem;
   animation: fadeInRight 1s;
 
   & .iconsearch {
     color: var(--color);
     cursor: pointer;
-    font-size: 30px;
+    font-size: 1.875rem;
     transition: all 0.3s ease-in-out;
   }
 

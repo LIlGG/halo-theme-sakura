@@ -1,25 +1,25 @@
 .iconify {
   display: inline-block;
   position: relative;
-  top: -2px;
+  top: -0.125em;
   vertical-align: middle;
-  font-size: 16px;
+  font-size: 1rem;
   height: 1em;
   width: 1em;
 
   &.iconify--small {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   &.iconify--large {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 
   &.iconify--xlarge {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 
   &.iconify--xxlarge {
-    font-size: 32px;
+    font-size: 2rem;
   }
 }

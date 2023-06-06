@@ -1,19 +1,18 @@
 .post-footer {
-
   & .single-reward {
     position: relative;
     width: 100%;
-    margin: 35px auto;
+    margin: 2.25rem auto;
     text-align: center;
     z-index: 1;
 
     & .reward-open {
       position: relative;
-      width: 40px;
-      height: 40px;
-      font-size: 18px;
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.125rem;
       color: #fff;
-      line-height: 40px;
+      line-height: 2.5rem;
       display: inline-block;
       border-radius: 100%;
       background: #d34836;
@@ -28,33 +27,31 @@
 
     & .reward-main {
       position: absolute;
-      top: 40px;
-      left: -187px;
+      left: -9.375rem;
       margin: 0;
-      padding: 15px 0 0;
-      width: 415px;
+      padding: 1rem 0 0;
       background: 0 0;
       display: none;
       animation: main 0.4s;
     }
 
     & .reward-row {
-      margin: 0 auto;
-      padding: 20px 15px 0px 15px;
+      margin: 0;
       background: #fff;
-      display: inline-block;
+      display: flex;
       border-radius: 4px;
       cursor: auto;
+      padding: 1rem;
 
       &::before {
         content: "";
         width: 0;
         height: 0;
-        border-left: 13px solid transparent;
-        border-right: 13px solid transparent;
-        border-bottom: 13px solid #fff;
+        border-left: 0.8125rem solid transparent;
+        border-right: 0.8125rem solid transparent;
+        border-bottom: 0.8125rem solid #fff;
         position: absolute;
-        top: 2px;
+        top: 0.3rem;
         left: 0;
         right: 0;
         margin: 0 auto;
@@ -62,12 +59,12 @@
 
       & li {
         list-style-type: none;
-        padding: 0 12px;
+        padding: 0 0.75rem;
         display: inline-block;
 
         & img {
-          width: 130px;
-          max-width: 130px;
+          width: 8.125rem;
+          max-width: 8.125rem;
           border-radius: 3px;
           position: relative;
         }
@@ -75,7 +72,7 @@
         & .reward-name {
           display: block;
           line-height: normal;
-          font-size: 13px;
+          font-size: 0.8125rem;
           color: #504e4e;
         }
       }
@@ -83,16 +80,16 @@
   }
 
   & .post-footer-meta {
-    padding-top: 20px;
+    padding-top: 1.25rem;
+    padding-bottom: 1.875rem;
     border-bottom: 1px dashed #ddd;
     border-top: 1px dashed #ddd;
-    margin-top: 30px;
-    height: 60px;
+    margin-top: 1.875rem;
   }
 
   @mixin screens-md {
     & p {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
 
     & .post-footer-meta {
@@ -104,7 +101,7 @@
 .post-license {
   text-align: center;
   padding-bottom: 5px;
-  font-size: 14px;
+  font-size: 0.875rem;
 
   & a {
     color: #b0b0b0;
@@ -117,7 +114,7 @@
 
 .post-tags {
   float: left;
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: #b0b0b0;
   text-transform: uppercase;
 
@@ -126,7 +123,7 @@
     margin-right: 5px;
 
     &:hover {
-      color: var(--theme-color);
+      color: var(--threme-color);
     }
   }
 
@@ -137,8 +134,6 @@
   @mixin screens-md {
     text-align: center;
     float: none;
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 }
-
-

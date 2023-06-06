@@ -1,8 +1,8 @@
 .footer-logo {
   & p {
     margin-bottom: 8px;
-    width: 30px;
-    height: 30px;
+    width: 2rem;
+    height: 2rem;
     opacity: 0.8;
     margin: 0 auto;
     background-size: cover;

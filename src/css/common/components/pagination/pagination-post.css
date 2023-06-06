@@ -1,182 +1,80 @@
 .post-pagination {
   overflow: hidden;
   width: 100%;
-  margin: 55px 0;
+  margin: 3rem 0;
   background: #000;
+  display: flex;
 
-  & .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.4;
-    background-size: cover;
-    transition: opacity 0.15s ease-out;
-  }
-
-  & .info {
+  & .pagination-container {
     position: relative;
-  }
+    flex: 1;
+    height: 10rem;
 
-  & article,
-  & a {
-    position: relative;
-    display: block;
-    float: left;
-    overflow: hidden;
-    height: 100%;
-    text-align: center;
+    & a {
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+    }
 
-    &:hover {
-      & > .background {
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+      transition: opacity 0.15s ease-out;
+      &:hover {
         opacity: 0.6;
       }
     }
-  }
 
-  & .category {
-    font-size: 10px;
-    padding: 7px 15px;
-    text-transform: uppercase;
-    color: #fff;
-    border-radius: 90px;
-    background: #7fbb00;
-  }
-
-  & h3 {
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 30px;
-    margin: 20px 0;
-    color: #fff;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    display: block;
-
-    & a {
-      display: block;
-      color: #fff;
-    }
-  }
-
-  & hr {
-    width: 15%;
-    height: 0;
-    border: 0;
-    background: rgba(255, 255, 255, 0.6);
-  }
-
-  & .label {
-    font-size: 13px;
-    display: block;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  & .full {
-    width: 100%;
-  }
-
-  & .half {
-    width: 50%;
-    float: left;
-  }
-
-  & .third {
-    width: 33.333%;
-  }
-
-  &.nextprev {
-    & article,
-    & a {
-      height: 150px;
-      text-align: left;
-    }
-
-    & a {
-      width: 100%;
+    & .label,
+    & .info {
+      position: absolute;
+      font-size: 0.875rem;
     }
 
     & .label {
-      position: absolute;
-      top: 0;
+      top: 2.5em;
+      display: block;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
     }
 
     & .info {
-      position: absolute;
-      width: 70%;
-    }
+      bottom: 2.5em;
 
-    & .next,
-    & .previous {
       & h3 {
-        font-size: 14px;
-      }
-    }
-
-    & .previous {
-      text-align: left;
-
-      & .info {
-        bottom: 40px;
-        left: 40px;
-      }
-
-      & .label {
-        top: 40px;
-        left: 40px;
-      }
-
-      & hr {
-        float: left;
-        margin: 0;
-      }
-    }
-
-    & .next {
-      & .info {
-        text-align: right;
-        right: 40px;
-        bottom: 40px;
-      }
-
-      & .label {
-        top: 40px;
-        right: 40px;
-      }
-
-      & hr {
-        float: right;
-        margin: 0;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 2rem;
+        margin: 2em 0;
+        color: #fff;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
     }
   }
 
-  &.post-squares-featured {
-    height: 250px;
+  & .previous {
+    & .label,
+    & .info {
+      left: 2.5em;
+    }
+  }
+
+  & .next {
+    & .label,
+    & .info {
+      right: 2.5em;
+    }
   }
 
   @mixin screens-md {
-    & .third {
-      width: 100%;
-    }
+    flex-direction: column;
 
-    & .half {
-      float: none;
-      width: 100%;
-    }
-
-    &.post-squares-featured {
-      display: none;
-    }
-
-    &.nextprev {
-      & article {
-        height: 150px;
-        width: 100%;
-      }
+    & .pagination-container {
+      flex: auto;
     }
   }
 }

@@ -1,19 +1,15 @@
 .list-pagination {
   width: 100%;
-  padding: 20px 0;
   text-align: center;
-  margin: 40px 0 80px;
   display: inline-block;
-
-  &.pagination-archive {
-    margin: 80px 0;
-  }
+  margin: 5rem 0;
 
   & a {
-    padding: 13px 35px;
+    padding: 1rem 2.5rem;
     border: 1px solid #ccc;
-    border-radius: 50px;
+    border-radius: 3rem;
     color: #b0b0b0;
+    display: inline-block;
 
     &:hover {
       border: 1px solid var(--theme-color);
@@ -24,29 +20,23 @@
 
   & span {
     color: #999;
-    font-size: 15px;
+    font-size: 1rem;
   }
 }
 
 .list-navigator {
   text-align: center;
-  margin: 80px 0;
+  margin: 5rem 0;
   display: block;
 
   & a {
     display: inline-block;
-    height: 39px;
-    line-height: 39px;
-    margin: 20px 0;
-  }
-
-  & .iconify {
-    font-size: 15px;
-    color: #ccc;
-    padding: 10px;
+    height: 3rem;
+    width: 3rem;
+    padding: 0.625rem;
     border: 2px solid #ddd;
     border-radius: 50%;
-    margin: 0 10px;
+    box-sizing: border-box;
 
     &:hover {
       color: #fff;
@@ -54,6 +44,11 @@
       border: 2px solid var(--theme-color);
       transition: all 0.2s ease-in-out;
     }
+  }
+
+  & .iconify {
+    font-size: 1rem;
+    color: #ccc;
   }
 
   @mixin screens-md {

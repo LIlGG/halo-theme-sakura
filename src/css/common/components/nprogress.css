@@ -28,16 +28,16 @@
     display: block;
     position: fixed;
     z-index: 10;
-    top: 27px;
-    right: 24px;
+    top: 1.625rem;
+    right: 1.5rem;
     left: inherit;
     width: auto;
     height: auto;
     margin: 0;
 
     & .spinner-icon {
-      width: 20px;
-      height: 20px;
+      width: 1.25rem;
+      height: 1.25rem;
       box-sizing: border-box;
       border: solid 3px transparent;
       border-top-color: var(--theme-color);

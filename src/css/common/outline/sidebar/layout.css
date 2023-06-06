@@ -16,7 +16,7 @@
     background: var(--theme-color);
     position: fixed;
     content: "";
-    width: 30px;
+    width: 1.875;
     height: 3px;
     top: 20px;
     left: -100px;
@@ -25,7 +25,7 @@
   }
 
   &.open {
-    width: 250px;
+    width: 15.625rem;
 
     &::before,
     &::after {

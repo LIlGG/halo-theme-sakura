@@ -1,7 +1,6 @@
 .search-form {
   &.is-visible {
     visibility: visible;
-    opacity: 0.99;
     animation: search-visible 0.5s;
     background-repeat: no-repeat;
     background-position: bottom right;
@@ -12,21 +11,19 @@
   }
 
   & svg {
-    font-size: 32px;
     font-size: 2rem;
     line-height: 1;
     color: #ddd;
     position: absolute;
-    bottom: 15px;
-    margin-top: -16px;
-    left: 16px;
+    bottom: 1rem;
+    margin-top: -1rem;
+    left: 1rem;
   }
 
   & input {
-    font-size: 24px;
     font-size: 1.5rem;
     background: var(--background-color);
-    padding: 12px 24px 12px 64px;
+    padding: 0.75rem 1.5rem 0.75rem 4rem;
     width: 100%;
     outline: none;
     border-radius: 50px;
@@ -42,8 +39,8 @@
 
   & .search_close {
     position: absolute;
-    width: 35px;
-    height: 35px;
+    width: 2.25rem;
+    height: 2.25rem;
     background: 0 0;
     top: 20px;
     right: 15px;
@@ -54,8 +51,8 @@
       background-color: #222;
       position: absolute;
       content: "";
-      width: 30px;
-      height: 2px;
+      width: 1.875rem;
+      height: 0.125rem;
       top: 17px;
       left: 2px;
       transform: rotate(-45deg);

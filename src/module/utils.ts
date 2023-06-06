@@ -5,6 +5,37 @@ import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import commentStyle from "../css/injection/comment.css?inline";
 
 export class Utils {
+
+  /**
+   * 自动计算子菜单位置
+   * 子菜单位置为：父菜单宽度 / 2 - 子菜单宽度 / 2
+   */
+  @documentFunction(false)
+  public autoCalculateSubmenuPosition() {
+    const lowContainerElement = document.querySelector(".lower-container") as HTMLElement;
+    if (!lowContainerElement) {
+      return;
+    }
+    const subMenuElements = lowContainerElement.querySelectorAll(".sub-menu") as NodeListOf<HTMLElement>;
+    if (!subMenuElements || subMenuElements.length === 0) {
+      return;
+    }
+    subMenuElements.forEach((subMenuElement) => {
+      const parentMenu = subMenuElement.parentElement as HTMLElement;
+      const parentMenuWidth = parentMenu.offsetWidth;
+      // 由于 subMenuElement 为隐藏元素，因此需要先显示出来，才能获取到其宽度
+      subMenuElement.style.visibility = "hidden";
+      subMenuElement.style.display = "block";
+      const subMenuWidth = subMenuElement.offsetWidth;
+      subMenuElement.style.display = "none";
+      subMenuElement.style.visibility = "visible";
+      console.log(parentMenuWidth, subMenuWidth)
+      const subMenuLeft = parentMenuWidth / 2 - subMenuWidth / 2;
+      subMenuElement.style.left = `${subMenuLeft}px`;  
+    });
+
+  }
+
   /**
    * 注入评论样式
    *

@@ -1,18 +1,18 @@
 .post-list {
-  margin: 0 0 8%;
+  margin: 0 0 4rem;
   position: relative;
   animation: main 0.6s;
 
   & p {
-    min-height: 60px;
-    font-size: 15px;
+    min-height: 3.75rem;
+    font-size: 0.9375em;
     color: var(--post-list-thumb-abstract-color);
     letter-spacing: 0;
-    line-height: 30px;
+    line-height: 1.875rem;
     transition: color 1s;
     margin: 0;
     padding: 0;
-    padding-left: 20px;
+    padding-left: 1.25rem;
     display: -webkit-box;
   }
 
@@ -22,7 +22,7 @@
     margin: 0 auto;
     border: 0;
     background: #eee;
-    margin-top: 20px;
+    margin-top: 1.25rem;
     transition: background 1s;
   }
 
@@ -37,7 +37,7 @@
   }
 
   & .feature {
-    margin-top: 10px;
+    margin-top: 1rem;
     float: left;
 
     &:hover .overlay .overlay-inner {
@@ -47,11 +47,11 @@
     & .overlay-inner {
       display: inline-block;
       position: absolute;
-      font-size: 25px;
+      font-size: 1.5625rem;
       color: #fff;
-      width: 106px;
-      height: 106px;
-      line-height: 106px;
+      width: 6.625rem;
+      height: 6.625rem;
+      line-height: 6.625rem;
       text-align: center;
       background: #bbe2db;
       opacity: 0;
@@ -60,15 +60,15 @@
       transition: opacity 0.4s ease-out;
 
       & .iconify {
-        font-size: 30px;
+        font-size: 1.875rem;
         background: transparent;
         color: var(--theme-color);
       }
     }
 
     & img {
-      width: 100px;
-      height: 100px;
+      width: 6.25rem;
+      height: 6.25rem;
       padding: 2px;
       border: 1px solid #ddd;
       box-sizing: content-box;
@@ -80,9 +80,9 @@
 
   & .entry-title {
     &h1 {
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: 400;
-      line-height: 50px;
+      line-height: 3.125rem;
       position: relative;
       z-index: 1;
       display: inline-block;
@@ -90,7 +90,7 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       max-width: 65%;
-      margin-left: 20px;
+      margin-left: 1.25rem;
 
       &:hover {
         color: var(--theme-color);
@@ -104,11 +104,11 @@
 
   & .entry-footer {
     & .post-more {
-      margin-top: 10px;
+      margin-top: 0.625rem;
       text-align: right;
 
       & .iconify {
-        font-size: 30px;
+        font-size: 1.875rem;
         color: var(--post-list-thumb-more-color);
 
         &:hover {
@@ -118,23 +118,22 @@
     }
 
     & .info-meta {
-      margin-top: 10px;
       position: absolute;
-      top: 20px;
+      top: 3rem;
       opacity: 0;
-      padding-top: 8px;
+      padding-top: 0.5rem;
       border-top: 1px solid #ddd;
       visibility: hidden;
       transition: 0.6s all ease;
 
       & span {
         color: #999;
-        font-size: 13px;
+        font-size: 0.8125rem;
         vertical-align: bottom;
       }
 
       & .iconify {
-        margin-right: 10px;
+        margin-right: 0.625rem;
       }
 
       & a {
@@ -150,8 +149,8 @@
     & .p-time {
       position: absolute;
       right: 0;
-      top: 16px;
-      font-size: 12px;
+      top: 1rem;
+      font-size: 0.75rem;
       color: #999;
       letter-spacing: 0;
 
@@ -164,14 +163,14 @@
 
   @mixin screens-md {
     & p {
-      font-size: 14px;
+      font-size: 0.875rem;
       overflow: hidden;
     }
 
     & .feature {
       & img {
-        width: 52px;
-        height: 52px;
+        width: 3.25rem;
+        height: 3.25rem;
       }
 
       & .overlay {
@@ -181,8 +180,8 @@
 
     & .entry-title {
       &h1 {
-        font-size: 16px;
-        line-height: 30px;
+        font-size: 1rem;
+        line-height: 1.875rem;
       }
     }
 

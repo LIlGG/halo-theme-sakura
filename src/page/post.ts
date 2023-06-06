@@ -12,7 +12,7 @@ export default class Post {
     if (!contentElement) {
       return;
     }
-    if (sakura.getPageConfig("isOriginal") == "false" || !sakura.getThemeConfig("post", "post_original_copy", Boolean)) {
+    if (sakura.getPageConfig("isOriginal") == "false" || !sakura.getThemeConfig("post", "post_original_copy", Boolean)?.valueOf()) {
       return;
     }
     contentElement.addEventListener("copy", (event) => {
@@ -83,7 +83,7 @@ export default class Post {
    */
   @documentFunction()
   public registerWordCountToast() {
-    if (!sakura.getThemeConfig("post", "post_word_count_toast", Boolean)) {
+    if (!sakura.getThemeConfig("post", "post_word_count_toast", Boolean)?.valueOf()) {
       return;
     }
 
@@ -144,7 +144,7 @@ export default class Post {
       return;
     }
 
-    if (!sakura.getThemeConfig("post", "post_edit_time_toast", Boolean)) {
+    if (!sakura.getThemeConfig("post", "post_edit_time_toast", Boolean)?.valueOf()) {
       return;
     }
 

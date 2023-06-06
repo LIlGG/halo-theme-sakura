@@ -1,7 +1,7 @@
 .post-share {
   float: right;
   list-style: none;
-  margin-right: 20px;
+  margin-right: 1.25rem;
 
   &:hover {
     & .show-share,
@@ -28,7 +28,7 @@
 
     & li {
       & i {
-        font-size: 20px;
+        font-size: 1.25rem;
       }
 
       & a {
@@ -41,11 +41,11 @@
 
   & li {
     float: left;
-    margin-right: 30px;
+    margin-right: 1.875rem;
 
     & img {
-      width: 18px;
-      height: 18px;
+      width: 1.125rem;
+      height: 1.125rem;
       display: block;
     }
   }

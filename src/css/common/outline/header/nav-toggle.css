@@ -3,10 +3,10 @@
 
   @mixin screens-md {
     transition-duration: 0.5s;
-    height: 40px;
+    height: 2.5rem;
     position: absolute;
     top: 0;
-    z-index: 99999;
+    z-index: 10;
     display: block;
     background: 0 0;
 
@@ -16,15 +16,15 @@
 
     & .nav-toggle {
       background: 0 0;
-      width: 40px;
-      height: 40px;
+      width: 2.5rem;
+      height: 2.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
 
       & .icon {
         transition-duration: 0.2s;
-        width: 30px;
+        width: 1.875rem;
         height: 3px;
         background-color: var(--mobile-nav-toggle-background-color);
 
@@ -34,7 +34,7 @@
           background-color: var(--mobile-nav-toggle-background-color);
           position: absolute;
           content: "";
-          width: 30px;
+          width: 1.875rem;
           height: 3px;
         }
 

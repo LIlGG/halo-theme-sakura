@@ -52,14 +52,23 @@
                   <time
                     data-i18n="page.moments.time"
                     th:i18n-options="|{
-                    'time': '${moment.spec.releaseTime}',
-                    'params': { 'separator': '-', 'options': { 'year': 'numeric', 'month': '2-digit', 'day': '2-digit', 'hour': 'numeric', 'minute': 'numeric', 'second': 'numeric' } } 
+                      'time': '${moment.spec.releaseTime}',
+                      'params': { 
+                        'separator': '-', 
+                        'options': { 
+                          'year': 'numeric', 
+                          'month': '2-digit', 
+                          'day': '2-digit', 
+                          'hour': 'numeric', 
+                          'minute': 'numeric', 
+                          'second': 'numeric' 
+                        } 
+                      } 
                     }|"
-                    th:data-datetime="${createTime}"
+                    th:data-datetime="${moment.spec.releaseTime}"
                     itemprop="dateCreated datePublished"
                   >
                   </time>
-                  <!-- <span th:text="${#dates.format(moment.spec.releaseTime, 'yyyy-MM-dd HH:mm:ss')}"></span> -->
                 </div>
                 <!-- 评论内容 -->
                 <div class="moment-tools">

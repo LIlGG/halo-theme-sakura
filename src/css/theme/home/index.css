@@ -11,7 +11,7 @@
     position: fixed;
 
     &.yya {
-      & .header-inner .lower-cantiner {
+      & .header-inner .lower-container {
         display: block;
       }
     }
@@ -19,7 +19,7 @@
     & .header-inner {
       transition: background 1s;
 
-      & .lower-cantiner {
+      & .lower-container {
         display: none;
       }
     }
@@ -30,7 +30,7 @@
         top: 0;
         background: var(--header-background);
 
-        & .lower-cantiner {
+        & .lower-container {
           display: block;
         }
       }

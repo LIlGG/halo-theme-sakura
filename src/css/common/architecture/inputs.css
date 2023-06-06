@@ -1,5 +1,5 @@
 input {
-  font-size: 15px;
+  font-size: 1rem;
   font: inherit;
   margin: 0;
   line-height: normal;
@@ -19,7 +19,6 @@ input[type="submit"] {
   background: #ddd;
   box-shadow: none;
   color: rgba(0, 0, 0, 0.8);
-  font-size: 12px;
   font-size: 0.75rem;
   line-height: 1;
   padding: 0.6em 1em 0.4em;

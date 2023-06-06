@@ -9,13 +9,11 @@
         />
       </a>
       <div class="meta">
-        <span class="title" th:text="${post.owner.displayName}"></span>
         <h3 itemprop="name">
           <a th:href="${site.url}" itemprop="url" rel="author" th:text="${post.owner.name}" aria-label="website address"></a>
         </h3>
       </div>
     </div>
-    <hr />
     <p>
       <span class="iconify" data-icon="solar:pen-line-duotone"></span>
       <span th:if="${not #strings.isEmpty(post.owner.bio)}" th:text="${post.owner.bio}" itemprop="description" ></span>
