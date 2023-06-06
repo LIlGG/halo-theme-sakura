@@ -2,15 +2,15 @@
   display: flex;
   position: relative;
   background: #21252b;
-  border-radius: 5px;
-  font: 15px/22px "Microsoft YaHei", "Arial", Sans-Serif;
+  border-radius: 6px;
   line-height: 1.6;
+  font-size: 1em;
   margin-bottom: 1.6em;
   max-width: 100%;
   text-shadow: none;
   color: #000;
-  padding-top: 30px;
-  box-shadow: 0 10px 30px 0px rgba(0, 0, 0, 0.4);
+  padding-top: 2em;
+  box-shadow: 0 0.625em 2em 0px rgba(0, 0, 0, 0.4);
   filter: brightness(var(--theme-brightness));
 
   &::before {
@@ -18,11 +18,11 @@
     position: absolute;
     border-radius: 50%;
     background: #fc625d;
-    width: 12px;
-    height: 12px;
-    left: 12px;
-    margin-top: -18px;
-    box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+    width: 0.75em;
+    height: 0.75em;
+    left: 0.75em;
+    margin-top: -1.25em;
+    box-shadow: 1.25em 0 #fdbc40, 2.5em 0 #35cd4b;
     z-index: 1;
   }
 
@@ -31,13 +31,13 @@
     font-family: "Source Code Pro", monospace, Helvetica, Tahoma, Arial, STXihei, "STHeiti Light", "Microsoft YaHei",
       sans-serif;
     text-shadow: none;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 6px 6px;
     width: 100%;
     cursor: var(--cursor-text);
 
     &::-webkit-scrollbar {
-      height: 10x;
-      width: 10x;
+      height: 0.625rem;
+      width: 0.625rem;
       background-color: #222;
     }
 
@@ -57,24 +57,20 @@
       &::before {
         color: #fff;
         content: attr(data-rel);
-        height: 36px;
-        line-height: 36px;
+        height: 2.25em;
+        line-height: 2.25em;
         background: #21252b;
-        font-size: 16px;
+        font-size: 1rem;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         font-family: Ubuntu, sans-serif;
         font-weight: 700;
-        text-indent: 15px;
+        text-indent: 1rem;
         text-align: center;
         float: left;
-        border-radius: 5px 5px 0 0;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
+        border-radius: 6px 6px 0 0;
         pointer-events: none;
       }
     }
@@ -158,7 +154,7 @@
     }
 
     & .hljs-ln {
-      margin: 6px 0 0;
+      margin: 0.375em 0 0;
 
       & .hljs-ln-line {
         &.hljs-ln-numbers {
@@ -170,12 +166,12 @@
           vertical-align: top;
           position: absolute;
           left: 0;
-          width: 30px;
+          width: 2em;
         }
   
         &.hljs-ln-code {
           width: 100vw;
-          padding-left: 25px;
+          padding-left: 1.625em;
   
           &:hover {
             background-color: rgba(255, 255, 255, 0.1);

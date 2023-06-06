@@ -233,7 +233,7 @@ export class SakuraApp implements Sakura {
 
   protected mountGlobalFunction() {
     // 注册sakura toast 组件
-    const isToast = sakura.getThemeConfig("toast", "open_toast", Boolean);
+    const isToast = sakura.getThemeConfig("toast", "open_toast", Boolean)?.valueOf();
     if (isToast && !Object.getOwnPropertyDescriptor(sakura, "$toast")) {
       Object.defineProperty(sakura, "$toast", {
         value: new Toast({
@@ -294,7 +294,41 @@ export class SakuraApp implements Sakura {
               const params = edit?.params;
               switch (format) {
                 case "datetimeFormat":
-                  return I18nFormat.DateTimeFormat(value, lng, params?.options, params?.separator);
+                  let options = params?.options;
+                  if (!options) {
+                    switch (sakura.getThemeConfig("general", "date_format", String)?.valueOf()) {
+                      case "time":
+                        options = {
+                          hour: "numeric",
+                          minute: "numeric",
+                          second: "numeric",
+                        };
+                        break;
+                      case "datetime":
+                        options = {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "2-digit",
+                          hour: "numeric",
+                          minute: "numeric",
+                          second: "numeric",
+                        }
+                        break;
+                      case "date":
+                      default:
+                        options = {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "2-digit",
+                        };
+                        break;
+                    }
+
+                    if (sakura.getThemeConfig("general", "hour12", Boolean)?.valueOf()) {
+                      options.hour12 = true;
+                    }
+                  }
+                  return I18nFormat.DateTimeFormat(value, lng, options, params?.separator);
                 case "relativeTimeFormat":
                   return I18nFormat.RelativeTimeFormat(value, lng);
                 default:
@@ -371,7 +405,7 @@ export class SakuraApp implements Sakura {
       );
     }
     initFuncitons.clear();
-    if (this.getThemeConfig("advanced", "log", Boolean)) {
+    if (this.getThemeConfig("advanced", "log", Boolean)?.valueOf()) {
       console.log("共获取预设 documentFunction " + functions.size + " 个");
     }
   }
@@ -386,7 +420,7 @@ export class SakuraApp implements Sakura {
   protected prepareRefresh(): void {
     this.refreshMetadata();
 
-    if (this.getThemeConfig("advanced", "log", Boolean)) {
+    if (this.getThemeConfig("advanced", "log", Boolean)?.valueOf()) {
       console.log("Sakura Refreshing");
     }
   }
@@ -424,7 +458,7 @@ export class SakuraApp implements Sakura {
   protected finishRefresh(): void {
     let refreshEvent = this.events.get(this.REFRESH_EVENT_NAME) as Event;
     window.dispatchEvent(refreshEvent);
-    if (this.getThemeConfig("advanced", "log", Boolean)) {
+    if (this.getThemeConfig("advanced", "log", Boolean)?.valueOf()) {
       console.log("finish Refreshing");
     }
     console.log("%c Github %c", "background:#24272A; color:#ffffff", "", "https://github.com/LIlGG/halo-theme-Sakura");

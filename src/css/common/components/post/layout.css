@@ -16,9 +16,9 @@ h1 {
   color: #ff3b00;
 }
 
-header.page-header {
+.page-header {
 	position: relative;
 	text-align: center;
-	margin-bottom: 50px;
+	margin-bottom: 3rem;
 	color: #999
 }

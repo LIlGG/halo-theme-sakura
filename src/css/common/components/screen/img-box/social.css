@@ -1,13 +1,13 @@
 .top-social {
   display: flex;
   justify-content: center;
-  height: 26px;
-  margin-top: 15px;
+  height: 1.625rem;
+  margin-top: 1rem;
   list-style: none;
 
   & img {
-    height: 26px;
-    width: 26px;
+    height: 2rem;
+    width: 2rem;
     padding: 0;
     background: 0 0;
   }
@@ -29,38 +29,37 @@
   }
 
   & .wechat {
-    width: 23px;
-    height: 23px;
+    height: 2rem;
+    width: 2rem;
     position: relative;
 
     & .wechatInner {
-      width: 121px;
-      height: 121px;
-      padding: 10px;
+      width: 8rem;
+      height: 8rem;
+      padding: 0.625rem;
       background: rgba(0, 0, 0, 0.4);
-      top: 40px;
-      left: -40px;
+      left: -3.5rem;
       opacity: 0;
       position: absolute;
       border-radius: 8px;
       transition: 0.7s all ease;
-      transform: translate3d(0, 50px, 0);
+      transform: translate3d(0, 3rem, 0);
 
       &::before {
         content: "";
         position: absolute;
-        top: -30px;
+        top: -2rem;
         left: 50%;
-        margin-left: -15px;
-        border-width: 15px;
+        margin-left: -1rem;
+        border-width: 1rem;
         border-style: solid;
         border-color: transparent transparent rgba(0, 0, 0, 0.4) transparent;
       }
 
       & img {
         border-radius: 0;
-        width: 121px;
-        height: auto;
+        width: 8rem;
+        height: 8rem;
         padding: 0;
         background: 0 0;
       }

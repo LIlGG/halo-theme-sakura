@@ -35,6 +35,7 @@
   --first-screen-header-info-background-color: rgba(0, 0, 0, 0.5);
 
   /* header */
+  --header-height: 4.6875rem;
   --yya-header-top: 0;
   --header-background: #fff;
 

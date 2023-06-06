@@ -106,8 +106,11 @@
       <span class="iconify" data-icon="solar:clock-circle-linear"></span>
       <time
         data-i18n="postlist.time"
-        th:i18n-options="|{'time': '${post.spec.publishTime}', 'params': { 'separator': '-', 'options': { 'year': 'numeric', 'month': '2-digit', 'day': '2-digit' } } }|"
-        th:datetime="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"
+        th:i18n-options="|{
+          'time': '${post.spec.publishTime}', 
+          'params': { 'separator': '-' }
+        }|"
+        th:datetime="${post.spec.publishTime}"
         itemprop="dateCreated datePublished"
       >
       </time>

@@ -58,6 +58,26 @@ spec:
               label: Ajax 加载
             - value: np
               label: 上一页和下一页
+        - $formkit: select
+          name: date_format
+          label: 日期展示格式
+          value: date
+          options:
+            - value: date
+              label: 日期
+            - value: time
+              label: 时间
+            - value: datetime
+              label: 日期时间
+        - $formkit: radio
+          name: hour12
+          label: 12 小时制
+          value: false
+          options:
+            - value: true
+              label: 是
+            - value: false
+              label: 否
     - group: patternimg
       label: 头部装饰图
       formSchema:
@@ -371,15 +391,6 @@ spec:
             - value: false
               label: 关闭
         - $formkit: radio
-          name: post_line_indent
-          label: 文章首行缩进
-          value: false
-          options:
-            - value: true
-              label: 开启
-            - value: false
-              label: 关闭
-        - $formkit: radio
           name: post_original_copy
           label: 原创内容增加版权声明
           help: 需要在发布文章时的元数据上选中原创才可以生效
@@ -446,19 +457,6 @@ spec:
           if: "$get(post_edit_time_toast).value == true && $get(custom_toast).value == true"
           name: post_edit_time_toast_difficulty
           label: 很长时间未更新文章提示语
-        - $formkit: select
-          name: post_time_display_type
-          label: 文章时间显示类别
-          value: yyyy-MM-dd
-          options:
-            - value: yyyy-MM-dd
-              label: 日期
-            - value: HH:mm:ss
-              label: 时间
-            - value: yyyy-MM-dd HH:mm:ss
-              label: 日期时间
-            - value: ""
-              label: 12 小时制
         - $formkit: select
           name: toc_depth
           label: 目录标题展开级别

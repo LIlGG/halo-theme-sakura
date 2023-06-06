@@ -1,21 +1,21 @@
 .header-info {
-  max-width: 40%;
+  max-width: 30%;
   position: relative;
   margin: 0;
-  font-size: 16px;
+  font-size: 1rem;
   color: var(--first-screen-header-info-text-color);
   background: var(--first-screen-header-info-background-color);
-  padding: 15px;
+  padding: 1rem;
   letter-spacing: 0;
-  line-height: 30px;
+  line-height: 2rem;
   border-radius: 10px;
   box-sizing: initial;
   white-space: nowrap;
-  margin-top: 20px;
+  margin-top: 1.25rem;
 
   &::before {
     position: absolute;
-    left: 20%;
+    left: 30%;
     border-width: 15px;
     border-style: solid;
     border-color: transparent;

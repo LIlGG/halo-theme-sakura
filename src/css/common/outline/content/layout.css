@@ -15,18 +15,18 @@
     & section {
       & h1 {
         font-weight: 300;
-        font-size: 30px;
-        margin-bottom: 10px;
+        font-size: 1.875rem;
+        margin-bottom: 0.625rem;
       }
 
       & h2 {
         font-weight: 300;
-        font-size: 20px;
-        margin-bottom: 40px;
+        font-size: 1.25rem;
+        margin-bottom: 2.5rem;
       }
 
       & p {
-        margin-bottom: 40px;
+        margin-bottom: 2.5rem;
       }
     }
   }

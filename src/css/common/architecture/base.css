@@ -19,13 +19,14 @@ html {
   overflow-x: hidden;
   word-break: break-all;
   box-sizing: border-box;
+  font-size: 100%;
 }
 
 body,
 select,
 textarea {
   color: var(--body-color);
-  font-size: 15px;
+  font-size: 1em;
   line-height: 1.5;
 }
 
@@ -82,18 +83,8 @@ abbr[title] {
   border-bottom: 1px dotted;
 }
 
-b,
-strong {
-  font-weight: 700;
-}
-
 dfn {
   font-style: italic;
-}
-
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
 }
 
 mark {
@@ -222,8 +213,8 @@ address {
 kbd {
   display: inline-block;
   padding: 3px 5px;
-  font-size: 11px;
-  line-height: 10px;
+  font-size: 1em;
+  line-height: 1em;
   color: #444d56;
   vertical-align: middle;
   background-color: #fff;
@@ -239,8 +230,7 @@ code,
 kbd,
 tt,
 var {
-  font-size: 15px;
-  font-size: 0.9375rem;
+  font-size: 1em;
 }
 
 abbr,

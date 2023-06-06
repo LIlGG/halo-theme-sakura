@@ -1,7 +1,7 @@
 .site-branding {
   float: left;
   position: relative;
-  line-height: 75px;
+  line-height: var(--header-height);
   animation: sitetop 1s;
 
   & .site-title {
@@ -24,9 +24,9 @@
 
     & a,
     & img {
-      height: 40px;
-      width: 40px;
-      margin-top: 17px;
+      height: 2.5rem;
+      width: 2.5rem;
+      margin-top: 1rem;
       opacity: 0.75;
       object-fit: cover;
       transition: color 0.2s ease-out, border 0.2s ease-out, opacity 0.2s ease-out;
@@ -35,16 +35,16 @@
 
   @mixin screens-md {
     float: right;
-    height: 40px;
-    line-height: 40px;
+    height: 2.5rem;
+    line-height: 2.5rem;
 
     & .site-title {
-      font-size: 20px;
+      font-size: 1.25rem;
       margin-right: 10px;
 
       & img {
-        height: 30px;
-        width: 30px;
+        height: 2rem;
+        width: 2rem;
         border-radius: 100%;
         margin: 0;
         vertical-align: middle;

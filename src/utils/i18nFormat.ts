@@ -10,8 +10,6 @@ export class I18nFormat {
   /**
    * 对日期字符串进行国际化处理
    *
-   *
-   *
    * @param time 需要格式化的日期
    * @param lng locale
    * @param options 自定义日期时间格式化方法的返回值参数
