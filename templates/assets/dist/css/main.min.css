@@ -2029,8 +2029,8 @@ table {
     background: var(--theme-color);
     position: fixed;
     content: "";
-    width: 1.875;
-    height: 3px;
+    width: 1.875rem;
+    height: 0.1875rem;
     top: 20px;
     left: -100px;
     pointer-events: auto;
@@ -2043,8 +2043,8 @@ table {
     background: var(--theme-color);
     position: fixed;
     content: "";
-    width: 1.875;
-    height: 3px;
+    width: 1.875rem;
+    height: 0.1875rem;
     top: 20px;
     left: -100px;
     pointer-events: auto;
