@@ -694,7 +694,28 @@ spec:
           label: 随机图 API 地址
           validation: "required|url"
           value: https://api.lixingyong.com/api/images
-          help: 随机图 API 地址，有能力者可以自行搭建。不过一般建议使用默认的即可，否则可能无法解析。
+          help: 随机图 API 地址。
+        - $formkit: text
+          name: rimage_other_params
+          label: 第三方 API 自定义参数
+          help: 第三方 API 自定义参数，如 category=dongman 。参数会跟随在随机图 API 地址后面
+        - $formkit: select
+          name: rimage_cover_lqip
+          id: rimage_cover_lqip
+          key: rimage_cover_lqip
+          label: 延迟占位方式
+          value: loading
+          help: 在图片还未加载之前的过渡效果
+          options:
+            - value: loading
+              label: 固定加载图
+            - value: lowquality
+              label: 低质量图
+        - $formkit: text
+          if: "$get(rimage_cover_lqip).value == 'lowquality'"
+          name: rimage_cover_lqip_params
+          label: API 低质量图参数
+          value: 'th=150'
         - $formkit: radio
           name: rimage_cover_open
           id: rimage_cover_open
@@ -719,17 +740,6 @@ spec:
               label: 开启
             - value: false
               label: 关闭
-        - $formkit: select
-          if: "$get(rimage_cover_open).value == true || $get(rimage_cover_sheet_open).value == true"
-          name: rimage_cover_lqip
-          label: 延迟占位方式
-          value: loading
-          help: 在图片还未加载之前的过渡效果
-          options:
-            - value: loading
-              label: 固定加载图
-            - value: lowquality
-              label: 低质量图
         - $formkit: select
           if: "$get(rimage_cover_open).value == true || $get(rimage_cover_sheet_open).value == true"
           name: rimage_cover_itype

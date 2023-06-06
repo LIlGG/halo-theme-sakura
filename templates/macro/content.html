@@ -35,8 +35,8 @@
       />
       <img
         th:if="${#strings.isEmpty(post.spec.cover)} and ${theme.config.random_image.rimage_cover_open} and ${#annotations.getOrDefault(post, 'randomImage', true)} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
-        th:with="randomUrl = |${theme.config.random_image.rimage_url}?postid=${post.metadata.name}&type=url&itype=${theme.config.random_image.rimage_cover_itype}${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}|"
-        th:src="${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/load/orange.progress-bar-stripe-loader.svg') : (randomUrl + '&th=150')}"
+        th:with="randomUrl = |${theme.config.random_image.rimage_url}?postid=${post.metadata.name}&type=url&itype=${theme.config.random_image.rimage_cover_itype}${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}${#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '&' + theme.config.random_image.rimage_other_params}|"
+        th:src="${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/load/orange.progress-bar-stripe-loader.svg') : (randomUrl + (#strings.isEmpty(theme.config.random_image.rimage_cover_lqip_params) ? '' : '&' + theme.config.random_image.rimage_cover_lqip_params))}"
         th:data-srcset="|
         ${randomUrl}&th=150 150w,
         ${randomUrl}&th=640 640w,

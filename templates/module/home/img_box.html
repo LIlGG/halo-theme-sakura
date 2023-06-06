@@ -5,10 +5,10 @@
   >
     <img
       th:with="
-      imageUrl = |${theme.config.random_image.rimage_url}?home=home&type=url&itype=${theme.config.random_image.rimage_cover_back_itype}${theme.config.random_image.rimage_cover_back_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_back_id : ''}|,
+      imageUrl = |${theme.config.random_image.rimage_url}?home=home&type=url&itype=${theme.config.random_image.rimage_cover_back_itype}${theme.config.random_image.rimage_cover_back_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_back_id : ''}${#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '&' + theme.config.random_image.rimage_other_params}|,
       randomNum = |${theme.config.random_image.rimage_cover_back_num != 0 ? ((T(java.lang.Math).random() * 10) % theme.config.random_image.rimage_cover_back_num).intValue() : #strings.randomAlphanumeric(1)}|
       "
-      th:src="|${imageUrl}&th=150&t=${randomNum}|"
+      th:src="|${imageUrl}${#strings.isEmpty(theme.config.random_image.rimage_cover_lqip_params) ? '' : '&' + theme.config.random_image.rimage_cover_lqip_params}&t=${randomNum}|"
       th:data-src="|${imageUrl}&t=${randomNum}|"
       th:data-url="${imageUrl}"
       th:data-currIndex="${randomNum}"
