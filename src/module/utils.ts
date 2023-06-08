@@ -4,7 +4,28 @@ import "@fancyapps/ui/dist/fancybox/fancybox.css";
 // @ts-ignore
 import commentStyle from "../css/injection/comment.css?inline";
 
+declare const SearchWidget: any;
+
 export class Utils {
+
+  /**
+   * 唤起搜索组件
+   * 
+   * //TODO 使用搜索组件将无法享受到使用 Pjax
+   * 
+   * @returns 
+   */
+  @documentFunction(false)
+  public openSearch() {
+    const jsToggerSearch = document.querySelector(".searchbox") as HTMLElement;
+    if (!jsToggerSearch) {
+      return;
+    }
+    
+    jsToggerSearch.addEventListener("click", () => {
+      SearchWidget.open();
+    });
+  }
 
   /**
    * 自动计算子菜单位置
@@ -29,7 +50,6 @@ export class Utils {
       const subMenuWidth = subMenuElement.offsetWidth;
       subMenuElement.style.display = "none";
       subMenuElement.style.visibility = "visible";
-      console.log(parentMenuWidth, subMenuWidth)
       const subMenuLeft = parentMenuWidth / 2 - subMenuWidth / 2;
       subMenuElement.style.left = `${subMenuLeft}px`;  
     });
@@ -106,7 +126,6 @@ export class Utils {
           };
 
           flxedAplayerOptions.audio = data;
-          console.log(flxedAplayerOptions);
           new APlayer(flxedAplayerOptions);
           // 为按钮增加 hover
           aplayerElement.querySelector(".aplayer-body")?.classList.add("ap-hover");
