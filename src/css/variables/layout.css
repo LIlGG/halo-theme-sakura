@@ -71,7 +71,7 @@
   --entry-content-text-color: #7d7d7d;
   --entry-content-heading-color: #000;
   --entry-content-list-color: #666;
-  --entry-content-table-color: #fff;
+  --entry-content-table-color: #000;
 
   /* card */
   --card-container-box-shadow: 0 -15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);

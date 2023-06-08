@@ -4,6 +4,9 @@ import { fileURLToPath } from "url";
 import path from "path";
 import PurgeIcons from 'vite-plugin-purge-icons';
 
+const THEME_BASE = "/themes/theme-sakura";
+const ASSETS_BASE = `/assets/dist/`;
+
 export default ({ mode }: { mode: string }) => {
   return defineConfig({
     plugins: [
@@ -13,7 +16,9 @@ export default ({ mode }: { mode: string }) => {
         ],
       })
     ],
+    base: THEME_BASE + ASSETS_BASE,
     build: {
+      outDir: "templates" + ASSETS_BASE,
       minify: mode === 'development' ? false : true,
       rollupOptions: {
         input: Object.fromEntries(
@@ -24,7 +29,6 @@ export default ({ mode }: { mode: string }) => {
         ),
         output: {
           format: "es",
-          dir: fileURLToPath(new URL("./templates/assets/dist", import.meta.url)),
           entryFileNames: "[name].min.js",
           assetFileNames: (assetInfo) => {
             if (assetInfo.name && assetInfo.name.endsWith(".css")) {
