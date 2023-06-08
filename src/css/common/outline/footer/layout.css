@@ -18,6 +18,7 @@
   }
 
   & .site-info {
+    margin: 2rem auto;
     text-align: center;
     font-size: 0.8125rem;
     color: #b0b0b0;
