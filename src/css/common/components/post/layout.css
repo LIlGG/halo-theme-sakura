@@ -22,3 +22,9 @@ h1 {
 	margin-bottom: 3rem;
 	color: #999
 }
+
+@mixin screens-md {
+  .page-header {
+    margin-bottom: 0;
+  }  
+}

@@ -230,6 +230,7 @@ export class Utils {
         // @ts-ignore
         const highlightLineNumber = await import("../libs/highlightjs-line-numbers");
         highlightLineNumber.registerHljsLineNumbers(highlight.default);
+        highlightLineNumber.injectHljsLineNumbersCss();
         // @ts-ignore
         highlight.default.lineNumbersBlock(codeElement);
       });
