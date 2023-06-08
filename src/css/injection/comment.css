@@ -15,41 +15,56 @@
   --textarea-caret-color: #fff;
 }
 
-
-.comment-form {
-  & textarea {
-    background-color: var(--background-color);
-    caret-color: var(--textarea-caret-color);
-  }
-
-  & div:first-of-type {
-    & > div {
-      color: var(--post-list-thumb-abstract-color);
-    }
-
-    & input {
+.halo-comment-widget {
+  & .comment-form {
+    & textarea {
       background-color: var(--background-color);
       caret-color: var(--textarea-caret-color);
-    }    
+    }
 
-    & .emoji-mart-anchors {
-      & svg {
-        color: #000;
+    & div:first-of-type {
+      & > div {
+        color: var(--post-list-thumb-abstract-color);
+      }
+
+      & input {
+        background-color: var(--background-color);
+        caret-color: var(--textarea-caret-color);
+      }
+
+      & .emoji-mart-anchors {
+        & svg {
+          color: #000;
+        }
       }
     }
   }
-}
 
-.comment-timeline {
-  & div:first-of-type {
-    & span {
-      color: var(--post-list-thumb-abstract-color);
+  & .comment-timeline {
+    & div:first-of-type {
+      & span {
+        color: var(--post-list-thumb-abstract-color);
+      }
+    }
+
+    & .comment-content {
+      & > p {
+        color: var(--post-list-thumb-abstract-color);
+      }
     }
   }
 
-  & .comment-content {
-    & > p {
-      color: var(--post-list-thumb-abstract-color);
+  & div {
+    &:last-child {
+      & > div {
+        background-color: var(--background-color);
+
+        & select,
+        & button {
+          background-color: var(--background-color);
+          color: var(--post-list-thumb-abstract-color);
+        }
+      }
     }
   }
 }
