@@ -1,19 +1,30 @@
 import { documentFunction, sakura } from "../main";
-import "APlayer/dist/APlayer.min.css";
-import "@fancyapps/ui/dist/fancybox/fancybox.css";
-// @ts-ignore
-import commentStyle from "../css/injection/comment.css?inline";
-
 declare const SearchWidget: any;
 
 export class Utils {
 
   /**
+   * 按需加载 header 头部动画 css
+   */
+  @documentFunction(false)
+  public loadHeaderAnimationCss() {
+    const menuItemElements = document.querySelectorAll(".menu-item") as NodeListOf<HTMLElement>;
+    if (!menuItemElements || menuItemElements.length === 0) {
+      return;
+    }
+    menuItemElements.forEach((menuItemElement) => {
+      if (menuItemElement.classList.contains("animation")) {
+        import("font-awesome-animation/css/font-awesome-animation.min.css");
+      }
+    });
+  }
+
+  /**
    * 唤起搜索组件
-   * 
-   * //TODO 使用搜索组件将无法享受到使用 Pjax
-   * 
-   * @returns 
+   *
+   * //TODO 使用搜索组件将无法享受到 Pjax
+   *
+   * @returns
    */
   @documentFunction(false)
   public openSearch() {
@@ -21,7 +32,7 @@ export class Utils {
     if (!jsToggerSearch) {
       return;
     }
-    
+
     jsToggerSearch.addEventListener("click", () => {
       SearchWidget.open();
     });
@@ -51,9 +62,8 @@ export class Utils {
       subMenuElement.style.display = "none";
       subMenuElement.style.visibility = "visible";
       const subMenuLeft = parentMenuWidth / 2 - subMenuWidth / 2;
-      subMenuElement.style.left = `${subMenuLeft}px`;  
+      subMenuElement.style.left = `${subMenuLeft}px`;
     });
-
   }
 
   /**
@@ -71,12 +81,14 @@ export class Utils {
     if (!commentElement) {
       return;
     }
-    commentElement.querySelectorAll("div").forEach((divElement) => {
+    commentElement.querySelectorAll("div").forEach(async (divElement) => {
       if (divElement.shadowRoot) {
         const commentShadowElement = divElement.shadowRoot;
-        const styleSheet = new CSSStyleSheet();
-        styleSheet.replaceSync(commentStyle);
-        commentShadowElement.adoptedStyleSheets = [styleSheet];
+        import("../css/injection/comment.css?inline").then((module) => {
+          const styleSheet = new CSSStyleSheet();
+          styleSheet.replaceSync(module.default);
+          commentShadowElement.adoptedStyleSheets = [styleSheet];
+        });
       }
     });
   }
@@ -104,6 +116,7 @@ export class Utils {
       .then((data) => {
         // @ts-ignore
         import("APlayer").then(async (module) => {
+          await import("APlayer/dist/APlayer.min.css");
           const APlayer = module.default;
           const aplayerElement = createFixedAPlayerElement();
           const flxedAplayerOptions = {
@@ -197,8 +210,9 @@ export class Utils {
       imageElement.parentNode?.insertBefore(imageWrapper, imageElement);
       imageWrapper.appendChild(imageElement);
     });
-    import("@fancyapps/ui").then((module) => {
-      module.Fancybox.bind(contentElement, '[data-fancybox="gallery"]');
+    import("@fancyapps/ui").then(async (module) => {
+      await import("@fancyapps/ui/dist/fancybox/fancybox.css");
+      await module.Fancybox.bind(contentElement, '[data-fancybox="gallery"]');
     });
   }
 
