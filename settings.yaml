@@ -9,7 +9,7 @@ spec:
       formSchema:
         - $formkit: color
           name: theme_skin
-          label: 主题风格
+          label: 主题基色
           value: "#FE9600"
         - $formkit: radio
           name: cursor_skin
@@ -1091,7 +1091,7 @@ spec:
         # - $formkit: text
         #   name: reply_mail_img
         #   label: 邮件回复模块图片
-        #   value: /themes/theme-sakura/assets/images/email/head.jpg
+        #   value: /themes/theme-sakura/assets/images/email/head.webp
         - $formkit: select
           name: top_back_mode
           label: 回到顶部样式

@@ -43,7 +43,7 @@ export default class Photos {
 
       // 过滤
       const galleryFilterbarElement = masonryContainerElement?.querySelector("#gallery-filter");
-      const galleryFilterbarItemsElement = galleryFilterbarElement?.querySelectorAll("li a");
+      const galleryFilterbarItemsElement = galleryFilterbarElement?.querySelectorAll("li span");
       const defaultGroup = sakura.getThemeConfig("photos", "default_group", String)?.valueOf();
       galleryFilterbarItemsElement?.forEach((hrefElement) => {
         const filter = hrefElement.getAttribute("data-filter");
@@ -74,7 +74,7 @@ export default class Photos {
         });
       });
 
-      const gridChangeElements = masonryContainerElement?.querySelectorAll("#grid-changer a");
+      const gridChangeElements = masonryContainerElement?.querySelectorAll("#grid-changer span");
       gridChangeElements?.forEach((gridChangeElement) => {
         gridChangeElement?.addEventListener("click", () => {
           gridChangeElements.forEach((item) => {

@@ -72,7 +72,7 @@
         display: inline-block;
         margin-left: 0.2em;
 
-        & a {
+        & span {
           display: block;
           width: 30px;
           height: 30px;

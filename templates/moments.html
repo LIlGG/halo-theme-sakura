@@ -19,12 +19,12 @@
 
   <th:block th:fragment="content">
     <div class="moments-container">
-      <ul th:if="${moments.total gt 0}" class="moments-inner" role="main">
+      <ul th:if="${moments.total gt 0}" class="moments-inner">
         <li class="moments-item journal" th:each="moment : ${moments.items}" th:data-name="${moment.metadata.name}">
           <span class="moment-container">
             <img
               class="lazyload avatar"
-              th:data-src="${moment.owner.avatar != null ? moment.owner.avatar : #theme.assets('/images/default/avatar.jpg')}"
+              th:data-src="${moment.owner.avatar != null ? moment.owner.avatar : #theme.assets('/images/default/avatar.webp')}"
               th:alt="${moment.owner.displayName}"
               onerror="imgError(this)"
               th:src="${#theme.assets('/images/load/trans.ajax-spinner-preloader.svg')}"
