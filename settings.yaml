@@ -722,7 +722,7 @@ spec:
           id: rimage_cover_open
           key: rimage_cover_open
           label: 文章随机封面图
-          value: true
+          value: false
           help: 文章是否使用随机图的设置随机获取图片
           options:
             - value: true
@@ -734,7 +734,7 @@ spec:
           id: rimage_cover_sheet_open
           key: rimage_cover_sheet_open
           label: 页面随机封面图图
-          value: true
+          value: false
           help: 页面是否使用随机图的设置随机获取图片
           options:
             - value: true
