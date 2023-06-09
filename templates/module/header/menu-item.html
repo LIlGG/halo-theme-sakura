@@ -5,12 +5,11 @@
     th:target="${menuItem.spec.target?.value}"
     aria-label="navigate to the target menu"
   >
-    <span class="faa-parent animated-hover">
-      <!--/* TODO: https://github.com/l-lin/font-awesome-animation 处理动画 */-->
+    <span class="faa-parent animated-hover" th:classappend="|${#annotations.contains(menuItem, 'animation') ? 'animation' : ''}|">
       <span
         th:if="${#annotations.contains(menuItem, 'icon')}"
         class="iconify"
-        th:classappend="|animation ${#annotations.contains(menuItem, 'animation')}|"
+        th:classappend="|${#annotations.get(menuItem, 'animation')}|"
         th:data-icon="${#annotations.get(menuItem, 'icon')}"
       >
       </span>

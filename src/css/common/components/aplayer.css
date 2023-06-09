@@ -1,19 +1,78 @@
 .aplayer {
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 0 1px #eee;
-  border-radius: 3px;
-  margin: 1rem 0;
-  font-family: "Noto Serif CJK SC", "Noto Serif CJK", "Source Han Serif SC", "Source Han Serif", "source-han-serif-sc",
-    "PT Serif", "SongTi SC", "MicroSoft Yahei", Georgia, serif;
 
-  & .aplayer-miniswitcher,
-  & .aplayer-icon {
-    border-radius: 0 6px 6px 0;
+  &.aplayer-fixed {
+    background: var(--aplayer-background-color);
+    color: var(--aplayer-color);
+
+    & .aplayer-list {
+      border: var(--aplayer-list-border) !important;
+
+      & ol {
+        & li {
+          border-top: var(--aplayer-list-top-border);
+
+          &:hover {
+            background: var(--aplayer-list-hover-background-color);
+          }
+
+          &.aplayer-list-light {
+            background: var(--aplayer-list-light-background-color) !important;
+          }
+
+          & .aplayer-list-author {
+            color: var(--aplayer-list-author-color);
+          }
+        }
+      }
+    }
+
+    & .aplayer-body {
+      background: var(--aplayer-background-color) !important;
+      color: var(--aplayer-color);
+
+      & .aplayer-info {
+        border-top: var(--aplayer-list-top-border);
+
+        & .aplayer-controller {
+          & .aplayer-time {
+            & .aplayer-icon {
+              &:hover {
+                & path {
+                  fill: var(--theme-color);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      & .aplayer-miniswitcher {
+        background: var(--aplayer-body-miniswitcher-background-color);
+        color: var(--aplayer-color);
+
+        &:hover {
+          & path {
+            fill: var(--theme-color);
+          }
+        }
+      }
+    }
+
+    & .aplayer-lrc {
+      text-shadow: var(--aplayer-lrc-text-shadow);
+    }
   }
 
-  &.aplayer-float {
-    background: rgba(255, 255, 255, 1);
-    margin: 0;
+  & .aplayer-list {
+    & ol {
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--theme-color) !important;
+
+        &:hover {
+          background-color: var(--theme-color) !important;
+        }
+      }
+    }
   }
 
   & .aplayer-lrc {
@@ -25,69 +84,16 @@
       filter: none;
     }
 
-    & p {
-      &.aplayer-lrc-current {
-        color: var(--theme-color);
-        font-size: 15px;
-        font-weight: bold;
-      }
+    & .aplayer-lrc-current {
+      color: var(--theme-color);
+      font-size: 15px;
+      font-weight: bold;
     }
   }
 
-  & .aplayer-info {
-    padding: 9px 7px 0 10px;
-
-    & .aplayer-controller {
-      & .aplayer-bar-wrap {
-        margin-left: 1px;
-        padding-right: 3px;
-
-        & .aplayer-bar {
-          &,
-          & .aplayer-loaded,
-          & .aplayer-played {
-            height: 6px;
-            border-radius: 10px;
-          }
-
-          & .aplayer-played {
-            & .aplayer-thumb {
-              height: 12px;
-              width: 12px;
-              right: 3px;
-              box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.18);
-              transition: all 0.35s;
-            }
-          }
-        }
-      }
-
-      & .aplayer-volume-wrap {
-        & .aplayer-volume-bar-wrap {
-          & .aplayer-volume-bar {
-            right: 10.5px;
-
-            &,
-            & .aplayer-volume {
-              border-radius: 10px;
-              width: 6px;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  & .aplayer-list {
-    & ol {
-      & li {
-        border-top: 0;
-
-        &.aplayer-list-light {
-          background: #fff;
-        }
-      }
-    }
+  & .aplayer-icon,
+  & .aplayer-miniswitcher {
+    border-radius: 0 6px 6px 0 !important;
   }
 }
 
@@ -101,5 +107,3 @@
     }
   }
 }
-
-
