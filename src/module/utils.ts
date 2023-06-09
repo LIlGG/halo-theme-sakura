@@ -272,7 +272,7 @@ export class Utils {
   public registerCopyCode() {
     const codeElements = document.querySelectorAll("pre code");
     codeElements.forEach((codeElement) => {
-      const copyElement = document.createElement("a");
+      const copyElement = document.createElement("span");
       copyElement.classList.add("copy-code");
       copyElement.setAttribute("title", sakura.translate("common.copy_code", "复制代码"));
       copyElement.innerHTML = `<span class="iconify" data-icon="fa:clipboard"></span>`;

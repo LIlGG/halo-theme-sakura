@@ -3,7 +3,7 @@
     <div class="info" itemprop="author" itemscope itemtype="http://schema.org/Person">
       <a th:href="${post.owner.permalink}" class="profile gravatar" aria-label="visiting the author's website of the current article">
         <img
-          th:src="${post.owner.avatar ?: #theme.assets('/images/default/avatar.jpg')}"
+          th:src="${post.owner.avatar ?: #theme.assets('/images/default/avatar.webp')}"
           itemprop="image"
           th:alt="${post.owner.displayName}"
         />

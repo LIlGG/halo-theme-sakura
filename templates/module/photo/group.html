@@ -3,16 +3,14 @@
     <nav id="gallery-filter">
       <ul>
         <li>
-          <a href="javascript:void(0);" data-filter="*" class="active" data-i18n="page.photos.all" aria-label="switch to all groups"></a>
+          <span data-filter="*" class="active" data-i18n="page.photos.all"></span>
         </li>
         <th:block th:each="group : ${photoGroups}">
           <li>
-            <a
-              href="javascript:void(0);"
+            <span
               th:data-filter="|.group-${#strings.trim(group.metadata.name)}|"
               th:text="${group.spec.displayName}"
-              aria-label="switch group"
-            ></a>
+            ></span>
           </li>
         </th:block>
       </ul>

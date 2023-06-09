@@ -13,8 +13,8 @@
           <li 
             class="link-item" th:each="link : ${group.links}">
             <a 
-              class="link-item-inner" th:href="${link.spec.url}" th:title="${link.spec.displayName}" target="_blank"
-              aria-label="will visit the URL pointed to by the friend link">
+              class="link-item-inner" th:href="${link.spec.url}" th:title="${link.spec.displayName}"
+              target="_blank" rel="noopener noreferrer" aria-label="will visit the URL pointed to by the friend link">
                 <img 
                   class="lazyload" 
                   th:attr="data-src=${link.spec.logo}"

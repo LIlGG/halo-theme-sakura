@@ -38,7 +38,7 @@
       vertical-align: bottom;
       margin: 0 2em 1.5em 0;
 
-      & a {
+      & span {
         display: block;
         color: var(--color);
         position: relative;
