@@ -1,5 +1,6 @@
 <th:block th:fragment="comment(group, kind, name)">
-  <div class="comment">
+  <!-- TODO：已知问题 PJAX 下，comment 首次请求会出错 -->
+  <div class="comment" th:unless="${theme.config.others.keep_record_mode}">
     <halo:comment th:attr="name=${name},kind=${kind},group=${group}" />
   </div>
 </th:block>

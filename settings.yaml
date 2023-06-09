@@ -941,12 +941,13 @@ spec:
           if: "$get(aplayer_float).value == true"
           name: aplayer_host
           label: Meting API 地址
-          value: https://api.i-meto.com/meting/api
-          help: 支持 Meting 类型格式的 API。 https://github.com/metowolf/Meting
+          value:  https://api.injahow.cn/meting/?
+          help: 支持 Meting 类型格式的 API，主题不保证 API 可用度，如无法使用请自行搭建。 https://github.com/injahow/meting-api
         - $formkit: select
           if: "$get(aplayer_float).value == true"
           name: aplayer_server
           label: 音乐服务商
+          help: 不同接口所支持的音乐服务商不同，如无法使用请自行更换
           value: netease
           options:
             - value: netease
@@ -979,7 +980,7 @@ spec:
           if: "$get(aplayer_float).value == true"
           name: aplayer_id
           label: id
-          value: 
+          value: 2345868969
         - $formkit: select
           if: "$get(aplayer_float).value == true"
           name: aplayer_preload
@@ -1067,7 +1068,6 @@ spec:
           name: toast_color
           label: 提示组件文本颜色
           value: "#fff"
-          help: 默认为白色，可能看不清，但实际上点击是存在的>_<
         - $formkit: number
           if: "$get(open_toast).value == true"
           name: toast_font_size
@@ -1086,10 +1086,11 @@ spec:
               label: 开启
             - value: false
               label: 关闭
-        - $formkit: text
-          name: reply_mail_img
-          label: 邮件回复模块图片
-          value: /themes/theme-sakura/assets/images/email/head.jpg
+        # Halo 2.x 邮件服务还未实现
+        # - $formkit: text
+        #   name: reply_mail_img
+        #   label: 邮件回复模块图片
+        #   value: /themes/theme-sakura/assets/images/email/head.jpg
         - $formkit: select
           name: top_back_mode
           label: 回到顶部样式
