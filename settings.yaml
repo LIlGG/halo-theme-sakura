@@ -103,14 +103,14 @@ spec:
           name: category_patternimg
           label: 分类页默认装饰图
     - group: mainScreen
-      label: 第一屏
+      label: 首屏
       formSchema:
         - $formkit: radio
           name: head_focus
           id: head_focus
           key: head_focus
           label: 总开关
-          help: 关闭之后第一屏将直接从文章开始显示
+          help: 关闭之后首屏将直接从文章开始显示
           value: true
           options:
             - value: true
@@ -155,7 +155,7 @@ spec:
           key: focus_height
           if: "$get(head_focus).value == true"
           label: 全屏显示
-          help: 全屏显示则第一屏独占全屏，非全屏则只会占一半页面
+          help: 全屏显示则首屏独占全屏，非全屏则只会占一半页面
           value: true
           options:
             - value: true
@@ -209,7 +209,8 @@ spec:
           id: bgvideo_url
           name: bgvideo_url
           key: bgvideo_url
-          label: 视频/视频链接
+          label: 视频链接
+          help: 支持流媒体
     - group: sns
       label: 社交网络
       formSchema:
