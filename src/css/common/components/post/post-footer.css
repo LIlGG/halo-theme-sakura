@@ -20,7 +20,7 @@
 
       &:hover {
         & .reward-main {
-          display: block;
+          display: block !important;
         }
       }
     }

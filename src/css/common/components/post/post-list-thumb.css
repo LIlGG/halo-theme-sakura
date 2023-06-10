@@ -49,7 +49,7 @@
     margin-top: 1.25rem;
 
     & .post-date {
-      color: #505050;
+      color: var(--post-list-thumb-meta-color);
       font-size: 0.75rem;
       transition: background 1s;
     }
@@ -57,7 +57,7 @@
     & .post-meta {
       &,
       & a {
-        color: #505050;
+        color: var(--post-list-thumb-meta-color);
         font-size: 0.75rem;
       }
 

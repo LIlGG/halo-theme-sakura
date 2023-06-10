@@ -36,21 +36,16 @@
       </div>
 
       <div
-        th:if="${not #strings.isEmpty(theme.config.post.alipay_code)} or ${not #strings.isEmpty(theme.config.post.wechat_code)}"
+        th:if="${not #arrays.isEmpty(theme.config.post.reward)}"
         class="single-reward"
       >
         <div class="reward-open">
           <span data-i18n="post.reward"></span>
           <div class="reward-main">
             <ul class="reward-row">
-              <li th:if="${not #strings.isEmpty(theme.config.post.alipay_code)}">
-                <img th:src="${theme.config.post.alipay_code}" alt="alipay"/>
-                <!--TODO: 国际化-->
-                <span class="reward-name">支付宝</span>
-              </li>
-              <li th:if="${not #strings.isEmpty(theme.config.post.wechat_code)}">
-                <img th:src="${theme.config.post.wechat_code}" alt="wechat"/>
-                <span class="reward-name">微信</span>
+              <li th:each="item : ${theme.config.post.reward}">
+                <img th:src="${item.code}" alt="reword"/>
+                <span class="reward-name" th:text="${item.label}"></span>
               </li>
             </ul>
           </div>

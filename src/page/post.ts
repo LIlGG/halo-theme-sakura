@@ -1,8 +1,40 @@
-import { documentFunction, sakura } from "../main";
+import { documentFunction, sakura, type ThemeConfig } from "../main";
 import { I18nFormat } from "../utils/i18nFormat";
 import { Util } from "../utils/util";
 
 export default class Post {
+  
+  /**
+   * 自动计算打赏弹出位置
+   * 子菜单位置为：父菜单宽度 / 2 - 子菜单宽度 / 2
+   */
+  @documentFunction()
+  public autoCalculateSubmenuPosition() {
+    const reword = sakura.getThemeConfig("post", "reward", Array<ThemeConfig>);
+    if (!reword || reword.length === 0) {
+      return;
+    }
+    const rewordOpenElement = document.querySelector(".reward-open") as HTMLElement;
+    if (!rewordOpenElement) {
+      return;
+    }
+    const rewardMainElement = rewordOpenElement.querySelector(".reward-main") as HTMLElement;
+    if (!rewardMainElement) {
+      return;
+    }
+
+    const parentWidth = rewordOpenElement.offsetWidth;
+    // 由于 rewardMainElement 为隐藏元素，因此需要先显示出来，才能获取到其宽度
+    rewardMainElement.style.visibility = "hidden";
+    rewardMainElement.style.display = "block";
+    const subWidth = rewardMainElement.offsetWidth;
+    console.log(parentWidth, subWidth)
+    rewardMainElement.style.display = "none";
+    rewardMainElement.style.visibility = "visible";
+    const subLeft = parentWidth / 2 - subWidth / 2;
+    rewardMainElement.style.left = `${subLeft}px`;
+  }
+
   /**
    * 注册原创文章复制携带版权功能
    */
