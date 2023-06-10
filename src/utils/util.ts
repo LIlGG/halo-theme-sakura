@@ -1,5 +1,27 @@
 export class Util {
   /**
+   * 对 Promise 进行封装，使其支持重试
+   * 
+   * @param promiseFn 需要重试的方法
+   * @param maxRetries 最大重试次数
+   * @param interval 重试间隔
+   * @returns 
+   */
+  public static async retry<T>(promiseFn: () => Promise<T>, maxRetries = 3, interval = 1000): Promise<T> {
+    try {
+      const result = await promiseFn();
+      return result;
+    } catch (error) {
+      if (maxRetries > 0) {
+        await new Promise((resolve) => setTimeout(resolve, interval));
+        return await Util.retry(promiseFn, maxRetries - 1, interval);
+      } else {
+        throw error;
+      }
+    }
+  }
+
+  /**
    * 将 JSON 字符串/字符串转换为 Map 对象
    *
    * @template K Map 对象的键的类型

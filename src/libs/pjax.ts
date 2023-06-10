@@ -16,54 +16,52 @@
  * 通常文章会控制是否使用评论。此类脚本与第二类很相似，但不同点在于，此类组件可选并且只加载一次【全体】，
  * 而每个需要此插件的页面则只需重新执行初始化方法即可。因而此种方式也更为麻烦，因为不同的脚本具有不同的初始化
  * 方式。计划通过 Zero 的刷新事件来同步更新所有内联代码块的刷新功能。
- * 
+ *
  * 脱离 Jquery，使用 https://github.com/MoOx/pjax
  */
-import Pjax from 'pjax';
+import Pjax from "pjax";
 import { sakura } from "../main";
-import NProgress from 'nprogress';
+import NProgress from "nprogress";
+
+NProgress.configure({ trickle: false });
 
 new Pjax({
-  elements: 'a[data-pjax]',
-  selectors: [
-    'head title',
-    '.wrapper',
-    '.pjax',
-  ],
+  elements: "a[data-pjax]",
+  selectors: ["head title", ".wrapper", ".pjax"],
   switches: {
-    '.wrapper': Pjax.switches.innerHTML
+    ".wrapper": Pjax.switches.innerHTML,
   },
   analytics: false,
   cacheBust: false,
-  debug: import.meta.env.MODE === 'development' ? true : false,
+  debug: import.meta.env.MODE === "development" ? true : false,
 });
 
-window.addEventListener('pjax:send', () => {
+window.addEventListener("pjax:send", () => {
   NProgress.start();
 });
 
-window.addEventListener('pjax:complete', () => {
+window.addEventListener("pjax:complete", () => {
   NProgress.done();
 });
 
-window.addEventListener('pjax:error', (event: any) => {
+window.addEventListener("pjax:error", (event: any) => {
   const request = event.request as XMLHttpRequest;
   if (request.status === 404 || request.status === 500) {
     window.location.href = request.responseURL;
   }
-})
+});
 
-window.addEventListener('pjax:success', () => {
+window.addEventListener("pjax:success", () => {
   // 第二种脚本处理。对添加了 id=pjax 或者 data-pjax 的 script，重新添加到文档树
-  let pjaxDoms = document.querySelectorAll('script[data-pjax]') as NodeListOf<HTMLScriptElement>;
-  pjaxDoms.forEach(element => {
-    let code: string = element.text || element.textContent || element.innerHTML || '';
+  let pjaxDoms = document.querySelectorAll("script[data-pjax]") as NodeListOf<HTMLScriptElement>;
+  pjaxDoms.forEach((element) => {
+    let code: string = element.text || element.textContent || element.innerHTML || "";
     let parent: ParentNode | null = element.parentNode;
     if (parent === null) {
       return;
     }
     parent.removeChild(element);
-    let script: HTMLElementTagNameMap['script'] = document.createElement('script');
+    let script: HTMLElementTagNameMap["script"] = document.createElement("script");
     if (element.id) {
       script.id = element.id;
     }
@@ -78,13 +76,13 @@ window.addEventListener('pjax:success', () => {
       script.async = false;
     }
     if (element.dataset.pjax !== undefined) {
-      script.dataset.pjax = '';
+      script.dataset.pjax = "";
     }
-    if (code !== '') {
+    if (code !== "") {
       script.appendChild(document.createTextNode(code));
     }
     parent.appendChild(script);
   });
   // 第三种脚本处理方式，执行 sakura 的 refresh 方法来触发监听事件。
   sakura.refresh();
-})
+});

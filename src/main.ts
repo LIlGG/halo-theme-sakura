@@ -14,7 +14,7 @@ import { I18nFormat } from "./utils/i18nFormat";
 /* 核心启动，通常不建议也不应当由用户调用，只能由启动代码使用  */
 interface Sakura {
   [key: string]: any;
-  getThemeConfig<T extends Number | String | Boolean | ThemeConfig[]>(
+  getThemeConfig<T extends Number | String | Boolean | Array<ThemeConfig>>(
     group: String,
     key: String,
     type: new (...args: any) => T
@@ -30,7 +30,7 @@ declare var Sakura: {
   new (config?: String): Sakura;
 };
 
-interface ThemeConfig {
+export interface ThemeConfig {
   isEmpty(): Boolean;
   getValue<T extends Number | String | Boolean | ThemeConfig[]>(
     key: String,
@@ -38,7 +38,7 @@ interface ThemeConfig {
   ): T | undefined;
 }
 
-class ThemeConfigImpl implements ThemeConfig {
+export class ThemeConfigImpl implements ThemeConfig {
   private schemas?: any;
 
   constructor(schemas?: any) {
