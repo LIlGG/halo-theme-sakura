@@ -15,6 +15,30 @@
 - [i18next-localstorage-backend](https://github.com/i18next/i18next-localstorage-backend) - 基于 localStorage 的缓存后端
 - [loc-i18next](https://github.com/mthh/loc-i18next) - 对 HTML5 进行国际化的插件 
 
+# 开发前准备
+
+TODO
+
+## 开发直达车
+
+- 如果你想添加新语种，可以从 [添加新语种](#添加新语种) 开始查看 
+- 如果你想编辑现有的语种，可以从 [编辑现有语种](#编辑现有语种) 开始查看
+- 如果你想对 HTML 进行编辑，并对其进行国际化，可以从 [在 HTML 中使用](#在-html-中使用) 开始查看。
+- 如果你想在 JavaScript 代码中进行国际化处理，可以从 [在 JavaScript 中使用](#在-javascript-中使用) 开始查看。
+
+# 添加新语种
+
+TODO
+
+# 编辑现有语种
+
+
+# 在 HTML 中使用
+
+# 在 JavaScript 中使用
+
+# 高级功能
+## 自定义模板
 
 TODO
 
