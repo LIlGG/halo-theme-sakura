@@ -17,7 +17,7 @@
   </span>
 
   <div class="feature">
-    <a th:href="@{${post.status.permalink}}" aria-label="viewing the article details">
+    <a data-pjax th:href="@{${post.status.permalink}}" aria-label="viewing the article details">
       <div class="overlay">
         <div class="overlay-inner">
           <span class="iconify" data-icon="solar:file-text-outline"></span>
@@ -64,7 +64,7 @@
 
   <header>
     <h1 class="entry-title">
-      <a
+      <a data-pjax
         th:href="@{${post.status.permalink}}"
         th:text="${post.spec.title}"
         aria-label="viewing the article details"
@@ -78,7 +78,7 @@
 
   <footer class="entry-footer">
     <div class="post-more">
-      <a th:href="@{${post.status.permalink}}" aria-label="viewing the article details">
+      <a data-pjax th:href="@{${post.status.permalink}}" aria-label="viewing the article details">
         <span class="iconify" data-icon="akar-icons:more-horizontal-fill"></span>
       </a>
     </div>
@@ -87,6 +87,7 @@
         <span>
           <span class="iconify" data-icon="solar:chat-line-line-duotone"></span>
           <a
+            data-pjax
             th:href="@{${post.status.permalink}+'#comments'}"
             aria-label="jumping to the comments section of the current article"
           >
