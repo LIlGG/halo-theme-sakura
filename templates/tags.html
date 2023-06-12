@@ -45,6 +45,7 @@
               </div>
               <div class="tag-chips">
                 <a
+                  data-pjax
                   th:each="tag : ${tags}"
                   th:href="@{${tag.status.permalink}}"
                   th:title="|${tag.spec.displayName}: ${tag.postCount}|"

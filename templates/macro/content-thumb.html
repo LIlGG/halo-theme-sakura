@@ -42,7 +42,7 @@
           <span class="iconify hotpost" data-icon="solar:fire-outline"></span>
         </th:block>
       </div>
-      <a th:href="@{${post.status.permalink}}" class="post-title" data-pjax aria-label="viewing the article details">
+      <a data-pjax th:href="@{${post.status.permalink}}" class="post-title" aria-label="viewing the article details">
         <h1 th:text="${post.spec.title}"></h1>
       </a>
       <div class="post-meta">
@@ -59,7 +59,7 @@
         <th:block th:if="${#lists.size(post.categories)} gt 0">
           <span>
             <span class="iconify" data-icon="solar:folder-with-files-outline"></span>
-            <a th:href="${post.categories[0].status.permalink}" th:text="${post.categories[0].spec.displayName}"
+            <a data-pjax th:href="${post.categories[0].status.permalink}" th:text="${post.categories[0].spec.displayName}"
               aria-label="viewing the first category the article belongs to"> </a>
           </span>
         </th:block>
@@ -67,7 +67,7 @@
       <div class="float-content">
         <p th:text="${post.status.excerpt}"></p>
         <div class="post-bottom">
-          <a th:href="@{${post.status.permalink}}" class="button-normal" aria-label="viewing the article details">
+          <a data-pjax th:href="@{${post.status.permalink}}" class="button-normal" aria-label="viewing the article details">
             <span class="iconify" data-icon="akar-icons:more-horizontal-fill"></span>
           </a>
         </div>
@@ -75,7 +75,7 @@
     </div>
 
     <div class="post-thumb">
-      <a th:href="@{${post.status.permalink}}" th:alt="${post.spec.title}" aria-label="viewing the article details">
+      <a data-pjax th:href="@{${post.status.permalink}}" th:alt="${post.spec.title}" aria-label="viewing the article details">
         <img
           th:if="${not #strings.isEmpty(post.spec.cover)}"
           class="lazyload"

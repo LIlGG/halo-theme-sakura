@@ -1,4 +1,4 @@
-import { documentFunction } from "../main";
+import { documentFunction, sakura } from "../main";
 // @ts-ignore
 import cloneDeep from "lodash.clonedeep";
 // @ts-ignore
@@ -17,6 +17,13 @@ export default class Tags {
     });
   }
 
+  /**
+   * 
+   * 注册标签云
+   * 
+   * @description 生成标签云
+   * @see https://github.com/jasondavies/d3-cloud
+   */
   @documentFunction()
   public async registerTagsWordCloud() {
     const wordCloudElement = document.getElementById("tag-wordcloud");
@@ -50,6 +57,7 @@ export default class Tags {
           .attr("xlink:href", function (d: any) {
             return d.link;
           })
+          .attr("data-pjax", "")
           .append("text")
           .style("font-size", function (d: any) {
             return d.size;
@@ -67,6 +75,11 @@ export default class Tags {
           .text(function (d: any) {
             return d.text;
           });
+          // 如果存在 pjax，则刷新 wordCloudElement
+          if (sakura.$pjax) {
+            // TODO 虽然添加上了，但似乎没生效
+            sakura.$pjax.refresh(wordCloudElement);
+          }
       });
     layout.start();
   }

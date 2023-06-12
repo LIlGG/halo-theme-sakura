@@ -23,6 +23,7 @@ interface Sakura {
   registerDocumentFunction(documentFunction: DocumentFunction): void;
   translate(key: String, defaultValue: string, options?: TOptions): string;
   getPageConfig(key: string): any | undefined;
+  mountGlobalProperty(key: string, value: any): void;
 }
 
 declare var Sakura: {
@@ -231,6 +232,23 @@ export class SakuraApp implements Sakura {
     this.finishRefresh();
   }
 
+  /**
+   * 挂载全局属性至 sakura 中
+   */
+  public mountGlobalProperty(key: string, value: any) {
+    const descriptor = Object.getOwnPropertyDescriptor(sakura, `$${key}`);
+    if (descriptor) {
+      return;
+    }
+    Object.defineProperty(sakura, `$${key}`, {
+      value: value,
+      writable: false,
+      enumerable: false,
+      configurable: false,
+    });
+    // TODO 触发属性挂载完成事件
+  }
+
   protected mountGlobalFunction() {
     // 注册sakura toast 组件
     const isToast = sakura.getThemeConfig("toast", "open_toast", Boolean)?.valueOf();
@@ -312,7 +330,7 @@ export class SakuraApp implements Sakura {
                           hour: "numeric",
                           minute: "numeric",
                           second: "numeric",
-                        }
+                        };
                         break;
                       case "date":
                       default:

@@ -25,7 +25,7 @@ import NProgress from "nprogress";
 
 NProgress.configure({ trickle: false });
 
-new Pjax({
+const pjax = new Pjax({
   elements: "a[data-pjax]",
   selectors: ["head title", ".wrapper", ".pjax"],
   switches: {
@@ -35,6 +35,9 @@ new Pjax({
   cacheBust: false,
   debug: import.meta.env.MODE === "development" ? true : false,
 });
+
+// 挂载 pjax 实例至全局
+sakura.mountGlobalProperty("pjax", pjax);
 
 window.addEventListener("pjax:send", () => {
   NProgress.start();
