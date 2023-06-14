@@ -505,12 +505,6 @@ spec:
               name: code
               label: 打赏二维码
               validation: "required"
-        - $formkit: attachment
-          name: alipay_code
-          label: 支付宝打赏
-        - $formkit: attachment
-          name: wechat_code
-          label: 微信打赏
         - $formkit: radio
           name: code_line
           label: 开启代码行号
