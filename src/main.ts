@@ -28,7 +28,7 @@ interface Sakura {
 
 declare var Sakura: {
   prototype: Sakura;
-  new (config?: String): Sakura;
+  new (config?: object): Sakura;
 };
 
 export interface ThemeConfig {
@@ -148,7 +148,7 @@ class SakuraDocumentFunctionFactory implements DocumentFunctionFactory {
 }
 
 export class SakuraApp implements Sakura {
-  private readonly config?: String;
+  private readonly config?: any;
 
   private themeconfigs: Map<String, ThemeConfig>;
 
@@ -160,7 +160,7 @@ export class SakuraApp implements Sakura {
 
   public readonly REFRESH_EVENT_NAME: String = "sakura:refresh";
 
-  constructor(config?: String) {
+  constructor(config?: any) {
     this.config = config;
     this.themeconfigs = new Map();
     this.refreshThemeConfig();
@@ -177,11 +177,14 @@ export class SakuraApp implements Sakura {
     if (!this.config) {
       return;
     }
-    let groupMap = JSON.parse(this.config.toString());
-    Object.keys(groupMap).forEach((key) => {
-      let themeConfig = new ThemeConfigImpl(groupMap[key]);
-      this.themeconfigs.set(key, themeConfig);
-    });
+    try {
+      Object.keys(this.config).forEach((key) => {
+        let themeConfig = new ThemeConfigImpl(this.config[key]);
+        this.themeconfigs.set(key, themeConfig);
+      });
+    } catch(error) {
+      console.error("解析 themeConfig 失败：", error);
+    }
   }
 
   getThemeConfig<T extends Number | String | Boolean | ThemeConfig[]>(

@@ -22,7 +22,7 @@
 
   <!--/* 获取主题设置中的所有属性保存在 JS 变量中 */-->
   <script th:inline="javascript">
-    const config = '[(${theme.config})]'
+    const config = [(${theme.config})]
   </script>
 
   <!--/* 每页可变属性 */-->
