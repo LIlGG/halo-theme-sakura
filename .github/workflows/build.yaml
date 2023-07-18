@@ -1,6 +1,13 @@
 name: resource-build-actions
 on:
-  [push, pull_request]:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - 'templates/**'
+  pull_request:
     branches:
       - main
     paths-ignore:
