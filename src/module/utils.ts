@@ -170,8 +170,8 @@ export class Utils {
       .then((response) => response.json())
       .then((data) => {
         // @ts-ignore
-        import("APlayer").then(async (module) => {
-          await import("APlayer/dist/APlayer.min.css");
+        import("aplayer").then(async (module) => {
+          await import("aplayer/dist/APlayer.min.css");
           const APlayer = module.default;
           const aplayerElement = createFixedAPlayerElement();
           const flxedAplayerOptions = {
