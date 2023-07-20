@@ -1,3 +1,5 @@
+import { doc } from "prettier";
+
 const TABLE_NAME = "hljs-ln";
 const LINE_NAME = "hljs-ln-line";
 const CODE_BLOCK_NAME = "hljs-ln-code";
@@ -336,7 +338,11 @@ export function registerHljsLineNumbers(hljs) {
 }
 
 export function injectHljsLineNumbersCss() {
+  if (document.getElementById("hljs-ln-css")) {
+    return;
+  }
   const css = window.document.createElement("style");
+  css.id = "hljs-ln-css";
   css.innerHTML = `
   .${TABLE_NAME}{border-collapse:collapse}
   .${TABLE_NAME} td{padding:0}
