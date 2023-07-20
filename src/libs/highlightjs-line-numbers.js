@@ -1,5 +1,3 @@
-import { doc } from "prettier";
-
 const TABLE_NAME = "hljs-ln";
 const LINE_NAME = "hljs-ln-line";
 const CODE_BLOCK_NAME = "hljs-ln-code";
