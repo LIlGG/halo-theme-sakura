@@ -230,6 +230,10 @@ export class Events {
               postListElement.appendChild(element);
             });
           }
+          // 绑定新的 DOM 元素至 pjax 上
+          if (sakura.$pjax) {
+            sakura.$pjax.refresh(postListElement);
+          }
           const nextPaginationElement = doc.querySelector("#pagination a") as HTMLLinkElement;
           if (nextPaginationElement) {
             targetElement.href = nextPaginationElement.href;
