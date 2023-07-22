@@ -21,6 +21,15 @@ spec:
             - value: no_cursor
               label: 无样式
         - $formkit: radio
+          name: site_title
+          label: 站点标题
+          value: logo
+          options:
+            - value: logo
+              label: 优先使用站点Logo
+            - value: text
+              label: 仅使用站点标题文本
+        - $formkit: radio
           name: top_search
           label: 搜索功能
           value: true
