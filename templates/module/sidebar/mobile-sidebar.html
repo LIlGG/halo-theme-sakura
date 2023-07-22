@@ -1,7 +1,7 @@
 <th:block th:fragment="mobile-sidebar">
   <div class="mobile-sidebar">
-    <div class="avatar" th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}">
-      <img th:src="${currentUser.avatar ?: #theme.assets('/images/default/avatar.webp')}" alt=""/>
+    <div class="avatar">
+      <img th:src="${site.logo ?: #theme.assets('/images/default/avatar.webp')}" alt=""/>
     </div>
 
     <p th:if="${not #strings.isEmpty(theme.config.mainScreen.glitch_text)}" class="glitch-text"
