@@ -11,7 +11,7 @@
   --loading-image: none;
 
   /* 鼠标样式 */
-  --cursor-link: inherit;
+  --cursor-link: pointer;
   --cursor-link-active: inherit;
   --cursor-text: inherit;
   --cursor-normal: inherit;
