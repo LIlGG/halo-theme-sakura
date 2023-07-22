@@ -135,7 +135,6 @@ spec:
           name: glitch_text
           id: glitch_text
           key: glitch_text
-          if: "$get(focus_tou).value == 'glitch-text'"
           label: 聚焦故障文本
           value: Hi,Friend
           help: 移动端：将显示在导航栏中，桌面端：该文本只有头部样式开启故障文字才能显示
