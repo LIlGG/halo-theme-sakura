@@ -35,7 +35,7 @@
                     <span class="archive-post-circle"></span>
                     <div class="arrow-left-ar"></div>
                     <div class="brick">
-                      <a th:href="@{${post.status.permalink}}" aria-label="get the next article">
+                      <a data-pjax th:href="@{${post.status.permalink}}" aria-label="get the next article">
                         <span class="time">
                           <span class="iconify iconify--large" data-icon="ic:round-access-time"></span>
                           <th:block th:text="${#dates.format(post.spec.publishTime,'MM-dd')}"></th:block>
