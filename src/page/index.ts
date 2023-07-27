@@ -53,7 +53,7 @@ export default class Index {
       backgorundElement.setAttribute("data-currIndex", `${backageImageIndex}`);
     };
   }
-  
+
   /**
    * 注册背景视频功能
    */
@@ -75,6 +75,10 @@ export default class Index {
       videoStatusElement.style.bottom = "0";
       import("video.js")
         .then((module: any) => {
+          if (videoPlayer) {
+            videoPlayer.play();
+            return;
+          }
           videoPlayer = module.default(videoContainerElement.querySelector("video"), {
             controls: false,
             controlsBar: false,
@@ -130,6 +134,7 @@ export default class Index {
               videoPlayButtonElement.style.display = "block";
               videoPauseButtonElement.style.display = "none";
               videoPlayer.dispose();
+              videoPlayer = undefined;
               videoContainerElement.insertAdjacentElement("afterbegin", document.createElement("video"));
             }, 2000);
           });
@@ -140,6 +145,7 @@ export default class Index {
             videoPlayButtonElement.style.display = "block";
             videoPauseButtonElement.style.display = "none";
             videoPlayer.dispose();
+            videoPlayer = undefined;
             videoContainerElement.insertAdjacentElement("afterbegin", document.createElement("video"));
           });
         })
