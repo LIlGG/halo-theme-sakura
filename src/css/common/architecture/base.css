@@ -186,6 +186,8 @@ h6 {
 p {
   margin-bottom: 1.5em;
   cursor: var(--cursor-text);
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 dfn,

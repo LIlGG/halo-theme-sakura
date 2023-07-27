@@ -80,8 +80,6 @@
 
             & > p {
               overflow: unset;
-              word-wrap: break-word;
-              word-break: break-all;
             }
 
             & .comment-box {
