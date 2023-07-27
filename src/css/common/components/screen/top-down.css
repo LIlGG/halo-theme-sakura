@@ -8,7 +8,7 @@
   & .iconify {
     font-size: 1.75rem;
     color: #fff;
-    transform: scale(1.5, 1);
+    transform: scale(1.5, 1) translateX(-33.34%);
   }
 
   @mixin screens-md {

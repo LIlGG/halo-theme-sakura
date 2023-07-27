@@ -1,4 +1,5 @@
 .lower-container {
+  position: absolute;
   text-align: center;
   pointer-events: none;
   width: 100%;

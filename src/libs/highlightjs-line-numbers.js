@@ -336,7 +336,11 @@ export function registerHljsLineNumbers(hljs) {
 }
 
 export function injectHljsLineNumbersCss() {
+  if (document.getElementById("hljs-ln-css")) {
+    return;
+  }
   const css = window.document.createElement("style");
+  css.id = "hljs-ln-css";
   css.innerHTML = `
   .${TABLE_NAME}{border-collapse:collapse}
   .${TABLE_NAME} td{padding:0}
