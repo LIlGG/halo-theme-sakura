@@ -22,9 +22,9 @@
 import Pjax from "pjax";
 import { sakura } from "../main";
 import NProgress from "nprogress";
+import { Util } from "../utils/util";
 
 NProgress.configure({ trickle: false });
-
 const pjax = new Pjax({
   elements: "a[data-pjax]",
   selectors: ["head title", ".wrapper", ".pjax"],
@@ -38,6 +38,28 @@ const pjax = new Pjax({
 
 // 挂载 pjax 实例至全局
 sakura.mountGlobalProperty("pjax", pjax);
+
+// 使用代理的事件
+const originalAddEventListener = EventTarget.prototype.addEventListener;
+EventTarget.prototype.addEventListener = function (type, listener: any, options) {
+  // 检查是否是 'DOMContentLoaded' 事件类型
+  if (type === "DOMContentLoaded") {
+    if (listener) {
+      window.addEventListener(
+        "pjax:success",
+        () => {
+          Util.retry(() => listener(), 10, 100);
+        },
+        {
+          once: true,
+        }
+      );
+      return;
+    }
+  }
+  // 其他方法调用原始的 addEventListener 方法
+  originalAddEventListener.call(this, type, listener, options);
+};
 
 window.addEventListener("pjax:send", () => {
   NProgress.start();
