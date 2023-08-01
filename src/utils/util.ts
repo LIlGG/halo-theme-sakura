@@ -1,11 +1,11 @@
 export class Util {
   /**
    * 对 Promise 进行封装，使其支持重试
-   * 
+   *
    * @param promiseFn 需要重试的方法
    * @param maxRetries 最大重试次数
    * @param interval 重试间隔
-   * @returns 
+   * @returns
    */
   public static async retry<T>(promiseFn: () => Promise<T>, maxRetries = 3, interval = 1000): Promise<T> {
     try {
