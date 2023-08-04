@@ -98,6 +98,7 @@
         height: 4.375rem;
         overflow: hidden;
         text-align: left;
+        word-break: break-word;
       }
     }
   }
