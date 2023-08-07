@@ -182,7 +182,7 @@ export class SakuraApp implements Sakura {
         let themeConfig = new ThemeConfigImpl(this.config[key]);
         this.themeconfigs.set(key, themeConfig);
       });
-    } catch(error) {
+    } catch (error) {
       console.error("解析 themeConfig 失败：", error);
     }
   }
@@ -493,6 +493,7 @@ declare const pageData: any;
 
 export var sakura: Sakura = new SakuraApp(config);
 
+window.sakura = sakura;
 sakura.refresh();
 
 var functions: Set<object>;
