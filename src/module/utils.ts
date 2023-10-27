@@ -62,33 +62,6 @@ export class Utils {
       subMenuElement.style.left = `${subMenuLeft}px`;
     });
   }
-
-  /**
-   * 注入评论样式
-   *
-   * TODO 自定义评论之前，暂时使用这种方式注入样式
-   */
-  @documentFunction()
-  public injectCommentStyle() {
-    // moments 页面不需要注入
-    if (sakura.getPageConfig("_templateId") === "moments") {
-      return;
-    }
-    const commentElement = document.querySelector(".comment") as HTMLElement;
-    if (!commentElement) {
-      return;
-    }
-    commentElement.querySelectorAll("div").forEach(async (divElement) => {
-      if (divElement.shadowRoot) {
-        const commentShadowElement = divElement.shadowRoot;
-        import("../css/injection/comment.css?inline").then((module) => {
-          const styleSheet = new CSSStyleSheet();
-          styleSheet.replaceSync(module.default);
-          commentShadowElement.adoptedStyleSheets = [styleSheet];
-        });
-      }
-    });
-  }
   
   /**
    * TODO 重试评论注册，临时解决 PJAX 情况下评论组件注册失败的问题
@@ -141,8 +114,6 @@ export class Utils {
             colorScheme: 'light'
           }
         );
-        // 注入样式
-        this.injectCommentStyle();
         resolve("success");
       });
     }
