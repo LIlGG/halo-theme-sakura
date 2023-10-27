@@ -2,7 +2,7 @@
 <p align="center">
   <a href="https://github.com/halo-dev/halo"><img alt="Halo version" src="https://img.shields.io/badge/halo-2.6.0%2B-brightgreen?style=for-the-badge" /></a>
   <a href="https://github.com/LIlGG/halo-theme-sakura"><img alt="Build Status" src="https://img.shields.io/badge/build-positive-brightgreen?style=for-the-badge"></a>
-  <a href="https://github.com/prettier/prettier"><img alt="Code Style: Prettier" src="https://img.shields.io/badge/release-2.0.0.beta2-blue?style=for-the-badge"></a>
+  <a href="https://github.com/prettier/prettier"><img alt="Code Style: Prettier" src="https://img.shields.io/badge/release-2.0.0-blue?style=for-the-badge"></a>
   <a href="./LICENSE"><img alt="LICENSE MIT" src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge"></a>
 </p>
 <p align="center">
@@ -107,7 +107,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 
 ## 💫 与 1.x 比较
 
-在主题 2.0.0-beta.2 版本之后，完全重构了主题，因此在功能与性能上，将于 1.x 有很大的区别。
+在主题 2.0.0 版本之后，完全重构了主题，因此在功能与性能上，将于 1.x 有很大的区别。
 
 2.x 在很多功能上做了优化，并且较于 1.x 在性能上有了巨大提升，后续将会持续支持 2.x 相关功能，因此目前推荐进行升级，下述表格仅供参考。
 
