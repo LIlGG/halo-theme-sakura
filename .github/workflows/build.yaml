@@ -21,23 +21,22 @@ jobs:
 
     steps:
       - name: Check Out Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2.2.4
+        uses: pnpm/action-setup@v2
         with:
           version: 8
           run_install: false
 
       - name: Get pnpm store directory
         id: pnpm-cache
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+        run: echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
       
       - name: Setup pnpm cache
         uses: actions/cache@v3
