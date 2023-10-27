@@ -6,6 +6,7 @@
 
   /* layout - content */
   --site-content-max-width: 780px;
+  --site-content-background-color: rgba(255, 255, 255, 0.8);
 
   /* 加载图 */
   --loading-image: none;
@@ -115,6 +116,7 @@
   --photo-group-change-color: #222;
   --photo-group-change-active-color: #ccc;
   --links-description-color: #b0b0b0;
+  --site-content-background-color: transparent;
 }
 
 .video-container {

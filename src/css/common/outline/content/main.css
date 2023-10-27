@@ -1,10 +1,12 @@
 .site-content {
-	max-width: var(--site-content-max-width);
-	margin-left: auto;
-	margin-right: auto;
-	background-color: transparent;
+  max-width: var(--site-content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--site-content-background-color);
+  padding: 0 10px;
 
-  &::before, &::after {
+  &::before,
+  &::after {
     content: "";
     display: table;
     table-layout: fixed;
@@ -16,7 +18,7 @@
 
   @mixin screens-md {
     padding: 0 4%;
-  } 
+  }
 }
 
 .main-inner {

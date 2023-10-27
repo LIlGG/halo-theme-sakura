@@ -1,9 +1,9 @@
 .site-footer {
-  background-color: var(--background-color);
-  backdrop-filter: blur(10px);
+  background-color: var(--site-content-background-color);
+  max-width: var(--site-content-max-width);
+  padding: 0 10px;
   margin: auto;
-  transition: all 0.8s ease;
-  margin-bottom: 2%;
+  padding-bottom: 2%;
   position: relative;
 
   &::before,
