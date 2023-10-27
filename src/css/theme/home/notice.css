@@ -19,6 +19,7 @@
     color: #999;
     font-size: 18px;
     padding-right: 10px;
+    padding-bottom: 5px;
   }
 
   @mixin screens-md {
