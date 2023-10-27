@@ -5,7 +5,7 @@
   margin: 5rem 0;
 
   & a {
-    padding: 1rem 2.5rem;
+    padding: 0.6rem 2.5rem;
     border: 1px solid #ccc;
     border-radius: 3rem;
     color: #b0b0b0;
@@ -15,6 +15,11 @@
       border: 1px solid var(--theme-color);
       color: var(--theme-color);
       box-shadow: 0 0 4px var(--theme-color);
+    }
+
+    &.loading {
+      border: none;
+      box-shadow: none;
     }
   }
 

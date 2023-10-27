@@ -4,7 +4,7 @@ a {
   color: #e67474;
   outline: none;
   cursor: var(--cursor-link);
-  transition: color, border, opacity 0.2s ease-out;
+  transition: color 0.2s ease-out, border 0.2s ease-out, opacity 0.2s ease-out;
 
   &:focus,
   &:active,
