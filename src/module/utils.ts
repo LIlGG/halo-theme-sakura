@@ -268,8 +268,8 @@ export class Utils {
         });
 
         let language = highlight.default.getLanguage(lang);
-        // 如果没有指定语言，则启用自动检测
-        if (!language || !language.aliases || language.aliases.length === 0) {
+        // 如果没有指定语言或者无法获取到语言，则启用自动检测
+        if (!language) {
           codeElement.classList.remove(`language-${lang}`);
           const autoLanguage = highlight.default.highlightAuto(codeElement.textContent || "");
           // 自定检测失败，则使用默认的 plain text
@@ -280,8 +280,6 @@ export class Utils {
           }
           // 重新为 highlightElement 设置语言
           codeElement.classList.add(`language-${lang}`);
-        } else {
-          lang = language.aliases[0];
         }
         codeElement.setAttribute("data-rel", lang.toUpperCase());
         codeElement.classList.add(lang.toLowerCase());
