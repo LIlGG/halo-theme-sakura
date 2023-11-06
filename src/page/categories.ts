@@ -38,6 +38,7 @@ export default class Categories {
     if (keys.length < 3) {
       return;
     }
+    echartElement.classList.add("category-echarts");
     const maxNum = Math.ceil(values.reduce((prev, current) => (prev > current ? prev : current)) / 5) * 5;
     const categoryChart = echarts.init(echartElement);
     const color = document.querySelectorAll(".dark").length > 0 ? "#ccc" : "black";

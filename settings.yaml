@@ -556,6 +556,7 @@ spec:
         - $formkit: radio
           name: category_radar
           label: 开启分类雷达
+          help: 需要大于等于 3 个分类时才会显示
           value: true
           options:
             - value: true
