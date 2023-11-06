@@ -90,13 +90,9 @@ export class Utils {
       if (!commentAttrId) {
         return;
       }
-      const matchArr = commentAttrId.match(/comment-(.+)-(.+)-(.+)/);
-      if (!matchArr) {
-        return;
-      }
-      const group = matchArr[1].replaceAll("-", ".");
-      const kind = matchArr[2];
-      const name = matchArr[3];
+      const group = commentElement.getAttribute("data-group") || "";
+      const kind = commentElement.getAttribute("data-kind") || "";
+      const name = commentElement.getAttribute("data-name") || "";
       Util.retry(() => registerCommentWidget(commentAttrId, group, kind, name));
     });
     const registerCommentWidget = (id: string, group: string, kind: string, name: string): Promise<string> => {
