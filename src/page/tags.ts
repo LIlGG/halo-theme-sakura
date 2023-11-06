@@ -11,16 +11,19 @@ export default class Tags {
   public registerTags() {
     const tagChips = document.querySelectorAll(".tags-container .chip") as NodeListOf<HTMLElement>;
     tagChips.forEach((tagChip) => {
-      if (!tagChip.style.backgroundColor) {
-        tagChip.style.backgroundColor = Util.generateColor();
+      // 如果为白色则设置随机色
+      let color = tagChip.style.backgroundColor;
+      if (!color || color === "rgb(255, 255, 255)") {
+        color = Util.generateColor();
       }
+      tagChip.style.backgroundColor = color;
     });
   }
 
   /**
-   * 
+   *
    * 注册标签云
-   * 
+   *
    * @description 生成标签云
    * @see https://github.com/jasondavies/d3-cloud
    */
@@ -66,7 +69,7 @@ export default class Tags {
           .style("cursor", "pointer")
           .style("font-weight", 500)
           .style("fill", (d: any) => {
-            return d.color || Util.generateColor();
+            return !d.color || d.color === "#ffffff" ? Util.generateColor() : d.color;
           })
           .attr("text-anchor", "middle")
           .attr("transform", function (d: any) {
@@ -75,11 +78,11 @@ export default class Tags {
           .text(function (d: any) {
             return d.text;
           });
-          // 如果存在 pjax，则刷新 wordCloudElement
-          if (sakura.$pjax) {
-            // TODO 虽然添加上了，但似乎没生效
-            sakura.$pjax.refresh(wordCloudElement);
-          }
+        // 如果存在 pjax，则刷新 wordCloudElement
+        if (sakura.$pjax) {
+          // TODO 虽然添加上了，但似乎没生效
+          sakura.$pjax.refresh(wordCloudElement);
+        }
       });
     layout.start();
   }
