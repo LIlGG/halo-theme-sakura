@@ -90,9 +90,12 @@ export class Utils {
       if (!commentAttrId) {
         return;
       }
-      const group = commentElement.getAttribute("data-group") || "";
-      const kind = commentElement.getAttribute("data-kind") || "";
-      const name = commentElement.getAttribute("data-name") || "";
+      const group = commentElement.getAttribute("group") || "";
+      const kind = commentElement.getAttribute("kind") || "";
+      const name = commentElement.getAttribute("name") || "";
+      if (!group || !kind || !name) {
+        return;
+      }
       Util.retry(() => registerCommentWidget(commentAttrId, group, kind, name));
     });
     const registerCommentWidget = (id: string, group: string, kind: string, name: string): Promise<string> => {
