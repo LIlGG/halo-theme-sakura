@@ -70,7 +70,7 @@
           }
 
           &:hover {
-            box-shadow: 0 15px 32px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
           }
 
           & .moment-content {
@@ -84,6 +84,92 @@
 
             & .comment-box {
               display: none;
+            }
+          }
+
+          & .moment-medium {
+            width: 66%;
+            font-size: 0;
+            display: table;
+
+            & a,video {
+              display: inline-block;
+              border-radius: 8px;
+              overflow: hidden;
+              float: left;
+              position: relative;
+            }
+
+            & img,video {
+              aspect-ratio: 1 / 1;
+              object-fit: cover;
+            }
+
+            &.medium-1 {
+              & a,video {
+                width: 100%;
+              }
+            }
+
+            &.medium-2,
+            &.medium-4 {
+              & a,video {
+                width: 46%;
+                margin: 2%;
+              }
+            }
+
+            &.medium-3 {
+              & a,video {
+                width: 29.33%;
+                margin: 2%;
+
+                &:nth-child(1) {
+                  width: 62.67%;
+                }
+              }
+            }
+
+            &.medium-5,
+            &.medium-8 {
+              & a,video {
+                width: 29.33%;
+                margin: 2%;
+
+                &:nth-child(n + 1):nth-child(-n + 2) {
+                  width: 46%;
+                  margin: 2%;
+                }
+              }
+            }
+
+            &.medium-6 {
+              & a,video {
+                width: 29.33%;
+                margin: 2.2% 2%;
+
+                &:nth-child(1) {
+                  width: 62.67%;
+                }
+              }
+            }
+
+            &.medium-7 {
+              & a,video {
+                width: 29.33%;
+                margin: 2%;
+
+                &:nth-child(n + 4):nth-child(-n + 7) {
+                  width: 21%;
+                }
+              }
+            }
+
+            &.medium-9 {
+              & a,video {
+                width: 29.33%;
+                margin: 2%;
+              }
             }
           }
 
@@ -170,7 +256,7 @@
             &::after {
               display: none;
             }
-            
+
             & .moment-content {
               & img {
                 max-width: 50%;
