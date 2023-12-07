@@ -6,7 +6,7 @@
   <th:block th:fragment="header">
     <th:block th:if="${theme.config.mainScreen.head_focus}">
       <div class="headertop">
-        <div th:replace="module/home/index"></div>
+        <div th:replace="~{module/home/index}"></div>
       </div>
     </th:block>
   </th:block>
