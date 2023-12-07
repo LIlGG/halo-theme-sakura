@@ -957,7 +957,7 @@ spec:
           if: "$get(aplayer_float).value == true"
           name: aplayer_host
           label: Meting API 地址
-          value:  https://api.injahow.cn/meting/?
+          value:  https://api.injahow.cn/meting/
           help: 支持 Meting 类型格式的 API，主题不保证 API 可用度，如无法使用请自行搭建。 https://github.com/injahow/meting-api
         - $formkit: select
           if: "$get(aplayer_float).value == true"
