@@ -3,7 +3,7 @@
   <nav class="navbar">
     <ul id="menu-menu-1" class="menu" th:with="menu = ${menuFinder.getPrimary()}">
       <th:block th:each="menuItem : ${menu.menuItems}">
-        <th:block th:replace="module/header/menu-item :: menu-item(${menuItem})" />
+        <th:block th:replace="~{module/header/menu-item :: menu-item(${menuItem})}" />
       </th:block>
     </ul>
   </nav>

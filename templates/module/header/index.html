@@ -1,11 +1,11 @@
 <th:block th:fragment="header">
-  <th:block th:replace="module/header/nav-toggle"></th:block>
-  <th:block th:replace="module/header/brand"></th:block>
-  <th:block th:replace="module/header/user"></th:block>
-  <th:block th:replace="module/header/search"></th:block>
+  <th:block th:replace="~{module/header/nav-toggle}"></th:block>
+  <th:block th:replace="~{module/header/brand}"></th:block>
+  <th:block th:replace="~{module/header/user}"></th:block>
+  <th:block th:replace="~{module/header/search}"></th:block>
   <div class="lower-container">
     <div class="lower">
-      <th:block th:replace="module/header/menu"></th:block>
+      <th:block th:replace="~{module/header/menu}"></th:block>
     </div>
   </div>
 </th:block>
