@@ -45,11 +45,7 @@
                     th:src="${#strings.isEmpty(momentItem.url) ? #theme.assets('/images/load/load.gif') : momentItem.url}"
                     th:data-src="${momentItem.url}"
                   />
-                  <video th:if="${momentItem.type.name == 'VIDEO'}" data-setup="{
-                    preload: 'metadata',
-                  }">
-                    <source th:src="${momentItem.url}" th:type="${momentItem.originType}" />
-                  </video>
+                  <video th:if="${momentItem.type.name == 'VIDEO'}" th:src="${momentItem.url}"></video>
                 </th:block>
               </div>
               <div class="moment-footer">

@@ -92,7 +92,7 @@
             font-size: 0;
             display: table;
 
-            & a,video {
+            & a {
               display: inline-block;
               border-radius: 8px;
               overflow: hidden;
@@ -100,27 +100,28 @@
               position: relative;
             }
 
-            & img,video {
+            & img,
+            & video {
               aspect-ratio: 1 / 1;
               object-fit: cover;
             }
 
             &.medium-1 {
-              & a,video {
+              & a {
                 width: 100%;
               }
             }
 
             &.medium-2,
             &.medium-4 {
-              & a,video {
+              & a {
                 width: 46%;
                 margin: 2%;
               }
             }
 
             &.medium-3 {
-              & a,video {
+              & a {
                 width: 29.33%;
                 margin: 2%;
 
@@ -132,7 +133,7 @@
 
             &.medium-5,
             &.medium-8 {
-              & a,video {
+              & a {
                 width: 29.33%;
                 margin: 2%;
 
@@ -144,7 +145,7 @@
             }
 
             &.medium-6 {
-              & a,video {
+              & a {
                 width: 29.33%;
                 margin: 2.2% 2%;
 
@@ -155,7 +156,7 @@
             }
 
             &.medium-7 {
-              & a,video {
+              & a {
                 width: 29.33%;
                 margin: 2%;
 
@@ -166,7 +167,7 @@
             }
 
             &.medium-9 {
-              & a,video {
+              & a {
                 width: 29.33%;
                 margin: 2%;
               }

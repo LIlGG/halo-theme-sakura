@@ -208,34 +208,55 @@ export class Utils {
   }
 
   @documentFunction()
-  public wrapImageWithBox() {
+  public wrapWithFancybox() {
     const contentElements = document.querySelectorAll(".fancybox-content") as NodeListOf<HTMLElement>;
     contentElements?.forEach((contentElement) => {
-      const imageElements = contentElement?.querySelectorAll("img:not(.avatar)") as NodeListOf<HTMLElement>;
-      if (!imageElements) {
+      if (contentElement.classList.contains("gallery")) {
         return;
       }
-      imageElements.forEach((imageElement) => {
-        if (imageElement.classList.contains("gallery-img")) {
-          return;
-        }
-        imageElement.classList.add("gallery-img");
-        const imageWrapper = document.createElement("a");
-        imageWrapper.setAttribute("data-fancybox", "gallery");
-        if (imageElement.getAttribute("data-src")) {
-          imageWrapper.setAttribute("href", imageElement.getAttribute("data-src") || "");
-        } else {
-          imageWrapper.setAttribute("href", imageElement.getAttribute("src") || "");
-        }
-        imageWrapper.classList.add("image-wrapper");
-        imageElement.parentNode?.insertBefore(imageWrapper, imageElement);
-        imageWrapper.appendChild(imageElement);
-      });
+      this.wrapImageWithBox(contentElement);
+      this.wrapVideoWithBox(contentElement);
       import("@fancyapps/ui").then(async (module) => {
         await import("@fancyapps/ui/dist/fancybox/fancybox.css");
         await module.Fancybox.bind(contentElement, '[data-fancybox="gallery"]');
       });
     });
+  }
+
+  private wrapVideoWithBox(contentElement: HTMLElement) {
+    const videoElements = contentElement?.querySelectorAll("video") as NodeListOf<HTMLElement>;
+    if (!videoElements) {
+      return;
+    }
+    videoElements.forEach((videoElement) => {
+      const videoWrapper = this.buildFancybox(videoElement);
+      videoWrapper.classList.add("video-wrapper");
+    });
+  }
+
+  private wrapImageWithBox(contentElement: HTMLElement) {
+    const imageElements = contentElement?.querySelectorAll("img:not(.avatar)") as NodeListOf<HTMLElement>;
+    if (!imageElements) {
+      return;
+    }
+    imageElements.forEach((imageElement) => {
+      const imageWrapper = this.buildFancybox(imageElement);
+      imageWrapper.classList.add("image-wrapper");
+    });
+  }
+
+  private buildFancybox(element: HTMLElement) {
+    const wrapper = document.createElement("a");
+    wrapper.setAttribute("data-fancybox", "gallery");
+    if (element.getAttribute("data-src")) {
+      wrapper.setAttribute("href", element.getAttribute("data-src") || "");
+    } else {
+      wrapper.setAttribute("href", element.getAttribute("src") || "");
+    }
+    element.parentNode?.insertBefore(wrapper, element);
+    element.classList.add("gallery");
+    wrapper.appendChild(element);
+    return wrapper;
   }
 
   /**
