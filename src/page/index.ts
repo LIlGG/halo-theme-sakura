@@ -7,6 +7,9 @@ export default class Index {
   @documentFunction()
   public registerArrowDown() {
     const arrowDownElement = document.querySelector(".headertop-down");
+    if (arrowDownElement) {
+      import("font-awesome-animation/css/font-awesome-animation.min.css");
+    }
     arrowDownElement?.addEventListener("click", () => {
       const contentOffset = document.querySelector(".site-content")?.getBoundingClientRect().top || 0;
       window.scrollTo({
