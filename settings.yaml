@@ -182,6 +182,18 @@ spec:
               label: 开启
             - value: false
               label: 关闭
+        - $formkit: radio
+          name: focus_wave
+          id: focus_wave
+          key: focus_wave
+          if: "$get(head_focus).value == true && $get(focus_height).value == true"
+          label: 波浪效果
+          value: true
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
         - $formkit: attachment
           if: "$get(head_focus).value == true"
           name: focus_img_1
