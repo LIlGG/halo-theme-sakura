@@ -4,7 +4,6 @@ declare const SearchWidget: any;
 declare const CommentWidget: any;
 
 export class Utils {
-
   /**
    * 按需加载 header 头部动画 css
    */
@@ -62,7 +61,7 @@ export class Utils {
       subMenuElement.style.left = `${subMenuLeft}px`;
     });
   }
-  
+
   /**
    * TODO 重试评论注册，临时解决 PJAX 情况下评论组件注册失败的问题
    */
@@ -103,19 +102,15 @@ export class Utils {
         if (!CommentWidget) {
           throw reject("Failed to fetch data");
         }
-        CommentWidget.init(
-          `#${id}`,
-          "/plugins/PluginCommentWidget/assets/static/style.css",
-          {
-            group: group,
-            kind: kind,
-            name: name,
-            colorScheme: 'light'
-          }
-        );
+        CommentWidget.init(`#${id}`, "/plugins/PluginCommentWidget/assets/static/style.css", {
+          group: group,
+          kind: kind,
+          name: name,
+          colorScheme: "light",
+        });
         resolve("success");
       });
-    }
+    };
   }
 
   /**
@@ -213,32 +208,55 @@ export class Utils {
   }
 
   @documentFunction()
-  public wrapImageWithBox() {
-    const contentElement = document.querySelector(".fancybox-content") as HTMLElement;
+  public wrapWithFancybox() {
+    const contentElements = document.querySelectorAll(".fancybox-content") as NodeListOf<HTMLElement>;
+    contentElements?.forEach((contentElement) => {
+      if (contentElement.classList.contains("gallery")) {
+        return;
+      }
+      this.wrapImageWithBox(contentElement);
+      this.wrapVideoWithBox(contentElement);
+      import("@fancyapps/ui").then(async (module) => {
+        await import("@fancyapps/ui/dist/fancybox/fancybox.css");
+        await module.Fancybox.bind(contentElement, '[data-fancybox="gallery"]');
+      });
+    });
+  }
+
+  private wrapVideoWithBox(contentElement: HTMLElement) {
+    const videoElements = contentElement?.querySelectorAll("video") as NodeListOf<HTMLElement>;
+    if (!videoElements) {
+      return;
+    }
+    videoElements.forEach((videoElement) => {
+      const videoWrapper = this.buildFancybox(videoElement);
+      videoWrapper.classList.add("video-wrapper");
+    });
+  }
+
+  private wrapImageWithBox(contentElement: HTMLElement) {
     const imageElements = contentElement?.querySelectorAll("img:not(.avatar)") as NodeListOf<HTMLElement>;
     if (!imageElements) {
       return;
     }
     imageElements.forEach((imageElement) => {
-      if (imageElement.classList.contains("gallery-img")) {
-        return;
-      }
-      imageElement.classList.add("gallery-img");
-      const imageWrapper = document.createElement("a");
-      imageWrapper.setAttribute("data-fancybox", "gallery");
-      if (imageElement.getAttribute("data-src")) {
-        imageWrapper.setAttribute("href", imageElement.getAttribute("data-src") || "");
-      } else {
-        imageWrapper.setAttribute("href", imageElement.getAttribute("src") || "");
-      }
+      const imageWrapper = this.buildFancybox(imageElement);
       imageWrapper.classList.add("image-wrapper");
-      imageElement.parentNode?.insertBefore(imageWrapper, imageElement);
-      imageWrapper.appendChild(imageElement);
     });
-    import("@fancyapps/ui").then(async (module) => {
-      await import("@fancyapps/ui/dist/fancybox/fancybox.css");
-      await module.Fancybox.bind(contentElement, '[data-fancybox="gallery"]');
-    });
+  }
+
+  private buildFancybox(element: HTMLElement) {
+    const wrapper = document.createElement("a");
+    wrapper.setAttribute("data-fancybox", "gallery");
+    if (element.getAttribute("data-src")) {
+      wrapper.setAttribute("href", element.getAttribute("data-src") || "");
+    } else {
+      wrapper.setAttribute("href", element.getAttribute("src") || "");
+    }
+    element.parentNode?.insertBefore(wrapper, element);
+    element.classList.add("gallery");
+    wrapper.appendChild(element);
+    return wrapper;
   }
 
   /**
