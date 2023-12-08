@@ -159,9 +159,19 @@ export class Utils {
           };
 
           flxedAplayerOptions.audio = data;
-          new APlayer(flxedAplayerOptions);
+          const fixAplayer = new APlayer(flxedAplayerOptions);
+          fixAplayer.lrc.hide();
           // 为按钮增加 hover
           aplayerElement.querySelector(".aplayer-body")?.classList.add("ap-hover");
+          aplayerElement.addEventListener(
+            "click",
+            () => {
+              fixAplayer.lrc.show();
+            },
+            {
+              once: true,
+            }
+          );
         });
       })
       .catch((error) => {
