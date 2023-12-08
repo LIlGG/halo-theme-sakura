@@ -7,7 +7,8 @@
     "dev": "vite build --watch --mode development",
     "build": "tsc && vite build",
     "lint": "eslint ./src --ext .js,.cjs,.mjs,.ts,.cts,.mts --ignore-path .gitignore",
-    "prettier": "prettier --write './src/**/*.{js,ts,css,json,ml,yaml,html}' './templates/**/*.html'"
+    "prettier": "prettier --write './src/**/*.{js,ts,css,json,ml,yaml,html}' './templates/**/*.html'",
+    "prepare": "husky install"
   },
   "keywords": [
     "halo",
@@ -47,6 +48,7 @@
     "autoprefixer": "^10.4.14",
     "colorguard": "^1.2.1",
     "glob": "^10.2.7",
+    "husky": "^8.0.3",
     "pjax": "^0.2.8",
     "postcss": "^8.4.24",
     "postcss-custom-properties": "^13.2.0",
