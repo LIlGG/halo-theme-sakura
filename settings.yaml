@@ -225,11 +225,22 @@ spec:
         - $formkit: repeater
           name: items
           label: 社交网络
-          value: []
           children:
             - $formkit: select
+              name: type
+              key: type
+              label: 类型
+              value: preset
+              options:
+                - label: 预设
+                  value: preset
+                - label: 自定义
+                  value: custom
+            - $formkit: select
+              if: "$value.type == preset"
               name: icon
-              label: 图标
+              key: icon
+              label: 预设图标
               options:
                 - label: 微信
                   value: wechat.png
@@ -265,28 +276,59 @@ spec:
                   value: email.svg
                 - label: Stack Overflow
                   value: stackoverflow.svg
-            - $formkit: text
-              name: url
-              label: 链接
+            - $formkit: attachment
+              if: "$value.type === custom"
+              name: custom_icon
+              key: custom_icon
+              accepts: 
+                - 'image/*'
+              max: 1
+              label: 自定义图标
               validation: "required"
             - $formkit: radio
               name: url_type
-              label: 链接类型
+              key: url_type
+              label: 展示形式
               value: normal
-              help: "如果选择了图片类型，那么在访客点击之后会使用弹框的形式加载"
               options:
                 - label: 跳转链接
                   value: normal
                 - label: 图片
                   value: image
+            - $formkit: text
+              if: "$value.url_type == normal"
+              name: url
+              key: url
+              label: 链接
+              validation: "required"
+            - $formkit: attachment
+              if: "$value.url_type == image"
+              name: image
+              key: image
+              label: 图片
+              accepts: 
+                - 'image/*'
+              max: 1
+              validation: "required"
         - $formkit: repeater
           name: mobile_items
           label: 移动端侧边栏社交网络
-          value: []
           children:
             - $formkit: select
+              name: type
+              key: type
+              label: 类型
+              value: preset
+              options:
+                - label: 预设
+                  value: preset
+                - label: 自定义
+                  value: custom
+            - $formkit: select
               name: icon
+              key: icon
               label: 图标
+              if: "$value.type === preset"
               options:
                 - label: 微信
                   value: wechat.png
@@ -322,6 +364,15 @@ spec:
                   value: email.svg
                 - label: Stack Overflow
                   value: stackoverflow.svg
+            - $formkit: attachment
+              if: "$value.type === custom"
+              name: custom_icon
+              key: custom_icon
+              accepts: 
+                - 'image/*'
+              max: 1
+              label: 自定义图标
+              validation: "required"
             - $formkit: text
               name: url
               label: 链接
