@@ -1,17 +1,30 @@
 <th:block th:fragment="mobile-sidebar">
   <div class="mobile-sidebar">
     <div class="avatar">
-      <img th:src="${site.logo ?: #theme.assets('/images/default/avatar.webp')}" alt=""/>
+      <img th:src="${site.logo ?: #theme.assets('/images/default/avatar.webp')}" alt="" />
     </div>
 
-    <p th:if="${not #strings.isEmpty(theme.config.mainScreen.glitch_text)}" class="glitch-text"
-      th:text="${theme.config.mainScreen.glitch_text}"></p>
+    <p
+      th:if="${not #strings.isEmpty(theme.config.mainScreen.glitch_text)}"
+      class="glitch-text"
+      th:text="${theme.config.mainScreen.glitch_text}"
+    ></p>
 
     <th:block th:if="${theme.config.mainScreen.focus_infos and not #lists.isEmpty(theme.config.sns.mobile_items)}">
       <p class="socials">
-        <a class="social-item" th:each="item : ${theme.config.sns.mobile_items}" th:href="${item.url}" target="_blank" 
-          aria-label="access the webmaster's social media accounts">
-          <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" width="18" alt=""/>
+        <a
+          class="social-item"
+          th:each="item : ${theme.config.sns.mobile_items}"
+          th:href="${item.url}"
+          target="_blank"
+          aria-label="access the webmaster's social media accounts"
+        >
+          <th:block th:if="${item.type == 'preset'}">
+            <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" width="18" alt="sns" />
+          </th:block>
+          <th:block th:if="${item.type == 'custom'}">
+            <img th:src="${item.custom_icon}" width="18" alt="sns" />
+          </th:block>
         </a>
       </p>
     </th:block>
