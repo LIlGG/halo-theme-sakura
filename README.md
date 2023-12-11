@@ -39,7 +39,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 1. 点击上方链接直达或者进入 Halo 官方应用市场，找到本主题。
 2. 点击左下角 `下载` 按钮。
 3. 弹出的对话框中，输入自己的网站地址，点击安装。
-  ![Alt text](image.png)
+  ![Alt text](./docs/image.png)
 
 #### 手动安装
 1. 点击[下载](https://github.com/LIlGG/halo-theme-sakura/archive/next.zip)
