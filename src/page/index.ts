@@ -69,6 +69,7 @@ export default class Index {
     videoContainerElement.insertAdjacentElement("afterbegin", document.createElement("video"));
     const videoStatusElement = videoContainerElement.querySelector(".video-status") as HTMLDivElement;
     const focusInfoElement = document.querySelector(".focusinfo") as HTMLDivElement;
+    const homeWaveElement = document.querySelector(".home-wave") as HTMLDivElement;
     const videoPlayButtonElement = videoContainerElement.querySelector(".video-play") as HTMLDivElement;
     const videoPauseButtonElement = videoContainerElement.querySelector(".video-pause") as HTMLDivElement;
 
@@ -99,6 +100,7 @@ export default class Index {
 
           videoPlayer.on("loadeddata", () => {
             videoStatusElement.style.bottom = "-100px";
+            homeWaveElement.style.bottom = "-100px";
             focusInfoElement.style.top = "-999px";
             videoPlayButtonElement.style.display = "none";
             videoPauseButtonElement.style.display = "block";
@@ -107,6 +109,7 @@ export default class Index {
 
           videoPlayer.on("play", () => {
             videoStatusElement.style.bottom = "-100px";
+            homeWaveElement.style.bottom = "-100px";
             focusInfoElement.style.top = "-999px";
             videoPlayButtonElement.style.display = "none";
             videoPauseButtonElement.style.display = "block";
@@ -115,6 +118,7 @@ export default class Index {
           videoPlayer.on("pause", () => {
             videoStatusElement.innerHTML = sakura.translate("home.video.statu_pause", "已暂停 ...");
             videoStatusElement.style.bottom = "0";
+            homeWaveElement.style.bottom = "0";
             focusInfoElement.style.top = "0";
             videoPlayButtonElement.style.display = "block";
             videoPauseButtonElement.style.display = "none";
@@ -133,6 +137,7 @@ export default class Index {
             videoStatusElement.innerHTML = sakura.translate("home.video.statu_error", "视频播放错误");
             setTimeout(() => {
               focusInfoElement.style.top = "0";
+              homeWaveElement.style.bottom = "0";
               videoStatusElement.style.bottom = "-100px";
               videoPlayButtonElement.style.display = "block";
               videoPauseButtonElement.style.display = "none";
@@ -144,6 +149,7 @@ export default class Index {
 
           videoPlayer.on("ended", () => {
             focusInfoElement.style.top = "0";
+            homeWaveElement.style.bottom = "0";
             videoStatusElement.style.bottom = "-100px";
             videoPlayButtonElement.style.display = "block";
             videoPauseButtonElement.style.display = "none";

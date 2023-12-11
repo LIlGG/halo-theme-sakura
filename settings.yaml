@@ -188,7 +188,7 @@ spec:
           key: focus_wave
           if: "$get(head_focus).value == true && $get(focus_height).value == true"
           label: 波浪效果
-          value: true
+          value: false
           options:
             - value: true
               label: 开启

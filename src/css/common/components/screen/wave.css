@@ -2,6 +2,7 @@
   z-index: 1;
   position: relative;
   width: 400%;
+  transition: 0.4s ease all;
 
   & > div {
     position: absolute;
@@ -12,13 +13,13 @@
   & .wave-1 {
     height: 65px;
     left: -236px;
-    animation: wave 25s linear 0s infinite;
+    animation: wave 100s linear 0s infinite;
   }
 
   & .wave-2 {
     height: 80px;
     left: 0px;
-    animation: wave 60s linear 0s infinite;
+    animation: wave 240s linear 0s infinite;
   }
 }
 
