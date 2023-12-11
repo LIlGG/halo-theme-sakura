@@ -9,9 +9,6 @@
   <a href="https://lixingyong.com">预览</a> | <a href="#安装主题">安装</a> | <a href="https://lixingyong.com/2021/01/05/halo%E4%B8%BB%E9%A2%98sakura%E9%A3%9F%E7%94%A8%E8%AF%B4%E6%98%8E">使用文档</a> | <a href="https://github.com/LIlGG/halo-theme-sakura/commits/next">更新记录</a>
 </p>
 
-## 😶 注意！！
-目前所在的 [Next 分支版本](https://github.com/LIlGG/halo-theme-sakura/tree/next) 为基于 [Halo 2.x](https://docs.halo.run/) 的主题版本，并不支持 Halo 1.x 版本。若后端仍旧使用 Halo 1.x ，可以前往 [master 分支](https://github.com/LIlGG/halo-theme-sakura/tree/master)下载最新的支持 1.x 版本的主题（1.x 版本不再支持更新）
-
 ## 🧐 说明
 
 > 本主题参照 WordPress 主题 [Sakura](https://github.com/mashirozx/Sakura) 制作，在原有的 [Siren](https://github.com/halo-dev/halo-theme-siren) 主题上添加了 Sakura 的内容，并优化了部分内容。
@@ -37,10 +34,12 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 
 主题已上架 [Halo 官方应用市场 - Sakura](https://halo.run/store/apps/app-YGkgz)
 
+**可以直接使用应用市场进行安装，也可以通过下述步骤进行安装。**
+
 1. 点击上方链接直达或者进入 Halo 官方应用市场，找到本主题。
 2. 点击左下角 `下载` 按钮。
 3. 弹出的对话框中，输入自己的网站地址，点击安装。
-![Alt text](/docs/image.png)
+  ![Alt text](image.png)
 
 #### 手动安装
 1. 点击[下载](https://github.com/LIlGG/halo-theme-sakura/archive/next.zip)
@@ -56,7 +55,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - 搜索功能，需插件 [plugin-search-widget](https://github.com/halo-sigs/plugin-search-widget/releases)
 - 友链页面，需插件 [plugin-links](https://github.com/halo-sigs/plugin-links) 支持
 - 图库页面，需插件 [plugin-photos](https://github.com/halo-sigs/plugin-photos) 支持
-- 说说页面，需插件 [plugin-moments](https://github.com/halo-sigs/plugin-moments) 支持
+- 瞬间页面，需插件 [plugin-moments](https://github.com/halo-sigs/plugin-moments) 支持
 
 > 推荐插件
 
@@ -75,7 +74,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 自定义扩展，主题触发各核心功能均会产生 window 事件，方便用户扩展功能。
 - [x] 支持深色模式。
 - [x] 移动端深入适配。
-- [x] 导航栏支持图标、动画，支持二级菜单。
+- [x] 导航栏菜单支持动画、图标，且支持二级菜单。
 - [x] 完美兼容 Halo 2.x 评论、搜索、瞬间、图库、友链等插件。
 - [x] 首页支持故障文本和头像，支持标准与图文双风格切换。
 - [x] 支持首页视频，视频支持 HLS 等流媒体。
@@ -92,7 +91,6 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 瀑布流相册
 - [x] 适配瞬间页面，支持点赞及评论。
 - [x] 文章字数、更新时间提醒
-
 
 > Tip:
 >> 上述功能大部分均可配置。具体操作在 后台 -> 外观 -> 主题 -> 设置 中进行配置
