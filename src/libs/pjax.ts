@@ -36,6 +36,96 @@ const pjax = new Pjax({
   debug: import.meta.env.MODE === "development" ? true : false,
 });
 
+// @ts-ignore
+// 修复由于 pjax 导致的 Request Context 无法被拦截获取信息的问题。
+pjax.doRequest = function (
+  location,
+  options: Pjax.IOptions,
+  callback: (requestText: string | null, request: XMLHttpRequest, href: string, options?: Pjax.IOptions) => void
+) {
+  options = options || {};
+  var queryString;
+  var requestOptions = options.requestOptions || {};
+  var requestMethod = (requestOptions.requestMethod || "GET").toUpperCase();
+  var requestParams = requestOptions.requestParams || null;
+  var formData = requestOptions.formData || null;
+  var requestPayload = null;
+  var request = new XMLHttpRequest();
+  var timeout = options.timeout || 0;
+
+  request.onreadystatechange = function () {
+    if (request.readyState === 4) {
+      if (request.status === 200) {
+        callback(request.responseText, request, location, options);
+      } else if (request.status !== 0) {
+        callback(null, request, location, options);
+      }
+    }
+  };
+
+  request.onerror = function (e) {
+    console.log(e);
+    callback(null, request, location, options);
+  };
+
+  request.ontimeout = function () {
+    callback(null, request, location, options);
+  };
+
+  if (requestParams && requestParams.length) {
+    queryString = requestParams
+      .map(function (param: { name: string; value: string }) {
+        return param.name + "=" + param.value;
+      })
+      .join("&");
+
+    switch (requestMethod) {
+      case "GET":
+        location = location.split("?")[0];
+
+        location += "?" + queryString;
+        break;
+
+      case "POST":
+        requestPayload = queryString;
+        break;
+    }
+  } else if (formData) {
+    requestPayload = formData;
+  }
+
+  if (options.cacheBust) {
+    location = updateQueryString(location, "t", Date.now());
+  }
+
+  request.open(requestMethod, location, true);
+  request.timeout = timeout;
+  request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+  request.setRequestHeader("X-PJAX", "true");
+  request.setRequestHeader("X-PJAX-Selectors", JSON.stringify(options.selectors));
+  request.setRequestHeader("accept", "text/html, application/json, text/plain, */*");
+  request.withCredentials = true;
+
+  // 发送 POST 表单
+  if (requestPayload && requestMethod === "POST" && !formData) {
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  }
+
+  request.send(requestPayload);
+
+  return request;
+};
+
+const updateQueryString = function (uri: string, key: string, value: number) {
+  var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+  var separator = uri.indexOf("?") !== -1 ? "&" : "?";
+  if (uri.match(re)) {
+    return uri.replace(re, "$1" + key + "=" + value + "$2");
+  } else {
+    return uri + separator + key + "=" + value;
+  }
+};
+
 // 挂载 pjax 实例至全局
 sakura.mountGlobalProperty("pjax", pjax);
 
