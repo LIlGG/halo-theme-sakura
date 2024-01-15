@@ -104,6 +104,7 @@ pjax.doRequest = function (
   request.setRequestHeader("X-PJAX", "true");
   request.setRequestHeader("X-PJAX-Selectors", JSON.stringify(options.selectors));
   request.setRequestHeader("accept", "text/html, application/json, text/plain, */*");
+  request.withCredentials = true;
 
   // 发送 POST 表单
   if (requestPayload && requestMethod === "POST" && !formData) {
