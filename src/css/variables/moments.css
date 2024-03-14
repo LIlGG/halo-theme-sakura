@@ -7,3 +7,11 @@
 
   --moments-content-background: #e6e6fa;
 }
+
+.dark {
+  & .moments-container {
+    --halo-comment-widget-base-color: #000000;
+    --halo-comment-widget-component-form-button-login-bg-color: #f0ffff;
+    --halo-comment-widget-component-form-button-login-bg-color-hover: #f0f8ff;
+  }
+}
