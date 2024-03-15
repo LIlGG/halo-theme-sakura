@@ -1,7 +1,5 @@
 import { documentFunction, sakura } from "../main";
-import { Util } from "../utils/util";
 declare const SearchWidget: any;
-declare const CommentWidget: any;
 
 export class Utils {
   /**
@@ -60,57 +58,6 @@ export class Utils {
       const subMenuLeft = parentMenuWidth / 2 - subMenuWidth / 2;
       subMenuElement.style.left = `${subMenuLeft}px`;
     });
-  }
-
-  /**
-   * TODO 重试评论注册，临时解决 PJAX 情况下评论组件注册失败的问题
-   */
-  @documentFunction()
-  public retryRegisterComment() {
-    if (!sakura.getThemeConfig("others", "poi_pjax", Boolean)?.valueOf()) {
-      return;
-    }
-    const commentElements = document.querySelectorAll(".comment") as NodeListOf<HTMLElement>;
-    if (!commentElements || commentElements.length === 0) {
-      return;
-    }
-    commentElements.forEach((commentElement) => {
-      const commentContainerElement = commentElement.querySelector("div") as HTMLElement;
-      if (!commentContainerElement) {
-        return;
-      }
-      // 如果已经存在 div，则不再进行注册
-      const commentShadowElement = commentContainerElement.querySelector("div") as HTMLElement;
-      if (commentShadowElement) {
-        return;
-      }
-      // 重新注册评论组件
-      const commentAttrId = commentContainerElement.getAttribute("id");
-      if (!commentAttrId) {
-        return;
-      }
-      const group = commentElement.getAttribute("group") || "";
-      const kind = commentElement.getAttribute("kind") || "";
-      const name = commentElement.getAttribute("name") || "";
-      if (!group || !kind || !name) {
-        return;
-      }
-      Util.retry(() => registerCommentWidget(commentAttrId, group, kind, name));
-    });
-    const registerCommentWidget = (id: string, group: string, kind: string, name: string): Promise<string> => {
-      return new Promise((resolve, reject) => {
-        if (!CommentWidget) {
-          throw reject("Failed to fetch data");
-        }
-        CommentWidget.init(`#${id}`, "/plugins/PluginCommentWidget/assets/static/style.css", {
-          group: group,
-          kind: kind,
-          name: name,
-          colorScheme: "light",
-        });
-        resolve("success");
-      });
-    };
   }
 
   /**
