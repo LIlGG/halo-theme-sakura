@@ -1,104 +1,10 @@
 import { documentFunction, sakura } from "../main";
 import { WindowEventProxy } from "../utils/eventProxy";
 
-var currCommentNode: HTMLElement | undefined = undefined;
-var currMode: "light" | "dark" = "light";
-
 /**
  * 全局事件模块
  */
 export class Events {
-  /**
-   * 监听评论组件渲染完成事件
-   * 渲染完成之后，根据当前主题所属的 mode，渲染评论组件
-   */
-  @documentFunction()
-  public registerCommentRenderedEvent() {
-    const observer = new MutationObserver((mutationsList, observer) => {
-      for (let mutation of mutationsList) {
-        if (mutation.type === "childList") {
-          if (mutation.addedNodes.length > 0) {
-            for (let node of mutation.addedNodes) {
-              if (node instanceof HTMLElement) {
-                if (node.shadowRoot) {
-                  observer.observe(node.shadowRoot, observerConfig);
-                  currCommentNode = node;
-                  return;
-                }
-                if (node.classList.contains("halo-comment-widget")) {
-                  node.classList.remove("light", "dark");
-                  node.classList.add(currMode);
-                  return;
-                }
-              }
-            }
-          }
-        }
-      }
-    });
-
-    const observerConfig = {
-      childList: true,
-      attributes: false,
-      subtree: true,
-    };
-
-    // moments 页面不需要注入
-    if (sakura.getPageConfig("_templateId") === "moments") {
-      return;
-    }
-    const targetNode = document.querySelector(".comment") as HTMLElement;
-    if (!targetNode) {
-      return;
-    }
-    observer.observe(targetNode, observerConfig);
-  }
-
-  /**
-   * 监听当前文档的模式变化，当模式变化时，修改评论组件的样式
-   *
-   * @returns
-   */
-  @documentFunction(false)
-  public registerDocumentModeChangeEvent() {
-    // 创建一个 Mutation Observer 实例
-    const observer = new MutationObserver((mutationsList) => {
-      // 在回调函数中处理 DOM 变化的逻辑
-      for (let mutation of mutationsList) {
-        // 处理节点添加或删除的情况
-        if (mutation.type === "attributes" && mutation.attributeName === "class") {
-          if (mutation.target) {
-            const target = mutation.target as HTMLElement;
-            if (target.classList.contains("dark")) {
-              this.setCommentNodeClass("dark");
-            } else {
-              this.setCommentNodeClass("light");
-            }
-            currMode = target.classList.contains("dark") ? "dark" : "light";
-          }
-        }
-      }
-    });
-    const observerConfig = {
-      childList: false,
-      attributes: true,
-      subtree: false,
-    };
-    const bodyNode = document.querySelector("body") as HTMLElement;
-    if (!bodyNode) {
-      return;
-    }
-    observer.observe(bodyNode, observerConfig);
-  }
-
-  // 为当前评论 node 设置样式
-  private setCommentNodeClass(model: "light" | "dark" = "light") {
-    if (currCommentNode) {
-      currCommentNode.shadowRoot?.querySelector(".halo-comment-widget")?.classList.remove("light", "dark");
-      currCommentNode.shadowRoot?.querySelector(".halo-comment-widget")?.classList.add(model);
-    }
-  }
-
   /**
    * 注册滚动事件
    *
