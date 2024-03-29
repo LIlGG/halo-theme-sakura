@@ -14,13 +14,13 @@
 
   <th:block th:fragment="common_social(item)">
     <th:block th:if="${item.type == 'preset'}">
-      <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" alt="sns" />
+      <img th:src="@{/assets/images/sns/{icon}(icon=${item.icon})}" alt="sns" width="28" height="28" />
     </th:block>
     <th:block th:if="${item.type == 'custom'}">
-      <img th:src="${item.custom_icon}" alt="sns" />
+      <img th:src="${item.custom_icon}" alt="sns" width="28" height="28" />
     </th:block>
     <div th:if="${item.url_type == 'image'}" class="social-image-inner">
-      <img th:src="${item.image}" alt="sns" />
+      <img th:src="${item.image}" alt="sns" width="28" height="28" />
     </div>
   </th:block>
 </th:block>

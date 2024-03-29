@@ -39,6 +39,8 @@
                 th:src="${#strings.isEmpty(photo.spec.cover) ? #theme.assets('/images/load/load.gif') : photo.spec.cover}"
                 th:alt="${photo.spec.displayName}"
                 th:data-src="${photo.spec.url}"
+                height="500"
+                width="500"
               />
             </header>
             <figcaption class="gallery-caption">

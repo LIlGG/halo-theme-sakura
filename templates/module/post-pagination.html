@@ -16,7 +16,9 @@ NEXT / PREVIOUS POSTS
             class="lazyload"
             th:src="${#theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
             th:data-src="${postCursor.previous.spec.cover}"
-            alt=""
+            alt="The cover picture of the previous content"
+            height="160"
+            width="390"
             onerror="imgError(this)"
           />
           <img
@@ -33,7 +35,9 @@ NEXT / PREVIOUS POSTS
             data-sizes="auto"
             class="lazyload"
             th:classappend="${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
-            alt=""
+            alt="The cover picture of the previous content"
+            height="160"
+            width="390"
             onerror="imgError(this)"
           />
           <img
@@ -41,7 +45,9 @@ NEXT / PREVIOUS POSTS
             class="lazyload"
             th:src="${#theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
             th:data-src="${#theme.assets('/images/default/temp.webp')}"
-            alt=""
+            alt="The cover picture of the previous content"
+            height="160"
+            width="390"
             onerror="imgError(this)"
           />
           <span class="label" data-i18n="post.prev"></span>
@@ -62,7 +68,9 @@ NEXT / PREVIOUS POSTS
             class="lazyload"
             th:src="${#theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
             th:data-src="${postCursor.next.spec.cover}"
-            alt=""
+            alt="The cover picture of the next content"
+            height="160"
+            width="390"
             onerror="imgError(this)"
           />
           <img
@@ -79,7 +87,9 @@ NEXT / PREVIOUS POSTS
             data-sizes="auto"
             class="lazyload"
             th:classappend="${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
-            alt=""
+            alt="The cover picture of the next content"
+            height="160"
+            width="390"
             onerror="imgError(this)"
           />
           <img
@@ -87,7 +97,9 @@ NEXT / PREVIOUS POSTS
             class="lazyload"
             th:src="${#theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
             th:data-src="${#theme.assets('/images/default/temp.webp')}"
-            alt=""
+            alt="The cover picture of the next content"
+            height="160"
+            width="390"
             onerror="imgError(this)"
           />
           <span class="label" data-i18n="post.next"></span>

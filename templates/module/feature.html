@@ -16,7 +16,13 @@
     <div class="top-feature-item" th:each="feature : ${theme.config.focus.features}">
       <div class="feature-container">
         <a data-pjax th:href="${feature.link}" target="_blank" aria-label="visit the concentrated content">
-          <img th:src="${feature.image}" th:alt="${feature.title}" />
+          <img
+            th:src="${feature.image}"
+            th:alt="${feature.title}"
+            alt="cover picture of focusing on content"
+            width="780"
+            height="160"
+          />
           <div class="info">
             <h3>
               <span th:text="${feature.title}"></span>

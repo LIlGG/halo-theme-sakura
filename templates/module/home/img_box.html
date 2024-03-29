@@ -13,7 +13,9 @@
       th:data-url="${imageUrl}"
       th:data-currIndex="${randomNum}"
       class="lazyload cover-bg lazyload blur-up bg-change-js"
-      alt=""
+      alt="background picture of the home page"
+      width="1920"
+      height="1080"
       onerror="imgError(this)"
     />
     <div class="blend-overlay"></div>
@@ -24,7 +26,9 @@
     <img
       class="cover-bg"
       th:src="${theme.config.mainScreen.focus_img_1 ?: #theme.assets('/images/default/hd.webp')}"
-      alt=""
+      alt="background picture of the home page"
+      width="1920"
+      height="1080"
     />
   </th:block>
 
@@ -43,11 +47,11 @@
       <div class="top-social" th:if="${not #arrays.isEmpty(theme.config.sns.items)}">
         <ul>
           <li id="bg-prev">
-            <img class="flipx" th:src="@{/assets/images/next-b.svg}" alt="prev" />
+            <img class="flipx" th:src="@{/assets/images/next-b.svg}" alt="prev" width="28" height="28" />
           </li>
           <th:block th:replace="~{module/home/top_social}"></th:block>
           <li id="bg-next">
-            <img th:src="@{/assets/images/next-b.svg}" alt="next" />
+            <img th:src="@{/assets/images/next-b.svg}" alt="next" width="28" height="28" />
           </li>
         </ul>
       </div>

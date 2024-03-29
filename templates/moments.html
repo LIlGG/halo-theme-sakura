@@ -28,6 +28,8 @@
               th:alt="${moment.owner.displayName}"
               onerror="imgError(this)"
               th:src="${#theme.assets('/images/load/trans.ajax-spinner-preloader.svg')}"
+              width="48"
+              height="48"
             />
             <div class="moment-inner">
               <span class="moment-content">
@@ -44,8 +46,16 @@
                     th:if="${momentItem.type.name == 'PHOTO'}"
                     th:src="${#strings.isEmpty(momentItem.url) ? #theme.assets('/images/load/load.gif') : momentItem.url}"
                     th:data-src="${momentItem.url}"
+                    width="400"
+                    height="400"
+                    alt="moment picture"
                   />
-                  <video th:if="${momentItem.type.name == 'VIDEO'}" th:src="${momentItem.url}"></video>
+                  <video
+                    th:if="${momentItem.type.name == 'VIDEO'}"
+                    th:src="${momentItem.url}"
+                    width="400"
+                    height="400"
+                  ></video>
                 </th:block>
               </div>
               <div class="moment-footer">
@@ -104,10 +114,7 @@
                   </span>
                 </div>
               </div>
-              <div
-                th:if="${haloCommentEnabled and theme.config.journal.journal_comment}"
-                class="comment-box"
-              >
+              <div th:if="${haloCommentEnabled and theme.config.journal.journal_comment}" class="comment-box">
                 <!--/* 评论组件 */-->
                 <th:block
                   th:replace="~{module/comment :: comment(group = 'moment.halo.run', kind = 'Moment', name = ${moment.metadata.name})}"

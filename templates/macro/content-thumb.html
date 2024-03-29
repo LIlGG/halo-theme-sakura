@@ -81,7 +81,9 @@
           class="lazyload"
           th:src="${#theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
           th:data-src="${post.spec.cover}"
-          alt=""
+          alt="thumbnail of the cover of the post"
+          width="430"
+          height="300"
           onerror="imgError(this)"
         />
         <img
@@ -98,7 +100,9 @@
           data-sizes="auto"
           class="lazyload"
           th:classappend="${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
-          alt=""
+          alt="thumbnail of the cover of the post"
+          width="430"
+          height="300"
           onerror="imgError(this)"
         />
         <img
@@ -106,7 +110,9 @@
           class="lazyload"
           th:src="${#theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
           th:data-src="${#theme.assets('/images/default/temp.webp')}"
-          alt=""
+          alt="thumbnail of the cover of the post"
+          width="430"
+          height="300"
           onerror="imgError(this)"
         />
       </a>

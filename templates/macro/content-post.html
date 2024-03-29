@@ -44,7 +44,7 @@
           <div class="reward-main">
             <ul class="reward-row">
               <li th:each="item : ${theme.config.post.reward}">
-                <img th:src="${item.code}" alt="reword"/>
+                <img th:src="${item.code}" alt="reword" width="325" height="325"/>
                 <span class="reward-name" th:text="${item.label}"></span>
               </li>
             </ul>

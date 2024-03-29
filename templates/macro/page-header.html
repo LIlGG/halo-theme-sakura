@@ -23,7 +23,9 @@
             th:attr="data-src=${frontCover}"
             th:src="${#theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
             itemprop="contentUrl"
-            alt=""
+            alt="large picture of the cover"
+            width="1920"
+            height="400"
           />
         </th:block>
 
@@ -45,7 +47,9 @@
             th:classappend="${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
             onerror="imgError(this)"
             itemprop="contentUrl"
-            alt=""
+            alt="large picture of the cover"
+            width="1920"
+            height="400"
           />
         </th:block>
       </div>
