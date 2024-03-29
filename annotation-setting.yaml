@@ -26,33 +26,18 @@ spec:
     group: content.halo.run
     kind: Post
   formSchema:
-    - $formkit: radio
+    - $formkit: checkbox
       name: randomImage
-      label: 使用随机图
+      label: 使用随机封面
       value: "true"
-      options:
-        - value: "true"
-          label: 开启
-        - value: "false"
-          label: 关闭
-    - $formkit: radio
+    - $formkit: checkbox
       name: original
-      label: 是否原创
+      label: 原创文章
       value: "false"
-      options:
-        - value: "true"
-          label: 是
-        - value: "false"
-          label: 否
-    - $formkit: radio
+    - $formkit: checkbox
       name: toc
       label: 自动生成目录
       value: "true"
-      options:
-        - value: "true"
-          label: 开启
-        - value: "false"
-          label: 关闭
 
 ---
 
@@ -65,21 +50,11 @@ spec:
     group: content.halo.run
     kind: SinglePage
   formSchema:
-    - $formkit: radio
+    - $formkit: checkbox
       name: randomImage
       label: 使用随机图
       value: "true"
-      options:
-        - value: "true"
-          label: 开启
-        - value: "false"
-          label: 关闭
-    - $formkit: radio
+    - $formkit: checkbox
       name: toc
       label: 自动生成目录
       value: "true"
-      options:
-        - value: "true"
-          label: 开启
-        - value: "false"
-          label: 关闭
