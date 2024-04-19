@@ -258,12 +258,16 @@ export class Utils {
         codeElement.setAttribute("data-rel", lang.toUpperCase());
         codeElement.classList.add(lang.toLowerCase());
         highlight.default.highlightElement(codeElement);
-        // @ts-ignore
-        const highlightLineNumber = await import("../libs/highlightjs-line-numbers");
-        highlightLineNumber.registerHljsLineNumbers(highlight.default);
-        highlightLineNumber.injectHljsLineNumbersCss();
-        // @ts-ignore
-        highlight.default.lineNumbersBlock(codeElement);
+        const isCodeLine = sakura.getThemeConfig("post", "code_line", Boolean)?.valueOf();
+        // 控制代码是否增加行号
+        if (isCodeLine) {
+          // @ts-ignore
+          const highlightLineNumber = await import("../libs/highlightjs-line-numbers");
+          highlightLineNumber.registerHljsLineNumbers(highlight.default);
+          highlightLineNumber.injectHljsLineNumbersCss();
+          // @ts-ignore
+          highlight.default.lineNumbersBlock(codeElement);
+        }
       });
     });
   }
