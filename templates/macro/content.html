@@ -66,14 +66,29 @@
     </a>
   </div>
 
-  <header>
+  <header class="entry-header">
     <h1 class="entry-title">
-      <a data-pjax
+      <a
+        data-pjax
         th:href="@{${post.status.permalink}}"
         th:text="${post.spec.title}"
         aria-label="viewing the article details"
       ></a>
     </h1>
+    <div class="p-time">
+      <span th:if="${post.spec.pinned}" class="iconify hotpost" data-icon="solar:fire-outline"></span>
+      <span class="iconify" data-icon="solar:clock-circle-linear"></span>
+      <time
+        data-i18n="postlist.time"
+        th:i18n-options="|{
+          'time': '${post.spec.publishTime}', 
+          'params': { 'separator': '-' }
+        }|"
+        th:datetime="${post.spec.publishTime}"
+        itemprop="dateCreated datePublished"
+      >
+      </time>
+    </div>
   </header>
 
   <section>
@@ -105,20 +120,6 @@
           <span data-i18n="postlist.heat" th:i18n-options="|{visit: '${post.stats.visit}'}|"> </span>
         </span>
       </div>
-    </div>
-    <div class="p-time">
-      <span th:if="${post.spec.pinned}" class="iconify hotpost" data-icon="solar:fire-outline"></span>
-      <span class="iconify" data-icon="solar:clock-circle-linear"></span>
-      <time
-        data-i18n="postlist.time"
-        th:i18n-options="|{
-          'time': '${post.spec.publishTime}', 
-          'params': { 'separator': '-' }
-        }|"
-        th:datetime="${post.spec.publishTime}"
-        itemprop="dateCreated datePublished"
-      >
-      </time>
     </div>
   </footer>
   <hr />

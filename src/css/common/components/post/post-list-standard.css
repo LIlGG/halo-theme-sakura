@@ -78,27 +78,44 @@
     }
   }
 
-  & .entry-title {
-    &h1 {
-      font-size: 1.25rem;
-      font-weight: 400;
-      line-height: 3.125rem;
-      position: relative;
-      z-index: 1;
-      display: inline-block;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      max-width: 65%;
-      margin-left: 1.25rem;
+  & .entry-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-      &:hover {
-        color: var(--theme-color);
+    & .entry-title {
+      &h1 {
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 3.125rem;
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 65%;
+        margin-left: 1.25rem;
+
+        &:hover {
+          color: var(--theme-color);
+        }
+      }
+
+      & a {
+        color: var(--post-list-thumb-title-color);
       }
     }
 
-    & a {
-      color: var(--post-list-thumb-title-color);
+    & .p-time {
+      font-size: 0.75rem;
+      color: #999;
+      letter-spacing: 0;
+
+      & .iconify {
+        scale: 1.2;
+        margin-right: 5px;
+      }
     }
   }
 
@@ -145,20 +162,6 @@
         width: 100%;
       }
     }
-
-    & .p-time {
-      position: absolute;
-      right: 0;
-      top: 1rem;
-      font-size: 0.75rem;
-      color: #999;
-      letter-spacing: 0;
-
-      & .iconify {
-        scale: 1.2;
-        margin-right: 5px;
-      }
-    }
   }
 
   @mixin screens-md {
@@ -178,10 +181,18 @@
       }
     }
 
-    & .entry-title {
-      &h1 {
-        font-size: 1rem;
-        line-height: 1.875rem;
+    & .entry-header {
+      flex-direction: column;
+      align-items: baseline;
+      margin-bottom: 0.67rem;
+
+      & .entry-title {
+        &h1 {
+          font-size: 1rem;
+          line-height: 1.875rem;
+          max-width: 100%;
+          margin-left: 1rem
+        }
       }
     }
 
