@@ -171,6 +171,8 @@
     }
 
     & .feature {
+      margin-left: 1.25rem;
+
       & img {
         width: 3.25rem;
         height: 3.25rem;
@@ -190,8 +192,8 @@
         &h1 {
           font-size: 1rem;
           line-height: 1.875rem;
-          max-width: 100%;
-          margin-left: 1rem
+          max-width: 90%;
+          margin-left: 1rem;
         }
       }
     }
