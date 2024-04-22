@@ -107,22 +107,10 @@
     }
   }
 
-  @mixin screens-sm {
-    & .links {
-      & ul {
-        & li {
-          width: 100%;
-        }
-      }
-    }
-  }
-
   @mixin screens-md {
     & .links {
       & ul {
         & li {
-          width: 48.6%;
-
           &::before {
             display: none;
           }
@@ -138,6 +126,10 @@
             }
           }
         }
+      }
+
+      & .link-items {
+        grid-template-columns: repeat(1, 1fr);
       }
     }
   }
