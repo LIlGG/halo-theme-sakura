@@ -101,10 +101,12 @@
 
       &::before {
         content: "{";
+        margin-right: 0.25em;
       }
 
       &::after {
         content: "}";
+        margin-left: 0.25em;
       }
     }
   }

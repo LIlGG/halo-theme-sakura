@@ -86,6 +86,9 @@
       "title": "There is nothing here!",
       "search": "Didn't find what you want, look at the other ones.",
       "notfound": "We didn't seem to find what you want. Maybe you can search for it."
+    },
+    "author": {
+      "title": "About the Author: {{ authorName }}"
     }
   },
   "comment": {
