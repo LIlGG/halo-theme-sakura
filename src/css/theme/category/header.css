@@ -8,7 +8,6 @@
         display: inline-block;
         font-size: 25px;
         font-weight: 400;
-        color: #666;
         width: auto;
 
         &::before {

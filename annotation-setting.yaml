@@ -58,3 +58,18 @@ spec:
       name: toc
       label: 自动生成目录
       value: "true"
+
+---
+
+apiVersion: v1alpha1
+kind: AnnotationSetting
+metadata:
+  generateName: annotation-setting-
+spec:
+  targetRef:
+    group: ""
+    kind: User
+  formSchema:
+    - $formkit: attachment
+      name: cover
+      label: 用户详情页封面图
