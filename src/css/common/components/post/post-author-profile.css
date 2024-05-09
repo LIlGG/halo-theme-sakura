@@ -51,7 +51,7 @@
 
     & .iconify {
       color: var(--theme-color);
-      margin-right: 0.625rem;
+      margin-right: 0.625em;
     }
   }
 
