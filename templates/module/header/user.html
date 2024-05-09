@@ -3,12 +3,18 @@
   th:with="currentUser = ${contributorFinder.getContributor(#authentication.name)}"
   th:fragment="user"
 >
-  <img
-    th:src="${currentUser.avatar ?: #theme.assets('/images/default/none.png')}"
-    width="30"
-    height="30"
-    alt="user avatar"
-  />
+  <th:block th:if="${currentUser.avatar}">
+    <img
+      th:src="${currentUser.avatar}"
+      width="30"
+      height="30"
+      alt="user avatar"
+    />
+  </th:block>
+  <th:block th:unless="${currentUser.avatar}">
+    <span class="iconify iconify--xxlarge" data-icon="solar:user-circle-linear"></span>
+  </th:block>
+
   <div class="header-user-menu">
     <th:block sec:authorize="isAnonymous()">
       <div class="herder-user-name no-logged">

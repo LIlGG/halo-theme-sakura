@@ -4,12 +4,9 @@
   @mixin screens-md {
     transition-duration: 0.5s;
     height: 2.5rem;
-    position: absolute;
-    top: 0;
-    z-index: 10;
     display: block;
-    background: 0 0;
-
+    z-index: 10;
+    
     &.open {
       display: none;
     }

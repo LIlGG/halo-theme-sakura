@@ -108,9 +108,9 @@
   --theme-item-background-color: #31363b;
   --mobile-menu-text-color: #eee;
   --entry-content-heading-color: #ccc;
-  --entry-content-text-color: #999;
-  --entry-content-list-color: #999;
-  --entry-content-table-color: #999;
+  --entry-content-text-color: #ffffffcc;
+  --entry-content-list-color: #ffffffcc;
+  --entry-content-table-color: #ffffffcc;
   --card-container-box-shadow: 0 1px 35px -8px rgba(0, 0, 0, 0.8);
   --card-container-title-color: #ccc;
   --photo-group-change-color: #222;

@@ -28,15 +28,29 @@
   }
 
   & .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: var(--header-height);
     width: 100%;
-    display: block;
     margin: 0 auto;
     position: fixed;
     padding: 0 1.25rem;
     box-sizing: border-box;
     top: 0;
     transition: top 0.3s ease-in-out;
+
+    & .header-after,
+    & .header-content,
+    & .header-before {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    & .header-content {
+      flex: 1;
+    }
   }
 
   @mixin screens-md {
@@ -48,6 +62,15 @@
 
     & .header-inner {
       padding: 0;
+
+      & .header-before {
+        flex: 1;
+        justify-content: space-between;
+      }
+
+      & .header-content {
+        display: none;
+      }
     }
   }
 }

@@ -1,8 +1,4 @@
 .searchbox {
-  float: right;
-  height: 4.75rem;
-  line-height: 4.75rem;
-  margin-left: 1.25rem;
   animation: fadeInRight 1s;
 
   & .iconsearch {
