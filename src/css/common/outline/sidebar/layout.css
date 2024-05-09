@@ -1,5 +1,5 @@
 .site-sidebar {
-  width: 0;
+  width: 15.625rem;
   height: 100%;
   position: fixed;
   left: 0;
@@ -8,38 +8,31 @@
   overflow: hidden;
   z-index: 9;
   pointer-events: none;
-  transition: width .5s ease-out;
+  transform: translateX(-15.625rem);
+  transition: transform 0.5s ease-out;
 
   &::after,
   &::before {
-    transition: left .5s;
     background: var(--theme-color);
     position: fixed;
     content: "";
     width: 1.875rem;
     height: 0.1875rem;
     top: 20px;
-    left: -100px;
+    left: 16rem;
     pointer-events: auto;
-    opacity: 0;
+  }
+
+  &::before {
+    transform: rotate(-45deg);
+  }
+
+  &::after {
+    transform: rotate(45deg);
   }
 
   &.open {
-    width: 15.625rem;
-
-    &::before,
-    &::after {
-      left: 260px;
-      opacity: 1;
-    }
-
-    &::before {
-      transform: rotate(-45deg);
-    }
-
-    &::after {
-      transform: rotate(45deg);
-    }
+    transform: none;
   }
 
   & .sidebar-inner {

@@ -16,6 +16,3 @@ bin/
 .factorypath
 
 node_modules
-
-#VS Code
-.vscode/
