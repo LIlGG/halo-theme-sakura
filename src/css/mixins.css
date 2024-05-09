@@ -44,3 +44,14 @@
     width: calc((100% - ($(col) - 1) * 10px) / $(col));
   }
 }
+ 
+/**
+ * 解决 hover 在移动端的黏着触发问题
+ *
+ * @see https://issues.chromium.org/issues/40364091
+ */
+@define-mixin pc-hover {
+  @media (any-hover: hover) {
+    @mixin-content;
+  }
+}

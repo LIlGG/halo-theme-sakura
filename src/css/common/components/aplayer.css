@@ -102,8 +102,10 @@
     border-radius: 0 6px 6px 0 !important;
     left: -66px !important;
 
-    &:hover {
-      left: 0 !important;
+    @mixin pc-hover {
+      &:hover {
+        left: 0 !important;
+      }
     }
   }
 }
