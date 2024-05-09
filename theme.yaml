@@ -17,7 +17,7 @@ spec:
   repo: https://github.com/LIlGG/halo-theme-sakura.git
   settingName: theme-sakura-setting
   configMapName: theme-sakura-configMap
-  version: 2.1.0
+  version: 2.2.0
   require: ">=2.11.0"
 metadata:
   name: theme-sakura
