@@ -147,17 +147,21 @@
     border-radius: 5px;
   }
 
+  & > ol,
+  & > ul {
+    border: 1px dashed #ddd;
+  }
+
   & ol,
   & ul {
     list-style: disc;
-    border: 1px dashed #ddd;
-    padding: 1em 0.625em 1em 3.125em;
     color: var(--entry-content-list-color);
     margin-left: 0;
     border-radius: 10px;
+    padding-inline-start: 30px;
 
-    & li {
-      padding: 8px 0;
+    & p {
+      margin: 1em 0;
     }
   }
 
