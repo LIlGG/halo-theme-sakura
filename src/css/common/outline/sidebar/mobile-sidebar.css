@@ -27,10 +27,7 @@
   & .socials {
     display: flex;
     justify-content: center;
-
-    & .social-item {
-      margin: 0 10px;
-    }
+    gap: 0 20px;
   }
 
   & .search {
@@ -76,13 +73,14 @@
 
       & li {
         transition-duration: 0.25s;
-        padding: 8px 0;
+        padding: 6px 0;
         color: #fff;
         letter-spacing: 0.02em;
 
         & a {
           color: var(--mobile-menu-text-color);
-          font-size: 1rem;
+          font-size: 0.9375rem;
+          text-overflow: ellipsis;
           width: 4.375rem;
 
           &:hover {
@@ -95,13 +93,14 @@
 
     & li {
       & ul {
-        margin: 0;
+        margin: 10px 0;
 
         & li {
           padding: 5px 0;
 
           & a {
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
+            color: #9cacc5;
           }
         }
       }
@@ -121,7 +120,7 @@
     justify-content: center;
     position: relative;
     bottom: 0;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.9), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.3), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
 
     & p {
       text-align: center;

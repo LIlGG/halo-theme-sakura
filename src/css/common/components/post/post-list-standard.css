@@ -60,7 +60,7 @@
       transition: opacity 0.4s ease-out;
 
       & .iconify {
-        font-size: 1.875rem;
+        font-size: 1.875em;
         background: transparent;
         color: var(--theme-color);
       }
@@ -125,7 +125,7 @@
       text-align: right;
 
       & .iconify {
-        font-size: 1.875rem;
+        font-size: 1.875em;
         color: var(--post-list-thumb-more-color);
 
         &:hover {
@@ -150,7 +150,7 @@
       }
 
       & .iconify {
-        margin-right: 0.625rem;
+        margin-right: 0.625em;
       }
 
       & a {

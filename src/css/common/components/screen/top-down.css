@@ -6,7 +6,7 @@
   z-index: 3;
 
   & .iconify {
-    font-size: 1.75rem;
+    font-size: 1.75em;
     color: #fff;
     transform: scale(1.5, 1) translateX(-33.34%);
   }

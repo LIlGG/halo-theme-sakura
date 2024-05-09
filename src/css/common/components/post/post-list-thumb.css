@@ -82,7 +82,7 @@
       }
 
       & .iconify {
-        font-size: 1.875rem;
+        font-size: 1.875em;
         color: var(--post-list-thumb-more-color);
         margin-right: 5px;
 
