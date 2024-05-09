@@ -2,14 +2,14 @@ name: resource-build-actions
 on:
   push:
     branches:
-      - next
+      - main
     paths-ignore:
       - 'docs/**'
       - '**.md'
       - 'templates/**'
   pull_request:
     branches:
-      - next
+      - main
     paths-ignore:
       - 'docs/**'
       - '**.md'
