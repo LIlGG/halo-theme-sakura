@@ -13,7 +13,7 @@
 }
 
 .is-active-link {
-  font-weight: 700;
+  font-weight: bold;
 
   &::before {
     background-color: var(--theme-color) !important;

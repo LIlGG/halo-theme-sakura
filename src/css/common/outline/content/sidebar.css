@@ -6,7 +6,8 @@
 
   & .sidebar-inner {
     & .toc-container {
-      width: 12.5rem;
+      max-width: 20rem;
+      width: max-content;
       height: 100%;
       background-color: rgba(255, 255, 255, 0);
       transform: translateX(0);
@@ -35,6 +36,11 @@
         & .toc-list {
           margin: 0;
           padding-left: 10px;
+          font-size: 0.9375em;
+          
+          & .toc-list-item {
+            line-height: 1.8;
+          }
         }
 
         & a {
