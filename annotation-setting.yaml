@@ -30,14 +30,20 @@ spec:
       name: randomImage
       label: 使用随机封面
       value: "true"
+      on-value: "true"
+      off-value: "false"
     - $formkit: checkbox
       name: original
       label: 原创文章
       value: "false"
+      on-value: "true"
+      off-value: "false"
     - $formkit: checkbox
       name: toc
       label: 自动生成目录
       value: "true"
+      on-value: "true"
+      off-value: "false"
 
 ---
 
@@ -54,11 +60,16 @@ spec:
       name: randomImage
       label: 使用随机图
       value: "true"
+      on-value: "true"
+      off-value: "false"
+
     - $formkit: checkbox
       name: toc
       label: 自动生成目录
       value: "true"
-
+      on-value: "true"
+      off-value: "false"
+      
 ---
 
 apiVersion: v1alpha1
