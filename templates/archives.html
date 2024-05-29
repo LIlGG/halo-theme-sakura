@@ -17,7 +17,7 @@
     <article class="archives-article">
       <div id="archives-temp" class="archives-inner">
         <div class="archives-content">
-          <th:block th:each="archive, archiveStat : ${archives.items}">
+          <th:block th:each="archive, archiveStat : ${postFinder.archives(1, 0).items}">
             <th:block th:each="month, monthStat : ${archive.months}">
               <div class="archive-item" th:classappend="${archiveStat.index == 0 ? 'active' : ''}" th:id="|arti-${archive.year}-${month.month}|">
                 <div class="archive-title">
