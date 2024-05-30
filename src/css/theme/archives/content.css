@@ -7,7 +7,7 @@
     &::before {
       content: "";
       position: absolute;
-      height: 75%;
+      height: calc(100% - 65px);
       border-left: 1px dashed #fff;
       left: 17px;
       top: 30px;
