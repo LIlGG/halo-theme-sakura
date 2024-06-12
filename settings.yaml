@@ -658,6 +658,12 @@ spec:
           value: https://api.lixingyong.com/api/images
           help: 随机图 API 地址。
         - $formkit: text
+          name: rimage_custom_param_name
+          label: 随机图 API 资源标识变量
+          validation: "required"
+          value: postid
+          help: 随机图 API 资源标识变量，默认为postid，可根据随机图 API 的需要自行设置。
+        - $formkit: text
           name: rimage_other_params
           label: 第三方 API 自定义参数
           help: 第三方 API 自定义参数，如 category=dongman 。参数会跟随在随机图 API 地址后面
