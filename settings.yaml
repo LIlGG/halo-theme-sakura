@@ -658,11 +658,12 @@ spec:
           value: https://api.lixingyong.com/api/images
           help: 随机图 API 地址。
         - $formkit: text
+          if: "$get(rimage_cover_open).value == true"
           name: rimage_custom_param_name
           label: 随机图 API 资源标识变量
           validation: "required"
           value: postid
-          help: 随机图 API 资源标识变量，默认为postid，可根据随机图 API 的需要自行设置。
+          help: 随机图 API 资源标识变量，默认为 postid，可根据随机图 API 的需要自行设置。
         - $formkit: text
           name: rimage_other_params
           label: 第三方 API 自定义参数
