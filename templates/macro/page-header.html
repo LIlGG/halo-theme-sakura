@@ -32,7 +32,7 @@
         <!--/* 随机图 */-->
         <th:block
           th:if="${#strings.isEmpty(frontCover) && randomCoverAvailable}"
-          th:with="randomImage = |${theme.config.random_image.rimage_url}?${_templateId}id=${id != null ? id : extension.metadata.name}&type=url&itype=${theme.config.random_image.rimage_cover_itype}${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}${#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '&' + theme.config.random_image.rimage_other_params}|"
+          th:with="randomImage = |${theme.config.random_image.rimage_url}?${_templateId}id=${id != null ? id : extension.metadata.name}&${theme.config.random_image.rimage_custom_param_name}=${id != null ? id : extension.metadata.name}&type=url&itype=${theme.config.random_image.rimage_cover_itype}${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}${#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '&' + theme.config.random_image.rimage_other_params}|"
         >
           <img
             th:src="${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/load/orange.progress-bar-stripe-loader.svg') : (randomImage + (#strings.isEmpty(theme.config.random_image.rimage_cover_lqip_params) ? '' : '&' + theme.config.random_image.rimage_cover_lqip_params))}"
