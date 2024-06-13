@@ -45,6 +45,7 @@
     "@iconify/json": "^2.2.75",
     "@types/node": "^20.2.5",
     "@types/video.js": "^7.3.52",
+    "all-contributors-cli": "^6.26.1",
     "autoprefixer": "^10.4.14",
     "colorguard": "^1.2.1",
     "glob": "^10.2.7",
