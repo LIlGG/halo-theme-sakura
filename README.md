@@ -135,6 +135,16 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://lixingyong.com"><img src="https://avatars2.githubusercontent.com/u/31335418?v=4?s=100" width="100px;" alt="Takagi"/><br /><sub><b>Takagi</b></sub></a><br /><a href="https://github.com/LIlGG/halo-theme-sakura/commits?author=LIlGG" title="Code">💻</a> <a href="https://github.com/LIlGG/halo-theme-sakura/commits?author=LIlGG" title="Documentation">📖</a> <a href="#example-LIlGG" title="Examples">💡</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://ryanc.cc"><img src="https://avatars2.githubusercontent.com/u/21301288?v=4?s=100" width="100px;" alt="Ryan Wang"/><br /><sub><b>Ryan Wang</b></sub></a><br /><a href="#design-ruibaby" title="Design">🎨</a> <a href="#ideas-ruibaby" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://mashiro.best"><img src="https://avatars2.githubusercontent.com/u/22992947?v=4?s=100" width="100px;" alt="Parasomnia"/><br /><sub><b>Parasomnia</b></sub></a><br /><a href="https://github.com/LIlGG/halo-theme-sakura/commits?author=parasomn1a" title="Code">💻</a> <a href="#design-parasomn1a" title="Design">🎨</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://2heng.xin"><img src="https://avatars2.githubusercontent.com/u/16148054?v=4?s=100" width="100px;" alt="Mashiro"/><br /><sub><b>Mashiro</b></sub></a><br /><a href="#design-mashirozx" title="Design">🎨</a> <a href="#ideas-mashirozx" title="Ideas, Planning, & Feedback">🤔</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
