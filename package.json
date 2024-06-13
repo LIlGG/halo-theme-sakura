@@ -1,7 +1,6 @@
 {
   "name": "halo-theme-sakura",
   "private": true,
-  "version": "2.0.0",
   "description": "Halo 版本的樱花🌸主题",
   "scripts": {
     "dev": "vite build --watch --mode development",
