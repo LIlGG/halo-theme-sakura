@@ -153,5 +153,11 @@
       "copy": "复制成功！<br>Copied to clipboard successfully!"
     },
     "copy_code": "复制代码"
+  },
+  "search": {
+    "search-modal": {
+      "title": "输入后按回车搜索 ...",
+      "placeholder": "搜索 ..."
+    }
   }
 }

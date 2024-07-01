@@ -1,0 +1,29 @@
+.search-container {
+  & .search-box {
+    position: relative;
+    margin-bottom: 3.125rem;
+    margin-top: 2.5rem;
+
+    & svg {
+      font-size: 1.5em;
+      line-height: 1;
+      color: #ddd;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 1rem;
+    }
+
+    & input {
+      font-size: 1rem;
+      background: #fff;
+      background: var(--background-color);
+      padding: 0.75rem 1.5rem 0.75rem 4rem;
+      width: 100%;
+      outline: none;
+      border-radius: 50px;
+      box-sizing: border-box;
+      transition: background 1s;
+    }
+  }
+}

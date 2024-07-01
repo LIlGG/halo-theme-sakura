@@ -1,10 +1,56 @@
 import { documentFunction, sakura } from "../main";
 import { WindowEventProxy } from "../utils/eventProxy";
+declare const SearchWidget: any;
 
 /**
  * 全局事件模块
  */
 export class Events {
+  /**
+   * 注册搜索模态框事件
+   *
+   * @returns
+   */
+  @documentFunction(false)
+  public searchModal() {
+    const jsToggerSearch = document.querySelector(".searchbox") as HTMLElement;
+    if (!jsToggerSearch) {
+      return;
+    }
+
+    const jsSearchModal = document.querySelector(".js-search-modal.search-form-modal") as HTMLElement;
+    if (!jsSearchModal) {
+      return;
+    }
+    jsToggerSearch.addEventListener("click", () => {
+      jsSearchModal.classList.add("is-visible");
+    });
+
+    jsSearchModal.addEventListener("submit", (event: SubmitEvent) => {
+      if (!sakura.$pjax) {
+        return;
+      }
+      event.preventDefault();
+      const form = event.target;
+      if (!(form && form instanceof HTMLFormElement)) {
+        return;
+      }
+      const action = form.action;
+      const keyword = form.keyword;
+      sakura.$pjax.loadUrl(`${action}?${keyword.name}=${keyword.value}`);
+      jsSearchModal.classList.remove("is-visible");
+      sakura.$pjax.refresh();
+    });
+
+    const jsSearchClose = document.querySelector(".search-close") as HTMLElement;
+    if (!jsSearchClose) {
+      return;
+    }
+
+    jsSearchClose.addEventListener("click", () => {
+      jsSearchModal.classList.remove("is-visible");
+    });
+  }
   /**
    * 注册滚动事件
    *
