@@ -10,8 +10,11 @@
   <th:block th:fragment="content">
     <div class="search-container">
       <th:block th:if="${searchResult.total gt 0}">
-        <h1 class="page-title" data-i18n="page.none.title"></h1>
-        <!-- 使用列表循环展示 -->
+        <h1
+          class="search-title"
+          data-i18n="search.search_result.title"
+          th:i18n-options="|{keyword: '${searchResult.keyword}'}|"
+        ></h1>
         <th:block th:each="document : ${searchResult.hits}">
           <th:block th:replace="~{module/search/search-item :: item(${document})}" />
         </th:block>
@@ -24,7 +27,7 @@
               class="text-input"
               type="search"
               name="keyword"
-              data-i18n="[placeholder]search.search-modal.placeholder"
+              data-i18n="[placeholder]search.search_modal.placeholder"
               required
             />
           </form>

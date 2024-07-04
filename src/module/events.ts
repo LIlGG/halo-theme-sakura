@@ -7,7 +7,7 @@ declare const SearchWidget: any;
  */
 export class Events {
   /**
-   * 注册搜索模态框事件
+   * 注册搜索事件，兼容搜索组件 2.3.x 及以下版本
    *
    * @returns
    */
@@ -15,6 +15,13 @@ export class Events {
   public searchModal() {
     const jsToggerSearch = document.querySelector(".searchbox") as HTMLElement;
     if (!jsToggerSearch) {
+      return;
+    }
+
+    if (!sakura.getPageConfig("showSearchModal")) {
+      jsToggerSearch.addEventListener("click", () => {
+        SearchWidget.open();
+      });
       return;
     }
 

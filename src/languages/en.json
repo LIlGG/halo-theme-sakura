@@ -163,5 +163,14 @@
       "copy": "Copied to clipboard successfully!"
     },
     "copy_code": "Copy code"
+  },
+  "search": {
+    "search_modal": {
+      "title": "Press Enter to search after typing...",
+      "placeholder": "Search..."
+    },
+    "search_result": {
+      "title": "Search results: {{ keyword }}"
+    }
   }
 }

@@ -1,8 +1,9 @@
 .search-container {
+  margin-top: 3.5rem;
+
   & .search-box {
     position: relative;
     margin-bottom: 3.125rem;
-    margin-top: 2.5rem;
 
     & svg {
       font-size: 1.5em;
@@ -25,5 +26,15 @@
       box-sizing: border-box;
       transition: background 1s;
     }
+  }
+
+  & h1.search-title {
+    font-size: 20px;
+    font-weight: 400;
+    border: 1px dashed #ddd;
+    padding: 10px 15px;
+    color: #828282;
+    margin-bottom: 30px;
+    text-align: center;
   }
 }

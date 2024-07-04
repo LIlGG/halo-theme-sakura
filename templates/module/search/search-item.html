@@ -11,16 +11,12 @@
     <meta itemprop="description" th:content="${document.description}" />
   </span>
 
-  <div th:utext="${document.type}"></div>
-
   <th:block th:switch="${document.type}">
-    <th:block
-      th:case="post.content.halo.run"
-      th:replace="~{macro/content :: content(${postFinder.getByName(document.metadataName)})}"
-    />
-    <th:block
-      th:case="singlepage.content.halo.run"
-      th:replace="~{macro/content :: content(${singlePageFinder.getByName(document.metadataName)})}"
-    />
+    <th:block th:case="post.content.halo.run">
+      <th:block th:replace="~{macro/content :: content(${postFinder.getByName(document.metadataName)})}" />
+    </th:block>
+    <th:block th:case="singlepage.content.halo.run">
+      <th:block th:replace="~{macro/content :: content(${postFinder.getByName(document.metadataName)})}" />
+    </th:block>
   </th:block>
 </article>
