@@ -91,6 +91,8 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 - [x] 瀑布流相册
 - [x] 适配瞬间页面，支持点赞及评论。
 - [x] 文章字数、更新时间提醒
+- [x] 404 页面
+- [x] 用户登录及文章所属用户
 
 > Tip:
 >> 上述功能大部分均可配置。具体操作在 后台 -> 外观 -> 主题 -> 设置 中进行配置
@@ -98,9 +100,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 
 ## <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">  待适配功能
 
-- [x] 404 页面
 - [ ] 自定义邮件模板，需等待 Halo 支持
-- [x] 用户登录及文章所属用户
 - [ ] 自定义符合主题的评论插件
 
 ## 💫 与 1.x 比较
@@ -118,7 +118,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 | 移动端适配 | √ | √ |  |
 | 深色模式 | √ | √ |  |
 | 主题自定义评论 | × | √ |  |
-| 路由搜索 | &bull; | √ | 2.x 支持插件搜索，后续将支持路由搜索 |
+| 路由搜索 | √ | √ | 2.x 支持插件搜索及路由搜索 |
 | 邮件模板 | × | √ |  |
 | 看板娘 | √ | √ | 2.x 使用插件支持，并且可以基于 ChatGPT 进行对话 |
 | 首页视频 | √ | √ | 2.x 不再支持失效的接口，但默认的本地视频支持 HLS 等流视频 |
