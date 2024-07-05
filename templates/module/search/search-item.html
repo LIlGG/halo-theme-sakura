@@ -18,5 +18,8 @@
     <th:block th:case="singlepage.content.halo.run">
       <th:block th:replace="~{macro/content :: content(${postFinder.getByName(document.metadataName)})}" />
     </th:block>
+    <th:block th:case="moment.moment.halo.run">
+      <th:block th:replace="~{module/search/search-moment :: content(${document})}" />
+    </th:block>
   </th:block>
 </article>
