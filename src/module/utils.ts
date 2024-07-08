@@ -1,5 +1,4 @@
 import { documentFunction, sakura } from "../main";
-declare const SearchWidget: any;
 
 export class Utils {
   /**
@@ -11,25 +10,6 @@ export class Utils {
     if (menuItemSvgElements && menuItemSvgElements.length > 0) {
       import("font-awesome-animation/css/font-awesome-animation.min.css");
     }
-  }
-
-  /**
-   * 唤起搜索组件
-   *
-   * //TODO 使用搜索组件将无法享受到 Pjax
-   *
-   * @returns
-   */
-  @documentFunction(false)
-  public openSearch() {
-    const jsToggerSearch = document.querySelector(".searchbox") as HTMLElement;
-    if (!jsToggerSearch) {
-      return;
-    }
-
-    jsToggerSearch.addEventListener("click", () => {
-      SearchWidget.open();
-    });
   }
 
   /**

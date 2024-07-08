@@ -1,7 +1,7 @@
 <!--/* 首屏 */-->
 <th:block th:fragment="variables">
   <th:block th:replace="~{module/variables/layout}"></th:block>
-  <th:block th:if="${_templateId == 'moments'}">
+  <th:block th:if="${_templateId == 'moments' or _templateId == 'moment'}">
     <th:block th:replace="~{module/variables/moments}"></th:block>
   </th:block>
   <th:block th:if="${_templateId == 'post'}">
