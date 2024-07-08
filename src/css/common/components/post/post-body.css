@@ -154,14 +154,33 @@
 
   & ol,
   & ul {
-    list-style: disc;
     color: var(--entry-content-list-color);
     margin-left: 0;
     border-radius: 10px;
     padding-inline-start: 30px;
 
-    & p {
+    & li {
       margin: 1em 0;
+    }
+  }
+
+  & ul {
+    list-style: disc;
+  }
+
+  & ol {
+    list-style: decimal;
+
+    & ol {
+      list-style: lower-alpha;
+
+      & ol {
+        list-style: lower-roman;
+
+        & ol {
+          list-style: decimal;
+        }
+      }
     }
   }
 
