@@ -3,7 +3,33 @@ import { I18nFormat } from "../utils/i18nFormat";
 import { Util } from "../utils/util";
 
 export default class Post {
-  
+  /**
+   * 为 mark（高亮）标签内的直接文本块添加 span 标签。
+   *
+   * 用于增加文本颜色与背景色的对比度，提高可读性。
+   */
+  @documentFunction()
+  public addMarkTextSpan() {
+    const markElements = document.querySelectorAll("mark");
+    if (!markElements) {
+      return;
+    }
+    markElements.forEach((markElement) => {
+      const markNodes = markElement.childNodes;
+      if (!markNodes) {
+        return;
+      }
+      markNodes.forEach((node) => {
+        if (node.nodeType === 3) {
+          const spanElement = document.createElement("span");
+          spanElement.className = "mark-text";
+          spanElement.textContent = node.textContent;
+          node.replaceWith(spanElement);
+        }
+      });
+    });
+  }
+
   /**
    * 自动计算打赏弹出位置
    * 子菜单位置为：父菜单宽度 / 2 - 子菜单宽度 / 2
@@ -28,7 +54,7 @@ export default class Post {
     rewardMainElement.style.visibility = "hidden";
     rewardMainElement.style.display = "block";
     const subWidth = rewardMainElement.offsetWidth;
-    console.log(parentWidth, subWidth)
+    console.log(parentWidth, subWidth);
     rewardMainElement.style.display = "none";
     rewardMainElement.style.visibility = "visible";
     const subLeft = parentWidth / 2 - subWidth / 2;
@@ -44,7 +70,10 @@ export default class Post {
     if (!contentElement) {
       return;
     }
-    if (sakura.getPageConfig("isOriginal") == "false" || !sakura.getThemeConfig("post", "post_original_copy", Boolean)?.valueOf()) {
+    if (
+      sakura.getPageConfig("isOriginal") == "false" ||
+      !sakura.getThemeConfig("post", "post_original_copy", Boolean)?.valueOf()
+    ) {
       return;
     }
     contentElement.addEventListener("copy", (event) => {
@@ -183,7 +212,7 @@ export default class Post {
     if (!sakura.getPageConfig("postLastModifyTime")) {
       return;
     }
-    
+
     const postLastModifyTime = sakura.getPageConfig("postLastModifyTime");
     const editTime = new Date(postLastModifyTime);
     const time = new Date().getTime() - editTime.getTime();

@@ -263,6 +263,12 @@
     }
   }
 
+  & mark {
+    & > .mark-text {
+      mix-blend-mode: difference;
+    }
+  }
+
   @mixin screens-md {
     & p {
       font-size: 0.875em;
