@@ -12,6 +12,7 @@
   padding-top: 2em;
   box-shadow: 0 0.625em 2em 0px rgba(0, 0, 0, 0.4);
   filter: brightness(var(--theme-brightness));
+  white-space: var(--entry-content-pre-white-space);
 
   &::before {
     content: " ";
