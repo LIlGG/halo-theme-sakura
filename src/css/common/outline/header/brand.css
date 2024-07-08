@@ -35,6 +35,7 @@
   @mixin screens-md {
     & .site-title {
       font-size: 1.25rem;
+      margin-right: 0.625rem;
 
       & img {
         height: 2rem;
@@ -42,7 +43,6 @@
         border-radius: 100%;
         margin: 0;
         vertical-align: middle;
-        margin-right: 0.625rem;
       }
     }
   }

@@ -35,7 +35,6 @@
     width: 100%;
     margin: 0 auto;
     position: fixed;
-    padding: 0 1.25rem;
     box-sizing: border-box;
     top: 0;
     transition: top 0.3s ease-in-out;
@@ -48,8 +47,21 @@
       justify-content: center;
     }
 
+    & .header-after,
+    & .header-before {
+      position: absolute;
+    }
+
+    & .header-before {
+      left: 1.25rem;
+    }
+
     & .header-content {
       flex: 1;
+    }
+
+    & .header-after {
+      right: 1.25rem;
     }
   }
 
@@ -62,6 +74,11 @@
 
     & .header-inner {
       padding: 0;
+
+      & .header-after,
+      & .header-before {
+        position: initial;
+      }
 
       & .header-before {
         flex: 1;
