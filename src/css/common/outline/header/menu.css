@@ -24,13 +24,13 @@
   }
 }
 
-& .navbar {
+.navbar {
   position: relative;
   float: right;
   animation: fadeInRight 0.2s;
 
   & ul,
-  li {
+  & li {
     list-style: none;
     margin-left: 0;
   }
