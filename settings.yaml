@@ -151,7 +151,20 @@ spec:
           value: Hi,Friend
           help: 移动端：将显示在导航栏中，桌面端：该文本只有头部样式开启故障文字才能显示
         - $formkit: checkbox
-          name: focus_infos
+          name: focus_info_self_intro
+          id: focus_info_self_intro
+          key: focus_info_self_intro
+          if: "$get(head_focus).value == true"
+          label: 显示个人介绍
+          value: false
+        - $formkit: text
+          name: focus_info_self_intro_text
+          id: focus_info_self_intro_text
+          key: focus_info_self_intro_text
+          if: "$get(focus_info_self_intro).value == true"
+          label: 个人介绍
+        - $formkit: checkbox
+          name: focus_info_socials
           if: "$get(head_focus).value == true"
           label: 显示社交信息
           value: true
