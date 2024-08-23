@@ -35,7 +35,7 @@
                 id="qrcode"
                 class="qrcode"
                 th:title="${post.spec.title}"
-                th:attr="data-url=${post.status.permalink}"
+                th:attr="data-url=@{|${site.url}${post.status.permalink}|}"
               ></canvas>
               <div class="help">
                 <p data-i18n="share.wechat.help_1"></p>
