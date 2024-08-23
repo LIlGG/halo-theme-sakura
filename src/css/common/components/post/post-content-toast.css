@@ -15,13 +15,12 @@
   }
 
   & .content-toast {
-    display: block;
-    padding: 0.5em 0.5em 0.5em 1em;
-    height: 1.25em;
+    display: flex;
+    padding: 0.25em 0.25em 0.25em 0.5em;
     word-break: keep-all;
     white-space: nowrap;
     overflow: hidden;
-    width: 95%;
+    width: 100%;
     transition: width, padding 0.5s ease;
     overflow-x: auto;
   }

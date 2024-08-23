@@ -18,8 +18,8 @@
           <div class="card-content">
             <div
               th:unless="${not #strings.isEmpty(theme.config.patternimg.category_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
-              class="categories-title">
-              <span class="iconify iconify--xlarge" data-icon="fa:bookmark"></span>&nbsp;&nbsp;<span data-i18n="page.categories.title"></span>
+              class="categories-title items-center">
+              <span class="iconify" data-icon="fa:bookmark"></span>&nbsp;&nbsp;<span data-i18n="page.categories.title"></span>
             </div>
             <div class="categories-chips">
               <a data-pjax th:each="category : ${categories}" th:href="@{${category.status.permalink}}"

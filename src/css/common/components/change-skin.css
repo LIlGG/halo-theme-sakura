@@ -128,13 +128,17 @@
 
   & .menu-list {
     & li {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       margin: 6px;
       line-height: 2.25rem;
       width: 2.25rem;
-      background-color: var( --theme-item-background-color);
+      height: 2.25rem;
+      background-color: var(--theme-item-background-color);
       border-radius: 50%;
       cursor: pointer;
+
 
       &:hover {
         background-color: var(--theme-color);

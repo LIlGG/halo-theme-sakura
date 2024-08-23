@@ -20,7 +20,7 @@
         aria-label="viewing the article details"
       ></a>
     </h3>
-    <div class="p-time">
+    <div class="p-time items-center">
       <span class="iconify" data-icon="solar:clock-circle-linear"></span>
       <time
         data-i18n="postlist.time"
@@ -41,7 +41,7 @@
 
   <footer class="entry-footer">
     <div class="post-more">
-      <a data-pjax th:href="@{${momentDoc.permalink}}" aria-label="viewing the article details">
+      <a class="items-center" data-pjax th:href="@{${momentDoc.permalink}}" aria-label="viewing the article details">
         <span class="iconify" data-icon="akar-icons:more-horizontal-fill"></span>
       </a>
     </div>

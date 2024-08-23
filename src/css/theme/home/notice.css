@@ -3,7 +3,9 @@
   border: 1px dashed #ddd;
   color: var(--color);
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  width: 100%;
   background: var(--notice-background-color);
   border-radius: 10px;
   animation: main 0.6s;
@@ -15,11 +17,8 @@
   }
 
   & .iconify {
-    top: 0;
     color: #999;
-    font-size: 1.125em;
     padding-right: 10px;
-    padding-bottom: 5px;
   }
 
   @mixin screens-md {

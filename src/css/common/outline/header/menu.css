@@ -4,7 +4,6 @@
   pointer-events: none;
 
   & .lower {
-    display: inline-block;
     font-size: 1rem;
     position: relative;
     pointer-events: auto;

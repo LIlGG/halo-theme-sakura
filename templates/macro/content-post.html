@@ -29,7 +29,7 @@
 
     <footer class="post-footer">
       <div>
-        <p>
+        <p class="items-center">
           Q.E.D.
           <span class="iconify" data-icon="fa:meetup" style="color: #d34836"></span>
         </p>
@@ -53,13 +53,13 @@
       </div>
       <div class="post-footer-meta">
         <div class="post-license" itemprop="license">
-          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow"
+          <a class="items-center" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow"
             aria-label="accessing the Creative Commons License">
             <span class="iconify" data-icon="fa:creative-commons"></span>
             <span data-i18n="post.license"></span>
           </a>
         </div>
-        <div class="post-tags">
+        <div class="post-tags items-center">
           <th:block th:if="${not #lists.isEmpty(post.tags)}">
             <span class="iconify" data-icon="system-uicons:tags" style="scale: 1.3;"></span>
             <a

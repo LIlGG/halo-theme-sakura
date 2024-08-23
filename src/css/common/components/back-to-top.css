@@ -70,6 +70,6 @@
   }
 
   @media screen and (max-width: 860px) {
-    display: block;
+    display: flex;
   }
 }

@@ -38,9 +38,9 @@
             <div class="card-content">
               <div
                 th:unless="${not #strings.isEmpty(theme.config.patternimg.tag_patternimg)} or (${theme.config.random_image.rimage_cover_sheet_open} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)})"
-                class="tag-title"
+                class="tag-title items-center"
               >
-                <span class="iconify iconify--xxlarge" data-icon="fa:tags"></span>
+                <span class="iconify" data-icon="fa:tags"></span>
                 <span data-i18n="page.tags.title"></span>
               </div>
               <div class="tag-chips">

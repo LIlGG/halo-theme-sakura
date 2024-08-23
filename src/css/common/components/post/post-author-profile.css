@@ -44,14 +44,13 @@
     margin: 1rem 0 0;
     color: #7d8588;
     letter-spacing: 0;
-    display: inline-block;
+    display: inline-flex;
     padding: 1rem;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
 
     & .iconify {
       color: var(--theme-color);
-      margin-right: 0.625em;
     }
   }
 

@@ -24,7 +24,7 @@
     </span>
 
     <div class="post-content-wrap">
-      <div class="post-date">
+      <div class="post-date items-center">
         <span class="iconify" data-icon="solar:clock-circle-linear"></span>
         <time
           class="publish-time"
@@ -46,28 +46,38 @@
         <h1 th:text="${post.spec.title}"></h1>
       </a>
       <div class="post-meta">
-        <span>
+        <span class="items-center">
           <span class="iconify" data-icon="solar:eye-linear"></span>
           <span data-i18n="postlist.heat" th:i18n-options="|{visit: '${post.stats.visit}'}|"></span>
         </span>
-        <span class="comments-number">
+        <span class="comments-number items-center">
           <th:block th:unless="${theme.config.others.keep_record_mode}">
             <span class="iconify" data-icon="solar:chat-line-line-duotone"></span>
             <span data-i18n="postlist.comments" th:i18n-options="|{comment: '${post.stats.comment}'}|"> </span>
           </th:block>
         </span>
         <th:block th:if="${#lists.size(post.categories)} gt 0">
-          <span>
+          <span class="items-center">
             <span class="iconify" data-icon="solar:folder-with-files-outline"></span>
-            <a data-pjax th:href="${post.categories[0].status.permalink}" th:text="${post.categories[0].spec.displayName}"
-              aria-label="viewing the first category the article belongs to"> </a>
+            <a
+              data-pjax
+              th:href="${post.categories[0].status.permalink}"
+              th:text="${post.categories[0].spec.displayName}"
+              aria-label="viewing the first category the article belongs to"
+            >
+            </a>
           </span>
         </th:block>
       </div>
       <div class="float-content">
         <p th:text="${post.status.excerpt}"></p>
         <div class="post-bottom">
-          <a data-pjax th:href="@{${post.status.permalink}}" class="button-normal" aria-label="viewing the article details">
+          <a
+            data-pjax
+            th:href="@{${post.status.permalink}}"
+            class="button-normal items-center"
+            aria-label="viewing the article details"
+          >
             <span class="iconify" data-icon="akar-icons:more-horizontal-fill"></span>
           </a>
         </div>
@@ -75,7 +85,12 @@
     </div>
 
     <div class="post-thumb">
-      <a data-pjax th:href="@{${post.status.permalink}}" th:alt="${post.spec.title}" aria-label="viewing the article details">
+      <a
+        data-pjax
+        th:href="@{${post.status.permalink}}"
+        th:alt="${post.spec.title}"
+        aria-label="viewing the article details"
+      >
         <img
           th:if="${not #strings.isEmpty(post.spec.cover)}"
           class="lazyload"
