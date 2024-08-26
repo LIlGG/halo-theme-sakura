@@ -5,7 +5,7 @@
     th:target="${menuItem.spec.target?.value}"
     aria-label="navigate to the target menu"
   >
-    <span class="items-center faa-parent animated-hover" th:classappend="|${#annotations.contains(menuItem, 'animation') ? 'animation' : ''}|">
+    <span class="flex-child-center faa-parent animated-hover" th:classappend="|${#annotations.contains(menuItem, 'animation') ? 'animation' : ''}|">
       <span
         th:if="${#annotations.contains(menuItem, 'icon') and #annotations.get(menuItem, 'icon') != ''}"
         class="iconify"

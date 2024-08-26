@@ -24,7 +24,7 @@
     </span>
 
     <div class="post-content-wrap">
-      <div class="post-date items-center">
+      <div class="post-date flex-child-center">
         <span class="iconify" data-icon="solar:clock-circle-linear"></span>
         <time
           class="publish-time"
@@ -46,18 +46,18 @@
         <h1 th:text="${post.spec.title}"></h1>
       </a>
       <div class="post-meta">
-        <span class="items-center">
+        <span class="flex-child-center">
           <span class="iconify" data-icon="solar:eye-linear"></span>
           <span data-i18n="postlist.heat" th:i18n-options="|{visit: '${post.stats.visit}'}|"></span>
         </span>
-        <span class="comments-number items-center">
+        <span class="comments-number flex-child-center">
           <th:block th:unless="${theme.config.others.keep_record_mode}">
             <span class="iconify" data-icon="solar:chat-line-line-duotone"></span>
             <span data-i18n="postlist.comments" th:i18n-options="|{comment: '${post.stats.comment}'}|"> </span>
           </th:block>
         </span>
         <th:block th:if="${#lists.size(post.categories)} gt 0">
-          <span class="items-center">
+          <span class="flex-child-center">
             <span class="iconify" data-icon="solar:folder-with-files-outline"></span>
             <a
               data-pjax
@@ -75,7 +75,7 @@
           <a
             data-pjax
             th:href="@{${post.status.permalink}}"
-            class="button-normal items-center"
+            class="button-normal flex-child-center"
             aria-label="viewing the article details"
           >
             <span class="iconify" data-icon="akar-icons:more-horizontal-fill"></span>

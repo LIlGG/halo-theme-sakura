@@ -40,7 +40,7 @@
       th:if="${(theme.config.mainScreen.focus_info_self_intro or theme.config.mainScreen.focus_info_socials) and (not #arrays.isEmpty(theme.config.sns.items))}"
     >
       <p
-        class="items-center"
+        class="flex-child-center"
         th:if="${theme.config.mainScreen.focus_info_self_intro and (not #strings.isEmpty(theme.config.mainScreen.focus_info_self_intro_text))}"
       >
         <span class="iconify" data-icon="fa:quote-left"></span>

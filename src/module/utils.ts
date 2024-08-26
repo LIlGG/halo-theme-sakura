@@ -233,7 +233,7 @@ export class Utils {
     codeElements.forEach((codeElement) => {
       const copyElement = document.createElement("span");
       copyElement.classList.add("copy-code");
-      copyElement.classList.add("items-center");
+      copyElement.classList.add("flex-child-center");
       copyElement.setAttribute("title", sakura.translate("common.copy_code", "复制代码"));
       copyElement.innerHTML = `<span class="iconify" data-icon="fa:clipboard"></span>`;
       codeElement.after(copyElement);
