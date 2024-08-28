@@ -16,6 +16,13 @@ NEXT / PREVIOUS POSTS
             class="lazyload"
             th:src="${#theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
             th:data-src="${postCursor.previous.spec.cover}"
+            th:data-srcset="|
+            ${thumbnail.gen(postCursor.previous.spec.cover, 's')} 400w,
+            ${thumbnail.gen(postCursor.previous.spec.cover, 'm')} 800w,
+            ${thumbnail.gen(postCursor.previous.spec.cover, 'l')} 1200w,
+            ${thumbnail.gen(postCursor.previous.spec.cover, 'xl')} 1600w
+            |"
+            data-sizes="auto"
             alt="The cover picture of the previous content"
             height="160"
             width="390"
@@ -68,6 +75,13 @@ NEXT / PREVIOUS POSTS
             class="lazyload"
             th:src="${#theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
             th:data-src="${postCursor.next.spec.cover}"
+            th:data-srcset="|
+            ${thumbnail.gen(postCursor.next.spec.cover, 's')} 400w,
+            ${thumbnail.gen(postCursor.next.spec.cover, 'm')} 800w,
+            ${thumbnail.gen(postCursor.next.spec.cover, 'l')} 1200w,
+            ${thumbnail.gen(postCursor.next.spec.cover, 'xl')} 1600w
+            |"
+            data-sizes="auto"
             alt="The cover picture of the next content"
             height="160"
             width="390"
@@ -78,12 +92,12 @@ NEXT / PREVIOUS POSTS
             th:with="randomUrl = |${theme.config.random_image.rimage_url}?${_templateId}id=${postCursor.next.metadata.name}&${theme.config.random_image.rimage_custom_param_name}=${postCursor.next.metadata.name}&type=url&itype=${theme.config.random_image.rimage_cover_itype}${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}${#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '&' + theme.config.random_image.rimage_other_params}|"
             th:src="${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/load/orange.progress-bar-stripe-loader.svg') : (randomUrl + (#strings.isEmpty(theme.config.random_image.rimage_cover_lqip_params) ? '' : '&' + theme.config.random_image.rimage_cover_lqip_params))}"
             th:data-srcset="|
-          ${randomUrl}&th=400 400w,
-          ${randomUrl}&th=960 960w,
-          ${randomUrl}&th=1280 1280w,
-          ${randomUrl}&th=1440 1440w,
-          ${randomUrl}&th=1920 1920w
-          |"
+            ${randomUrl}&th=400 400w,
+            ${randomUrl}&th=960 960w,
+            ${randomUrl}&th=1280 1280w,
+            ${randomUrl}&th=1440 1440w,
+            ${randomUrl}&th=1920 1920w
+            |"
             data-sizes="auto"
             class="lazyload"
             th:classappend="${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
