@@ -58,6 +58,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Terryisthebest",
+      "name": "Terryliu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/140528909?v=4",
+      "profile": "https://github.com/Terryisthebest",
+      "contributions": [
+        "projectManagement"
+      ]
     }
   ],
   "commitType": "docs",
