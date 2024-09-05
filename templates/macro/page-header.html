@@ -20,8 +20,15 @@
         <th:block th:if="${not #strings.isEmpty(frontCover)}">
           <img
             class="lazyload"
-            th:attr="data-src=${frontCover}"
             th:src="${#theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
+            th:data-src="${frontCover}"
+            th:data-srcset="|
+            ${thumbnail.gen(frontCover, 's')} 400w,
+            ${thumbnail.gen(frontCover, 'm')} 800w,
+            ${thumbnail.gen(frontCover, 'l')} 1200w,
+            ${thumbnail.gen(frontCover, 'xl')} 1600w
+            |"
+            data-sizes="auto"
             itemprop="contentUrl"
             alt="large picture of the cover"
             width="1920"

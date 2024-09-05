@@ -17,8 +17,15 @@
       <div class="feature-container">
         <a data-pjax th:href="${feature.link}" target="_blank" aria-label="visit the concentrated content">
           <img
-            th:src="${feature.image}"
+            class="lazyload"
             th:alt="${feature.title}"
+            th:data-src="${feature.image}"
+            th:data-srcset="|
+            ${thumbnail.gen(feature.image, 's')} 400w,
+            ${thumbnail.gen(feature.image, 'm')} 800w,
+            ${thumbnail.gen(feature.image, 'l')} 1200w,
+            |"
+            data-sizes="auto"
             alt="cover picture of focusing on content"
             width="780"
             height="160"

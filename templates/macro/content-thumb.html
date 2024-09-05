@@ -81,6 +81,13 @@
           class="lazyload"
           th:src="${#theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
           th:data-src="${post.spec.cover}"
+          th:data-srcset="|
+          ${thumbnail.gen(post.spec.cover, 's')} 400w,
+          ${thumbnail.gen(post.spec.cover, 'm')} 800w,
+          ${thumbnail.gen(post.spec.cover, 'l')} 1200w,
+          ${thumbnail.gen(post.spec.cover, 'xl')} 1600w
+          |"
+          data-sizes="auto"
           alt="thumbnail of the cover of the post"
           width="430"
           height="300"
