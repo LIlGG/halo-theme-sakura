@@ -264,8 +264,8 @@ export default class Post {
       <span class="content-toast">
         ${message}
       </span>
-      <div class="hide-minicode">
-        <span class="iconify iconify--small" data-icon="fa:times"></span>
+      <div class="hide-minicode flex-child-center">
+        <span class="iconify iconify--small" data-icon="ic:sharp-close"></span>
       </div>
     </div>`;
     if (parentElement.querySelector(`.${className}`)) {

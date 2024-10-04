@@ -5,7 +5,7 @@
     th:target="${menuItem.spec.target?.value}"
     aria-label="navigate to the target menu"
   >
-    <span class="faa-parent animated-hover" th:classappend="|${#annotations.contains(menuItem, 'animation') ? 'animation' : ''}|">
+    <span class="flex-child-center faa-parent animated-hover" th:classappend="|${#annotations.contains(menuItem, 'animation') ? 'animation' : ''}|">
       <span
         th:if="${#annotations.contains(menuItem, 'icon') and #annotations.get(menuItem, 'icon') != ''}"
         class="iconify"
@@ -13,7 +13,7 @@
         th:data-icon="${#annotations.get(menuItem, 'icon')}"
       >
       </span>
-      <th:block th:text="${menuItem.status.displayName}"></th:block>
+      <span th:text="${menuItem.status.displayName}"></span>
     </span>
   </a>
   <ul th:if="${not #lists.isEmpty(menuItem.children)}" class="sub-menu">

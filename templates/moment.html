@@ -63,7 +63,7 @@
           </th:block>
         </div>
         <div class="moment-footer">
-          <div class="moment-time">
+          <div class="moment-time flex-child-center">
             <th:block th:with="momentHour=${#dates.hour(moment.spec.releaseTime)}">
               <th:block th:if="${momentHour >= 5 and momentHour < 8}">
                 <span class="iconify moment-time-icon" data-icon="mdi:weather-sunset-up"></span>

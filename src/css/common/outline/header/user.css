@@ -1,4 +1,5 @@
 .header-user-avatar {
+  display: flex;
   position: relative;
   animation: fadeInRight 1s;
   margin-left: 1.25rem;

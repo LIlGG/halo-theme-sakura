@@ -39,12 +39,18 @@
       th:classappend="${#strings.isEmpty(theme.config.mainScreen.focus_info_self_intro) ? 'info-desc' : ''}"
       th:if="${(theme.config.mainScreen.focus_info_self_intro or theme.config.mainScreen.focus_info_socials) and (not #arrays.isEmpty(theme.config.sns.items))}"
     >
-      <p th:if="${theme.config.mainScreen.focus_info_self_intro and (not #strings.isEmpty(theme.config.mainScreen.focus_info_self_intro_text))}">
+      <p
+        class="flex-child-center"
+        th:if="${theme.config.mainScreen.focus_info_self_intro and (not #strings.isEmpty(theme.config.mainScreen.focus_info_self_intro_text))}"
+      >
         <span class="iconify" data-icon="fa:quote-left"></span>
         <span class="desc" th:text="${theme.config.mainScreen.focus_info_self_intro_text}"></span>
         <span class="iconify" data-icon="fa:quote-right"></span>
       </p>
-      <div class="top-social" th:if="${theme.config.mainScreen.focus_info_socials and (not #arrays.isEmpty(theme.config.sns.items))}">
+      <div
+        class="top-social"
+        th:if="${theme.config.mainScreen.focus_info_socials and (not #arrays.isEmpty(theme.config.sns.items))}"
+      >
         <ul>
           <li id="bg-prev">
             <img class="flipx" th:src="@{/assets/images/next-b.svg}" alt="prev" width="28" height="28" />

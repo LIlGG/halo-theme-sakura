@@ -16,7 +16,7 @@
         </h3>
       </div>
     </div>
-    <p>
+    <p class="flex-child-center">
       <span class="iconify" data-icon="solar:pen-line-duotone"></span>
       <span th:if="${not #strings.isEmpty(post.owner.bio)}" th:text="${post.owner.bio}" itemprop="description" ></span>
       <span th:unless="${not #strings.isEmpty(post.owner.bio)}" data-i18n="user.description"></span>

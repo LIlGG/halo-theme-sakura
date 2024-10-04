@@ -35,7 +35,9 @@
   display: block;
 
   & a {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     height: 3rem;
     width: 3rem;
     padding: 0.625rem;

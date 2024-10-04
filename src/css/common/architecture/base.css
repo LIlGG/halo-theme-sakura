@@ -336,3 +336,9 @@ iframe {
 .is-hide {
   display: none;
 }
+
+.flex-child-center {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375em;
+}

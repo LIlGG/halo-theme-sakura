@@ -21,7 +21,7 @@
             <th:block th:each="month, monthStat : ${archive.months}">
               <div class="archive-item" th:classappend="${archiveStat.index == 0 ? 'active' : ''}" th:id="|arti-${archive.year}-${month.month}|">
                 <div class="archive-title">
-                  <span class="archive-time">
+                  <span class="archive-time flex-child-center">
                     <span class="iconify" data-icon="ph:read-cv-logo-bold"></span>
                   </span>
                   <h3 th:text="${archive.year}+'-'+${month.month}"></h3>
@@ -36,7 +36,7 @@
                     <div class="arrow-left-ar"></div>
                     <div class="brick">
                       <a data-pjax th:href="@{${post.status.permalink}}" aria-label="get the next article">
-                        <span class="time">
+                        <span class="time flex-child-center">
                           <span class="iconify iconify--large" data-icon="ic:round-access-time"></span>
                           <th:block th:text="${#dates.format(post.spec.publishTime,'MM-dd')}"></th:block>
                         </span>

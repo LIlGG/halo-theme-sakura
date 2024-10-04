@@ -14,7 +14,7 @@
     --cd-top-image: url([(${theme.config.others.top_back_img ?: #theme.assets("/images/scroll.png")})]) no-repeat center;
     [# th:if="${theme.config.others.top_back_mode == 'simplify'}"]
       --cd-top-display: none;
-      --mobile-cd-top-display: block;
+      --mobile-cd-top-display: flex;
     [/]
 
     [# th:if="${theme.config.general.list_type == 'round'}"]

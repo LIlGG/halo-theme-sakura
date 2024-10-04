@@ -19,7 +19,7 @@
   <div class="feature">
     <a data-pjax th:href="@{${post.status.permalink}}" aria-label="viewing the article details">
       <div class="overlay">
-        <div class="overlay-inner">
+        <div class="overlay-inner flex-child-center">
           <span class="iconify" data-icon="solar:file-text-outline"></span>
         </div>
       </div>
@@ -75,7 +75,7 @@
         aria-label="viewing the article details"
       ></a>
     </h1>
-    <div class="p-time">
+    <div class="p-time flex-child-center">
       <span th:if="${post.spec.pinned}" class="iconify hotpost" data-icon="solar:fire-outline"></span>
       <span class="iconify" data-icon="solar:clock-circle-linear"></span>
       <time
@@ -97,13 +97,13 @@
 
   <footer class="entry-footer">
     <div class="post-more">
-      <a data-pjax th:href="@{${post.status.permalink}}" aria-label="viewing the article details">
+      <a class="flex-child-center" data-pjax th:href="@{${post.status.permalink}}" aria-label="viewing the article details">
         <span class="iconify" data-icon="akar-icons:more-horizontal-fill"></span>
       </a>
     </div>
     <div class="info-meta">
       <div class="comnum" th:unless="${theme.config.others.keep_record_mode}">
-        <span>
+        <span class="flex-child-center">
           <span class="iconify" data-icon="solar:chat-line-line-duotone"></span>
           <a
             data-pjax
@@ -115,7 +115,7 @@
         </span>
       </div>
       <div class="views">
-        <span>
+        <span class="flex-child-center">
           <span class="iconify" data-icon="solar:eye-linear"></span>
           <span data-i18n="postlist.heat" th:i18n-options="|{visit: '${post.stats.visit}'}|"> </span>
         </span>
