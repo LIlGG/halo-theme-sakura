@@ -17,7 +17,7 @@
     <h1 th:text="${title}"></h1>
   </th:block>
 
-  <th:block th:fragment="content">
+  <th:block th:fragment="content(moment)">
     <span class="moment-container">
       <img
         class="lazyload avatar"
@@ -43,6 +43,13 @@
               th:if="${momentItem.type.name == 'PHOTO'}"
               th:src="${#strings.isEmpty(momentItem.url) ? #theme.assets('/images/load/load.gif') : momentItem.url}"
               th:data-src="${momentItem.url}"
+              th:data-srcset="|
+              ${thumbnail.gen(momentItem.url, 's')} 400w,
+              ${thumbnail.gen(momentItem.url, 'm')} 800w,
+              ${thumbnail.gen(momentItem.url, 'l')} 1200w,
+              ${thumbnail.gen(momentItem.url, 'xl')} 1600w
+              |"
+              data-sizes="auto"
               width="400"
               height="400"
               alt="moment picture"

@@ -273,33 +273,36 @@ export class SakuraApp implements Sakura {
 
     // 挂载 i18n
     if (!Object.getOwnPropertyDescriptor(sakura, "$t")) {
+      const backends: Array<any> = [
+        {
+          type: "backend",
+          read<Namespace>(
+            // @ts-ignore
+            language: LocaleCode,
+            // @ts-ignore
+            namespace: Namespace,
+            callback: (errorValue: unknown, translations: null | [Namespace]) => void
+          ) {
+            import(`./languages/${language}.json`)
+              .then((resources) => {
+                callback(null, resources.default);
+              })
+              .catch((error) => {
+                callback(error, null);
+              });
+          },
+          init: () => {},
+        },
+      ];
+      if (import.meta.env.MODE !== "development") {
+        backends.unshift(LocalStorageBackend)
+      }
       i18next
         .use(LanguageDetector)
         .use(Backend)
         .init({
           backend: {
-            backends: [
-              LocalStorageBackend,
-              {
-                type: "backend",
-                read<Namespace>(
-                  // @ts-ignore
-                  language: LocaleCode,
-                  // @ts-ignore
-                  namespace: Namespace,
-                  callback: (errorValue: unknown, translations: null | [Namespace]) => void
-                ) {
-                  import(`./languages/${language}.json`)
-                    .then((resources) => {
-                      callback(null, resources.default);
-                    })
-                    .catch((error) => {
-                      callback(error, null);
-                    });
-                },
-                init: () => {},
-              },
-            ],
+            backends,
             backendOptions: [
               {
                 prefix: "i18next_sakura_",
