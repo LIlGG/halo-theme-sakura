@@ -11,24 +11,29 @@
   transform: translateX(-15.625rem);
   transition: transform 0.5s ease-out;
 
-  &::after,
-  &::before {
-    background: var(--theme-color);
+  & .sidebar-close {
     position: fixed;
-    content: "";
-    width: 1.875rem;
-    height: 0.1875rem;
     top: 20px;
     left: 16rem;
     pointer-events: auto;
-  }
 
-  &::before {
-    transform: rotate(-45deg);
-  }
+    &::after,
+    &::before {
+      content: "";
+      display: inline-block;
+      background: var(--theme-color);
+      width: 1.875rem;
+      height: 0.1875rem;
+      position: absolute;
+    }
 
-  &::after {
-    transform: rotate(45deg);
+    &::before {
+      transform: rotate(-45deg);
+    }
+
+    &::after {
+      transform: rotate(45deg);
+    }
   }
 
   &.open {
