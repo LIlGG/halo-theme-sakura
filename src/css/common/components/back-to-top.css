@@ -64,9 +64,11 @@
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
   overflow: hidden;
   transition: all 0.3s ease;
+  pointer-events: none;
 
   &.cd-is-visible {
     opacity: 1;
+    pointer-events: auto;
   }
 
   @media screen and (max-width: 860px) {
