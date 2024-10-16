@@ -6,7 +6,7 @@
   height: 100%;
 
   & .avatar {
-    padding: 30px 0;
+    margin: 30px 0;
 
     & img {
       width: 5.625rem;
@@ -28,24 +28,30 @@
     display: flex;
     justify-content: center;
     gap: 0 20px;
+    margin-bottom: 1em;
+    width: 100%;
   }
 
   & .search {
-    & form {
-      position: relative;
-      width: 15.625rem;
-      max-width: 15.625rem;
-      margin: 0 0 20px;
-      padding: 8px 15px;
-      background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em;
 
-      & input {
+    & .search-form {
+      position: relative;
+      padding: 8px 15px;
+      background-color: var(--mobile-search-background-color);
+
+      & .m-search-input {
         width: 100%;
         border: 0;
         padding: 5px;
         text-align: center;
-        border-radius: 3px;
         outline: none;
+        font-size: 1rem;
+        border-radius: 3px;
+        color: var(--mobile-menu-text-color);
       }
     }
   }

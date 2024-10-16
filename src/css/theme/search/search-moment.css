@@ -60,4 +60,21 @@
     margin-top: 1.25rem;
     transition: background 1s;
   }
+
+  @mixin screens-md {
+    & .entry-header {
+      flex-direction: column;
+      align-items: baseline;
+      margin-bottom: 0.67rem;
+      
+      & .entry-title {
+        &h1 {
+          font-size: 1rem;
+          line-height: 1.875rem;
+          max-width: 90%;
+          margin-left: 1rem;
+        }
+      }
+    }
+  }
 }

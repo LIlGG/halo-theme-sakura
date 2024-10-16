@@ -25,7 +25,7 @@ export class Events {
       return;
     }
 
-    const jsSearchModal = document.querySelector(".js-search-modal.search-form-modal") as HTMLElement;
+    const jsSearchModal = document.querySelector(".search-form.search-form-modal") as HTMLElement;
     if (!jsSearchModal) {
       return;
     }
@@ -33,7 +33,7 @@ export class Events {
       jsSearchModal.classList.add("is-visible");
     });
 
-    jsSearchModal.addEventListener("submit", (event: SubmitEvent) => {
+    const handlePjaxSearch = (event: SubmitEvent) => {
       if (!sakura.$pjax) {
         return;
       }
@@ -47,6 +47,14 @@ export class Events {
       sakura.$pjax.loadUrl(`${action}?${keyword.name}=${keyword.value}`);
       jsSearchModal.classList.remove("is-visible");
       sakura.$pjax.refresh();
+
+      // 移动端的情况下，搜索后隐藏搜索框
+      this.closeMobileNav();
+    };
+
+    const searchForms = document.querySelectorAll(".search-form") as NodeListOf<HTMLElement>;
+    searchForms.forEach((searchForm: HTMLElement) => {
+      searchForm.addEventListener("submit", handlePjaxSearch);
     });
 
     const jsSearchClose = document.querySelector(".search-close") as HTMLElement;
@@ -58,6 +66,7 @@ export class Events {
       jsSearchModal.classList.remove("is-visible");
     });
   }
+
   /**
    * 注册滚动事件
    *
@@ -189,16 +198,36 @@ export class Events {
   @documentFunction(false)
   public registerMobileNav() {
     const documents = document.querySelectorAll(".container, .site-nav-toggle, .site-sidebar");
-    document.querySelector(".nav-toggle")?.addEventListener("click", () => {
+    document.querySelector(".nav-toggle")?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      event.preventDefault();
       documents.forEach((element) => {
         element.classList.add("open");
       });
     });
 
-    document.querySelector(".site-sidebar")?.addEventListener("click", () => {
-      documents.forEach((element) => {
-        element.classList.remove("open");
+    document.querySelector(".sidebar-close")?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      this.closeMobileNav();
+    });
+
+    document.querySelector(".container")?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+      this.closeMobileNav();
+    });
+
+    document.querySelectorAll(".menu-root .menu-item").forEach((element) => {
+      element.addEventListener("click", () => {
+        this.closeMobileNav();
       });
+    });
+  }
+
+  public closeMobileNav() {
+    const documents = document.querySelectorAll(".container, .site-nav-toggle, .site-sidebar");
+    documents.forEach((element) => {
+      element.classList.remove("open");
     });
   }
 
