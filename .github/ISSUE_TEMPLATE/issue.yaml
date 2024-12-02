@@ -17,6 +17,11 @@ body:
       required: true
     attributes:
       label: "目前使用的 halo 版本？"
+  - type: input
+    id: web_address
+    attributes:
+      label: "网站地址"
+      description: "提交问题时尽量携带，方便进行排查。"
   - type: markdown
     id: details
     attributes:
