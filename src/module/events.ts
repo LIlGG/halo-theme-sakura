@@ -212,9 +212,12 @@ export class Events {
     });
 
     document.querySelector(".container")?.addEventListener("click", (event) => {
-      event.stopPropagation();
-      event.preventDefault();
-      this.closeMobileNav();
+      const siteSidebarElement = document.querySelector(".site-sidebar");
+      if (siteSidebarElement && siteSidebarElement.classList.contains("open")) {
+        event.stopPropagation();
+        event.preventDefault();
+        this.closeMobileNav();
+      }
     });
 
     document.querySelectorAll(".menu-root .menu-item").forEach((element) => {
