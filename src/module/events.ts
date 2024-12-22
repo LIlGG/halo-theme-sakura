@@ -74,32 +74,56 @@ export class Events {
   @documentFunction(false)
   public registerScrollEvent() {
     const offset = (document.querySelector(".site-header") as HTMLElement)?.offsetHeight || 75;
-    const backToTopElement = document.querySelector(".cd-top") as HTMLElement;
-    const mobileBackToTopElement = document.querySelector(".m-cd-top") as HTMLElement;
-    const changeSkinElement = document.querySelector(".change-skin-gear") as HTMLDivElement;
-    const mobileChangeSkinElement = document.querySelector(".mobile-change-skin") as HTMLDivElement;
-    window.addEventListener("scroll", () => {
-      if (document.documentElement.scrollTop > offset) {
-        backToTopElement?.classList.add("cd-is-visible");
-        changeSkinElement.style.bottom = "0";
-        if (backToTopElement.offsetHeight > window.innerHeight) {
-          backToTopElement.style.top = `${window.innerHeight - backToTopElement.offsetHeight - offset}px`;
-        } else {
-          backToTopElement.style.top = "0";
-        }
-      } else {
-        backToTopElement.style.top = "-900px";
-        backToTopElement?.classList.remove("cd-is-visible");
-        changeSkinElement.style.bottom = "-100px";
-      }
+    const backToTopElement = document.querySelector(".cd-top") as HTMLElement | null;
+    const mobileBackToTopElement = document.querySelector(".m-cd-top") as HTMLElement | null;
+    const changeSkinElement = document.querySelector(".change-skin-gear") as HTMLElement | null;
+    const mobileChangeSkinElement = document.querySelector(".mobile-change-skin") as HTMLElement | null;
 
-      if (document.documentElement.scrollTop > 0) {
-        mobileBackToTopElement.classList.add("cd-is-visible");
-        mobileChangeSkinElement.classList.add("cd-is-visible");
-      } else {
-        mobileBackToTopElement.classList.remove("cd-is-visible");
-        mobileChangeSkinElement.classList.remove("cd-is-visible");
+    const toggleBackToTopVisibility = (isVisible: boolean) => {
+      if (backToTopElement) {
+        if (isVisible) {
+          backToTopElement.classList.add("cd-is-visible");
+        } else {
+          backToTopElement.classList.remove("cd-is-visible");
+        }
       }
+    };
+
+    const updateBackToTopPosition = () => {
+      if (backToTopElement) {
+        const backToTopOffset = backToTopElement.offsetHeight || 0;
+        if (document.documentElement.scrollTop > offset) {
+          backToTopElement.style.top = backToTopOffset > window.innerHeight
+            ? `${window.innerHeight - backToTopOffset - offset}px`
+            : "0";
+        } else {
+          backToTopElement.style.top = "-900px";
+        }
+      }
+    };
+
+    const updateChangeSkinPosition = () => {
+      if (changeSkinElement) {
+        changeSkinElement.style.bottom = document.documentElement.scrollTop > offset ? "0" : "-100px";
+      }
+    };
+
+    const toggleMobileVisibility = () => {
+      if (document.documentElement.scrollTop > 0) {
+        mobileBackToTopElement?.classList.add("cd-is-visible");
+        mobileChangeSkinElement?.classList.add("cd-is-visible");
+      } else {
+        mobileBackToTopElement?.classList.remove("cd-is-visible");
+        mobileChangeSkinElement?.classList.remove("cd-is-visible");
+      }
+    };
+
+    // 滚动事件监听
+    window.addEventListener("scroll", () => {
+      toggleBackToTopVisibility(document.documentElement.scrollTop > offset);
+      updateBackToTopPosition();
+      updateChangeSkinPosition();
+      toggleMobileVisibility();
     });
   }
 
