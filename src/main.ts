@@ -463,7 +463,8 @@ export class SakuraApp implements Sakura {
       return;
     }
     // 也可以通过 `./page/index` 这类具体名称处理，优点是不需要加上 min.js，缺点是需要特殊处理
-    const modulePath = `./page/${_templateId}.min.js`;
+    const version = sakura.getPageConfig("version");
+    const modulePath = `./page/${_templateId}.min.js?v=${version}`;
     await import(modulePath);
   }
 
