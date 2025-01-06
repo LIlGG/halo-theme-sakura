@@ -37,7 +37,7 @@
     <div
       class="header-info no-select"
       th:classappend="${#strings.isEmpty(theme.config.mainScreen.focus_info_self_intro) ? 'info-desc' : ''}"
-      th:if="${(theme.config.mainScreen.focus_info_self_intro or theme.config.mainScreen.focus_info_socials) and (not #arrays.isEmpty(theme.config.sns.items))}"
+      th:if="${theme.config.mainScreen.focus_info_self_intro or theme.config.mainScreen.focus_info_socials}"
     >
       <p
         class="flex-child-center"
