@@ -28,7 +28,7 @@ interface Sakura {
 
 declare var Sakura: {
   prototype: Sakura;
-  new (config?: object): Sakura;
+  new(config?: object): Sakura;
 };
 
 export interface ThemeConfig {
@@ -291,7 +291,7 @@ export class SakuraApp implements Sakura {
                 callback(error, null);
               });
           },
-          init: () => {},
+          init: () => { },
         },
       ];
       if (import.meta.env.MODE !== "development") {
@@ -464,7 +464,7 @@ export class SakuraApp implements Sakura {
     }
     // 也可以通过 `./page/index` 这类具体名称处理，优点是不需要加上 min.js，缺点是需要特殊处理
     const version = sakura.getPageConfig("version");
-    const modulePath = `./page/${_templateId}.min.js?v=${version}`;
+    const modulePath = `./page/${_templateId}-${version}.min.js`;
     await import(modulePath);
   }
 
