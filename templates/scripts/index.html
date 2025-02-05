@@ -1,12 +1,12 @@
 <!--/* 主题 js */-->
 <th:block th:fragment="scripts">
   <!--/* 基础 JS */-->
-  <script type="module" async th:src="@{/assets/dist/main.min.js?v={version}(version=${theme.spec.version})}"></script>
+  <script type="module" async th:src="@{/assets/dist/main-{version}.min.js(version=${theme.spec.version})}"></script>
 
   <!--/* PJAX */-->
-  <script type="module" async th:if="${theme.config.others.poi_pjax}" th:src="@{/assets/dist/libs/pjax.min.js?v={version}(version=${theme.spec.version})}"></script>
+  <script type="module" async th:if="${theme.config.others.poi_pjax}" th:src="@{/assets/dist/libs/pjax-{version}.min.js(version=${theme.spec.version})}"></script>
 
-  <script type="module" async th:src="@{/assets/dist/libs/lazysizes.min.js?v={version}(version=${theme.spec.version})}"></script>
+  <script type="module" async th:src="@{/assets/dist/libs/lazysizes-{version}.min.js(version=${theme.spec.version})}"></script>
 
   <script type="text/javascript" th:inline="javascript">
     function imgError(dom) {

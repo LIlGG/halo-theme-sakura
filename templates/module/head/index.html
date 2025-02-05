@@ -5,8 +5,8 @@
   <meta name="generator" content="Halo 2.0.0">
 
   <!--/* css */-->
-  <link rel="preload" th:href="@{/assets/dist/css/main.min.css?v={version}(version=${theme.spec.version})}" as="style">
-  <link rel="stylesheet" th:href="@{/assets/dist/css/main.min.css?v={version}(version=${theme.spec.version})}">
+  <link rel="preload" th:href="@{/assets/dist/css/main-{version}.min.css(version=${theme.spec.version})}" as="style">
+  <link rel="stylesheet" th:href="@{/assets/dist/css/main-{version}.min.css(version=${theme.spec.version})}">
 
   <!--/* 字体 */-->
   <th:block th:replace="~{module/head/fonts}" />
@@ -14,7 +14,7 @@
   <!--/* 高亮代码样式 */-->
   <link
     rel="stylesheet"
-    th:href="@{/assets/dist/css/highlight-{code_pretty}.min.css(code_pretty=${theme.config.post.code_pretty})}"
+    th:href="@{/assets/dist/css/highlight-{code_pretty}-{version}.min.css(code_pretty=${theme.config.post.code_pretty},version=${theme.spec.version})}"
     type="text/css"
     media="noexist"
     onload="this.media='all'"
