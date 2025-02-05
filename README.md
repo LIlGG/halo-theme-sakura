@@ -144,6 +144,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
       <td align="center" valign="top" width="14.28%"><a href="https://2heng.xin"><img src="https://avatars2.githubusercontent.com/u/16148054?v=4?s=100" width="100px;" alt="Mashiro"/><br /><sub><b>Mashiro</b></sub></a><br /><a href="#design-mashirozx" title="Design">🎨</a> <a href="#ideas-mashirozx" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ShiinaKin"><img src="https://avatars.githubusercontent.com/u/52254895?v=4?s=100" width="100px;" alt="mashirot"/><br /><sub><b>mashirot</b></sub></a><br /><a href="https://github.com/LIlGG/halo-theme-sakura/commits?author=ShiinaKin" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Terryisthebest"><img src="https://avatars.githubusercontent.com/u/140528909?v=4?s=100" width="100px;" alt="Terryliu"/><br /><sub><b>Terryliu</b></sub></a><br /><a href="#financial-Terryisthebest" title="Financial">💵</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://yaklo.skyesc.com"><img src="https://avatars.githubusercontent.com/u/50908861?v=4?s=100" width="100px;" alt="Yaklo"/><br /><sub><b>Yaklo</b></sub></a><br /><a href="https://github.com/LIlGG/halo-theme-sakura/commits?author=Yaklo" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
