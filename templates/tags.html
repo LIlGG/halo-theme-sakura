@@ -18,16 +18,16 @@
       <th:block th:if="${theme.config.tagAndCategory.tag_cloud}">
         <div class="tag-wordcloud-container">
           <script type="text/javascript" th:inline="javascript">
-            const tags = /*[[${tagFinder.listAll()}]]*/
+            (function() {
+              const tagData = /*[[${tagFinder.listAll()}]]*/ || [];
 
-            const wordClouds = tags.map(tag => {
-                return {
-                    text: tag.spec.displayName,
-                    size: tag.postCount,
-                    link: tag.status.permalink,
-                    color: tag.spec.color
-                }
-            })
+              window.wordClouds = tagData.map(tag => ({
+                text: tag.spec.displayName,
+                size: tag.postCount,
+                link: tag.status.permalink,
+                color: tag.spec.color
+              }));
+            })();
           </script>
           <div id="tag-wordcloud" class="wordcloud"></div>
         </div>
