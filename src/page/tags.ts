@@ -57,10 +57,16 @@ export default class Tags {
           .data(words)
           .enter()
           .append("svg:a")
+          .attr("data-pjax", "")
           .attr("xlink:href", function (d: any) {
             return d.link;
           })
-          .attr("data-pjax", "")
+          .on("click", function (event: MouseEvent, d: any) {
+            if (sakura.$pjax) {
+              event.preventDefault();
+              sakura.$pjax.loadUrl(d.link);
+            }
+          })
           .append("text")
           .style("font-size", function (d: any) {
             return d.size;
@@ -80,8 +86,7 @@ export default class Tags {
           });
         // 如果存在 pjax，则刷新 wordCloudElement
         if (sakura.$pjax) {
-          // TODO 虽然添加上了，但似乎没生效
-          sakura.$pjax.refresh(wordCloudElement);
+          sakura.$pjax.refresh(document.querySelector('#tag-wordcloud'));
         }
       });
     layout.start();
