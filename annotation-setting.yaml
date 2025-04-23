@@ -44,6 +44,19 @@ spec:
       value: "true"
       on-value: "true"
       off-value: "false"
+    - $formkit: checkbox
+      name: post_license
+      id: post_license
+      label: 自定义授权协议
+      value: "false"
+      on-value: "true"
+      off-value: "false"
+    - $formkit: text
+      name: post_license_text
+      label: 授权协议
+    - $formkit: text
+      name: post_license_url
+      label: 协议链接
 
 ---
 

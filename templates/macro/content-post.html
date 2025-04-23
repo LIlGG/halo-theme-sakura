@@ -53,10 +53,17 @@
       </div>
       <div class="post-footer-meta">
         <div class="post-license" itemprop="license">
-          <a class="flex-child-center" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow"
-            aria-label="accessing the Creative Commons License">
+          <a th:if="!${#annotations.get(post, 'post_license')}" class="flex-child-center"
+             href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="nofollow"
+             aria-label="accessing the Creative Commons License">
             <span class="iconify" data-icon="fa:creative-commons"></span>
             <span data-i18n="post.license"></span>
+          </a>
+          <a th:if="${#annotations.get(post, 'post_license')}" class="flex-child-center"
+             th:href="${#annotations.get(post, 'post_license_url')}" target="_blank" rel="nofollow"
+             aria-label="accessing the Creative Commons License">
+            <span class="iconify" data-icon="fa:creative-commons"></span>
+            <span th:text="${#annotations.get(post, 'post_license_text')}"></span>
           </a>
         </div>
         <div class="post-tags flex-child-center">
