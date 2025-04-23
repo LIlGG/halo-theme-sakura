@@ -529,6 +529,14 @@ spec:
               label: Github
             - value: Tomorrow Night
               label: Tomorrow Night
+        - $formkit: checkbox
+          name: post_qed
+          id: post_qed
+          label: 自定义尾部文字
+          value: false
+        - $formkit: text
+          if: "$get(post_qed).value == true"
+          name: post_qed_text
     - group: tagAndCategory
       label: 标签及分类页
       formSchema:
