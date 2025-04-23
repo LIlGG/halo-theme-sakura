@@ -532,11 +532,22 @@ spec:
         - $formkit: checkbox
           name: post_qed
           id: post_qed
-          label: 自定义尾部文字
+          label: 自定义尾部
           value: false
         - $formkit: text
           if: "$get(post_qed).value == true"
           name: post_qed_text
+          label: 尾部文字
+        - $formkit: text
+          if: "$get(post_qed).value == true"
+          name: post_qed_icon
+          label: 尾部图标
+          value: "fa:meetup"
+        - $formkit: color
+          if: "$get(post_qed).value == true"
+          name: post_qed_icon_color
+          label: 尾部图标颜色
+          value: "#d34836"
     - group: tagAndCategory
       label: 标签及分类页
       formSchema:
