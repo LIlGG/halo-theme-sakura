@@ -169,8 +169,8 @@ export default class Post {
       if (window.innerWidth > 860) {
         const defaultRemind = {
           normal: "文章篇幅适中，可以放心阅读。",
-          medium: "文章比较长，建议分段阅读。",
-          difficulty: "文章内容已经很陈旧了，也许不再适用！",
+          medium: "文章篇幅较长，建议分段阅读。",
+          difficulty: "文章内容相当长，建议仔细阅读。",
         } as { [key: string]: string };
         remind =
           sakura.getThemeConfig("post", `post_word_count_toast_${type.toLowerCase()}`, String)?.valueOf() ||

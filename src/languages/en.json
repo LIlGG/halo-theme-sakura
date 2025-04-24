@@ -37,7 +37,7 @@
       "remind": "This post is of average length, and can be read with peace of mind.",
       "remind_normal": "This post is of average length, and can be read with peace of mind.",
       "remind_medium": "This post is very long, it is recommended to read it in paragraphs.",
-      "remind_difficulty": "The content of this post is very outdated and may no longer apply!"
+      "remind_difficulty": "The article is quite long, please read it carefully."
     },
     "edit_time_toast": {
       "content": "The last time this post was edited was <b>{{ sinceLastTime }}</b>.{{ remind }}",

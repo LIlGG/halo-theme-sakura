@@ -37,7 +37,7 @@
       "remind": "この記事は平均的な長さで、心置きなく読めます。",
       "remind_normal": "この記事は平均的な長さで、心置きなく読めます。",
       "remind_medium": "この記事は非常に長いため、段落に分けて読むことをおすすめします。",
-      "remind_difficulty": "この記事の内容は非常に古く、もはや適用されないかもしれません。"
+      "remind_difficulty": "この記事はすごく長いので、ご丁寧に読むことをお勧めします。"
     },
     "edit_time_toast": {
       "content": "この記事の最終更新時間は<b>{{ sinceLastTime }}</b>です。{{ remind }}",

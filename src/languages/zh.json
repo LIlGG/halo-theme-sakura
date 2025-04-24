@@ -37,7 +37,7 @@
       "remind": "文章篇幅适中，可以放心阅读。",
       "remind_normal": "文章篇幅适中，可以放心阅读。",
       "remind_medium": "文章篇幅较长，建议分段阅读。",
-      "remind_difficulty": "文章内容已经很陈旧了，也许不再适用！"
+      "remind_difficulty": "文章内容相当长，建议仔细阅读。"
     },
     "edit_time_toast": {
       "content": "文章内容上次编辑时间于 <b>{{ sinceLastTime }}</b>。{{ remind }}",
