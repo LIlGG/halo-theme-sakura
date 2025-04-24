@@ -146,6 +146,9 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Terryisthebest"><img src="https://avatars.githubusercontent.com/u/140528909?v=4?s=100" width="100px;" alt="Terryliu"/><br /><sub><b>Terryliu</b></sub></a><br /><a href="#financial-Terryisthebest" title="Financial">💵</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://yaklo.skyesc.com"><img src="https://avatars.githubusercontent.com/u/50908861?v=4?s=100" width="100px;" alt="Yaklo"/><br /><sub><b>Yaklo</b></sub></a><br /><a href="https://github.com/LIlGG/halo-theme-sakura/commits?author=Yaklo" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://houxiongxiong.icu"><img src="https://avatars.githubusercontent.com/u/172995357?v=4?s=100" width="100px;" alt="流萤"/><br /><sub><b>流萤</b></sub></a><br /><a href="https://github.com/LIlGG/halo-theme-sakura/commits?author=AR-26710" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
