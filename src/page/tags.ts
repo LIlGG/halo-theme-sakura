@@ -86,7 +86,7 @@ export default class Tags {
           });
         // 如果存在 pjax，则刷新 wordCloudElement
         if (sakura.$pjax) {
-          sakura.$pjax.refresh(document.querySelector('#tag-wordcloud'));
+          sakura.$pjax.refresh(wordCloudElement);
         }
       });
     layout.start();

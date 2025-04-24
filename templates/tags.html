@@ -19,7 +19,7 @@
         <div class="tag-wordcloud-container">
           <script type="text/javascript" th:inline="javascript">
             (function() {
-              const tagData = /*[[${tagFinder.listAll()}]]*/ || [];
+              const tagData = /*[[${tagFinder.listAll()}]]*/ [];
 
               window.wordClouds = tagData.map(tag => ({
                 text: tag.spec.displayName,
