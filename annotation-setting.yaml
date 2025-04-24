@@ -52,9 +52,11 @@ spec:
       on-value: "true"
       off-value: "false"
     - $formkit: text
+      if: "$get(post_license).value == 'true'"
       name: post_license_text
       label: 授权协议
     - $formkit: text
+      if: "$get(post_license).value == 'true'"
       name: post_license_url
       label: 协议链接
 

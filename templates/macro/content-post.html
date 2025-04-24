@@ -54,24 +54,23 @@
       <div class="post-footer-meta">
         <div class="post-license" itemprop="license">
           <a class="flex-child-center"
-             th:if="!${#annotations.get(post, 'post_license')}"
-             th:href="${theme.config.post.post_license ? theme.config.post.post_license_url : 'https://creativecommons.org/licenses/by-nc-sa/4.0/'}"
+             th:with="hasPostLicense = ${#annotations.getOrDefault(post, 'post_license', 'false')}"
+             th:href="${hasPostLicense ? #annotations.getOrDefault(post, 'post_license_url', '') : (theme.config.post.post_license ? theme.config.post.post_license_url : 'https://creativecommons.org/licenses/by-nc-sa/4.0/')}"
              target="_blank"
              rel="nofollow"
              aria-label="accessing the Creative Commons License">
             <span class="iconify" data-icon="fa:creative-commons"></span>
-            <th:block th:if="${theme.config.post.post_license}">
-              <span th:text="${theme.config.post.post_license_text}"></span>
+            <th:block th:if="${hasPostLicense}">
+              <span th:text="${#annotations.getOrDefault(post, 'post_license_text', '')}"></span>
             </th:block>
-            <th:block th:unless="${theme.config.post.post_license}">
-              <span data-i18n="post.license"></span>
+            <th:block th:unless="${hasPostLicense}">
+              <th:block th:if="${theme.config.post.post_license}">
+                <span th:text="${theme.config.post.post_license_text}"></span>
+              </th:block>
+              <th:block th:unless="${theme.config.post.post_license}">
+                <span data-i18n="post.license"></span>
+              </th:block>
             </th:block>
-          </a>
-          <a th:if="${#annotations.get(post, 'post_license')}" class="flex-child-center"
-             th:href="${#annotations.get(post, 'post_license_url')}" target="_blank" rel="nofollow"
-             aria-label="accessing the Creative Commons License">
-            <span class="iconify" data-icon="fa:creative-commons"></span>
-            <span th:text="${#annotations.get(post, 'post_license_text')}"></span>
           </a>
         </div>
         <div class="post-tags flex-child-center">

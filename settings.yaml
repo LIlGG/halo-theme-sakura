@@ -409,12 +409,16 @@ spec:
           label: 自定义全局授权协议
           value: false
         - $formkit: text
-          if: "$get(post_license).value == true"
+          if: "$get(post_license).value === true"
           name: post_license_text
+          id: post_license_text
+          key: post_license_text
           label: 授权协议
         - $formkit: text
-          if: "$get(post_license).value == true"
+          if: "$get(post_license).value === true"
           name: post_license_url
+          id: post_license_url
+          key: post_license_url
           label: 协议链接
         - $formkit: checkbox
           name: post_auto_collapse
