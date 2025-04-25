@@ -65,6 +65,7 @@ export default class Moments {
           } else {
             paginationElement.innerHTML = "";
           }
+          sakura.refresh();
         })
         .catch((error) => {
           console.error(error);
@@ -87,7 +88,7 @@ export default class Moments {
    * @return {*}
    * @param {*}
    */
-  @documentFunction()
+  @documentFunction(false)
   public registerMomentItem(containerElement?: HTMLElement) {
     const momentContainerElement = containerElement || document.querySelector(".moments-container .moments-inner");
     if (!momentContainerElement) {
