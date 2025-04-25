@@ -432,6 +432,8 @@ spec:
           value: true
         - $formkit: select
           name: toc_depth
+          key: toc_depth
+          id: toc_depth
           if: "$get(post_toc).value == true"
           label: 文章目录树展开级别
           value: 0
