@@ -30,8 +30,16 @@
     <footer class="post-footer">
       <div>
         <p class="flex-child-center">
-          Q.E.D.
-          <span class="iconify" data-icon="fa:meetup" style="color: #d34836"></span>
+          <th:block th:if="${theme.config.post.post_qed}">
+            <span th:text="${theme.config.post.post_qed_text}"></span>
+            <span class="iconify"
+                  th:data-icon="${theme.config.post.post_qed_icon ?: 'fa:meetup'}"
+                  th:style="'color: ' + (${theme.config.post.post_qed_icon_color} ?: '#d34836')"></span>
+          </th:block>
+          <th:block th:unless="${theme.config.post.post_qed}">
+            <span>Q.E.D.</span>
+            <span class="iconify" data-icon="fa:meetup" style="color: #d34836"></span>
+          </th:block>
         </p>
       </div>
 
