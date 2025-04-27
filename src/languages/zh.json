@@ -107,6 +107,7 @@
     "description": "我喜欢做的事就是不写个性签名",
     "login": "登录",
     "has_logged": "当前已登录",
+    "console": "管理控制台",
     "info": "个人资料",
     "logout": "退出登录"
   },

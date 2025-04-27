@@ -110,7 +110,8 @@
     "login": "login",
     "has_logged": "current logged in",
     "info": "user info",
-    "logout": "logout"
+    "logout": "logout",
+    "console": "management console"
   },
   "icon_alt": {
     "wechat": "Wechat",
