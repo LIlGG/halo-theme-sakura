@@ -94,7 +94,25 @@ export default class Moments {
     if (!momentContainerElement) {
       return;
     }
-    const momentItemElements = momentContainerElement?.querySelectorAll(".moments-item") as NodeListOf<HTMLElement>;
+    
+    const existItems = momentContainerElement.querySelectorAll(".moments-item");
+    existItems.forEach(item => {
+      const likeBtn = item.querySelector(".moment-tools .moment-like");
+      const commentBtn = item.querySelector(".moment-tools .comment-js");
+      
+      if (likeBtn) {
+        const newLikeBtn = likeBtn.cloneNode(true);
+        likeBtn.parentNode?.replaceChild(newLikeBtn, likeBtn);
+      }
+      
+      if (commentBtn) {
+        const newCommentBtn = commentBtn.cloneNode(true);
+        commentBtn.parentNode?.replaceChild(newCommentBtn, commentBtn);
+      }
+    });
+    
+    const momentItemElements = momentContainerElement.querySelectorAll(".moments-item") as NodeListOf<HTMLElement>;
+    
     if (!momentItemElements || momentItemElements.length <= 0) {
       return;
     }
