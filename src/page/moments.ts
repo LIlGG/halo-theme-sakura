@@ -88,7 +88,7 @@ export default class Moments {
    * @return {*}
    * @param {*}
    */
-  @documentFunction(false)
+  @documentFunction()
   public registerMomentItem(containerElement?: HTMLElement) {
     const momentContainerElement = containerElement || document.querySelector(".moments-container .moments-inner");
     if (!momentContainerElement) {
