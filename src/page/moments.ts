@@ -9,7 +9,7 @@ export default class Moments {
    * @param {*}
    * @return {*}
    */
-  @documentFunction()
+  @documentFunction(false)
   public registerMomentListPagination() {
     const paginationElement = document.getElementById("moment-list-pagination");
     if (!paginationElement) {
@@ -38,7 +38,6 @@ export default class Moments {
           const doc = parser.parseFromString(html, "text/html");
           const momentNewContainerElement = doc.querySelector(".moments-container .moments-inner") as HTMLElement;
           if (momentNewContainerElement) {
-            this.registerMomentItem(momentNewContainerElement);
             const momentListNewElements = momentNewContainerElement.querySelectorAll(".moments-item");
             if (momentListNewElements && momentListNewElements.length > 0) {
               momentListNewElements.forEach((element) => {
@@ -92,7 +91,7 @@ export default class Moments {
    * @return {*}
    * @param {*}
    */
-  @documentFunction(false)
+  @documentFunction()
   public registerMomentItem(containerElement?: HTMLElement) {
     const momentContainerElement = containerElement || document.querySelector(".moments-container .moments-inner");
     if (!momentContainerElement) {
