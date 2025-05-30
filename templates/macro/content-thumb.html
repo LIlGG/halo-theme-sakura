@@ -26,6 +26,15 @@
     <div class="post-content-wrap">
       <div class="post-date flex-child-center">
         <span class="iconify" data-icon="solar:clock-circle-linear"></span>
+        <span th:if="${theme.config.general.post_author}">
+            <a
+              data-pjax
+              th:href="${post.owner.permalink}"
+              th:text="${post.owner.displayName}"
+              aria-label="viewing the author the article belongs to"
+            >
+            </a>
+        </span>
         <time
           class="publish-time"
           data-i18n="postlist.time"
