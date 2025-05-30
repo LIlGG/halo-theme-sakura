@@ -45,17 +45,21 @@ export default class Moments {
                 momentContainerElement.appendChild(element);
                 // 重新执行 Halo 评论组件初始化
                 const commentScriptElement = element.querySelector(".comment-box .comment script:last-of-type") as HTMLScriptElement;
-                const code: string =
-                  commentScriptElement?.text ||
-                  commentScriptElement?.textContent ||
-                  commentScriptElement?.innerHTML ||
-                  "";
-                const parent: ParentNode | null = commentScriptElement.parentNode;
-                parent?.removeChild(commentScriptElement);
-                const script: HTMLElementTagNameMap["script"] = document.createElement("script");
-                script.type = "text/javascript";
-                script.appendChild(document.createTextNode(code));
-                parent?.appendChild(script);
+                if (commentScriptElement) {
+                  const code: string =
+                    commentScriptElement.text ||
+                    commentScriptElement.textContent ||
+                    commentScriptElement.innerHTML ||
+                    "";
+                  const parent = commentScriptElement.parentNode;
+                  if (parent) {
+                    parent.removeChild(commentScriptElement);
+                    const script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.appendChild(document.createTextNode(code));
+                    parent.appendChild(script);
+                  }
+                }
               });
             }
           }
