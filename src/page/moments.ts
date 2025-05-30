@@ -9,7 +9,7 @@ export default class Moments {
    * @param {*}
    * @return {*}
    */
-  @documentFunction()
+  @documentFunction(false)
   public registerMomentListPagination() {
     const paginationElement = document.getElementById("moment-list-pagination");
     if (!paginationElement) {
@@ -38,7 +38,6 @@ export default class Moments {
           const doc = parser.parseFromString(html, "text/html");
           const momentNewContainerElement = doc.querySelector(".moments-container .moments-inner") as HTMLElement;
           if (momentNewContainerElement) {
-            this.registerMomentItem(momentNewContainerElement);
             const momentListNewElements = momentNewContainerElement.querySelectorAll(".moments-item");
             if (momentListNewElements && momentListNewElements.length > 0) {
               momentListNewElements.forEach((element) => {
@@ -94,25 +93,7 @@ export default class Moments {
     if (!momentContainerElement) {
       return;
     }
-    
-    const existItems = momentContainerElement.querySelectorAll(".moments-item");
-    existItems.forEach(item => {
-      const likeBtn = item.querySelector(".moment-tools .moment-like");
-      const commentBtn = item.querySelector(".moment-tools .comment-js");
-      
-      if (likeBtn) {
-        const newLikeBtn = likeBtn.cloneNode(true);
-        likeBtn.parentNode?.replaceChild(newLikeBtn, likeBtn);
-      }
-      
-      if (commentBtn) {
-        const newCommentBtn = commentBtn.cloneNode(true);
-        commentBtn.parentNode?.replaceChild(newCommentBtn, commentBtn);
-      }
-    });
-    
-    const momentItemElements = momentContainerElement.querySelectorAll(".moments-item") as NodeListOf<HTMLElement>;
-    
+    const momentItemElements = momentContainerElement?.querySelectorAll(".moments-item") as NodeListOf<HTMLElement>;
     if (!momentItemElements || momentItemElements.length <= 0) {
       return;
     }
