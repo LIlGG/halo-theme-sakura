@@ -33,6 +33,11 @@ spec:
           name: top_search
           label: 开启搜索功能
           value: true
+        - $formkit: checkbox
+          name: post_author
+          id: post_author
+          label: 首页文章列表显示作者
+          value: true
         - $formkit: select
           name: post_list_style
           id: post_list_style
