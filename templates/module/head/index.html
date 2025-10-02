@@ -10,9 +10,15 @@
 
   <!--/* 字体 */-->
   <th:block th:replace="~{module/head/fonts}" />
-  
+
+  <!--/* 内置代码高亮功能控制 */-->
+  <script th:inline="javascript">
+    window.highlight_open = /*[[${theme.config.post.highlight_open}]]*/ [];
+  </script>
+
   <!--/* 高亮代码样式 */-->
   <link
+    th:if="${theme.config.post.highlight_open}"
     rel="stylesheet"
     th:href="@{/assets/dist/css/highlight-{code_pretty}-{version}.min.css(code_pretty=${theme.config.post.code_pretty},version=${theme.spec.version})}"
     type="text/css"

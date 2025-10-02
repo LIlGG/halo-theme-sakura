@@ -175,6 +175,12 @@ export class Utils {
    */
   @documentFunction()
   public registerHighlight() {
+    // 检查是否启用了代码高亮功能
+    // @ts-ignore
+    if (typeof window.highlight_open !== "undefined" && !window.highlight_open) {
+      return;
+    }
+
     const preElements = document.querySelectorAll("pre") as NodeListOf<HTMLElement>;
     preElements.forEach((preElement) => {
       preElement.classList.add("highlight-wrap");
@@ -229,6 +235,12 @@ export class Utils {
    */
   @documentFunction()
   public registerCopyCode() {
+    // 检查是否启用了代码高亮功能
+    // @ts-ignore
+    if (typeof window.highlight_open !== "undefined" && !window.highlight_open) {
+      return;
+    }
+
     const codeElements = document.querySelectorAll("pre code");
     codeElements.forEach((codeElement) => {
       const copyElement = document.createElement("span");

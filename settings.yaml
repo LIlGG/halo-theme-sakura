@@ -527,14 +527,30 @@ spec:
               label: 打赏二维码
               validation: "required"
         - $formkit: checkbox
+          name: highlight_open
+          id: highlight_open
+          key: highlight_open
+          label: 内置代码块高亮
+          value: true
+          help: 默认使用内置代码块高亮，如果你需要使用代码块高亮插件，请关闭此选项以避免冲突
+        - $formkit: checkbox
+          if: "$get(highlight_open).value == true"
           name: code_line
+          id: code_line
+          key: code_line
           label: 代码块增加行号
           value: true
         - $formkit: checkbox
+          if: "$get(highlight_open).value == true"
+          id: code_line
+          key: code_line
           name: code_change_line
           label: 代码块自动换行
           value: false
         - $formkit: select
+          if: "$get(highlight_open).value == true"
+          id: code_pretty
+          key: code_pretty
           name: code_pretty
           label: 文章代码高亮主题
           value: Dracula
