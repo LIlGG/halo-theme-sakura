@@ -212,9 +212,14 @@ spec:
     - group: sns
       label: 社交网络
       formSchema:
-        - $formkit: repeater
+        - $formkit: array
           name: items
           label: 社交网络
+          itemLabels:
+            - type: text
+              label: $value.type
+            - type: text
+              label: $value.url
           children:
             - $formkit: select
               name: type
@@ -300,9 +305,14 @@ spec:
                 - "image/*"
               max: 1
               validation: "required"
-        - $formkit: repeater
+        - $formkit: array
           name: mobile_items
           label: 移动端侧边栏社交网络
+          itemLabels:
+            - type: text
+              label: $value.type
+            - type: text
+              label: $value.url
           children:
             - $formkit: select
               name: type
@@ -375,9 +385,10 @@ spec:
           id: top_feature
           label: 展示聚焦内容
           value: true
-        - $formkit: text
+        - $formkit: iconify
           if: "$get(top_feature).value == true"
           name: feature_icon
+          format: name
           label: 聚焦图标
           placeholder: 聚焦前的小图标，不填写就不显示！
           value: fa:anchor
@@ -385,12 +396,19 @@ spec:
           if: "$get(top_feature).value == true"
           name: feature_title
           label: 聚焦标题
-        - $formkit: repeater
+        - $formkit: array
           if: "$get(top_feature).value == true"
           name: features
           max: 3
           label: 聚焦内容
           value: []
+          itemLabels:
+            - type: image
+              label: $value.image
+            - type: text
+              label: $value.title
+            - type: text
+              label: $value.description
           children:
             - $formkit: text
               name: title
@@ -514,10 +532,15 @@ spec:
           name: author_profile
           label: 博主信息
           value: true
-        - $formkit: repeater
+        - $formkit: array
           name: reward
           label: 文章打赏
           value: []
+          itemLabels:
+            - type: image
+              label: $value.code
+            - type: text
+              label: $value.label
           children:
             - $formkit: text
               name: label
@@ -565,12 +588,13 @@ spec:
           key: post_qed_text
           id: post_qed_text
           label: 尾部文字
-        - $formkit: text
+        - $formkit: iconify
           if: "$get(post_qed).value == true"
           name: post_qed_icon
           key: post_qed_icon
           id: post_qed_icon
           label: 尾部图标
+          format: name
           value: "fa:meetup"
           help: 支持 Iconify 图标 (获取地址：https://icon-sets.iconify.design/)
         - $formkit: color
@@ -841,12 +865,19 @@ spec:
           label: 开启主题切换
           value: true
           help: 所有主题的样式可以自定义，但建议默认即可
-        - $formkit: repeater
+        - $formkit: array
           if: "$get(theme_change).value == true"
           name: bg_themes
           min: 1
           max: 8
           label: 主题配置
+          itemLabels:
+            - type: iconify
+              label: $value.bg_icon
+            - type: text
+              label: $value.bg_name
+            - type: image
+              label: $value.bg_url
           value:
             - bg_name: white
               bg_url:
@@ -917,9 +948,10 @@ spec:
                   label: 重复
                 - value: cover
                   label: 完全覆盖背景
-            - $formkit: text
+            - $formkit: iconify
               name: bg_icon
               label: 主题图标
+              format: name
               help: 图标可能无法立即生效
               validation: required
             - $formkit: checkbox
@@ -1088,11 +1120,11 @@ spec:
               label: 挂绳
             - value: simplify
               label: 精简
-        - $formkit: text
+        - $formkit: attachment
           name: top_back_img
           label: 回到顶部图片
           value: /themes/theme-sakura/assets/images/scroll.png
-        - $formkit: text
+        - $formkit: attachment
           name: footer_logo
           label: 页脚 Logo
           value: /themes/theme-sakura/assets/images/footer/sakura.svg
