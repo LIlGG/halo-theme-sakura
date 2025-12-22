@@ -119,7 +119,7 @@
   --photo-group-change-color: #222;
   --photo-group-change-active-color: #ccc;
   --links-description-color: #b0b0b0;
-  --site-content-background-color: transparent;
+  --site-content-background-color: rgba(38, 38, 38, 0.8);
 }
 
 .video-container {
