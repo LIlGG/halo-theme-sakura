@@ -391,6 +391,7 @@ spec:
           format: name
           label: 聚焦图标
           placeholder: 聚焦前的小图标，不填写就不显示！
+          valueOnly: true
           value: fa:anchor
         - $formkit: text
           if: "$get(top_feature).value == true"
@@ -596,6 +597,7 @@ spec:
           label: 尾部图标
           format: name
           value: "fa:meetup"
+          valueOnly: true
           help: 支持 Iconify 图标 (获取地址：https://icon-sets.iconify.design/)
         - $formkit: color
           if: "$get(post_qed).value == true"
@@ -951,9 +953,10 @@ spec:
             - $formkit: iconify
               name: bg_icon
               label: 主题图标
-              format: name
               help: 图标可能无法立即生效
               validation: required
+              format: name
+              valueOnly: true
             - $formkit: checkbox
               name: bg_night
               label: 黑夜模式
