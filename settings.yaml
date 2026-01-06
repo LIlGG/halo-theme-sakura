@@ -29,11 +29,11 @@ spec:
               label: 优先使用站点Logo
             - value: text
               label: 仅使用站点标题文本
-        - $formkit: checkbox
+        - $formkit: switch
           name: top_search
           label: 开启搜索功能
           value: true
-        - $formkit: checkbox
+        - $formkit: switch
           name: post_author
           id: post_author
           label: 首页文章列表显示作者
@@ -78,7 +78,7 @@ spec:
               label: 时间
             - value: datetime
               label: 日期时间
-        - $formkit: checkbox
+        - $formkit: switch
           name: hour12
           label: 使用 12 小时制
           value: false
@@ -109,7 +109,7 @@ spec:
     - group: mainScreen
       label: 首屏
       formSchema:
-        - $formkit: checkbox
+        - $formkit: switch
           name: head_focus
           id: head_focus
           key: head_focus
@@ -155,7 +155,7 @@ spec:
           label: 聚焦故障文本
           value: Hi,Friend
           help: 移动端：将显示在导航栏中，桌面端：该文本只有头部样式开启故障文字才能显示
-        - $formkit: checkbox
+        - $formkit: switch
           name: focus_info_self_intro
           id: focus_info_self_intro
           key: focus_info_self_intro
@@ -168,12 +168,12 @@ spec:
           key: focus_info_self_intro_text
           if: "$get(focus_info_self_intro).value == true"
           label: 个人介绍
-        - $formkit: checkbox
+        - $formkit: switch
           name: focus_info_socials
           if: "$get(head_focus).value == true"
           label: 显示社交信息
           value: true
-        - $formkit: checkbox
+        - $formkit: switch
           name: focus_height
           id: focus_height
           key: focus_height
@@ -181,21 +181,14 @@ spec:
           label: 占满全屏
           help: 全屏显示则首屏独占全屏，非全屏则只会占一半页面
           value: true
-        - $formkit: checkbox
+        - $formkit: switch
           name: focus_wave
           id: focus_wave
           key: focus_wave
           if: "$get(head_focus).value == true && $get(focus_height).value == true"
           label: 波浪效果
           value: false
-        - $formkit: checkbox
-          name: focus_godown
-          id: focus_godown
-          key: focus_godown
-          if: "$get(head_focus).value == true"
-          label: 快捷下滑功能
-          value: true
-        - $formkit: checkbox
+        - $formkit: switch
           if: "$get(head_focus).value == true && $get(focus_height).value == true"
           name: bgvideo
           id: bgvideo
@@ -209,12 +202,24 @@ spec:
           key: bgvideo_url
           label: 视频链接
           help: 支持流媒体
+        - $formkit: switch
+          name: focus_godown
+          id: focus_godown
+          key: focus_godown
+          if: "$get(head_focus).value == true"
+          label: 快捷下滑功能
+          value: true
     - group: sns
       label: 社交网络
       formSchema:
-        - $formkit: repeater
+        - $formkit: array
           name: items
           label: 社交网络
+          itemLabels:
+            - type: text
+              label: $value.type
+            - type: text
+              label: $value.url
           children:
             - $formkit: select
               name: type
@@ -300,9 +305,14 @@ spec:
                 - "image/*"
               max: 1
               validation: "required"
-        - $formkit: repeater
+        - $formkit: array
           name: mobile_items
           label: 移动端侧边栏社交网络
+          itemLabels:
+            - type: text
+              label: $value.type
+            - type: text
+              label: $value.url
           children:
             - $formkit: select
               name: type
@@ -370,27 +380,36 @@ spec:
     - group: focus
       label: 聚焦图
       formSchema:
-        - $formkit: checkbox
+        - $formkit: switch
           name: top_feature
           id: top_feature
           label: 展示聚焦内容
           value: true
-        - $formkit: text
+        - $formkit: iconify
           if: "$get(top_feature).value == true"
           name: feature_icon
+          format: name
           label: 聚焦图标
           placeholder: 聚焦前的小图标，不填写就不显示！
+          valueOnly: true
           value: fa:anchor
         - $formkit: text
           if: "$get(top_feature).value == true"
           name: feature_title
           label: 聚焦标题
-        - $formkit: repeater
+        - $formkit: array
           if: "$get(top_feature).value == true"
           name: features
           max: 3
           label: 聚焦内容
           value: []
+          itemLabels:
+            - type: image
+              label: $value.image
+            - type: text
+              label: $value.title
+            - type: text
+              label: $value.description
           children:
             - $formkit: text
               name: title
@@ -408,7 +427,7 @@ spec:
     - group: post
       label: 文章页
       formSchema:
-        - $formkit: checkbox
+        - $formkit: switch
           name: post_license
           id: post_license
           label: 自定义全局授权协议
@@ -425,11 +444,11 @@ spec:
           id: post_license_url
           key: post_license_url
           label: 协议链接
-        - $formkit: checkbox
+        - $formkit: switch
           name: post_auto_collapse
           label: 导航栏自动收起
           value: true
-        - $formkit: checkbox
+        - $formkit: switch
           name: post_toc
           key: post_toc
           id: post_toc
@@ -455,27 +474,27 @@ spec:
               label: 展开四级标题
             - value: 5
               label: 全部展开
-        - $formkit: checkbox
+        - $formkit: switch
           name: post_share
           label: 使用文章分享
           value: true
-        - $formkit: checkbox
+        - $formkit: switch
           name: post_original_copy
           label: 复制内容增加版权声明
           help: 需要在发布文章时的元数据上选中原创才可以生效
           value: false
-        - $formkit: checkbox
+        - $formkit: switch
           name: post_word_count_toast
           id: post_word_count_toast
           label: 文章字数统计及阅读时间提示
           value: true
-        - $formkit: checkbox
+        - $formkit: switch
           name: post_edit_time_toast
           id: post_edit_time_toast
           key: post_edit_time_toast
           label: 文章距上次编辑时间提示
           value: true
-        - $formkit: checkbox
+        - $formkit: switch
           name: custom_toast
           id: custom_toast
           key: custom_toast
@@ -506,18 +525,23 @@ spec:
           if: "$get(post_edit_time_toast).value == true && $get(custom_toast).value == true"
           name: post_edit_time_toast_difficulty
           label: 很长时间未更新文章提示语
-        - $formkit: checkbox
+        - $formkit: switch
           name: post_nepre
           label: 上一篇/下一篇
           value: true
-        - $formkit: checkbox
+        - $formkit: switch
           name: author_profile
           label: 博主信息
           value: true
-        - $formkit: repeater
+        - $formkit: array
           name: reward
           label: 文章打赏
           value: []
+          itemLabels:
+            - type: image
+              label: $value.code
+            - type: text
+              label: $value.label
           children:
             - $formkit: text
               name: label
@@ -526,11 +550,11 @@ spec:
               name: code
               label: 打赏二维码
               validation: "required"
-        - $formkit: checkbox
+        - $formkit: switch
           name: code_line
           label: 代码块增加行号
           value: true
-        - $formkit: checkbox
+        - $formkit: switch
           name: code_change_line
           label: 代码块自动换行
           value: false
@@ -553,7 +577,7 @@ spec:
               label: Github
             - value: Tomorrow Night
               label: Tomorrow Night
-        - $formkit: checkbox
+        - $formkit: switch
           name: post_qed
           id: post_qed
           key: post_qed
@@ -565,14 +589,15 @@ spec:
           key: post_qed_text
           id: post_qed_text
           label: 尾部文字
-        - $formkit: text
+        - $formkit: iconify
           if: "$get(post_qed).value == true"
           name: post_qed_icon
           key: post_qed_icon
           id: post_qed_icon
           label: 尾部图标
+          format: name
           value: "fa:meetup"
-          help: 支持 Iconify 图标 (获取地址：https://icon-sets.iconify.design/)
+          valueOnly: true
         - $formkit: color
           if: "$get(post_qed).value == true"
           name: post_qed_icon_color
@@ -583,11 +608,11 @@ spec:
     - group: tagAndCategory
       label: 标签及分类页
       formSchema:
-        - $formkit: checkbox
+        - $formkit: switch
           name: tag_cloud
           label: 标签云
           value: true
-        - $formkit: checkbox
+        - $formkit: switch
           name: category_radar
           label: 分类雷达
           help: 需要至少具有 3 个分类时才会显示
@@ -595,11 +620,11 @@ spec:
     - group: journal
       label: 瞬间
       formSchema:
-        - $formkit: checkbox
+        - $formkit: switch
           name: journal_likes
           label: 点赞功能
           value: false
-        - $formkit: checkbox
+        - $formkit: switch
           name: journal_comment
           label: 评论功能
           value: false
@@ -644,7 +669,7 @@ spec:
           name: journal_bg
           label: 瞬间背景图片
           help: 使用图片作为瞬间背景
-        - $formkit: checkbox
+        - $formkit: switch
           if: "$get(journal_type).value == image"
           id: journal_bg_cover
           key: journal_bg_cover
@@ -746,7 +771,7 @@ spec:
           name: rimage_cover_lqip_params
           label: API 低质量图参数
           value: "th=150"
-        - $formkit: checkbox
+        - $formkit: switch
           name: rimage_cover_open
           id: rimage_cover_open
           key: rimage_cover_open
@@ -760,7 +785,7 @@ spec:
           validation: "required"
           value: postid
           help: 随机图 API 资源标识变量，默认为 postid，可根据随机图 API 的需要自行设置。
-        - $formkit: checkbox
+        - $formkit: switch
           name: rimage_cover_sheet_open
           id: rimage_cover_sheet_open
           key: rimage_cover_sheet_open
@@ -789,7 +814,7 @@ spec:
           label: 封面图获取范围编号
           help: 相册编号、分类编号或用户名
           validation: "required"
-        - $formkit: checkbox
+        - $formkit: switch
           name: rimage_cover_back_open
           id: rimage_cover_back_open
           key: rimage_cover_back_open
@@ -835,18 +860,25 @@ spec:
     - group: theme
       label: 主题风格
       formSchema:
-        - $formkit: checkbox
+        - $formkit: switch
           name: theme_change
           id: theme_change
           label: 开启主题切换
           value: true
           help: 所有主题的样式可以自定义，但建议默认即可
-        - $formkit: repeater
+        - $formkit: array
           if: "$get(theme_change).value == true"
           name: bg_themes
           min: 1
           max: 8
           label: 主题配置
+          itemLabels:
+            - type: iconify
+              label: $value.bg_icon
+            - type: text
+              label: $value.bg_name
+            - type: image
+              label: $value.bg_url
           value:
             - bg_name: white
               bg_url:
@@ -917,17 +949,19 @@ spec:
                   label: 重复
                 - value: cover
                   label: 完全覆盖背景
-            - $formkit: text
+            - $formkit: iconify
               name: bg_icon
               label: 主题图标
               help: 图标可能无法立即生效
               validation: required
-            - $formkit: checkbox
+              format: name
+              valueOnly: true
+            - $formkit: switch
               name: bg_night
               label: 黑夜模式
               help: 开启后，当前主题被选中的同时也会进入黑夜模式
               value: false
-            - $formkit: checkbox
+            - $formkit: switch
               name: bg_isdefault
               label: 是否为默认主题
               help: 同时只能存在一个默认主题
@@ -935,7 +969,7 @@ spec:
     - group: additional
       label: 背景音乐
       formSchema:
-        - $formkit: checkbox
+        - $formkit: switch
           name: aplayer_float
           id: aplayer_float
           label: 吸底背景音乐
@@ -1001,7 +1035,7 @@ spec:
           name: aplayer_volume
           label: 默认音量大小
           value: 0.7
-        - $formkit: checkbox
+        - $formkit: switch
           if: "$get(aplayer_float).value == true"
           name: aplayer_autoplay
           label: 自动播放
@@ -1025,7 +1059,7 @@ spec:
     - group: toast
       label: 提示及监听
       formSchema:
-        - $formkit: checkbox
+        - $formkit: switch
           name: open_toast
           id: open_toast
           label: 全局提示功能
@@ -1070,7 +1104,7 @@ spec:
     - group: others
       label: 其他
       formSchema:
-        - $formkit: checkbox
+        - $formkit: switch
           name: poi_pjax
           label: 开启 PJAX 局部刷新
           value: true
@@ -1088,11 +1122,11 @@ spec:
               label: 挂绳
             - value: simplify
               label: 精简
-        - $formkit: text
+        - $formkit: attachment
           name: top_back_img
           label: 回到顶部图片
           value: /themes/theme-sakura/assets/images/scroll.png
-        - $formkit: text
+        - $formkit: attachment
           name: footer_logo
           label: 页脚 Logo
           value: /themes/theme-sakura/assets/images/footer/sakura.svg
@@ -1111,7 +1145,7 @@ spec:
           label: 公安联网备案号
           value: ""
           help: 应与公安备案信息内的编号一致
-        - $formkit: checkbox
+        - $formkit: switch
           name: head_notice
           id: head_notice
           label: 开启公告
@@ -1123,7 +1157,7 @@ spec:
           height: 300px
           placeholder: 公告内容，文字超出142个字节将会被滚动显示（移动端无效），一个汉字 = 3字节，一个字母 = 1字节。
           language: html
-        - $formkit: checkbox
+        - $formkit: switch
           name: keep_record_mode
           label: 备案模式
           value: false
