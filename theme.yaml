@@ -19,6 +19,6 @@ spec:
   configMapName: theme-sakura-configMap
   # 通过 vite 环境变量 (VITE_THEME_VERSION) 配置，这里不需要配置。
   version: 2.4.3
-  require: ">=2.22"
+  require: ">=2.22.2"
 metadata:
   name: theme-sakura
