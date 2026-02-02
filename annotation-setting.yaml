@@ -1,16 +1,16 @@
 apiVersion: v1alpha1
 kind: AnnotationSetting
 metadata:
-  generateName: annotation-setting-
+  name: theme-sakura-menu-annotation-setting
 spec:
   targetRef:
     group: ""
     kind: MenuItem
   formSchema:
-    - $formkit: "text"
+    - $formkit: "iconify"
       name: "icon"
+      format: name
       label: "图标"
-      help: "图标名称，支持所有 iconify 图标。例如 https://icones.netlify.app/"
     - $formkit: "text"
       name: "animation"
       label: "动画"
@@ -20,43 +20,37 @@ spec:
 apiVersion: v1alpha1
 kind: AnnotationSetting
 metadata:
-  generateName: annotation-setting-
+  name: theme-sakura-post-annotation-setting
 spec:
   targetRef:
     group: content.halo.run
     kind: Post
   formSchema:
-    - $formkit: checkbox
+    - $formkit: switch
       name: randomImage
       label: 使用随机封面
-      value: "true"
-      on-value: "true"
-      off-value: "false"
-    - $formkit: checkbox
-      name: original
-      label: 原创文章
-      value: "false"
-      on-value: "true"
-      off-value: "false"
-    - $formkit: checkbox
+      value: true
+    - $formkit: switch
       name: toc
       label: 自动生成目录
-      value: "true"
-      on-value: "true"
-      off-value: "false"
-    - $formkit: checkbox
+      value: true
+    - $formkit: switch
+      name: original
+      id: original
+      label: 原创文章
+      value: false
+    - $formkit: switch
+      if: "$get(original).value == true"
       name: post_license
       id: post_license
       label: 自定义授权协议
-      value: "false"
-      on-value: "true"
-      off-value: "false"
+      value: false
     - $formkit: text
-      if: "$get(post_license).value == 'true'"
+      if: "$get(post_license).value == true"
       name: post_license_text
       label: 授权协议
     - $formkit: text
-      if: "$get(post_license).value == 'true'"
+      if: "$get(post_license).value == true"
       name: post_license_url
       label: 协议链接
 
@@ -65,32 +59,28 @@ spec:
 apiVersion: v1alpha1
 kind: AnnotationSetting
 metadata:
-  generateName: annotation-setting-
+  name: theme-sakura-single-page-annotation-setting
 spec:
   targetRef:
     group: content.halo.run
     kind: SinglePage
   formSchema:
-    - $formkit: checkbox
+    - $formkit: switch
       name: randomImage
       label: 使用随机图
-      value: "true"
-      on-value: "true"
-      off-value: "false"
+      value: true
 
-    - $formkit: checkbox
+    - $formkit: switch
       name: toc
       label: 自动生成目录
-      value: "true"
-      on-value: "true"
-      off-value: "false"
+      value: true
       
 ---
 
 apiVersion: v1alpha1
 kind: AnnotationSetting
 metadata:
-  generateName: annotation-setting-
+  name: theme-sakura-user-annotation-setting
 spec:
   targetRef:
     group: ""
