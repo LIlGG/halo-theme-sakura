@@ -13,12 +13,12 @@ spec:
     website: https://lixingyong.com
   description: Halo 2.x 版本樱花🌸主题
   logo: /themes/theme-sakura/assets/images/search/iloli.gif
-  website: https://github.com/LIlGG/halo-theme-sakura
+  homepage: https://www.halo.run/store/apps/app-YGkgz
   repo: https://github.com/LIlGG/halo-theme-sakura.git
   settingName: theme-sakura-setting
   configMapName: theme-sakura-configMap
   # 通过 vite 环境变量 (VITE_THEME_VERSION) 配置，这里不需要配置。
   version: 2.5.0
-  require: ">=2.22.2"
+  requires: ">=2.22.2"
 metadata:
   name: theme-sakura
