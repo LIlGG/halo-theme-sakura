@@ -11,6 +11,7 @@ spec:
       name: "icon"
       format: name
       label: "图标"
+      value-only: true
     - $formkit: "text"
       name: "animation"
       label: "动画"
