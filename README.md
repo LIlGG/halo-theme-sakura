@@ -148,6 +148,7 @@ DEMO：[https://lixingyong.com/](https://lixingyong.com/)
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://houxiongxiong.icu"><img src="https://avatars.githubusercontent.com/u/172995357?v=4?s=100" width="100px;" alt="流萤"/><br /><sub><b>流萤</b></sub></a><br /><a href="https://github.com/LIlGG/halo-theme-sakura/commits?author=AR-26710" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/alittlehuaji"><img src="https://avatars.githubusercontent.com/u/119058504?v=4?s=100" width="100px;" alt="huajibenji"/><br /><sub><b>huajibenji</b></sub></a><br /><a href="https://github.com/LIlGG/halo-theme-sakura/commits?author=alittlehuaji" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
