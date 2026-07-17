@@ -22,10 +22,16 @@
   </th:block>
   <th:block
     th:unless="${theme.config.random_image.rimage_cover_back_open and (not #strings.isEmpty(theme.config.random_image.rimage_url))}"
+    th:with="bgImage = ${theme.config.mainScreen.focus_img_1 ?: #theme.assets('/images/default/hd.webp')}"
   >
     <img
       class="cover-bg"
-      th:src="${theme.config.mainScreen.focus_img_1 ?: #theme.assets('/images/default/hd.webp')}"
+      th:src="${bgImage}"
+      th:srcset="|${thumbnail.gen(bgImage, 's')} 400w,
+                  ${thumbnail.gen(bgImage, 'm')} 800w,
+                  ${thumbnail.gen(bgImage, 'l')} 1200w,
+                  ${thumbnail.gen(bgImage, 'xl')} 1600w|"
+      sizes="100vw"
       alt="background picture of the home page"
       width="1920"
       height="1080"
