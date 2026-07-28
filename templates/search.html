@@ -7,14 +7,19 @@
     <th:block th:text="${searchResult.keyword} + '|' + ${site.title}"></th:block>
   </th:block>
 
+  <th:block th:fragment="header">
+    <th:block
+      th:replace="~{macro/page-header :: page-header(extension=${null}, frontCover=${theme.config.patternimg.searh_patternimg}, headerTitle = ~{::headerTitle}, id='search', isRandomImage=true)}"
+    />
+  </th:block>
+
+  <th:block th:fragment="headerTitle">
+    <h1 data-i18n="search.search_result.title" th:i18n-options="|{keyword: '${searchResult.keyword}'}|"></h1>
+  </th:block>
+
   <th:block th:fragment="content">
     <div class="search-container">
       <th:block th:if="${searchResult.total gt 0}">
-        <h1
-          class="search-title"
-          data-i18n="search.search_result.title"
-          th:i18n-options="|{keyword: '${searchResult.keyword}'}|"
-        ></h1>
         <th:block th:each="document : ${searchResult.hits}">
           <th:block th:replace="~{module/search/search-item :: item(${document})}" />
         </th:block>
