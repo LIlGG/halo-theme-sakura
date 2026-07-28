@@ -1041,6 +1041,14 @@ spec:
           label: 自动播放
           value: false
           help: 由于浏览器限制，此功能可能无法生效！（也建议不要开启，会产生噪音，影响用户体验）
+        - $formkit: switch
+          if: "$get(aplayer_float).value == true"
+          name: aplayer_lrc
+          id: aplayer_lrc
+          key: aplayer_lrc
+          label: 自动显示歌词
+          value: true
+          help: 开启后，播放音乐或展开播放列表时会自动显示歌词；访客手动关闭后不再自动显示
         - $formkit: select
           if: "$get(aplayer_float).value == true"
           name: aplayer_order
