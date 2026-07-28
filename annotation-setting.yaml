@@ -30,28 +30,36 @@ spec:
     - $formkit: switch
       name: randomImage
       label: 使用随机封面
-      value: true
+      value: "true"
+      onValue: "true"
+      offValue: "false"
     - $formkit: switch
       name: toc
       label: 自动生成目录
-      value: true
+      value: "true"
+      onValue: "true"
+      offValue: "false"
     - $formkit: switch
       name: original
       id: original
       label: 原创文章
-      value: false
+      value: "false"
+      onValue: "true"
+      offValue: "false"
     - $formkit: switch
-      if: "$get(original).value == true"
+      if: "$get(original).value === 'true'"
       name: post_license
       id: post_license
       label: 自定义授权协议
-      value: false
+      value: "false"
+      onValue: "true"
+      offValue: "false"
     - $formkit: text
-      if: "$get(post_license).value == true"
+      if: "$get(post_license).value === 'true'"
       name: post_license_text
       label: 授权协议
     - $formkit: text
-      if: "$get(post_license).value == true"
+      if: "$get(post_license).value === 'true'"
       name: post_license_url
       label: 协议链接
 
@@ -69,13 +77,17 @@ spec:
     - $formkit: switch
       name: randomImage
       label: 使用随机图
-      value: true
+      value: "true"
+      onValue: "true"
+      offValue: "false"
 
     - $formkit: switch
       name: toc
       label: 自动生成目录
-      value: true
-      
+      value: "true"
+      onValue: "true"
+      offValue: "false"
+
 ---
 
 apiVersion: v1alpha1
