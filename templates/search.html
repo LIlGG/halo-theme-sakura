@@ -9,7 +9,7 @@
 
   <th:block th:fragment="header">
     <th:block
-      th:replace="~{macro/page-header :: page-header(frontCover=${theme.config.patternimg.searh_patternimg}, headerTitle = ~{::headerTitle}, id='search', isRandomImage=true)}"
+      th:replace="~{macro/page-header :: page-header(extension=${null}, frontCover=${theme.config.patternimg.searh_patternimg}, headerTitle = ~{::headerTitle}, id='search', isRandomImage=true)}"
     />
   </th:block>
 
