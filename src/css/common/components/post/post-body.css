@@ -280,6 +280,10 @@
   }
 }
 
+body.dark .entry-content mark > .mark-text {
+  mix-blend-mode: normal;
+}
+
 .serif {
   & .entry-content {
     & h2 {
