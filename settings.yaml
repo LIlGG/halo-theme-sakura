@@ -12,6 +12,32 @@ spec:
           label: 主题基色
           value: "#FE9600"
         - $formkit: select
+          name: body_font_mode
+          id: body_font_mode
+          key: body_font_mode
+          label: 正文字体
+          value: default
+          options:
+            - value: default
+              label: 主题默认字体
+            - value: system
+              label: 系统字体
+            - value: custom
+              label: 自定义字体
+          help: 系统字体模式不会加载主题默认的 Noto Serif SC 字体。
+        - $formkit: text
+          if: "$get(body_font_mode).value == custom"
+          name: body_font_family
+          label: 自定义字体族
+          value: '"Noto Serif SC", Georgia, serif'
+          help: CSS font-family 属性值，例如 '"LXGW WenKai", serif'。
+        - $formkit: text
+          if: "$get(body_font_mode).value == custom"
+          name: body_font_stylesheet
+          label: 自定义字体样式表地址
+          validation: url
+          help: 可选。填写字体 CSS 文件的完整 URL；使用本地已安装字体时可留空。
+        - $formkit: select
           name: cursor_skin
           label: 鼠标风格
           value: sakura

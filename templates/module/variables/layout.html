@@ -3,6 +3,18 @@
     --theme-color: [(${theme.config.general.theme_skin})];
     --loading-image: url("[(${#theme.assets('/images/load/rotating-ball-o.svg')})]");
 
+    [# th:switch="${theme.config.general.body_font_mode ?: 'default'}"]
+      [# th:case="system"]
+      --body-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      [/]
+      [# th:case="custom"]
+      --body-font-family: [(${theme.config.general.body_font_family ?: 'serif'})];
+      [/]
+      [# th:case="*"]
+      --body-font-family: "Noto Serif SC", Georgia, serif;
+      [/]
+    [/]
+
     [# th:if="${theme.config.general.cursor_skin == 'sakura'}"]
       --cursor-link: url("[(${#theme.assets('/cursor/ayuda.cur')})]"), auto;
       --cursor-link-active: url("[(${#theme.assets('/cursor/work.cur')})]"), alias;

@@ -38,7 +38,7 @@ body {
   text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1);
 
   &.serif {
-    font-family: "Noto Serif SC", Georgia, serif;
+    font-family: var(--body-font-family);
   }
 }
 

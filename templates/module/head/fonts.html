@@ -1,8 +1,17 @@
-<th:block th:fragment="fonts">
+<th:block th:fragment="fonts" th:with="bodyFontMode = ${theme.config.general.body_font_mode ?: 'default'}">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link
     rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC|&display=swap&subset=chinese-simplified,chinese-traditional"
+    th:href="${bodyFontMode == 'default'
+      ? 'https://fonts.googleapis.com/css?family=Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC|&display=swap&subset=chinese-simplified,chinese-traditional'
+      : 'https://fonts.googleapis.com/css?family=Source+Code+Pro|Ubuntu:400,700|&display=swap'}"
+    media="print"
+    onload="this.media='all'"
+  />
+  <link
+    th:if="${bodyFontMode == 'custom' and not #strings.isEmpty(theme.config.general.body_font_stylesheet)}"
+    rel="stylesheet"
+    th:href="${theme.config.general.body_font_stylesheet}"
     media="print"
     onload="this.media='all'"
   />

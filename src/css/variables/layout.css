@@ -3,6 +3,8 @@
   --theme-color: orange;
   /* 主题亮度 */
   --theme-brightness: 1;
+  /* 正文字体 */
+  --body-font-family: "Noto Serif SC", Georgia, serif;
 
   /* layout - content */
   --site-content-max-width: 780px;
