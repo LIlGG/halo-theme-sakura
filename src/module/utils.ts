@@ -143,22 +143,10 @@ export class Utils {
         return;
       }
       this.wrapImageWithBox(contentElement);
-      this.wrapVideoWithBox(contentElement);
       import("@fancyapps/ui").then(async (module) => {
         await import("@fancyapps/ui/dist/fancybox/fancybox.css");
         await module.Fancybox.bind(contentElement, '[data-fancybox="gallery"]');
       });
-    });
-  }
-
-  private wrapVideoWithBox(contentElement: HTMLElement) {
-    const videoElements = contentElement?.querySelectorAll("video") as NodeListOf<HTMLElement>;
-    if (!videoElements) {
-      return;
-    }
-    videoElements.forEach((videoElement) => {
-      const videoWrapper = this.buildFancybox(videoElement);
-      videoWrapper.classList.add("video-wrapper");
     });
   }
 
@@ -168,6 +156,9 @@ export class Utils {
       return;
     }
     imageElements.forEach((imageElement) => {
+      if (imageElement.closest("a")) {
+        return;
+      }
       const imageWrapper = this.buildFancybox(imageElement);
       imageWrapper.classList.add("image-wrapper");
     });
