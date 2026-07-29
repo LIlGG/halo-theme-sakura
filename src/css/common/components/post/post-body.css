@@ -269,6 +269,10 @@
     }
   }
 
+  body:not(.dark) & mark > .mark-text {
+    mix-blend-mode: normal;
+  }
+
   @mixin screens-md {
     & p {
       font-size: 0.875em;
