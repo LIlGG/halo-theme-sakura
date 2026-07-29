@@ -26,6 +26,7 @@ export class Utils {
     const musicServer = sakura.getThemeConfig("additional", "aplayer_server", String)?.valueOf();
     const musicType = sakura.getThemeConfig("additional", "aplayer_type", String)?.valueOf();
     const musicId = sakura.getThemeConfig("additional", "aplayer_id", String)?.valueOf();
+    const lyricsEnabled = sakura.getThemeConfig("additional", "aplayer_lrc", Boolean)?.valueOf() !== false;
 
     // http://example.com/api.php?server=:server&type=:type&id=:id&r=:r
     const musicAPI = `${musicHost}?server=${musicServer}&type=${musicType}&id=${musicId}&r=${Math.random()}`;
@@ -59,18 +60,36 @@ export class Utils {
 
           flxedAplayerOptions.audio = data;
           const fixAplayer = new APlayer(flxedAplayerOptions);
-          fixAplayer.lrc.hide();
+          const lrcButton = aplayerElement.querySelector(".aplayer-icon-lrc");
+          const miniSwitcher = aplayerElement.querySelector(".aplayer-miniswitcher");
+          const playlist = aplayerElement.querySelector(".aplayer-list");
+          let lyricsManuallyHidden = false;
+
+          const hideLyrics = () => {
+            fixAplayer.lrc.hide();
+            lrcButton?.classList.add("aplayer-icon-lrc-inactivity");
+          };
+          const showLyricsAutomatically = () => {
+            if (!lyricsEnabled || lyricsManuallyHidden) {
+              return;
+            }
+            fixAplayer.lrc.show();
+            lrcButton?.classList.remove("aplayer-icon-lrc-inactivity");
+          };
+
+          hideLyrics();
           // 为按钮增加 hover
           aplayerElement.querySelector(".aplayer-body")?.classList.add("ap-hover");
-          aplayerElement.addEventListener(
-            "click",
-            () => {
-              fixAplayer.lrc.show();
-            },
-            {
-              once: true,
+          fixAplayer.on("play", showLyricsAutomatically);
+          fixAplayer.on("listshow", showLyricsAutomatically);
+          miniSwitcher?.addEventListener("click", () => {
+            if (fixAplayer.mode === "normal" && !playlist?.classList.contains("aplayer-list-hide")) {
+              showLyricsAutomatically();
             }
-          );
+          });
+          lrcButton?.addEventListener("click", () => {
+            lyricsManuallyHidden = lrcButton.classList.contains("aplayer-icon-lrc-inactivity");
+          });
         });
       })
       .catch((error) => {
