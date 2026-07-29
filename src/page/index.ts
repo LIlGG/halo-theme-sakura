@@ -28,6 +28,7 @@ export default class Index {
     if (!backgorundElement) {
       return;
     }
+    const appendDefaultParams = backgorundElement.dataset.appendDefaultParams !== "false";
     const backgroundNextBotton = document.getElementById("bg-next");
     const backgroundPrevBotton = document.getElementById("bg-prev");
     const backgroundLoopSize = (sakura.getThemeConfig("random_image", "rimage_cover_back_num", Number) || 0).valueOf();
@@ -52,7 +53,10 @@ export default class Index {
     });
     const handlerChangeBackground = (backageImageIndex: number) => {
       const randomUrl = backgorundElement.getAttribute("data-url");
-      backgorundElement.src = `${randomUrl}&t=${backageImageIndex}`;
+      if (!randomUrl) {
+        return;
+      }
+      backgorundElement.src = appendDefaultParams ? `${randomUrl}&t=${backageImageIndex}` : randomUrl;
       backgorundElement.setAttribute("data-currIndex", `${backageImageIndex}`);
     };
   }

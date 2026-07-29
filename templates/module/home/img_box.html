@@ -5,14 +5,19 @@
   >
     <img
       th:with="
-      imageUrl = |${theme.config.random_image.rimage_url}?home=home&type=url&itype=${theme.config.random_image.rimage_cover_back_itype}${theme.config.random_image.rimage_cover_back_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_back_id : ''}${#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '&' + theme.config.random_image.rimage_other_params}|,
+      appendDefaultParams = ${theme.config.random_image.rimage_custom_only != true},
+      imageUrl = ${appendDefaultParams
+        ? theme.config.random_image.rimage_url + '?home=home&type=url&itype=' + theme.config.random_image.rimage_cover_back_itype + (theme.config.random_image.rimage_cover_back_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_back_id : '') + (#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '&' + theme.config.random_image.rimage_other_params)
+        : theme.config.random_image.rimage_url + (#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '?' + theme.config.random_image.rimage_other_params)},
       randomNum = |${theme.config.random_image.rimage_cover_back_num != 0 ? ((T(java.lang.Math).random() * 10) % theme.config.random_image.rimage_cover_back_num).intValue() : #strings.randomAlphanumeric(1)}|
       "
-      th:src="|${imageUrl}${#strings.isEmpty(theme.config.random_image.rimage_cover_lqip_params) ? '' : '&' + theme.config.random_image.rimage_cover_lqip_params}&t=${randomNum}|"
-      th:data-src="|${imageUrl}&t=${randomNum}|"
+      th:src="${appendDefaultParams and theme.config.random_image.rimage_cover_lqip == 'lowquality' ? imageUrl + (#strings.isEmpty(theme.config.random_image.rimage_cover_lqip_params) ? '' : '&' + theme.config.random_image.rimage_cover_lqip_params) + '&t=' + randomNum : #theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
+      th:data-src="${imageUrl + (appendDefaultParams ? '&t=' + randomNum : '')}"
       th:data-url="${imageUrl}"
+      th:data-append-default-params="${appendDefaultParams}"
       th:data-currIndex="${randomNum}"
-      class="lazyload cover-bg lazyload blur-up bg-change-js"
+      class="lazyload cover-bg bg-change-js"
+      th:classappend="${appendDefaultParams and theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
       alt="background picture of the home page"
       width="1920"
       height="1080"

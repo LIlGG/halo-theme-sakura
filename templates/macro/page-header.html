@@ -39,19 +39,20 @@
         <!--/* 随机图 */-->
         <th:block
           th:if="${#strings.isEmpty(frontCover) && randomCoverAvailable}"
-          th:with="randomImage = |${theme.config.random_image.rimage_url}?${_templateId}id=${id != null ? id : extension.metadata.name}&${theme.config.random_image.rimage_custom_param_name}=${id != null ? id : extension.metadata.name}&type=url&itype=${theme.config.random_image.rimage_cover_itype}${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}${#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '&' + theme.config.random_image.rimage_other_params}|"
+          th:with="
+          appendDefaultParams = ${theme.config.random_image.rimage_custom_only != true},
+          randomImageId = ${id != null ? id : extension.metadata.name},
+          randomImage = ${appendDefaultParams
+            ? theme.config.random_image.rimage_url + '?' + _templateId + 'id=' + randomImageId + '&' + theme.config.random_image.rimage_custom_param_name + '=' + randomImageId + '&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '') + (#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '&' + theme.config.random_image.rimage_other_params)
+            : theme.config.random_image.rimage_url + (#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '?' + theme.config.random_image.rimage_other_params)}
+          "
         >
           <img
-            th:src="${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/load/orange.progress-bar-stripe-loader.svg') : (randomImage + (#strings.isEmpty(theme.config.random_image.rimage_cover_lqip_params) ? '' : '&' + theme.config.random_image.rimage_cover_lqip_params))}"
-            th:data-srcset="|
-            ${randomImage}&th=640 640w,
-            ${randomImage}&th=960 960w,
-            ${randomImage}&th=1280 1280w,
-            ${randomImage}&th=1440 1440w,
-            ${randomImage}&th=1920 1920w
-            |"
+            th:src="${theme.config.random_image.rimage_cover_lqip == 'lowquality' and appendDefaultParams ? randomImage + (#strings.isEmpty(theme.config.random_image.rimage_cover_lqip_params) ? '' : '&' + theme.config.random_image.rimage_cover_lqip_params) : #theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
+            th:data-src="${appendDefaultParams ? null : randomImage}"
+            th:data-srcset="${appendDefaultParams ? randomImage + '&th=640 640w, ' + randomImage + '&th=960 960w, ' + randomImage + '&th=1280 1280w, ' + randomImage + '&th=1440 1440w, ' + randomImage + '&th=1920 1920w' : null}"
             th:class="lazyload"
-            th:classappend="${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
+            th:classappend="${theme.config.random_image.rimage_cover_lqip == 'lowquality' and appendDefaultParams ? 'blur-up' : ''}"
             onerror="imgError(this)"
             itemprop="contentUrl"
             alt="large picture of the cover"
