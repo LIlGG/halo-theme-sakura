@@ -64,7 +64,51 @@
       "all": "全部"
     },
     "links": {
-      "title": "リンク集"
+      "title": "リンク集",
+      "apply": {
+        "title": "相互リンクを申請",
+        "notice_intro": "申請前に当サイトをリンクしてください。送信後は審査となります。",
+        "notice_name": "名称",
+        "notice_url": "URL",
+        "notice_logo": "ロゴ",
+        "required": "必須",
+        "optional": "任意",
+        "submit": "申請する",
+        "submitting": "送信中...",
+        "success": "申請を受け付けました。審査をお待ちください。",
+        "captcha_alt": "相互リンク申請の認証コード",
+        "captcha_refresh": "クリックして認証コードを更新",
+        "fields": {
+          "displayName": "サイト名",
+          "url": "サイト URL",
+          "logo": "ロゴ URL",
+          "email": "メール",
+          "backlink": "逆リンク URL",
+          "description": "サイト説明",
+          "feedUrls": "フィード URL",
+          "captcha": "認証コード"
+        },
+        "placeholders": {
+          "displayName": "あなたのサイト名",
+          "url": "https://example.com",
+          "logo": "https://example.com/logo.png",
+          "email": "hello@example.com",
+          "backlink": "https://example.com/links",
+          "description": "サイトの短い紹介",
+          "feedUrls": "RSS / Atom の URL を 1 行に 1 つ",
+          "captcha": "5 文字のコード"
+        },
+        "errors": {
+          "invalid": "申請内容を確認してください",
+          "captcha": "認証コードが正しくないか、期限切れです",
+          "disabled": "相互リンク申請は受け付けていません",
+          "duplicate": "このリンクはすでに申請されています",
+          "capacity": "審査待ちの申請がいっぱいです",
+          "rate": "リクエストが多すぎます",
+          "unavailable": "サービスが一時的に利用できません",
+          "network": "送信できませんでした。しばらくしてから再試行してください"
+        }
+      }
     },
     "moments": {
       "title": "日誌",

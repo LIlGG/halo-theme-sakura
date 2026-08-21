@@ -64,7 +64,51 @@
       "all": "全部"
     },
     "links": {
-      "title": "友情链接"
+      "title": "友情链接",
+      "apply": {
+        "title": "申请友链",
+        "notice_intro": "申请前请先添加本站友链。提交后会进入审核，请耐心等待。",
+        "notice_name": "名称",
+        "notice_url": "地址",
+        "notice_logo": "头像",
+        "required": "必填",
+        "optional": "选填",
+        "submit": "申请友链",
+        "submitting": "正在提交...",
+        "success": "申请已提交，等待审核。",
+        "captcha_alt": "友链申请验证码",
+        "captcha_refresh": "点击刷新验证码",
+        "fields": {
+          "displayName": "网站名称",
+          "url": "网站地址",
+          "logo": "Logo 地址",
+          "email": "联系邮箱",
+          "backlink": "反链地址",
+          "description": "网站描述",
+          "feedUrls": "订阅地址",
+          "captcha": "验证码"
+        },
+        "placeholders": {
+          "displayName": "你的站点名称",
+          "url": "https://example.com",
+          "logo": "https://example.com/logo.png",
+          "email": "hello@example.com",
+          "backlink": "https://example.com/links",
+          "description": "一句话介绍你的网站",
+          "feedUrls": "每行一个 RSS / Atom 地址",
+          "captcha": "五位验证码"
+        },
+        "errors": {
+          "invalid": "请检查申请内容",
+          "captcha": "验证码错误或已过期",
+          "disabled": "友链申请暂未开放",
+          "duplicate": "该链接已经申请",
+          "capacity": "待审核申请已满",
+          "rate": "请求过于频繁",
+          "unavailable": "服务暂时不可用",
+          "network": "暂时无法提交，请稍后再试"
+        }
+      }
     },
     "moments": {
       "title": "日志",

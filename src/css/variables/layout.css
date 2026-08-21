@@ -87,6 +87,11 @@
 
   /* links */
   --links-description-color: #999;
+  --link-application-border-color: #eee;
+  --link-application-notice-bg: var(--notice-background-color);
+  --link-application-field-bg: rgba(255, 255, 255, 0.72);
+  --link-application-field-border: #e6e6e6;
+  --link-application-status-error-color: #c45c5c;
 }
 
 .dark {
@@ -120,6 +125,11 @@
   --photo-group-change-active-color: #ccc;
   --links-description-color: #b0b0b0;
   --site-content-background-color: transparent;
+  --link-application-border-color: #3a4149;
+  --link-application-notice-bg: #222;
+  --link-application-field-bg: rgba(38, 38, 38, 0.72);
+  --link-application-field-border: #535a63;
+  --link-application-status-error-color: #f0b4b4;
 }
 
 .video-container {
