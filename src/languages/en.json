@@ -64,7 +64,51 @@
       "all": "All"
     },
     "links": {
-      "title": "Links"
+      "title": "Links",
+      "apply": {
+        "title": "Apply for a link",
+        "notice_intro": "Please add our site to your links before applying. Submissions will be reviewed.",
+        "notice_name": "Name",
+        "notice_url": "URL",
+        "notice_logo": "Logo",
+        "required": "Required",
+        "optional": "Optional",
+        "submit": "Submit",
+        "submitting": "Submitting...",
+        "success": "Application submitted. Please wait for review.",
+        "captcha_alt": "Link application captcha",
+        "captcha_refresh": "Click to refresh captcha",
+        "fields": {
+          "displayName": "Site name",
+          "url": "Site URL",
+          "logo": "Logo URL",
+          "email": "Email",
+          "backlink": "Backlink URL",
+          "description": "Description",
+          "feedUrls": "Feed URLs",
+          "captcha": "Captcha"
+        },
+        "placeholders": {
+          "displayName": "Your site name",
+          "url": "https://example.com",
+          "logo": "https://example.com/logo.png",
+          "email": "hello@example.com",
+          "backlink": "https://example.com/links",
+          "description": "A short introduction to your site",
+          "feedUrls": "One RSS / Atom URL per line",
+          "captcha": "5-character code"
+        },
+        "errors": {
+          "invalid": "Please check your application",
+          "captcha": "Captcha is incorrect or expired",
+          "disabled": "Link applications are not open",
+          "duplicate": "This link has already been submitted",
+          "capacity": "Pending applications are full",
+          "rate": "Too many requests",
+          "unavailable": "Service temporarily unavailable",
+          "network": "Unable to submit right now, please try again later"
+        }
+      }
     },
     "moments": {
       "title": "Log",

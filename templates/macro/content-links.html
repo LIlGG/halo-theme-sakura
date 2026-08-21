@@ -29,6 +29,210 @@
           </li> 
         </ul>
       </th:block>
-    </div>       
+    </div>
+    <section
+      class="link-application"
+      id="link-application"
+      th:if="${linkApplicationEnabled}">
+    <h3 class="link-title">
+      <span class="fake-title" data-i18n="page.links.apply.title">申请友链</span>
+    </h3>
+
+    <p
+      class="link-application-status is-success"
+      th:if="${param.applied == 'success'}"
+      role="status"
+      data-i18n="page.links.apply.success">申请已提交，等待审核。</p>
+    <p
+      class="link-application-status is-error"
+      th:if="${param.applied == 'error' or param.applied == 'disabled'}"
+      role="alert"
+      th:text="${param.message ?: '提交失败，请稍后再试'}">提交失败，请稍后再试</p>
+    <p id="link-application-result" class="link-application-status is-hidden" role="status" aria-live="polite"></p>
+
+    <aside class="link-application-notice" aria-labelledby="link-application-notice-title">
+      <p class="link-application-notice-intro" id="link-application-notice-title" data-i18n="page.links.apply.notice_intro">
+        申请前请先添加本站友链。提交后会进入审核，请耐心等待。
+      </p>
+      <dl class="link-application-site">
+        <div class="link-application-site-row">
+          <dt data-i18n="page.links.apply.notice_name">名称</dt>
+          <dd th:text="${site.title}">Sakura</dd>
+        </div>
+        <div class="link-application-site-row">
+          <dt data-i18n="page.links.apply.notice_url">地址</dt>
+          <dd>
+            <a class="link-application-site-url" th:href="${site.url}" th:text="${site.url}" target="_blank" rel="noopener noreferrer"></a>
+          </dd>
+        </div>
+        <div class="link-application-site-row" th:if="${not #strings.isEmpty(site.logo)}">
+          <dt data-i18n="page.links.apply.notice_logo">头像</dt>
+          <dd class="link-application-site-logo">
+            <a th:href="${site.logo}" target="_blank" rel="noopener noreferrer">
+              <img th:src="${site.logo}" th:alt="${site.title}" width="28" height="28">
+            </a>
+            <code th:text="${site.logo}" th:title="${site.logo}"></code>
+          </dd>
+        </div>
+      </dl>
+    </aside>
+
+    <form
+      id="link-application-form"
+      class="link-application-form"
+      method="post"
+      th:action="@{/links/apply/submit}">
+      <input type="hidden" name="_csrf" th:value="${csrfToken}">
+
+      <div class="link-application-grid">
+        <label class="link-application-field" th:classappend="${param.field == 'displayName'} ? ' is-invalid'">
+          <span class="link-application-label">
+            <span data-i18n="page.links.apply.fields.displayName">网站名称</span>
+            <abbr class="link-application-required" title="required" data-i18n="[title]page.links.apply.required">*</abbr>
+          </span>
+          <input
+            name="displayName"
+            type="text"
+            required
+            autocomplete="organization"
+            data-i18n="[placeholder]page.links.apply.placeholders.displayName"
+            placeholder="你的站点名称"
+            th:value="${param.field == 'displayName' ? param.value : ''}">
+        </label>
+
+        <label class="link-application-field" th:classappend="${param.field == 'url'} ? ' is-invalid'">
+          <span class="link-application-label">
+            <span data-i18n="page.links.apply.fields.url">网站地址</span>
+            <abbr class="link-application-required" title="required" data-i18n="[title]page.links.apply.required">*</abbr>
+          </span>
+          <input
+            name="url"
+            type="url"
+            required
+            inputmode="url"
+            autocomplete="url"
+            spellcheck="false"
+            data-i18n="[placeholder]page.links.apply.placeholders.url"
+            placeholder="https://example.com"
+            th:value="${param.field == 'url' ? param.value : ''}">
+        </label>
+
+        <label class="link-application-field" th:classappend="${param.field == 'logo'} ? ' is-invalid'">
+          <span class="link-application-label">
+            <span data-i18n="page.links.apply.fields.logo">Logo 地址</span>
+            <span class="link-application-optional" data-i18n="page.links.apply.optional">选填</span>
+          </span>
+          <input
+            name="logo"
+            type="url"
+            inputmode="url"
+            autocomplete="off"
+            spellcheck="false"
+            data-i18n="[placeholder]page.links.apply.placeholders.logo"
+            placeholder="https://example.com/logo.png"
+            th:value="${param.field == 'logo' ? param.value : ''}">
+        </label>
+
+        <label class="link-application-field" th:classappend="${param.field == 'email'} ? ' is-invalid'">
+          <span class="link-application-label">
+            <span data-i18n="page.links.apply.fields.email">联系邮箱</span>
+            <span class="link-application-optional" data-i18n="page.links.apply.optional">选填</span>
+          </span>
+          <input
+            name="email"
+            type="email"
+            inputmode="email"
+            autocomplete="email"
+            data-i18n="[placeholder]page.links.apply.placeholders.email"
+            placeholder="hello@example.com"
+            th:value="${param.field == 'email' ? param.value : ''}">
+        </label>
+
+        <label class="link-application-field is-wide" th:classappend="${param.field == 'backlink'} ? ' is-invalid'">
+          <span class="link-application-label">
+            <span data-i18n="page.links.apply.fields.backlink">反链地址</span>
+            <span class="link-application-optional" data-i18n="page.links.apply.optional">选填</span>
+          </span>
+          <input
+            name="backlink"
+            type="url"
+            inputmode="url"
+            autocomplete="off"
+            spellcheck="false"
+            data-i18n="[placeholder]page.links.apply.placeholders.backlink"
+            placeholder="https://example.com/links"
+            th:value="${param.field == 'backlink' ? param.value : ''}">
+        </label>
+
+        <label class="link-application-field is-wide" th:classappend="${param.field == 'description'} ? ' is-invalid'">
+          <span class="link-application-label">
+            <span data-i18n="page.links.apply.fields.description">网站描述</span>
+            <span class="link-application-optional" data-i18n="page.links.apply.optional">选填</span>
+          </span>
+          <textarea
+            name="description"
+            rows="3"
+            data-i18n="[placeholder]page.links.apply.placeholders.description"
+            placeholder="一句话介绍你的网站"
+            th:text="${param.field == 'description' ? param.value : ''}"></textarea>
+        </label>
+
+        <label class="link-application-field is-wide" th:classappend="${param.field == 'feedUrls'} ? ' is-invalid'">
+          <span class="link-application-label">
+            <span data-i18n="page.links.apply.fields.feedUrls">订阅地址</span>
+            <span class="link-application-optional" data-i18n="page.links.apply.optional">选填</span>
+          </span>
+          <textarea
+            name="feedUrls"
+            rows="3"
+            spellcheck="false"
+            data-i18n="[placeholder]page.links.apply.placeholders.feedUrls"
+            placeholder="每行一个 RSS / Atom 地址"
+            th:text="${param.field == 'feedUrls' ? param.value : ''}"></textarea>
+        </label>
+      </div>
+
+      <div class="link-application-captcha-row">
+        <label class="link-application-field link-application-captcha-field" th:classappend="${param.field == 'captchaCode'} ? ' is-invalid'">
+          <span class="link-application-label">
+            <span data-i18n="page.links.apply.fields.captcha">验证码</span>
+            <abbr class="link-application-required" title="required" data-i18n="[title]page.links.apply.required">*</abbr>
+          </span>
+          <span class="link-application-captcha-control">
+            <button
+              type="button"
+              class="link-application-captcha-button"
+              data-i18n="[title]page.links.apply.captcha_refresh;[aria-label]page.links.apply.captcha_refresh"
+              title="点击刷新验证码"
+              aria-label="点击刷新验证码">
+              <img
+                id="link-application-captcha"
+                class="link-application-captcha"
+                th:src="@{/links/apply/captcha}"
+                width="160"
+                height="48"
+                alt="友链申请验证码"
+                data-i18n="[alt]page.links.apply.captcha_alt">
+            </button>
+            <input
+              name="captchaCode"
+              type="text"
+              required
+              minlength="5"
+              maxlength="5"
+              inputmode="text"
+              autocomplete="off"
+              spellcheck="false"
+              autocapitalize="off"
+              data-i18n="[placeholder]page.links.apply.placeholders.captcha"
+              placeholder="五位验证码">
+          </span>
+        </label>
+
+        <button class="link-application-submit" type="submit" data-i18n="page.links.apply.submit">申请友链</button>
+      </div>
+    </form>
+    </section>
   </article>
 </th:block>
+
