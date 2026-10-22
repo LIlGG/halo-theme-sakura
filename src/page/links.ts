@@ -46,12 +46,16 @@ export default class Links {
     const captchaButton = form.querySelector(".link-application-captcha-button") as HTMLButtonElement | null;
     const result = document.getElementById("link-application-result");
     const submitButton = form.querySelector(".link-application-submit") as HTMLButtonElement | null;
+    const captchaInput = form.elements.namedItem("captchaCode") as HTMLInputElement | null;
     let challengeId: string | null = null;
-    let refreshing = false;
+    let captchaRefresh: Promise<boolean> | null = null;
+    let submitting = false;
+    let captchaErrorShown = false;
 
     const translate = (key: string, fallback: string) => sakura.translate(key, fallback);
 
     const setStatus = (type: "success" | "error" | "hidden", message = "") => {
+      captchaErrorShown = false;
       if (!result) {
         return;
       }
@@ -92,11 +96,22 @@ export default class Links {
       return value || null;
     };
 
-    const derivedFields: Record<"logo" | "backlink" | "feedUrls", { suffix: string; last: string }> = {
-      logo: { suffix: "/logo.png", last: "" },
-      backlink: { suffix: "/links", last: "" },
-      feedUrls: { suffix: "/rss.xml", last: "" },
+    const derivedFields: Record<"logo" | "backlink" | "feedUrls", { suffix: string; edited: boolean }> = {
+      logo: { suffix: "/logo.png", edited: false },
+      backlink: { suffix: "/links", edited: false },
+      feedUrls: { suffix: "/rss.xml", edited: false },
     };
+
+    (Object.keys(derivedFields) as Array<keyof typeof derivedFields>).forEach((name) => {
+      const field = derivedFields[name];
+      const el = form.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement | null;
+      field.edited = Boolean(el?.value.trim());
+      const markEdited = () => {
+        field.edited = true;
+      };
+      el?.addEventListener("input", markEdited);
+      el?.addEventListener("change", markEdited);
+    });
 
     const applyDerivedUrls = (rawUrl: string) => {
       const base = siteBase(rawUrl);
@@ -109,11 +124,8 @@ export default class Links {
         if (!el) {
           return;
         }
-        const current = el.value.trim();
-        const next = `${base}${field.suffix}`;
-        if (!current || current === field.last) {
-          el.value = next;
-          field.last = next;
+        if (!field.edited) {
+          el.value = `${base}${field.suffix}`;
         }
       });
     };
@@ -124,32 +136,71 @@ export default class Links {
         .map((item) => item.trim())
         .filter((item) => item.length > 0);
 
-    const refreshCaptcha = async () => {
-      if (refreshing) {
-        return;
+    const updateControls = () => {
+      const busy = submitting || captchaRefresh !== null;
+      if (submitButton) {
+        submitButton.disabled = busy;
       }
-      refreshing = true;
-      try {
-        const response = await fetch(`${REST_API_BASE}/link-applications/captcha`, {
-          method: "POST",
-          credentials: "omit",
+      if (captchaButton) {
+        captchaButton.disabled = busy;
+      }
+      if (captchaInput) {
+        captchaInput.disabled = busy || !challengeId;
+      }
+    };
+
+    const refreshCaptcha = (showError = true): Promise<boolean> => {
+      if (captchaRefresh) {
+        return captchaRefresh;
+      }
+      challengeId = null;
+      if (captchaImage) {
+        captchaImage.removeAttribute("src");
+        captchaImage.style.visibility = "hidden";
+      }
+      if (captchaInput) {
+        captchaInput.value = "";
+      }
+      captchaRefresh = Promise.resolve()
+        .then(async () => {
+          try {
+            const response = await fetch(`${REST_API_BASE}/link-applications/captcha`, {
+              method: "POST",
+              credentials: "omit",
+            });
+            if (!response.ok) {
+              throw new Error("CAPTCHA unavailable");
+            }
+            const payload = await response.json();
+            if (!payload.challengeId || !payload.image) {
+              throw new Error("Invalid CAPTCHA response");
+            }
+            challengeId = payload.challengeId;
+            if (captchaImage) {
+              captchaImage.src = payload.image;
+              captchaImage.style.visibility = "";
+            }
+            if (captchaErrorShown) {
+              setStatus("hidden");
+            }
+            return true;
+          } catch {
+            if (showError) {
+              setStatus(
+                "error",
+                translate("page.links.apply.errors.captcha_unavailable", "验证码暂时无法加载，请点击图片重试")
+              );
+              captchaErrorShown = true;
+            }
+            return false;
+          }
+        })
+        .finally(() => {
+          captchaRefresh = null;
+          updateControls();
         });
-        if (!response.ok) {
-          throw new Error("CAPTCHA unavailable");
-        }
-        const payload = await response.json();
-        challengeId = payload.challengeId ?? null;
-        if (captchaImage && payload.image) {
-          captchaImage.src = payload.image;
-        }
-      } catch {
-        challengeId = null;
-        if (captchaImage) {
-          captchaImage.src = `/links/apply/captcha?t=${Date.now()}`;
-        }
-      } finally {
-        refreshing = false;
-      }
+      updateControls();
+      return captchaRefresh;
     };
 
     const inferInvalidField = (errors: unknown) => {
@@ -205,7 +256,9 @@ export default class Links {
 
     captchaButton?.addEventListener("click", (event) => {
       event.preventDefault();
-      const captchaInput = form.elements.namedItem("captchaCode") as HTMLInputElement | null;
+      if (submitting) {
+        return;
+      }
       refreshCaptcha().then(() => {
         captchaInput?.focus();
       });
@@ -213,6 +266,14 @@ export default class Links {
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      if (submitting || captchaRefresh) {
+        return;
+      }
+      if (!challengeId) {
+        await refreshCaptcha();
+        captchaInput?.focus();
+        return;
+      }
       clearInvalid();
 
       if (urlInput) {
@@ -223,16 +284,6 @@ export default class Links {
         const firstInvalid = form.querySelector(":invalid") as HTMLElement | null;
         firstInvalid?.closest(".link-application-field")?.classList.add("is-invalid");
         firstInvalid?.focus();
-        return;
-      }
-
-      if (!challengeId) {
-        await refreshCaptcha();
-      }
-      if (!challengeId) {
-        const message = translate("page.links.apply.errors.captcha", "验证码错误或已过期");
-        setStatus("error", message);
-        toast(message);
         return;
       }
 
@@ -250,7 +301,9 @@ export default class Links {
         captchaCode,
       };
 
-      submitButton?.setAttribute("disabled", "disabled");
+      submitting = true;
+      challengeId = null;
+      updateControls();
       if (submitButton) {
         submitButton.textContent = translate("page.links.apply.submitting", "正在提交...");
       }
@@ -267,7 +320,7 @@ export default class Links {
           const message = translate("page.links.apply.success", "申请已提交，等待审核。");
           form.reset();
           Object.values(derivedFields).forEach((field) => {
-            field.last = "";
+            field.edited = false;
           });
           clearInvalid();
           setStatus("success", message);
@@ -284,16 +337,12 @@ export default class Links {
         setStatus("error", message);
         toast(message);
       } finally {
-        challengeId = null;
-        const captchaInput = form.elements.namedItem("captchaCode") as HTMLInputElement | null;
-        if (captchaInput) {
-          captchaInput.value = "";
-        }
+        await refreshCaptcha(false);
+        submitting = false;
         if (submitButton) {
-          submitButton.removeAttribute("disabled");
           submitButton.textContent = translate("page.links.apply.submit", "申请友链");
         }
-        await refreshCaptcha().catch(() => undefined);
+        updateControls();
       }
     });
 

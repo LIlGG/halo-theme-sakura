@@ -67,6 +67,7 @@
       "title": "Links",
       "apply": {
         "title": "Apply for a link",
+        "notice_title": "Exchange links, make a friend",
         "notice_intro": "Please add our site to your links before applying. Submissions will be reviewed.",
         "notice_name": "Name",
         "notice_url": "URL",
@@ -101,6 +102,7 @@
         "errors": {
           "invalid": "Please check your application",
           "captcha": "Captcha is incorrect or expired",
+          "captcha_unavailable": "Unable to load captcha. Click the image to try again",
           "disabled": "Link applications are not open",
           "duplicate": "This link has already been submitted",
           "capacity": "Pending applications are full",

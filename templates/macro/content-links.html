@@ -51,9 +51,22 @@
     <p id="link-application-result" class="link-application-status is-hidden" role="status" aria-live="polite"></p>
 
     <aside class="link-application-notice" aria-labelledby="link-application-notice-title">
-      <p class="link-application-notice-intro" id="link-application-notice-title" data-i18n="page.links.apply.notice_intro">
-        申请前请先添加本站友链。提交后会进入审核，请耐心等待。
-      </p>
+      <div class="link-application-notice-heading">
+        <div class="link-application-notice-avatar" aria-hidden="true">
+          <img th:src="${#theme.assets('/images/default/avatar.webp')}" alt="" width="48" height="48" loading="lazy">
+        </div>
+        <div class="link-application-notice-copy">
+          <div class="link-application-notice-title-row">
+            <h4 class="link-application-notice-title" id="link-application-notice-title" data-i18n="page.links.apply.notice_title">
+              交换友链，交个朋友
+            </h4>
+            <span class="iconify link-application-notice-icon" data-icon="ri:links-line" aria-hidden="true"></span>
+          </div>
+          <p class="link-application-notice-intro" data-i18n="page.links.apply.notice_intro">
+            申请前请先添加本站友链。提交后会进入审核，请耐心等待。
+          </p>
+        </div>
+      </div>
       <dl class="link-application-site">
         <div class="link-application-site-row">
           <dt data-i18n="page.links.apply.notice_name">名称</dt>
@@ -65,7 +78,7 @@
             <a class="link-application-site-url" th:href="${site.url}" th:text="${site.url}" target="_blank" rel="noopener noreferrer"></a>
           </dd>
         </div>
-        <div class="link-application-site-row" th:if="${not #strings.isEmpty(site.logo)}">
+        <div class="link-application-site-row link-application-site-row-logo" th:if="${not #strings.isEmpty(site.logo)}">
           <dt data-i18n="page.links.apply.notice_logo">头像</dt>
           <dd class="link-application-site-logo">
             <a th:href="${site.logo}" target="_blank" rel="noopener noreferrer">
@@ -235,4 +248,3 @@
     </section>
   </article>
 </th:block>
-

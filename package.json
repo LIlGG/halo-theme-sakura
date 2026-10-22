@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite build --watch --mode development",
     "build": "tsc && vite build",
+    "test:links": "node --test scripts/links.test.cjs",
     "lint": "eslint ./src --ext .js,.cjs,.mjs,.ts,.cts,.mts --ignore-path .gitignore",
     "prettier": "prettier --write './src/**/*.{js,ts,css,json,ml,yaml,html}' './templates/**/*.html'",
     "prepare": "husky install"

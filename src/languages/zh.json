@@ -67,6 +67,7 @@
       "title": "友情链接",
       "apply": {
         "title": "申请友链",
+        "notice_title": "交换友链，交个朋友",
         "notice_intro": "申请前请先添加本站友链。提交后会进入审核，请耐心等待。",
         "notice_name": "名称",
         "notice_url": "地址",
@@ -101,6 +102,7 @@
         "errors": {
           "invalid": "请检查申请内容",
           "captcha": "验证码错误或已过期",
+          "captcha_unavailable": "验证码暂时无法加载，请点击图片重试",
           "disabled": "友链申请暂未开放",
           "duplicate": "该链接已经申请",
           "capacity": "待审核申请已满",

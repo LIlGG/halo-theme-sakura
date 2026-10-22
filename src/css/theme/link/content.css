@@ -46,7 +46,7 @@
             & img {
               transform: rotate(360deg);
             }
-  
+
             & .linkdes {
               border-top: 1px dashed #fff;
             }
@@ -62,8 +62,8 @@
           position: absolute;
           top: 0px;
           left: -50px;
-          transition: all .5s;
-          opacity: .2;
+          transition: all 0.5s;
+          opacity: 0.2;
         }
 
         & .link-item-inner {
@@ -188,48 +188,120 @@
 
     & .link-application-notice {
       margin-bottom: 24px;
-      padding: 18px 20px;
-      border: 1px dashed var(--link-application-border-color);
+      padding: 20px;
+      border: 1px dashed var(--link-application-field-border);
       border-radius: 10px;
       background: var(--link-application-notice-bg);
       color: var(--color);
 
+      & .link-application-notice-heading {
+        display: grid;
+        grid-template-columns: 48px minmax(0, 1fr);
+        align-items: center;
+        gap: 16px;
+      }
+
+      & .link-application-notice-avatar {
+        width: 48px;
+        height: 48px;
+
+        & > img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 2px;
+          border: 1px solid var(--link-application-field-border);
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+
+      & .link-application-notice-copy {
+        min-width: 0;
+      }
+
+      & .link-application-notice-title-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+      }
+
+      & .link-application-notice-icon {
+        flex: none;
+        color: var(--theme-color);
+        font-size: 18px;
+      }
+
+      & .link-application-notice-title {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        color: var(--entry-content-heading-color);
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+      }
+
       & .link-application-notice-intro {
-        margin: 0 0 14px;
+        margin: 0;
+        font-size: 0.875rem;
         line-height: 1.8;
       }
 
       & .link-application-site {
-        margin: 0;
+        margin: 18px 0 0;
+        padding: 16px 0 0;
+        border-top: 1px dashed var(--link-application-field-border);
         display: grid;
-        gap: 8px;
+        gap: 10px;
+        font-size: 0.875rem;
+        line-height: 1.8;
       }
 
       & .link-application-site-row {
         display: grid;
-        grid-template-columns: 3.5em 1fr;
-        gap: 12px;
-        align-items: start;
+        grid-template-columns: 3rem minmax(0, 1fr);
+        column-gap: 16px;
+        align-items: baseline;
         min-width: 0;
 
-        & dt {
+        & dt,
+        & dd {
           margin: 0;
-          color: var(--theme-color);
-          font-size: 0.85em;
-          letter-spacing: 0.08em;
+          padding: 0;
+          font: inherit;
+        }
+
+        & dt {
+          color: var(--color);
         }
 
         & dd {
-          margin: 0;
           min-width: 0;
           overflow-wrap: anywhere;
-          color: var(--color);
+          color: var(--entry-content-heading-color);
         }
       }
 
+      & .link-application-site-row-logo {
+        align-items: center;
+      }
+
       & .link-application-site-url {
-        color: var(--theme-color);
-        word-break: break-all;
+        color: inherit;
+        font: inherit;
+        text-decoration-color: var(--link-application-field-border);
+        text-decoration-line: underline;
+        text-underline-offset: 4px;
+
+        &:hover,
+        &:focus-visible {
+          color: var(--theme-color);
+          text-decoration-color: currentColor;
+        }
       }
 
       & .link-application-site-logo {
@@ -237,6 +309,12 @@
         align-items: center;
         gap: 10px;
         min-width: 0;
+
+        & > a {
+          flex: none;
+          display: block;
+          line-height: 0;
+        }
 
         & img {
           flex: none;
@@ -250,9 +328,9 @@
         & code {
           min-width: 0;
           overflow-wrap: anywhere;
-          font-size: 0.8em;
-          line-height: 1.5;
-          color: var(--links-description-color);
+          padding: 0;
+          font: inherit;
+          color: var(--color);
           background: transparent;
         }
       }
@@ -482,8 +560,21 @@
       }
 
       & .link-application-site-row {
-        grid-template-columns: 3em 1fr;
-        gap: 8px;
+        column-gap: 10px;
+      }
+
+      & .link-application-notice {
+        padding: 18px 16px;
+
+        & .link-application-notice-heading {
+          grid-template-columns: 40px minmax(0, 1fr);
+          gap: 12px;
+        }
+
+        & .link-application-notice-avatar {
+          width: 40px;
+          height: 40px;
+        }
       }
     }
   }
