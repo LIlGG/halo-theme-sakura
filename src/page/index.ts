@@ -25,7 +25,7 @@ export default class Index {
   @documentFunction()
   public registerBackgroundChangeEvent() {
     const backgorundElement = document.querySelector(".bg-change-js") as HTMLImageElement;
-    if (!backgorundElement) {
+    if (!backgorundElement || backgorundElement.dataset.appendDefaultParams === "false") {
       return;
     }
     const backgroundNextBotton = document.getElementById("bg-next");
@@ -52,6 +52,9 @@ export default class Index {
     });
     const handlerChangeBackground = (backageImageIndex: number) => {
       const randomUrl = backgorundElement.getAttribute("data-url");
+      if (!randomUrl) {
+        return;
+      }
       backgorundElement.src = `${randomUrl}&t=${backageImageIndex}`;
       backgorundElement.setAttribute("data-currIndex", `${backageImageIndex}`);
     };

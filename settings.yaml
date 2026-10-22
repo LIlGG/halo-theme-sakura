@@ -750,24 +750,31 @@ spec:
           validation: "required|url"
           value: https://api.lixingyong.com/api/images
           help: 随机图 API 地址。
+        - $formkit: switch
+          name: rimage_custom_only
+          id: rimage_custom_only
+          key: rimage_custom_only
+          label: 仅使用自定义参数
+          value: false
+          help: 开启后将不再附加资源标识、图片范围、响应式尺寸等主题默认参数，仅使用下方填写的第三方 API 自定义参数。
         - $formkit: text
           name: rimage_other_params
           label: 第三方 API 自定义参数
-          help: 第三方 API 自定义参数，如 category=dongman 。参数会跟随在随机图 API 地址后面
+          help: 第三方 API 自定义参数，如 category=dongman。参数会跟随在随机图 API 地址后面。
         - $formkit: select
           name: rimage_cover_lqip
           id: rimage_cover_lqip
           key: rimage_cover_lqip
           label: 延迟占位方式
           value: loading
-          help: 在图片还未加载之前的过渡效果
+          help: 在图片还未加载之前的过渡效果；仅使用自定义参数时会固定使用加载图。
           options:
             - value: loading
               label: 固定加载图
             - value: lowquality
               label: 低质量图
         - $formkit: text
-          if: "$get(rimage_cover_lqip).value == 'lowquality'"
+          if: "$get(rimage_cover_lqip).value == 'lowquality' && $get(rimage_custom_only).value != true"
           name: rimage_cover_lqip_params
           label: API 低质量图参数
           value: "th=150"
@@ -779,7 +786,7 @@ spec:
           value: false
           help: 文章是否使用随机图的设置随机获取图片
         - $formkit: text
-          if: "$get(rimage_cover_open).value == true"
+          if: "$get(rimage_cover_open).value == true && $get(rimage_custom_only).value != true"
           name: rimage_custom_param_name
           label: 随机图 API 资源标识变量
           validation: "required"
@@ -793,7 +800,7 @@ spec:
           value: false
           help: 页面是否使用随机图的设置随机获取图片
         - $formkit: select
-          if: "$get(rimage_cover_open).value == true || $get(rimage_cover_sheet_open).value == true"
+          if: "($get(rimage_cover_open).value == true || $get(rimage_cover_sheet_open).value == true) && $get(rimage_custom_only).value != true"
           name: rimage_cover_itype
           id: rimage_cover_itype
           label: 封面列表图库获取范围
@@ -809,7 +816,7 @@ spec:
             - value: user
               label: 用户
         - $formkit: text
-          if: "($get(rimage_cover_open).value == true || $get(rimage_cover_sheet_open).value == true) && $get(rimage_cover_itype).value != image"
+          if: "($get(rimage_cover_open).value == true || $get(rimage_cover_sheet_open).value == true) && $get(rimage_custom_only).value != true && $get(rimage_cover_itype).value != image"
           name: rimage_cover_id
           label: 封面图获取范围编号
           help: 相册编号、分类编号或用户名
@@ -822,7 +829,7 @@ spec:
           value: false
           help: 首页背景是否启用随机图，如果启用，则第一屏中的首页背景图片将会无效化
         - $formkit: select
-          if: "$get(rimage_cover_back_open).value == true"
+          if: "$get(rimage_cover_back_open).value == true && $get(rimage_custom_only).value != true"
           name: rimage_cover_back_itype
           id: rimage_cover_back_itype
           key: rimage_cover_back_itype
@@ -839,12 +846,12 @@ spec:
             - value: user
               label: 用户
         - $formkit: text
-          if: "$get(rimage_cover_back_open).value == true && $get(rimage_cover_back_itype).value != image"
+          if: "$get(rimage_cover_back_open).value == true && $get(rimage_custom_only).value != true && $get(rimage_cover_back_itype).value != image"
           name: rimage_cover_back_id
           label: 背景图获取范围编号
           help: 如相册编号、分类编号或用户名
         - $formkit: select
-          if: "$get(rimage_cover_back_open).value == true"
+          if: "$get(rimage_cover_back_open).value == true && $get(rimage_custom_only).value != true"
           name: rimage_cover_back_num
           label: 背景图片循环张数
           value: 5
