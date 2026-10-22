@@ -66,11 +66,11 @@
         th:if="${theme.config.mainScreen.focus_info_socials and (not #arrays.isEmpty(theme.config.sns.items))}"
       >
         <ul>
-          <li id="bg-prev">
+          <li id="bg-prev" th:if="${theme.config.random_image.rimage_custom_only != true}">
             <img class="flipx" th:src="@{/assets/images/next-b.svg}" alt="prev" width="28" height="28" />
           </li>
           <th:block th:replace="~{module/home/top_social}"></th:block>
-          <li id="bg-next">
+          <li id="bg-next" th:if="${theme.config.random_image.rimage_custom_only != true}">
             <img th:src="@{/assets/images/next-b.svg}" alt="next" width="28" height="28" />
           </li>
         </ul>
