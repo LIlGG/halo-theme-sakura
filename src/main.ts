@@ -11,6 +11,8 @@ import LocalStorageBackend from "i18next-localstorage-backend";
 import locI18next from "loc-i18next";
 import { I18nFormat } from "./utils/i18nFormat";
 
+const pageModules = import.meta.glob("./page/*.ts");
+
 /* 核心启动，通常不建议也不应当由用户调用，只能由启动代码使用  */
 interface Sakura {
   [key: string]: any;
@@ -462,10 +464,11 @@ export class SakuraApp implements Sakura {
     if (!_templateId) {
       return;
     }
-    // 也可以通过 `./page/index` 这类具体名称处理，优点是不需要加上 min.js，缺点是需要特殊处理
-    const version = sakura.getPageConfig("version");
-    const modulePath = `./page/${_templateId}-${version}.min.js`;
-    await import(modulePath);
+    const pageModule = pageModules[`./page/${_templateId}.ts`];
+    if (!pageModule) {
+      return;
+    }
+    await pageModule();
   }
 
   protected initEventMulticaster(): void {
