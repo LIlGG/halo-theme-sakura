@@ -187,31 +187,49 @@
     }
 
     & .link-application-notice {
-      margin-bottom: 24px;
-      padding: 20px;
-      border: 1px dashed var(--link-application-field-border);
+      position: relative;
+      margin-bottom: 20px;
+      padding: 24px;
+      border: 1px solid var(--link-application-field-border);
       border-radius: 10px;
-      background: var(--link-application-notice-bg);
+      background: var(--widget-background-color);
       color: var(--color);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: 24px;
+        width: 48px;
+        height: 3px;
+        border-radius: 0 0 3px 3px;
+        background: var(--theme-color);
+      }
 
       & .link-application-notice-heading {
         display: grid;
-        grid-template-columns: 48px minmax(0, 1fr);
+        grid-template-columns: 56px minmax(0, 1fr);
         align-items: center;
-        gap: 16px;
+        gap: 18px;
       }
 
       & .link-application-notice-avatar {
-        width: 48px;
-        height: 48px;
+        position: relative;
+        width: 56px;
+        height: 56px;
+        box-sizing: border-box;
+        padding: 3px;
+        border: 1px solid var(--link-application-field-border);
+        border-color: color-mix(in srgb, var(--theme-color) 35%, var(--link-application-field-border));
+        border-radius: 50%;
 
         & > img {
           display: block;
           width: 100%;
           height: 100%;
+          box-sizing: border-box;
           margin: 0;
-          padding: 2px;
-          border: 1px solid var(--link-application-field-border);
+          padding: 0;
           border-radius: 50%;
           object-fit: cover;
         }
@@ -221,85 +239,91 @@
         min-width: 0;
       }
 
-      & .link-application-notice-title-row {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 4px;
-      }
-
       & .link-application-notice-icon {
-        flex: none;
-        color: var(--theme-color);
-        font-size: 18px;
+        position: absolute;
+        right: -3px;
+        bottom: -2px;
+        width: 22px;
+        height: 22px;
+        box-sizing: border-box;
+        padding: 3px;
+        border: 2px solid var(--widget-background-color);
+        border-radius: 50%;
+        background: var(--theme-color);
+        color: var(--widget-background-color);
       }
 
       & .link-application-notice-title {
-        margin: 0;
+        margin: 0 0 4px;
         padding: 0;
         border: 0;
         color: var(--entry-content-heading-color);
-        font-size: 1rem;
-        font-weight: 400;
+        font-size: 1.0625rem;
+        font-weight: 600;
         line-height: 1.6;
         overflow-wrap: anywhere;
       }
 
       & .link-application-notice-intro {
         margin: 0;
+        color: var(--color);
         font-size: 0.875rem;
         line-height: 1.8;
       }
 
       & .link-application-site {
-        margin: 18px 0 0;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin: 20px 0 0;
         padding: 16px 0 0;
         border-top: 1px dashed var(--link-application-field-border);
-        display: grid;
-        gap: 10px;
-        font-size: 0.875rem;
-        line-height: 1.8;
       }
 
       & .link-application-site-row {
         display: grid;
-        grid-template-columns: 3rem minmax(0, 1fr);
-        column-gap: 16px;
-        align-items: baseline;
+        align-content: start;
+        gap: 4px;
         min-width: 0;
+        padding: 12px 14px;
+        border-radius: 8px;
+        background: var(--link-application-notice-bg);
+        background: color-mix(in srgb, var(--link-application-field-border) 20%, var(--widget-background-color));
 
         & dt,
         & dd {
           margin: 0;
           padding: 0;
-          font: inherit;
         }
 
         & dt {
           color: var(--color);
+          font-size: 0.75rem;
+          line-height: 1.6;
         }
 
         & dd {
           min-width: 0;
-          overflow-wrap: anywhere;
           color: var(--entry-content-heading-color);
+          font-size: 0.875rem;
+          line-height: 1.8;
+          overflow-wrap: anywhere;
         }
       }
 
       & .link-application-site-row-logo {
-        align-items: center;
+        grid-column: 1 / -1;
       }
 
       & .link-application-site-url {
-        color: inherit;
+        color: var(--theme-color);
         font: inherit;
-        text-decoration-color: var(--link-application-field-border);
+        text-decoration-color: transparent;
         text-decoration-line: underline;
         text-underline-offset: 4px;
 
         &:hover,
         &:focus-visible {
-          color: var(--theme-color);
           text-decoration-color: currentColor;
         }
       }
@@ -318,11 +342,13 @@
 
         & img {
           flex: none;
+          display: block;
           width: 28px;
           height: 28px;
+          margin: 0;
+          padding: 0;
           border-radius: 50%;
           object-fit: cover;
-          box-shadow: inset 0 0 10px #000;
         }
 
         & code {
@@ -559,21 +585,39 @@
         padding: 16px 14px 14px;
       }
 
-      & .link-application-site-row {
-        column-gap: 10px;
-      }
-
       & .link-application-notice {
-        padding: 18px 16px;
+        padding: 20px 16px 16px;
+
+        &::before {
+          left: 16px;
+        }
 
         & .link-application-notice-heading {
-          grid-template-columns: 40px minmax(0, 1fr);
-          gap: 12px;
+          grid-template-columns: 48px minmax(0, 1fr);
+          align-items: start;
+          gap: 14px;
         }
 
         & .link-application-notice-avatar {
-          width: 40px;
-          height: 40px;
+          width: 48px;
+          height: 48px;
+        }
+
+        & .link-application-notice-title {
+          font-size: 1rem;
+        }
+
+        & .link-application-site {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 8px;
+          margin-top: 16px;
+        }
+
+        & .link-application-site-row {
+          grid-template-columns: 3rem minmax(0, 1fr);
+          align-items: baseline;
+          column-gap: 10px;
+          padding: 10px 12px;
         }
       }
     }
