@@ -19,8 +19,18 @@
 
 DEMO：[https://lixingyong.com/](https://lixingyong.com/)
 
-截图：
-![screenshot.png](https://raw.githubusercontent.com/LIlGG/halo-theme-sakura/master/screenshot.png)
+![Sakura 桌面与手机组合预览](./screenshot.jpg)
+
+<table>
+  <tr>
+    <td align="center" width="50%"><b>首页</b><br><img src="./docs/screenshots/home.jpg" alt="Sakura 首页" width="100%"></td>
+    <td align="center" width="50%"><b>Live2D 看板娘</b><br><img src="./docs/screenshots/live2d.jpg" alt="Sakura Live2D 看板娘" width="100%"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>文章阅读</b><br><img src="./docs/screenshots/reading.jpg" alt="Sakura 文章阅读" width="100%"></td>
+    <td align="center"><b>图库</b><br><img src="./docs/screenshots/gallery.jpg" alt="Sakura 图库" width="100%"></td>
+  </tr>
+</table>
 
 ## ⭐️ 快速入门
 
