@@ -1,0 +1,132 @@
+name: CD
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Published release to make latest in the App Store, for example v2.6.0"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cd-${{ github.event.release.tag_name || inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Build and publish theme
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check App Store credentials
+        env:
+          HALO_PAT: ${{ secrets.HALO_PAT }}
+        run: |
+          if [[ -z "$HALO_PAT" ]]; then
+            echo "::error::Configure the HALO_PAT repository secret with App Store version management permission."
+            exit 1
+          fi
+
+      - name: Resolve published release
+        id: release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: |
+          release_version="${RELEASE_TAG#v}"
+          if [[ ! "$release_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::Expected a version tag such as v2.6.0 or v2.6.0-rc.1."
+            exit 1
+          fi
+
+          release_json="$(gh api "repos/$GH_REPO/releases/tags/$RELEASE_TAG")"
+          if ! jq -e '.draft == false and .published_at != null' <<< "$release_json" > /dev/null; then
+            echo "::error::The release must already be published."
+            exit 1
+          fi
+
+          printf 'tag=%s\nversion=%s\nid=%s\n' \
+            "$RELEASE_TAG" "$release_version" "$(jq -r '.id' <<< "$release_json")" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout release tag
+        uses: actions/checkout@v6
+        with:
+          ref: refs/tags/${{ steps.release.outputs.tag }}
+          persist-credentials: false
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        env:
+          HUSKY: "0"
+        run: pnpm install --frozen-lockfile
+
+      - name: Build release resources
+        env:
+          VITE_THEME_VERSION: ${{ steps.release.outputs.version }}
+        run: pnpm build
+
+      - name: Package theme
+        run: |
+          rm -rf dist
+          pnpm dlx @halo-dev/theme-package-cli@1.1.1
+
+      - name: Verify release package
+        env:
+          RELEASE_VERSION: ${{ steps.release.outputs.version }}
+        run: |
+          python3 <<'PY'
+          import os
+          import re
+          import zipfile
+          from pathlib import Path
+
+          version = os.environ["RELEASE_VERSION"]
+          archive = Path(f"dist/theme-sakura-{version}.zip")
+          assert list(Path("dist").iterdir()) == [archive], "Expected exactly one release ZIP"
+          with zipfile.ZipFile(archive) as package:
+              assert package.testzip() is None, "Corrupt release ZIP"
+              manifest = package.read("theme.yaml").decode()
+              match = re.search(r"^  version:\s*(.+)$", manifest, re.MULTILINE)
+              assert match and match[1].strip().strip("\"'") == version, "Theme version must match the release tag"
+              required = {
+                  "theme.yaml", "settings.yaml", "annotation-setting.yaml", "README.md", "LICENSE",
+                  "templates/index.html", "templates/layout.html",
+                  f"templates/assets/dist/main-{version}.min.js",
+                  f"templates/assets/dist/css/main-{version}.min.css",
+                  f"templates/assets/dist/libs/pjax-{version}.min.js",
+                  f"templates/assets/dist/libs/lazysizes-{version}.min.js",
+              }
+              names = set(package.namelist())
+              assert required <= names, f"Missing release files: {required - names}"
+              assert not any(name.startswith(("src/", "node_modules/", ".git/")) for name in names), "Unexpected development files"
+          print(f"Verified {archive}")
+          PY
+
+      - name: Upload GitHub Release asset
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
+        run: gh release upload "$RELEASE_TAG" dist/*.zip --clobber
+
+      - name: Publish to Halo App Store
+        uses: halo-sigs/app-store-release-action@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          app-id: app-YGkgz
+          release-id: ${{ steps.release.outputs.id }}
+          assets-dir: dist
+          halo-pat: ${{ secrets.HALO_PAT }}
