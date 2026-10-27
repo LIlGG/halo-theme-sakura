@@ -52,7 +52,13 @@
     </picture>
   </th:block>
 
-  <div class="focusinfo">
+  <div
+    class="focusinfo"
+    th:with="hitokoto = ${theme.config.mainScreen.hitokoto},
+      hitokotoEnabled = ${hitokoto?.enabled == true},
+      typewriterEnabled = ${theme.config.mainScreen.focus_info_typewriter == true},
+      focusTextPending = ${hitokotoEnabled or typewriterEnabled}"
+  >
     <th:block th:replace="~{module/home/focus_tou}"></th:block>
     <div
       class="header-info no-select"
@@ -60,11 +66,22 @@
       th:if="${theme.config.mainScreen.focus_info_self_intro or theme.config.mainScreen.focus_info_socials}"
     >
       <p
-        class="flex-child-center"
-        th:if="${theme.config.mainScreen.focus_info_self_intro and (not #strings.isEmpty(theme.config.mainScreen.focus_info_self_intro_text))}"
+        class="flex-child-center focus-description"
+        th:if="${theme.config.mainScreen.focus_info_self_intro and (hitokotoEnabled or not #strings.isEmpty(theme.config.mainScreen.focus_info_self_intro_text))}"
+        th:classappend="${focusTextPending ? 'is-loading' : ''}"
+        th:hidden="${not hitokotoEnabled and #strings.isEmpty(theme.config.mainScreen.focus_info_self_intro_text)}"
+        th:aria-busy="${focusTextPending}"
+        th:data-hitokoto="${hitokotoEnabled}"
+        th:data-fallback="${theme.config.mainScreen.focus_info_self_intro_text}"
+        th:data-categories="${hitokoto?.categories != null ? #strings.listJoin(hitokoto.categories, ',') : ''}"
+        th:data-max-length="${hitokoto?.max_length ?: 30}"
+        th:data-typewriter="${typewriterEnabled}"
       >
         <span class="iconify" data-icon="fa:quote-left"></span>
-        <span class="desc" th:text="${theme.config.mainScreen.focus_info_self_intro_text}"></span>
+        <span class="desc">
+          <span class="focus-text-accessible" th:text="${focusTextPending ? '' : theme.config.mainScreen.focus_info_self_intro_text}"></span>
+          <span class="focus-text-value" aria-hidden="true" th:text="${focusTextPending ? '' : theme.config.mainScreen.focus_info_self_intro_text}"></span>
+        </span>
         <span class="iconify" data-icon="fa:quote-right"></span>
       </p>
       <div
