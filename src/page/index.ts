@@ -1,6 +1,12 @@
 import { documentFunction, sakura } from "../main";
+import { initializeFocusText } from "../utils/focusText";
 
 export default class Index {
+  @documentFunction()
+  public registerFocusText() {
+    initializeFocusText();
+  }
+
   /**
    * 注册下拉箭头功能
    */

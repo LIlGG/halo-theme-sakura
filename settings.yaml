@@ -168,6 +168,81 @@ spec:
           key: focus_info_self_intro_text
           if: "$get(focus_info_self_intro).value == true"
           label: 个人介绍
+          help: 启用一言后，仅在加载失败时显示此文本
+        - $formkit: group
+          name: hitokoto
+          key: hitokoto
+          label: 一言
+          if: "$get(focus_info_self_intro).value == true"
+          preserve: true
+          value:
+            enabled: false
+            categories: []
+            max_length: 30
+          children:
+            - $formkit: switch
+              name: enabled
+              id: hitokoto_enabled
+              key: hitokoto_enabled
+              label: 启用一言
+              help: 使用一言随机语句替换个人介绍，加载期间不显示个人介绍
+              value: false
+            - $formkit: select
+              name: categories
+              key: hitokoto_categories
+              if: "$get(hitokoto_enabled).value == true"
+              label: 句子分类
+              help: 可多选，不选则从全部分类中随机获取
+              placeholder: 全部分类
+              multiple: true
+              clearable: true
+              searchable: true
+              sortable: false
+              preserve: true
+              value: []
+              options:
+                - label: 动画
+                  value: a
+                - label: 漫画
+                  value: b
+                - label: 游戏
+                  value: c
+                - label: 文学
+                  value: d
+                - label: 原创
+                  value: e
+                - label: 来自网络
+                  value: f
+                - label: 其他
+                  value: g
+                - label: 影视
+                  value: h
+                - label: 诗词
+                  value: i
+                - label: 网易云
+                  value: j
+                - label: 哲学
+                  value: k
+                - label: 抖机灵
+                  value: l
+            - $formkit: number
+              name: max_length
+              key: hitokoto_max_length
+              if: "$get(hitokoto_enabled).value == true"
+              label: 最大长度
+              value: 30
+              min: 1
+              max: 100
+              step: 1
+              preserve: true
+              validation: required|number|min:1|max:100
+        - $formkit: switch
+          name: focus_info_typewriter
+          key: focus_info_typewriter
+          if: "$get(focus_info_self_intro).value == true"
+          label: 打字机效果
+          help: 进入首页时逐字显示个人介绍或一言；访客开启减少动态效果时直接显示全文
+          value: false
         - $formkit: switch
           name: focus_info_socials
           if: "$get(head_focus).value == true"
