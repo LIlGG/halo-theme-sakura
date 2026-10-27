@@ -756,11 +756,11 @@ spec:
           key: rimage_custom_only
           label: 仅使用自定义参数
           value: false
-          help: 开启后将不再附加资源标识、图片范围、响应式尺寸等主题默认参数，仅使用下方填写的第三方 API 自定义参数。
+          help: 开启后仅发送下方自定义参数，不附加资源标识、图片范围或响应式尺寸等默认参数；如需按内容固定图片，可在自定义参数中使用 {id}。
         - $formkit: text
           name: rimage_other_params
           label: 第三方 API 自定义参数
-          help: 第三方 API 自定义参数，如 category=dongman。参数会跟随在随机图 API 地址后面。
+          help: "参数会附加在 API 地址后，如 category=dongman&postid={id}。{id} 会替换为文章或页面的稳定标识；首页背景使用 home-序号，支持按序号切换图片。不填写 {id} 时参数保持原样。"
         - $formkit: select
           name: rimage_cover_lqip
           id: rimage_cover_lqip
@@ -851,10 +851,12 @@ spec:
           label: 背景图获取范围编号
           help: 如相册编号、分类编号或用户名
         - $formkit: select
-          if: "$get(rimage_cover_back_open).value == true && $get(rimage_custom_only).value != true"
+          if: "$get(rimage_cover_back_open).value == true"
           name: rimage_cover_back_num
+          key: rimage_cover_back_num
           label: 背景图片循环张数
           value: 5
+          help: 仅使用自定义参数时，需在自定义参数中包含 {id} 才能按序号切换背景图片。
           options:
             - value: 3
               label: 三张

@@ -25,7 +25,12 @@ export default class Index {
   @documentFunction()
   public registerBackgroundChangeEvent() {
     const backgorundElement = document.querySelector(".bg-change-js") as HTMLImageElement;
-    if (!backgorundElement || backgorundElement.dataset.appendDefaultParams === "false") {
+    if (!backgorundElement) {
+      return;
+    }
+    const appendDefaultParams = backgorundElement.dataset.appendDefaultParams !== "false";
+    const hasIdPlaceholder = backgorundElement.dataset.idPlaceholder === "true";
+    if (!appendDefaultParams && !hasIdPlaceholder) {
       return;
     }
     const backgroundNextBotton = document.getElementById("bg-next");
@@ -51,11 +56,16 @@ export default class Index {
       handlerChangeBackground(currIndex);
     });
     const handlerChangeBackground = (backageImageIndex: number) => {
-      const randomUrl = backgorundElement.getAttribute("data-url");
-      if (!randomUrl) {
+      const urlPrefix = backgorundElement.getAttribute("data-url-prefix");
+      if (urlPrefix === null) {
         return;
       }
-      backgorundElement.src = `${randomUrl}&t=${backageImageIndex}`;
+      const customParams = backgorundElement.getAttribute("data-custom-params") || "";
+      const resolvedCustomParams = hasIdPlaceholder
+        ? customParams.replace(/\{id\}/g, encodeURIComponent(`home-${backageImageIndex}`))
+        : customParams;
+      const fragment = backgorundElement.getAttribute("data-url-fragment") || "";
+      backgorundElement.src = `${urlPrefix}${resolvedCustomParams}${appendDefaultParams ? `&t=${backageImageIndex}` : ""}${fragment}`;
       backgorundElement.setAttribute("data-currIndex", `${backageImageIndex}`);
     };
   }

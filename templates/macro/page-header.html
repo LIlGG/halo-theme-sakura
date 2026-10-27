@@ -37,28 +37,22 @@
         </th:block>
 
         <!--/* 随机图 */-->
-        <th:block
-          th:if="${#strings.isEmpty(frontCover) && randomCoverAvailable}"
-          th:with="
-          appendDefaultParams = ${theme.config.random_image.rimage_custom_only != true},
-          randomImageId = ${id != null ? id : extension.metadata.name},
-          randomImage = ${appendDefaultParams
-            ? theme.config.random_image.rimage_url + '?' + _templateId + 'id=' + randomImageId + '&' + theme.config.random_image.rimage_custom_param_name + '=' + randomImageId + '&type=url&itype=' + theme.config.random_image.rimage_cover_itype + (theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : '') + (#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '&' + theme.config.random_image.rimage_other_params)
-            : theme.config.random_image.rimage_url + (#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '?' + theme.config.random_image.rimage_other_params)}
-          "
-        >
-          <img
-            th:src="${theme.config.random_image.rimage_cover_lqip == 'lowquality' and appendDefaultParams ? randomImage + (#strings.isEmpty(theme.config.random_image.rimage_cover_lqip_params) ? '' : '&' + theme.config.random_image.rimage_cover_lqip_params) : #theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
-            th:data-src="${appendDefaultParams ? null : randomImage}"
-            th:data-srcset="${appendDefaultParams ? randomImage + '&th=640 640w, ' + randomImage + '&th=960 960w, ' + randomImage + '&th=1280 1280w, ' + randomImage + '&th=1440 1440w, ' + randomImage + '&th=1920 1920w' : null}"
-            th:class="lazyload"
-            th:classappend="${theme.config.random_image.rimage_cover_lqip == 'lowquality' and appendDefaultParams ? 'blur-up' : ''}"
-            onerror="imgError(this)"
-            itemprop="contentUrl"
-            alt="large picture of the cover"
-            width="1920"
-            height="400"
-          />
+        <th:block th:if="${#strings.isEmpty(frontCover) && randomCoverAvailable}">
+          <th:block th:replace="~{macro/random-image :: image(resourceId=${id != null ? id : extension.metadata.name}, resourceType=${_templateId}, widths='640,960,1280,1440,1920', imageTag=~{::page-header-random-cover})}">
+            <img
+              th:fragment="page-header-random-cover"
+              th:src="${imageSrc}"
+              th:data-src="${imageDataSrc}"
+              th:data-srcset="${imageSrcset}"
+              th:class="lazyload"
+              th:classappend="${imageLowQuality ? 'blur-up' : ''}"
+              onerror="imgError(this)"
+              itemprop="contentUrl"
+              alt="large picture of the cover"
+              width="1920"
+              height="400"
+            />
+          </th:block>
         </th:block>
       </div>
     </div>

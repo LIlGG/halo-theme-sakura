@@ -1,28 +1,34 @@
 <!--/* 首页随机图使用 style 实现，详见 decorate.html*/-->
-<figure id="centerbg" class="centerbg" th:fragment="imgbox">
+<figure
+  id="centerbg"
+  class="centerbg"
+  th:fragment="imgbox"
+  th:with="hasIdPlaceholder = ${not #strings.isEmpty(theme.config.random_image.rimage_other_params) and #strings.contains(theme.config.random_image.rimage_other_params, '{id}')},
+    canChangeBackground = ${theme.config.random_image.rimage_custom_only != true or (hasIdPlaceholder and theme.config.random_image.rimage_cover_back_open and not #strings.isEmpty(theme.config.random_image.rimage_url))}"
+>
   <th:block
     th:if="${theme.config.random_image.rimage_cover_back_open and (not #strings.isEmpty(theme.config.random_image.rimage_url))}"
   >
-    <img
-      th:with="
-      appendDefaultParams = ${theme.config.random_image.rimage_custom_only != true},
-      imageUrl = ${appendDefaultParams
-        ? theme.config.random_image.rimage_url + '?home=home&type=url&itype=' + theme.config.random_image.rimage_cover_back_itype + (theme.config.random_image.rimage_cover_back_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_back_id : '') + (#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '&' + theme.config.random_image.rimage_other_params)
-        : theme.config.random_image.rimage_url + (#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '?' + theme.config.random_image.rimage_other_params)},
-      randomNum = |${theme.config.random_image.rimage_cover_back_num != 0 ? ((T(java.lang.Math).random() * 10) % theme.config.random_image.rimage_cover_back_num).intValue() : #strings.randomAlphanumeric(1)}|
-      "
-      th:src="${appendDefaultParams and theme.config.random_image.rimage_cover_lqip == 'lowquality' ? imageUrl + (#strings.isEmpty(theme.config.random_image.rimage_cover_lqip_params) ? '' : '&' + theme.config.random_image.rimage_cover_lqip_params) + '&t=' + randomNum : #theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')}"
-      th:data-src="${imageUrl + (appendDefaultParams ? '&t=' + randomNum : '')}"
-      th:data-url="${imageUrl}"
-      th:data-append-default-params="${appendDefaultParams}"
-      th:data-currIndex="${randomNum}"
-      class="lazyload cover-bg bg-change-js"
-      th:classappend="${appendDefaultParams and theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
-      alt="background picture of the home page"
-      width="1920"
-      height="1080"
-      onerror="imgError(this)"
-    />
+    <th:block th:replace="~{macro/random-image :: image(resourceId='home', resourceType='home', widths='', imageTag=~{::random-background})}">
+      <img
+        th:fragment="random-background"
+        th:src="${imageSrc}"
+        th:data-src="${imageDataSrc}"
+        th:data-url="${imageUrl + imageFragment}"
+        th:data-url-prefix="${imageUrlPrefix}"
+        th:data-custom-params="${imageCustomParamsTemplate}"
+        th:data-url-fragment="${imageFragment}"
+        th:data-append-default-params="${imageAppendDefaultParams}"
+        th:data-id-placeholder="${imageHasIdPlaceholder}"
+        th:data-currIndex="${imageIndex}"
+        class="lazyload cover-bg bg-change-js"
+        th:classappend="${imageLowQuality ? 'blur-up' : ''}"
+        alt="background picture of the home page"
+        width="1920"
+        height="1080"
+        onerror="imgError(this)"
+      />
+    </th:block>
     <div class="blend-overlay"></div>
   </th:block>
   <th:block
@@ -66,11 +72,11 @@
         th:if="${theme.config.mainScreen.focus_info_socials and (not #arrays.isEmpty(theme.config.sns.items))}"
       >
         <ul>
-          <li id="bg-prev" th:if="${theme.config.random_image.rimage_custom_only != true}">
+          <li id="bg-prev" th:if="${canChangeBackground}">
             <img class="flipx" th:src="@{/assets/images/next-b.svg}" alt="prev" width="28" height="28" />
           </li>
           <th:block th:replace="~{module/home/top_social}"></th:block>
-          <li id="bg-next" th:if="${theme.config.random_image.rimage_custom_only != true}">
+          <li id="bg-next" th:if="${canChangeBackground}">
             <img th:src="@{/assets/images/next-b.svg}" alt="next" width="28" height="28" />
           </li>
         </ul>
