@@ -28,25 +28,23 @@ NEXT / PREVIOUS POSTS
             width="390"
             onerror="imgError(this)"
           />
-          <img
-            th:if="${#strings.isEmpty(postCursor.previous.spec.cover)} and ${theme.config.random_image.rimage_cover_open} and ${#annotations.getOrDefault(post, 'randomImage', true)} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
-            th:with="randomUrl = |${theme.config.random_image.rimage_url}?${_templateId}id=${postCursor.previous.metadata.name}&${theme.config.random_image.rimage_custom_param_name}=${postCursor.previous.metadata.name}&type=url&itype=${theme.config.random_image.rimage_cover_itype}${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}${#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '&' + theme.config.random_image.rimage_other_params}|"
-            th:src="${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/load/orange.progress-bar-stripe-loader.svg') : (randomUrl + (#strings.isEmpty(theme.config.random_image.rimage_cover_lqip_params) ? '' : '&' + theme.config.random_image.rimage_cover_lqip_params))}"
-            th:data-srcset="|
-            ${randomUrl}&th=400 400w,
-            ${randomUrl}&th=960 960w,
-            ${randomUrl}&th=1280 1280w,
-            ${randomUrl}&th=1440 1440w,
-            ${randomUrl}&th=1920 1920w
-            |"
-            data-sizes="auto"
-            class="lazyload"
-            th:classappend="${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
-            alt="The cover picture of the previous content"
-            height="160"
-            width="390"
-            onerror="imgError(this)"
-          />
+          <th:block th:if="${#strings.isEmpty(postCursor.previous.spec.cover)} and ${theme.config.random_image.rimage_cover_open} and ${#annotations.getOrDefault(post, 'randomImage', true)} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}">
+            <th:block th:replace="~{macro/random-image :: image(resourceId=${postCursor.previous.metadata.name}, resourceType=${_templateId}, widths='400,960,1280,1440,1920', imageTag=~{::previous-random-cover})}">
+              <img
+                th:fragment="previous-random-cover"
+                th:src="${imageSrc}"
+                th:data-src="${imageDataSrc}"
+                th:data-srcset="${imageSrcset}"
+                data-sizes="auto"
+                class="lazyload"
+                th:classappend="${imageLowQuality ? 'blur-up' : ''}"
+                alt="The cover picture of the previous content"
+                height="160"
+                width="390"
+                onerror="imgError(this)"
+              />
+            </th:block>
+          </th:block>
           <img
             th:if="${#strings.isEmpty(postCursor.previous.spec.cover)} and (!${theme.config.random_image.rimage_cover_open} or !${#annotations.getOrDefault(post, 'randomImage', true)} or ${#strings.isEmpty(theme.config.random_image.rimage_url)})"
             class="lazyload"
@@ -87,25 +85,23 @@ NEXT / PREVIOUS POSTS
             width="390"
             onerror="imgError(this)"
           />
-          <img
-            th:if="${#strings.isEmpty(postCursor.next.spec.cover)} and ${theme.config.random_image.rimage_cover_open} and ${#annotations.getOrDefault(post, 'randomImage', true)} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}"
-            th:with="randomUrl = |${theme.config.random_image.rimage_url}?${_templateId}id=${postCursor.next.metadata.name}&${theme.config.random_image.rimage_custom_param_name}=${postCursor.next.metadata.name}&type=url&itype=${theme.config.random_image.rimage_cover_itype}${theme.config.random_image.rimage_cover_itype != 'image' ? '&id=' + theme.config.random_image.rimage_cover_id : ''}${#strings.isEmpty(theme.config.random_image.rimage_other_params) ? '' : '&' + theme.config.random_image.rimage_other_params}|"
-            th:src="${theme.config.random_image.rimage_cover_lqip == 'loading' ? #theme.assets('/images/load/orange.progress-bar-stripe-loader.svg') : (randomUrl + (#strings.isEmpty(theme.config.random_image.rimage_cover_lqip_params) ? '' : '&' + theme.config.random_image.rimage_cover_lqip_params))}"
-            th:data-srcset="|
-            ${randomUrl}&th=400 400w,
-            ${randomUrl}&th=960 960w,
-            ${randomUrl}&th=1280 1280w,
-            ${randomUrl}&th=1440 1440w,
-            ${randomUrl}&th=1920 1920w
-            |"
-            data-sizes="auto"
-            class="lazyload"
-            th:classappend="${theme.config.random_image.rimage_cover_lqip == 'lowquality' ? 'blur-up' : ''}"
-            alt="The cover picture of the next content"
-            height="160"
-            width="390"
-            onerror="imgError(this)"
-          />
+          <th:block th:if="${#strings.isEmpty(postCursor.next.spec.cover)} and ${theme.config.random_image.rimage_cover_open} and ${#annotations.getOrDefault(post, 'randomImage', true)} and ${not #strings.isEmpty(theme.config.random_image.rimage_url)}">
+            <th:block th:replace="~{macro/random-image :: image(resourceId=${postCursor.next.metadata.name}, resourceType=${_templateId}, widths='400,960,1280,1440,1920', imageTag=~{::next-random-cover})}">
+              <img
+                th:fragment="next-random-cover"
+                th:src="${imageSrc}"
+                th:data-src="${imageDataSrc}"
+                th:data-srcset="${imageSrcset}"
+                data-sizes="auto"
+                class="lazyload"
+                th:classappend="${imageLowQuality ? 'blur-up' : ''}"
+                alt="The cover picture of the next content"
+                height="160"
+                width="390"
+                onerror="imgError(this)"
+              />
+            </th:block>
+          </th:block>
           <img
             th:if="${#strings.isEmpty(postCursor.next.spec.cover)} and (!${theme.config.random_image.rimage_cover_open} or !${#annotations.getOrDefault(post, 'randomImage', true)} or ${#strings.isEmpty(theme.config.random_image.rimage_url)})"
             class="lazyload"

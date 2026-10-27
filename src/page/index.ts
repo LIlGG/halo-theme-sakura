@@ -28,6 +28,11 @@ export default class Index {
     if (!backgorundElement) {
       return;
     }
+    const appendDefaultParams = backgorundElement.dataset.appendDefaultParams !== "false";
+    const hasIdPlaceholder = backgorundElement.dataset.idPlaceholder === "true";
+    if (!appendDefaultParams && !hasIdPlaceholder) {
+      return;
+    }
     const backgroundNextBotton = document.getElementById("bg-next");
     const backgroundPrevBotton = document.getElementById("bg-prev");
     const backgroundLoopSize = (sakura.getThemeConfig("random_image", "rimage_cover_back_num", Number) || 0).valueOf();
@@ -51,8 +56,16 @@ export default class Index {
       handlerChangeBackground(currIndex);
     });
     const handlerChangeBackground = (backageImageIndex: number) => {
-      const randomUrl = backgorundElement.getAttribute("data-url");
-      backgorundElement.src = `${randomUrl}&t=${backageImageIndex}`;
+      const urlPrefix = backgorundElement.getAttribute("data-url-prefix");
+      if (urlPrefix === null) {
+        return;
+      }
+      const customParams = backgorundElement.getAttribute("data-custom-params") || "";
+      const resolvedCustomParams = hasIdPlaceholder
+        ? customParams.replace(/\{id\}/g, encodeURIComponent(`home-${backageImageIndex}`))
+        : customParams;
+      const fragment = backgorundElement.getAttribute("data-url-fragment") || "";
+      backgorundElement.src = `${urlPrefix}${resolvedCustomParams}${appendDefaultParams ? `&t=${backageImageIndex}` : ""}${fragment}`;
       backgorundElement.setAttribute("data-currIndex", `${backageImageIndex}`);
     };
   }

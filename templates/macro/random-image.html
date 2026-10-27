@@ -1,0 +1,34 @@
+<!--/*
+  * 随机图片参数与加载策略。调用方保留图片的展示属性。
+  * resourceId: 内容标识；resourceType: post、page 等模板类型，home 表示首页背景。
+  * widths: 逗号分隔的响应式宽度；首页背景不使用此参数。
+  * imageTag: 接收 imageSrc、imageDataSrc、imageSrcset、imageLowQuality 等变量的图片片段。
+  * 保留 API 地址原有的查询串，所有动态参数均追加在片段标识之前。
+  */-->
+<th:block
+  th:fragment="image(resourceId, resourceType, widths, imageTag)"
+  th:with="
+    imageConfig = ${theme.config.random_image},
+    imageIsBackground = ${resourceType == 'home'},
+    imageAppendDefaultParams = ${imageConfig.rimage_custom_only != true},
+    imageCustomParamsTemplate = ${#strings.isEmpty(imageConfig.rimage_other_params) ? '' : imageConfig.rimage_other_params},
+    imageHasIdPlaceholder = ${#strings.contains(imageCustomParamsTemplate, '{id}')},
+    imageIndex = ${imageIsBackground ? (imageConfig.rimage_cover_back_num != 0 ? ((T(java.lang.Math).random() * 10) % imageConfig.rimage_cover_back_num).intValue() : #strings.randomAlphanumeric(1)) : null},
+    imageCustomParams = ${#strings.isEmpty(imageCustomParamsTemplate) ? '' : #strings.replace(imageCustomParamsTemplate, '{id}', #uris.escapeQueryParam(imageIsBackground ? 'home-' + imageIndex : resourceId))},
+    imageScope = ${imageIsBackground ? imageConfig.rimage_cover_back_itype : imageConfig.rimage_cover_itype},
+    imageScopeId = ${imageIsBackground ? imageConfig.rimage_cover_back_id : imageConfig.rimage_cover_id},
+    imageResourceParams = ${imageIsBackground ? 'home=home' : resourceType + 'id=' + resourceId + '&' + imageConfig.rimage_custom_param_name + '=' + resourceId},
+    imageApiUrl = ${#strings.contains(imageConfig.rimage_url, '#') ? #strings.substringBefore(imageConfig.rimage_url, '#') : imageConfig.rimage_url},
+    imageFragment = ${#strings.contains(imageConfig.rimage_url, '#') ? '#' + #strings.substringAfter(imageConfig.rimage_url, '#') : ''},
+    imageDefaultParams = ${imageAppendDefaultParams ? imageResourceParams + '&type=url&itype=' + imageScope + (imageScope != 'image' ? '&id=' + imageScopeId : '') : ''},
+    imageSeparator = ${#strings.contains(imageApiUrl, '?') ? (#strings.indexOf(imageApiUrl, '?') == #strings.length(imageApiUrl) - 1 or #strings.endsWith(imageApiUrl, '&') ? '' : '&') : '?'},
+    imageUrlPrefix = ${imageApiUrl + (#strings.isEmpty(imageDefaultParams) and #strings.isEmpty(imageCustomParamsTemplate) ? '' : imageSeparator + imageDefaultParams + (not #strings.isEmpty(imageDefaultParams) and not #strings.isEmpty(imageCustomParamsTemplate) ? '&' : ''))},
+    imageUrl = ${imageUrlPrefix + imageCustomParams},
+    imageLowQuality = ${imageAppendDefaultParams and imageConfig.rimage_cover_lqip == 'lowquality'},
+    imageSrc = ${imageLowQuality ? imageUrl + (#strings.isEmpty(imageConfig.rimage_cover_lqip_params) ? '' : '&' + imageConfig.rimage_cover_lqip_params) + (imageIsBackground ? '&t=' + imageIndex : '') + imageFragment : #theme.assets('/images/load/orange.progress-bar-stripe-loader.svg')},
+    imageDataSrc = ${imageIsBackground ? imageUrl + (imageAppendDefaultParams ? '&t=' + imageIndex : '') + imageFragment : (imageAppendDefaultParams ? null : imageUrl + imageFragment)},
+    imageSrcset = ${imageAppendDefaultParams and not imageIsBackground ? #strings.listJoin(#strings.arraySplit(widths, ',').![#vars.imageUrl + '&th=' + #this + #vars.imageFragment + ' ' + #this + 'w'], ', ') : null}
+  "
+>
+  <th:block th:replace="${imageTag}" />
+</th:block>
