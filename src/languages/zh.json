@@ -51,7 +51,35 @@
     "next": "下一页",
     "theend": "没有更多文章了",
     "archives": {
-      "title": "文章归档"
+      "title": "文章归档",
+      "total": "共 {{count}} 篇文章",
+      "years": "{{count}} 个年份",
+      "posts": "{{count}} 篇",
+      "search": "搜索文章标题",
+      "expand": "展开全部",
+      "collapse": "收起全部",
+      "navigation": "按年份浏览",
+      "empty": "暂无文章",
+      "no_results": "没有找到匹配的文章，试试其他关键词。",
+      "reset": "查看全部文章",
+      "results": "找到 {{count}} 篇文章",
+      "months": {
+        "01": "一月",
+        "02": "二月",
+        "03": "三月",
+        "04": "四月",
+        "05": "五月",
+        "06": "六月",
+        "07": "七月",
+        "08": "八月",
+        "09": "九月",
+        "10": "十月",
+        "11": "十一月",
+        "12": "十二月"
+      },
+      "clear": "清空搜索",
+      "month_navigation": "按月份浏览",
+      "month_hint": "{{year}}年{{month}} · {{count}} 篇文章"
     },
     "categories": {
       "title": "文章分类",

@@ -4,51 +4,163 @@
   th:replace="~{module/layout :: layout(_title = ~{::title}, _header = ~{::header}, _content = ~{::content})}"
 >
   <th:block th:fragment="header">
-    <th:block
-    th:replace="~{macro/page-header :: page-header(extension=${archives}, frontCover=${theme.config.patternimg.archives_patternimg}, headerTitle =  ~{::headerTitle},, id='archives', isRandomImage = true)}"
-    />
+    <div class="archives-header">
+      <th:block
+        th:replace="~{macro/page-header :: page-header(extension=${archives}, frontCover=${theme.config.patternimg.archives_patternimg}, headerTitle=~{::headerTitle}, id='archives', isRandomImage=true)}"
+      />
+    </div>
   </th:block>
 
   <th:block th:fragment="headerTitle">
-    <h1 data-i18n="page.archives.title"></h1>
+    <h1 data-i18n="page.archives.title">文章归档</h1>
   </th:block>
 
   <th:block th:fragment="content">
-    <article class="archives-article">
-      <div id="archives-temp" class="archives-inner">
-        <div class="archives-content">
-          <th:block th:each="archive, archiveStat : ${postFinder.archives(1, 0).items}">
-            <th:block th:each="month, monthStat : ${archive.months}">
-              <div class="archive-item" th:classappend="${archiveStat.index == 0 ? 'active' : ''}" th:id="|arti-${archive.year}-${month.month}|">
-                <div class="archive-title">
-                  <span class="archive-time flex-child-center">
-                    <span class="iconify" data-icon="ph:read-cv-logo-bold"></span>
-                  </span>
-                  <h3 th:text="${archive.year}+'-'+${month.month}"></h3>
-                </div>
+    <article class="archives-article" data-archives th:with="archiveData=${postFinder.archives(1, 0)}">
+      <div class="archive-overview">
+        <div class="archive-intro">
+          <p class="archive-total">
+            <span
+              data-i18n="page.archives.total"
+              th:attr='i18n-options=|{"count":${archiveData.total}}|'
+              th:text="|共 ${archiveData.total} 篇文章|"
+            ></span>
+            <span class="archive-total-divider" aria-hidden="true">·</span>
+            <span
+              data-i18n="page.archives.years"
+              th:attr='i18n-options=|{"count":${#lists.size(archiveData.items)}}|'
+              th:text="|${#lists.size(archiveData.items)} 个年份|"
+            ></span>
+          </p>
+        </div>
+        <div class="archive-tools" th:if="${not #lists.isEmpty(archiveData.items)}" data-archive-tools hidden>
+          <div class="archive-search">
+            <span class="iconify" data-icon="lucide:search" aria-hidden="true"></span>
+            <input
+              type="search"
+              data-archive-search
+              placeholder="搜索文章标题"
+              aria-label="搜索文章标题"
+              data-i18n="[placeholder]page.archives.search;[aria-label]page.archives.search"
+              autocomplete="off"
+            />
+            <button
+              type="button"
+              class="archive-search-clear"
+              data-archive-clear
+              hidden
+              aria-label="清空搜索"
+              data-i18n="[aria-label]page.archives.clear"
+            >
+              <kbd aria-hidden="true">Esc</kbd>
+              <span class="iconify" data-icon="lucide:x" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="archive-actions">
+            <button type="button" data-archive-expand data-i18n="page.archives.expand">展开全部</button>
+            <span aria-hidden="true">/</span>
+            <button type="button" data-archive-collapse data-i18n="page.archives.collapse">收起全部</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="archive-search-status" data-archive-status role="status" aria-live="polite" hidden></p>
+
+      <div class="archive-layout" th:if="${not #lists.isEmpty(archiveData.items)}">
+        <nav class="archive-index" aria-label="按年份浏览" data-i18n="[aria-label]page.archives.navigation">
+          <ol>
+            <li th:each="archive : ${archiveData.items}">
+              <a th:href="|#archive-${archive.year}|" th:attr="data-archive-year-link=${archive.year}">
+                <span th:text="${archive.year}"></span>
+                <span class="archive-index-count" th:text="${#aggregates.sum(archive.months.![posts.size()])}"></span>
+              </a>
+            </li>
+          </ol>
+        </nav>
+
+        <div class="archive-timeline">
+          <details
+            class="archive-year"
+            th:each="archive : ${archiveData.items}"
+            th:id="|archive-${archive.year}|"
+            th:attr="data-archive-year=${archive.year}"
+            open
+          >
+            <summary class="archive-year-heading">
+              <h2 th:text="${archive.year}"></h2>
+              <span
+                class="archive-year-count"
+                data-i18n="page.archives.posts"
+                th:with="count=${#aggregates.sum(archive.months.![posts.size()])}"
+                th:attr='i18n-options=|{"count":${count}}|'
+                th:text="|${count} 篇|"
+              ></span>
+              <span class="archive-year-rule" aria-hidden="true"></span>
+              <span class="iconify archive-chevron" data-icon="lucide:chevron-down" aria-hidden="true"></span>
+            </summary>
+            <div class="archive-year-panel">
+              <nav
+                class="archive-month-map"
+                data-i18n="[aria-label]page.archives.month_navigation"
+                aria-label="按月份浏览"
+                hidden
+              ></nav>
+              <div class="archive-year-content">
                 <div
-                  class="archive-posts"
-                  th:classappend="|archives-${monthStat.index}|"
-                  th:attr="data-date=${archive.year}+'-'+${month.month}"
-                  style="overflow: hidden">
-                  <div class="archive-post-item" th:each="post : ${month.posts}">
-                    <span class="archive-post-circle"></span>
-                    <div class="arrow-left-ar"></div>
-                    <div class="brick">
-                      <a data-pjax th:href="@{${post.status.permalink}}" aria-label="get the next article">
-                        <span class="time flex-child-center">
-                          <span class="iconify iconify--large" data-icon="ic:round-access-time"></span>
-                          <th:block th:text="${#dates.format(post.spec.publishTime,'MM-dd')}"></th:block>
-                        </span>
-                        <th:block th:text="${post.spec.title}"></th:block>
+                  class="archive-month"
+                  th:each="month : ${archive.months}"
+                  th:id="|archive-${archive.year}-${month.month}|"
+                  th:attr="data-archive-month=${month.month}"
+                >
+                  <h3 class="archive-month-heading">
+                    <time
+                      th:datetime="|${archive.year}-${month.month}|"
+                      th:attr="data-i18n=|page.archives.months.${month.month}|"
+                      th:text="|${month.month} 月|"
+                    ></time>
+                    <span
+                      class="archive-month-count"
+                      data-i18n="page.archives.posts"
+                      th:attr='i18n-options=|{"count":${#lists.size(month.posts)}}|'
+                      th:text="|${#lists.size(month.posts)} 篇|"
+                    ></span>
+                  </h3>
+                  <ul class="archive-posts">
+                    <li class="archive-post" th:each="post : ${month.posts}">
+                      <a class="archive-post-link" data-pjax th:href="@{${post.status.permalink}}">
+                        <time
+                          class="archive-post-date"
+                          th:datetime="${post.spec.publishTime}"
+                          th:text="${#dates.format(post.spec.publishTime, 'MM-dd')}"
+                        ></time>
+                        <span class="archive-post-title" th:text="${post.spec.title}"></span>
+                        <span
+                          class="archive-post-category"
+                          th:if="${not #lists.isEmpty(post.categories)}"
+                          th:text="${post.categories[0].spec.displayName}"
+                        ></span>
+                        <span
+                          class="iconify archive-post-arrow"
+                          data-icon="lucide:arrow-up-right"
+                          aria-hidden="true"
+                        ></span>
                       </a>
-                    </div>
-                  </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
-            </th:block>
-          </th:block>
+            </div>
+          </details>
         </div>
+      </div>
+
+      <div class="archive-empty" th:if="${#lists.isEmpty(archiveData.items)}">
+        <span class="iconify archive-empty-flower" data-icon="lucide:flower" aria-hidden="true"></span>
+        <p data-i18n="page.archives.empty">暂无文章</p>
+      </div>
+      <div class="archive-empty" data-archive-no-results hidden>
+        <p data-i18n="page.archives.no_results">没有找到匹配的文章，试试其他关键词。</p>
+        <button type="button" data-archive-reset data-i18n="page.archives.reset">查看全部文章</button>
       </div>
     </article>
   </th:block>
