@@ -1,7 +1,59 @@
 <!DOCTYPE html>
-<html
-  xmlns:th="https://www.thymeleaf.org"
-  lang="zh-CN"
-  th:fragment="html (head, content)"
-  th:replace="~{module/layout :: layout(_title = null, _header = null, _content = ${content}, _head = ${head}, _sidebar = null)}"
-></html>
+<html xmlns:th="https://www.thymeleaf.org" lang="zh-CN" th:fragment="html (head, content)">
+  <head>
+    <!--/* 引入公共 Head */-->
+    <th:block th:replace="~{module/head/index}" />
+    <!--/* 未传入 head 时使用站点标题；传入的 head 包含页面标题及资源 */-->
+    <title
+      th:if="${head == null}"
+      th:text="${#strings.isEmpty(site.subtitle) ? site.title : site.title + ' - ' + site.subtitle}"
+    ></title>
+    <th:block th:if="${head != null}">
+      <th:block th:replace="${head}" />
+    </th:block>
+
+    <!--/* noscript */-->
+    <th:block th:replace="~{scripts/noscript}" />
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" class="serif">
+    <div class="pjax">
+      <!--/* variables.html 根据配置设置 css 变量值，全局 css 通过变量值进行处理 */-->
+      <th:block th:replace="~{module/variables/index}"></th:block>
+    </div>
+
+    <section id="main-container" class="container">
+      <!--/* 导航栏 */-->
+      <header class="site-header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner" th:insert="~{module/header/index}"></div>
+      </header>
+
+      <main id="page" class="main site wrapper">
+        <!--/* 调用方负责页头和内容布局，通用布局不限制内容宽度 */-->
+        <th:block th:replace="${content}" />
+      </main>
+    </section>
+
+    <section class="site-sidebar">
+      <div class="sidebar-close"></div>
+      <div class="sidebar-inner">
+        <!--/* 侧边栏 */-->
+        <th:block th:replace="~{module/sidebar/index}" />
+      </div>
+    </section>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-info">
+        <th:block th:replace="~{module/footer}" />
+      </div>
+    </footer>
+
+    <!--/* 全局小部件，如回到顶部等 */-->
+    <th:block th:replace="~{module/widgets/index}" />
+
+    <!--/* script */-->
+    <!--/* 主题自身的 script */-->
+    <th:block th:replace="~{scripts/index}" />
+    <!--/* 与 pjax 生命周期相关的 script。每个页面都应重新请求获取（如果仅是需要重新执行则不必放在这里） */-->
+    <div id="pjax" th:if="${theme.config.others.poi_pjax}"></div>
+  </body>
+</html>
