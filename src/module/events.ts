@@ -369,12 +369,41 @@ export class Events {
    */
   @documentFunction(false)
   public registerThemeChangeEvent() {
+    const themeMenuElement = document.querySelector(".skin-menu");
+    if (!themeMenuElement) {
+      return;
+    }
+
+    const scrollCloseThreshold = 20;
+    let scrollLeftOnOpen = window.scrollX;
+    let scrollTopOnOpen = window.scrollY;
     const themeChangeButtonElements = document.querySelectorAll(".theme-change-js");
     themeChangeButtonElements.forEach((element) => {
       element.addEventListener("click", () => {
-        document.querySelector(".skin-menu")?.classList.toggle("show");
+        if (themeMenuElement.classList.toggle("show")) {
+          scrollLeftOnOpen = window.scrollX;
+          scrollTopOnOpen = window.scrollY;
+        }
       });
     });
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!themeMenuElement.classList.contains("show")) {
+          return;
+        }
+        // Measure from opening so small scroll steps still add up to the closing threshold.
+        const scrollDistance = Math.max(
+          Math.abs(window.scrollX - scrollLeftOnOpen),
+          Math.abs(window.scrollY - scrollTopOnOpen)
+        );
+        if (scrollDistance >= scrollCloseThreshold) {
+          themeMenuElement.classList.remove("show");
+        }
+      },
+      { passive: true }
+    );
   }
 
   /**
@@ -397,14 +426,6 @@ export class Events {
         localStorage.setItem("systemMode", "false");
       });
     });
-
-    WindowEventProxy.addEventListener(
-      "scroll",
-      () => {
-        themeModelElement?.classList.remove("show");
-      },
-      200
-    );
   }
 
   /**
