@@ -69,8 +69,6 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        env:
-          HUSKY: "0"
         run: pnpm install --frozen-lockfile
 
       - name: Build release resources
