@@ -16,7 +16,7 @@ export default ({ mode }: { mode: string }) => {
     plugins: [
       PurgeIcons({
         content: [
-          './templates/*/*.html',
+          './templates/**/*.html',
         ],
       }),
       {

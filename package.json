@@ -75,6 +75,7 @@
     "lazysizes": "^5.3.2",
     "loc-i18next": "^0.1.5",
     "lodash.clonedeep": "^4.5.0",
+    "motion": "^14.7.1",
     "nprogress": "^0.2.0",
     "qrcode": "^1.5.3",
     "tocbot": "^4.21.0",
