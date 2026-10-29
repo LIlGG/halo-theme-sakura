@@ -17,5 +17,9 @@ bin/
 
 node_modules
 
+# Build outputs
+/templates/assets/dist/
+/dist/
+
 #VS Code
 .vscode
